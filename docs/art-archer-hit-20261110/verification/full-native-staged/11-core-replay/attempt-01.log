@@ -1,0 +1,128 @@
+PASS all-field UTF-16 and numeric digest vectors
+PASS independent RNG streams
+PASS three tactical grids
+PASS tile art floating products
+PASS transaction rollback
+PASS detached committed state and events
+PASS resource clamping and atomic costs
+PASS tactic planning and committed recipients
+PASS shared unit content admission
+PASS live ownership admission and commander projection
+  Unchanged campaign: 16 levels, 197 unit attacks, 24 structure attacks; receipts and final HP verified in 4.876s.
+  Scope: no delayed casts or parting shots; 0 separately emitted collision effects accounted for after the forecast exchange.
+  Synthetic placement contracts: entering/leaving actor formation and aura, moving commander/support neighbour, counter flanking/facing, structure aura.
+PASS attack preview placement and committed outcomes
+PASS counter effect ownership and collision disclosure
+  Activation contract: immediate unit/structure/area, deaths, counter/support, delayed occupied/empty, cancelled/refused, and 58-action C01-09 witness.
+PASS explicit main attack activation and completion
+  Every initial P1 actor can enter the node: identical closure/victory/release, save/load, undo and exact replay.
+  Node destruction, shield death and HQ capture are genuine commands; casualties never revive and Laiya failure wins priority.
+  T15 support: both initial engineers and actual T4 reinforcement, neutral site, absent/left/dead/wrong tags/wrong owner, late arrival, once-only, T18/T19.
+  South village capture/undo/replay and next-own-turn recovery/income/save-resume preserved (bounded state fixtures, not an assault playthrough).
+  Full-HP enable, idempotence, invalid IDs/numbers, destroyed no-op, real transaction rollback, and old ruleset rejection.
+PASS structure lifecycle and redstone routes
+  Arrived escort choice: {"kind":"command","unit":1,"path":[{"x":3,"y":1}],"command":{"ability":"wait"}}
+  Same-cell position: mission=2160, tactical=207.02399999999997; four abilities observed.
+  Armed escort choice: {"kind":"command","unit":1,"path":[{"x":3,"y":1}],"command":{"ability":"attack","weapon":"c01.border-blade","target":{"x":3,"y":2}}}
+  Escort intent: arrived hold, last arrival completion/release, legal internal/external movement, generic revival, existing-content armed attack.
+PASS escort mission and AI intent
+  Synthetic agenda contracts: optional flags, exact failures/short circuits, ordered ownership/advisors and isolated catalogs.
+  c01-01-step-0: 1080 tiles, 344524 agenda bytes/query; exact action, state and save preserved.
+  c01-01-step-5: 1080 tiles, 344524 agenda bytes/query; exact action, state and save preserved.
+  c01-03-step-1: 5252 tiles, 1601772 agenda bytes/query; exact action, state and save preserved.
+  c01-03-step-5: 5252 tiles, 1601772 agenda bytes/query; exact action, state and save preserved.
+  c01-07-step-0: 6144 tiles, 1875428 agenda bytes/query; exact action, state and save preserved.
+  c01-07-step-5: 6144 tiles, 1875428 agenda bytes/query; exact action, state and save preserved.
+PASS AI agenda readonly content and allocation
+  AI_TRACE c01-01: 156 steps, action/event/receipt SHA256 20e90377ee316e831d17e4f9d165536500d4ae379850f198d91d930e0e771d17
+  c01-01: 156 legal native actions, state 023d6038, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 1
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-02: 421 steps, action/event/receipt SHA256 b026ba1db2b0495a4bb65d5e1c1e1bb4632b540e0a7aa84067c132b9cb0632b0
+  c01-02: 421 legal native actions, state fabf68f6, conclusion {
+  "kind": "objectiveCompleted",
+  "team": 1,
+  "player": 1,
+  "objective": "primary"
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-03: 116 steps, action/event/receipt SHA256 a5fdff17e2ebc198717a60473be0a4805df9cfdda9ce38ff938dbda010c7deed
+  c01-03: 116 legal native actions, state 5a797158, conclusion {
+  "kind": "objectiveCompleted",
+  "team": 1,
+  "player": 1,
+  "objective": "primary"
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-04: 234 steps, action/event/receipt SHA256 156730525210e393732c2d8fe808d92d4f8675b23d2e1fc5c5c68346948b574b
+  c01-04: 234 legal native actions, state 3bac9b2c, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 1
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-05: 169 steps, action/event/receipt SHA256 f4b44a6002f6bd3975beedd69c0ba9e7b23700b684af9e84c754de7efda837a5
+  c01-05: 169 legal native actions, state 3edbfcd6, conclusion {
+  "kind": "objectiveCompleted",
+  "team": 1,
+  "player": 1,
+  "objective": "primary"
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-06: 130 steps, action/event/receipt SHA256 f39bbdadabffe8cd697676b84a754364d9340300c7ab4b336eac91618d119c05
+  c01-06: 130 legal native actions, state aa2be972, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 2
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-07: 311 steps, action/event/receipt SHA256 c6b3bf04f0718633bfd105f839673dba774a89ecbd978cfd0fff72c364ad42f5
+  c01-07: 311 legal native actions, state c00727ea, conclusion {
+  "kind": "turnLimitReached",
+  "team": null
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-08: 144 steps, action/event/receipt SHA256 3ce380648ae32e8b965d335b9087b96d99299228b18e51ff417822be583d1c74
+  c01-08: 144 legal native actions, state b07e7d6f, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 2
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-09: 59 steps, action/event/receipt SHA256 2b24e3c596b908c53bc573605bec49e9cc67a63446ffcef962de8d835698bab0
+  c01-09: 59 legal native actions, state f9976dae, conclusion {
+  "kind": "objectiveCompleted",
+  "team": 1,
+  "player": 1,
+  "objective": "primary"
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-10: 152 steps, action/event/receipt SHA256 a89c48de6ac386d7617e286b59814409bcc12dac8279e9c663eba17b29e9dd54
+  c01-10: 152 legal native actions, state ed497e6d, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 2
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-11: 268 steps, action/event/receipt SHA256 5748ce7fded062055db6d4a1bfe97eca579f2fdb7464026b8d9d7d0f380f0768
+  c01-11: 268 legal native actions, state eb5f52ab, conclusion {
+  "kind": "turnLimitReached",
+  "team": null
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-12: 117 steps, action/event/receipt SHA256 ae9d694bfc75071f38b4ea1d9db302d59722ad9798b397a4a9249a04df8a3eac
+  c01-12: 117 legal native actions, state b584edad, conclusion {
+  "kind": "objectiveCompleted",
+  "team": 1,
+  "player": 1,
+  "objective": "primary"
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-13: 195 steps, action/event/receipt SHA256 430328e385ec68bcab97a3ea45bb7a89e7a17d2a2f28f5af06cfd385a1d3bd26
+  c01-13: 195 legal native actions, state 6d3ef4c4, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 1
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-14: 339 steps, action/event/receipt SHA256 7ce296acd0b85ca773728562b95067548a7d39fa9f88b2bb4cadd313dbcc4c06
+  c01-14: 339 legal native actions, state 40ec9aab, conclusion {
+  "kind": "turnLimitReached",
+  "team": null
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-15: 236 steps, action/event/receipt SHA256 ee680bb1836eb2f8e8528587d5d7c7ae1f5f1856dff4bbb94ee96097392b4d42
+  c01-15: 236 legal native actions, state 9efcf077, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 2
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+  AI_TRACE c01-16: 378 steps, action/event/receipt SHA256 b61226395df40354816d29650a2bdaac13e7d546adb51f903fd98fab41824d08
+  c01-16: 378 legal native actions, state 5e0c3b77, conclusion {
+  "kind": "lastTeamRemaining",
+  "team": 2
+}, exact save/replay round trip (independent level, not carried-state campaign victory).
+PASS shipped native full-level replay/save
+17 passed; 0 failed

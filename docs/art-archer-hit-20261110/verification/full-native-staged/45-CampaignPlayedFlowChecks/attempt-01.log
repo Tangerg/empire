@@ -1,0 +1,28 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+PLAYED_AI_DEFEAT_OK orders=152; terminal=3dbb09d3; events=10; completions=1; retry=9dae091b; both slots unchanged
+CARRIED_PLAY_PROGRESS level=c01-01; legal orders=40; turn=2; state=f5b42655
+CARRIED_PLAY_PROGRESS level=c01-01; legal orders=80; turn=4; state=13dcc0ea
+CARRIED_PLAY_PROGRESS level=c01-01; legal orders=120; turn=6; state=d9f3d359
+PLAYED_TERMINAL level=c01-01; legal orders=156; outcome=victory; completion views=1; events=524; presented=524; turn=9; state=c46d9172; conclusion={"kind":"lastTeamRemaining","team":1}
+CARRIED_ROSTER unit=laiya; disposition=available; hpRatio=1; moraleRatio=1; rank=0; progress=0
+CARRIED_ROSTER unit=torren; disposition=fallen; hpRatio=0; moraleRatio=1; rank=0; progress=17
+CARRIED_ROSTER unit=elin; disposition=available; hpRatio=0.5; moraleRatio=1; rank=1; progress=142
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+CARRIED_VICTORY_OK level=c01-01; legal orders=156; events=524; terminal=c46d9172; campaign=17488f7b; next=battle-02
+CARRIED_PLAY_PROGRESS level=c01-02; legal orders=40; turn=2; state=652974c1
+CARRIED_PLAY_PROGRESS level=c01-02; legal orders=80; turn=4; state=2dfea778
+CARRIED_PLAY_PROGRESS level=c01-02; legal orders=120; turn=6; state=aeaf0422
+CARRIED_PLAY_PROGRESS level=c01-02; legal orders=160; turn=8; state=9b390838
+CARRIED_PLAY_PROGRESS level=c01-02; legal orders=200; turn=10; state=c445e9a2
+CARRIED_PLAY_PROGRESS level=c01-02; legal orders=240; turn=12; state=271d4373
+PLAYED_TERMINAL level=c01-02; legal orders=259; outcome=victory; completion views=1; events=584; presented=584; turn=13; state=5967317c; conclusion={"kind":"objectiveCompleted","team":1,"player":1,"objective":"primary"}
+CARRIED_ROSTER unit=laiya; disposition=available; hpRatio=1; moraleRatio=1; rank=0; progress=28
+CARRIED_ROSTER unit=elin; disposition=available; hpRatio=0.8846153846153846; moraleRatio=1; rank=1; progress=281
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+CARRIED_VICTORY_OK level=c01-02; legal orders=259; events=584; terminal=5967317c; campaign=d152d095; next=battle-03
+CARRIED_OPENING_OK battles played in this process=415 legal orders; third opening=21 orders; third state=d1103229; outcomes=c01-01:c46d9172:{"kind":"lastTeamRemaining","team":1};c01-02:5967317c:{"kind":"objectiveCompleted","team":1,"player":1,"objective":"primary"}. No third-battle victory or full-campaign claim.
+Campaign played-flow checks passed: 21779 assertions. Native headless behavior, not visual or complete-campaign acceptance.

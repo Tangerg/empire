@@ -1,0 +1,810 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Campaign navigation group passed: fresh menu, local beats, choice and autosave
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+NATIVE_CAMPAIGN_ROUTE_OK mode=quick-touch; beats=7; initial battle=78e7c7b9; no battle actions
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+NATIVE_CAMPAIGN_ROUTE_OK mode=split-touch; beats=7; initial battle=78e7c7b9; no battle actions
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+NATIVE_CAMPAIGN_ROUTE_OK mode=mouse; beats=7; initial battle=78e7c7b9; no battle actions
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+NATIVE_CAMPAIGN_ROUTE_OK mode=keyboard; beats=7; initial battle=9dae091b; no battle actions
+NATIVE_QUEUED_ORDER_CONTEXT_OK actor and destination changes reject old intent; current orders and undo remain usable
+Campaign navigation group passed: native campaign route
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+MENU_SAVE_ADMISSION after native F5: preserved=True; savedMode=battle; view=CampaignMenuScreen
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+MENU_SAVE_ADMISSION native F9: view=BattleScreen; battle=True
+Campaign navigation group passed: menu cannot overwrite a played manual save
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+IDLE_POLLING opening sample=0 frames=600 allocated=153600 ms=0.106
+IDLE_POLLING opening sample=1 frames=600 allocated=153600 ms=0.104
+IDLE_POLLING opening sample=2 frames=600 allocated=153600 ms=0.146
+IDLE_POLLING played sample=0 frames=600 allocated=153600 ms=0.115
+IDLE_POLLING played sample=1 frames=600 allocated=153600 ms=0.102
+IDLE_POLLING played sample=2 frames=600 allocated=153600 ms=0.102
+IDLE_POLLING undone sample=0 frames=600 allocated=153600 ms=0.105
+IDLE_POLLING undone sample=1 frames=600 allocated=153600 ms=0.104
+IDLE_POLLING undone sample=2 frames=600 allocated=153600 ms=0.107
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+IDLE_POLLING loaded sample=0 frames=600 allocated=153600 ms=0.108
+IDLE_POLLING loaded sample=1 frames=600 allocated=153600 ms=0.104
+IDLE_POLLING loaded sample=2 frames=600 allocated=153600 ms=0.104
+Campaign navigation group passed: idle polling after play, undo and load
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+POINTER_HUD sample=0 cells=16 allocated=10256760 ms=54.129
+POINTER_HUD sample=1 cells=16 allocated=10257240 ms=52.115
+POINTER_HUD sample=2 cells=16 allocated=10257000 ms=53.091
+POINTER_IDLE sample=0 cells=16 allocated=2123496 ms=31.486
+POINTER_IDLE sample=1 cells=16 allocated=2264120 ms=29.015
+POINTER_IDLE sample=2 cells=16 allocated=2264360 ms=37.058
+PRODUCTION_TAB_CONTEXT game=/root/CampaignNavigationChecks/@Node@3288 screen=/root/CampaignNavigationChecks/@Node@3288/@Control@3478 focus= rootFocus=True state=78e7c7b9
+PRODUCTION_TAB_ENTRY_OK 851 assertions; forward=@Button@3520; reverse=Undo; real campaign menu/story/choice/staging/Activate path; no battle actions
+Campaign navigation group passed: native pointer refresh preserves unchanged HUD content
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Campaign navigation group passed: popup dismissal owns its pointer gesture
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Campaign navigation group passed: native touch activation and dossier handoff
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Campaign navigation group passed: battle window minimum follows committed view and lifecycle
+Campaign navigation group passed: root notice leaves with its view
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Campaign navigation group passed: startup resume, battle restart, camp and Continue
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Held E reached the next playable human turn: turn 2, revision 10.
+Campaign navigation group passed: held end-turn key across real AI playback
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Campaign navigation group passed: modified save shortcut preserves the manual slot
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Campaign navigation group passed: modified load shortcut preserves unsaved battle progress
+Campaign navigation group passed: story/choice return, rebind and unmount
+Campaign navigation group passed: overwrite cancellation, stale dialog and confirmation
+Campaign navigation group passed: overwrite dialog unmount
+Native navigation confirmation passed: overwrite/cancel
+Native navigation confirmation passed: overwrite/escape
+Native navigation confirmation passed: overwrite/confirm
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Native navigation confirmation passed: restart/cancel
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Native navigation confirmation passed: restart/escape
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Native navigation confirmation passed: restart/confirm
+Campaign navigation group passed: native overwrite and restart confirmation input
+WARNING: Campaign autosave rejected: 'n' is an invalid start of a property name. Expected a '"'. LineNumber: 0 | BytePositionInLine: 1.
+     at: void Empire.Application.GrayFlagGame.ShowMenu() (res://Application/GrayFlagGame.cs:258)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.ShowMenu() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:258)
+         [2] void Empire.Application.GrayFlagGame._Ready() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:110)
+         [3] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+         [4] bool Empire.Application.GrayFlagGame.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-work/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Application.GrayFlagGame_ScriptMethods.generated.cs:220)
+         [5] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+         [6] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:380)
+         [7] void Godot.NativeCalls.godot_icall_3_882(nint, nint, nint, Godot.NativeInterop.godot_bool, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:7842)
+         [8] void Godot.Node.AddChild(Godot.Node, bool, Godot.Node+InternalMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:835)
+         [9] Empire.Application.GrayFlagGame Empire.Presentation.CampaignNavigationChecks.MountGame() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1998)
+         [10] void Empire.Presentation.CampaignNavigationChecks+<CheckInvalidSave>d__23.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:885)
+         [11] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+         [12] System.Threading.Tasks.Task Empire.Presentation.CampaignNavigationChecks.CheckInvalidSave()
+         [13] void Empire.Presentation.CampaignNavigationChecks+<_Ready>d__10.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:81)
+         [14] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [16] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Campaign autosave rejected: unsupported campaign save schema 0
+     at: void Empire.Application.GrayFlagGame.ShowMenu() (res://Application/GrayFlagGame.cs:258)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.ShowMenu() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:258)
+         [2] void Empire.Application.GrayFlagGame._Ready() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:110)
+         [3] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+         [4] bool Empire.Application.GrayFlagGame.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-work/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Application.GrayFlagGame_ScriptMethods.generated.cs:220)
+         [5] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+         [6] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:380)
+         [7] void Godot.NativeCalls.godot_icall_3_882(nint, nint, nint, Godot.NativeInterop.godot_bool, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:7842)
+         [8] void Godot.Node.AddChild(Godot.Node, bool, Godot.Node+InternalMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:835)
+         [9] Empire.Application.GrayFlagGame Empire.Presentation.CampaignNavigationChecks.MountGame() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1998)
+         [10] void Empire.Presentation.CampaignNavigationChecks+<CheckInvalidSave>d__23.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:885)
+         [11] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [13] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [14] void System.Threading.Tasks.Task.RunContinuations(object)
+         [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [16] void Empire.Presentation.CampaignNavigationChecks+<Activate>d__58.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:2045)
+         [17] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [18] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [19] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [20] void System.Threading.Tasks.Task.RunContinuations(object)
+         [21] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [22] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [23] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [24] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [25] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+Campaign navigation group passed: invalid save notice and explicit replacement
+Campaign navigation group passed: ending active/completed/failed UI fixtures
+WARNING: Empire.Application.SaveStorageException: Save file write failed: Is a directory : '/tmp/empire-native-check-data.tMgpz1/godot/app_userdata/Empire GrayFlag Migration/grayflag-campaign-autosave.json'
+ ---> System.IO.IOException: Is a directory : '/tmp/empire-native-check-data.tMgpz1/godot/app_userdata/Empire GrayFlag Migration/grayflag-campaign-autosave.json'
+   at System.IO.FileSystem.MoveFile(String sourceFullPath, String destFullPath, Boolean overwrite)
+   at System.IO.File.Move(String sourceFileName, String destFileName, Boolean overwrite)
+   at Empire.Application.SaveFile.WriteDocument(String path, JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/SaveFile.cs:line 61
+   --- End of inner exception stack trace ---
+   at Empire.Application.SaveFile.WriteDocument(String path, JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/SaveFile.cs:line 78
+   at Empire.Application.CampaignSlotStorage.Save(JsonObject definition, JsonObject state, String path) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/CampaignSlotStorage.cs:line 62
+   at Empire.Application.GrayFlagGame.TryPersistCampaign() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 241
+     at: bool Empire.Application.GrayFlagGame.TryPersistCampaign() (res://Application/GrayFlagGame.cs:241)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] bool Empire.Application.GrayFlagGame.TryPersistCampaign() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:241)
+         [2] void Empire.Application.GrayFlagGame.AdvanceCampaign(System.Action, int) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:344)
+         [3] void Empire.Application.GrayFlagGame+<>c__DisplayClass44_1.<PrepareNode>b__7() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:426)
+         [4] void Empire.Presentation.StoryScreen.Submit(System.Action) (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/StoryScreen.cs:248)
+         [5] void Empire.Presentation.StoryScreen.AdvanceLocalBeat() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/StoryScreen.cs:205)
+         [6] void Empire.Presentation.CampaignButtonActivation+<>c__DisplayClass0_1.<Connect>b__3() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignButtonActivation.cs:30)
+         [7] void Godot.Callable.<From>g__Trampoline|1_0(object, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Callable.generics.cs:39)
+         [8] void Godot.DelegateUtils.InvokeWithVariantArgs(nint, System.Void*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:86)
+WARNING: Empire.Application.SaveStorageException: Save file write failed: Is a directory : '/tmp/empire-native-check-data.tMgpz1/godot/app_userdata/Empire GrayFlag Migration/grayflag-campaign-autosave.json'
+ ---> System.IO.IOException: Is a directory : '/tmp/empire-native-check-data.tMgpz1/godot/app_userdata/Empire GrayFlag Migration/grayflag-campaign-autosave.json'
+   at System.IO.FileSystem.MoveFile(String sourceFullPath, String destFullPath, Boolean overwrite)
+   at System.IO.File.Move(String sourceFileName, String destFileName, Boolean overwrite)
+   at Empire.Application.SaveFile.WriteDocument(String path, JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/SaveFile.cs:line 61
+   --- End of inner exception stack trace ---
+   at Empire.Application.SaveFile.WriteDocument(String path, JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/SaveFile.cs:line 78
+   at Empire.Application.CampaignSlotStorage.Save(JsonObject definition, JsonObject state, String path) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/CampaignSlotStorage.cs:line 62
+   at Empire.Application.GrayFlagGame.TryPersistCampaign() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 241
+     at: bool Empire.Application.GrayFlagGame.TryPersistCampaign() (res://Application/GrayFlagGame.cs:241)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] bool Empire.Application.GrayFlagGame.TryPersistCampaign() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:241)
+         [2] void Empire.Application.GrayFlagGame.AdvanceCampaign(System.Action, int) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:344)
+         [3] void Empire.Application.GrayFlagGame+<>c__DisplayClass44_1.<PrepareNode>b__4(string) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:414)
+         [4] void Empire.Presentation.StoryScreen+<>c__DisplayClass35_1.<ShowChoice>b__2() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/StoryScreen.cs:88)
+         [5] void Empire.Presentation.StoryScreen.Submit(System.Action) (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/StoryScreen.cs:248)
+         [6] void Empire.Presentation.StoryScreen+<>c__DisplayClass35_1.<ShowChoice>b__0() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/StoryScreen.cs:88)
+         [7] void Empire.Presentation.CampaignButtonActivation+<>c__DisplayClass0_1.<Connect>b__3() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignButtonActivation.cs:30)
+         [8] void Godot.Callable.<From>g__Trampoline|1_0(object, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Callable.generics.cs:39)
+         [9] void Godot.DelegateUtils.InvokeWithVariantArgs(nint, System.Void*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:86)
+WARNING: Empire.Application.SaveStorageException: Save file write failed: Is a directory : '/tmp/empire-native-check-data.tMgpz1/godot/app_userdata/Empire GrayFlag Migration/grayflag-campaign-autosave.json'
+ ---> System.IO.IOException: Is a directory : '/tmp/empire-native-check-data.tMgpz1/godot/app_userdata/Empire GrayFlag Migration/grayflag-campaign-autosave.json'
+   at System.IO.FileSystem.MoveFile(String sourceFullPath, String destFullPath, Boolean overwrite)
+   at System.IO.File.Move(String sourceFileName, String destFileName, Boolean overwrite)
+   at Empire.Application.SaveFile.WriteDocument(String path, JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/SaveFile.cs:line 61
+   --- End of inner exception stack trace ---
+   at Empire.Application.SaveFile.WriteDocument(String path, JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/SaveFile.cs:line 78
+   at Empire.Application.CampaignSlotStorage.Save(JsonObject definition, JsonObject state, String path) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/CampaignSlotStorage.cs:line 62
+   at Empire.Application.GrayFlagGame.TryPersistCampaign() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 241
+     at: bool Empire.Application.GrayFlagGame.TryPersistCampaign() (res://Application/GrayFlagGame.cs:241)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] bool Empire.Application.GrayFlagGame.TryPersistCampaign() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:241)
+         [2] void Empire.Application.GrayFlagGame.AdvanceCampaign(System.Action, int) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:344)
+         [3] void Empire.Application.GrayFlagGame+<>c__DisplayClass44_1.<PrepareNode>b__8() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:433)
+         [4] void Empire.Presentation.StoryScreen.Submit(System.Action) (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/StoryScreen.cs:248)
+         [5] void Empire.Presentation.StoryScreen.AdvanceLocalBeat() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/StoryScreen.cs:205)
+         [6] void Empire.Presentation.CampaignButtonActivation+<>c__DisplayClass0_1.<Connect>b__3() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignButtonActivation.cs:30)
+         [7] void Godot.Callable.<From>g__Trampoline|1_0(object, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Callable.generics.cs:39)
+         [8] void Godot.DelegateUtils.InvokeWithVariantArgs(nint, System.Void*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:86)
+WARNING: Campaign autosave rejected: Access to the path '/tmp/empire-native-check-data.tMgpz1/godot/app_userdata/Empire GrayFlag Migration/grayflag-campaign-autosave.json' is denied.
+     at: void Empire.Application.GrayFlagGame.ShowMenu() (res://Application/GrayFlagGame.cs:258)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.ShowMenu() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:258)
+         [2] void Empire.Application.GrayFlagGame+<>c__DisplayClass44_1.<PrepareNode>b__8() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:435)
+         [3] void Empire.Presentation.StoryScreen.Submit(System.Action) (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/StoryScreen.cs:248)
+         [4] void Empire.Presentation.StoryScreen.AdvanceLocalBeat() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/StoryScreen.cs:205)
+         [5] void Empire.Presentation.CampaignButtonActivation+<>c__DisplayClass0_1.<Connect>b__3() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignButtonActivation.cs:30)
+         [6] void Godot.Callable.<From>g__Trampoline|1_0(object, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Callable.generics.cs:39)
+         [7] void Godot.DelegateUtils.InvokeWithVariantArgs(nint, System.Void*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:86)
+WARNING: Empire.Application.SaveStorageException: Save file write failed: Is a directory : '/tmp/empire-native-check-data.tMgpz1/godot/app_userdata/Empire GrayFlag Migration/grayflag-campaign-autosave.json'
+ ---> System.IO.IOException: Is a directory : '/tmp/empire-native-check-data.tMgpz1/godot/app_userdata/Empire GrayFlag Migration/grayflag-campaign-autosave.json'
+   at System.IO.FileSystem.MoveFile(String sourceFullPath, String destFullPath, Boolean overwrite)
+   at System.IO.File.Move(String sourceFileName, String destFileName, Boolean overwrite)
+   at Empire.Application.SaveFile.WriteDocument(String path, JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/SaveFile.cs:line 61
+   --- End of inner exception stack trace ---
+   at Empire.Application.SaveFile.WriteDocument(String path, JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/SaveFile.cs:line 78
+   at Empire.Application.CampaignSlotStorage.Save(JsonObject definition, JsonObject state, String path) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/CampaignSlotStorage.cs:line 62
+   at Empire.Application.GrayFlagGame.<>c__DisplayClass46_1.<PrepareStaging>b__2() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 468
+     at: void Empire.Application.GrayFlagGame+<>c__DisplayClass46_1.<PrepareStaging>b__2() (res://Application/GrayFlagGame.cs:468)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame+<>c__DisplayClass46_1.<PrepareStaging>b__2() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:468)
+         [2] void Empire.Presentation.CampaignStagingScreen+<>c__DisplayClass18_0.<ShowStaging>b__2() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignStagingScreen.cs:161)
+         [3] void Empire.Presentation.CampaignButtonActivation+<>c__DisplayClass0_1.<Connect>b__3() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignButtonActivation.cs:30)
+         [4] void Godot.Callable.<From>g__Trampoline|1_0(object, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Callable.generics.cs:39)
+         [5] void Godot.DelegateUtils.InvokeWithVariantArgs(nint, System.Void*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:86)
+Campaign navigation group passed: story, choice, ending and staging write failures
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+WARNING: Empire.Application.SaveStorageException: Save file write failed: Is a directory : '/tmp/empire-native-check-data.tMgpz1/godot/app_userdata/Empire GrayFlag Migration/grayflag-campaign-autosave.json'
+ ---> System.IO.IOException: Is a directory : '/tmp/empire-native-check-data.tMgpz1/godot/app_userdata/Empire GrayFlag Migration/grayflag-campaign-autosave.json'
+   at System.IO.FileSystem.MoveFile(String sourceFullPath, String destFullPath, Boolean overwrite)
+   at System.IO.File.Move(String sourceFileName, String destFileName, Boolean overwrite)
+   at Empire.Application.SaveFile.WriteDocument(String path, JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/SaveFile.cs:line 61
+   --- End of inner exception stack trace ---
+   at Empire.Application.SaveFile.WriteDocument(String path, JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/SaveFile.cs:line 78
+   at Empire.Application.CampaignSlotStorage.Save(JsonObject definition, JsonObject state, String path) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/CampaignSlotStorage.cs:line 62
+   at Empire.Application.GrayFlagGame.TryPersistCampaign() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 241
+     at: bool Empire.Application.GrayFlagGame.TryPersistCampaign() (res://Application/GrayFlagGame.cs:241)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] bool Empire.Application.GrayFlagGame.TryPersistCampaign() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:241)
+         [2] void Empire.Application.GrayFlagGame+<>c__DisplayClass31_2.<ProcessBattle>b__2() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:156)
+         [3] void Empire.Presentation.BattleResultScreen+<>c__DisplayClass13_0.<ActionButton>g__Commit|1() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/BattleResultScreen.cs:157)
+         [4] void Empire.Presentation.BattleResultScreen+<>c__DisplayClass13_0.<ActionButton>b__2() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/BattleResultScreen.cs:164)
+         [5] void Empire.Presentation.CampaignButtonActivation+<>c__DisplayClass0_1.<Connect>b__3() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignButtonActivation.cs:30)
+         [6] void Godot.Callable.<From>g__Trampoline|1_0(object, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Callable.generics.cs:39)
+         [7] void Godot.DelegateUtils.InvokeWithVariantArgs(nint, System.Void*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:86)
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Campaign navigation group passed: victory settlement UI fixture and autosave
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Played victory confirmation flow: 200 legal derivation orders; native final action {"kind":"command","unit":9,"path":[{"x":20,"y":14}],"command":{"ability":"attack","weapon":"c01.ranger-bow","target":{"x":18,"y":13}}}; terminal aee58b1f; aftermath and battle-02 staging passed. Human terminal playback, not AI-terminal pause coverage.
+Campaign navigation group passed: played victory confirmation, playback and carried continuation
+WARNING: Campaign autosave rejected: Access to the path '/tmp/empire-native-check-data.tMgpz1/godot/app_userdata/Empire GrayFlag Migration/grayflag-campaign-autosave.json' is denied.
+     at: void Empire.Application.GrayFlagGame.ShowMenu() (res://Application/GrayFlagGame.cs:258)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.ShowMenu() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:258)
+         [2] void Empire.Application.GrayFlagGame._Ready() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:110)
+         [3] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+         [4] bool Empire.Application.GrayFlagGame.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-work/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Application.GrayFlagGame_ScriptMethods.generated.cs:220)
+         [5] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+         [6] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:380)
+         [7] void Godot.NativeCalls.godot_icall_3_882(nint, nint, nint, Godot.NativeInterop.godot_bool, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:7842)
+         [8] void Godot.Node.AddChild(Godot.Node, bool, Godot.Node+InternalMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:835)
+         [9] Empire.Application.GrayFlagGame Empire.Presentation.CampaignNavigationChecks.MountGame() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1998)
+         [10] void Empire.Presentation.CampaignNavigationChecks+<CheckReadDeleteFailure>d__33.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1770)
+         [11] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+         [12] System.Threading.Tasks.Task Empire.Presentation.CampaignNavigationChecks.CheckReadDeleteFailure()
+         [13] void Empire.Presentation.CampaignNavigationChecks+<_Ready>d__10.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:81)
+         [14] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [16] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Empire.Application.SaveStorageException: Save file clear failed: Access to the path '/tmp/empire-native-check-data.tMgpz1/godot/app_userdata/Empire GrayFlag Migration/grayflag-campaign-autosave.json' is denied.
+ ---> System.UnauthorizedAccessException: Access to the path '/tmp/empire-native-check-data.tMgpz1/godot/app_userdata/Empire GrayFlag Migration/grayflag-campaign-autosave.json' is denied.
+ ---> System.IO.IOException: Permission denied
+   --- End of inner exception stack trace ---
+   at System.IO.FileSystem.DeleteFile(String fullPath)
+   at Empire.Application.SaveFile.Clear(String path) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/SaveFile.cs:line 88
+   --- End of inner exception stack trace ---
+   at Empire.Application.SaveFile.Clear(String path) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/SaveFile.cs:line 90
+   at Empire.Application.CampaignSlotStorage.ClearForNewCampaign(String path) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/CampaignSlotStorage.cs:line 54
+   at Empire.Application.GrayFlagGame.<>c__DisplayClass37_0.<ShowMenu>g__StartNew|1() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 270
+     at: void Empire.Application.GrayFlagGame+<>c__DisplayClass37_0.<ShowMenu>g__StartNew|1() (res://Application/GrayFlagGame.cs:270)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame+<>c__DisplayClass37_0.<ShowMenu>g__StartNew|1() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:270)
+         [2] void Empire.Application.GrayFlagGame+<>c__DisplayClass37_0.<ShowMenu>b__3() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:300)
+         [3] void Empire.Presentation.CampaignMenuScreen+<>c__DisplayClass14_1.<ShowMenu>b__2() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignMenuScreen.cs:125)
+         [4] void Empire.Presentation.CampaignButtonActivation+<>c__DisplayClass0_1.<Connect>b__3() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignButtonActivation.cs:30)
+         [5] void Godot.Callable.<From>g__Trampoline|1_0(object, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Callable.generics.cs:39)
+         [6] void Godot.DelegateUtils.InvokeWithVariantArgs(nint, System.Void*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:86)
+WARNING: Campaign autosave rejected: Access to the path '/tmp/empire-native-check-data.tMgpz1/godot/app_userdata/Empire GrayFlag Migration/grayflag-campaign-autosave.json' is denied.
+     at: void Empire.Application.GrayFlagGame.ShowMenu() (res://Application/GrayFlagGame.cs:258)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.ShowMenu() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:258)
+         [2] void Empire.Application.GrayFlagGame+<>c__DisplayClass37_0.<ShowMenu>g__StartNew|1() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:270)
+         [3] void Empire.Application.GrayFlagGame+<>c__DisplayClass37_0.<ShowMenu>b__3() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:300)
+         [4] void Empire.Presentation.CampaignMenuScreen+<>c__DisplayClass14_1.<ShowMenu>b__2() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignMenuScreen.cs:125)
+         [5] void Empire.Presentation.CampaignButtonActivation+<>c__DisplayClass0_1.<Connect>b__3() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignButtonActivation.cs:30)
+         [6] void Godot.Callable.<From>g__Trampoline|1_0(object, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Callable.generics.cs:39)
+         [7] void Godot.DelegateUtils.InvokeWithVariantArgs(nint, System.Void*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:86)
+Campaign navigation group passed: read/delete failure preserves menu
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+WARNING: Empire.Core.StoredDocumentException: Application save fields do not match the current native format.
+   at Empire.Application.ApplicationSaveDocument.Read(Func`2 unitContentIssues, JsonObject definition, JsonNode input) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/ApplicationSaveDocument.cs:line 26
+   at Empire.Application.GrayFlagCampaign.Load(JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagCampaign.cs:line 146
+   at Empire.Application.GrayFlagGame.Load() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 578
+     at: void Empire.Application.GrayFlagGame.Load() (res://Application/GrayFlagGame.cs:578)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.Load() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:578)
+         [2] void Empire.Application.GrayFlagGame._UnhandledKeyInput(Godot.InputEvent) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:205)
+         [3] void Empire.Presentation.CampaignNavigationChecks+<CheckManualLoadAdmission>d__34.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1809)
+         [4] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [5] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [6] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [7] void System.Threading.Tasks.Task.RunContinuations(object)
+         [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [9] void Empire.Presentation.CampaignNavigationChecks+<Activate>d__58.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:2045)
+         [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [12] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [13] void System.Threading.Tasks.Task.RunContinuations(object)
+         [14] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [15] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [16] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [17] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [18] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Empire.Core.StoredDocumentException: Unsupported application save schema; only the current native format is accepted.
+   at Empire.Application.ApplicationSaveDocument.Read(Func`2 unitContentIssues, JsonObject definition, JsonNode input) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/ApplicationSaveDocument.cs:line 23
+   at Empire.Application.GrayFlagCampaign.Load(JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagCampaign.cs:line 146
+   at Empire.Application.GrayFlagGame.Load() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 578
+     at: void Empire.Application.GrayFlagGame.Load() (res://Application/GrayFlagGame.cs:578)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.Load() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:578)
+         [2] void Empire.Application.GrayFlagGame._UnhandledKeyInput(Godot.InputEvent) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:205)
+         [3] void Empire.Presentation.CampaignNavigationChecks+<CheckManualLoadAdmission>d__34.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1821)
+         [4] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [5] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [6] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [7] void System.Threading.Tasks.Task.RunContinuations(object)
+         [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [9] void Empire.Presentation.CampaignNavigationChecks+<Activate>d__58.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:2045)
+         [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [12] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [13] void System.Threading.Tasks.Task.RunContinuations(object)
+         [14] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [15] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [16] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [17] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [18] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Empire.Core.StoredDocumentException: unsupported battle save schema 2
+   at Empire.Core.Persistence.StoredSchema.Read(String subject, Int32 schema, JsonNode raw) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Persistence/StoredSchema.cs:line 23
+   at Empire.Core.Persistence.BattleSaveInspection.ReadDocument(JsonNode raw) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Persistence/BattleSaveReader.cs:line 38
+   at Empire.Core.Persistence.BattleSaveReader.Load(JsonNode raw, BattleSaveEnvironment environment) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Persistence/BattleSaveReader.cs:line 20
+   at Empire.Core.Persistence.BattlePersistence.Load(JsonNode raw) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Persistence/BattlePersistence.cs:line 58
+   at Empire.Core.Engine.BattleEngine.LoadBattle(JsonNode raw) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Engine/BattleEngine.Persistence.cs:line 55
+   at Empire.Core.Engine.BattleEngine.LoadSavedBattle(JsonNode raw) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Engine/BattleEngine.Persistence.cs:line 59
+   at Empire.Application.GrayFlagSession.FromSave(BattleSessionRules rules, JsonNode save, JsonArray recordedEvents) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagSession.cs:line 103
+   at Empire.Application.GrayFlagCampaign.Load(JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagCampaign.cs:line 166
+   at Empire.Application.GrayFlagGame.Load() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 578
+     at: void Empire.Application.GrayFlagGame.Load() (res://Application/GrayFlagGame.cs:578)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.Load() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:578)
+         [2] void Empire.Application.GrayFlagGame._UnhandledKeyInput(Godot.InputEvent) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:205)
+         [3] void Empire.Presentation.CampaignNavigationChecks+<CheckManualLoadAdmission>d__34.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1838)
+         [4] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [5] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [6] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [7] void System.Threading.Tasks.Task.RunContinuations(object)
+         [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [9] void Empire.Presentation.CampaignNavigationChecks+<Activate>d__58.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:2045)
+         [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [12] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [13] void System.Threading.Tasks.Task.RunContinuations(object)
+         [14] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [15] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [16] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [17] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [18] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Empire.Core.StoredDocumentException: Level titles belong to presentation metadata, not battle headers.
+   at Empire.Core.Persistence.BattleSaveInspection.RequireHeader(JsonObject save) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Persistence/BattleSaveReader.cs:line 63
+   at Empire.Core.Persistence.BattleSaveInspection.ReadDocument(JsonNode raw) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Persistence/BattleSaveReader.cs:line 39
+   at Empire.Core.Persistence.BattleSaveReader.Load(JsonNode raw, BattleSaveEnvironment environment) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Persistence/BattleSaveReader.cs:line 20
+   at Empire.Core.Persistence.BattlePersistence.Load(JsonNode raw) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Persistence/BattlePersistence.cs:line 58
+   at Empire.Core.Engine.BattleEngine.LoadBattle(JsonNode raw) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Engine/BattleEngine.Persistence.cs:line 55
+   at Empire.Core.Engine.BattleEngine.LoadSavedBattle(JsonNode raw) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Engine/BattleEngine.Persistence.cs:line 59
+   at Empire.Application.GrayFlagSession.FromSave(BattleSessionRules rules, JsonNode save, JsonArray recordedEvents) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagSession.cs:line 103
+   at Empire.Application.GrayFlagCampaign.Load(JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagCampaign.cs:line 166
+   at Empire.Application.GrayFlagGame.Load() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 578
+     at: void Empire.Application.GrayFlagGame.Load() (res://Application/GrayFlagGame.cs:578)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.Load() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:578)
+         [2] void Empire.Application.GrayFlagGame._UnhandledKeyInput(Godot.InputEvent) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:205)
+         [3] void Empire.Presentation.CampaignNavigationChecks+<CheckManualLoadAdmission>d__34.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1838)
+         [4] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [5] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [6] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [7] void System.Threading.Tasks.Task.RunContinuations(object)
+         [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [9] void Empire.Presentation.CampaignNavigationChecks+<Activate>d__58.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:2045)
+         [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [12] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [13] void System.Threading.Tasks.Task.RunContinuations(object)
+         [14] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [15] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [16] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [17] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [18] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Empire.Core.StoredDocumentException: 战斗存档无法读取：Level titles belong to presentation metadata, not battle state.
+   at Empire.Core.Persistence.StoredSchema.Reject(String message) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Persistence/StoredSchema.cs:line 69
+   at Empire.Core.Persistence.BattleSaveInspection.CheckShape(JsonObject save) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Persistence/BattleSaveReader.Shape.cs:line 15
+   at Empire.Core.Persistence.BattleSaveInspection.ReadDocument(JsonNode raw) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Persistence/BattleSaveReader.cs:line 49
+   at Empire.Core.Persistence.BattleSaveReader.Load(JsonNode raw, BattleSaveEnvironment environment) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Persistence/BattleSaveReader.cs:line 20
+   at Empire.Core.Persistence.BattlePersistence.Load(JsonNode raw) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Persistence/BattlePersistence.cs:line 58
+   at Empire.Core.Engine.BattleEngine.LoadBattle(JsonNode raw) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Engine/BattleEngine.Persistence.cs:line 55
+   at Empire.Core.Engine.BattleEngine.LoadSavedBattle(JsonNode raw) in /workspace/scratch/84c9fe948755/empire-work/godot/Empire.Core/Engine/BattleEngine.Persistence.cs:line 59
+   at Empire.Application.GrayFlagSession.FromSave(BattleSessionRules rules, JsonNode save, JsonArray recordedEvents) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagSession.cs:line 103
+   at Empire.Application.GrayFlagCampaign.Load(JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagCampaign.cs:line 166
+   at Empire.Application.GrayFlagGame.Load() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 578
+     at: void Empire.Application.GrayFlagGame.Load() (res://Application/GrayFlagGame.cs:578)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.Load() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:578)
+         [2] void Empire.Application.GrayFlagGame._UnhandledKeyInput(Godot.InputEvent) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:205)
+         [3] void Empire.Presentation.CampaignNavigationChecks+<CheckManualLoadAdmission>d__34.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1838)
+         [4] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [5] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [6] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [7] void System.Threading.Tasks.Task.RunContinuations(object)
+         [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [9] void Empire.Presentation.CampaignNavigationChecks+<Activate>d__58.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:2045)
+         [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [12] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [13] void System.Threading.Tasks.Task.RunContinuations(object)
+         [14] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [15] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [16] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [17] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [18] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Empire.Core.StoredDocumentException: Saved unit creation event is missing canonical identity facts.
+   at Empire.Application.ApplicationSaveDocument.ValidateCreationEvent(JsonObject value, String kind) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/ApplicationSaveDocument.cs:line 108
+   at Empire.Application.ApplicationSaveDocument.Read(Func`2 unitContentIssues, JsonObject definition, JsonNode input) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/ApplicationSaveDocument.cs:line 75
+   at Empire.Application.GrayFlagCampaign.Load(JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagCampaign.cs:line 146
+   at Empire.Application.GrayFlagGame.Load() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 578
+     at: void Empire.Application.GrayFlagGame.Load() (res://Application/GrayFlagGame.cs:578)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.Load() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:578)
+         [2] void Empire.Application.GrayFlagGame._UnhandledKeyInput(Godot.InputEvent) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:205)
+         [3] void Empire.Presentation.CampaignNavigationChecks+<CheckManualLoadAdmission>d__34.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1870)
+         [4] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [5] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [6] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [7] void System.Threading.Tasks.Task.RunContinuations(object)
+         [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [9] void Empire.Presentation.CampaignNavigationChecks+<Activate>d__58.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:2045)
+         [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [12] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [13] void System.Threading.Tasks.Task.RunContinuations(object)
+         [14] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [15] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [16] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [17] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [18] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Empire.Core.StoredDocumentException: Saved unit creation event is missing canonical identity facts.
+   at Empire.Application.ApplicationSaveDocument.ValidateCreationEvent(JsonObject value, String kind) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/ApplicationSaveDocument.cs:line 108
+   at Empire.Application.ApplicationSaveDocument.Read(Func`2 unitContentIssues, JsonObject definition, JsonNode input) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/ApplicationSaveDocument.cs:line 75
+   at Empire.Application.GrayFlagCampaign.Load(JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagCampaign.cs:line 146
+   at Empire.Application.GrayFlagGame.Load() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 578
+     at: void Empire.Application.GrayFlagGame.Load() (res://Application/GrayFlagGame.cs:578)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.Load() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:578)
+         [2] void Empire.Application.GrayFlagGame._UnhandledKeyInput(Godot.InputEvent) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:205)
+         [3] void Empire.Presentation.CampaignNavigationChecks+<CheckManualLoadAdmission>d__34.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1870)
+         [4] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [5] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [6] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [7] void System.Threading.Tasks.Task.RunContinuations(object)
+         [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [9] void Empire.Presentation.CampaignNavigationChecks+<Activate>d__58.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:2045)
+         [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [12] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [13] void System.Threading.Tasks.Task.RunContinuations(object)
+         [14] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [15] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [16] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [17] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [18] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Empire.Core.StoredDocumentException: Saved unit creation event is missing canonical identity facts.
+   at Empire.Application.ApplicationSaveDocument.ValidateCreationEvent(JsonObject value, String kind) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/ApplicationSaveDocument.cs:line 108
+   at Empire.Application.ApplicationSaveDocument.Read(Func`2 unitContentIssues, JsonObject definition, JsonNode input) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/ApplicationSaveDocument.cs:line 75
+   at Empire.Application.GrayFlagCampaign.Load(JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagCampaign.cs:line 146
+   at Empire.Application.GrayFlagGame.Load() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 578
+     at: void Empire.Application.GrayFlagGame.Load() (res://Application/GrayFlagGame.cs:578)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.Load() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:578)
+         [2] void Empire.Application.GrayFlagGame._UnhandledKeyInput(Godot.InputEvent) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:205)
+         [3] void Empire.Presentation.CampaignNavigationChecks+<CheckManualLoadAdmission>d__34.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1870)
+         [4] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [5] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [6] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [7] void System.Threading.Tasks.Task.RunContinuations(object)
+         [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [9] void Empire.Presentation.CampaignNavigationChecks+<Activate>d__58.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:2045)
+         [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [12] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [13] void System.Threading.Tasks.Task.RunContinuations(object)
+         [14] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [15] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [16] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [17] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [18] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Empire.Core.StoredDocumentException: Saved unit creation event is missing canonical identity facts.
+   at Empire.Application.ApplicationSaveDocument.ValidateCreationEvent(JsonObject value, String kind) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/ApplicationSaveDocument.cs:line 108
+   at Empire.Application.ApplicationSaveDocument.Read(Func`2 unitContentIssues, JsonObject definition, JsonNode input) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/ApplicationSaveDocument.cs:line 75
+   at Empire.Application.GrayFlagCampaign.Load(JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagCampaign.cs:line 146
+   at Empire.Application.GrayFlagGame.Load() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 578
+     at: void Empire.Application.GrayFlagGame.Load() (res://Application/GrayFlagGame.cs:578)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.Load() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:578)
+         [2] void Empire.Application.GrayFlagGame._UnhandledKeyInput(Godot.InputEvent) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:205)
+         [3] void Empire.Presentation.CampaignNavigationChecks+<CheckManualLoadAdmission>d__34.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1870)
+         [4] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [5] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [6] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [7] void System.Threading.Tasks.Task.RunContinuations(object)
+         [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [9] void Empire.Presentation.CampaignNavigationChecks+<Activate>d__58.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:2045)
+         [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [12] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [13] void System.Threading.Tasks.Task.RunContinuations(object)
+         [14] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [15] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [16] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [17] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [18] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+Campaign navigation group passed: manual load admission and view activation are atomic
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+WARNING: Empire.Core.StoredDocumentException: Saved campaign roster references invalid content: laiya: 未知兵种 "unregistered-content-admission-unit"
+   at Empire.Application.CampaignSaveAdmission.Load(Func`2 unitContentIssues, JsonObject definition, JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/CampaignSaveAdmission.cs:line 17
+   at Empire.Application.ApplicationSaveDocument.Read(Func`2 unitContentIssues, JsonObject definition, JsonNode input) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/ApplicationSaveDocument.cs:line 45
+   at Empire.Application.GrayFlagCampaign.Load(JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagCampaign.cs:line 146
+   at Empire.Application.GrayFlagGame.Load() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 578
+     at: void Empire.Application.GrayFlagGame.Load() (res://Application/GrayFlagGame.cs:578)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.Load() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:578)
+         [2] void Empire.Application.GrayFlagGame._UnhandledKeyInput(Godot.InputEvent) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:205)
+         [3] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2664)
+         [4] bool Empire.Application.GrayFlagGame.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-work/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Application.GrayFlagGame_ScriptMethods.generated.cs:220)
+         [5] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+         [6] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:380)
+         [7] void Godot.NativeCalls.godot_icall_2_508(nint, nint, nint, Godot.NativeInterop.godot_bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:4494)
+         [8] void Godot.Viewport.PushInput(Godot.InputEvent, bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1734)
+         [9] void Empire.Presentation.CampaignNavigationChecks.ContentAdmissionKey(Godot.Key) (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationContentAdmissionChecks.cs:215)
+         [10] void Empire.Presentation.CampaignNavigationChecks+<CheckCampaignContentAdmission>d__63.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationContentAdmissionChecks.cs:79)
+         [11] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [13] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [14] void System.Threading.Tasks.Task.RunContinuations(object)
+         [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [16] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [17] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [18] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [19] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Empire.Core.StoredDocumentException: Saved campaign roster references invalid content: laiya: 单位 c01.laiya 使用未知职业 "unregistered-content-admission-career"
+   at Empire.Application.CampaignSaveAdmission.Load(Func`2 unitContentIssues, JsonObject definition, JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/CampaignSaveAdmission.cs:line 17
+   at Empire.Application.ApplicationSaveDocument.Read(Func`2 unitContentIssues, JsonObject definition, JsonNode input) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/ApplicationSaveDocument.cs:line 45
+   at Empire.Application.GrayFlagCampaign.Load(JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagCampaign.cs:line 146
+   at Empire.Application.GrayFlagGame.Load() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 578
+     at: void Empire.Application.GrayFlagGame.Load() (res://Application/GrayFlagGame.cs:578)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.Load() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:578)
+         [2] void Empire.Application.GrayFlagGame._UnhandledKeyInput(Godot.InputEvent) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:205)
+         [3] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2664)
+         [4] bool Empire.Application.GrayFlagGame.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-work/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Application.GrayFlagGame_ScriptMethods.generated.cs:220)
+         [5] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+         [6] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:380)
+         [7] void Godot.NativeCalls.godot_icall_2_508(nint, nint, nint, Godot.NativeInterop.godot_bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:4494)
+         [8] void Godot.Viewport.PushInput(Godot.InputEvent, bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1734)
+         [9] void Empire.Presentation.CampaignNavigationChecks.ContentAdmissionKey(Godot.Key) (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationContentAdmissionChecks.cs:215)
+         [10] void Empire.Presentation.CampaignNavigationChecks+<CheckCampaignContentAdmission>d__63.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationContentAdmissionChecks.cs:79)
+         [11] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [13] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [14] void System.Threading.Tasks.Task.RunContinuations(object)
+         [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [16] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [17] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [18] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [19] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Empire.Core.StoredDocumentException: Saved campaign roster references invalid content: laiya: 单位 c01.laiya 解锁了未知职业 "unregistered-content-admission-career"
+   at Empire.Application.CampaignSaveAdmission.Load(Func`2 unitContentIssues, JsonObject definition, JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/CampaignSaveAdmission.cs:line 17
+   at Empire.Application.ApplicationSaveDocument.Read(Func`2 unitContentIssues, JsonObject definition, JsonNode input) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/ApplicationSaveDocument.cs:line 45
+   at Empire.Application.GrayFlagCampaign.Load(JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagCampaign.cs:line 146
+   at Empire.Application.GrayFlagGame.Load() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 578
+     at: void Empire.Application.GrayFlagGame.Load() (res://Application/GrayFlagGame.cs:578)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.Load() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:578)
+         [2] void Empire.Application.GrayFlagGame._UnhandledKeyInput(Godot.InputEvent) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:205)
+         [3] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2664)
+         [4] bool Empire.Application.GrayFlagGame.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-work/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Application.GrayFlagGame_ScriptMethods.generated.cs:220)
+         [5] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+         [6] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:380)
+         [7] void Godot.NativeCalls.godot_icall_2_508(nint, nint, nint, Godot.NativeInterop.godot_bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:4494)
+         [8] void Godot.Viewport.PushInput(Godot.InputEvent, bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1734)
+         [9] void Empire.Presentation.CampaignNavigationChecks.ContentAdmissionKey(Godot.Key) (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationContentAdmissionChecks.cs:215)
+         [10] void Empire.Presentation.CampaignNavigationChecks+<CheckCampaignContentAdmission>d__63.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationContentAdmissionChecks.cs:79)
+         [11] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [13] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [14] void System.Threading.Tasks.Task.RunContinuations(object)
+         [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [16] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [17] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [18] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [19] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Empire.Core.StoredDocumentException: Saved campaign roster references invalid content: laiya: 单位 laiya 引用了未注册的能力「unregistered-content-admission-ability」
+   at Empire.Application.CampaignSaveAdmission.Load(Func`2 unitContentIssues, JsonObject definition, JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/CampaignSaveAdmission.cs:line 17
+   at Empire.Application.ApplicationSaveDocument.Read(Func`2 unitContentIssues, JsonObject definition, JsonNode input) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/ApplicationSaveDocument.cs:line 45
+   at Empire.Application.GrayFlagCampaign.Load(JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagCampaign.cs:line 146
+   at Empire.Application.GrayFlagGame.Load() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 578
+     at: void Empire.Application.GrayFlagGame.Load() (res://Application/GrayFlagGame.cs:578)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.Load() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:578)
+         [2] void Empire.Application.GrayFlagGame._UnhandledKeyInput(Godot.InputEvent) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:205)
+         [3] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2664)
+         [4] bool Empire.Application.GrayFlagGame.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-work/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Application.GrayFlagGame_ScriptMethods.generated.cs:220)
+         [5] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+         [6] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:380)
+         [7] void Godot.NativeCalls.godot_icall_2_508(nint, nint, nint, Godot.NativeInterop.godot_bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:4494)
+         [8] void Godot.Viewport.PushInput(Godot.InputEvent, bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1734)
+         [9] void Empire.Presentation.CampaignNavigationChecks.ContentAdmissionKey(Godot.Key) (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationContentAdmissionChecks.cs:215)
+         [10] void Empire.Presentation.CampaignNavigationChecks+<CheckCampaignContentAdmission>d__63.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationContentAdmissionChecks.cs:79)
+         [11] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [13] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [14] void System.Threading.Tasks.Task.RunContinuations(object)
+         [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [16] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [17] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [18] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [19] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Empire.Core.StoredDocumentException: Saved campaign roster references invalid content: laiya: 单位 c01.laiya 记录了未知职业熟练度 "unregistered-content-admission-career"
+   at Empire.Application.CampaignSaveAdmission.Load(Func`2 unitContentIssues, JsonObject definition, JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/CampaignSaveAdmission.cs:line 17
+   at Empire.Application.ApplicationSaveDocument.Read(Func`2 unitContentIssues, JsonObject definition, JsonNode input) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/ApplicationSaveDocument.cs:line 45
+   at Empire.Application.GrayFlagCampaign.Load(JsonNode document) in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagCampaign.cs:line 146
+   at Empire.Application.GrayFlagGame.Load() in /workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:line 578
+     at: void Empire.Application.GrayFlagGame.Load() (res://Application/GrayFlagGame.cs:578)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.Load() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:578)
+         [2] void Empire.Application.GrayFlagGame._UnhandledKeyInput(Godot.InputEvent) (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:205)
+         [3] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2664)
+         [4] bool Empire.Application.GrayFlagGame.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-work/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Application.GrayFlagGame_ScriptMethods.generated.cs:220)
+         [5] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+         [6] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:380)
+         [7] void Godot.NativeCalls.godot_icall_2_508(nint, nint, nint, Godot.NativeInterop.godot_bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:4494)
+         [8] void Godot.Viewport.PushInput(Godot.InputEvent, bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1734)
+         [9] void Empire.Presentation.CampaignNavigationChecks.ContentAdmissionKey(Godot.Key) (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationContentAdmissionChecks.cs:215)
+         [10] void Empire.Presentation.CampaignNavigationChecks+<CheckCampaignContentAdmission>d__63.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationContentAdmissionChecks.cs:79)
+         [11] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [13] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [14] void System.Threading.Tasks.Task.RunContinuations(object)
+         [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [16] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [17] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [18] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [19] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+WARNING: Campaign autosave rejected: Saved campaign roster references invalid content: mirelle: 未知兵种 "unregistered-content-admission-unit"
+     at: void Empire.Application.GrayFlagGame.ShowMenu() (res://Application/GrayFlagGame.cs:258)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.ShowMenu() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:258)
+         [2] void Empire.Application.GrayFlagGame._Ready() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:110)
+         [3] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+         [4] bool Empire.Application.GrayFlagGame.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-work/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Application.GrayFlagGame_ScriptMethods.generated.cs:220)
+         [5] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+         [6] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:380)
+         [7] void Godot.NativeCalls.godot_icall_3_882(nint, nint, nint, Godot.NativeInterop.godot_bool, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:7842)
+         [8] void Godot.Node.AddChild(Godot.Node, bool, Godot.Node+InternalMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:835)
+         [9] Empire.Application.GrayFlagGame Empire.Presentation.CampaignNavigationChecks.MountGame() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1998)
+         [10] void Empire.Presentation.CampaignNavigationChecks+<CheckCampaignContentAdmission>d__63.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationContentAdmissionChecks.cs:123)
+         [11] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [13] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [14] void System.Threading.Tasks.Task.RunContinuations(object)
+         [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [16] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [17] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [18] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [19] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Campaign autosave rejected: Saved campaign roster references invalid content: mirelle: 单位 c01.mirelle 使用未知职业 "unregistered-content-admission-career"
+     at: void Empire.Application.GrayFlagGame.ShowMenu() (res://Application/GrayFlagGame.cs:258)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.ShowMenu() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:258)
+         [2] void Empire.Application.GrayFlagGame._Ready() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:110)
+         [3] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+         [4] bool Empire.Application.GrayFlagGame.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-work/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Application.GrayFlagGame_ScriptMethods.generated.cs:220)
+         [5] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+         [6] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:380)
+         [7] void Godot.NativeCalls.godot_icall_3_882(nint, nint, nint, Godot.NativeInterop.godot_bool, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:7842)
+         [8] void Godot.Node.AddChild(Godot.Node, bool, Godot.Node+InternalMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:835)
+         [9] Empire.Application.GrayFlagGame Empire.Presentation.CampaignNavigationChecks.MountGame() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1998)
+         [10] void Empire.Presentation.CampaignNavigationChecks+<CheckCampaignContentAdmission>d__63.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationContentAdmissionChecks.cs:123)
+         [11] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [13] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [14] void System.Threading.Tasks.Task.RunContinuations(object)
+         [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [16] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [17] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [18] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [19] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Campaign autosave rejected: Saved campaign roster references invalid content: mirelle: 单位 c01.mirelle 解锁了未知职业 "unregistered-content-admission-career"
+     at: void Empire.Application.GrayFlagGame.ShowMenu() (res://Application/GrayFlagGame.cs:258)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.ShowMenu() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:258)
+         [2] void Empire.Application.GrayFlagGame._Ready() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:110)
+         [3] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+         [4] bool Empire.Application.GrayFlagGame.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-work/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Application.GrayFlagGame_ScriptMethods.generated.cs:220)
+         [5] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+         [6] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:380)
+         [7] void Godot.NativeCalls.godot_icall_3_882(nint, nint, nint, Godot.NativeInterop.godot_bool, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:7842)
+         [8] void Godot.Node.AddChild(Godot.Node, bool, Godot.Node+InternalMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:835)
+         [9] Empire.Application.GrayFlagGame Empire.Presentation.CampaignNavigationChecks.MountGame() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1998)
+         [10] void Empire.Presentation.CampaignNavigationChecks+<CheckCampaignContentAdmission>d__63.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationContentAdmissionChecks.cs:123)
+         [11] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [13] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [14] void System.Threading.Tasks.Task.RunContinuations(object)
+         [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [16] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [17] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [18] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [19] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Campaign autosave rejected: Saved campaign roster references invalid content: mirelle: 单位 mirelle 引用了未注册的能力「unregistered-content-admission-ability」
+     at: void Empire.Application.GrayFlagGame.ShowMenu() (res://Application/GrayFlagGame.cs:258)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.ShowMenu() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:258)
+         [2] void Empire.Application.GrayFlagGame._Ready() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:110)
+         [3] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+         [4] bool Empire.Application.GrayFlagGame.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-work/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Application.GrayFlagGame_ScriptMethods.generated.cs:220)
+         [5] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+         [6] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:380)
+         [7] void Godot.NativeCalls.godot_icall_3_882(nint, nint, nint, Godot.NativeInterop.godot_bool, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:7842)
+         [8] void Godot.Node.AddChild(Godot.Node, bool, Godot.Node+InternalMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:835)
+         [9] Empire.Application.GrayFlagGame Empire.Presentation.CampaignNavigationChecks.MountGame() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1998)
+         [10] void Empire.Presentation.CampaignNavigationChecks+<CheckCampaignContentAdmission>d__63.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationContentAdmissionChecks.cs:123)
+         [11] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [13] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [14] void System.Threading.Tasks.Task.RunContinuations(object)
+         [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [16] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [17] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [18] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [19] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: Campaign autosave rejected: Saved campaign roster references invalid content: mirelle: 单位 c01.mirelle 记录了未知职业熟练度 "unregistered-content-admission-career"
+     at: void Empire.Application.GrayFlagGame.ShowMenu() (res://Application/GrayFlagGame.cs:258)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Application.GrayFlagGame.ShowMenu() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:258)
+         [2] void Empire.Application.GrayFlagGame._Ready() (/workspace/scratch/84c9fe948755/empire-work/godot/Application/GrayFlagGame.cs:110)
+         [3] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+         [4] bool Empire.Application.GrayFlagGame.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-work/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Application.GrayFlagGame_ScriptMethods.generated.cs:220)
+         [5] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+         [6] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:380)
+         [7] void Godot.NativeCalls.godot_icall_3_882(nint, nint, nint, Godot.NativeInterop.godot_bool, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:7842)
+         [8] void Godot.Node.AddChild(Godot.Node, bool, Godot.Node+InternalMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:835)
+         [9] Empire.Application.GrayFlagGame Empire.Presentation.CampaignNavigationChecks.MountGame() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:1998)
+         [10] void Empire.Presentation.CampaignNavigationChecks+<CheckCampaignContentAdmission>d__63.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationContentAdmissionChecks.cs:123)
+         [11] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [13] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [14] void System.Threading.Tasks.Task.RunContinuations(object)
+         [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [16] void Empire.Presentation.CampaignNavigationChecks+<Layout>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/CampaignNavigationChecks.cs:136)
+         [17] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [18] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [19] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+Campaign navigation group passed: saved campaign content admission preserves live progress
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Campaign navigation group passed: formal Redstone entry, carried-roster fixture, resume and settlement
+Campaign navigation native checks passed: 9712 assertions; 0 failed groups. Ending states are explicit UI fixtures, not campaign outcome parity.

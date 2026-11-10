@@ -1,0 +1,26 @@
+{
+  "startedAtUtc": "2026-11-10T19:57:30.926088+00:00",
+  "source": {
+    "commit": "ebcec6fb7ff9713640818726ecc3a3559c022fec",
+    "godotTree": "e290d8ba50618c0014ef3fe371b1247de3825b25",
+    "toolsTree": "afff6c24fcf143fdff3a5a4facf2f373d1ad3290",
+    "gateSha256": "4ca078f295e2b3159c0d533afe94f5a5bae146d91a325c4872658166e7e2ab83",
+    "runnerSha256": "d59876a77d3e3d06f202caa4d45a2bd4bb9676135a959db0090d935a7de33cf9"
+  },
+  "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=ScenarioSignalFeedbackChecks\nrun_scene \"$scene\"",
+  "artifactsBefore": {
+    "fileCount": 776,
+    "sha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68",
+    "manifest": "artifacts/b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68.json"
+  },
+  "log": "attempt-01.log",
+  "terminal": true,
+  "finishedAtUtc": "2026-11-10T19:58:04.253513+00:00",
+  "exitCode": 0,
+  "logSha256": "a5688e6770076d55b672023aa3b241c2eed6f98bea3bcb4c5497b38aa2f01a96",
+  "artifactsAfter": {
+    "fileCount": 776,
+    "sha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68",
+    "manifest": "artifacts/b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68.json"
+  }
+}

@@ -1,0 +1,527 @@
+{
+  "executionMode": "all-original-stages-with-durable-completion-records",
+  "singleProcessAggregatePass": false,
+  "allOriginalStagesPassed": true,
+  "stagesPassed": 45,
+  "originalCommand": "bash tools/godot/verify-native.sh",
+  "originalGateSha256": "4ca078f295e2b3159c0d533afe94f5a5bae146d91a325c4872658166e7e2ab83",
+  "testedCommit": "ebcec6fb7ff9713640818726ecc3a3559c022fec",
+  "implementationCommit": "8893ad5555ab02fbc1fa08b876c5918fb30ced64",
+  "unchangedImplementationTrees": {
+    "godot": "e290d8ba50618c0014ef3fe371b1247de3825b25",
+    "tools": "afff6c24fcf143fdff3a5a4facf2f373d1ad3290"
+  },
+  "startedAtUtc": "2026-11-10T19:17:46.070957+00:00",
+  "finishedAtUtc": "2026-11-10T20:10:04.351332+00:00",
+  "fullLogSha256": "8969269cf3a90a2f8c0ba589d3a408716067449596500e0bcdc9a8dda3f4569f",
+  "planSha256": "b198f6732c46cffc176a7983009df64d3c520e8b1a4e4f08b132a1a7bc0ec9a3",
+  "baselineVerificationCommit": "900717b1bdfa7944d2a16e1a45f557d5fdda935b",
+  "baselineLogSha256": "34340f59a30e9109c196ec7817b32b6c4e91bfc509d559fba95321f2b152020c",
+  "errorOrLeakDiagnostics": 0,
+  "animationAssertions": 5596,
+  "playedFlowAssertions": 21779,
+  "playedFlowAssertionCaveat": "Includes process-frame waits; not a count of unique gameplay scenarios.",
+  "independentLevels": 16,
+  "independentLegalOrders": 3425,
+  "allIndependentReplayHashesUnchanged": true,
+  "playedOpeningMarkers": [
+    "PLAYED_AI_DEFEAT_OK orders=152; terminal=3dbb09d3; events=10; completions=1; retry=9dae091b; both slots unchanged",
+    "PLAYED_TERMINAL level=c01-01; legal orders=156; outcome=victory; completion views=1; events=524; presented=524; turn=9; state=c46d9172; conclusion={\"kind\":\"lastTeamRemaining\",\"team\":1}",
+    "CARRIED_VICTORY_OK level=c01-01; legal orders=156; events=524; terminal=c46d9172; campaign=17488f7b; next=battle-02",
+    "PLAYED_TERMINAL level=c01-02; legal orders=259; outcome=victory; completion views=1; events=584; presented=584; turn=13; state=5967317c; conclusion={\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}",
+    "CARRIED_VICTORY_OK level=c01-02; legal orders=259; events=584; terminal=5967317c; campaign=d152d095; next=battle-03",
+    "CARRIED_OPENING_OK battles played in this process=415 legal orders; third opening=21 orders; third state=d1103229; outcomes=c01-01:c46d9172:{\"kind\":\"lastTeamRemaining\",\"team\":1};c01-02:5967317c:{\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}. No third-battle victory or full-campaign claim."
+  ],
+  "warningCount": 41,
+  "normalizedWarningsMatchBaseline": true,
+  "assemblies": {
+    "Empire.dll": {
+      "gateSha256": "4cdcd9f8f0bb721b7cd79f80563ee1dde28c84796795ef73e90b662981fba1b6",
+      "nativeCaptureSha256": "827d5a4edf0f3fb076f5d6d17ec2031fff1656e836f16ea5e5120d3b714169fd",
+      "byteIdentical": false
+    },
+    "Empire.Core.dll": {
+      "gateSha256": "94af221214513b8985eefdefadcc1fa89cb101eebba8ccf7e96e771f3aa3f0b5",
+      "nativeCaptureSha256": "e757b4cd21b9d0c3a552a1b5b7a803f3573caa097cd9ea1737a34cd6eb9fb476",
+      "byteIdentical": false
+    },
+    "GodotSharp.dll": {
+      "gateSha256": "2142e62894176d7340f50581f8b2fe84e36ae64e1a85f1b2bd7737a7e8a5c8ba",
+      "nativeCaptureSha256": "2142e62894176d7340f50581f8b2fe84e36ae64e1a85f1b2bd7737a7e8a5c8ba",
+      "byteIdentical": true
+    }
+  },
+  "assemblyIdentityNote": "The same Godot/tools source trees were rebuilt at documentation-only ebcec6fb. Empire and Core embed the new commit version; raw DLL equality with the earlier 8893ad55 native capture is not claimed.",
+  "stages": [
+    {
+      "stage": 1,
+      "name": "preflight-01",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:17:46.070957+00:00",
+      "finishedAtUtc": "2026-11-10T19:17:49.131687+00:00",
+      "logSha256": "82f9bbecbceab1cc193900eb80af4d70c3746ec3df8842795f3d0007a355c57d",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 2,
+      "name": "preflight-02",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:17:49.470312+00:00",
+      "finishedAtUtc": "2026-11-10T19:18:23.289921+00:00",
+      "logSha256": "51f3136d0473b57a4d2a2ae23a4c281f3c461ba7f90c7c1910b0d288555b1fbc",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 3,
+      "name": "preflight-03",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:38:00.189081+00:00",
+      "finishedAtUtc": "2026-11-10T19:39:04.057989+00:00",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 4,
+      "name": "preflight-04",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:39:04.411307+00:00",
+      "finishedAtUtc": "2026-11-10T19:39:09.308450+00:00",
+      "logSha256": "43e643cef955433a5dff2490dfec453ade8bf92fe39d7d4957ceac9ab5cbdd17",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 5,
+      "name": "preflight-05",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:39:09.653201+00:00",
+      "finishedAtUtc": "2026-11-10T19:39:10.547039+00:00",
+      "logSha256": "7d05656cd751a9b36d7456d57677768ea2d3272b0724d956790af11750e7e125",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 6,
+      "name": "preflight-06",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:39:10.892119+00:00",
+      "finishedAtUtc": "2026-11-10T19:39:11.351742+00:00",
+      "logSha256": "7476d552898bd1e3775888cb770d8accc91d6d028b4b3e7066d8d98edc17eebc",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 7,
+      "name": "preflight-07",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:39:11.688368+00:00",
+      "finishedAtUtc": "2026-11-10T19:39:12.117333+00:00",
+      "logSha256": "e036f0848115519ade19b2e51b20160ce199bdac4142259c95bdc26521e8a1a7",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 8,
+      "name": "preflight-08",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:39:12.456604+00:00",
+      "finishedAtUtc": "2026-11-10T19:39:14.899963+00:00",
+      "logSha256": "d11d37c2870b4eb2be0ae55087f89accecd0b1ce9a248ca622412ecb79ba2050",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 9,
+      "name": "build-project",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:39:15.242580+00:00",
+      "finishedAtUtc": "2026-11-10T19:39:17.040764+00:00",
+      "logSha256": "a5f07e35e0902c29d718f7084ac3e71bb830971c316bbec0d0fed0bdfcc2871f",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 10,
+      "name": "build-core-tests",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:39:17.415384+00:00",
+      "finishedAtUtc": "2026-11-10T19:39:18.952320+00:00",
+      "logSha256": "a0d88d41429f05c6c35d7f6aa06cb5d6f1b25f7fcfb02ce7e2aec17724c9e91e",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 11,
+      "name": "core-replay",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:39:19.299337+00:00",
+      "finishedAtUtc": "2026-11-10T19:42:44.479560+00:00",
+      "logSha256": "2eae63d6089bb37ba956e292db26a2ac44aacb1070fc0bce4e4196d7f21417c3",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 12,
+      "name": "objective-outcome-checks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:42:44.844476+00:00",
+      "finishedAtUtc": "2026-11-10T19:42:47.278190+00:00",
+      "logSha256": "f67527ff261d5a8e179ff987e6e4005834c7f7a841d37ec2dc580dbfc7b7f6a6",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 13,
+      "name": "catalog-boundary-checks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:42:47.631781+00:00",
+      "finishedAtUtc": "2026-11-10T19:42:51.671273+00:00",
+      "logSha256": "5284f6bf60a7649305c62562ebe9e12f59042923c4aaec3d28a5ee1adbc0337d",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 14,
+      "name": "editor-import",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:42:52.021425+00:00",
+      "finishedAtUtc": "2026-11-10T19:42:56.714893+00:00",
+      "logSha256": "d7160db3c98bfd433b3541780ada55e2e15f62ffcad441e9acc240391e030394",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 15,
+      "name": "NarrativeChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:42:57.065664+00:00",
+      "finishedAtUtc": "2026-11-10T19:43:36.251387+00:00",
+      "logSha256": "44d0d03406a63df2d60241254818a6731987ec591c97f9374c962e470c6dfa7b",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 16,
+      "name": "OathPadChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:43:36.657409+00:00",
+      "finishedAtUtc": "2026-11-10T19:43:42.570816+00:00",
+      "logSha256": "36518ceb1de2f7f658831c5cc1ee9d7d0339043de62e212526dc4163f7b64583",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 17,
+      "name": "DynamicStateChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:43:42.947406+00:00",
+      "finishedAtUtc": "2026-11-10T19:44:18.131079+00:00",
+      "logSha256": "31ff1e2424b91c6858d3679f84b6257be9f49d6d684e2b3816b80e7cc0417568",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 18,
+      "name": "PaintedSurfaceChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:44:18.526820+00:00",
+      "finishedAtUtc": "2026-11-10T19:44:23.675369+00:00",
+      "logSha256": "d15943a76875130edd12ef3b6a2f56b8eef208384b2478e431f9d744d6af84f9",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 19,
+      "name": "SceneSurfaceChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:44:24.052405+00:00",
+      "finishedAtUtc": "2026-11-10T19:44:24.793046+00:00",
+      "logSha256": "f51b6110e920f6c8ca8f8c9ea56225460940448cf46ff241a4b078ceccdfd0e8",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 20,
+      "name": "AssembledGroundChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:44:25.147510+00:00",
+      "finishedAtUtc": "2026-11-10T19:44:31.680844+00:00",
+      "logSha256": "a55a322b9831639b8c844e59f865a26a446b0ee31a206ac473bdbfec53c98cb2",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 21,
+      "name": "PaintedSurfaceBroadPhaseChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:44:32.030115+00:00",
+      "finishedAtUtc": "2026-11-10T19:44:34.541984+00:00",
+      "logSha256": "ab689b6130ae4a5a4c7ff58a33bbcac6254b3593c1d5ff8930cc5462cd8528f8",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 22,
+      "name": "BlackFlagCampChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:44:34.897961+00:00",
+      "finishedAtUtc": "2026-11-10T19:44:39.645862+00:00",
+      "logSha256": "e5681f1cb5d84851a406b8abecc3a5f2c406567ff869b10f2e7534b01e86c32a",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 23,
+      "name": "ReedVillageChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:44:39.999021+00:00",
+      "finishedAtUtc": "2026-11-10T19:44:46.623977+00:00",
+      "logSha256": "e4bbd3e243e6eae79b2c64c6c1abd4c8b177a994bc26c3d7becdc5d22619c210",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 24,
+      "name": "WhiteRiverChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:44:46.969625+00:00",
+      "finishedAtUtc": "2026-11-10T19:44:54.248640+00:00",
+      "logSha256": "f2e3eba991d1b1f9816d8cad4468992fac4c7f59b8963bd1b97326bbe14b8fb4",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 25,
+      "name": "LuojiaChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:44:54.604894+00:00",
+      "finishedAtUtc": "2026-11-10T19:48:09.315735+00:00",
+      "logSha256": "571398bc0ee40d7ebaba01dad8172aff73e35a22cf60e96762d78e12434f1657",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 26,
+      "name": "PresentationChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:48:09.676121+00:00",
+      "finishedAtUtc": "2026-11-10T19:48:45.891421+00:00",
+      "logSha256": "fb7b3603047ec69ce9652194a073982922956d50596ef2921bcf9df486af86bf",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 27,
+      "name": "AnimationChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:48:46.254051+00:00",
+      "finishedAtUtc": "2026-11-10T19:52:35.583513+00:00",
+      "logSha256": "9cd8c48a6d23e861940eaed6e8d6b0d57f0220898647a6d31cfd3f7edf5b421b",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 28,
+      "name": "CameraChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:52:35.931531+00:00",
+      "finishedAtUtc": "2026-11-10T19:52:36.614401+00:00",
+      "logSha256": "e8c7a247a263ccc670e86f2f4f61bd0f539472a0f6bf26ddedb592b910e5ea02",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 29,
+      "name": "CameraIntegrationChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:52:36.990029+00:00",
+      "finishedAtUtc": "2026-11-10T19:54:23.922052+00:00",
+      "logSha256": "8fb9bf676ba578c64a604460002a7df908ab46764ab3e3bbeedeedca5f58f762",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 30,
+      "name": "TacticalHudChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:54:24.275394+00:00",
+      "finishedAtUtc": "2026-11-10T19:55:07.534287+00:00",
+      "logSha256": "ee14e07256e38e02abe35808410716347e52430ad8137bd43483e54f9e0b10f9",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 31,
+      "name": "IdleGuidanceChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:55:07.920489+00:00",
+      "finishedAtUtc": "2026-11-10T19:55:11.368018+00:00",
+      "logSha256": "30a32883ef3da5c1aa25da4a80edcd2c284afbb457af3be34de945b7be602cc9",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 32,
+      "name": "DossierFocusChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:55:11.724610+00:00",
+      "finishedAtUtc": "2026-11-10T19:55:20.571948+00:00",
+      "logSha256": "a33e3fed9caccec2f12cf41b8bd1a0fc54fe36f84028adb5e7579854c3e78019",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 33,
+      "name": "BattleScreenChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:55:20.925609+00:00",
+      "finishedAtUtc": "2026-11-10T19:57:17.724660+00:00",
+      "logSha256": "83b438f34bc904c86836856f90f5fe4f697d08bf708aa1d9cadb6efa7ebf698e",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 34,
+      "name": "RegenerationFeedbackChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:57:18.091228+00:00",
+      "finishedAtUtc": "2026-11-10T19:57:30.573971+00:00",
+      "logSha256": "3b3bb13a749ba8320a6b5b98ae00bc17f781d66158bb013fc60cce6f0c8fb296",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 35,
+      "name": "ScenarioSignalFeedbackChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:57:30.926088+00:00",
+      "finishedAtUtc": "2026-11-10T19:58:04.253513+00:00",
+      "logSha256": "a5688e6770076d55b672023aa3b241c2eed6f98bea3bcb4c5497b38aa2f01a96",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 36,
+      "name": "MoraleFeedbackChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:58:04.622523+00:00",
+      "finishedAtUtc": "2026-11-10T19:58:16.511805+00:00",
+      "logSha256": "28834ff68b180c074afc2c721d11a5b028481967d7969e2c1d8d20ee369fbb5c",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 37,
+      "name": "ReinforcementFeedbackChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:58:16.891253+00:00",
+      "finishedAtUtc": "2026-11-10T19:58:42.784934+00:00",
+      "logSha256": "f9d8b490341605d40935faa24a7e9a5c253f7d3efa5e79cccd264e156485704a",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 38,
+      "name": "BattleResultFlowChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:58:43.147665+00:00",
+      "finishedAtUtc": "2026-11-10T19:59:03.272645+00:00",
+      "logSha256": "74122ace1ee2ab3c1b664b59827969e317acb4307e81d28db11cbdae2d3c754e",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 39,
+      "name": "CampaignNavigationChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T19:59:03.635897+00:00",
+      "finishedAtUtc": "2026-11-10T20:02:49.109138+00:00",
+      "logSha256": "bc934784910597e47ef7ba687912715f11eda5f537170b2442763580b065b28a",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 40,
+      "name": "StagingOpeningChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T20:02:49.457940+00:00",
+      "finishedAtUtc": "2026-11-10T20:03:03.295693+00:00",
+      "logSha256": "8d6a4a58f42989b971b8ec7d98d4dac06c536bcee951fd7014153685a6283086",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 41,
+      "name": "CampaignUiFlowChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T20:03:03.664115+00:00",
+      "finishedAtUtc": "2026-11-10T20:03:27.857188+00:00",
+      "logSha256": "038651fa9ad14d0996c634a8a3056ab2e8048097156a2679f9c3f34054b7348f",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 42,
+      "name": "LightingLifetimeChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T20:03:28.215469+00:00",
+      "finishedAtUtc": "2026-11-10T20:03:51.113737+00:00",
+      "logSha256": "65f1771083212607985cf070f486879cafe148c93f8e5f2e532a204e635fd524",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 43,
+      "name": "LightingChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T20:03:51.478776+00:00",
+      "finishedAtUtc": "2026-11-10T20:03:57.445409+00:00",
+      "logSha256": "c1806572c10542d9cdd61fa1c0b4ef504df46509cffb19ff5940634cf3aacf98",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 44,
+      "name": "SceneryChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T20:03:57.786580+00:00",
+      "finishedAtUtc": "2026-11-10T20:04:03.372273+00:00",
+      "logSha256": "8595c6b5938dea53f45f74e6a7d4ce1035e4e873e70175f73293f33cfa35e45b",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    },
+    {
+      "stage": 45,
+      "name": "CampaignPlayedFlowChecks",
+      "exitCode": 0,
+      "startedAtUtc": "2026-11-10T20:04:03.734712+00:00",
+      "finishedAtUtc": "2026-11-10T20:10:04.315815+00:00",
+      "logSha256": "d0a96fa90e2a27e10d96a0ce7d3ca007e736daf9dcba52e628e879c6baad3eb8",
+      "artifactsAfterSha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68"
+    }
+  ],
+  "interruptedStageAttempts": [
+    {
+      "stage": 3,
+      "name": "preflight-03",
+      "attempt": "attempt-01.json",
+      "acceptedAsPass": false
+    }
+  ],
+  "priorIncompleteAggregateLogs": [
+    {
+      "sha256": "bd9336eb2847570c802a2b6f4db81ea7eb8fa317371b20319b3574afced9cc55",
+      "finalExitRecorded": false,
+      "acceptedAsPass": false
+    },
+    {
+      "sha256": "37d6960cf6001370902a0bd5304a4d938a54d4db8001be089698057b817fbd32",
+      "finalExitRecorded": false,
+      "acceptedAsPass": false
+    }
+  ],
+  "recoveryControls": {
+    "runnerChecks": 6,
+    "supplementalAdmissionChecks": 7,
+    "everyResumeRequiresSupplementalAudit": true,
+    "expandedDependenciesFirstRecordedAfterCompletedStage": 10,
+    "retrospectiveFullDependencyIdentityClaimed": false
+  },
+  "recoveryToolSha256": {
+    "staged-native-recovery.py": "d59876a77d3e3d06f202caa4d45a2bd4bb9676135a959db0090d935a7de33cf9",
+    "audit-staged-recovery.py": "eb1c692ef966312e378d25af9d1a1a280961628bee4f12987ddb6c720d9b63ba",
+    "resume-staged-native-recovery.sh": "e4617e89bc7ab71ac117e2e0d681eefac159281a206e3f3c3dc22f705fb57a65",
+    "test-staged-native-recovery.py": "44fca8c1af3cc45f0054dd29b79730e508dca4714accf6fd709824a18d45128d",
+    "test-staged-admission.py": "44bd491c27139b7badbcec9b6bf1dfacb723f8802dee58df03f047a08473304a"
+  },
+  "processBoundaryReview": "Original command order, timeout/diagnostic wrappers and fresh per-scene saves retained. No required cross-stage shell state found. CampaignPlayedFlowChecks remains one uninterrupted native process.",
+  "manualGuiScope": "Existing 95-frame southern acceptance with recorded overlays; 99 roof-occluded frames diagnostic only. GUI was not rerun in this recovery.",
+  "exportAcceptance": "Not run.",
+  "completeCampaignAcceptance": "Not claimed.",
+  "remoteCi": {
+    "8893ad5555ab02fbc1fa08b876c5918fb30ced64": {
+      "workflowRuns": 0,
+      "statusContexts": 0,
+      "checkRuns": 0,
+      "combinedStatus": "pending"
+    },
+    "ebcec6fb7ff9713640818726ecc3a3559c022fec": {
+      "workflowRuns": 0,
+      "statusContexts": 0,
+      "checkRuns": 0,
+      "combinedStatus": "pending"
+    }
+  },
+  "githubCheckedAtUtc": "2026-11-10T20:03:53Z",
+  "githubWorkflowTriggers": [
+    "push main",
+    "pull_request",
+    "workflow_dispatch"
+  ],
+  "archivedNativeRecheck": {
+    "passed": true,
+    "verificationMode": "archive-only",
+    "totalRgbHashVerifiedFrames": 194,
+    "acceptedVisualCaptureFrames": 95,
+    "diagnosticOnlyCaptureFrames": 99
+  }
+}

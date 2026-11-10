@@ -1,0 +1,215 @@
+{
+  "source": {
+    "commit": "ebcec6fb7ff9713640818726ecc3a3559c022fec",
+    "godotTree": "e290d8ba50618c0014ef3fe371b1247de3825b25",
+    "toolsTree": "afff6c24fcf143fdff3a5a4facf2f373d1ad3290",
+    "gateSha256": "4ca078f295e2b3159c0d533afe94f5a5bae146d91a325c4872658166e7e2ab83",
+    "runnerSha256": "d59876a77d3e3d06f202caa4d45a2bd4bb9676135a959db0090d935a7de33cf9"
+  },
+  "environment": {
+    "toolchain": "/workspace/scratch/84c9fe948755/empire-tools",
+    "inputs": {
+      "EMPIRE_TOOLCHAIN_ROOT": null,
+      "EMPIRE_CHECK_TIMEOUT_SECONDS": null,
+      "EMPIRE_REPLAY_TIMEOUT_SECONDS": null,
+      "EMPIRE_CAMPAIGN_TIMEOUT_SECONDS": null,
+      "TMPDIR": "/tmp"
+    },
+    "toolSha256": {
+      "/workspace/scratch/84c9fe948755/empire-tools/dotnet/dotnet": "db40da462b13ec4c07df7a75c4b0395223d360b8dc9a477d9e31fb71759b05f4",
+      "/workspace/scratch/84c9fe948755/empire-tools/dotnet/sdk/8.0.427/dotnet.dll": "b5632df862202dd108e89026f11afd049df73b5962c5a51f0c35e02b271a9e4e",
+      "/workspace/scratch/84c9fe948755/empire-tools/dotnet/sdk/8.0.427/Roslyn/bincore/csc.dll": "2b9a5bbe002b353e44c78506e1bccbbc55dcdf2338abb11a68a5056329cb7334",
+      "/workspace/scratch/84c9fe948755/empire-tools/godot/Godot_v4.6.3-stable_mono_linux_x86_64/Godot_v4.6.3-stable_mono_linux.x86_64": "cabf9ac16c55f8ca662da62e1f5908d3c35f765e312be62f104097bd8f78b987",
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7",
+      "/usr/bin/bash": "223fe8564b60636bc738b6178d3ba9a50ef7d791266b0efae6363bb716e4c47f",
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d"
+    }
+  },
+  "setup": {
+    "preflight": "set -euo pipefail\nsource tools/godot/env.sh\n",
+    "native": "set -euo pipefail\nsource tools/godot/env.sh\nexport EMPIRE_CHECK_TIMEOUT_SECONDS=\"${EMPIRE_CHECK_TIMEOUT_SECONDS:-900}\"\ndotnet() { command timeout --signal=TERM --kill-after=15s \"$EMPIRE_CHECK_TIMEOUT_SECONDS\" \"$DOTNET_ROOT/dotnet\" \"$@\"; }\nexport -f dotnet\n"
+  },
+  "stages": [
+    {
+      "name": "preflight-01",
+      "command": "python3 tools/godot/native-process-tests.py"
+    },
+    {
+      "name": "preflight-02",
+      "command": "python3 tools/godot/select-native-format-sources-tests.py"
+    },
+    {
+      "name": "preflight-03",
+      "command": "bash tools/godot/format-native.sh --check"
+    },
+    {
+      "name": "preflight-04",
+      "command": "python3 tools/godot/check-source-metadata.py"
+    },
+    {
+      "name": "preflight-05",
+      "command": "node tools/godot/validate-blackflag-camp.mjs --self-test"
+    },
+    {
+      "name": "preflight-06",
+      "command": "node tools/godot/validate-reed-village.mjs --self-test"
+    },
+    {
+      "name": "preflight-07",
+      "command": "node tools/godot/validate-white-river.mjs --self-test"
+    },
+    {
+      "name": "preflight-08",
+      "command": "node tools/godot/validate-luojia.mjs --self-test"
+    },
+    {
+      "name": "build-project",
+      "command": "dotnet build godot/Empire.csproj --disable-build-servers -m:1 -p:UseSharedCompilation=false"
+    },
+    {
+      "name": "build-core-tests",
+      "command": "dotnet build godot/Empire.Core.Tests --disable-build-servers -m:1 -p:UseSharedCompilation=false"
+    },
+    {
+      "name": "core-replay",
+      "command": "EMPIRE_CHECK_TIMEOUT_SECONDS=\"${EMPIRE_REPLAY_TIMEOUT_SECONDS:-1200}\" \\\n  dotnet godot/Empire.Core.Tests/bin/Debug/net8.0/Empire.Core.Tests.dll godot/tests/oracle"
+    },
+    {
+      "name": "objective-outcome-checks",
+      "command": "bash tools/godot/objective-outcome-checks/run.sh"
+    },
+    {
+      "name": "catalog-boundary-checks",
+      "command": "bash tools/godot/catalog-boundary-checks/run.sh"
+    },
+    {
+      "name": "editor-import",
+      "command": "import_log=\"$(mktemp \"${TMPDIR:-/tmp}/empire-native-import.XXXXXX.log\")\"\nbash tools/godot/native-process.sh \"$import_log\" 'Editor import' \"$GODOT_NET\" --headless --editor --path godot --import"
+    },
+    {
+      "name": "NarrativeChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=NarrativeChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "OathPadChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=OathPadChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "DynamicStateChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=DynamicStateChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "PaintedSurfaceChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=PaintedSurfaceChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "SceneSurfaceChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=SceneSurfaceChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "AssembledGroundChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=AssembledGroundChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "PaintedSurfaceBroadPhaseChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=PaintedSurfaceBroadPhaseChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "BlackFlagCampChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=BlackFlagCampChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "ReedVillageChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=ReedVillageChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "WhiteRiverChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=WhiteRiverChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "LuojiaChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=LuojiaChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "PresentationChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=PresentationChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "AnimationChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=AnimationChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "CameraChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=CameraChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "CameraIntegrationChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=CameraIntegrationChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "TacticalHudChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=TacticalHudChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "IdleGuidanceChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=IdleGuidanceChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "DossierFocusChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=DossierFocusChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "BattleScreenChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=BattleScreenChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "RegenerationFeedbackChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=RegenerationFeedbackChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "ScenarioSignalFeedbackChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=ScenarioSignalFeedbackChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "MoraleFeedbackChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=MoraleFeedbackChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "ReinforcementFeedbackChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=ReinforcementFeedbackChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "BattleResultFlowChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=BattleResultFlowChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "CampaignNavigationChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=CampaignNavigationChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "StagingOpeningChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=StagingOpeningChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "CampaignUiFlowChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=CampaignUiFlowChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "LightingLifetimeChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nscene=LightingLifetimeChecks\nrun_scene \"$scene\""
+    },
+    {
+      "name": "LightingChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nrun_scene LightingChecks -- \"--lighting-oracle=$PWD/godot/tests/oracle/lighting.json\""
+    },
+    {
+      "name": "SceneryChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nrun_scene SceneryChecks -- --scenery-oracle=res://tests/oracle/board-scenery.json.gz"
+    },
+    {
+      "name": "CampaignPlayedFlowChecks",
+      "command": "run_scene() {\n  local scene=\"$1\" data log\n  shift\n  data=\"$(mktemp -d \"${TMPDIR:-/tmp}/empire-native-check-data.XXXXXX\")\"\n  log=\"$data/native.log\"\n  XDG_DATA_HOME=\"$data\" bash tools/godot/native-process.sh \"$log\" \"$scene\" \\\n    \"$GODOT_NET\" --headless --path godot \"res://Scenes/$scene.tscn\" \"$@\"\n}\nexport EMPIRE_NARRATIVE_EXPECTATIONS=\"$PWD/godot/tests/native/narrative.json\"\nEMPIRE_CHECK_TIMEOUT_SECONDS=\"${EMPIRE_CAMPAIGN_TIMEOUT_SECONDS:-2400}\" run_scene CampaignPlayedFlowChecks"
+    }
+  ],
+  "scope": "All original gate commands in original order, with persistent per-stage results. Not a single-process aggregate pass."
+}

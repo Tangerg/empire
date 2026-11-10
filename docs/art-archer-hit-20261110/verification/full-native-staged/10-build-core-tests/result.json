@@ -1,0 +1,26 @@
+{
+  "startedAtUtc": "2026-11-10T19:39:17.415384+00:00",
+  "source": {
+    "commit": "ebcec6fb7ff9713640818726ecc3a3559c022fec",
+    "godotTree": "e290d8ba50618c0014ef3fe371b1247de3825b25",
+    "toolsTree": "afff6c24fcf143fdff3a5a4facf2f373d1ad3290",
+    "gateSha256": "4ca078f295e2b3159c0d533afe94f5a5bae146d91a325c4872658166e7e2ab83",
+    "runnerSha256": "d59876a77d3e3d06f202caa4d45a2bd4bb9676135a959db0090d935a7de33cf9"
+  },
+  "command": "dotnet build godot/Empire.Core.Tests --disable-build-servers -m:1 -p:UseSharedCompilation=false",
+  "artifactsBefore": {
+    "fileCount": 776,
+    "sha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68",
+    "manifest": "artifacts/b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68.json"
+  },
+  "log": "attempt-01.log",
+  "terminal": true,
+  "finishedAtUtc": "2026-11-10T19:39:18.952320+00:00",
+  "exitCode": 0,
+  "logSha256": "a0d88d41429f05c6c35d7f6aa06cb5d6f1b25f7fcfb02ce7e2aec17724c9e91e",
+  "artifactsAfter": {
+    "fileCount": 776,
+    "sha256": "b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68",
+    "manifest": "artifacts/b8e835655d313a8c3b8f7c43c772781f4f58d3163320d10b3656e2ecb1377b68.json"
+  }
+}

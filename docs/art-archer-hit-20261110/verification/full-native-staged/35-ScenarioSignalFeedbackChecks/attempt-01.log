@@ -1,0 +1,9 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+SCENARIO_OPENING hash=142efa8b
+SCENARIO_SIGNAL turn=4 revision=33 id=white_river_pursuit_arrived description=白河追兵抵达 journal=True hash=50ded0d0 events=ca903dea6f5a22882a213693b7bff1d59d496acdc0d4b289b30edacc5bb6674f
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+SCENARIO_SIGNAL turn=6 revision=61 id=white_river_bridge_damaged description=白河桥受损 journal=True hash=9edccbb1 events=851f9e5c794948c43ac07a9a80a4e02c76beec2d186ab85530325e0b0230b528
+SCENARIO_DECLARED_TEXT 25 authored signal declarations across 16 levels; synthetic descriptions only, not trigger execution.
+Scenario signal feedback passed 337 assertions: unchanged C06 native retreat/end-turn orders, real AI, controlled playback, journal/load lifetime, and explicitly synthetic declared-signal text boundaries. Not GUI acceptance.

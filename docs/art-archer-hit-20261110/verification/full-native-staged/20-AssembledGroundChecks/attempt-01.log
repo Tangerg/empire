@@ -1,0 +1,43 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ASSEMBLED_CONTACT_NEGATIVE_OK exactly one source belongs to the sibling contact.
+ASSEMBLED_CONTACT_NEGATIVE_OK source must remain hidden.
+ASSEMBLED_CONTACT_NEGATIVE_OK exactly one projected floor belongs to the sibling contact.
+ASSEMBLED_CONTACT_NEGATIVE_OK exactly one projected floor belongs to the sibling contact.
+ASSEMBLED_CONTACT_NEGATIVE_OK exactly one sibling contact per object.
+ASSEMBLED_CONTACT_NEGATIVE_OK exactly one sibling contact per object.
+ASSEMBLED_CONTACT_NEGATIVE_OK source density and instance scale must apply exactly once.
+ASSEMBLED_CONTACT_NEGATIVE_OK floor placement must follow the registered authored foot.
+ASSEMBLED_CONTACT_NEGATIVE_OK source texture must be centered on the authored foot.
+ASSEMBLED_CONTACT_NEGATIVE_OK projected polygons must use absolute floor depth, never standing depth.
+ASSEMBLED_CONTACT_NEGATIVE_OK projected polygons must use absolute floor depth, never standing depth.
+ASSEMBLED_CONTACT_NEGATIVE_OK exactly one source belongs to the sibling contact.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=False Bounded surfaces require a complete, unflipped single-frame texture; sprite regions and cropped atlas frames are unsupported.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=False Contact lifecycle (False): repeated render must retain sources, textures and current floors.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=False Projection replacement must free old floors and unsubscribe the old projection.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=False Bounded surfaces require a complete, unflipped single-frame texture; sprite regions and cropped atlas frames are unsupported.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=False Unload must release contacts, sources, floors and all projection subscriptions.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=True Bounded surfaces require a complete, unflipped single-frame texture; sprite regions and cropped atlas frames are unsupported.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=True Contact lifecycle (True): repeated render must retain sources, textures and current floors.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=True Projection replacement must free old floors and unsubscribe the old projection.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=True Bounded surfaces require a complete, unflipped single-frame texture; sprite regions and cropped atlas frames are unsupported.
+ASSEMBLED_CONTACT_LIFECYCLE_NEGATIVE_OK cached=True Unload must release contacts, sources, floors and all projection subscriptions.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+RGB_SURFACE_MATERIAL_ACCEPTANCE_BEGIN opaque
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must use the selected complete material.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitive UVs must match the authored fixture.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must cover the authored geometry exactly once.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must cover the authored geometry exactly once.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must cover the authored geometry exactly once.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitive geometry and order must match the authored fixture.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitive tint must match the authored fixture.
+RGB_SURFACE_MATERIAL_ACCEPTANCE_BEGIN native-alpha
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must use the selected complete material.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitive UVs must match the authored fixture.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must cover the authored geometry exactly once.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must cover the authored geometry exactly once.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitives must cover the authored geometry exactly once.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitive geometry and order must match the authored fixture.
+ASSEMBLED_MATERIAL_NEGATIVE_OK visible primitive tint must match the authored fixture.
+ASSEMBLED_GROUND_CHECKS_OK 18032 assertions
