@@ -56,6 +56,10 @@ Evidence is in `verification/melee-readability-20261110/`:
 - `contrast-comparison.png` shows baseline above revised recovery, frames 14–17.
 - Before/after contact sheets cover anticipation, release and recovery; full
   release frames retain the complete gameplay layout.
+- The two `*-lossless-60hz.mkv` recordings preserve all 40 frames each. All 80
+  decoded RGB frames were compared byte-for-byte with their original PNG pixels.
+  `lossless-video-verification.json` retains movie and frame hashes. Playback is
+  fixed-step simulation time, not measured desktop performance.
 - The two frame-trace files include all 40 original PNG hashes and all actor
   transforms/frame indices. Every actor trace and presenting flag matches.
 - Within the inspected 160×110 combat crop, only recovery frames 14–17 differ.
