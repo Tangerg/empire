@@ -1,0 +1,25 @@
+{
+  "negative-binding": {
+    "gateExit": 1,
+    "failure": "ERROR: System.InvalidOperationException: C01 archer idle selects the exact authored breathing appearance, timing and uniform scale."
+  },
+  "negative-timing": {
+    "gateExit": 1,
+    "failure": "ERROR: System.InvalidOperationException: The shipped breath uses six half-open intervals and reverses through its authored intermediate poses."
+  },
+  "negative-registration": {
+    "gateExit": 1,
+    "failure": "ERROR: System.InvalidOperationException: Applying an actor frame updates crop, anchor, contact, scale magnitude, filter and art identity while preserving facing."
+  },
+  "restoredHashes": {
+    "data/art-bindings.json": "67b5af677236fcae010914d2c49e7c28c3f2f98a6a372528ee2c9f156f3ae52e",
+    "data/selected-assets.json": "24da88738584140c72ac3421cbadafd03a909c7801f17bcf4a9591271f9fc4aa",
+    "Presentation/BoardView.cs": "a54a639f1e3715328ba605c3c7f571b7a834b6b1c18f00d3472cf93d9b13fa6c"
+  },
+  "restoredInputsMatch": true,
+  "negative-restored-positive": {
+    "gateExit": 0,
+    "failure": null
+  },
+  "restoredPositivePassed": true
+}

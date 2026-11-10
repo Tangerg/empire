@@ -68,8 +68,8 @@ for AI. One continuous path tween preserves frame overshoot across cell boundari
 with linear ground-plane travel and no whole-actor/shadow hop. The explicit `legacy.move` clip retains the declared
 `walk-a`/`walk-b` support phases alternating per travelled cell, independent of AI
 pace; a one-cell move intentionally needs only one support phase. This changes
-presentation only, not canonical path costs, rules, receipts or event ordering. Shipped idle retains the declared single idle
-frame. Most shipped finite attack clips retain the declared attack pose, or `carry-or-work` for mission sheets. Torren now has a separate six-pose thrust, documented in `../../docs/art-torren-thrust-20261110/README.md`.
+presentation only, not canonical path costs, rules, receipts or event ordering. Most shipped idle retains the declared single idle
+frame; Torren and C01 archers use separately reviewed breathing sequences. Most shipped finite attack clips retain the declared attack pose, or `carry-or-work` for mission sheets. Torren now has a separate six-pose thrust, documented in `../../docs/art-torren-thrust-20261110/README.md`.
 These are roles in a four-frame sheet, not four directional views or attack frames.
 
 ## Finite actor clips
@@ -117,6 +117,10 @@ use this unit's explicit stationary attack action. See the
 Generic `c01.archer` now selects `archer.loose`: six retrieve/nock/draw/release/
 recover/rest drawings over 600 ms, releasing at 320 ms without a source accent.
 Elin inherits this generic type binding; base `archer` and Bran remain unchanged.
+C01 archers also select `archer.breathe` for idle: four original paintings in
+six intervals over 2200 ms, owned by the existing board idle phase. All
+non-idle bindings and the default sheet remain unchanged. See the
+[archer idle review](../../docs/art-archer-idle-20261110/README.md).
 The existing stationary ranger-bow policy and target-only arrow impact remain
 unchanged. This draws a released bow, not a projectile travelling across cells.
 See the [archer shot review](../../docs/art-archer-shot-20261110/README.md).

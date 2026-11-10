@@ -1,0 +1,31 @@
+{
+  "status": "ACCEPT_FOR_INTEGRATION_NATIVE_PLAYBACK_PENDING",
+  "method": "Independent pixel review of original and registered figures, native-size contact sheets, shot handoff contacts and extracted GIF frames. Continuous playback was not claimed.",
+  "accepted": [
+    "Hood/head and chest rise while the free elbow bends and fist lifts relative to planted boots.",
+    "Identity, blue hood/tunic, pale sleeves, leather bracers, buckle, quiver and bow remain coherent.",
+    "Bowstring stays connected without visible topology changes.",
+    "Both soles remain visually planted; minor contour changes do not read as steps at native size.",
+    "Adjacent poses progress gradually; ping-pong order returns from 1 to 0 without an endpoint jump.",
+    "Uniform scale matches established idle and accepted shooting poses 0 and 5."
+  ],
+  "drawings": 4,
+  "playbackFrames": [
+    0,
+    1,
+    2,
+    3,
+    2,
+    1
+  ],
+  "spansMs": [
+    500,
+    300,
+    300,
+    500,
+    300,
+    300
+  ],
+  "durationMs": 2200,
+  "nativeLoopsAndRecovery": "Not yet reviewed."
+}

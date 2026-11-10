@@ -21,16 +21,16 @@ public partial class AnimationChecks
             && clip.Asset.Identity == "archer-shot-v1" && clip.Asset.TopicId == "C01-UNIT-ARCHER"
             && clip.Asset.FrameCount == 6 && clip.Length == 600 && clip.RequireRelease() == 320
             && !clip.ShowAccent && clip.Death is null && Mathf.IsEqualApprox(clip.Asset.PresentationScale, .0893f)
-            && idle.Asset == assets.ResolveUnit("c01.archer"),
-            "Only the generic archer attack selects its authored 600 ms shot; its original idle remains intact.");
-        foreach (var (action, expected) in new[] { ("idle", "static.idle"), ("move", "legacy.move"),
+            && idle.Asset.Identity == "archer-breathe-v1",
+            "Only the generic archer attack selects its authored 600 ms shot; its independently authored idle remains selected.");
+        foreach (var (action, expected) in new[] { ("idle", "archer.breathe"), ("move", "legacy.move"),
             ("hit", "static.hit"), ("death", "static.death"), ("celebrate", "static.celebrate") })
             Require(bindings.Units["c01.archer"].ActionClips[action] == expected,
                 "Shooting does not replace the archer's other declared actions.");
         Require(!bindings.Actors.ContainsKey("campaign-elin")
             && bindings.Units["c01.archer"].AppearanceId is null
             && ReferenceEquals(assets.ResolveUnitClip("c01.archer", "attack", ActorClipUnit.Milliseconds, "campaign-elin"), clip)
-            && assets.ResolveUnit("c01.archer", "campaign-elin") == idle.Asset,
+            && ReferenceEquals(assets.ResolveUnitClip("c01.archer", "idle", ActorClipUnit.Milliseconds, "campaign-elin"), idle),
             "Elin has no separate appearance or action map and inherits her canonical C01 archer art.");
         foreach (var type in new[] { "archer", "c01.bran" })
             Require(bindings.Units[type].ActionClips["attack"] == "static.attack"
@@ -117,7 +117,7 @@ public partial class AnimationChecks
                         await Tick(board, .100);
                         CheckSettledClipActor(board, aid, idle.Asset, origin);
                         Require(!playing.IsCompleted && ReferenceEquals(released, board.GetNodeOrNull(effectPath)),
-                            "At 600 ms the original idle returns while the same recipient effect remains active.");
+                            "At 600 ms the authored idle returns while the same recipient effect remains active.");
                         await Tick(board, .139999);
                         Require(!playing.IsCompleted && board.GetNodeOrNull(effectPath) is not null,
                             "Recipient hit feedback retains its 420 ms lifetime.");
@@ -204,7 +204,7 @@ public partial class AnimationChecks
             Require(board.GetNodeOrNull("BattleEffects/Hit") is not null
                 && !ReferenceEquals(first, board.GetNodeOrNull("BattleEffects/Hit"))
                 && Actor(board, aid).GetNode<Sprite2D>("AuthoredSprite").GetMeta("art_identity").AsString()
-                    == assets.ResolveUnit("c01.archer").Identity,
+                    == assets.ResolveUnitClip("c01.archer", "idle", ActorClipUnit.Milliseconds).Asset.Identity,
                 "castResolved adds no source replay and a second area victim starts only another target impact, after idle restoration.");
             await Tick(board, .420);
             Require(playing.IsCompleted && await playing && observed.SequenceEqual(Enumerable.Range(0, events.Length)),
@@ -215,7 +215,7 @@ public partial class AnimationChecks
             [new JsonObject { ["type"] = "castResolved", ["unit"] = aid }]));
         Require(playing.IsCompleted && await playing && board.GetNodeOrNull("BattleEffects") is null,
             "A non-action castResolved declaration is synchronous and cannot start a second animation clock.");
-        CheckSettledClipActor(board, aid, assets.ResolveUnit("c01.archer"), board.Projection.CellContact(new(12, 16)));
+        CheckSettledClipActor(board, aid, assets.ResolveUnitClip("c01.archer", "idle", ActorClipUnit.Milliseconds).Asset, board.Projection.CellContact(new(12, 16)));
         foreach (var sourceId in new[] { aid, int.MaxValue })
         {
             var visible = new HashSet<int> { did };
@@ -262,7 +262,7 @@ public partial class AnimationChecks
                     await Tick(board, 1);
                     Require(observed.SequenceEqual(kind == "attack" && seconds >= .320 ? new[] { 0 } : Array.Empty<int>()),
                         "Retired source and recipient callbacks publish no impact or completion after cancellation.");
-                    CheckSettledClipActor(board, aid, assets.ResolveUnit("c01.archer"), origin);
+                    CheckArcherIdleActor(board, aid, origin, 1000);
                 }
                 foreach (var exit in new[] { false, true })
                 {
@@ -281,7 +281,7 @@ public partial class AnimationChecks
                     Require(!await playing && board.GetNodeOrNull("BattleEffects") is null && !board.IsPresenting
                         && observed.SequenceEqual(kind == "attack" ? new[] { 0 } : Array.Empty<int>()),
                         "Rebinding or reattaching cannot resurrect a retired production shot.");
-                    CheckSettledClipActor(board, aid, assets.ResolveUnit("c01.archer"), origin);
+                    CheckArcherIdleActor(board, aid, origin, 1000);
                 }
                 board.AnimationsEnabled = false;
                 try
@@ -291,7 +291,7 @@ public partial class AnimationChecks
                     Require(reduced.IsCompleted && await reduced && board.GetNodeOrNull("BattleEffects") is null
                         && observed.SequenceEqual(Enumerable.Range(0, events.Length)),
                         "Reduced motion settles production shooting synchronously without a source pose or delayed effect.");
-                    CheckSettledClipActor(board, aid, assets.ResolveUnit("c01.archer"), origin);
+                    CheckSettledClipActor(board, aid, assets.ResolveUnitClip("c01.archer", "idle", ActorClipUnit.Milliseconds).Asset, origin);
                 }
                 finally { board.AnimationsEnabled = true; }
             }

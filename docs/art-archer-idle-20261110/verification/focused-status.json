@@ -1,0 +1,49 @@
+{
+  "formatVerifyExit": 0,
+  "buildExit": 0,
+  "buildWarnings": 0,
+  "buildErrors": 0,
+  "importNativeGateExit": 0,
+  "focusedBaselineGateExit": 0,
+  "focusedAssertions": 101,
+  "negativeControls": {
+    "negative-binding": {
+      "gateExit": 1,
+      "failure": "ERROR: System.InvalidOperationException: C01 archer idle selects the exact authored breathing appearance, timing and uniform scale."
+    },
+    "negative-timing": {
+      "gateExit": 1,
+      "failure": "ERROR: System.InvalidOperationException: The shipped breath uses six half-open intervals and reverses through its authored intermediate poses."
+    },
+    "negative-registration": {
+      "gateExit": 1,
+      "failure": "ERROR: System.InvalidOperationException: Applying an actor frame updates crop, anchor, contact, scale magnitude, filter and art identity while preserving facing."
+    },
+    "restoredHashes": {
+      "data/art-bindings.json": "67b5af677236fcae010914d2c49e7c28c3f2f98a6a372528ee2c9f156f3ae52e",
+      "data/selected-assets.json": "24da88738584140c72ac3421cbadafd03a909c7801f17bcf4a9591271f9fc4aa",
+      "Presentation/BoardView.cs": "a54a639f1e3715328ba605c3c7f571b7a834b6b1c18f00d3472cf93d9b13fa6c"
+    },
+    "restoredInputsMatch": true,
+    "negative-restored-positive": {
+      "gateExit": 0,
+      "failure": null
+    },
+    "restoredPositivePassed": true
+  },
+  "testFileSha256": {
+    "AnimationArcherIdleChecks.cs": "52d7cf87b830efaf95fa26d8a4a5e75e966ae0ee9305d237a722316900db5585",
+    "AnimationArcherIdleChecks.cs.uid": "12637e9a5894881ca454a9eca403785cea15a42fa278d18d9230cc763572397f",
+    "AnimationArcherShotChecks.cs": "a854981b50f2b37d35b1a9029d60f068905ae185d277747aaf1bf7d877f838c1",
+    "AnimationIdleClipChecks.cs": "1f15cfa205fd5c6e48f92aafe54e663602fa96898d235565e9b7b5900e3589b2",
+    "AnimationChecks.cs": "793d7674018dc5b3dfb2a47b6469ab7f4e6975b87a10a385532afb288c971412"
+  },
+  "animationSceneGateExit": 0,
+  "animationAssertions": 5192,
+  "productionInputsMatchIsolatedRestored": {
+    "data/art-bindings.json": true,
+    "data/selected-assets.json": true,
+    "Presentation/BoardView.cs": true
+  },
+  "gitDiffCheckExit": 0
+}

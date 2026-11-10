@@ -56,7 +56,14 @@ public partial class AnimationChecks
             {
                 Require(clip.Asset.Identity == "torren-breathe-v1" && clip.Asset.TopicId == asset.TopicId
                     && clip.Asset.FrameCount == 4 && clip.Length == 1800 && clip.ReleaseMs is null,
-                    "Torren alone selects four authored breathing pictures in a six-interval idle cycle.");
+                    "Torren selects four authored breathing pictures in a six-interval idle cycle.");
+                continue;
+            }
+            if (type == "c01.archer")
+            {
+                Require(clip.Asset.Identity == "archer-breathe-v1" && clip.Asset.TopicId == asset.TopicId
+                    && clip.Asset.FrameCount == 4 && clip.Length == 2200 && clip.ReleaseMs is null && clip.Death is null,
+                    "C01 archers select four authored breathing pictures in a six-interval idle cycle.");
                 continue;
             }
             Require(clip.Asset == asset && clip.FrameAt(0) == AssetCatalog.FrameIndex(asset, "idle")
