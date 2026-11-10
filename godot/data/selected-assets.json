@@ -221,6 +221,38 @@
           "span": 140
         }
       ]
+    },
+    "gravekeeper.channel": {
+      "unit": "milliseconds",
+      "appearanceId": "gravekeeper-cast-v1",
+      "releaseMs": 300,
+      "showAccent": false,
+      "frames": [
+        {
+          "frame": "cast-ready",
+          "span": 90
+        },
+        {
+          "frame": "cast-gather",
+          "span": 100
+        },
+        {
+          "frame": "cast-raise",
+          "span": 110
+        },
+        {
+          "frame": "cast-release",
+          "span": 100
+        },
+        {
+          "frame": "cast-recover",
+          "span": 100
+        },
+        {
+          "frame": "cast-rest",
+          "span": 100
+        }
+      ]
     }
   },
   "assets": [
@@ -3623,6 +3655,92 @@
         ]
       ],
       "qualityTier": "painted-salute-v1-reviewed",
+      "textureFilter": "linear"
+    },
+    {
+      "id": "gravekeeper-cast-v1",
+      "topicId": "C01-UNIT-GRAVEKEEPER",
+      "png": "painted-actions-v1/gravekeeper-cast-v1.png",
+      "pixelDensity": 1,
+      "frames": 6,
+      "frameOrder": [
+        "cast-ready",
+        "cast-gather",
+        "cast-raise",
+        "cast-release",
+        "cast-recover",
+        "cast-rest"
+      ],
+      "physicalWidth": 2029,
+      "physicalHeight": 413,
+      "resourcePath": "res://assets/painted-actions-v1/gravekeeper-cast-v1.png",
+      "sha256": "d39fd204bd3b6cb01c75f5273cd5e2d5e07a4d9ebcb6e38b72264b79398853f8",
+      "presentationScale": 0.0921053,
+      "frameRegions": [
+        [
+          0,
+          0,
+          349,
+          413
+        ],
+        [
+          349,
+          0,
+          316,
+          413
+        ],
+        [
+          665,
+          0,
+          321,
+          413
+        ],
+        [
+          986,
+          0,
+          392,
+          413
+        ],
+        [
+          1378,
+          0,
+          309,
+          413
+        ],
+        [
+          1687,
+          0,
+          342,
+          413
+        ]
+      ],
+      "frameAnchors": [
+        [
+          185,
+          401
+        ],
+        [
+          187,
+          401
+        ],
+        [
+          185,
+          401
+        ],
+        [
+          190,
+          401
+        ],
+        [
+          187,
+          401
+        ],
+        [
+          188,
+          401
+        ]
+      ],
+      "qualityTier": "painted-cast-v1-reviewed",
       "textureFilter": "linear"
     }
   ]

@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "workingDirectory": "/tmp",
+  "productionBuildRun": false,
+  "compiledScratchHarnessOnly": true,
+  "newEmptyOutputExit": 0,
+  "repositoryOutputExit": 2,
+  "repositoryOutputNotCreated": true,
+  "nonemptyOutputExit": 2,
+  "nonemptySentinelPreserved": true,
+  "runtimeAssemblyHashes": "runtime-assemblies-sha256.txt",
+  "routes": {
+    "cast": {
+      "passed": true,
+      "actionCount": 133,
+      "beforeHash": "5ade5a03",
+      "afterHash": "05d9a950",
+      "beforeFileSha256": "ade3ea1760a3d76d34c1beb592b35ef69c3883c947cf98c986544d77a3384d14",
+      "traceBytesMatch": true,
+      "originalBeforeAfterBytesPreserved": true
+    },
+    "heal-right": {
+      "passed": true,
+      "actionCount": 179,
+      "beforeHash": "2c734d26",
+      "afterHash": "e6c1b8e2",
+      "beforeFileSha256": "9a2d1f6434e80c3c04758cf31c7308f782ea7786410b29fde09db5136bb35a9d",
+      "traceBytesMatch": true,
+      "originalBeforeAfterBytesPreserved": true
+    },
+    "heal-left": {
+      "passed": true,
+      "actionCount": 179,
+      "beforeHash": "6d581393",
+      "afterHash": "993e2229",
+      "beforeFileSha256": "361bc8ee650428f5a56544fe3f25fef72472af4d8ead0e471a4ca6f98510860a",
+      "traceBytesMatch": true,
+      "originalBeforeAfterBytesPreserved": true
+    }
+  },
+  "formatterVerifyExit": 0,
+  "formattedHarnessSha256": "81a287e85f58dfc403fd555d165bc6aba1c1d5a2af20ed413e39ae9c4d90051b",
+  "replayAfterFormatting": true
+}

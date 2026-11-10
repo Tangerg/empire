@@ -40,6 +40,7 @@ public partial class AnimationChecks : Node
             CheckActorClipDefinitions();
             CheckReleaseDefinitions();
             await CheckTorrenThrustPlayback();
+            await CheckGravekeeperCastPlayback();
             await CheckTorrenIdlePlayback();
             await CheckTorrenRecoilPlayback();
             await CheckTorrenFallPlayback();

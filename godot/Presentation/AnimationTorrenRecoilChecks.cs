@@ -142,13 +142,15 @@ public partial class AnimationChecks
             var events = healing ? new[] { HealingEvent(aid, did) }
                 : MainAttackScope(source, target, "c01.border-blade", zero);
             var task = board.PresentTransitionAsync(viewportFeedback, Transition(fixture, fixture, IdleAction(), events));
-            await Tick(board, .08);
+            var elapsedMs = healing ? 300.0 : 80.0;
+            await Tick(board, elapsedMs / 1000);
             var sprite = Actor(board, did).GetNode<Sprite2D>("AuthoredSprite");
             var sign = sprite.Scale.X < 0 ? -1 : 1;
-            foreach (var step in new[] { 0.0, .04, .11, .09, .08 })
+            foreach (var stepMs in new[] { 0.0, 40, 110, 90, 80 })
             {
-                await Tick(board, step);
-                CheckClipSprite(sprite, idle.Asset, 0, sign);
+                await Tick(board, stepMs / 1000);
+                elapsedMs += stepMs;
+                CheckClipSprite(sprite, idle.Asset, idle.FrameAt(elapsedMs % idle.Length), sign);
                 Require(board.GetNodeOrNull(healing ? "BattleEffects/Heal" : "BattleEffects/Hit") is not null,
                     "Healing and zero-damage feedback remain visible without acquiring recipient recoil ownership.");
             }

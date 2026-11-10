@@ -1,0 +1,56 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Animation facing checks passed, including the lawful C04 receipt.
+ERROR: System.InvalidOperationException: The generic gravekeeper selects its six-pose authored channel with exact release/recovery timing and no accent.
+   at Empire.Presentation.AnimationChecks.Require(Boolean condition, String message) in /workspace/scratch/84c9fe948755/empire-work/godot/Presentation/AnimationChecks.cs:line 596
+   at Empire.Presentation.AnimationChecks.CheckShippedActorClip(String type, String key) in /workspace/scratch/84c9fe948755/empire-work/godot/Presentation/AnimationActorClipChecks.cs:line 169
+   at Empire.Presentation.AnimationChecks.CheckActorClipDefinitions() in /workspace/scratch/84c9fe948755/empire-work/godot/Presentation/AnimationActorClipChecks.cs:line 22
+   at Empire.Presentation.AnimationChecks._Ready() in /workspace/scratch/84c9fe948755/empire-work/godot/Presentation/AnimationChecks.cs:line 40
+   at: void Empire.Presentation.AnimationChecks+<_Ready>d__57.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/AnimationChecks.cs:40)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.AnimationChecks+<_Ready>d__57.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/AnimationChecks.cs:40)
+       [2] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [3] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [4] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [5] void System.Threading.Tasks.Task.RunContinuations(object)
+       [6] bool System.Threading.Tasks.Task`1.TrySetResult(TResult)
+       [7] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(System.Threading.Tasks.Task`1[TResult], TResult)
+       [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [9] void Empire.Presentation.AnimationChecks+<CheckFacingPlayback>d__104.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/AnimationFacingChecks.cs:34)
+       [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [12] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [13] void System.Threading.Tasks.Task.RunContinuations(object)
+       [14] bool System.Threading.Tasks.Task`1.TrySetResult(TResult)
+       [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(System.Threading.Tasks.Task`1[TResult], TResult)
+       [16] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [17] void Empire.Presentation.AnimationChecks+<CheckFacingLegalReceipt>d__114.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/AnimationFacingChecks.cs:435)
+       [18] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [19] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [20] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [21] void System.Threading.Tasks.Task.RunContinuations(object)
+       [22] bool System.Threading.Tasks.Task`1.TrySetResult(TResult)
+       [23] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(System.Threading.Tasks.Task`1[TResult], TResult)
+       [24] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [25] void Empire.Presentation.AnimationChecks+<Drain>d__71.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/AnimationChecks.cs:566)
+       [26] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [27] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [28] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [29] void System.Threading.Tasks.Task.RunContinuations(object)
+       [30] bool System.Threading.Tasks.Task`1.TrySetResult(TResult)
+       [31] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(System.Threading.Tasks.Task`1[TResult], TResult)
+       [32] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [33] void Empire.Presentation.AnimationChecks+<Tick>d__70.MoveNext() (/workspace/scratch/84c9fe948755/empire-work/godot/Presentation/AnimationChecks.cs:560)
+       [34] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [35] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [36] void System.Runtime.CompilerServices.YieldAwaitable+YieldAwaiter+<>c.<System.Runtime.CompilerServices.IStateMachineBoxAwareAwaiter.AwaitUnsafeOnCompleted>b__5_0(object)
+       [37] void Godot.GodotSynchronizationContext.ExecutePendingContinuations() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GodotSynchronizationContext.cs:51)
+       [38] void Godot.GodotTaskScheduler.Activate() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GodotTaskScheduler.cs:76)
+       [39] void Godot.Bridge.ScriptManagerBridge.FrameCallback() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/ScriptManagerBridge.cs:84)

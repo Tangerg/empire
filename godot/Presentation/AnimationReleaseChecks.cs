@@ -35,11 +35,12 @@ public partial class AnimationChecks
             .Concat(shipped.Actors.Select(pair => (pair.Value.ExpectedUnitType, (string?)pair.Key))))
         {
             var shippedClip = assets.ResolveUnitClip(type, "attack", ActorClipUnit.Milliseconds, key);
-            var duration = key == "campaign-torren" ? 360 : 150;
-            var release = key == "campaign-torren" ? 160 : 75;
+            var channel = type == "c01.gravekeeper" && key is null;
+            var duration = key == "campaign-torren" ? 360 : channel ? 600 : 150;
+            var release = key == "campaign-torren" ? 160 : channel ? 300 : 75;
             Require(shippedClip.Length == duration && shippedClip.ReleaseMs == release && shippedClip.RequireRelease() == release
-                && shippedClip.ShowAccent == (key != "campaign-torren"),
-                "Torren releases at full extension; remaining static attack/work poses retain their original duration and release.");
+                && shippedClip.ShowAccent == (key != "campaign-torren" && !channel),
+                "Torren thrust and gravekeeper channel use authored releases; every other attack/work binding retains its precise static duration, release and accent.");
         }
 
         var (manifest, bindings) = ReleaseFixture();

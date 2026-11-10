@@ -109,8 +109,13 @@ or accepted multi-frame character artwork. The later `torren.thrust` action sele
 `showAccent` option defaults to true; this authored thrust sets it false because
 the old crescent obscured its arm and blade in real gameplay. This controls only
 accent creation, never impact, timing, motion or state transitions. Multi-frame/cross-sheet checks use
-trusted sheets as explicitly synthetic infrastructure fixtures. Recipient reactions
-and celebration are specified below; their new artwork remains unfinished. Main
+trusted sheets as explicitly synthetic infrastructure fixtures. Generic gravekeepers
+now select `gravekeeper.channel`: six lantern-casting poses over 600 ms, releasing
+at 300 ms, also without the source accent. Both existing magic weapons and healing
+use this unit's explicit stationary attack action. See the
+[gravekeeper cast review](../../docs/art-gravekeeper-cast-20261110/README.md).
+Recipient reactions and celebration are specified below; Torren has separately
+reviewed art while the other actors retain static bindings. Main
 attack activation follows. FX identity is not an action classifier. In particular,
 `castResolved` must not repeat the following attack's wind-up, and area victims
 must not each start another caster animation.
@@ -208,9 +213,10 @@ image is shipped.
 `DefaultAbilities.Heal` remains the sole healing rule owner. Its committed `heal`
 event supplies `source`, `target` and the actual `amount`; the presenter neither
 queries healing rules nor invents a weapon or another event. The explicit
-`CANDIDATE_01_ABILITY_ACTION.heal` policy selects the existing `attack` pose and
-`stationary` motion. This deliberately reuses trusted art rather than falling
-back to a pose or claiming a newly authored healing animation. The four shipped
+`CANDIDATE_01_ABILITY_ACTION.heal` policy selects the explicit `attack` action and
+`stationary` motion. Generic gravekeepers now use their six-pose lantern cast for
+both healing and magic attacks; the other healers retain their trusted static art.
+The four shipped
 healer types (`cleric`, `c01.mirelle`, `c01.gravekeeper`, `c01.druid`) resolve that
 action through their normal type/actor art bindings.
 
@@ -218,8 +224,9 @@ Ability and weapon declarations share immutable `ActorAction` admission, but
 retain separate lookup domains. `ActorClip` still exclusively owns release.
 `AnimateActorAction` is the same composition for damage and healing: source
 recovery and the recipient's existing 500 ms healing effect sample one receipt
-clock. The shipped static pose releases at 75 ms, restores idle at 150 ms, and
-finishes recipient feedback at 575 ms. The recipient keeps its emitted amount,
+clock. Static healer poses release at 75 ms, restore idle at 150 ms, and finish
+recipient feedback at 575 ms. The generic gravekeeper releases at 300 ms, restores
+idle at 600 ms, and finishes the same recipient feedback at 800 ms. The recipient keeps its emitted amount,
 current drawn contact, original effect strip, number rise and fade. No extra
 `attack` or `heal` receipt is produced.
 

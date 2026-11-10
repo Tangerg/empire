@@ -20,7 +20,8 @@ public partial class AnimationChecks
         foreach (var type in new[] { "cleric", "c01.mirelle", "c01.gravekeeper", "c01.druid" })
         {
             var clip = assets.ResolveUnitClip(type, selected.Action, ActorClipUnit.Milliseconds);
-            Require(clip.Length == 150 && clip.RequireRelease() == 75,
+            Require(clip.Length == (type == "c01.gravekeeper" ? 600 : 150)
+                && clip.RequireRelease() == (type == "c01.gravekeeper" ? 300 : 75),
                 "Every shipped healer admits the selected timed actor action and release marker.");
         }
         var (manifest, bindings) = HealingFixture();

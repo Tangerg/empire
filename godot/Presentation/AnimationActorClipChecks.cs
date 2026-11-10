@@ -164,6 +164,14 @@ public partial class AnimationChecks
                 "Torren alone selects his six-pose authored thrust and its own release/recovery timing.");
             return;
         }
+        if (type == "c01.gravekeeper" && key is null)
+        {
+            Require(clip.Asset.Identity == "gravekeeper-cast-v1" && clip.Asset.TopicId == asset.TopicId
+                && clip.Asset.FrameCount == 6 && clip.Length == 600 && clip.RequireRelease() == 300
+                && !clip.ShowAccent,
+                "The generic gravekeeper selects its six-pose authored channel with exact release/recovery timing and no accent.");
+            return;
+        }
         var frame = AssetCatalog.FrameIndex(asset, asset.Category == "mission-unit" ? "carry-or-work" : "attack");
         Require(clip.Asset == asset && clip.Length == 150 && clip.FrameAt(0) == frame && clip.FrameAt(150) == frame,
             "Shipped combat and mission bindings preserve their existing selected one-pose, 150 ms strike.");
