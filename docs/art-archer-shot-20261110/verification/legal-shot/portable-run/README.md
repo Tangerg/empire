@@ -1,0 +1,7 @@
+# Corrected three-route portable replay
+
+Executed from /tmp using the absolute derive.sh path, explicit repository root, unchanged frozen final DLLs and a new checkpoint/mirror-final-portable2 output. All three 109-command routes pass (replay.exit 0). The corrected harness reads the actual C01 assembled-ground registration. It asserts right=False, retained left/move-right=False, mirror-left=True and separately checks actual target screen displacement. Every verification-result JSON and summary.json here comes from this corrected run; the earlier incorrect dimetric-based results have been superseded.
+
+Only the copied scratch harness was built. Targeted dotnet format whitespace with the repository .editorconfig and a subsequent --verify-no-changes both exit 0. Repository-contained and nonempty-output rejection checks both exit 2, with rejection text preserved. Both original before.json files retain their initial byte hashes; mirror-left is a new independent legal input.
+
+The exploratory first corrected run reached mirror-left verification but its optional origin attack-count diagnostic assumed an origin attack existed. This route has no attack at origin and two at its chosen destination. The diagnostic now records 0 when the origin offers only Wait. No legality, action, state, receipt or projected-facing assertion was weakened. That failed attempt remains in external QA as mirror-final-portable; this package records the succeeding full mirror-final-portable2 replay.

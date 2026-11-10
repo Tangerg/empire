@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "workingDirectory": "/tmp",
+  "replayOutput": "checkpoint/mirror-final-portable2",
+  "replayExit": 0,
+  "formattedHarnessVerifyExit": 0,
+  "repositoryOutputRejectedExit": 2,
+  "nonemptyOutputRejectedExit": 2,
+  "projection": "actual C01 assembled-ground registration",
+  "routes": [
+    {
+      "directory": "right",
+      "meaning": "right",
+      "expectedMirrored": false,
+      "beforeSha256": "9c8ae5e8705ac02f18ed698621102794e82c87664317c1531b4f5d40849380b4",
+      "beforeStateHash": "e78478df",
+      "afterStateHash": "07dcb354",
+      "targetScreenDelta": [
+        64,
+        0.36219419115420437
+      ],
+      "registeredFacingX": 32
+    },
+    {
+      "directory": "left",
+      "meaning": "move-right",
+      "expectedMirrored": false,
+      "beforeSha256": "28b9391128dd6b230a00d085955d2c49983a91d56bd879afd72f7d9673525902",
+      "beforeStateHash": "e78478df",
+      "afterStateHash": "560674d7",
+      "targetScreenDelta": [
+        42.85727017139114,
+        41.989334990721645
+      ],
+      "registeredFacingX": 5.428635085695569
+    },
+    {
+      "directory": "mirror-left",
+      "meaning": "mirror-left",
+      "expectedMirrored": true,
+      "beforeSha256": "31f7ce5d8cdf3d898af1666d63c7da358db88e5c7495e6dba5b114074bd34544",
+      "beforeStateHash": "c143a16e",
+      "afterStateHash": "ec273a9e",
+      "targetScreenDelta": [
+        -42.85727017139114,
+        -41.989334990721645
+      ],
+      "registeredFacingX": -5.428635085695569
+    }
+  ],
+  "productionBuildPerformed": false,
+  "desktopOperationsPerformed": false
+}

@@ -78,6 +78,51 @@ actor contracts retain their exact expectations. The focused build occurred
 before the implementation commit; native recording and the aggregate will use
 the post-commit build and retain their own identities.
 
-Actual native battle recordings and the full aggregate remain pending; source
-previews and focused checks alone are not final gameplay acceptance.
+## Native gameplay acceptance
+
+Three real native sessions loaded unmodified official campaign saves and used
+normal UI commands. `verification/legal-shot/` preserves all 109 legal orders
+for each route and replays their complete actions, events, state and official
+save roundtrips against the exact final build. Its portable replay passes from
+/tmp; repository-contained or nonempty output is rejected with exit 2.
+
+- `native-right-*`: stationary eastward shot, 45 consecutive observations.
+  Elin78→78; swordsman98→63, matching preview35. Six poses start at observations
+  0/5/11/19/23/30; original idle returns at35, feedback finishes at44.
+- `native-move-right-*`: ordinary three-cell movement before shooting, 74
+  observations. Six shot poses start at28/34/40/47/52/58; idle returns64, the
+  transition finishes73. Target98→63, preview35. Source root is constant only
+  during shooting, not during the preceding locomotion.
+- `native-mirror-left-*`: three-cell movement followed by a genuinely mirrored
+  shot, 74 observations, with the same pose starts as move-right. A guarding
+  shield soldier takes15, HP93→78, matching preview; the result panel shows
+  78/120 maximum. There is no counter or death in any of these three shots.
+
+An initial planned left route actually faced right. The C01 assembled-ground
+registration differs from the generic dimetric basis. Native actor traces and
+pixels exposed the mistaken assumption; the retained input `legal-shot/left/`
+is explicitly move-right, not left-facing evidence. The derivation harness now
+reads the actual registration and checks projected facing and target side.
+The separate `mirror-left/` route was then replayed and recorded; its shot
+trace is `mirrored=true`. No production projection or combat rule changed.
+
+Independent pixel review accepted right and true left: articulated hands,
+blue-hood identity, full bow length, string/arrow continuity, stable feet and
+ready-to-original-idle handoff. Full-size frames show no source occlusion in
+these two layouts. On observations18→19 (right) and46→47 (left), the nocked
+arrow disappears and the target damage indicator begins. Target impact covers
+part of the target, not the archer. No travelling arrow is visible or claimed.
+Review was frame-by-frame and at native size, not continuous playback or a
+performance benchmark. The moved-right session is additional timing/route
+coverage, not the basis for the independent two-facing visual verdict.
+
+Each `native-*-lossless.mp4` decodes to RGB bytes exactly equal to every saved
+960×640 source PNG. Frame hashes, all raw actor traces, lossless videos,
+preview/release/result PNGs and diagnostic phase crops are retained. The
+readback capture uses fixed60 simulation and stride1; it can slow wall-clock
+rendering. Original PNG alpha is not asserted by the RGB video comparison.
+All shots use implementation commit `c328a808`, Empire.dll SHA256
+`184194d4…fab315`, Core `5130e396…08db`. The full gate is using the identical
+post-commit build; its final result remains pending.
+
 Exported-build performance and complete-campaign acceptance are not claimed.

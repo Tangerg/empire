@@ -1,0 +1,62 @@
+{
+  "status": "PASS_RIGHT_AND_TRUE_MIRROR_LEFT_PIXEL_REVIEW",
+  "method": "Independent frame-by-frame review of source native PNG pixels, native-size full scenes, previews and result screenshots. No continuous playback or performance claim.",
+  "right": {
+    "observations": 45,
+    "poseStarts": [
+      0,
+      5,
+      11,
+      19,
+      23,
+      30
+    ],
+    "originalIdleObservation": 35,
+    "releaseTransition": [
+      18,
+      19
+    ],
+    "previewDamage": 35,
+    "targetHp": [
+      98,
+      63
+    ],
+    "sourceUnobscured": true
+  },
+  "mirrorLeft": {
+    "observations": 74,
+    "poseStarts": [
+      28,
+      34,
+      40,
+      47,
+      52,
+      58
+    ],
+    "originalIdleObservation": 64,
+    "releaseTransition": [
+      46,
+      47
+    ],
+    "previewDamage": 15,
+    "targetHp": [
+      93,
+      78
+    ],
+    "resultMaximumHp": 120,
+    "sourceUnobscured": true
+  },
+  "accepted": [
+    "Blue hood, face, clothes, quiver, bow and hand ownership remain consistent.",
+    "Recovery bow length correction stays stable in both native facings.",
+    "Arrow/string visible at nock/draw, arrow absent at release.",
+    "Articulated arm poses, stable support during shot, acceptable move-to-shot and ready-to-idle handoff.",
+    "Target impact occurs as the arrow disappears from the bow."
+  ],
+  "limits": [
+    "No visible travelling projectile; existing impact FX is not projectile flight.",
+    "Target impact partially covers target; no source occlusion in accepted two layouts.",
+    "All scenery/actor overlap arrangements, exported performance and complete campaign not accepted here."
+  ],
+  "additionalMoveRight": "74 observations retained as route/timing coverage; not counted as left-facing or independent visual acceptance."
+}
