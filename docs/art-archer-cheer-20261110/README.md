@@ -55,10 +55,23 @@ anchors, uniform scale and declared timing; a one-channel mutation is rejected.
 The corrected complete native `AnimationChecks` run passes 6,669 assertions
 with strict process/diagnostic exit 0. Native build has zero warnings/errors;
 editor import, whitespace checks and 213 unique script UIDs also pass.
-Legal native victory capture, complete saved-state comparison and the full
-native gate remain pending. Full campaign,
-standalone exports, other unfinished animations and real-time performance are
-outside this slice. No pending check is represented as passed.
+The final-assembly legal witness independently replays 214 authorized game
+orders. Actual normal-UI victory output equals its complete expected save,
+excluding only the two savedAt timestamps. The accepted 100-frame native window
+contains both archers' six celebration poses, preceding enemy retirement and
+their return to idle after Torren. Lossless full-frame RGB roundtrip, trace
+continuity and independent native-size visual inspection pass. The captured
+facing is unmirrored; mirrored coverage is from source registration and
+controlled-clock checks. See `verification/legal/`, `verification/native/` and
+`verification/native-review.md` for evidence and explicit capture limitations.
+
+Four isolated production-data mutations fail at the intended first assertion;
+the restored positive suite passes all 6,669 assertions. Data/resources/imports
+and frozen/staged DLL hashes remain byte-identical after the controls.
+
+The original full native gate remains in progress and is not represented as
+passed. Full campaign, standalone exports, other unfinished animations and
+real-time performance are outside this slice.
 
 The first focused run passed the new production cheer checks, then exposed an
 older full-C01 announcement fixture that assumed Torren's 900 ms salute was

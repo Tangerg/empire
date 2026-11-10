@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "frameCount": 100,
+  "captureStride": 1,
+  "captureWindow": "Late death through complete celebration and idle; not the full terminal attack",
+  "actors": {
+    "3": {
+      "celebrationIdentity": "archer-cheer-v1",
+      "phaseStartFrames": {
+        "0": 41,
+        "1": 47,
+        "2": 54,
+        "3": 64,
+        "4": 80,
+        "5": 90
+      },
+      "idleFrame": 99,
+      "stablePositionAndSupportPlane": true,
+      "stableCelebrationScale": true,
+      "mirrored": false
+    },
+    "9": {
+      "celebrationIdentity": "archer-cheer-v1",
+      "phaseStartFrames": {
+        "0": 41,
+        "1": 47,
+        "2": 54,
+        "3": 64,
+        "4": 80,
+        "5": 90
+      },
+      "idleFrame": 99,
+      "stablePositionAndSupportPlane": true,
+      "stableCelebrationScale": true,
+      "mirrored": false
+    }
+  },
+  "completeNativeSaveEquality": true,
+  "visualOcclusionReview": "Parent-native screenshot review; actor trace coordinates are projection-local, not screen coordinates."
+}
