@@ -84,9 +84,26 @@ cadence, simulation time and real performance.
 The reviewed native build completed with zero warnings/errors. Focused
 AnimationChecks completed with 3,352 assertions and no error/leak diagnostics,
 then the movement witness was strengthened from one cell to three cells and
-450 ms so it crosses the first idle boundary. The final full aggregate is still
-running against that strengthened source; its completion will be recorded
-separately rather than treating the earlier focused result as a final full pass.
+450 ms so it crosses the first idle boundary. The final full aggregate has now completed against that strengthened source:
+`bash tools/godot/verify-native.sh` exited 0 with no error/leak diagnostics,
+including **3,353 animation assertions** and **20,359 played-flow assertions**.
+`verification/full-native-passed.txt` and `full-native-status.json` retain the
+complete result. The tested assembly hash matches both real-render recordings.
+The played-flow count includes process-frame waiting checks; it is not a stable
+count of unique gameplay scenarios.
+
+All 16 independent-level action/event/receipt hashes, covering 3,425 legal
+orders, match baseline `e0d50d13`. All six played-flow result markers also match:
+C01 and C02 victories after 415 legal orders, then 21 orders in C03, plus the
+opponent-caused defeat/retry probe. This is not C03 victory or full-campaign
+acceptance. All 41 warning lines match the baseline multiset after normalizing
+isolated temporary paths, including intentional save-rejection probes and
+existing import/viewport warnings. No check was disabled or weakened.
+
+GitHub reports no workflow run or status context for source commit `8211e683`.
+The existing workflow triggers on main-branch pushes, pull requests or manual
+dispatch, not this feature-branch push. This local native gate and captured
+native artwork are not being presented as a remote CI result.
 
 ### Actual rendered idle and recovery
 

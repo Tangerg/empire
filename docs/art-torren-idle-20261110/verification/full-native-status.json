@@ -1,0 +1,34 @@
+{
+  "command": "bash tools/godot/verify-native.sh",
+  "exitCode": 0,
+  "sourceCommit": "8211e683f615bcb3607b254b07c981faed052607",
+  "baselineCommit": "e0d50d13cfa3fe4891c280a52c75e33f72ec0ef3",
+  "assemblySha256": "5984348d8d193135e9ded0104f7e9e2b121ef77f70a2f7aba0229764bb7aea9a",
+  "fullLogSha256": "339999dfd25a02103b65850622b2f88b2057c07941f9d6ffa4427611e102ecb8",
+  "errorOrLeakDiagnostics": 0,
+  "animationAssertions": 3353,
+  "playedFlowAssertions": 20359,
+  "independentLevels": 16,
+  "independentLegalOrders": 3425,
+  "allIndependentReplayHashesUnchanged": true,
+  "playedOpeningMarkers": [
+    "PLAYED_AI_DEFEAT_OK orders=152; terminal=3dbb09d3; events=10; completions=1; retry=9dae091b; both slots unchanged",
+    "PLAYED_TERMINAL level=c01-01; legal orders=156; outcome=victory; completion views=1; events=524; presented=524; turn=9; state=c46d9172; conclusion={\"kind\":\"lastTeamRemaining\",\"team\":1}",
+    "CARRIED_VICTORY_OK level=c01-01; legal orders=156; events=524; terminal=c46d9172; campaign=17488f7b; next=battle-02",
+    "PLAYED_TERMINAL level=c01-02; legal orders=259; outcome=victory; completion views=1; events=584; presented=584; turn=13; state=5967317c; conclusion={\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}",
+    "CARRIED_VICTORY_OK level=c01-02; legal orders=259; events=584; terminal=5967317c; campaign=d152d095; next=battle-03",
+    "CARRIED_OPENING_OK battles played in this process=415 legal orders; third opening=21 orders; third state=d1103229; outcomes=c01-01:c46d9172:{\"kind\":\"lastTeamRemaining\",\"team\":1};c01-02:5967317c:{\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}. No third-battle victory or full-campaign claim."
+  ],
+  "normalizedWarningsMatchBaseline": true,
+  "warningCount": 41,
+  "manualGuiScope": "Two Torren breathing cycles and normal physical attack recovery; idle capture board-reload rejection and seven invalid option probes.",
+  "githubActionsRunsForSourceCommit": 0,
+  "githubStatusContextsForSourceCommit": 0,
+  "githubWorkflowTriggers": [
+    "push main",
+    "pull_request",
+    "workflow_dispatch"
+  ],
+  "exportAcceptance": "Not run.",
+  "completeCampaignAcceptance": "Not claimed."
+}
