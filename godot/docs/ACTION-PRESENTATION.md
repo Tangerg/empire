@@ -552,7 +552,8 @@ focus diamond to stationary actions (including healing). These are generic actio
 accents, not weapon classifications or new sprite-sheet animation. The lunge
 ribbon continuously sweeps from anticipation through target-aligned release into
 follow-through. Two thinner tapered trails appear only after release, behind the
-leading edge. Rotation and trails are sampled analytically from that same clip
+leading edge. Their warm fill and ink edge retain separation from the character
+silhouette at gameplay zoom; see the [C01 real-render comparison](MELEE-READABILITY-20261110.md). Rotation and trails are sampled analytically from that same clip
 clock; no previous-frame history, particles or extra timeline is retained. The
 stationary focus remains upright and unchanged. See the
 [continuous sweep verification](COMBAT-SWEEP-20261110.md) for native coverage and

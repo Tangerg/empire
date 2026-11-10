@@ -107,3 +107,11 @@ static review therefore **does not close animation visual acceptance**. A
 reliable real-render temporal capture at normal gameplay zoom remains required.
 The isolated game window was left available for inspection; existing user saves
 and the concurrently running verification namespaces were not touched.
+
+## Follow-up temporal review
+
+The later [melee readability review](MELEE-READABILITY-20261110.md) retains a
+complete real-render C01 attack sequence at fixed 60 Hz simulation steps, including
+the nine shipped action samples, and a modest trail-contrast improvement. This
+supersedes the missing temporal pixels for that one example only, not the broader
+visual and natural-performance acceptance limits above.

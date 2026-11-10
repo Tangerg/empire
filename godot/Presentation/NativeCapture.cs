@@ -145,8 +145,8 @@ public partial class NativeCapture : Node
                     break;
                 var size = GetViewport().GetVisibleRect().Size;
                 var requiredBytes = (long)size.X * (long)size.Y * 4;
-                if (bufferedBytes + requiredBytes > 64L * 1024 * 1024)
-                    throw new IOException("Motion capture aborted: 64 MiB frame budget reached; no incomplete sequence saved.");
+                if (bufferedBytes + requiredBytes > 256L * 1024 * 1024)
+                    throw new IOException("Motion capture aborted: 256 MiB frame budget reached; no incomplete sequence saved.");
                 var image = GetViewport().GetTexture().GetImage();
                 frames.Add((image, "")); // Own immediately, including if tracing throws below.
                 bufferedBytes += requiredBytes;

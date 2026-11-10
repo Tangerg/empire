@@ -39,16 +39,15 @@ public partial class ActorActionAccent : Node2D
         if (motion == ActorMotion.Lunge)
         {
             // Motion determines the gesture, not the weapon's material or damage type.
-            const int segments = 18;
             var radius = 16 + progress * 5;
             if (recovering)
             {
-                var trail = new Color(light, strength * .35f);
-                DrawRibbon(radius - 3, -1.7f, 2.05f, 1.6f, trail);
-                DrawRibbon(radius - 6, -1.9f, 1.8f, .8f, trail);
+                var trail = new Color(light, strength * .55f);
+                var trailInk = new Color(ink, strength * .55f);
+                DrawRibbon(radius - 3, -1.7f, 2.05f, 1.6f, trail, trailInk);
+                DrawRibbon(radius - 6, -1.9f, 1.8f, .8f, trail, trailInk);
             }
-            DrawRibbon(radius, -1.35f, 2.2f, 4.15f, light);
-            DrawArc(Vector2.Zero, radius + 1, -1.35f, .85f, segments + 1, ink, 1, true);
+            DrawRibbon(radius, -1.35f, 2.2f, 4.15f, light, ink);
         }
         else
         {
@@ -62,7 +61,7 @@ public partial class ActorActionAccent : Node2D
         }
     }
 
-    private void DrawRibbon(float radius, float start, float span, float width, Color color)
+    private void DrawRibbon(float radius, float start, float span, float width, Color color, Color outline)
     {
         const int segments = 18;
         var points = new Vector2[(segments + 1) * 2];
@@ -74,5 +73,6 @@ public partial class ActorActionAccent : Node2D
             points[points.Length - 1 - i] = edge * (radius - .35f - MathF.Sin(t * MathF.PI) * width);
         }
         DrawColoredPolygon(points, color);
+        DrawArc(Vector2.Zero, radius + 1, start, start + span, segments + 1, outline, 1, true);
     }
 }
