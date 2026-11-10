@@ -1,0 +1,40 @@
+{
+  "command": "bash tools/godot/verify-native.sh",
+  "exitCode": 0,
+  "sourceCommit": "f411439262b481284558ff3987a766856068ffbe",
+  "baselineCommit": "50ecca87d3f816462a0c4c5d9e310375dea3e325",
+  "assemblySha256": "f1ab58516907d05b5a71edd6afb92669f19b3c32be5d058d4f06c0de1f32aba7",
+  "fullLogSha256": "2d49fe23212bba717aa4b39a8fbde957449b2352b17132013f552fabbedca616",
+  "errorOrLeakDiagnostics": 0,
+  "animationAssertions": 3787,
+  "playedFlowAssertions": 20478,
+  "independentLevels": 16,
+  "independentLegalOrders": 3425,
+  "allIndependentReplayHashesUnchanged": true,
+  "playedOpeningMarkers": [
+    "PLAYED_AI_DEFEAT_OK orders=152; terminal=3dbb09d3; events=10; completions=1; retry=9dae091b; both slots unchanged",
+    "PLAYED_TERMINAL level=c01-01; legal orders=156; outcome=victory; completion views=1; events=524; presented=524; turn=9; state=c46d9172; conclusion={\"kind\":\"lastTeamRemaining\",\"team\":1}",
+    "CARRIED_VICTORY_OK level=c01-01; legal orders=156; events=524; terminal=c46d9172; campaign=17488f7b; next=battle-02",
+    "PLAYED_TERMINAL level=c01-02; legal orders=259; outcome=victory; completion views=1; events=584; presented=584; turn=13; state=5967317c; conclusion={\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}",
+    "CARRIED_VICTORY_OK level=c01-02; legal orders=259; events=584; terminal=5967317c; campaign=d152d095; next=battle-03",
+    "CARRIED_OPENING_OK battles played in this process=415 legal orders; third opening=21 orders; third state=d1103229; outcomes=c01-01:c46d9172:{\"kind\":\"lastTeamRemaining\",\"team\":1};c01-02:5967317c:{\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}. No third-battle victory or full-campaign claim."
+  ],
+  "normalizedWarningsMatchBaseline": true,
+  "warningCount": 41,
+  "manualGuiScope": "One lawful AI lethal attack on Torren, all six fall poses, final hold/fade and retirement; 78 full-viewport observations. Frame-by-frame PNG and trace review, not direct continuous video playback.",
+  "nativeVisibilityLimit": "The enemy shield obscures the head and left equipment late in the fall; unobstructed artwork is covered by separate source/static mirror review.",
+  "negativeControls": [
+    "One original RGBA channel changed in memory: extraction verifier rejected.",
+    "Final pose span180 changed to179ms only in isolated project data: fatal-recoil death contract assertion rejected with exit1.",
+    "Terminal fade160 changed to159ms only in isolated project data: fatal-recoil death contract assertion rejected with exit1."
+  ],
+  "githubActionsRunsForSourceCommit": 0,
+  "githubStatusContextsForSourceCommit": 0,
+  "githubWorkflowTriggers": [
+    "push main",
+    "pull_request",
+    "workflow_dispatch"
+  ],
+  "exportAcceptance": "Not run.",
+  "completeCampaignAcceptance": "Not claimed."
+}

@@ -104,6 +104,25 @@ mutation. Original data and recorded inputs remained unchanged. Detailed logs
 are in `verification/`; `data-scope.txt` records semantic equality of all old
 manifest/binding data after removing just this addition.
 
-The full aggregate is still running. Exported-build and complete-campaign
-acceptance are not claimed, and the remaining character actions remain separate
-work.
+### Full native gate
+
+`bash tools/godot/verify-native.sh` completed with exit 0, no error/leak diagnostics,
+**3,787 animation assertions** and **20,478 played-flow assertions**.
+The reviewed assembly hash matches the native recording. Complete output and
+machine-readable status are retained in `verification/full-native-passed.txt`
+and `full-native-status.json`. The played-flow assertion count includes
+process-frame waits; it is not a count of unique gameplay scenarios.
+
+All 16 independent-level action/event/receipt hashes, covering 3,425 legal
+orders, match baseline `50ecca87`. All six played-flow result markers also match:
+C01 and C02 victories after 415 legal orders, then 21 orders in C03, plus the
+opponent-caused defeat/retry probe. This is not C03 victory or complete-campaign
+acceptance. All 41 warning lines match the baseline multiset after normalizing
+isolated temporary paths, including intentional save-rejection probes and
+existing import/viewport warnings. No check was disabled or weakened.
+
+GitHub reports zero workflow runs and zero status contexts for implementation
+commit `f4114392`. The existing workflow triggers on main-branch pushes, pull
+requests and manual dispatch, not feature-branch pushes. This local native gate
+is not a remote CI claim. Exported-build and complete-campaign acceptance remain
+unperformed; the remaining character actions are separate work.
