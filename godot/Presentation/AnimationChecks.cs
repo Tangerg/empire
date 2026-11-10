@@ -49,6 +49,7 @@ public partial class AnimationChecks : Node
             await CheckTorrenFallPlayback();
             await CheckArcherFallPlayback();
             await CheckTorrenCelebrationPlayback();
+            await CheckArcherCelebrationPlayback();
             CheckHealingDefinitions();
             await CheckClock();
             await CheckCelebrationClips();
@@ -459,6 +460,9 @@ public partial class AnimationChecks : Node
         var repaints = 0;
         void Repaint() => repaints++;
         board.PresentationRepaintRequested += Repaint;
+        var published = new List<int>();
+        void Presented(BattlePresentationTransition _, int index) => published.Add(index);
+        board.EventPresented += Presented;
         var task = board.PresentTransitionAsync(viewportFeedback, Transition(Copy(), after, IdleAction(),
             [new JsonObject { ["type"] = "turnStart", ["player"] = 1, ["turn"] = 3 }, new JsonObject { ["type"] = "gameOver", ["conclusion"] = Empire.Core.Lifecycle.BattleConclusion.LastTeamRemaining(1).ToJson() }]));
         Require(repaints == 1 && viewportFeedback.GetNode<Label>("ViewportEffects/TurnAnnouncement/Band/Number").Text == "Localized announcement",
@@ -469,9 +473,17 @@ public partial class AnimationChecks : Node
         await Tick(board, 0.2201);
         Require(!task.IsCompleted && viewportFeedback.GetNodeOrNull("ViewportEffects/TurnAnnouncement") is null, "Banner leaves in 220 ms before separate game-over beat");
         await Tick(board, 0.2201);
-        Require(!task.IsCompleted, "The original result beat cannot bypass winning Torren's production salute.");
+        Require(!task.IsCompleted && published.SequenceEqual(new[] { 0 }),
+            "The original result beat cannot bypass the winning production cohort.");
         await Tick(board, 0.680);
-        Require(task.IsCompleted && await task, "The 900 ms winning salute completes before the caller may show its result modal.");
+        Require(!task.IsCompleted && board.IsPresenting && published.SequenceEqual(new[] { 0 }),
+            "Torren's 900 ms salute endpoint cannot release gameOver while winning archers still cheer.");
+        await Tick(board, 0.060);
+        Require(task.IsCompleted && await task && !board.IsPresenting && published.SequenceEqual(new[] { 0, 1 }),
+            "The full winning cohort completes its 960 ms cheer before the caller may show the result modal.");
+        await Tick(board, 1);
+        Require(published.SequenceEqual(new[] { 0, 1 }), "Later ticks cannot republish the completed announcement or gameOver.");
+        board.EventPresented -= Presented;
         board.PresentationRepaintRequested -= Repaint;
     }
 
@@ -548,14 +560,26 @@ public partial class AnimationChecks : Node
         AddChild(board);
         board.Configure(new(assets, EnvironmentCatalog.Load(), new Empire.Core.Geometry.Square4Grid(), new Empire.Core.State.ReadOnlyContent(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), BoardPlane.Dimetric), level, AuthoredScene.Load("res://data/scenes/c01-01.json"));
         board.ConfigureDynamicState();
+        var published = new List<int>();
+        void Presented(BattlePresentationTransition _, int index) => published.Add(index);
+        board.EventPresented += Presented;
         var reattached = board.PresentTransitionAsync(viewportFeedback, transition);
         Require(board.IsPresenting && !reattached.IsCompleted, "Explicit reattach and reconfigure restores the presentation lifecycle");
         await Tick(board, 0.220);
-        Require(!reattached.IsCompleted && board.IsPresenting,
-            "Reattached production Torren retains the salute gate after the original 220 ms result beat.");
+        Require(!reattached.IsCompleted && board.IsPresenting && published.Count == 0,
+            "Reattached production winners retain the celebration gate after the original 220 ms result beat.");
         await Tick(board, 0.680);
-        Require(reattached.IsCompleted && await reattached,
-            "Reattached board settles the winning production salute at 900 ms without an unbounded wait.");
+        Require(!reattached.IsCompleted && board.IsPresenting && published.Count == 0,
+            "Reattached Torren's 900 ms endpoint cannot bypass the winning archers' longer cheer.");
+        await Tick(board, 0.059999);
+        Require(!reattached.IsCompleted && published.Count == 0,
+            "The remounted cohort retains gameOver through the archer's last half-open interval.");
+        await Tick(board, 0.000001);
+        Require(reattached.IsCompleted && await reattached && !board.IsPresenting && published.SequenceEqual(new[] { 0 }),
+            "Reattached board settles the winning production cohort at 960 ms and publishes gameOver exactly once.");
+        await Tick(board, 1);
+        Require(published.SequenceEqual(new[] { 0 }), "Retired and completed remount callbacks cannot republish gameOver.");
+        board.EventPresented -= Presented;
         Require(initial.ToJsonString() == initialBytes,
             "All presentation tests leave original canonical fixture data unchanged");
     }

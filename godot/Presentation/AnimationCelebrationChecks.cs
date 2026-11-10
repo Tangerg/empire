@@ -23,7 +23,7 @@ public partial class AnimationChecks
         foreach (var (type, key) in shipped.Units.Keys.Select(type => (type, (string?)null))
             .Concat(shipped.Actors.Select(pair => (pair.Value.ExpectedUnitType, (string?)pair.Key))))
         {
-            if (key == "campaign-torren")
+            if (key == "campaign-torren" || (key is null && type == "c01.archer"))
                 continue;
             var binding = key is null ? shipped.Units[type] : shipped.Actors[key].UnitArt;
             var clip = assets.ResolveUnitClip(type, "celebrate", ActorClipUnit.Milliseconds, key);

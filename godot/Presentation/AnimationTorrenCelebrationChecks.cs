@@ -11,6 +11,9 @@ namespace Empire.Presentation;
 
 public partial class AnimationChecks
 {
+    private sealed record AuthoredCelebrationExpectation(string UnitType, string? BindingKey,
+        double[] Starts, double Duration, double IdleSecondFrameMs, double IdleCycleMs);
+
     private async Task CheckTorrenCelebrationPlayback()
     {
         var bindings = PresentationJson.Load<ArtBindings>("res://data/art-bindings.json");
@@ -45,19 +48,22 @@ public partial class AnimationChecks
         state["units"] = new JsonArray(state["units"]!.AsArray().Take(2).Select(unit => unit!.DeepClone()).ToArray());
         state["units"]![0]!["facing"] = "east";
         var id = Int(state["units"]![1]!.AsObject(), "id");
+        var expected = new AuthoredCelebrationExpectation("c01.swordsman", "campaign-torren",
+            starts, 900, 440, 1800);
         var board = NewActorClipBoard(assets);
         try
         {
-            await CheckTorrenCelebrationBoundaries(board, state, id, clip, idle);
-            await CheckTorrenCelebrationColor(board, state, id, clip);
-            await CheckTorrenCelebrationEligibility(board, state, id, idle);
-            await CheckTorrenCelebrationLifetime(board, state, id, idle);
+            await CheckAuthoredCelebrationBoundaries(board, state, id, clip, idle, expected);
+            await CheckAuthoredCelebrationColor(board, state, id, clip, expected);
+            await CheckAuthoredCelebrationEligibility(board, state, id, idle, expected);
+            await CheckAuthoredCelebrationLifetime(board, state, id, idle, expected);
         }
         finally { RemoveChild(board); board.Free(); }
         GD.Print("Torren salute: six production poses, 900 ms gate, winner eligibility, mirrors/contact, idle return and lifecycle boundaries passed.");
     }
 
-    private async Task CheckTorrenCelebrationBoundaries(BoardView board, JsonObject state, int id, ActorClip clip, ActorClip idle)
+    private async Task CheckAuthoredCelebrationBoundaries(BoardView board, JsonObject state, int id, ActorClip clip, ActorClip idle,
+        AuthoredCelebrationExpectation expected)
     {
         var generic = Int(state["units"]![0]!.AsObject(), "id");
         var published = new List<int>();
@@ -69,7 +75,8 @@ public partial class AnimationChecks
             {
                 state["units"]![1]!["facing"] = facing;
                 var sign = facing == "west" ? -1 : 1;
-                foreach (var ms in new[] { 0, 99.999, 100, 219.999, 220, 379.999, 380, 619.999, 620, 759.999, 760, 899.999, 900, 10000 })
+                foreach (var ms in expected.Starts.Skip(1).Append(expected.Duration)
+                    .SelectMany(start => new[] { start - .001, start }).Prepend(0).Append(10000))
                 {
                     published.Clear();
                     var before = (JsonObject)state.DeepClone();
@@ -82,28 +89,28 @@ public partial class AnimationChecks
                     var origin = actor.Position;
                     var contact = actor.GetMeta("logical_contact").AsVector2();
                     await Tick(board, ms / 1000);
-                    if (ms < 900)
+                    if (ms < expected.Duration)
                     {
-                        var frame = ms < 100 ? 0 : ms < 220 ? 1 : ms < 380 ? 2 : ms < 620 ? 3 : ms < 760 ? 4 : 5;
+                        var frame = expected.Starts.Count(start => start <= ms) - 1;
                         CheckClipSprite(sprite, clip.Asset, frame, sign);
                         CheckClipShadow(sprite);
                         Require(!task.IsCompleted && board.IsPresenting && published.Count == 0
                             && actor.Position == origin && actor.GetMeta("logical_contact").AsVector2() == contact
                             && actor.Scale == Vector2.One && actor.Rotation == 0 && sprite.Rotation == 0
                             && actor.SelfModulate == Colors.White && actor.GetNodeOrNull("ActionAccent") is null,
-                            $"Torren's committed winning ownership selects a stationary full-opacity salute and holds the result at {ms} ms.");
+                            $"The actor's committed winning ownership selects a stationary full-opacity celebration and holds the result at {ms} ms.");
                         if (ms >= 220)
                             CheckClipSprite(Actor(board, generic).GetNode<Sprite2D>("AuthoredSprite"),
                                 assets.ResolveUnitClip("c01.swordsman", "idle", ActorClipUnit.Milliseconds).Asset, 0, 1);
                         board.CancelPresentation();
-                        Require(!await task && published.Count == 0, "An unfinished salute cannot publish gameOver on cancellation.");
+                        Require(!await task && published.Count == 0, "An unfinished celebration cannot publish gameOver on cancellation.");
                     }
                     else
                     {
                         Require(task.IsCompleted && await task && !board.IsPresenting && published.SequenceEqual(new[] { 0 }),
-                            "The cohort releases gameOver exactly at 900 ms, never 220 ms, actor-duration sum or 1120 ms.");
+                            $"The cohort releases gameOver exactly at {expected.Duration} ms, never 220 ms, actor-duration sum or an appended result delay.");
                         CheckClipSprite(Actor(board, id).GetNode<Sprite2D>("AuthoredSprite"), idle.Asset, 0, sign);
-                        await Tick(board, .440);
+                        await Tick(board, expected.IdleSecondFrameMs / 1000);
                         CheckClipSprite(Actor(board, id).GetNode<Sprite2D>("AuthoredSprite"), idle.Asset, 1, sign);
                     }
                     Require(before.ToJsonString() + state.ToJsonString() == bytes
@@ -115,7 +122,8 @@ public partial class AnimationChecks
         finally { board.EventPresented -= Presented; }
     }
 
-    private async Task CheckTorrenCelebrationColor(BoardView board, JsonObject state, int id, ActorClip clip)
+    private async Task CheckAuthoredCelebrationColor(BoardView board, JsonObject state, int id, ActorClip clip,
+        AuthoredCelebrationExpectation expected)
     {
         var tint = new Color(.2f, .4f, .7f, .6f);
         var scale = new Vector2(.8f, 1.2f);
@@ -133,7 +141,7 @@ public partial class AnimationChecks
         board.EventPresented += Initialize;
         try
         {
-            foreach (var ms in new[] { 0, 100, 220, 380, 620, 760, 899 })
+            foreach (var ms in expected.Starts.Append(expected.Duration - 1))
             {
                 var task = board.PresentTransitionAsync(viewportFeedback, Transition(state, state, IdleAction(),
                     [new JsonObject { ["type"] = "facingChanged", ["unit"] = id, ["to"] = "east" }, CelebrationEvent()]));
@@ -143,23 +151,25 @@ public partial class AnimationChecks
                 Require(!task.IsCompleted && actor.SelfModulate.IsEqualApprox(tint)
                     && actor.Position == origin && actor.Scale == scale && actor.Rotation == 0
                     && actor.GetMeta("logical_contact").AsVector2() == contact,
-                    "Every production salute pose preserves captured RGBA, root transform and logical contact.");
-                CheckClipSprite(actor.GetNode<Sprite2D>("AuthoredSprite"), clip.Asset, clip.FrameAt(ms), 1);
+                    "Every production celebration pose preserves captured RGBA, root transform and logical contact.");
+                CheckClipSprite(actor.GetNode<Sprite2D>("AuthoredSprite"), clip.Asset, expected.Starts.Count(start => start <= ms) - 1, 1);
                 board.CancelPresentation();
-                Require(!await task, "A tinted production salute remains cancellable.");
+                Require(!await task, "A tinted production celebration remains cancellable.");
             }
         }
         finally { board.EventPresented -= Initialize; }
     }
 
-    private async Task CheckTorrenCelebrationEligibility(BoardView board, JsonObject state, int id, ActorClip idle)
+    private async Task CheckAuthoredCelebrationEligibility(BoardView board, JsonObject state, int id, ActorClip idle,
+        AuthoredCelebrationExpectation expected)
     {
         var generic = Int(state["units"]![0]!.AsObject(), "id");
         foreach (var exclusion in new[] { "loser", "dead", "absent", "before-hidden", "after-hidden", "undrawn" })
         {
             var manifest = PresentationJson.Load<AssetManifest>("res://data/selected-assets.json");
             var bindings = PresentationJson.Load<ArtBindings>("res://data/art-bindings.json");
-            bindings.Actors["campaign-torren"].UnitArt.ActionClips.Remove("celebrate");
+            (expected.BindingKey is { } key ? bindings.Actors[key].UnitArt : bindings.Units[expected.UnitType])
+                .ActionClips.Remove("celebrate");
             ConfigureActorClipBoard(board, new AssetCatalog(manifest, bindings));
             var before = (JsonObject)state.DeepClone();
             var after = (JsonObject)state.DeepClone();
@@ -190,7 +200,7 @@ public partial class AnimationChecks
                 Transition(before, after, IdleAction(), [CelebrationEvent()], beforeVisible), afterVisible);
             await Tick(board, .220);
             Require(task.IsCompleted && await task && !board.IsPresenting,
-                "An excluded named Torren never resolves missing salute art or extends the remaining static winner's 220 ms beat.");
+                "An excluded actor never resolves missing celebration art or extends the remaining static winner's 220 ms beat.");
         }
         var rejected = false;
         try
@@ -200,7 +210,7 @@ public partial class AnimationChecks
         catch (InvalidOperationException) { rejected = true; }
         Require(rejected && !board.IsPresenting && board.GetNodeOrNull("BattleEffects") is null
             && viewportFeedback.GetNodeOrNull("ViewportEffects") is null,
-            "Visible winning Torren with missing salute art fails explicitly and releases ownership without fallback.");
+            "Visible winning actor with missing celebration art fails explicitly and releases ownership without fallback.");
         CheckClipSprite(Actor(board, id).GetNode<Sprite2D>("AuthoredSprite"), idle.Asset, 0, 1);
         ConfigureActorClipBoard(board, assets);
         foreach (var conclusion in new[] { BattleConclusion.LastTeamRemaining(2), BattleConclusion.AllDefeated(),
@@ -208,10 +218,10 @@ public partial class AnimationChecks
         {
             var task = board.PresentTransitionAsync(viewportFeedback, Transition(state, state, IdleAction(), [CelebrationEvent(conclusion)]));
             await Tick(board, .219999);
-            Require(!task.IsCompleted, "Defeat and draw preserve the minimal result beat without beginning Torren's salute.");
+            Require(!task.IsCompleted, "Defeat and draw preserve the minimal result beat without beginning the actor's celebration.");
             CheckClipSprite(Actor(board, id).GetNode<Sprite2D>("AuthoredSprite"), idle.Asset, 0, 1);
             await Tick(board, .000001);
-            Require(task.IsCompleted && await task, "No winning Torren means no 900 ms salute delay.");
+            Require(task.IsCompleted && await task, "No winning actor means no authored celebration delay.");
         }
         var terminal = (JsonObject)state.DeepClone();
         terminal["phase"] = "over";
@@ -221,7 +231,8 @@ public partial class AnimationChecks
         CheckClipSprite(Actor(board, id).GetNode<Sprite2D>("AuthoredSprite"), idle.Asset, 0, 1);
     }
 
-    private async Task CheckTorrenCelebrationLifetime(BoardView board, JsonObject state, int id, ActorClip idle)
+    private async Task CheckAuthoredCelebrationLifetime(BoardView board, JsonObject state, int id, ActorClip idle,
+        AuthoredCelebrationExpectation expected)
     {
         var unit = state["units"]!.AsArray().OfType<JsonObject>().Single(value => Int(value, "id") == id);
         var contact = board.Projection.CellContact(new(Int(unit, "x"), Int(unit, "y")));
@@ -230,7 +241,7 @@ public partial class AnimationChecks
         board.EventPresented += Presented;
         try
         {
-            foreach (var ms in new[] { 100, 380, 760 })
+            foreach (var ms in new[] { expected.Starts[1], expected.Starts[3], expected.Starts[5] })
             {
                 foreach (var interruption in new[] { "cancel", "rebind", "tree-exit" })
                 {
@@ -246,7 +257,7 @@ public partial class AnimationChecks
                     else
                         RemoveChild(board);
                     Require(!await task && published.Count == 0 && !board.IsPresenting,
-                        "Cancel, rebind and tree exit retire the production salute without publishing its unfinished gameOver.");
+                        "Cancel, rebind and tree exit retire the production celebration without publishing its unfinished gameOver.");
                     if (interruption == "tree-exit")
                     {
                         AddChild(board);
@@ -254,17 +265,17 @@ public partial class AnimationChecks
                         board.RenderState(state);
                     }
                     CheckSettledClipActor(board, id, idle.Asset, contact);
-                    await Tick(board, 1.8);
+                    await Tick(board, expected.IdleCycleMs / 1000);
                     CheckClipSprite(Actor(board, id).GetNode<Sprite2D>("AuthoredSprite"), idle.Asset, 0, 1);
                     Require(published.Count == 0 && board.GetNodeOrNull("BattleEffects") is null
                         && viewportFeedback.GetNodeOrNull("ViewportEffects") is null,
-                        "Retired salute callbacks cannot resurrect finite poses or publish after settlement.");
+                        "Retired celebration callbacks cannot resurrect finite poses or publish after settlement.");
                 }
             }
             board.AnimationsEnabled = false;
             var reduced = board.PresentTransitionAsync(viewportFeedback, Transition(state, state, IdleAction(), [CelebrationEvent()]));
             Require(reduced.IsCompleted && await reduced && published.SequenceEqual(new[] { 0 }) && !board.IsPresenting,
-                "Reduced motion settles the genuine production salute synchronously with one ordered gameOver publication.");
+                "Reduced motion settles the genuine production celebration synchronously with one ordered gameOver publication.");
             CheckSettledClipActor(board, id, idle.Asset, contact);
         }
         finally { board.AnimationsEnabled = true; board.EventPresented -= Presented; }

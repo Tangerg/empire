@@ -27,7 +27,7 @@ public partial class AnimationChecks
             && assets.ResolveUnit("c01.archer", "campaign-elin") == assets.ResolveUnit("c01.archer"),
             "Elin inherits the shared C01 archer fall without an actor override or replacement base appearance.");
         foreach (var (action, expected) in new[] { ("idle", "archer.breathe"), ("move", "legacy.move"),
-            ("attack", "archer.loose"), ("hit", "archer.recoil"), ("celebrate", "static.celebrate") })
+            ("attack", "archer.loose"), ("hit", "archer.recoil"), ("celebrate", "archer.cheer") })
             Require(bindings.Units["c01.archer"].ActionClips[action] == expected,
                 "Archer fall changes no non-death action binding.");
         foreach (var type in new[] { "archer", "c01.bran" })

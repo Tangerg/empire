@@ -1,0 +1,195 @@
+{
+  "sourceSha256": "f241a0c563e3d8dd0130b14e676c354ffe0936a423d6716f1ba1a08343b4aafa",
+  "removedPixels": 15828,
+  "maxRemovedAlpha": 6,
+  "presentationScale": 0.0805,
+  "playbackFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "playbackSpansMs": [
+    100,
+    120,
+    160,
+    260,
+    180,
+    140
+  ],
+  "frames": [
+    {
+      "sourceComponent": 0,
+      "sourceBounds": [
+        52,
+        121,
+        366,
+        607
+      ],
+      "sourceAnchor": [
+        186,
+        579
+      ],
+      "frameAnchor": [
+        134,
+        458
+      ],
+      "mirroredAnchor": [
+        180,
+        458
+      ],
+      "frameRegion": [
+        0,
+        0,
+        314,
+        486
+      ],
+      "pixelSha256": "e182331f6228c89dc8beca5760472e1f1e3febfafb97311867e7deb6027f7f9c"
+    },
+    {
+      "sourceComponent": 1,
+      "sourceBounds": [
+        404,
+        144,
+        725,
+        607
+      ],
+      "sourceAnchor": [
+        539,
+        579
+      ],
+      "frameAnchor": [
+        135,
+        435
+      ],
+      "mirroredAnchor": [
+        186,
+        435
+      ],
+      "frameRegion": [
+        314,
+        0,
+        321,
+        463
+      ],
+      "pixelSha256": "63045494d8323977f17bf0283a2a1b4254905fbfb926efd6d9aaf8d5b0229584"
+    },
+    {
+      "sourceComponent": 2,
+      "sourceBounds": [
+        750,
+        146,
+        1084,
+        607
+      ],
+      "sourceAnchor": [
+        898,
+        579
+      ],
+      "frameAnchor": [
+        148,
+        433
+      ],
+      "mirroredAnchor": [
+        186,
+        433
+      ],
+      "frameRegion": [
+        635,
+        0,
+        334,
+        461
+      ],
+      "pixelSha256": "05b5e4a9b078d2f21ac908a06ef6735769b2824e7d9579a3520eadf6c75885e9"
+    },
+    {
+      "sourceComponent": 3,
+      "sourceBounds": [
+        1108,
+        146,
+        1441,
+        607
+      ],
+      "sourceAnchor": [
+        1256,
+        579
+      ],
+      "frameAnchor": [
+        148,
+        433
+      ],
+      "mirroredAnchor": [
+        185,
+        433
+      ],
+      "frameRegion": [
+        969,
+        0,
+        333,
+        461
+      ],
+      "pixelSha256": "faa653449c6df60179950a2061b7e24763d08f4d41667814e433704c7fb7d80b"
+    },
+    {
+      "sourceComponent": 4,
+      "sourceBounds": [
+        1466,
+        136,
+        1787,
+        607
+      ],
+      "sourceAnchor": [
+        1614,
+        579
+      ],
+      "frameAnchor": [
+        148,
+        443
+      ],
+      "mirroredAnchor": [
+        173,
+        443
+      ],
+      "frameRegion": [
+        1302,
+        0,
+        321,
+        471
+      ],
+      "pixelSha256": "07739e7617bd23fc4f2c21119ca4e220720fa532d57af7ba2d809219fde81b34"
+    },
+    {
+      "sourceComponent": 5,
+      "sourceBounds": [
+        1833,
+        121,
+        2144,
+        607
+      ],
+      "sourceAnchor": [
+        1966,
+        579
+      ],
+      "frameAnchor": [
+        133,
+        458
+      ],
+      "mirroredAnchor": [
+        178,
+        458
+      ],
+      "frameRegion": [
+        1623,
+        0,
+        311,
+        486
+      ],
+      "pixelSha256": "a5dd290b8ae4285c5ba00d65c9c7f478c05ff4178248cb4c4dbe7867a3a21256"
+    }
+  ],
+  "runtimePngSha256": "e03abb9d6e7fa64d48409790aad7f7e05c939135835e45a45b9387b2f4db8700",
+  "extraction": "Alpha >16 significant components (>1000 pixels); preserve original nonzero RGBA within distance 3, four transparent padding pixels; no source geometry transforms.",
+  "anchorConvention": "Midpoint between boot support centers, stable terrain root; mirrored x = frame width - anchor x."
+}

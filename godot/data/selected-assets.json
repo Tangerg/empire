@@ -371,6 +371,36 @@
           "span": 180
         }
       ]
+    },
+    "archer.cheer": {
+      "unit": "milliseconds",
+      "appearanceId": "archer-cheer-v1",
+      "frames": [
+        {
+          "frame": "cheer-ready",
+          "span": 100
+        },
+        {
+          "frame": "cheer-lift",
+          "span": 120
+        },
+        {
+          "frame": "cheer-high",
+          "span": 160
+        },
+        {
+          "frame": "cheer-hold",
+          "span": 260
+        },
+        {
+          "frame": "cheer-lower",
+          "span": 180
+        },
+        {
+          "frame": "cheer-rest",
+          "span": 140
+        }
+      ]
     }
   },
   "assets": [
@@ -4159,6 +4189,92 @@
         ]
       ],
       "qualityTier": "painted-fall-v1-reviewed",
+      "textureFilter": "linear"
+    },
+    {
+      "id": "archer-cheer-v1",
+      "topicId": "C01-UNIT-ARCHER",
+      "png": "painted-actions-v1/archer-cheer-v1.png",
+      "pixelDensity": 1,
+      "frames": 6,
+      "frameOrder": [
+        "cheer-ready",
+        "cheer-lift",
+        "cheer-high",
+        "cheer-hold",
+        "cheer-lower",
+        "cheer-rest"
+      ],
+      "physicalWidth": 1934,
+      "physicalHeight": 486,
+      "resourcePath": "res://assets/painted-actions-v1/archer-cheer-v1.png",
+      "sha256": "e03abb9d6e7fa64d48409790aad7f7e05c939135835e45a45b9387b2f4db8700",
+      "presentationScale": 0.0805,
+      "frameRegions": [
+        [
+          0,
+          0,
+          314,
+          486
+        ],
+        [
+          314,
+          0,
+          321,
+          463
+        ],
+        [
+          635,
+          0,
+          334,
+          461
+        ],
+        [
+          969,
+          0,
+          333,
+          461
+        ],
+        [
+          1302,
+          0,
+          321,
+          471
+        ],
+        [
+          1623,
+          0,
+          311,
+          486
+        ]
+      ],
+      "frameAnchors": [
+        [
+          134,
+          458
+        ],
+        [
+          135,
+          435
+        ],
+        [
+          148,
+          433
+        ],
+        [
+          148,
+          433
+        ],
+        [
+          148,
+          443
+        ],
+        [
+          133,
+          458
+        ]
+      ],
+      "qualityTier": "painted-cheer-v1-reviewed",
       "textureFilter": "linear"
     }
   ]
