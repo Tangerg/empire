@@ -421,7 +421,9 @@ new animated artwork. Torren now explicitly selects `torren.breathe`: four new
 painted pictures sampled as 0→1→2→3→2→1 over 1800 ms. Its alternate sheet keeps
 fixed support anchors and uses the existing idle owner, including finite-action
 suspension, resume and reduced motion. C01 archers separately use `archer.breathe`,
-four drawings in six intervals over 2200 ms; other actors retain `static.idle`.
+four drawings in six intervals over 2200 ms. Generic C01 gravekeepers use
+`gravekeeper.breathe`, four rest/inhale/high/exhale drawings in direct order over
+2400 ms; other actors retain `static.idle`.
 See [the Torren idle review](../../docs/art-torren-idle-20261110/README.md) for
 source extraction, loop limits and real-render evidence. Synthetic multi-frame
 fixtures remain separate from these production-art checks.
