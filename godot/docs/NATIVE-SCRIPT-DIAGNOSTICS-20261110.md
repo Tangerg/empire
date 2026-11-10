@@ -35,7 +35,7 @@ that merely mentions the prefix within its message is not a script-error line.
 - A single bounded rerun of the same scene, unchanged DLLs and command passed
   28,251 assertions with normal exit and the strict diagnostic gate. This does
   not establish the crash's cause or a fix. A second complete attempt is recorded
-  below; there is still no confirmed complete pass on this change.
+  below. The subsequent recovery run completed successfully as recorded below.
 - Before that failure, all 17 core groups and 16 independent level save/replays
   passed. All 3,425 ordered action/event/receipt traces exactly match the prior
   published full-gate log. Source guards, builds, import and the preceding six
@@ -83,3 +83,31 @@ Evidence:
 `BattleResultFlowChecks`, all later navigation/campaign/lifetime scenes,
 lighting/scenery checks and the played campaign opening have no completed result
 from this attempt. A fresh full run is required for aggregate acceptance.
+
+## Completed recovery run
+
+A fresh, uninterrupted `bash tools/godot/verify-native.sh` run completed with
+aggregate exit **0** and the final aggregate success line. The game and gate
+sources were unchanged throughout the run; recovery commits `3cfd4cec` and
+`95702cc5` only preserve and clarify earlier evidence. No character-polish edits
+had been applied during this run.
+
+- All 13 native-wrapper tests, 30 format-source tests, formatting, source metadata,
+  authored-scene guards, builds and editor import passed.
+- All 17 core groups and 16 independent level replay/save checks passed. The
+  3,425 ordered action/event/receipt traces match the previous published full
+  pass exactly, across all 16 level digests.
+- All 31 native scenes, including broad phase, animation (3,127 assertions), HUD,
+  battle result (402), campaign navigation (9,771), lighting and scenery, passed
+  the strict process/diagnostic boundary.
+- Normal automatic playback completed the real AI defeat/retry, two carried
+  victories (415 legal orders, 1,108 events presented once), and the third
+  battle's opening (21 orders). The played-flow scene reported 20,282 assertions.
+- The run is retained in `full-native-recovered-passed.txt`. The aggregate exit
+  was observed from the execution session and its dedicated exit-status file,
+  not inferred from any individual scene's success marker.
+
+This pass does not diagnose or erase the first exit-139 failure or establish the
+second interrupted attempt's missing outcome. It supplies the previously missing
+complete acceptance result for the script-diagnostic gate. No new GUI,
+exported-package, or complete-campaign acceptance is claimed.
