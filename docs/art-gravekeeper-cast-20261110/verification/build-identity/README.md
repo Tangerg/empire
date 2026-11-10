@@ -38,6 +38,6 @@ Old directory: `checkpoint/final-portable/assemblies`. Do NOT substitute the ear
 - results/: normal summaries, per-DLL differences/normalization ranges, one gzip-compressed old manifest per DLL.
 - method-manifest-hashes.json: SHA256 and lengths of all normal/negative-control method manifests. Normal old/new manifest hashes match.
 - selftest-results/: summaries, per-DLL differences and process outputs; no repeated full method manifests.
-- format-apply.log / format-verify.log: targeted formatting and successful verification using the included repository .editorconfig.
+- format-apply.txt / format-verify.txt: targeted formatting and successful verification using the included repository .editorconfig.
 
 No DLL, bin or obj is packaged. External PDB/SourceLink and native recording provenance are separate evidence. Native provenance is documented by the independent native proof bound to the old SHA256.
