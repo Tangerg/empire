@@ -42,6 +42,7 @@ public partial class AnimationChecks : Node
             await CheckTorrenThrustPlayback();
             await CheckTorrenIdlePlayback();
             await CheckTorrenRecoilPlayback();
+            await CheckTorrenFallPlayback();
             CheckHealingDefinitions();
             await CheckClock();
             await CheckCelebrationClips();

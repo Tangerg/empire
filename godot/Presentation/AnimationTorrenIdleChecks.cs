@@ -133,7 +133,10 @@ public partial class AnimationChecks
             [new JsonObject { ["type"] = "death", ["unit"] = id, ["at"] = At(12, 16) }]));
         await Tick(board, .05);
         sprite = Actor(board, id).GetNode<Sprite2D>("AuthoredSprite");
-        CheckClipSprite(sprite, original, 0, sprite.Scale.X < 0 ? -1 : 1);
+        var fall = assets.ResolveUnitClip("c01.swordsman", "death", ActorClipUnit.Milliseconds, "campaign-torren");
+        CheckClipSprite(sprite, fall.Asset, 0, sprite.Scale.X < 0 ? -1 : 1);
+        Require(Actor(board, id).SelfModulate == Colors.White && Actor(board, id).Scale == Vector2.One,
+            "Death replaces breathing with the first authored falling pose without an early fade or shrink.");
         await Drain(board, death);
         await Tick(board, 2);
         Require(board.GetNodeOrNull($"CanonicalProjection/Unit_{id}") is null,

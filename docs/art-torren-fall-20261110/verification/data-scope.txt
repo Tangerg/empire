@@ -1,0 +1,4 @@
+Baseline: 50ecca87d3f816462a0c4c5d9e310375dea3e325.
+After removing the new torren.fall clip and torren-fall-v1 asset, the parsed manifest equals baseline exactly.
+After restoring only campaign-torren.unitArt.actionClips.death to static.death, the parsed bindings equal baseline exactly.
+No production C# change or combat-rule change.

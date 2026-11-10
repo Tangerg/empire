@@ -81,10 +81,18 @@ public partial class AnimationChecks
         {
             var binding = key is null ? shipped.Units[type] : shipped.Actors[key].UnitArt;
             var clip = assets.ResolveUnitClip(type, "death", ActorClipUnit.Milliseconds, key);
+            if (key == "campaign-torren")
+            {
+                Require(binding.ActionClips["death"] == "torren.fall" && clip.Asset.Identity == "torren-fall-v1"
+                    && clip.Length == 620 && clip.FrameIndices.Count == 6 && clip.ReleaseMs is null
+                    && clip.RequireDeath().Mode == ActorDeathMode.AfterClip && clip.RequireDeath().TerminalFadeMs == 160,
+                    "Torren alone selects six authored falling poses followed by his explicit 160 ms terminal fade.");
+                continue;
+            }
             Require(binding.ActionClips["death"] == "static.death" && clip.Length == 220
                 && clip.FrameIndices.Count == 1 && clip.ReleaseMs is null
                 && clip.RequireDeath().Mode == ActorDeathMode.DuringClip && clip.RequireDeath().TerminalFadeMs == 0,
-                "Every shipped death explicitly retains the original static 220 ms concurrent fade and shrink.");
+                "Every other shipped death retains the original static 220 ms concurrent fade and shrink.");
         }
 
         var (manifest, bindings) = DeathPolicyFixture();

@@ -250,8 +250,8 @@ a corpse marker nor absence from the final snapshot starts death. Only the
 ordered `death` event starts the explicit `death` clip. Transport passengers have
 no drawn pre-transition actor and receive no invented death presentation.
 
-All maps except Torren's hit explicitly retain `static.hit` (150 ms); every death
-map retains `static.death` (220 ms). Both use the existing trusted idle image.
+All maps except Torren's hit/death explicitly retain `static.hit` (150 ms) and
+`static.death` (220 ms). Both use the existing trusted idle image.
 The static hit is an authored hold within the existing 420 ms impact; static death retains
 the previous normalized fade and 35% shrink through its explicit
 `death: { "mode": "during-clip" }` policy. These are declared placeholders,
@@ -266,9 +266,10 @@ new actor timer, root motion or combat rule is introduced. See the
 [Torren recoil review](../../docs/art-torren-recoil-20261110/README.md) for source,
 extraction and real-render acceptance.
 
-An accepted future action sheet may instead declare
-`death: { "mode": "after-clip", "fadeMs": 120 }`. The example fade duration is
-not an accepted artwork timing: it must be reviewed with that sheet. In this mode
+Torren alone now selects `torren.fall`: six independently painted collapse poses
+over 620 ms, then `death: { "mode": "after-clip", "fadeMs": 160 }`. The still
+prone pose holds for its last 180 ms interval before fading. See the
+[Torren fall review](../../docs/art-torren-fall-20261110/README.md). In this mode
 all authored frames play before opacity changes. The last frame then holds during
 the explicit terminal fade, preserving the starting tint, root position and scale;
 there is no shrink or idle restoration. Frame spans remain the sole owner of
@@ -288,7 +289,7 @@ rebind and exit during either stage settle the committed state without publishin
 an unfinished event. Hidden deaths are filtered before art lookup, reduced motion
 settles synchronously, and results remain behind completion of the entire receipt,
 including the terminal fade. No separate death registry or completion flag is
-introduced. No new artwork ships with this policy change. Synthetic frame checks
+introduced. The general policy remains separate from Torren's accepted artwork. Synthetic frame checks
 prove sampling and lifecycle contracts, not real-time visual acceptance.
 
 `PrepareActorPose` shares immutable clip resolution, finite depth preparation,

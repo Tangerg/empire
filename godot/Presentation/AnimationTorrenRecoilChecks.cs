@@ -188,10 +188,21 @@ public partial class AnimationChecks
             await Tick(board, .000002);
             var death = assets.ResolveUnitClip("c01.swordsman", "death", ActorClipUnit.Milliseconds, "campaign-torren");
             CheckClipSprite(sprite, death.Asset, death.FrameAt(0), sign);
-            Require(death.Length == 220 && death.RequireDeath().Mode == ActorDeathMode.DuringClip
+            Require(death.Asset.Identity == "torren-fall-v1" && death.Length == 620
+                && death.RequireDeath().Mode == ActorDeathMode.AfterClip && death.RequireDeath().TerminalFadeMs == 160
                 && published.SequenceEqual(new[] { 0, 1 }) && !task.IsCompleted,
-                "Only the ordered death event acquires Torren's unchanged 220 ms terminal presentation.");
-            await Tick(board, .220);
+                "Only the ordered death event acquires Torren's authored fall and subsequent terminal fade.");
+            await Tick(board, .619998);
+            CheckClipSprite(sprite, death.Asset, 5, sign);
+            Require(actor.SelfModulate == Colors.White && actor.Scale == Vector2.One
+                && published.SequenceEqual(new[] { 0, 1 }) && !task.IsCompleted,
+                "Fatal recoil cannot retire Torren before his complete fall and fully opaque ground pose.");
+            await Tick(board, .080001);
+            CheckClipSprite(sprite, death.Asset, 5, sign);
+            Require(Mathf.IsEqualApprox(actor.SelfModulate.A, .5f)
+                && published.SequenceEqual(new[] { 0, 1 }) && !task.IsCompleted,
+                "The ordered death holds the ground pose through its independent terminal fade.");
+            await Tick(board, .080001);
             Require(task.IsCompleted && await task && board.GetNodeOrNull($"CanonicalProjection/Unit_{did}") is null
                 && published.SequenceEqual(Enumerable.Range(0, events.Length)),
                 "Fatal recoil hands off to death once and completes every original scoped receipt in order.");

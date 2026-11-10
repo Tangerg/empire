@@ -75,8 +75,16 @@ public partial class AnimationChecks
                         "Torren's explicit authored recoil replaces only his static hit placeholder.");
                     continue;
                 }
+                if (key == "campaign-torren" && action == "death")
+                {
+                    Require(clip.Asset.Identity == "torren-fall-v1" && clip.Length == 620
+                        && clip.FrameAt(0) == 0 && clip.FrameAt(619.999) == 5 && clip.ReleaseMs is null
+                        && clip.RequireDeath().Mode == ActorDeathMode.AfterClip && clip.RequireDeath().TerminalFadeMs == 160,
+                        "Torren's authored fall replaces only his static death placeholder and adds its declared terminal fade.");
+                    continue;
+                }
                 Require(clip.Length == duration && clip.FrameAt(0) == clip.FrameAt(duration - 1)
-                    && clip.ReleaseMs is null, "Shipped hit chooses an explicit 150 ms static hold; death retains its original 220 ms static duration.");
+                    && clip.ReleaseMs is null, "Other shipped hits retain their 150 ms static hold and deaths their 220 ms static duration.");
             }
         }
         var (manifest, bindings) = ReactionFixture();

@@ -1,0 +1,24 @@
+step=0, AI=False, turn=4, aiOrdinal=0, action={"kind":"endTurn"}, Torren=72->72
+step=1, AI=True, turn=4, aiOrdinal=1, action={"kind":"command","unit":16,"path":[{"x":17,"y":7},{"x":16,"y":7}],"command":{"ability":"attack","weapon":"c01.legion-spear","target":{"x":15,"y":7}}}, Torren=72->43
+step=2, AI=True, turn=4, aiOrdinal=2, action={"kind":"command","unit":14,"path":[{"x":21,"y":11},{"x":21,"y":12},{"x":21,"y":13},{"x":20,"y":13}],"command":{"ability":"wait"}}, Torren=43->43
+step=3, AI=True, turn=4, aiOrdinal=3, action={"kind":"command","unit":12,"path":[{"x":22,"y":16},{"x":21,"y":16},{"x":20,"y":16},{"x":20,"y":15}],"command":{"ability":"wait"}}, Torren=43->43
+step=4, AI=True, turn=4, aiOrdinal=4, action={"kind":"command","unit":13,"path":[{"x":24,"y":14}],"command":{"ability":"wait"}}, Torren=43->43
+step=5, AI=True, turn=4, aiOrdinal=5, action={"kind":"command","unit":15,"path":[{"x":25,"y":14}],"command":{"ability":"wait"}}, Torren=43->43
+step=6, AI=True, turn=4, aiOrdinal=6, action={"kind":"command","unit":17,"path":[{"x":24,"y":21},{"x":23,"y":21}],"command":{"ability":"wait"}}, Torren=43->43
+step=7, AI=True, turn=4, aiOrdinal=7, action={"kind":"command","unit":19,"path":[{"x":27,"y":14},{"x":26,"y":14}],"command":{"ability":"wait"}}, Torren=43->43
+step=8, AI=True, turn=4, aiOrdinal=8, action={"kind":"command","unit":18,"path":[{"x":29,"y":21},{"x":28,"y":21}],"command":{"ability":"wait"}}, Torren=43->43
+step=9, AI=True, turn=4, aiOrdinal=9, action={"kind":"endTurn"}, Torren=43->43
+step=10, AI=False, turn=5, aiOrdinal=0, action={"kind":"endTurn"}, Torren=43->43
+step=11, AI=True, turn=5, aiOrdinal=1, action={"kind":"command","unit":14,"path":[{"x":20,"y":13},{"x":19,"y":13},{"x":18,"y":13}],"command":{"ability":"capture"}}, Torren=43->43
+step=12, AI=True, turn=5, aiOrdinal=2, action={"kind":"command","unit":16,"path":[{"x":16,"y":7}],"command":{"ability":"attack","weapon":"c01.legion-spear","target":{"x":15,"y":7}}}, Torren=43->16
+step=13, AI=True, turn=5, aiOrdinal=3, action={"kind":"command","unit":12,"path":[{"x":20,"y":15},{"x":19,"y":15},{"x":18,"y":15},{"x":17,"y":15}],"command":{"ability":"wait"}}, Torren=16->16
+step=14, AI=True, turn=5, aiOrdinal=4, action={"kind":"command","unit":17,"path":[{"x":23,"y":21},{"x":22,"y":21},{"x":21,"y":21},{"x":20,"y":21}],"command":{"ability":"wait"}}, Torren=16->16
+step=15, AI=True, turn=5, aiOrdinal=5, action={"kind":"command","unit":13,"path":[{"x":24,"y":14}],"command":{"ability":"wait"}}, Torren=16->16
+step=16, AI=True, turn=5, aiOrdinal=6, action={"kind":"command","unit":15,"path":[{"x":25,"y":14},{"x":25,"y":15},{"x":25,"y":16},{"x":24,"y":16},{"x":23,"y":16}],"command":{"ability":"wait"}}, Torren=16->16
+step=17, AI=True, turn=5, aiOrdinal=7, action={"kind":"command","unit":19,"path":[{"x":26,"y":14},{"x":26,"y":15},{"x":25,"y":15},{"x":24,"y":15}],"command":{"ability":"wait"}}, Torren=16->16
+step=18, AI=True, turn=5, aiOrdinal=8, action={"kind":"command","unit":18,"path":[{"x":28,"y":21},{"x":27,"y":21}],"command":{"ability":"wait"}}, Torren=16->16
+step=19, AI=True, turn=5, aiOrdinal=9, action={"kind":"endTurn"}, Torren=16->16
+step=20, AI=False, turn=6, aiOrdinal=0, action={"kind":"endTurn"}, Torren=16->16
+step=21, AI=True, turn=6, aiOrdinal=1, action={"kind":"command","unit":16,"path":[{"x":16,"y":7}],"command":{"ability":"attack","weapon":"c01.legion-spear","target":{"x":15,"y":7}}}, Torren=16->0
+PASS: official before/after loads, next normal AI action equality and independent real receipt equality.
+PASS: legal endTurn/normal AI actions only and unchanged source save.
