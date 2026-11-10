@@ -1,0 +1,45 @@
+{
+  "command": "bash tools/godot/verify-native.sh",
+  "exitCode": 0,
+  "sourceCommit": "3de50e3906bb8ca78594d53f777a3cc6d04bac27",
+  "baselineCommit": "c080a45f9ea8b09a28f96f96a8da4cd400579c78",
+  "assemblySha256": "fd0bb3108808b43ca7540e9dc9e6c72248e1f526d049be933e7bc3a483c152e1",
+  "nativeRecordingAssemblySha256": "23f3ea10fdbb1bc4f0329c9c995cfe32ff1545a412126b6c90671a0575d9cd9c",
+  "buildIdentityAudit": "build-identity/acceptance.json",
+  "nativeAndGateCodeIdentity": "All methods and whole PE images match after narrowly excluding documented commit/MVID/PDB build metadata; original SHA differs.",
+  "earlierRun": "Interrupted by environment disconnect after scenery checks, no exit code or aggregate marker. This final gate was rerun from the beginning.",
+  "fullLogSha256": "cc63204f30f5fe996fae7aac426a53dcda0670a79e5cb940a9a670fec9adb5eb",
+  "errorOrLeakDiagnostics": 0,
+  "animationAssertions": 4528,
+  "playedFlowAssertions": 20513,
+  "independentLevels": 16,
+  "independentLegalOrders": 3425,
+  "allIndependentReplayHashesUnchanged": true,
+  "playedOpeningMarkers": [
+    "PLAYED_AI_DEFEAT_OK orders=152; terminal=3dbb09d3; events=10; completions=1; retry=9dae091b; both slots unchanged",
+    "PLAYED_TERMINAL level=c01-01; legal orders=156; outcome=victory; completion views=1; events=524; presented=524; turn=9; state=c46d9172; conclusion={\"kind\":\"lastTeamRemaining\",\"team\":1}",
+    "CARRIED_VICTORY_OK level=c01-01; legal orders=156; events=524; terminal=c46d9172; campaign=17488f7b; next=battle-02",
+    "PLAYED_TERMINAL level=c01-02; legal orders=259; outcome=victory; completion views=1; events=584; presented=584; turn=13; state=5967317c; conclusion={\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}",
+    "CARRIED_VICTORY_OK level=c01-02; legal orders=259; events=584; terminal=5967317c; campaign=d152d095; next=battle-03",
+    "CARRIED_OPENING_OK battles played in this process=415 legal orders; third opening=21 orders; third state=d1103229; outcomes=c01-01:c46d9172:{\"kind\":\"lastTeamRemaining\",\"team\":1};c01-02:5967317c:{\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}. No third-battle victory or full-campaign claim."
+  ],
+  "normalizedWarningsMatchBaseline": true,
+  "warningCount": 41,
+  "manualGuiScope": "One lawful stationary magic attack with actual counter (73 observations), two clear-front lawful heals in opposite directions (48 observations each), native previews/results. All six poses and original idle handoff reviewed frame-by-frame; not continuous video playback.",
+  "nativeVisibilityLimit": "Attack labels/impact overlap the caster in the vertically adjacent layout. Both clear healing recordings show full body and equipment. This does not establish unobstructed readability in every layout.",
+  "negativeControls": [
+    "One original RGBA channel changed in memory: extraction verifier rejected.",
+    "Release300 changed to299 in isolated data: authored release assertion rejected with exit1.",
+    "Gravekeeper attack binding changed tostatic.attack in isolated data: authored channel assertion rejected with exit1.",
+    "Existing stationary magic policy changed to lunge in isolated data: lawful facing check rejected with exit1."
+  ],
+  "githubActionsRunsForSourceCommit": 0,
+  "githubStatusContextsForSourceCommit": 0,
+  "githubWorkflowTriggers": [
+    "push main",
+    "pull_request",
+    "workflow_dispatch"
+  ],
+  "exportAcceptance": "Not run.",
+  "completeCampaignAcceptance": "Not claimed."
+}

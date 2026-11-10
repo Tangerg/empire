@@ -115,5 +115,42 @@ evidence gap, not every possible crowded layout. `oath-dispel` is covered by
 binding and controlled-clock checks, not a separately recorded native order.
 This batch remains a restrained arm-led cast, not a whole-body acting redesign.
 
-- The full native aggregate is running and is not yet claimed as passed.
+### Build provenance
+
+The recordings used `Empire.dll` SHA256 `23f3ea10…d9cd9c`. The restarted gate
+rebuilt after implementation commit `3de50e39`, producing
+`fd0bb310…152e1`. Their raw bytes differ because the SDK embeds the Git revision
+and resulting build identifiers. `verification/build-identity/` independently
+compares the exact frozen recording build with the gate build: all 12,606
+Empire and 5,351 Core methods match, and both whole PE files match after narrowly
+normalizing the documented commit/MVID/PDB metadata. There are zero unexplained
+differences. An IL mutation and a field-metadata mutation both fail the audit.
+This is executable-code identity under those explicit exclusions, not equal
+raw hashes or identical reflection-visible versions. Asset/data inputs remain
+those of the implementation commit.
+
+### Full native gate
+
+`bash tools/godot/verify-native.sh` completed with exit 0, no error/leak diagnostics,
+**4,528 animation assertions** and **20,513 played-flow assertions**.
+The earlier run was interrupted by an environment disconnect after scenery
+checks. This result comes from a fresh full run, not stitched partial logs.
+Complete output and
+machine-readable status are retained in `verification/full-native-passed.txt`
+and `full-native-status.json`. The played-flow assertion count includes
+process-frame waits; it is not a count of unique gameplay scenarios.
+
+All 16 independent-level action/event/receipt hashes, covering 3,425 legal
+orders, match baseline `c080a45f`. All six played-flow result markers also match:
+C01 and C02 victories after 415 legal orders, then 21 orders in C03, plus the
+opponent-caused defeat/retry probe. This is not C03 victory or complete-campaign
+acceptance. All 41 warning lines match the baseline multiset after normalizing
+isolated temporary paths, including intentional save-rejection probes and
+existing import/viewport warnings. No check was disabled or weakened.
+
+GitHub reports zero workflow runs and zero status contexts for implementation
+commit `3de50e39`. The existing workflow triggers on main-branch pushes,
+pull requests and manual dispatch, not feature-branch pushes. This local native
+gate is not a remote CI claim.
+
 - Exported-build performance and complete-campaign acceptance are not claimed.

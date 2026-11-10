@@ -1,0 +1,71 @@
+{
+  "normalOldNewIdentical": true,
+  "files": [
+    {
+      "source": "results/Empire.Core.dll.methods.new.json",
+      "sha256": "69390cd2dd4c45ecf7c86c073ab21e44af1ac3703206ff9639b56aedc207a52c",
+      "bytes": 2187970
+    },
+    {
+      "source": "results/Empire.Core.dll.methods.old.json",
+      "sha256": "69390cd2dd4c45ecf7c86c073ab21e44af1ac3703206ff9639b56aedc207a52c",
+      "bytes": 2187970,
+      "retainedGzip": "results/Empire.Core.dll.methods.old.json.gz",
+      "gzipSha256": "cd27b036883912bf7b6af8298af829dd4fecb8cebb1c23f528e1528051147b5e",
+      "gzipBytes": 262478
+    },
+    {
+      "source": "results/Empire.dll.methods.new.json",
+      "sha256": "820bb66af444629d6f06e336dfd2e98057c2abdd899ac3f4af1001f62b76d543",
+      "bytes": 7461158
+    },
+    {
+      "source": "results/Empire.dll.methods.old.json",
+      "sha256": "820bb66af444629d6f06e336dfd2e98057c2abdd899ac3f4af1001f62b76d543",
+      "bytes": 7461158,
+      "retainedGzip": "results/Empire.dll.methods.old.json.gz",
+      "gzipSha256": "d5ef4a76ddcb9181e2e48f7a8bf7830bc6b317315885ad4b243008643933db13",
+      "gzipBytes": 1070492
+    },
+    {
+      "source": "selftest-results/field-attribute-byte/Empire.Core.dll.methods.new.json",
+      "sha256": "69390cd2dd4c45ecf7c86c073ab21e44af1ac3703206ff9639b56aedc207a52c",
+      "bytes": 2187970
+    },
+    {
+      "source": "selftest-results/field-attribute-byte/Empire.Core.dll.methods.old.json",
+      "sha256": "69390cd2dd4c45ecf7c86c073ab21e44af1ac3703206ff9639b56aedc207a52c",
+      "bytes": 2187970
+    },
+    {
+      "source": "selftest-results/field-attribute-byte/Empire.dll.methods.new.json",
+      "sha256": "820bb66af444629d6f06e336dfd2e98057c2abdd899ac3f4af1001f62b76d543",
+      "bytes": 7461158
+    },
+    {
+      "source": "selftest-results/field-attribute-byte/Empire.dll.methods.old.json",
+      "sha256": "820bb66af444629d6f06e336dfd2e98057c2abdd899ac3f4af1001f62b76d543",
+      "bytes": 7461158
+    },
+    {
+      "source": "selftest-results/il-byte/Empire.Core.dll.methods.new.json",
+      "sha256": "69390cd2dd4c45ecf7c86c073ab21e44af1ac3703206ff9639b56aedc207a52c",
+      "bytes": 2187970
+    },
+    {
+      "source": "selftest-results/il-byte/Empire.Core.dll.methods.old.json",
+      "sha256": "69390cd2dd4c45ecf7c86c073ab21e44af1ac3703206ff9639b56aedc207a52c",
+      "bytes": 2187970
+    },
+    {
+      "source": "selftest-results/il-byte/Empire.dll.methods.new.json",
+      "sha256": "432647673d556d46a2d22856f85c425243055e86fcb1a407607d8fe0bbb332da",
+      "bytes": 7461158
+    },
+    {
+      "source": "selftest-results/il-byte/Empire.dll.methods.old.json",
+      "sha256": "820bb66af444629d6f06e336dfd2e98057c2abdd899ac3f4af1001f62b76d543",
+      "bytes": 7461158
+    }
+  ]
+}

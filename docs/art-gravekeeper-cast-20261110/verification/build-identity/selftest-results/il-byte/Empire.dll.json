@@ -1,0 +1,1047 @@
+{
+  "name": "Empire.dll",
+  "oldFirstFieldMetadataOffset": 1969402,
+  "newFirstFieldMetadataOffset": 1969402,
+  "oldPath": "/workspace/scratch/84c9fe948755/empire-gravekeeper-cast-20261110/checkpoint/final-portable/assemblies/Empire.dll",
+  "newPath": "/workspace/scratch/84c9fe948755/empire-gravekeeper-cast-20261110/metadata-audit/repack-scratch/identity-selftest-u89sj_o8/Empire.dll",
+  "oldSha256": "23f3ea10fdbb1bc4f0329c9c995cfe32ff1545a412126b6c90671a0575d9cd9c",
+  "newSha256": "f17da586edb7a82ccfa257939ed8cec38cd10e755a4b6e3d751830143a40b9ea",
+  "oldLength": 4059136,
+  "newLength": 4059136,
+  "oldVersion": "1.0.0\u002Bc080a45f9ea8b09a28f96f96a8da4cd400579c78",
+  "newVersion": "1.0.0\u002B3de50e3906bb8ca78594d53f777a3cc6d04bac27",
+  "oldMvid": "bf37a375-778f-4f68-b02b-e4d2629f347d",
+  "newMvid": "5a13ee83-3c31-4328-b007-bd508a040549",
+  "methodCount": 12606,
+  "methodsEqual": false,
+  "oldTables": [
+    {
+      "table": "Module",
+      "rows": 1
+    },
+    {
+      "table": "TypeRef",
+      "rows": 562
+    },
+    {
+      "table": "TypeDef",
+      "rows": 1999
+    },
+    {
+      "table": "Field",
+      "rows": 14031
+    },
+    {
+      "table": "MethodDef",
+      "rows": 12606
+    },
+    {
+      "table": "Param",
+      "rows": 11230
+    },
+    {
+      "table": "InterfaceImpl",
+      "rows": 641
+    },
+    {
+      "table": "MemberRef",
+      "rows": 4661
+    },
+    {
+      "table": "Constant",
+      "rows": 356
+    },
+    {
+      "table": "CustomAttribute",
+      "rows": 21812
+    },
+    {
+      "table": "ClassLayout",
+      "rows": 14
+    },
+    {
+      "table": "StandAloneSig",
+      "rows": 2065
+    },
+    {
+      "table": "EventMap",
+      "rows": 3
+    },
+    {
+      "table": "Event",
+      "rows": 5
+    },
+    {
+      "table": "PropertyMap",
+      "rows": 295
+    },
+    {
+      "table": "Property",
+      "rows": 1482
+    },
+    {
+      "table": "MethodSemantics",
+      "rows": 2456
+    },
+    {
+      "table": "MethodImpl",
+      "rows": 947
+    },
+    {
+      "table": "TypeSpec",
+      "rows": 1634
+    },
+    {
+      "table": "FieldRva",
+      "rows": 69
+    },
+    {
+      "table": "Assembly",
+      "rows": 1
+    },
+    {
+      "table": "AssemblyRef",
+      "rows": 18
+    },
+    {
+      "table": "NestedClass",
+      "rows": 1646
+    },
+    {
+      "table": "GenericParam",
+      "rows": 133
+    },
+    {
+      "table": "MethodSpec",
+      "rows": 2272
+    },
+    {
+      "table": "GenericParamConstraint",
+      "rows": 8
+    }
+  ],
+  "newTables": [
+    {
+      "table": "Module",
+      "rows": 1
+    },
+    {
+      "table": "TypeRef",
+      "rows": 562
+    },
+    {
+      "table": "TypeDef",
+      "rows": 1999
+    },
+    {
+      "table": "Field",
+      "rows": 14031
+    },
+    {
+      "table": "MethodDef",
+      "rows": 12606
+    },
+    {
+      "table": "Param",
+      "rows": 11230
+    },
+    {
+      "table": "InterfaceImpl",
+      "rows": 641
+    },
+    {
+      "table": "MemberRef",
+      "rows": 4661
+    },
+    {
+      "table": "Constant",
+      "rows": 356
+    },
+    {
+      "table": "CustomAttribute",
+      "rows": 21812
+    },
+    {
+      "table": "ClassLayout",
+      "rows": 14
+    },
+    {
+      "table": "StandAloneSig",
+      "rows": 2065
+    },
+    {
+      "table": "EventMap",
+      "rows": 3
+    },
+    {
+      "table": "Event",
+      "rows": 5
+    },
+    {
+      "table": "PropertyMap",
+      "rows": 295
+    },
+    {
+      "table": "Property",
+      "rows": 1482
+    },
+    {
+      "table": "MethodSemantics",
+      "rows": 2456
+    },
+    {
+      "table": "MethodImpl",
+      "rows": 947
+    },
+    {
+      "table": "TypeSpec",
+      "rows": 1634
+    },
+    {
+      "table": "FieldRva",
+      "rows": 69
+    },
+    {
+      "table": "Assembly",
+      "rows": 1
+    },
+    {
+      "table": "AssemblyRef",
+      "rows": 18
+    },
+    {
+      "table": "NestedClass",
+      "rows": 1646
+    },
+    {
+      "table": "GenericParam",
+      "rows": 133
+    },
+    {
+      "table": "MethodSpec",
+      "rows": 2272
+    },
+    {
+      "table": "GenericParamConstraint",
+      "rows": 8
+    }
+  ],
+  "oldNormalization": [
+    {
+      "offset": 136,
+      "length": 4,
+      "reason": "COFF deterministic-build timestamp",
+      "originalHex": "2FF0BCF0"
+    },
+    {
+      "offset": 3870092,
+      "length": 16,
+      "reason": "Module MVID",
+      "originalHex": "75A337BF8F77684FB02BE4D2629F347D"
+    },
+    {
+      "offset": 4014477,
+      "length": 40,
+      "reason": "AssemblyInformationalVersionAttribute git commit only",
+      "originalHex": "63303830613435663965613862303961323866393666393661386461346364343030353739633738"
+    },
+    {
+      "offset": 4058316,
+      "length": 80,
+      "reason": "Native version resource informational git commit only",
+      "originalHex": "6300300038003000610034003500660039006500610038006200300039006100320038006600390036006600390036006100380064006100340063006400340030003000350037003900630037003800"
+    },
+    {
+      "offset": 4054700,
+      "length": 4,
+      "reason": "CodeView debug entry stamp",
+      "originalHex": "EE4DCC82"
+    },
+    {
+      "offset": 4054784,
+      "length": 16,
+      "reason": "CodeView PDB GUID only (path and age retained)",
+      "originalHex": "352E1AD294C72B4DAA48541C079C363F"
+    },
+    {
+      "offset": 4054899,
+      "length": 32,
+      "reason": "PDB checksum only (algorithm retained)",
+      "originalHex": "352E1AD294C72B1DAA48541C079C363FEE4DCC822F4CCE51C0ABECD4896F892E"
+    }
+  ],
+  "newNormalization": [
+    {
+      "offset": 136,
+      "length": 4,
+      "reason": "COFF deterministic-build timestamp",
+      "originalHex": "9C54C4A8"
+    },
+    {
+      "offset": 3870092,
+      "length": 16,
+      "reason": "Module MVID",
+      "originalHex": "83EE135A313C2843B007BD508A040549"
+    },
+    {
+      "offset": 4014477,
+      "length": 40,
+      "reason": "AssemblyInformationalVersionAttribute git commit only",
+      "originalHex": "33646535306533393036626238636137383539346435336637373761336363366430346261633237"
+    },
+    {
+      "offset": 4058316,
+      "length": 80,
+      "reason": "Native version resource informational git commit only",
+      "originalHex": "3300640065003500300065003300390030003600620062003800630061003700380035003900340064003500330066003700370037006100330063006300360064003000340062006100630032003700"
+    },
+    {
+      "offset": 4054700,
+      "length": 4,
+      "reason": "CodeView debug entry stamp",
+      "originalHex": "9C75DDB4"
+    },
+    {
+      "offset": 4054784,
+      "length": 16,
+      "reason": "CodeView PDB GUID only (path and age retained)",
+      "originalHex": "B457D357A479C54A91D1D42B81C09220"
+    },
+    {
+      "offset": 4054899,
+      "length": 32,
+      "reason": "PDB checksum only (algorithm retained)",
+      "originalHex": "B457D357A479C5BA91D1D42B81C092209C75DD34D4B8606987368E27CFCD71A4"
+    }
+  ],
+  "differentBytes": 144,
+  "differences": [
+    {
+      "offset": 136,
+      "oldByte": 47,
+      "newByte": 156
+    },
+    {
+      "offset": 137,
+      "oldByte": 240,
+      "newByte": 84
+    },
+    {
+      "offset": 138,
+      "oldByte": 188,
+      "newByte": 196
+    },
+    {
+      "offset": 139,
+      "oldByte": 240,
+      "newByte": 168
+    },
+    {
+      "offset": 748,
+      "oldByte": 2,
+      "newByte": 3
+    },
+    {
+      "offset": 3870092,
+      "oldByte": 117,
+      "newByte": 131
+    },
+    {
+      "offset": 3870093,
+      "oldByte": 163,
+      "newByte": 238
+    },
+    {
+      "offset": 3870094,
+      "oldByte": 55,
+      "newByte": 19
+    },
+    {
+      "offset": 3870095,
+      "oldByte": 191,
+      "newByte": 90
+    },
+    {
+      "offset": 3870096,
+      "oldByte": 143,
+      "newByte": 49
+    },
+    {
+      "offset": 3870097,
+      "oldByte": 119,
+      "newByte": 60
+    },
+    {
+      "offset": 3870098,
+      "oldByte": 104,
+      "newByte": 40
+    },
+    {
+      "offset": 3870099,
+      "oldByte": 79,
+      "newByte": 67
+    },
+    {
+      "offset": 3870101,
+      "oldByte": 43,
+      "newByte": 7
+    },
+    {
+      "offset": 3870102,
+      "oldByte": 228,
+      "newByte": 189
+    },
+    {
+      "offset": 3870103,
+      "oldByte": 210,
+      "newByte": 80
+    },
+    {
+      "offset": 3870104,
+      "oldByte": 98,
+      "newByte": 138
+    },
+    {
+      "offset": 3870105,
+      "oldByte": 159,
+      "newByte": 4
+    },
+    {
+      "offset": 3870106,
+      "oldByte": 52,
+      "newByte": 5
+    },
+    {
+      "offset": 3870107,
+      "oldByte": 125,
+      "newByte": 73
+    },
+    {
+      "offset": 4014477,
+      "oldByte": 99,
+      "newByte": 51
+    },
+    {
+      "offset": 4014478,
+      "oldByte": 48,
+      "newByte": 100
+    },
+    {
+      "offset": 4014479,
+      "oldByte": 56,
+      "newByte": 101
+    },
+    {
+      "offset": 4014480,
+      "oldByte": 48,
+      "newByte": 53
+    },
+    {
+      "offset": 4014481,
+      "oldByte": 97,
+      "newByte": 48
+    },
+    {
+      "offset": 4014482,
+      "oldByte": 52,
+      "newByte": 101
+    },
+    {
+      "offset": 4014483,
+      "oldByte": 53,
+      "newByte": 51
+    },
+    {
+      "offset": 4014484,
+      "oldByte": 102,
+      "newByte": 57
+    },
+    {
+      "offset": 4014485,
+      "oldByte": 57,
+      "newByte": 48
+    },
+    {
+      "offset": 4014486,
+      "oldByte": 101,
+      "newByte": 54
+    },
+    {
+      "offset": 4014487,
+      "oldByte": 97,
+      "newByte": 98
+    },
+    {
+      "offset": 4014488,
+      "oldByte": 56,
+      "newByte": 98
+    },
+    {
+      "offset": 4014489,
+      "oldByte": 98,
+      "newByte": 56
+    },
+    {
+      "offset": 4014490,
+      "oldByte": 48,
+      "newByte": 99
+    },
+    {
+      "offset": 4014491,
+      "oldByte": 57,
+      "newByte": 97
+    },
+    {
+      "offset": 4014492,
+      "oldByte": 97,
+      "newByte": 55
+    },
+    {
+      "offset": 4014493,
+      "oldByte": 50,
+      "newByte": 56
+    },
+    {
+      "offset": 4014494,
+      "oldByte": 56,
+      "newByte": 53
+    },
+    {
+      "offset": 4014495,
+      "oldByte": 102,
+      "newByte": 57
+    },
+    {
+      "offset": 4014496,
+      "oldByte": 57,
+      "newByte": 52
+    },
+    {
+      "offset": 4014497,
+      "oldByte": 54,
+      "newByte": 100
+    },
+    {
+      "offset": 4014498,
+      "oldByte": 102,
+      "newByte": 53
+    },
+    {
+      "offset": 4014499,
+      "oldByte": 57,
+      "newByte": 51
+    },
+    {
+      "offset": 4014500,
+      "oldByte": 54,
+      "newByte": 102
+    },
+    {
+      "offset": 4014501,
+      "oldByte": 97,
+      "newByte": 55
+    },
+    {
+      "offset": 4014502,
+      "oldByte": 56,
+      "newByte": 55
+    },
+    {
+      "offset": 4014503,
+      "oldByte": 100,
+      "newByte": 55
+    },
+    {
+      "offset": 4014505,
+      "oldByte": 52,
+      "newByte": 51
+    },
+    {
+      "offset": 4014507,
+      "oldByte": 100,
+      "newByte": 99
+    },
+    {
+      "offset": 4014508,
+      "oldByte": 52,
+      "newByte": 54
+    },
+    {
+      "offset": 4014509,
+      "oldByte": 48,
+      "newByte": 100
+    },
+    {
+      "offset": 4014511,
+      "oldByte": 53,
+      "newByte": 52
+    },
+    {
+      "offset": 4014512,
+      "oldByte": 55,
+      "newByte": 98
+    },
+    {
+      "offset": 4014513,
+      "oldByte": 57,
+      "newByte": 97
+    },
+    {
+      "offset": 4014515,
+      "oldByte": 55,
+      "newByte": 50
+    },
+    {
+      "offset": 4014516,
+      "oldByte": 56,
+      "newByte": 55
+    },
+    {
+      "offset": 4054700,
+      "oldByte": 238,
+      "newByte": 156
+    },
+    {
+      "offset": 4054701,
+      "oldByte": 77,
+      "newByte": 117
+    },
+    {
+      "offset": 4054702,
+      "oldByte": 204,
+      "newByte": 221
+    },
+    {
+      "offset": 4054703,
+      "oldByte": 130,
+      "newByte": 180
+    },
+    {
+      "offset": 4054784,
+      "oldByte": 53,
+      "newByte": 180
+    },
+    {
+      "offset": 4054785,
+      "oldByte": 46,
+      "newByte": 87
+    },
+    {
+      "offset": 4054786,
+      "oldByte": 26,
+      "newByte": 211
+    },
+    {
+      "offset": 4054787,
+      "oldByte": 210,
+      "newByte": 87
+    },
+    {
+      "offset": 4054788,
+      "oldByte": 148,
+      "newByte": 164
+    },
+    {
+      "offset": 4054789,
+      "oldByte": 199,
+      "newByte": 121
+    },
+    {
+      "offset": 4054790,
+      "oldByte": 43,
+      "newByte": 197
+    },
+    {
+      "offset": 4054791,
+      "oldByte": 77,
+      "newByte": 74
+    },
+    {
+      "offset": 4054792,
+      "oldByte": 170,
+      "newByte": 145
+    },
+    {
+      "offset": 4054793,
+      "oldByte": 72,
+      "newByte": 209
+    },
+    {
+      "offset": 4054794,
+      "oldByte": 84,
+      "newByte": 212
+    },
+    {
+      "offset": 4054795,
+      "oldByte": 28,
+      "newByte": 43
+    },
+    {
+      "offset": 4054796,
+      "oldByte": 7,
+      "newByte": 129
+    },
+    {
+      "offset": 4054797,
+      "oldByte": 156,
+      "newByte": 192
+    },
+    {
+      "offset": 4054798,
+      "oldByte": 54,
+      "newByte": 146
+    },
+    {
+      "offset": 4054799,
+      "oldByte": 63,
+      "newByte": 32
+    },
+    {
+      "offset": 4054899,
+      "oldByte": 53,
+      "newByte": 180
+    },
+    {
+      "offset": 4054900,
+      "oldByte": 46,
+      "newByte": 87
+    },
+    {
+      "offset": 4054901,
+      "oldByte": 26,
+      "newByte": 211
+    },
+    {
+      "offset": 4054902,
+      "oldByte": 210,
+      "newByte": 87
+    },
+    {
+      "offset": 4054903,
+      "oldByte": 148,
+      "newByte": 164
+    },
+    {
+      "offset": 4054904,
+      "oldByte": 199,
+      "newByte": 121
+    },
+    {
+      "offset": 4054905,
+      "oldByte": 43,
+      "newByte": 197
+    },
+    {
+      "offset": 4054906,
+      "oldByte": 29,
+      "newByte": 186
+    },
+    {
+      "offset": 4054907,
+      "oldByte": 170,
+      "newByte": 145
+    },
+    {
+      "offset": 4054908,
+      "oldByte": 72,
+      "newByte": 209
+    },
+    {
+      "offset": 4054909,
+      "oldByte": 84,
+      "newByte": 212
+    },
+    {
+      "offset": 4054910,
+      "oldByte": 28,
+      "newByte": 43
+    },
+    {
+      "offset": 4054911,
+      "oldByte": 7,
+      "newByte": 129
+    },
+    {
+      "offset": 4054912,
+      "oldByte": 156,
+      "newByte": 192
+    },
+    {
+      "offset": 4054913,
+      "oldByte": 54,
+      "newByte": 146
+    },
+    {
+      "offset": 4054914,
+      "oldByte": 63,
+      "newByte": 32
+    },
+    {
+      "offset": 4054915,
+      "oldByte": 238,
+      "newByte": 156
+    },
+    {
+      "offset": 4054916,
+      "oldByte": 77,
+      "newByte": 117
+    },
+    {
+      "offset": 4054917,
+      "oldByte": 204,
+      "newByte": 221
+    },
+    {
+      "offset": 4054918,
+      "oldByte": 130,
+      "newByte": 52
+    },
+    {
+      "offset": 4054919,
+      "oldByte": 47,
+      "newByte": 212
+    },
+    {
+      "offset": 4054920,
+      "oldByte": 76,
+      "newByte": 184
+    },
+    {
+      "offset": 4054921,
+      "oldByte": 206,
+      "newByte": 96
+    },
+    {
+      "offset": 4054922,
+      "oldByte": 81,
+      "newByte": 105
+    },
+    {
+      "offset": 4054923,
+      "oldByte": 192,
+      "newByte": 135
+    },
+    {
+      "offset": 4054924,
+      "oldByte": 171,
+      "newByte": 54
+    },
+    {
+      "offset": 4054925,
+      "oldByte": 236,
+      "newByte": 142
+    },
+    {
+      "offset": 4054926,
+      "oldByte": 212,
+      "newByte": 39
+    },
+    {
+      "offset": 4054927,
+      "oldByte": 137,
+      "newByte": 207
+    },
+    {
+      "offset": 4054928,
+      "oldByte": 111,
+      "newByte": 205
+    },
+    {
+      "offset": 4054929,
+      "oldByte": 137,
+      "newByte": 113
+    },
+    {
+      "offset": 4054930,
+      "oldByte": 46,
+      "newByte": 164
+    },
+    {
+      "offset": 4058316,
+      "oldByte": 99,
+      "newByte": 51
+    },
+    {
+      "offset": 4058318,
+      "oldByte": 48,
+      "newByte": 100
+    },
+    {
+      "offset": 4058320,
+      "oldByte": 56,
+      "newByte": 101
+    },
+    {
+      "offset": 4058322,
+      "oldByte": 48,
+      "newByte": 53
+    },
+    {
+      "offset": 4058324,
+      "oldByte": 97,
+      "newByte": 48
+    },
+    {
+      "offset": 4058326,
+      "oldByte": 52,
+      "newByte": 101
+    },
+    {
+      "offset": 4058328,
+      "oldByte": 53,
+      "newByte": 51
+    },
+    {
+      "offset": 4058330,
+      "oldByte": 102,
+      "newByte": 57
+    },
+    {
+      "offset": 4058332,
+      "oldByte": 57,
+      "newByte": 48
+    },
+    {
+      "offset": 4058334,
+      "oldByte": 101,
+      "newByte": 54
+    },
+    {
+      "offset": 4058336,
+      "oldByte": 97,
+      "newByte": 98
+    },
+    {
+      "offset": 4058338,
+      "oldByte": 56,
+      "newByte": 98
+    },
+    {
+      "offset": 4058340,
+      "oldByte": 98,
+      "newByte": 56
+    },
+    {
+      "offset": 4058342,
+      "oldByte": 48,
+      "newByte": 99
+    },
+    {
+      "offset": 4058344,
+      "oldByte": 57,
+      "newByte": 97
+    },
+    {
+      "offset": 4058346,
+      "oldByte": 97,
+      "newByte": 55
+    },
+    {
+      "offset": 4058348,
+      "oldByte": 50,
+      "newByte": 56
+    },
+    {
+      "offset": 4058350,
+      "oldByte": 56,
+      "newByte": 53
+    },
+    {
+      "offset": 4058352,
+      "oldByte": 102,
+      "newByte": 57
+    },
+    {
+      "offset": 4058354,
+      "oldByte": 57,
+      "newByte": 52
+    },
+    {
+      "offset": 4058356,
+      "oldByte": 54,
+      "newByte": 100
+    },
+    {
+      "offset": 4058358,
+      "oldByte": 102,
+      "newByte": 53
+    },
+    {
+      "offset": 4058360,
+      "oldByte": 57,
+      "newByte": 51
+    },
+    {
+      "offset": 4058362,
+      "oldByte": 54,
+      "newByte": 102
+    },
+    {
+      "offset": 4058364,
+      "oldByte": 97,
+      "newByte": 55
+    },
+    {
+      "offset": 4058366,
+      "oldByte": 56,
+      "newByte": 55
+    },
+    {
+      "offset": 4058368,
+      "oldByte": 100,
+      "newByte": 55
+    },
+    {
+      "offset": 4058372,
+      "oldByte": 52,
+      "newByte": 51
+    },
+    {
+      "offset": 4058376,
+      "oldByte": 100,
+      "newByte": 99
+    },
+    {
+      "offset": 4058378,
+      "oldByte": 52,
+      "newByte": 54
+    },
+    {
+      "offset": 4058380,
+      "oldByte": 48,
+      "newByte": 100
+    },
+    {
+      "offset": 4058384,
+      "oldByte": 53,
+      "newByte": 52
+    },
+    {
+      "offset": 4058386,
+      "oldByte": 55,
+      "newByte": 98
+    },
+    {
+      "offset": 4058388,
+      "oldByte": 57,
+      "newByte": 97
+    },
+    {
+      "offset": 4058392,
+      "oldByte": 55,
+      "newByte": 50
+    },
+    {
+      "offset": 4058394,
+      "oldByte": 56,
+      "newByte": 55
+    }
+  ],
+  "remainingUnexplainedOffsets": [
+    748
+  ],
+  "normalizedWholeFileEqual": false,
+  "normalizedSha256Old": "110723a5e3364d36815434a4cc2e768de74aeb2053a9bb8877455213f96f571e",
+  "normalizedSha256New": "0ace37c7742d898c458f77bda6a695df8b7b43f4a02a8eab2852b98d6fb81d92",
+  "scope": "Read-only PEReader/MetadataReader. Whole-file normalization restricted to COFF timestamp, module MVID, assembly informational-version commit, matching native version-resource commit, CodeView GUID and debug entry stamp, PDB checksum bytes. No method/type/field/signature/IL/local/EH or managed-resource bytes excluded. Reflection can observe the excluded metadata: not universal behavioral identity."
+}

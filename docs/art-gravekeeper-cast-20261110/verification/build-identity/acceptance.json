@@ -1,0 +1,65 @@
+{
+  "status": "PASS_EXECUTABLE_CODE_IDENTITY_EXCLUDING_DECLARED_BUILD_METADATA",
+  "productionFilesChanged": false,
+  "productionRebuiltByAudit": false,
+  "actualPairs": [
+    {
+      "name": "Empire.dll",
+      "oldSha256": "23f3ea10fdbb1bc4f0329c9c995cfe32ff1545a412126b6c90671a0575d9cd9c",
+      "newSha256": "fd0bb3108808b43ca7540e9dc9e6c72248e1f526d049be933e7bc3a483c152e1",
+      "normalizedSha256": "110723a5e3364d36815434a4cc2e768de74aeb2053a9bb8877455213f96f571e",
+      "methods": 12606,
+      "unexplainedDifferingBytes": 0
+    },
+    {
+      "name": "Empire.Core.dll",
+      "oldSha256": "507d7f21336e5baf00e60adfea7ae56e2b3aff34f5d1e0a2af36e7f74d4833fc",
+      "newSha256": "03a8ebc87bbbfa7ad4bf053000f52fbd1ad687f39894cfc95371d6a06097281e",
+      "normalizedSha256": "cc3986f417d5d5581c5260836edb244ab16b326090253bccded7381cb9eb1b4d",
+      "methods": 5351,
+      "unexplainedDifferingBytes": 0
+    }
+  ],
+  "negativeControl": {
+    "passed": true,
+    "cases": [
+      {
+        "case": "il-byte",
+        "mutatedOffset": 748,
+        "xor": 1,
+        "exitCode": 1,
+        "rejected": true,
+        "unexplainedOffsets": [
+          748
+        ],
+        "methodsEqual": false,
+        "coreUnchanged": true
+      },
+      {
+        "case": "field-attribute-byte",
+        "mutatedOffset": 1969402,
+        "xor": 16,
+        "exitCode": 1,
+        "rejected": true,
+        "unexplainedOffsets": [
+          1969402
+        ],
+        "methodsEqual": true,
+        "coreUnchanged": true
+      }
+    ]
+  },
+  "limitations": [
+    "Not raw binary identity; SHA256 hashes differ.",
+    "Excluded MVID, assembly informational-version and native version-resource commit values are observable through reflection/file inspection. Therefore no claim of universal contextual/behavioral equivalence.",
+    "External PDB/SourceLink contents, Godot assets, runtime/dependencies, actual native video-loaded file provenance and test success are outside this binary comparison. Native recording provenance is documented independently by native proof bound to the old assembly SHA256."
+  ],
+  "actualOldDirectory": "/workspace/scratch/84c9fe948755/empire-gravekeeper-cast-20261110/checkpoint/final-portable/assemblies",
+  "revalidation": {
+    "formatApplyExitCode": 0,
+    "formatVerifyExitCode": 0,
+    "auditExitCode": 0,
+    "selftestExitCode": 0
+  },
+  "manifestEvidence": "method-manifest-hashes.json"
+}

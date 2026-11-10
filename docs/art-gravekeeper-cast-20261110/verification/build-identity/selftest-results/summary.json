@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "il-byte",
+      "mutatedOffset": 748,
+      "xor": 1,
+      "exitCode": 1,
+      "rejected": true,
+      "unexplainedOffsets": [
+        748
+      ],
+      "methodsEqual": false,
+      "coreUnchanged": true
+    },
+    {
+      "case": "field-attribute-byte",
+      "mutatedOffset": 1969402,
+      "xor": 16,
+      "exitCode": 1,
+      "rejected": true,
+      "unexplainedOffsets": [
+        1969402
+      ],
+      "methodsEqual": true,
+      "coreUnchanged": true
+    }
+  ]
+}
