@@ -1,0 +1,75 @@
+{
+  "verificationScope": "Pre-commit focused archer recoil and complete AnimationChecks scene; not the aggregate native gate or GUI acceptance.",
+  "formatVerifyExit": 0,
+  "buildExit": 0,
+  "buildWarnings": 0,
+  "buildErrors": 0,
+  "importNativeGateExit": 0,
+  "focusedBaselineGateExit": 0,
+  "newAssertions": 404,
+  "animationSceneNativeGateExit": 0,
+  "overallAssertions": 5596,
+  "negativeControls": {
+    "negative-static-binding": {
+      "gateExit": 1,
+      "failure": "ERROR: System.InvalidOperationException: The C01 archer selects exactly four authored recoil poses at uniform scale over 320 ms, without a release or death policy."
+    },
+    "negative-one-ms-interval": {
+      "gateExit": 1,
+      "failure": "ERROR: System.InvalidOperationException: Every archer recoil pose has its precise half-open 40/110/90/80 ms interval."
+    },
+    "negative-early-recoil-frame": {
+      "gateExit": 1,
+      "failure": "ERROR: System.InvalidOperationException: Applying an actor frame updates crop, anchor, contact, scale magnitude, filter and art identity while preserving facing."
+    },
+    "negative-zero-damage-recoil": {
+      "gateExit": 1,
+      "failure": "ERROR: System.InvalidOperationException: Applying an actor frame updates crop, anchor, contact, scale magnitude, filter and art identity while preserving facing."
+    },
+    "negative-one-ms-impact-tail": {
+      "gateExit": 1,
+      "failure": "ERROR: System.InvalidOperationException: At 495 ms each original receipt publishes once, with no added command tail or mutation of battle facts."
+    },
+    "restoredHashes": {
+      "data/art-bindings.json": "4aff3cb77dfe6b60b00395b121a1c15a9f2d2c60cb92e4e57431cbc68a396cf7",
+      "data/selected-assets.json": "79717c6bb76ca2b2bb3af492153733cfaccfc6fb8e30c3afba05e633ec9ce096",
+      "Presentation/BoardView.Impact.cs": "2e26f9547ea779ac8f99505fae1cb9cc458b13c6a3f3f0c71d0d81edea672f69"
+    },
+    "restoredInputsMatch": true,
+    "productionInputsUnchanged": true,
+    "negative-restored-positive": {
+      "gateExit": 0,
+      "failure": null
+    },
+    "restoredPositivePassed": true
+  },
+  "gitDiffCheckExit": 0,
+  "testSourceHashes": {
+    "godot/Presentation/AnimationArcherRecoilChecks.cs": "5aa81df5f2efd73e53840d28faa8cc858eebb676995b6b9f2934c62f38031872",
+    "godot/Presentation/AnimationArcherRecoilChecks.cs.uid": "a594fc42896d4a577cedbc43b3b0d91e320dbc42980b34850d46d7fe4ab5f47a",
+    "godot/Presentation/AnimationChecks.cs": "eec3ce5db6a7015182461dec71daa5706c65e02ba51f09bacad6a750dee1afdf",
+    "godot/Presentation/AnimationArcherShotChecks.cs": "d3f8291827872ce87c286392fce20766ef64831c7af92c02a2f6128a65fd369f",
+    "godot/Presentation/AnimationReactionChecks.cs": "f1dd3e86836e664e3563ed231872355f933a8688687de4b055b050d98e91b89c"
+  },
+  "unchangedArcherIdleChecksSha256": "52d7cf87b830efaf95fa26d8a4a5e75e966ae0ee9305d237a722316900db5585",
+  "earlierTestHarnessFailures": [
+    {
+      "log": "animation-accumulation-failure.log",
+      "cause": "Repeated relative 1 microsecond steps accumulated to 0.49499999999999994, below the actual 0.495-second endpoint. The test now advances to explicit absolute boundaries."
+    },
+    {
+      "log": "focused-area-floating-failure.log",
+      "cause": "Relative area steps accumulated to 0.9149999999999999, below 0.915. The test now asserts the endpoint before and after at 914.999/915.001 milliseconds."
+    }
+  ],
+  "runtimeProductionChangesDuringFocusedVerification": false,
+  "commands": [
+    "source tools/godot/env.sh",
+    "dotnet format whitespace --folder . --include [the four modified C# check sources] --verify-no-changes",
+    "dotnet build godot/Empire.csproj --no-restore --nologo --disable-build-servers -m:1 -p:UseSharedCompilation=false",
+    "XDG_DATA_HOME=<isolated import namespace> bash tools/godot/native-process.sh <import.log> <label> \"$GODOT_NET\" --headless --editor --path godot --import",
+    "XDG_DATA_HOME=<isolated scene namespace> EMPIRE_CHECK_TIMEOUT_SECONDS=600 bash tools/godot/native-process.sh <animation.log> <label> \"$GODOT_NET\" --headless --path godot res://Scenes/AnimationChecks.tscn",
+    "EMPIRE_CHECK_TIMEOUT_SECONDS=600 python3 <QA>/run-negative-controls.py (isolated copied project only)"
+  ],
+  "allVerificationProcessesFinished": true
+}

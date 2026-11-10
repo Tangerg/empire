@@ -36,7 +36,10 @@ releases that focus before beginning the fresh selection sequence.
 
 This is a legal action/UI-controller proof, not a native-render or visibility
 acceptance. Actual bow, body, feet, terrain and overlapping UI must be reviewed
-in the native capture. Enemy 14 is near the settlement and may be partly occluded.
+in the native capture. Native inspection found source 9 obscured by a roof after
+its move to (22,13). This route remains a lawful input and state witness, but
+is not accepted as two-direction recoil footage. Use `southern-bows` for the
+open-ground recording without changing map, state or camera behavior.
 
 ## Expected presentation clock, not captured observations
 
@@ -72,9 +75,34 @@ at (22,20) for 39 (78 → 39), then Elin counters for 20 (enemy 78 → 58). Both
 are on the southern ground and face east/west. `ui-trigger-before.json` is the
 official human checkpoint immediately before step 148 endTurn. A production
 controller E emits exactly that endTurn; archer 18 is the first/only ready enemy,
-so ordinary AI performs the saved attack. This is available only as a backup if
-the preferred route's pixels are obstructed. The 110 ms AI move means the same
+so ordinary AI performs the saved attack. For the native recording, arm capture
+on the home screen, then F9-load the official `southern-bows/before.json`.
+Normal AI and its existing camera focus perform the attack automatically.
+The 110 ms AI move means the same
 two-bow interaction itself lasts 1590 ms, excluding the prior turn announcement.
+
+## Correct save comparison after normal AI settles
+
+Loading `southern-bows/before.json` normally executes exactly two AI orders:
+step 149 is the archer attack/counter, then step 150 is `endTurn`. Control returns
+to player 1 in round 9. Do not stop the AI or inject a human command between them.
+The immediate attack `after.json` has hash `883f9cfd`; the complete native settled
+save is `ui-settled.json`, hash `dc0736f6`.
+
+The extra endTurn removes Elin's inspired status, adds two command points
+(result 3), grants 200 funds (result 1230), regenerates 20 HP on unit 8, and
+updates the normal turn/readiness fields. Actual F5 output must therefore be
+compared with `ui-settled.json`, not merely the two archers' HP or the immediate
+attack after-save. Compare every official campaign, battle, event and metadata
+field, omitting only `campaign.savedAt` and `battle.savedAt` in detached comparison
+copies. No other field may be normalized or rewritten.
+
+`ui-settled-extra-actions.json` records the one additional endTurn with its
+canonical action, complete events and before/after hash. The full 151-command
+route is `ui-settled-derivation-actions.json`. `ui-settled-verification.json`
+records official settled-save roundtrip and a fresh load of the native before
+checkpoint followed by normal AI until the next human turn. Both actions' full
+receipts, all state and the complete official settled save must agree.
 
 ## What the harness verifies
 
@@ -99,20 +127,55 @@ or empty directory outside the repository.
 
     bash /path/to/legal-hit/derive.sh --repo-root /path/to/empire-work --assembly-dir /path/to/frozen-assemblies --output /new/empty/output
 
-The current final harness passed as `legal-hit-run05` against frozen baseline
-assemblies, with no build warnings/errors. `legal-hit-run04` retains the same
-main witness and initial opposite-facing backup; run05 adds only the already
-known southern continuation. Preliminary scratch runs 01/02 contained harness
-compile errors; run03 rejected an unavailable preferred destination. They are
-not positive results and do not invalidate the independently complete run04/05.
+The current harness passed from working directory `/tmp` as
+`legal-final-settled`, using the frozen implementation build for commit
+`8893ad5555ab02fbc1fa08b876c5918fb30ced64`. Its scratch harness build completed
+with zero warnings/errors, and the full derivation exited 0. `replay.txt` and
+`replay.exit` retain the complete run. The source hash in
+`primary-witness-comparison.json` matches the copied source actually executed.
 
-Frozen baseline assembly SHA256 values:
+Frozen implementation assembly SHA256 values:
 
-- Empire.dll: d4c705bd3878370c4263213f351e223efe9ceba376fceca98ea3983bd1349d2a
-- Empire.Core.dll: 53249b2974a552dbc691f3c77932bbae41bd8afbf6704a130a09e8a0b06e5e7f
+- Empire.dll: 827d5a4edf0f3fb076f5d6d17ec2031fff1656e836f16ea5e5120d3b714169fd
+- Empire.Core.dll: e757b4cd21b9d0c3a552a1b5b7a803f3573caa097cd9ea1737a34cd6eb9fb476
 - GodotSharp.dll: 2142e62894176d7340f50581f8b2fe84e36ae64e1a85f1b2bd7737a7e8a5c8ba
 
-Repeat against the final frozen implementation build before promoting any of
-these files into the formal reviewed evidence. Final-build gameplay equality is
-separate from synthetic animation checks, native visual recording and the full
-aggregate gate. None is implied by this harness alone.
+`runtime-assemblies-sha256.txt` identifies these same three assemblies. Their
+frozen files and the copies used by the executed harness were independently
+checked. No game rebuild or GUI run was performed during this derivation.
+
+The original 22 witness files remain unchanged from the earlier final-build
+run: non-save JSON is byte-identical; official saves differ only in
+`campaign.savedAt` and `battle.savedAt`. `primary-witness-comparison.json`
+records that check. Source/opening documents, full action traces, candidates,
+receipts, official save checkpoints and verification JSON are preserved here.
+There are no copied binaries, build intermediates or duplicate harness sources.
+
+## Native acceptance and complete save comparison
+
+The main native visual acceptance is the **95-frame southern-bows recording**.
+The settlement/roof route is retained only as lawful input/state evidence and
+partial visibility evidence. In that route the moved friendly archer is hidden
+by the roof, so it is not evidence that both recoil directions were visibly
+accepted. The separate native recording and frame review own pixel, contact,
+pose and occlusion acceptance; deterministic state comparison alone does not.
+
+The native F5 saves are retained under `native/`. Full-document comparisons pass:
+
+- `native/native-southern-output.json` equals
+  `southern-bows/ui-settled.json` after normal AI attack plus endTurn, hash
+  `dc0736f6`.
+- `native/native-dual-output.json` equals `enemy-west/after.json`, hash
+  `7325ab46`.
+
+The sole permitted exclusions are `campaign.savedAt` and `battle.savedAt` in
+detached comparison copies. All campaign data, battle state, event history,
+metadata, statuses, resources and readiness fields are compared. The archived
+native and expected saves themselves are never edited. Rerun this comparison:
+
+    python3 docs/art-archer-hit-20261110/verification/legal-hit/verify-native-saves.py
+
+`native-save-comparison.json` records the result and exact file SHA256 values.
+`evidence-sha256.txt` covers this archived package. Final-build legal/state
+verification, native visual recording, synthetic animation checks and the full
+aggregate gate remain separate evidence; no one result implies the others.

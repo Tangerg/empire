@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "comparisons": [
+    {
+      "native": "native/native-southern-output.json",
+      "expected": "southern-bows/ui-settled.json",
+      "completeDocumentEqual": true,
+      "excludedFields": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ],
+      "expectedStateHashFromVerifiedReplay": "dc0736f6",
+      "nativeByteSha256": "141cbacf864713d07b4f5f118f242a0fd0264ac3acecde1391cd39f35b3b113c",
+      "expectedByteSha256": "dd2ed4d8a7699a0d7c57a9ac783419b755919b41c6b221df45b0ab7cabfc9f79"
+    },
+    {
+      "native": "native/native-dual-output.json",
+      "expected": "enemy-west/after.json",
+      "completeDocumentEqual": true,
+      "excludedFields": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ],
+      "expectedStateHashFromVerifiedReplay": "7325ab46",
+      "nativeByteSha256": "0e9411cca92ff8335b428f05aea4ff581b921928edf2e0009e73c5e91f50d9bc",
+      "expectedByteSha256": "335a222b9a55eb31c85319855ca95b4637ee861882d2a21335ba329abc0d4f00"
+    }
+  ]
+}

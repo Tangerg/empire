@@ -1,0 +1,170 @@
+{
+  "passed": true,
+  "preservedPrimaryWitnessFiles": 22,
+  "excludedOnlyTwoSaveTimestamps": true,
+  "sourceMatchesExecutedCopy": true,
+  "harnessSourceSha256": "c1c23157b82368480ef272abe08372157a0c67d034fd8c6c52962fbabbced29a",
+  "frozenAndExecutedAssemblySha256": {
+    "Empire.dll": "827d5a4edf0f3fb076f5d6d17ec2031fff1656e836f16ea5e5120d3b714169fd",
+    "Empire.Core.dll": "e757b4cd21b9d0c3a552a1b5b7a803f3573caa097cd9ea1737a34cd6eb9fb476",
+    "GodotSharp.dll": "2142e62894176d7340f50581f8b2fe84e36ae64e1a85f1b2bd7737a7e8a5c8ba"
+  },
+  "files": [
+    {
+      "file": "source-campaign-save.json",
+      "equal": true,
+      "omittedFields": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ],
+      "byteEqualityChecked": false
+    },
+    {
+      "file": "opening-actions.json",
+      "equal": true,
+      "omittedFields": [],
+      "byteEqualityChecked": true
+    },
+    {
+      "file": "shared-prefix-actions.json",
+      "equal": true,
+      "omittedFields": [],
+      "byteEqualityChecked": true
+    },
+    {
+      "file": "candidate-orders.json",
+      "equal": true,
+      "omittedFields": [],
+      "byteEqualityChecked": true
+    },
+    {
+      "file": "verification-result.json",
+      "equal": true,
+      "omittedFields": [],
+      "byteEqualityChecked": true
+    },
+    {
+      "file": "enemy-west/after.json",
+      "equal": true,
+      "omittedFields": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ],
+      "byteEqualityChecked": false
+    },
+    {
+      "file": "enemy-west/before.json",
+      "equal": true,
+      "omittedFields": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ],
+      "byteEqualityChecked": false
+    },
+    {
+      "file": "enemy-west/derivation-actions.json",
+      "equal": true,
+      "omittedFields": [],
+      "byteEqualityChecked": true
+    },
+    {
+      "file": "enemy-west/receipt.json",
+      "equal": true,
+      "omittedFields": [],
+      "byteEqualityChecked": true
+    },
+    {
+      "file": "enemy-west/verification-result.json",
+      "equal": true,
+      "omittedFields": [],
+      "byteEqualityChecked": true
+    },
+    {
+      "file": "friendly-east/after.json",
+      "equal": true,
+      "omittedFields": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ],
+      "byteEqualityChecked": false
+    },
+    {
+      "file": "friendly-east/before.json",
+      "equal": true,
+      "omittedFields": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ],
+      "byteEqualityChecked": false
+    },
+    {
+      "file": "friendly-east/derivation-actions.json",
+      "equal": true,
+      "omittedFields": [],
+      "byteEqualityChecked": true
+    },
+    {
+      "file": "friendly-east/receipt.json",
+      "equal": true,
+      "omittedFields": [],
+      "byteEqualityChecked": true
+    },
+    {
+      "file": "friendly-east/verification-result.json",
+      "equal": true,
+      "omittedFields": [],
+      "byteEqualityChecked": true
+    },
+    {
+      "file": "southern-bows/after.json",
+      "equal": true,
+      "omittedFields": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ],
+      "byteEqualityChecked": false
+    },
+    {
+      "file": "southern-bows/before.json",
+      "equal": true,
+      "omittedFields": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ],
+      "byteEqualityChecked": false
+    },
+    {
+      "file": "southern-bows/derivation-actions.json",
+      "equal": true,
+      "omittedFields": [],
+      "byteEqualityChecked": true
+    },
+    {
+      "file": "southern-bows/receipt.json",
+      "equal": true,
+      "omittedFields": [],
+      "byteEqualityChecked": true
+    },
+    {
+      "file": "southern-bows/ui-trigger-action.json",
+      "equal": true,
+      "omittedFields": [],
+      "byteEqualityChecked": true
+    },
+    {
+      "file": "southern-bows/ui-trigger-before.json",
+      "equal": true,
+      "omittedFields": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ],
+      "byteEqualityChecked": false
+    },
+    {
+      "file": "southern-bows/verification-result.json",
+      "equal": true,
+      "omittedFields": [],
+      "byteEqualityChecked": true
+    }
+  ]
+}

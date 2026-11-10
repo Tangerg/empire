@@ -1,0 +1,275 @@
+{
+  "frameFiles": 95,
+  "reviewedActorCrops": 190,
+  "frameIndexConvention": "Zero-based frame-NNN filenames; observedFrame is NNN+1.",
+  "processFrameInclusive": [
+    2870,
+    2964
+  ],
+  "captureStride": 1,
+  "viewportSize": [
+    960,
+    640
+  ],
+  "continuousRealtimePlaybackReviewed": false,
+  "actors": [
+    {
+      "id": 3,
+      "cropBoxLTRB": [
+        333,
+        257,
+        405,
+        338
+      ],
+      "mirrored": false,
+      "phases": [
+        {
+          "art": "archer-breathe-v1",
+          "pose": 0,
+          "firstFrame": 0,
+          "lastFrame": 23
+        },
+        {
+          "art": "archer-recoil-v1",
+          "pose": 0,
+          "firstFrame": 24,
+          "lastFrame": 26
+        },
+        {
+          "art": "archer-recoil-v1",
+          "pose": 1,
+          "firstFrame": 27,
+          "lastFrame": 32
+        },
+        {
+          "art": "archer-recoil-v1",
+          "pose": 2,
+          "firstFrame": 33,
+          "lastFrame": 38
+        },
+        {
+          "art": "archer-recoil-v1",
+          "pose": 3,
+          "firstFrame": 39,
+          "lastFrame": 42
+        },
+        {
+          "art": "archer-breathe-v1",
+          "pose": 0,
+          "firstFrame": 43,
+          "lastFrame": 48
+        },
+        {
+          "art": "archer-shot-v1",
+          "pose": 0,
+          "firstFrame": 49,
+          "lastFrame": 54
+        },
+        {
+          "art": "archer-shot-v1",
+          "pose": 1,
+          "firstFrame": 55,
+          "lastFrame": 60
+        },
+        {
+          "art": "archer-shot-v1",
+          "pose": 2,
+          "firstFrame": 61,
+          "lastFrame": 68
+        },
+        {
+          "art": "archer-shot-v1",
+          "pose": 3,
+          "firstFrame": 69,
+          "lastFrame": 72
+        },
+        {
+          "art": "archer-shot-v1",
+          "pose": 4,
+          "firstFrame": 73,
+          "lastFrame": 78
+        },
+        {
+          "art": "archer-shot-v1",
+          "pose": 5,
+          "firstFrame": 79,
+          "lastFrame": 85
+        },
+        {
+          "art": "archer-breathe-v1",
+          "pose": 0,
+          "firstFrame": 86,
+          "lastFrame": 94
+        }
+      ],
+      "recoilPositions": [
+        [
+          843.5823,
+          511.488
+        ]
+      ],
+      "recoilSupportPlanes": [
+        [
+          843.5823,
+          511.488
+        ]
+      ],
+      "recoilScales": [
+        [
+          0.072,
+          0.072
+        ]
+      ],
+      "damageNumeralInclusive": [
+        24,
+        48
+      ],
+      "impactEarlyCrossInclusive": [
+        24,
+        28
+      ],
+      "impactBrightBurstInclusive": [
+        29,
+        33
+      ],
+      "impactFragmentTailInclusive": [
+        34,
+        48
+      ],
+      "completionBadgeInclusive": [
+        0,
+        94
+      ]
+    },
+    {
+      "id": 18,
+      "cropBoxLTRB": [
+        442,
+        232,
+        540,
+        324
+      ],
+      "mirrored": true,
+      "phases": [
+        {
+          "art": "C01-FFV1-UNIT-ARCHER",
+          "pose": 1,
+          "firstFrame": 0,
+          "lastFrame": 4
+        },
+        {
+          "art": "archer-shot-v1",
+          "pose": 0,
+          "firstFrame": 5,
+          "lastFrame": 10
+        },
+        {
+          "art": "archer-shot-v1",
+          "pose": 1,
+          "firstFrame": 11,
+          "lastFrame": 16
+        },
+        {
+          "art": "archer-shot-v1",
+          "pose": 2,
+          "firstFrame": 17,
+          "lastFrame": 23
+        },
+        {
+          "art": "archer-shot-v1",
+          "pose": 3,
+          "firstFrame": 24,
+          "lastFrame": 28
+        },
+        {
+          "art": "archer-shot-v1",
+          "pose": 4,
+          "firstFrame": 29,
+          "lastFrame": 34
+        },
+        {
+          "art": "archer-shot-v1",
+          "pose": 5,
+          "firstFrame": 35,
+          "lastFrame": 40
+        },
+        {
+          "art": "archer-breathe-v1",
+          "pose": 0,
+          "firstFrame": 41,
+          "lastFrame": 68
+        },
+        {
+          "art": "archer-recoil-v1",
+          "pose": 0,
+          "firstFrame": 69,
+          "lastFrame": 70
+        },
+        {
+          "art": "archer-recoil-v1",
+          "pose": 1,
+          "firstFrame": 71,
+          "lastFrame": 77
+        },
+        {
+          "art": "archer-recoil-v1",
+          "pose": 2,
+          "firstFrame": 78,
+          "lastFrame": 82
+        },
+        {
+          "art": "archer-recoil-v1",
+          "pose": 3,
+          "firstFrame": 83,
+          "lastFrame": 87
+        },
+        {
+          "art": "archer-breathe-v1",
+          "pose": 0,
+          "firstFrame": 88,
+          "lastFrame": 94
+        }
+      ],
+      "recoilPositions": [
+        [
+          939.5823,
+          500.0313
+        ]
+      ],
+      "recoilSupportPlanes": [
+        [
+          939.5823,
+          500.0313
+        ]
+      ],
+      "recoilScales": [
+        [
+          -0.072,
+          0.072
+        ]
+      ],
+      "damageNumeralInclusive": [
+        69,
+        93
+      ],
+      "impactEarlyCrossInclusive": [
+        69,
+        73
+      ],
+      "impactBrightBurstInclusive": [
+        74,
+        78
+      ],
+      "impactFragmentTailInclusive": [
+        79,
+        93
+      ],
+      "completionBadgeInclusive": [
+        94,
+        94
+      ]
+    }
+  ],
+  "overlayCaveat": "Damage numerals cover the central body throughout both recoils. Native acceptance concerns visible anatomy and handoffs; source art supplied unobstructed full-figure inspection.",
+  "sourceCaptureDirectory": "native-southern/motion-20261110-173652-001"
+}

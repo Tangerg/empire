@@ -72,5 +72,75 @@ and production runtime/data hashes remain unchanged. New test fixtures sample
 absolute clock targets or explicit before/after microsecond bounds to avoid
 fractional accumulation changing which side of a boundary they observe.
 
-Legal-battle native recordings and the full aggregate gate are pending.
-No full-character, full-campaign or export acceptance is claimed.
+Legal-battle native recordings passed within the visibility limits below. The full
+aggregate is still pending. No full-character, full-campaign or export acceptance
+is claimed.
+
+## Native legal exchange
+
+The accepted recording uses the existing southern route, with normal AI moving
+enemy archer 18 from (26,20) to (25,20), shooting Elin 3 at (22,20) for 39 damage,
+and Elin countering for 20. Both survive at 39/78 and 58/78 HP respectively.
+No state, HP, facing, camera or receipt was patched. The route is reproduced
+through actual campaign/core operations and independently compared at every
+order; see `verification/legal-hit/README.md` and its rerunnable harness.
+
+Normal AI then ends its turn. The actual F5 save at human round 9 equals the
+complete official `southern-bows/ui-settled.json`, excluding only the two writer
+timestamps. This includes normal status removal, resource grants, regeneration,
+readiness, events and all other fields, not just the two archers' HP. The earlier
+settlement route also matches its legal save but is visually roof-occluded.
+
+`verification/native-southern-lossless.mp4` preserves **95 consecutive 960×640
+frames**, stride 1, encoded at the fixed simulation rate of 60 frames/s. Every
+decoded RGB frame matches its original PNG byte-for-byte. PNG alpha is not stored
+in the video. JSONL preserves original actor records; the proof records per-frame
+PNG/RGB hashes, video hash, exact DLL hashes and full saved-state comparison.
+Capture wall times include screenshot readback and are not a performance test.
+The capture does not establish an exact zero-time first-frame offset.
+
+All 95 frames were reviewed for both archers, totaling 190 actor crops. Both
+facings visibly show four anatomical recoil poses, stable root/support anchors,
+consistent identity/equipment and correct idle/counter handoffs. See the two
+`native-southern-unit-*-phases-3x.png` sheets and `native-visual-review.md`.
+Existing damage numbers cover central body details through both recoils; a
+completion badge covers part of Elin's lower leg/bow. Native acceptance concerns
+the visible silhouette, head/shoulders, bow, grounding and handoffs, with the
+unobstructed source-art inspection supplying the covered-detail review.
+
+The first settlement capture preserves 99 frames but a house roof hides most of
+unit 9. Its `native-dual-*` files document legal inputs/state and the visibility
+failure; they are **not** counted as a complete two-direction art pass. No scene
+or UI changes were made to disguise either recording's limitations.
+
+Native capture, legal replay and the full gate use exactly the same frozen DLL
+bytes from implementation `8893ad55`: Empire SHA256
+`827d5a4edf0f3fb076f5d6d17ec2031fff1656e836f16ea5e5120d3b714169fd`, Core
+`e757b4cd21b9d0c3a552a1b5b7a803f3573caa097cd9ea1737a34cd6eb9fb476`.
+The native recording itself does not test cancellation, reduced motion or death;
+the focused native assertions cover those presentation contracts separately.
+
+## Recheck the archived native evidence
+
+A second read-only verification independently decoded all **194/194** frames
+against the original PNGs and checked JSONL against the original capture JSON.
+It also verified the two official inputs/results, four recoil actor traces,
+production anchors, all 20 crop-sheet panels and three DLL identities. That is
+95 visually accepted southern frames plus 99 diagnostic roof frames, not 194
+frames of full visual acceptance. See `native-independent-verification.json`.
+
+The actual native input copies are byte-identical to their original capture
+inputs. The rerun legal harness writes fresh savedAt fields, so comparing those
+archived official before documents excludes only `campaign.savedAt` and
+`battle.savedAt`, just like the output comparisons. No save is edited to make
+bytes match.
+
+The persisted artifact check can be repeated without raw QA PNGs or DLL copies:
+
+    python3 docs/art-archer-hit-20261110/verification/verify-native-artifacts.py --archive-only --repo /path/to/empire --output-dir /tmp/archer-hit-review
+
+It requires Python/Pillow and ffmpeg/ffprobe. This mode checks decoded RGB against
+the recorded hashes plus traces, anchors and complete saves; it cannot redo the
+original-PNG or DLL comparison. Full verification additionally accepts
+`--qa-root /path/to/original-captures`. Reports are separate by mode so a limited
+archive-only run cannot overwrite the original full-evidence result.

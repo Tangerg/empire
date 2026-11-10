@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "sourceImplementationCommit": "8893ad5555ab02fbc1fa08b876c5918fb30ced64",
+  "currentFrozenAndLegalReplayDllHashesEqual": true,
+  "assembliesSha256": {
+    "Empire.dll": "827d5a4edf0f3fb076f5d6d17ec2031fff1656e836f16ea5e5120d3b714169fd",
+    "Empire.Core.dll": "e757b4cd21b9d0c3a552a1b5b7a803f3573caa097cd9ea1737a34cd6eb9fb476",
+    "GodotSharp.dll": "2142e62894176d7340f50581f8b2fe84e36ae64e1a85f1b2bd7737a7e8a5c8ba"
+  },
+  "totalRgbVerifiedFrames": 194,
+  "acceptedVisualCaptureFrames": 95,
+  "diagnosticOnlyCaptureFrames": 99,
+  "limitations": [
+    "Only RGB pixels are stored/compared in the lossless video; original PNG alpha is excluded explicitly.",
+    "ElapsedMs uses Time.GetTicksMsec after viewport readback, not the animation timeline. 60 fps is the launch/encoding setting, not a measured realtime rate or a first-frame zero-time guarantee.",
+    "The 95-frame southern sequence supports visible-region visual acceptance with existing text/badge/impact overlays. The 99-frame roof sequence remains diagnostic only.",
+    "Trace equality validates recorded root/support/scale/facing/offsets. Occluded anatomy cannot be recovered or authenticated from those metadata values.",
+    "Complete saves match official archived replay outputs after deleting exactly campaign.savedAt and battle.savedAt. This read-only review does not rerun the legal derivation."
+  ],
+  "verificationToolSha256": "b64e3f4c235c3a6a75b8f84374e03a12327e3b309743752be9bf65c05733343a",
+  "archiveOnlyRerunPassed": true,
+  "sequences": {
+    "southern": {
+      "savedFrames": 95,
+      "processFrameRange": [
+        2870,
+        2964
+      ],
+      "visualAcceptedScope": true,
+      "wallObservationElapsedMsRange": [
+        37,
+        4472
+      ],
+      "completeInputEqualsReplayedOfficialExceptTwoSavedAt": true,
+      "completeOutputEqualsReplayedOfficialExceptTwoSavedAt": true,
+      "capturedInputBytesMatchOriginal": true,
+      "visibilityLimit": "Damage numerals cover chest/abdomen during recoil; the completion check covers part of Elin lower-right leg and bow; white impact overlays touch feet. Visible silhouette, identity, head/shoulders, bow and return are reviewed. Not an unobstructed audit of all hands/torso."
+    },
+    "dual": {
+      "savedFrames": 99,
+      "processFrameRange": [
+        2776,
+        2874
+      ],
+      "visualAcceptedScope": false,
+      "wallObservationElapsedMsRange": [
+        48,
+        5564
+      ],
+      "completeInputEqualsReplayedOfficialExceptTwoSavedAt": true,
+      "completeOutputEqualsReplayedOfficialExceptTwoSavedAt": true,
+      "capturedInputBytesMatchOriginal": true,
+      "visibilityLimit": "Unit 9 is substantially roof-occluded. Legal input/state and trace/pixel diagnostic only; excluded from two-facing art acceptance."
+    }
+  }
+}

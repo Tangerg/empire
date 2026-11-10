@@ -136,6 +136,74 @@ for (var step = 108; step <= 149; step++)
         SaveFile.WriteDocument(Path.Combine(output, "southern-bows/ui-trigger-action.json"), southernTrace[148]!["action"]!);
     }
 }
+var settledHistory = (JsonArray)southernHistory.DeepClone();
+var extraActions = new JsonArray();
+while (southern.Battle!.IsComputerTurn)
+{
+    var session = southern.Battle;
+    Require(!session.IsConcluded, "Southern AI concluded before returning control to the human player.");
+    var step = settledHistory.Count;
+    Require(step < southernTrace.Count, "The preserved southern route has no expected continuation.");
+    var expected = southernTrace[step]!.AsObject();
+    Require(expected["computer"]!.GetValue<bool>(), "Southern AI exceeded the preserved computer-turn boundary.");
+    var beforeSave = southern.Save();
+    var priorCount = session.Events.Count;
+    Require(session.AdvanceComputerStep() is { Committed: true }, "Southern normal AI continuation refused.");
+    var receipt = CheckReceipt(southern, beforeSave, priorCount, step, true);
+    Require(EcmaJson.DeepEquals(receipt, expected), $"Southern AI continuation changed at step {step}.");
+    extraActions.Add(receipt.DeepClone());
+    settledHistory.Add(receipt);
+}
+Require(extraActions.Count == 1 && extraActions[0]!["action"]!["kind"]!.GetValue<string>() == "endTurn",
+    "The preserved southern action must be followed only by one normal AI endTurn.");
+var settledSave = southern.Save();
+var settledState = southern.Battle!.Snapshot();
+Require(!southern.Battle.IsConcluded && !southern.Battle.IsComputerTurn
+    && settledState["turn"]!.GetValue<int>() == 9 && settledState["currentPlayer"]!.GetValue<int>() == 1,
+    "Southern AI must settle on the ninth-round human turn.");
+var southernDirectory = Path.Combine(output, "southern-bows");
+var settledPath = Path.Combine(southernDirectory, "ui-settled.json");
+SaveFile.WriteDocument(settledPath, settledSave);
+SaveFile.WriteDocument(Path.Combine(southernDirectory, "ui-settled-extra-actions.json"), extraActions);
+SaveFile.WriteDocument(Path.Combine(southernDirectory, "ui-settled-derivation-actions.json"), settledHistory);
+var settledReload = new GrayFlagCampaign(rules, definition, levels);
+settledReload.Load(SaveFile.ReadDocument(settledPath));
+Require(EcmaJson.DeepEquals(settledReload.Battle!.Snapshot(), settledState)
+    && EcmaJson.DeepEquals(WithoutTimestamps(settledReload.Save()), WithoutTimestamps(settledSave)),
+    "Official southern settled save changed on reload.");
+var nativeReplay = new GrayFlagCampaign(rules, definition, levels);
+nativeReplay.Load(SaveFile.ReadDocument(Path.Combine(southernDirectory, "before.json")));
+var nativeActions = new JsonArray();
+while (nativeReplay.Battle!.IsComputerTurn)
+{
+    var session = nativeReplay.Battle;
+    var step = 149 + nativeActions.Count;
+    Require(step < settledHistory.Count, "Reloaded southern AI exceeded the verified human-turn boundary.");
+    var beforeSave = nativeReplay.Save();
+    var priorCount = session.Events.Count;
+    Require(session.AdvanceComputerStep() is { Committed: true }, "Reloaded southern AI continuation refused.");
+    var receipt = CheckReceipt(nativeReplay, beforeSave, priorCount, step, true);
+    Require(EcmaJson.DeepEquals(receipt, settledHistory[step]), $"Reloaded southern AI changed at step {step}.");
+    nativeActions.Add(receipt);
+}
+Require(nativeActions.Count == 2 && !nativeReplay.Battle.IsConcluded
+    && EcmaJson.DeepEquals(nativeReplay.Battle.Snapshot(), settledState)
+    && EcmaJson.DeepEquals(WithoutTimestamps(nativeReplay.Save()), WithoutTimestamps(settledSave)),
+    "Loading the native AI checkpoint must reproduce the complete settled official save.");
+SaveFile.WriteDocument(Path.Combine(southernDirectory, "ui-settled-verification.json"), new JsonObject
+{
+    ["passed"] = true, ["normalAiActionsAfterWitness"] = extraActions.Count,
+    ["normalAiActionsFromNativeBefore"] = nativeActions.Count,
+    ["reloadedNativeActions"] = nativeActions, ["officialSettledRoundtrip"] = true,
+    ["completeReloadedSaveEquality"] = true, ["independentCoreStateAndEvents"] = true,
+    ["witnessAfterHash"] = southernHistory[149]!["afterHash"]!.DeepClone(),
+    ["settledHash"] = StateDigest.Hash(settledState),
+    ["settledEventsSha256"] = EcmaJson.Sha256(settledSave["events"]),
+    ["comparison"] = "Compare the complete official save, omitting only campaign.savedAt and battle.savedAt.",
+    ["turn"] = settledState["turn"]!.DeepClone(), ["currentPlayer"] = settledState["currentPlayer"]!.DeepClone(),
+    ["computerTurn"] = false, ["concluded"] = false
+});
+Console.WriteLine($"PASS southern UI settled: {nativeActions.Count} normal AI actions from before, hash {StateDigest.Hash(settledState)}, full official save and receipts replay identically.");
 Write("verification-result.json", new JsonObject
 {
     ["passed"] = true, ["originalCampaignStart"] = true, ["preservedPrefixActions"] = 108,
