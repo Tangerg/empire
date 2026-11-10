@@ -71,7 +71,23 @@ AnimationChecks suite passes 6,876 assertions with strict exit 0. An initial
 formatter check found two initializer whitespace issues, now corrected; its
 output is retained separately from the successful final check.
 
-Isolated negative controls, fresh legal-route replay, native idle/handoff
-capture and the full native aggregate are still pending and are not represented
-as passed. Full-character completion, all-campaign playthrough, standalone
-export and real-time performance remain outside this slice.
+Four isolated data mutations are rejected at their intended first assertion;
+byte-exact restoration passes all 6,876 AnimationChecks assertions. The final
+frozen build also replays 491 legal orders across three historical routes, with
+independent state/event comparison, official save reloads and unchanged final
+actions. These routes share prefixes and are not 491 unique scenarios.
+
+Actual native UI recordings contain 103 right-facing and 103 left-facing idle
+observations, plus a 48-frame stationary heal. Each idle recording spans 5.1
+simulation seconds from first to last observation, including more than two
+2400 ms cycles. The heal returns to the new idle at observed frame 36 (600 ms)
+and finishes at frame 48 (800 ms). Complete F5 saves match their lawful expected
+states except both changed writer timestamps. The final build and source trees
+are identical across these recordings and the running aggregate. Lossless
+packaging and independent visual/evidence review pass all 254 native frames,
+traces, selected screenshots and diagnostic crops. The portable native verifier
+also passes 23 isolated controls.
+
+The original full native aggregate remains pending and is not represented as
+passed. Full-character completion, all-campaign playthrough, standalone export
+and real-time performance remain outside this slice.

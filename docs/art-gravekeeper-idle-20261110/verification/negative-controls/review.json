@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "testedCommit": "869078976dd21f5d82932dc4151bdd03fa973c1a",
+  "negativeCases": [
+    {
+      "name": "static-idle-binding",
+      "gateExit": 1,
+      "firstError": "ERROR: System.InvalidOperationException: Cast recovery selects the declared breathing appearance without replacing the canonical gravekeeper sheet.",
+      "expectedMethod": "CheckGravekeeperCastPlayback",
+      "passed": true
+    },
+    {
+      "name": "one-ms-first-to-second",
+      "gateExit": 1,
+      "firstError": "ERROR: System.InvalidOperationException: The four authored anatomical phases occupy their exact half-open intervals.",
+      "expectedMethod": "CheckGravekeeperIdlePlayback",
+      "passed": true
+    },
+    {
+      "name": "repeat-exhale-frame",
+      "gateExit": 1,
+      "firstError": "ERROR: System.InvalidOperationException: The four authored anatomical phases occupy their exact half-open intervals.",
+      "expectedMethod": "CheckGravekeeperIdlePlayback",
+      "passed": true
+    },
+    {
+      "name": "presentation-scale",
+      "gateExit": 1,
+      "firstError": "ERROR: System.InvalidOperationException: Only the generic keeper idle selects the exact four-pose, 2400 ms breathing appearance and uniform scale.",
+      "expectedMethod": "CheckGravekeeperIdlePlayback",
+      "passed": true
+    }
+  ],
+  "restoredPositive": {
+    "gateExit": 0,
+    "assertions": 6876,
+    "errors": []
+  },
+  "integrity": {
+    "restoredInputsMatch": true,
+    "productionInputsUnchanged": true,
+    "assembliesUnchanged": true,
+    "sourceCommitUnchanged": true
+  },
+  "frozenAssemblies": {
+    "Empire.Core.dll": "449a03ce3fe8681b8ee90eeae72b355b523375b263ed511f2853d3a99d558662",
+    "Empire.dll": "2a6f890c63326c3490c09eb21bbf4c336eda5ebb08aa5f320badb16e57ff6ff7",
+    "GodotSharp.dll": "2142e62894176d7340f50581f8b2fe84e36ae64e1a85f1b2bd7737a7e8a5c8ba"
+  },
+  "runnerSha256": "a9b5b789e9c36baa320557ab08412258fb0cf9b80b843935968c4bb2a5f17e13"
+}

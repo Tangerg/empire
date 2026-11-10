@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "completeSaveEqualExceptTwoWriterTimestamps": true,
+  "freshOfficialSaveTimestamps": true,
+  "omittedPaths": [
+    "$.campaign.savedAt",
+    "$.battle.savedAt"
+  ],
+  "expectedFile": "/workspace/scratch/84c9fe948755/empire-gravekeeper-idle-20261110/native-idle-left/native-input.json",
+  "expectedSha256": "4e80a059f572d126cbef03f3c34ad762c2729ccecc72a2a7343b1895d22894fd",
+  "actualFile": "/workspace/scratch/84c9fe948755/empire-gravekeeper-idle-20261110/native-idle-left/native-output.json",
+  "actualSha256": "71b0584a1d4f819715381ab3f674660281fc801d77b47429006e5e3e8e7a79b2",
+  "timestamps": {
+    "campaign.savedAt": {
+      "expected": "2026-11-10T14:15:04.852Z",
+      "actual": "2026-11-10T22:53:20.345Z",
+      "changed": true
+    },
+    "battle.savedAt": {
+      "expected": "2026-11-10T14:15:04.854Z",
+      "actual": "2026-11-10T22:53:20.347Z",
+      "changed": true
+    }
+  },
+  "differences": []
+}

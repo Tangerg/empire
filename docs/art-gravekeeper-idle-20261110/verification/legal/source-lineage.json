@@ -1,0 +1,280 @@
+{
+  "sourceCommit": "f358d5bc762a6830ef15ba3f5cd88ec998acf1e2",
+  "repository": "/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo",
+  "originalEvidencePath": "docs/art-gravekeeper-cast-20261110/verification/legal-cast",
+  "sourcePackageFiles": [
+    {
+      "path": "README.md",
+      "sha256": "c7645391a2b503625ccad3cbc10e31b9d79ca2bc820ca2b3e972681d971f297f",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "cast/after.json",
+      "sha256": "6dd259166398651f82c69a10ae0c3b950c0b38ac81015eb99f279ade7593667f",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "cast/before.json",
+      "sha256": "ade3ea1760a3d76d34c1beb592b35ef69c3883c947cf98c986544d77a3384d14",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "cast/derivation-actions.json",
+      "sha256": "f3081d5d302399174a5299b53e87496a549ae584cd37284ae7ebd0cce99188ad",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "cast/opening-actions.json",
+      "sha256": "c481afcdcd583a703dd5fadb365573f89e8afb3a1de467e93573bdf6c7389bb7",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "cast/receipt.json",
+      "sha256": "c5318b0c5e4ccad6cf2ce498bc8e0d126b46089ece8c4dd214a6a12ac571d07d",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "cast/runtime-assemblies-sha256.txt",
+      "sha256": "0fc592c255e2c119e0f59e360c08bd72c6f07656d9b8b197deaf3c7e92d2c3cc",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "cast/source-campaign-save.json",
+      "sha256": "5ba11ec1936f44d067f5e69b731325b24f57a152b14490022af9b72ec647eb47",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "cast/verification-result.json",
+      "sha256": "08a197c33678609c6c0e2c45614f5a6c67229c9544c006934645f6593ac9b6de",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "derive.sh",
+      "sha256": "944433e22adb6a88dbce1d71c3dea4598169a48e9a9670bb2651092d54a011f4",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "evidence-sha256.txt",
+      "sha256": "361cb116cbb5ba87e625121a67b1d51855e6535366d2bce356d3e0e91dd02019",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "extract-translation-lookup.py",
+      "sha256": "99fbc6b4efad578312a3e1c7a752d069d81213705e911b723df2db1d956250cd",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "harness/Probe.csproj",
+      "sha256": "c5876010fae02169cd030c22dc43e50afdc41278406fe882dd4a3bab769cb212",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "harness/Program.cs",
+      "sha256": "81a287e85f58dfc403fd555d165bc6aba1c1d5a2af20ed413e39ae9c4d90051b",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-left/after.json",
+      "sha256": "4e80a059f572d126cbef03f3c34ad762c2729ccecc72a2a7343b1895d22894fd",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-left/before.json",
+      "sha256": "361bc8ee650428f5a56544fe3f25fef72472af4d8ead0e471a4ca6f98510860a",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-left/derivation-actions.json",
+      "sha256": "f7f846b2bc10a68736df74a812b1fd981b91fcb8375d46a259c87d475f38a1d0",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-left/opening-actions.json",
+      "sha256": "c481afcdcd583a703dd5fadb365573f89e8afb3a1de467e93573bdf6c7389bb7",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-left/receipt.json",
+      "sha256": "f7c40f799ee1d45913fce86ebba111dc93272886c38698b1a28048e49a0fcfdb",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-left/runtime-assemblies-sha256.txt",
+      "sha256": "7401845fe545e59e6c9ad094bf061387ec214941ccec07d302724f1137b630d6",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-left/source-campaign-save.json",
+      "sha256": "71f24bbfe4f966ee841ea9d3713a0a21c65e3832b52f31b89e2d1a61adba37cc",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-left/verification-result.json",
+      "sha256": "840d2c264b1435ab104f9d2536f1c894b2e9e7fbcc2e46f852e0746e6810b818",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-right/after.json",
+      "sha256": "504327026e86335f92fd6b2e42eaf62ae4414d744205ce6a9bee181cddf73186",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-right/before.json",
+      "sha256": "9a2d1f6434e80c3c04758cf31c7308f782ea7786410b29fde09db5136bb35a9d",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-right/derivation-actions.json",
+      "sha256": "8558d5091b232e26fabf978a29bc3d9130d7d7d7188f3327e367d21aee64629c",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-right/opening-actions.json",
+      "sha256": "c481afcdcd583a703dd5fadb365573f89e8afb3a1de467e93573bdf6c7389bb7",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-right/receipt.json",
+      "sha256": "26972e77f830cd4ccfcff747ee7e0571191171984b20262482954bffa88ec93f",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-right/runtime-assemblies-sha256.txt",
+      "sha256": "7401845fe545e59e6c9ad094bf061387ec214941ccec07d302724f1137b630d6",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-right/source-campaign-save.json",
+      "sha256": "71f24bbfe4f966ee841ea9d3713a0a21c65e3832b52f31b89e2d1a61adba37cc",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "heal-right/verification-result.json",
+      "sha256": "7e38a38dc92e9ece8f7994ff5876012d3a1e9624ed9df39749e109546b23421d",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "portable-run/README.md",
+      "sha256": "6426de0414268165ec2af003d4e78c1e72b68cf6ad49c6e194abbfac1cf06db5",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "portable-run/cast-verification-result.json",
+      "sha256": "08a197c33678609c6c0e2c45614f5a6c67229c9544c006934645f6593ac9b6de",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "portable-run/formatter.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "portable-run/formatter.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "portable-run/heal-left-verification-result.json",
+      "sha256": "840d2c264b1435ab104f9d2536f1c894b2e9e7fbcc2e46f852e0746e6810b818",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "portable-run/heal-right-verification-result.json",
+      "sha256": "7e38a38dc92e9ece8f7994ff5876012d3a1e9624ed9df39749e109546b23421d",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "portable-run/reject-nonempty-output.exit",
+      "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "portable-run/reject-nonempty-output.txt",
+      "sha256": "8168608dabf5590fab953daf598768b1d69d24c75c769bb97f1c3f60841143cf",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "portable-run/reject-repository-output.exit",
+      "sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "portable-run/reject-repository-output.txt",
+      "sha256": "12d3b04b65ad0fc9c447b9785153ab2d7c9530cca1ceee421da09645b5d2dd63",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "portable-run/replay.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "portable-run/replay.txt",
+      "sha256": "4b0b5aec1f128c730f84b8446d7c3e643c73d34290fd22f7ddd4060ca3bf0758",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "portable-run/runtime-assemblies-sha256.txt",
+      "sha256": "7401845fe545e59e6c9ad094bf061387ec214941ccec07d302724f1137b630d6",
+      "matchesCommittedBlob": true
+    },
+    {
+      "path": "portable-run/summary.json",
+      "sha256": "b55bfaf1aa8b15ceda149a32714ad0eb44aef8560e68e4cffcebd3d668a7ddf9",
+      "matchesCommittedBlob": true
+    }
+  ],
+  "inputs": {
+    "idle-right": {
+      "source": "source-package/heal-right/before.json",
+      "sha256": "9a2d1f6434e80c3c04758cf31c7308f782ea7786410b29fde09db5136bb35a9d",
+      "sourceActor": {
+        "id": 4,
+        "key": "field-cleric",
+        "type": "c01.gravekeeper",
+        "x": 24,
+        "y": 18,
+        "hp": 4,
+        "done": false,
+        "facing": "east"
+      },
+      "expectedUiSave": "idle-right-input.json",
+      "requiresCommand": false
+    },
+    "idle-left": {
+      "source": "source-package/heal-left/after.json",
+      "sha256": "4e80a059f572d126cbef03f3c34ad762c2729ccecc72a2a7343b1895d22894fd",
+      "sourceActor": {
+        "id": 4,
+        "key": "field-cleric",
+        "type": "c01.gravekeeper",
+        "x": 24,
+        "y": 18,
+        "hp": 4,
+        "done": true,
+        "facing": "west"
+      },
+      "expectedUiSave": "idle-left-input.json",
+      "requiresCommand": false
+    },
+    "recovery-left": {
+      "source": "source-package/heal-left/before.json",
+      "sha256": "361bc8ee650428f5a56544fe3f25fef72472af4d8ead0e471a4ca6f98510860a",
+      "sourceActor": {
+        "id": 4,
+        "key": "field-cleric",
+        "type": "c01.gravekeeper",
+        "x": 24,
+        "y": 18,
+        "hp": 4,
+        "done": false,
+        "facing": "east"
+      },
+      "expectedUiSave": "source-package/heal-left/after.json",
+      "requiresCommand": true
+    }
+  },
+  "status": "Prepared only. Current/final implementation replay and native capture not yet performed.",
+  "newFinalAssemblyHashes": null,
+  "noProductionBuildOrImport": true
+}

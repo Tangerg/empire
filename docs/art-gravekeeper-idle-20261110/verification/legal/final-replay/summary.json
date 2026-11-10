@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "sourceCommit": "869078976dd21f5d82932dc4151bdd03fa973c1a",
+  "godotTree": "cfe370846c78c10100fbcfc8d19965efd96be697",
+  "toolsTree": "afff6c24fcf143fdff3a5a4facf2f373d1ad3290",
+  "finalAssemblySha256": {
+    "Empire.dll": "2a6f890c63326c3490c09eb21bbf4c336eda5ebb08aa5f320badb16e57ff6ff7",
+    "Empire.Core.dll": "449a03ce3fe8681b8ee90eeae72b355b523375b263ed511f2853d3a99d558662",
+    "GodotSharp.dll": "2142e62894176d7340f50581f8b2fe84e36ae64e1a85f1b2bd7737a7e8a5c8ba"
+  },
+  "historicalWitnessSourceCommit": "f358d5bc762a6830ef15ba3f5cd88ec998acf1e2",
+  "legalActionCount": 491,
+  "routes": {
+    "cast": {
+      "passed": true,
+      "actionCount": 133,
+      "originalCampaignStart": true,
+      "independentCoreStateAndEvents": true,
+      "preservedTraceEquality": true,
+      "officialBeforeAfterRoundtrip": true,
+      "reloadedNextActionEquality": true,
+      "beforeHash": "5ade5a03",
+      "afterHash": "05d9a950",
+      "eventsSha256": "9d4f2a8f0681c55585386ebed965aa6b93dab7cfb872af1f147211df424b3f8a"
+    },
+    "heal-right": {
+      "passed": true,
+      "actionCount": 179,
+      "originalCampaignStart": true,
+      "independentCoreStateAndEvents": true,
+      "preservedTraceEquality": true,
+      "officialBeforeAfterRoundtrip": true,
+      "reloadedNextActionEquality": true,
+      "beforeHash": "2c734d26",
+      "afterHash": "e6c1b8e2",
+      "eventsSha256": "31ede81d2bf2a9644e363f721b4d7a93aeea40b26c3a7dd4eb212dc3773408c7"
+    },
+    "heal-left": {
+      "passed": true,
+      "actionCount": 179,
+      "originalCampaignStart": true,
+      "independentCoreStateAndEvents": true,
+      "preservedTraceEquality": true,
+      "officialBeforeAfterRoundtrip": true,
+      "reloadedNextActionEquality": true,
+      "beforeHash": "6d581393",
+      "afterHash": "993e2229",
+      "eventsSha256": "0246acb77395d58da09051834a754990b686e82092cd90fbcf102b2b7b83c603"
+    }
+  },
+  "allSixBeforeAfterSavesEqualExceptTwoWriterTimestamps": true,
+  "scratchProbeBuild": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "productionBuildOrImportRunByReplay": false,
+  "harnessSourceEqualsPortablePackage": true,
+  "nativeUiCapturePerformedByReplay": false,
+  "scope": "Fresh final-DLL replay of historical lawful routes. Not native rendering, real-time performance, or new UI-save evidence."
+}
