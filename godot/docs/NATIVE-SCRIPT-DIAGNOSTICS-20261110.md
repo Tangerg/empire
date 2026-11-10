@@ -66,8 +66,10 @@ reached and passed the formerly failing broad-phase scene, the 3,127-assertion
 animation suite, HUD and battle screen scenes, and the subsequent feedback
 scenes. Core execution again reported 17 passed groups, 0 failed.
 
-At recovery, no verification/Godot process remained, the expected aggregate exit
-file was absent, and there was no final aggregate success marker. The next
+At recovery, the original process was not observable from the isolated recovery
+shell, the expected aggregate exit file was absent, and there was no final
+aggregate success marker. The isolated process listing cannot establish whether
+a process belonging to an earlier execution session is still running. The next
 scene's retained log contained only the Godot banner and environment-catalog
 diagnostic, with no `BattleResultFlowChecks` completion marker. Its exit status
 and the reason the run stopped are unknown. Do not classify the second attempt
