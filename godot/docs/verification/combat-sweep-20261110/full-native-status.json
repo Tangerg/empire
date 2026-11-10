@@ -1,0 +1,17 @@
+{
+  "sourceCommit": "6afcf7a267fbaadb8bedc3f1370843dce77510da",
+  "command": "bash tools/godot/verify-native.sh",
+  "startedUtc": "2026-11-10T07:50:23Z",
+  "finishedUtc": "2026-11-10T08:22:54Z",
+  "exitCode": 0,
+  "finalSuccessMarker": true,
+  "independentLevels": 16,
+  "orderedActions": 3425,
+  "orderedTracesMatchBaseline": true,
+  "animationAssertions": 3178,
+  "playedFlowAssertions": 20145,
+  "fullLogSha256": "50f386bfd875ff4c6baf2527c2a68071df3dee12ad714060e1530f89a604aeae",
+  "empireDllSha256": "4c37260f8614b615468eecd9063005786de786958379717bba79702a3520c21f",
+  "staticScreenshotSha256": "bfa313c7d51e161ab03d9f36f0fb62785a58307e8411899a6cfb4541ad764349",
+  "staticScreenshotScope": "Rendered C01 map/HUD only; no temporal melee or trail acceptance."
+}
