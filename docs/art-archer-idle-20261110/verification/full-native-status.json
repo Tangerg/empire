@@ -1,0 +1,44 @@
+{
+  "command": "bash tools/godot/verify-native.sh",
+  "exitCode": 0,
+  "sourceCommit": "287f2e4228c8e9ba0009d720392c6eca8eba2f36",
+  "baselineCommit": "37811bd93951f2bb115d23da607a13fdf3579bd2",
+  "assemblySha256": "d4c705bd3878370c4263213f351e223efe9ceba376fceca98ea3983bd1349d2a",
+  "coreAssemblySha256": "53249b2974a552dbc691f3c77932bbae41bd8afbf6704a130a09e8a0b06e5e7f",
+  "nativeAndGateAssemblyIdentity": "Exact same SHA256 bytes for both Empire and Core; no metadata normalization.",
+  "fullLogSha256": "34340f59a30e9109c196ec7817b32b6c4e91bfc509d559fba95321f2b152020c",
+  "errorOrLeakDiagnostics": 0,
+  "animationAssertions": 5192,
+  "playedFlowAssertions": 21682,
+  "independentLevels": 16,
+  "independentLegalOrders": 3425,
+  "allIndependentReplayHashesUnchanged": true,
+  "playedOpeningMarkers": [
+    "PLAYED_AI_DEFEAT_OK orders=152; terminal=3dbb09d3; events=10; completions=1; retry=9dae091b; both slots unchanged",
+    "PLAYED_TERMINAL level=c01-01; legal orders=156; outcome=victory; completion views=1; events=524; presented=524; turn=9; state=c46d9172; conclusion={\"kind\":\"lastTeamRemaining\",\"team\":1}",
+    "CARRIED_VICTORY_OK level=c01-01; legal orders=156; events=524; terminal=c46d9172; campaign=17488f7b; next=battle-02",
+    "PLAYED_TERMINAL level=c01-02; legal orders=259; outcome=victory; completion views=1; events=584; presented=584; turn=13; state=5967317c; conclusion={\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}",
+    "CARRIED_VICTORY_OK level=c01-02; legal orders=259; events=584; terminal=5967317c; campaign=d152d095; next=battle-03",
+    "CARRIED_OPENING_OK battles played in this process=415 legal orders; third opening=21 orders; third state=d1103229; outcomes=c01-01:c46d9172:{\"kind\":\"lastTeamRemaining\",\"team\":1};c01-02:5967317c:{\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}. No third-battle victory or full-campaign claim."
+  ],
+  "normalizedWarningsMatchBaseline": true,
+  "warningCount": 41,
+  "manualGuiScope": "Two settled idle recordings, 84 samples each at stride 4; one lawful stationary shot-to-idle recovery, 45 consecutive captures. All 213 captured source crops independently reviewed; not continuous realtime playback.",
+  "nativeVisibilityLimit": "Both idle facings and right-facing handoff accepted; the source is unobstructed in critical handoff frames. Other overlap layouts not exhaustively accepted.",
+  "negativeControls": [
+    "In-memory original RGBA channel mutation rejected.",
+    "Idle binding changed to static: authored idle guard exit 1.",
+    "One-millisecond interval shift preserving total: exact interval guard exit 1.",
+    "Archer removed from idle membership: lifecycle frame guard exit 1."
+  ],
+  "githubActionsRunsForSourceCommit": 0,
+  "githubStatusContextsForSourceCommit": 0,
+  "githubWorkflowTriggers": [
+    "push main",
+    "pull_request",
+    "workflow_dispatch"
+  ],
+  "exportAcceptance": "Not run.",
+  "completeCampaignAcceptance": "Not claimed.",
+  "projectileFlight": "Not implemented or claimed; this is source character animation plus existing target impact."
+}

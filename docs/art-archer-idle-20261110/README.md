@@ -83,13 +83,14 @@ retaining six poses and 320/600/740 boundaries. Controlled receipts in focused
 checks are synthetic, not legal played orders.
 
 Native idle and shot-handoff inspection passed as detailed below. The full
-aggregate is still pending. This is not full-character or full-campaign
+aggregate passed using the exact same native DLL bytes, without metadata
+normalization or a build-identity exception. This is not full-character or full-campaign
 completion. Exported performance and projectile flight are outside this slice.
 
 ## Native battle acceptance
 
 All three runs use the implementation at `287f2e42`, the same frozen Empire/Core
-DLL bytes as the running full gate. Their exact hashes are in each native proof.
+DLL bytes as the completed full gate. Their exact hashes are in each native proof.
 The current build independently replays the earlier archer-shot legal routes,
 including official save serialization, reload and final-action execution. See
 `verification/legal-input-replay`. Historical `left` means moving right on the
@@ -139,3 +140,24 @@ read-only verification independently decoded all 213 video frames, compared
 the original PNG/JSON data, fitted both sampled loops to the declared 2200 ms
 intervals, and checked the actual UI saves and current/replayed DLL identity; see
 `verification/independent-native-verification.json`.
+
+## Full native gate
+
+`bash tools/godot/verify-native.sh` completed with exit 0 and no error/leak
+diagnostics. It passed **5,192 animation assertions** and **21,682
+played-flow assertions**. The latter includes process-frame waits and is not a
+count of unique gameplay scenarios. Full output and status are retained in
+`verification/full-native-passed.txt` and `full-native-status.json`.
+
+All 16 independent-level action/event/receipt hashes covering 3,425 legal orders
+match baseline `37811bd9`. All six played-flow result markers also match:
+C01 and C02 victories after 415 legal orders, then 21 orders in C03, plus the
+opponent-caused defeat/retry probe. This is not C03 victory or full-campaign
+acceptance. All 41 warning lines match the baseline multiset after normalizing
+isolated temporary paths; these include intentional save-rejection probes and
+existing import/viewport warnings. No valid check was disabled or weakened.
+
+GitHub returned zero workflow runs and zero status contexts for implementation
+commit `287f2e42`. Its workflow triggers on main pushes, pull requests
+and manual dispatch, not this feature-branch push. This is local native gate
+evidence, not a remote-CI pass. Export acceptance remains unperformed.
