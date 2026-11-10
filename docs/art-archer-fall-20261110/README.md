@@ -50,7 +50,8 @@ Source/registration review and exact extraction pass. The corrected native
 `AnimationChecks` passed **6,115 assertions**, with a strict process/diagnostic
 exit of 0. Build, editor import, source metadata and targeted whitespace checks
 pass; the build has zero warnings/errors. A legal native battle recording and
-complete saved-state comparison pass. The full native gate remains pending.
+complete saved-state comparison pass. The original full native gate also passed
+with exit 0, covering all 45 stages without a staged restart.
 Standalone export and full-campaign acceptance are outside this slice.
 
 The first native run reached the new archer and existing Torren fall checks
@@ -92,3 +93,28 @@ covers one east-facing fatal battle. Mirrored registration and cancellation are
 controlled-test coverage, not a second native recording. Readback pacing is not
 a real-time performance result. The legal derivation, launch procedure and
 complete official saves are in `verification/legal-death/`.
+
+## Full native regression
+
+`bash tools/godot/verify-native.sh` ran unchanged from 20:55:18 to 21:28:28 UTC on
+2026-11-10 against implementation commit `90952ac7`. The later evidence commits
+change only documentation and retain the same Godot/tool source trees. The
+original aggregate exited 0 with its terminal success message. All 45 stages,
+four zero-warning/error build summaries, 212 script UIDs, and 6,115 animation
+assertions pass. No error or leaked-resource diagnostics were found.
+
+The 16 ordered AI replays retain all 3,425 legal orders and identical
+action/event/receipt hashes. All six played-opening markers match the previous
+accepted run: C01/C02 victories over 415 legal orders, the 21-order C03 opening,
+and the unchanged defeat/retry path. The played-flow run passes 22,121
+assertions; these include frame waits and are not a count of unique scenarios.
+The normalized multiset of 41 existing warnings is unchanged.
+
+`verification/full-native/` retains the exact aggregate log, exit record,
+timestamps, source identity, and portable comparison against the checked-in
+previous staged baseline. That prior baseline is not relabeled as an aggregate
+run. Archive-only and live-binary comparisons both pass; the latter confirms
+the gate, native capture and legal derivation use the same frozen DLL bytes.
+Four controls verify that the comparator rejects changed digests and incomplete
+completion evidence. This closes the archer-fall slice, not the full campaign,
+standalone export, all animations or real-time performance acceptance.

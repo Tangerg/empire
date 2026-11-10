@@ -1,0 +1,23 @@
+{
+  "originalCommand": "bash tools/godot/verify-native.sh",
+  "executionMode": "single-original-aggregate",
+  "processExitCode": 0,
+  "sourceCommit": "90952ac7a0d74f3f43b7dbeb0971a27df29b6dac",
+  "sourceTrees": {
+    "godot": "9d962e7735bedd02698701bf3b08cb17d632e4c8",
+    "tools": "afff6c24fcf143fdff3a5a4facf2f373d1ad3290"
+  },
+  "gateSha256": "4ca078f295e2b3159c0d533afe94f5a5bae146d91a325c4872658166e7e2ab83",
+  "fullLogSha256": "26af520e9ff722c79a182cfacf83e185c19aaf7cb2c56c9a7a949af36bd852e2",
+  "startedAtUtc": "2026-11-10T20:55:18Z",
+  "finishedAtUtc": "2026-11-10T21:28:28Z",
+  "elapsedSeconds": 1990,
+  "allOriginalStagesPassed": 45,
+  "animationAssertions": 6115,
+  "playedFlowAssertions": 22121,
+  "playedAssertionCaveat": "Includes process-frame waits; not a count of unique scenarios.",
+  "independentLevels": 16,
+  "independentLegalOrders": 3425,
+  "unchangedWarningCount": 41,
+  "scope": "Headless contracts, deterministic replay and played opening. Separate legal native death accepted; not a full campaign, standalone export or real-time performance claim."
+}
