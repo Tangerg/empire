@@ -172,6 +172,14 @@ public partial class AnimationChecks
                 "The generic gravekeeper selects its six-pose authored channel with exact release/recovery timing and no accent.");
             return;
         }
+        if (type == "c01.archer" && key is null)
+        {
+            Require(clip.Asset.Identity == "archer-shot-v1" && clip.Asset.TopicId == asset.TopicId
+                && clip.Asset.FrameCount == 6 && clip.Length == 600 && clip.RequireRelease() == 320
+                && !clip.ShowAccent,
+                "The generic C01 archer selects six authored shot poses with exact release/recovery timing and no accent.");
+            return;
+        }
         var frame = AssetCatalog.FrameIndex(asset, asset.Category == "mission-unit" ? "carry-or-work" : "attack");
         Require(clip.Asset == asset && clip.Length == 150 && clip.FrameAt(0) == frame && clip.FrameAt(150) == frame,
             "Shipped combat and mission bindings preserve their existing selected one-pose, 150 ms strike.");

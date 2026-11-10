@@ -253,6 +253,38 @@
           "span": 100
         }
       ]
+    },
+    "archer.loose": {
+      "unit": "milliseconds",
+      "appearanceId": "archer-shot-v1",
+      "releaseMs": 320,
+      "showAccent": false,
+      "frames": [
+        {
+          "frame": "retrieve",
+          "span": 100
+        },
+        {
+          "frame": "nock",
+          "span": 100
+        },
+        {
+          "frame": "draw",
+          "span": 120
+        },
+        {
+          "frame": "release",
+          "span": 80
+        },
+        {
+          "frame": "recover",
+          "span": 100
+        },
+        {
+          "frame": "rest",
+          "span": 100
+        }
+      ]
     }
   },
   "assets": [
@@ -3741,6 +3773,92 @@
         ]
       ],
       "qualityTier": "painted-cast-v1-reviewed",
+      "textureFilter": "linear"
+    },
+    {
+      "id": "archer-shot-v1",
+      "topicId": "C01-UNIT-ARCHER",
+      "png": "painted-actions-v1/archer-shot-v1.png",
+      "pixelDensity": 1,
+      "frames": 6,
+      "frameOrder": [
+        "retrieve",
+        "nock",
+        "draw",
+        "release",
+        "recover",
+        "rest"
+      ],
+      "physicalWidth": 1930,
+      "physicalHeight": 449,
+      "resourcePath": "res://assets/painted-actions-v1/archer-shot-v1.png",
+      "sha256": "2e6f45d0127b3716d29f17e069f0842d027c2127aedd4dcdd255f476b26d59da",
+      "presentationScale": 0.0893,
+      "frameRegions": [
+        [
+          0,
+          0,
+          301,
+          445
+        ],
+        [
+          301,
+          0,
+          329,
+          448
+        ],
+        [
+          630,
+          0,
+          393,
+          449
+        ],
+        [
+          1023,
+          0,
+          330,
+          449
+        ],
+        [
+          1353,
+          0,
+          301,
+          429
+        ],
+        [
+          1654,
+          0,
+          276,
+          442
+        ]
+      ],
+      "frameAnchors": [
+        [
+          158,
+          419
+        ],
+        [
+          123,
+          422
+        ],
+        [
+          139,
+          423
+        ],
+        [
+          138,
+          423
+        ],
+        [
+          125,
+          403
+        ],
+        [
+          125,
+          417
+        ]
+      ],
+      "qualityTier": "painted-shot-v1-reviewed",
       "textureFilter": "linear"
     }
   ]

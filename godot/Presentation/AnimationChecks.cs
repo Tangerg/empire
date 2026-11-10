@@ -41,6 +41,7 @@ public partial class AnimationChecks : Node
             CheckReleaseDefinitions();
             await CheckTorrenThrustPlayback();
             await CheckGravekeeperCastPlayback();
+            await CheckArcherShotPlayback();
             await CheckTorrenIdlePlayback();
             await CheckTorrenRecoilPlayback();
             await CheckTorrenFallPlayback();

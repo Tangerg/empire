@@ -1,0 +1,186 @@
+{
+  "sources": [
+    {
+      "file": "source-row-v1.png",
+      "sha256": "e2853107fead9cfb261166ddb2d2531ea9fe66694e07420f2dccb37ac8d47cd4",
+      "removedPixels": 56954,
+      "maxRemovedAlpha": 8
+    },
+    {
+      "file": "source-row-v2.png",
+      "sha256": "6dc152d9fb848295553b3583775ec1a9484201e143834682e5cc03a70d0db9f7",
+      "removedPixels": 34004,
+      "maxRemovedAlpha": 11
+    }
+  ],
+  "presentationScale": 0.0893,
+  "playbackFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "playbackSpansMs": [
+    100,
+    100,
+    120,
+    80,
+    100,
+    100
+  ],
+  "releaseMs": 320,
+  "frames": [
+    {
+      "sourceIndex": 0,
+      "sourceComponent": 0,
+      "sourceBounds": [
+        12,
+        136,
+        313,
+        581
+      ],
+      "sourceAnchor": [
+        170,
+        555
+      ],
+      "frameAnchor": [
+        158,
+        419
+      ],
+      "pixelSha256": "d3d36dec89a265c64c1f7956bc57d1b0b7bd3772af3fafe148e89b9b0c769932",
+      "frameRegion": [
+        0,
+        0,
+        301,
+        445
+      ]
+    },
+    {
+      "sourceIndex": 0,
+      "sourceComponent": 1,
+      "sourceBounds": [
+        377,
+        133,
+        706,
+        581
+      ],
+      "sourceAnchor": [
+        500,
+        555
+      ],
+      "frameAnchor": [
+        123,
+        422
+      ],
+      "pixelSha256": "6c95873735f5a228f2b1af74ac147cf1bbd0b1eb983e1d45192da2da66656e7e",
+      "frameRegion": [
+        301,
+        0,
+        329,
+        448
+      ]
+    },
+    {
+      "sourceIndex": 0,
+      "sourceComponent": 2,
+      "sourceBounds": [
+        726,
+        133,
+        1119,
+        582
+      ],
+      "sourceAnchor": [
+        865,
+        556
+      ],
+      "frameAnchor": [
+        139,
+        423
+      ],
+      "pixelSha256": "e1bdb8c282e59adee4fea896b7440911062d4deae14d36fe6210a1fcd31e2a24",
+      "frameRegion": [
+        630,
+        0,
+        393,
+        449
+      ]
+    },
+    {
+      "sourceIndex": 0,
+      "sourceComponent": 3,
+      "sourceBounds": [
+        1113,
+        132,
+        1443,
+        581
+      ],
+      "sourceAnchor": [
+        1251,
+        555
+      ],
+      "frameAnchor": [
+        138,
+        423
+      ],
+      "pixelSha256": "4eef1733ce4fba4b42f29744251bdf6fcf0ad08db0f615019fed1cf98d167fb6",
+      "frameRegion": [
+        1023,
+        0,
+        330,
+        449
+      ]
+    },
+    {
+      "sourceIndex": 1,
+      "sourceComponent": 4,
+      "sourceBounds": [
+        1502,
+        152,
+        1803,
+        581
+      ],
+      "sourceAnchor": [
+        1627,
+        555
+      ],
+      "frameAnchor": [
+        125,
+        403
+      ],
+      "pixelSha256": "105476f4aa59517e031d4fd6c3f72ce38efae6239f2fa71c7310a36fc8c0655d",
+      "frameRegion": [
+        1353,
+        0,
+        301,
+        429
+      ]
+    },
+    {
+      "sourceIndex": 0,
+      "sourceComponent": 5,
+      "sourceBounds": [
+        1863,
+        139,
+        2139,
+        581
+      ],
+      "sourceAnchor": [
+        1988,
+        556
+      ],
+      "frameAnchor": [
+        125,
+        417
+      ],
+      "pixelSha256": "f2eabb55b4c4b147846ff6ee1cdba8d58d03c0197614a81e5be9b5df04ea59a4",
+      "frameRegion": [
+        1654,
+        0,
+        276,
+        442
+      ]
+    }
+  ]
+}

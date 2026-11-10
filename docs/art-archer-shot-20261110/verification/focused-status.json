@@ -1,0 +1,33 @@
+{
+  "build": {
+    "exit": 0,
+    "warnings": 0,
+    "errors": 0
+  },
+  "formatter": 0,
+  "formatterVerify": 0,
+  "animation": {
+    "exit": 0,
+    "assertions": 5091,
+    "diagnosticGate": "passed",
+    "xdgDataHome": "/workspace/scratch/84c9fe948755/empire-archer-shot-20261110/test/xdg"
+  },
+  "negativeControls": {
+    "release": {
+      "processExit": 1,
+      "gateExit": 1,
+      "expectedFailure": true
+    },
+    "binding": {
+      "processExit": 1,
+      "gateExit": 1,
+      "expectedFailure": true
+    },
+    "motion": {
+      "processExit": 1,
+      "gateExit": 1,
+      "expectedFailure": true
+    }
+  },
+  "testedFilesUnchangedAfterChecks": true
+}

@@ -114,6 +114,12 @@ now select `gravekeeper.channel`: six lantern-casting poses over 600 ms, releasi
 at 300 ms, also without the source accent. Both existing magic weapons and healing
 use this unit's explicit stationary attack action. See the
 [gravekeeper cast review](../../docs/art-gravekeeper-cast-20261110/README.md).
+Generic `c01.archer` now selects `archer.loose`: six retrieve/nock/draw/release/
+recover/rest drawings over 600 ms, releasing at 320 ms without a source accent.
+Elin inherits this generic type binding; base `archer` and Bran remain unchanged.
+The existing stationary ranger-bow policy and target-only arrow impact remain
+unchanged. This draws a released bow, not a projectile travelling across cells.
+See the [archer shot review](../../docs/art-archer-shot-20261110/README.md).
 Recipient reactions and celebration are specified below; Torren has separately
 reviewed art while the other actors retain static bindings. Main
 attack activation follows. FX identity is not an action classifier. In particular,
