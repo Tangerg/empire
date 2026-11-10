@@ -315,6 +315,28 @@
           "span": 300
         }
       ]
+    },
+    "archer.recoil": {
+      "unit": "milliseconds",
+      "appearanceId": "archer-recoil-v1",
+      "frames": [
+        {
+          "frame": "recoil-onset",
+          "span": 40
+        },
+        {
+          "frame": "recoil-peak",
+          "span": 110
+        },
+        {
+          "frame": "recoil-recover",
+          "span": 90
+        },
+        {
+          "frame": "recoil-ready",
+          "span": 80
+        }
+      ]
     }
   },
   "assets": [
@@ -3953,6 +3975,70 @@
         ]
       ],
       "qualityTier": "painted-breathe-v1-reviewed",
+      "textureFilter": "linear"
+    },
+    {
+      "id": "archer-recoil-v1",
+      "topicId": "C01-UNIT-ARCHER",
+      "png": "painted-actions-v1/archer-recoil-v1.png",
+      "pixelDensity": 1,
+      "frames": 4,
+      "frameOrder": [
+        "recoil-onset",
+        "recoil-peak",
+        "recoil-recover",
+        "recoil-ready"
+      ],
+      "physicalWidth": 1495,
+      "physicalHeight": 563,
+      "resourcePath": "res://assets/painted-actions-v1/archer-recoil-v1.png",
+      "sha256": "0b8eb82de872dd2346feb6f587aa46a7ba80270c7a58b7341efa2b08b7193044",
+      "presentationScale": 0.072,
+      "frameRegions": [
+        [
+          0,
+          0,
+          359,
+          557
+        ],
+        [
+          359,
+          0,
+          402,
+          563
+        ],
+        [
+          761,
+          0,
+          375,
+          561
+        ],
+        [
+          1136,
+          0,
+          359,
+          553
+        ]
+      ],
+      "frameAnchors": [
+        [
+          191,
+          532
+        ],
+        [
+          228,
+          538
+        ],
+        [
+          190,
+          536
+        ],
+        [
+          170,
+          528
+        ]
+      ],
+      "qualityTier": "painted-recoil-v1-reviewed",
       "textureFilter": "linear"
     }
   ]

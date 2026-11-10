@@ -1,0 +1,24 @@
+{
+  "result": "Accepted for runtime validation.",
+  "baselineCommit": "900717b1bdfa7944d2a16e1a45f557d5fdda935b",
+  "inspected": [
+    "Original source row and exact extracted RGBA.",
+    "Official first standing pose and accepted breathing pose 0.",
+    "Actual-size and nearest-neighbor 3x anchored comparisons in both directions.",
+    "Offline GIF frames and duration metadata, not continuous playback."
+  ],
+  "findings": [
+    "Four original anatomical changes read as onset, recoil peak, recovery and ready at game size.",
+    "Identity, costume, quiver, bow/string and same holding hand remain coherent.",
+    "Common scale and anchors retain planted boots and a compatible ready-to-breathing transition.",
+    "Initial unregistered-sheet stance/recoil concerns were resolved by the aligned native-size evidence; no redraw required."
+  ],
+  "scale": 0.072,
+  "spansMs": [
+    40,
+    110,
+    90,
+    80
+  ],
+  "remaining": "Actual native timing, interruption/lifecycle behavior, battlefield support and representative occlusion still require verification."
+}

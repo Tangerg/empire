@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Empire">
+      <HintPath>$(EmpireAssemblyDirectory)/Empire.dll</HintPath>
+    </Reference>
+    <Reference Include="Empire.Core">
+      <HintPath>$(EmpireAssemblyDirectory)/Empire.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GodotSharp">
+      <HintPath>$(EmpireAssemblyDirectory)/GodotSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Target Name="RequireExistingAssemblies" BeforeTargets="ResolveReferences">
+    <Error Condition="'$(EmpireAssemblyDirectory)' == ''"
+           Text="Pass EmpireAssemblyDirectory for the existing compiled Godot assemblies." />
+    <Error Condition="!Exists('$(EmpireAssemblyDirectory)/Empire.dll')"
+           Text="Empire.dll must already be built; this probe never builds the game." />
+  </Target>
+</Project>

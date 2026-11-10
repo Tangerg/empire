@@ -68,6 +68,13 @@ public partial class AnimationChecks
             foreach (var (action, duration) in new[] { ("hit", 150), ("death", 220) })
             {
                 var clip = assets.ResolveUnitClip(type, action, ActorClipUnit.Milliseconds, key);
+                if (type == "c01.archer" && key is null && action == "hit")
+                {
+                    Require(clip.Asset.Identity == "archer-recoil-v1" && clip.Length == 320
+                        && clip.FrameAt(0) == 0 && clip.FrameAt(319.999) == 3 && clip.ReleaseMs is null && clip.Death is null,
+                        "Only the generic C01 archer hit replaces its static placeholder with authored recoil.");
+                    continue;
+                }
                 if (key == "campaign-torren" && action == "hit")
                 {
                     Require(clip.Asset.Identity == "torren-recoil-v1" && clip.Length == 320

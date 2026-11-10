@@ -1,0 +1,34 @@
+{
+  "negative-static-binding": {
+    "gateExit": 1,
+    "failure": "ERROR: System.InvalidOperationException: The C01 archer selects exactly four authored recoil poses at uniform scale over 320 ms, without a release or death policy."
+  },
+  "negative-one-ms-interval": {
+    "gateExit": 1,
+    "failure": "ERROR: System.InvalidOperationException: Every archer recoil pose has its precise half-open 40/110/90/80 ms interval."
+  },
+  "negative-early-recoil-frame": {
+    "gateExit": 1,
+    "failure": "ERROR: System.InvalidOperationException: Applying an actor frame updates crop, anchor, contact, scale magnitude, filter and art identity while preserving facing."
+  },
+  "negative-zero-damage-recoil": {
+    "gateExit": 1,
+    "failure": "ERROR: System.InvalidOperationException: Applying an actor frame updates crop, anchor, contact, scale magnitude, filter and art identity while preserving facing."
+  },
+  "negative-one-ms-impact-tail": {
+    "gateExit": 1,
+    "failure": "ERROR: System.InvalidOperationException: At 495 ms each original receipt publishes once, with no added command tail or mutation of battle facts."
+  },
+  "restoredHashes": {
+    "data/art-bindings.json": "4aff3cb77dfe6b60b00395b121a1c15a9f2d2c60cb92e4e57431cbc68a396cf7",
+    "data/selected-assets.json": "79717c6bb76ca2b2bb3af492153733cfaccfc6fb8e30c3afba05e633ec9ce096",
+    "Presentation/BoardView.Impact.cs": "2e26f9547ea779ac8f99505fae1cb9cc458b13c6a3f3f0c71d0d81edea672f69"
+  },
+  "restoredInputsMatch": true,
+  "productionInputsUnchanged": true,
+  "negative-restored-positive": {
+    "gateExit": 0,
+    "failure": null
+  },
+  "restoredPositivePassed": true
+}

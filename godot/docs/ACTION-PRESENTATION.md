@@ -118,14 +118,14 @@ Generic `c01.archer` now selects `archer.loose`: six retrieve/nock/draw/release/
 recover/rest drawings over 600 ms, releasing at 320 ms without a source accent.
 Elin inherits this generic type binding; base `archer` and Bran remain unchanged.
 C01 archers also select `archer.breathe` for idle: four original paintings in
-six intervals over 2200 ms, owned by the existing board idle phase. All
-non-idle bindings and the default sheet remain unchanged. See the
+six intervals over 2200 ms, owned by the existing board idle phase. That idle
+slice retained non-idle bindings and the default sheet. See the
 [archer idle review](../../docs/art-archer-idle-20261110/README.md).
 The existing stationary ranger-bow policy and target-only arrow impact remain
 unchanged. This draws a released bow, not a projectile travelling across cells.
 See the [archer shot review](../../docs/art-archer-shot-20261110/README.md).
-Recipient reactions and celebration are specified below; Torren has separately
-reviewed art while the other actors retain static bindings. Main
+Recipient reactions and celebration are specified below; Torren and C01 archers
+have separately reviewed hit art, and Torren has authored death/celebration. Main
 attack activation follows. FX identity is not an action classifier. In particular,
 `castResolved` must not repeat the following attack's wind-up, and area victims
 must not each start another caster animation.
@@ -267,7 +267,7 @@ a corpse marker nor absence from the final snapshot starts death. Only the
 ordered `death` event starts the explicit `death` clip. Transport passengers have
 no drawn pre-transition actor and receive no invented death presentation.
 
-All maps except Torren's hit/death explicitly retain `static.hit` (150 ms) and
+All maps except Torren's hit/death and C01 archers' hit retain `static.hit` (150 ms) and
 `static.death` (220 ms). Both use the existing trusted idle image.
 The static hit is an authored hold within the existing 420 ms impact; static death retains
 the previous normalized fade and 35% shrink through its explicit
@@ -282,6 +282,14 @@ The existing receipt clock, grounded frame anchors and facing own playback; no
 new actor timer, root motion or combat rule is introduced. See the
 [Torren recoil review](../../docs/art-torren-recoil-20261110/README.md) for source,
 extraction and real-render acceptance.
+
+C01 archers select `archer.recoil`, also four original hit poses over
+40/110/90/80 ms. This intentionally replaces their 150 ms static hold with
+320 ms of anatomical recoil; it remains inside the existing 420 ms impact and
+does not extend command, counterattack or fatal-beat boundaries. It returns to
+`archer.breathe`; all other action bindings, including their 220 ms static death,
+are retained. See the [archer hit review](../../docs/art-archer-hit-20261110/README.md)
+for source registration and the current verification status.
 
 Torren alone now selects `torren.fall`: six independently painted collapse poses
 over 620 ms, then `death: { "mode": "after-clip", "fadeMs": 160 }`. The still
@@ -403,7 +411,8 @@ Every rendered unit/actor binding explicitly selects `idle`. The shipped
 new animated artwork. Torren now explicitly selects `torren.breathe`: four new
 painted pictures sampled as 0→1→2→3→2→1 over 1800 ms. Its alternate sheet keeps
 fixed support anchors and uses the existing idle owner, including finite-action
-suspension, resume and reduced motion. All other actors retain `static.idle`.
+suspension, resume and reduced motion. C01 archers separately use `archer.breathe`,
+four drawings in six intervals over 2200 ms; other actors retain `static.idle`.
 See [the Torren idle review](../../docs/art-torren-idle-20261110/README.md) for
 source extraction, loop limits and real-render evidence. Synthetic multi-frame
 fixtures remain separate from these production-art checks.

@@ -1,0 +1,13 @@
+{
+  "baselineCommit": "900717b1bdfa7944d2a16e1a45f557d5fdda935b",
+  "result": "No blocking defect found in independent read-only review.",
+  "productionChanges": "One new appearance and clip plus the c01.archer hit binding; no production C# changes.",
+  "checked": [
+    "Exact source pixel extraction and structural comparison of both data documents.",
+    "All positive damage paths converge on existing max(420, hit.Length); authored 320 ms leaves command/counter/fatal boundaries unchanged.",
+    "Healing and regeneration retain 500 ms feedback without hit; static death retains 220 ms fade/shrink.",
+    "New production-art checks cover both facings, release/impact, source and recipient counter ownership, area order, damage exclusion, death ordering, lifecycle and fog.",
+    "Existing ArcherIdleChecks remains unchanged; all existing assertions remain except the intentional narrow hit-binding update."
+  ],
+  "limits": "Code/data review alone does not establish build success, native visual acceptance or the full aggregate result."
+}
