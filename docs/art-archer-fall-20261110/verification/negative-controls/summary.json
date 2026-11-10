@@ -1,0 +1,42 @@
+{
+  "static-death-binding": {
+    "gateExit": 1,
+    "logSha256": "c2d70d85230f85dd00b8b61b076ba8f10be5d1dcfb076b2dce9280a406b7133d",
+    "failure": "ERROR: System.InvalidOperationException: Shooting does not replace the archer's other declared actions."
+  },
+  "one-ms-interval-transfer": {
+    "gateExit": 1,
+    "logSha256": "dca017aeb62222e64f8ddac38d0a7fdb99dd9773a8e107dc89c335a02cf194e9",
+    "failure": "ERROR: System.InvalidOperationException: Each fall pose owns its exact half-open 60/70/90/110/110/180 ms interval."
+  },
+  "one-ms-short-fade": {
+    "gateExit": 1,
+    "logSha256": "ecf9d29271429e2024d24dcb689a9a303c6fe650fcd2ac390ba47967a1d22cf5",
+    "failure": "ERROR: System.InvalidOperationException: At 535 ms only the ordered death event starts the authored fall after release, impact and fatal beat."
+  },
+  "duplicate-fall-pose": {
+    "gateExit": 1,
+    "logSha256": "dda7fd3593480160fffd6a51d171b2fda09bf3cc97410a6fbb5d6d8ffefce5ce",
+    "failure": "ERROR: System.InvalidOperationException: The C01 archer selects six authored falling poses over 620 ms followed by an explicit 160 ms fade."
+  },
+  "restoredInputsMatch": true,
+  "productionInputsUnchanged": true,
+  "productionSha256": {
+    "godot/data/art-bindings.json": "adf3e7731faa50415b04f5b84a9fd6773ae5cb754134a85709c2dcf34eda2e06",
+    "godot/data/selected-assets.json": "46be934ff0f4eb2178844e0dfe85b54e96dec550e7fb2d2c95d2e215d3045868",
+    "godot/Presentation/BoardView.Animation.cs": "0d668c0517d14bb9123d697fcbed316cecc099fac315db33530b67c084f48d96"
+  },
+  "restored-positive": {
+    "gateExit": 0,
+    "logSha256": "1a440304b6a63c36e79b1da8c4aaf7236e6cfe6625b36eddef813d6f54c74cf3",
+    "failure": null
+  },
+  "restoredPositivePassed": true,
+  "godotSourceTree": "9d962e7735bedd02698701bf3b08cb17d632e4c8",
+  "runtimeAssemblyScope": "Pre-commit build of the reviewed source tree; not claimed byte-identical to the final committed native build.",
+  "isolatedAssembliesSha256": {
+    "Empire.dll": "476232155005d00c50c098974a6ea207a6453407aab03b094109873b256f12c4",
+    "Empire.Core.dll": "28b5d0a24b8958e834be13352179772e1f4c6639fdf97455476abbef380217ce",
+    "GodotSharp.dll": "2142e62894176d7340f50581f8b2fe84e36ae64e1a85f1b2bd7737a7e8a5c8ba"
+  }
+}

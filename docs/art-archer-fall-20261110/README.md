@@ -49,8 +49,8 @@ after removing exactly the new asset, clip and C01 archer death binding.
 Source/registration review and exact extraction pass. The corrected native
 `AnimationChecks` passed **6,115 assertions**, with a strict process/diagnostic
 exit of 0. Build, editor import, source metadata and targeted whitespace checks
-pass; the build has zero warnings/errors. Legal battle capture and the full
-native gate remain pending.
+pass; the build has zero warnings/errors. A legal native battle recording and
+complete saved-state comparison pass. The full native gate remains pending.
 Standalone export and full-campaign acceptance are outside this slice.
 
 The first native run reached the new archer and existing Torren fall checks
@@ -60,3 +60,35 @@ selects the existing `south-sword`, asserts its unchanged 220 ms `during-clip`
 policy, and removes it by ID. All prior fade, shrink and pivot assertions remain.
 No actor state or production policy was changed to satisfy the fixture. The
 initial failure is retained in `verification/`; the corrected rerun passes.
+
+Four isolated data mutations fail with strict gate exit 1: restoring the static
+death binding, transferring one millisecond between poses while preserving total
+length, shortening the fade by one millisecond, and repeating a pose. Restored
+inputs are byte-identical and the isolated positive rerun passes all 6,115
+assertions. Production data and runtime-code hashes are unchanged. The source
+pixel guard separately rejects a one-channel in-memory change. Logs and the
+rerunnable isolated-control script are under `verification/negative-controls/`.
+
+## Legal native battle
+
+The official campaign and normal AI produce the death without altered HP,
+position, facing, camera or receipts. At action 167 enemy archer 18 kills
+east-facing Elin at (22,20), taking her from 4 HP to zero. The native scene loads
+the independently verified preceding save in a fresh isolated namespace and
+lets the normal AI act. After the following AI end-turn, the F5 save matches the
+complete independent settled document, excluding only its two writer timestamps.
+
+The 93 consecutive native observations show the six fall poses starting at
+45/49/53/58/65/72, the fully visible last pose, terminal fade and single actor
+retirement at observation 92. Root/support plane and fall scale stay constant.
+The corpse marker remains and normal human input resumes. The 960×640 lossless
+video was decoded and compared against every original PNG's RGB bytes. All
+source traces, frame hashes, unchanged full-viewport stills and diagnostic crops
+are in `verification/native/`, together with a repeatable archive verifier.
+
+Independent review checks all 93 observations, lossless bytes, source and
+assembly identity, native inputs/outputs and full-save equality. This recording
+covers one east-facing fatal battle. Mirrored registration and cancellation are
+controlled-test coverage, not a second native recording. Readback pacing is not
+a real-time performance result. The legal derivation, launch procedure and
+complete official saves are in `verification/legal-death/`.

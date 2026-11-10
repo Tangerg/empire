@@ -1,0 +1,56 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Animation facing checks passed, including the lawful C04 receipt.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Torren thrust: six production poses, 160 ms release, 360 ms recovery, mirrors/cancellation/reduced motion passed.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Gravekeeper cast: synthetic production-art receipts, six poses, release300/recovery600, hit720/heal800, mirrors/lifetime/privacy passed.
+ERROR: System.InvalidOperationException: Shooting does not replace the archer's other declared actions.
+   at Empire.Presentation.AnimationChecks.Require(Boolean condition, String message) in /workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:line 606
+   at Empire.Presentation.AnimationChecks.CheckArcherShotPlayback() in /workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationArcherShotChecks.cs:line 28
+   at Empire.Presentation.AnimationChecks._Ready() in /workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:line 44
+   at: void Empire.Presentation.AnimationChecks+<_Ready>d__75.MoveNext() (/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:44)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.AnimationChecks+<_Ready>d__75.MoveNext() (/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:44)
+       [2] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [3] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [4] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [5] void System.Threading.Tasks.Task.RunContinuations(object)
+       [6] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [7] void Empire.Presentation.AnimationChecks+<CheckGravekeeperCastPlayback>d__133.MoveNext() (/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationGravekeeperCastChecks.cs:125)
+       [8] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [9] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [10] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [11] void System.Threading.Tasks.Task.RunContinuations(object)
+       [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [13] void Empire.Presentation.AnimationChecks+<CheckHealingVisibility>d__143.MoveNext() (/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationHealingChecks.cs:199)
+       [14] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [16] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [17] void System.Threading.Tasks.Task.RunContinuations(object)
+       [18] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [19] void Empire.Presentation.AnimationChecks+<Drain>d__89.MoveNext() (/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:576)
+       [20] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [21] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [22] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [23] void System.Threading.Tasks.Task.RunContinuations(object)
+       [24] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [25] void Empire.Presentation.AnimationChecks+<Tick>d__88.MoveNext() (/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:570)
+       [26] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [27] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [28] void Godot.GodotSynchronizationContext.ExecutePendingContinuations() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GodotSynchronizationContext.cs:51)
+       [29] void Godot.GodotTaskScheduler.Activate() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GodotTaskScheduler.cs:76)
+       [30] void Godot.Bridge.ScriptManagerBridge.FrameCallback() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/ScriptManagerBridge.cs:84)
