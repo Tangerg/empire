@@ -19,9 +19,9 @@ public partial class AnimationChecks
     {
         var shippedBindings = PresentationJson.Load<ArtBindings>("res://data/art-bindings.json");
         foreach (var type in shippedBindings.Units.Keys)
-            CheckStaticActorClip(type, null);
+            CheckShippedActorClip(type, null);
         foreach (var (key, actor) in shippedBindings.Actors)
-            CheckStaticActorClip(actor.ExpectedUnitType, key);
+            CheckShippedActorClip(actor.ExpectedUnitType, key);
 
         var (manifest, bindings) = ActorClipFixture();
         var catalog = new AssetCatalog(manifest, bindings);
@@ -153,10 +153,17 @@ public partial class AnimationChecks
         CheckActorClipFrameApplication(catalog, selected, clip.Asset);
     }
 
-    private void CheckStaticActorClip(string type, string? key)
+    private void CheckShippedActorClip(string type, string? key)
     {
         var asset = assets.ResolveUnit(type, key);
         var clip = assets.ResolveUnitClip(type, "attack", ActorClipUnit.Milliseconds, key);
+        if (key == "campaign-torren")
+        {
+            Require(clip.Asset.Identity == "torren-thrust-v1" && clip.Asset.TopicId == asset.TopicId
+                && clip.Asset.FrameCount == 6 && clip.Length == 360 && clip.RequireRelease() == 160,
+                "Torren alone selects his six-pose authored thrust and its own release/recovery timing.");
+            return;
+        }
         var frame = AssetCatalog.FrameIndex(asset, asset.Category == "mission-unit" ? "carry-or-work" : "attack");
         Require(clip.Asset == asset && clip.Length == 150 && clip.FrameAt(0) == frame && clip.FrameAt(150) == frame,
             "Shipped combat and mission bindings preserve their existing selected one-pose, 150 ms strike.");
@@ -575,6 +582,9 @@ public partial class AnimationChecks
         };
         var bindings = PresentationJson.Load<ArtBindings>("res://data/art-bindings.json");
         bindings.Units["c01.swordsman"].ActionClips["attack"] = ClipFixtureId;
+        // This fixture contrasts a generic alternate clip with an explicitly static named action.
+        // Production Torren artwork and timing are exercised separately, without this override.
+        bindings.Actors["campaign-torren"].UnitArt.ActionClips["attack"] = "static.attack";
         return (manifest, bindings);
     }
 

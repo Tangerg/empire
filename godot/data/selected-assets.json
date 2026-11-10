@@ -73,6 +73,38 @@
           "span": 220
         }
       ]
+    },
+    "torren.thrust": {
+      "unit": "milliseconds",
+      "appearanceId": "torren-thrust-v1",
+      "releaseMs": 160,
+      "frames": [
+        {
+          "frame": "thrust-1",
+          "span": 65
+        },
+        {
+          "frame": "thrust-2",
+          "span": 50
+        },
+        {
+          "frame": "thrust-3",
+          "span": 45
+        },
+        {
+          "frame": "thrust-4",
+          "span": 65
+        },
+        {
+          "frame": "thrust-5",
+          "span": 70
+        },
+        {
+          "frame": "thrust-6",
+          "span": 65
+        }
+      ],
+      "showAccent": false
     }
   },
   "assets": [
@@ -3090,6 +3122,92 @@
         75.71914893617021,
         71.49787234042553
       ]
+    },
+    {
+      "id": "torren-thrust-v1",
+      "topicId": "C01-UNIT-SWORDSMAN",
+      "png": "painted-actions-v1/torren-thrust-v1.png",
+      "pixelDensity": 1,
+      "frames": 6,
+      "frameOrder": [
+        "thrust-1",
+        "thrust-2",
+        "thrust-3",
+        "thrust-4",
+        "thrust-5",
+        "thrust-6"
+      ],
+      "physicalWidth": 1953,
+      "physicalHeight": 357,
+      "resourcePath": "res://assets/painted-actions-v1/torren-thrust-v1.png",
+      "sha256": "4caa1a10f5aea2245f07e83bf778a24027b0ce19fe0455641929e51b3d2983f9",
+      "presentationScale": 0.1047,
+      "frameRegions": [
+        [
+          0,
+          0,
+          263,
+          353
+        ],
+        [
+          263,
+          0,
+          283,
+          353
+        ],
+        [
+          546,
+          0,
+          356,
+          350
+        ],
+        [
+          902,
+          0,
+          492,
+          338
+        ],
+        [
+          1394,
+          0,
+          297,
+          357
+        ],
+        [
+          1691,
+          0,
+          262,
+          356
+        ]
+      ],
+      "frameAnchors": [
+        [
+          133,
+          345
+        ],
+        [
+          138,
+          346
+        ],
+        [
+          151,
+          342
+        ],
+        [
+          193,
+          331
+        ],
+        [
+          158,
+          349
+        ],
+        [
+          138,
+          348
+        ]
+      ],
+      "qualityTier": "painted-thrust-v1-reviewed",
+      "textureFilter": "linear"
     }
   ]
 }

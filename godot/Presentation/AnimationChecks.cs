@@ -39,6 +39,7 @@ public partial class AnimationChecks : Node
             await CheckFacingPlayback();
             CheckActorClipDefinitions();
             CheckReleaseDefinitions();
+            await CheckTorrenThrustPlayback();
             CheckHealingDefinitions();
             await CheckClock();
             await CheckCelebrationClips();

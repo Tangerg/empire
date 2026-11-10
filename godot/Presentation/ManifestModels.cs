@@ -22,6 +22,7 @@ public sealed class AssetManifest
 
 public sealed class ActorClipRecord
 {
+    public bool ShowAccent { get; init; } = true;
     public string Unit { get; init; } = "";
     public ActorDeathRecord? Death
     {

@@ -182,7 +182,7 @@ public sealed class AssetCatalog
             var sheet = definition.AppearanceId is null ? asset : ResolveBinding(binding.TopicId, definition.AppearanceId);
             if ((action == "death") != (definition.Death is not null))
                 throw new InvalidOperationException($"Only a death action must declare its death presentation: {asset.Identity}/{action}.");
-            clips.Add(action, new ActorClip(sheet, definition.Unit, definition.Frames, definition.ReleaseMs, definition.Death));
+            clips.Add(action, new ActorClip(sheet, definition.Unit, definition.Frames, definition.ReleaseMs, definition.Death, definition.ShowAccent));
         }
         return new(asset, clips.ToFrozenDictionary(StringComparer.Ordinal));
     }

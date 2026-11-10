@@ -33,6 +33,10 @@ public sealed class ActorClip
     {
         get;
     }
+    public bool ShowAccent
+    {
+        get;
+    }
     public double Length => ends[^1];
     public double? ReleaseMs
     {
@@ -49,7 +53,7 @@ public sealed class ActorClip
     public ActorDeathPresentation RequireDeath() => Death
         ?? throw new InvalidOperationException($"Actor clip has no declared death presentation: {Asset.Identity}.");
 
-    internal ActorClip(RuntimeAsset asset, string unit, IReadOnlyList<ActorClipFrameRecord> sequence, double? releaseMs, ActorDeathRecord? death)
+    internal ActorClip(RuntimeAsset asset, string unit, IReadOnlyList<ActorClipFrameRecord> sequence, double? releaseMs, ActorDeathRecord? death, bool showAccent)
     {
         if (asset.Category is not ("combat-unit" or "mission-unit") || sequence.Count == 0)
             throw new InvalidOperationException("Actor clips require an actor sheet and at least one frame.");
@@ -60,6 +64,7 @@ public sealed class ActorClip
             _ => throw new InvalidOperationException($"Unknown actor clip sampling unit: {unit}.")
         };
         Asset = asset;
+        ShowAccent = showAccent;
         frames = new int[sequence.Count];
         FrameIndices = Array.AsReadOnly(frames);
         ends = new double[sequence.Count];

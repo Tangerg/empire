@@ -1,0 +1,154 @@
+{
+  "source": "source-row.png",
+  "sourceSha256": "bd39de401f907e7324eb48b6c9bc8d0e7bde64037c21d245fa92e479db96ef9e",
+  "method": "Six connected alpha>16 seeds; preserve original RGBA of nonzero-alpha pixels within three pixels of their nearest seed; remove only detached near-transparent noise; pad four pixels and pack without rescaling or redrawing. Adapted component-row method, not sprite-gen CLI output.",
+  "removedPixels": 22365,
+  "removedMaxAlpha": 5,
+  "scale": 0.1047,
+  "frames": [
+    {
+      "pose": 1,
+      "sourceBounds": [
+        40,
+        194,
+        303,
+        547
+      ],
+      "frameRegion": [
+        0,
+        0,
+        263,
+        353
+      ],
+      "frameAnchor": [
+        133,
+        345
+      ],
+      "sourceAnchor": [
+        173,
+        539
+      ],
+      "pixelSha256": "69b057a9e78d10e23fb14e457e9bf21ff05b6d459a238d67bfd7a63e12c215e2"
+    },
+    {
+      "pose": 2,
+      "sourceBounds": [
+        347,
+        194,
+        630,
+        547
+      ],
+      "frameRegion": [
+        263,
+        0,
+        283,
+        353
+      ],
+      "frameAnchor": [
+        138,
+        346
+      ],
+      "sourceAnchor": [
+        485,
+        540
+      ],
+      "pixelSha256": "3660d3ce81d2fa5f44e01d3f2ef0b2681129e608d78e766a4159c8c682ef7141"
+    },
+    {
+      "pose": 3,
+      "sourceBounds": [
+        654,
+        196,
+        1010,
+        546
+      ],
+      "frameRegion": [
+        546,
+        0,
+        356,
+        350
+      ],
+      "frameAnchor": [
+        151,
+        342
+      ],
+      "sourceAnchor": [
+        805,
+        538
+      ],
+      "pixelSha256": "c47df01dce6d7a73df0c33fa479833cb676c3026b7f4d969181b086457f2d2af"
+    },
+    {
+      "pose": 4,
+      "sourceBounds": [
+        997,
+        207,
+        1489,
+        545
+      ],
+      "frameRegion": [
+        902,
+        0,
+        492,
+        338
+      ],
+      "frameAnchor": [
+        193,
+        331
+      ],
+      "sourceAnchor": [
+        1190,
+        538
+      ],
+      "pixelSha256": "b51880253a0841a4926127f77140b11aa80a5f621718945a80194c2ed029b062"
+    },
+    {
+      "pose": 5,
+      "sourceBounds": [
+        1510,
+        196,
+        1807,
+        553
+      ],
+      "frameRegion": [
+        1394,
+        0,
+        297,
+        357
+      ],
+      "frameAnchor": [
+        158,
+        349
+      ],
+      "sourceAnchor": [
+        1668,
+        545
+      ],
+      "pixelSha256": "f58815a5669b1e5429c3cbfe107428d9afc70744ff40405cd1de6cb151bd6d1d"
+    },
+    {
+      "pose": 6,
+      "sourceBounds": [
+        1892,
+        198,
+        2154,
+        554
+      ],
+      "frameRegion": [
+        1691,
+        0,
+        262,
+        356
+      ],
+      "frameAnchor": [
+        138,
+        348
+      ],
+      "sourceAnchor": [
+        2030,
+        546
+      ],
+      "pixelSha256": "0fc63839bea57324eb9e7a73b8eaddfdbe5543b439144e72a1cabc83ef11ef97"
+    }
+  ]
+}

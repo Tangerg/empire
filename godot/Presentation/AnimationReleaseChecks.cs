@@ -35,8 +35,11 @@ public partial class AnimationChecks
             .Concat(shipped.Actors.Select(pair => (pair.Value.ExpectedUnitType, (string?)pair.Key))))
         {
             var shippedClip = assets.ResolveUnitClip(type, "attack", ActorClipUnit.Milliseconds, key);
-            Require(shippedClip.Length == 150 && shippedClip.ReleaseMs == 75 && shippedClip.RequireRelease() == 75,
-                "Shipped attack and work poses release halfway through their unchanged 150 ms duration.");
+            var duration = key == "campaign-torren" ? 360 : 150;
+            var release = key == "campaign-torren" ? 160 : 75;
+            Require(shippedClip.Length == duration && shippedClip.ReleaseMs == release && shippedClip.RequireRelease() == release
+                && shippedClip.ShowAccent == (key != "campaign-torren"),
+                "Torren releases at full extension; remaining static attack/work poses retain their original duration and release.");
         }
 
         var (manifest, bindings) = ReleaseFixture();

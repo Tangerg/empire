@@ -69,7 +69,7 @@ with linear ground-plane travel and no whole-actor/shadow hop. The explicit `leg
 `walk-a`/`walk-b` support phases alternating per travelled cell, independent of AI
 pace; a one-cell move intentionally needs only one support phase. This changes
 presentation only, not canonical path costs, rules, receipts or event ordering. Shipped idle retains the declared single idle
-frame. The shipped finite attack clips retain the declared attack pose, or `carry-or-work` for mission sheets.
+frame. Most shipped finite attack clips retain the declared attack pose, or `carry-or-work` for mission sheets. Torren now has a separate six-pose thrust, documented in `../../docs/art-torren-thrust-20261110/README.md`.
 These are roles in a four-frame sheet, not four directional views or attack frames.
 
 ## Finite actor clips
@@ -103,9 +103,12 @@ facing, then the board synchronizes shadows and standing depth. At its own clip 
 restores the bound idle appearance, even if the impact is still playing; cancellation/error retains the
 existing committed-After settlement instead of writing to a retired actor.
 
-The two finite attack profiles, `static.attack` and `static.work`, each retain one
-trusted pose for exactly 150 ms, with an explicit release at 75 ms. This first slice introduces no new sprite pixels
-or accepted multi-frame character artwork. Multi-frame/cross-sheet checks use
+The two legacy finite attack profiles, `static.attack` and `static.work`, each retain one
+trusted pose for exactly 150 ms, with an explicit release at 75 ms. The initial infrastructure slice introduced no new sprite pixels
+or accepted multi-frame character artwork. The later `torren.thrust` action selects a separate six-pose sheet for `campaign-torren` only: 360 ms total, releasing at the full-extension frame boundary at 160 ms. Its original idle, movement and other actions remain unchanged. The admitted clip
+`showAccent` option defaults to true; this authored thrust sets it false because
+the old crescent obscured its arm and blade in real gameplay. This controls only
+accent creation, never impact, timing, motion or state transitions. Multi-frame/cross-sheet checks use
 trusted sheets as explicitly synthetic infrastructure fixtures. Recipient reactions
 and celebration are specified below; their new artwork remains unfinished. Main
 attack activation follows. FX identity is not an action classifier. In particular,
