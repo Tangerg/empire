@@ -330,10 +330,11 @@ critical objective; no second player-victory policy is introduced. Transported,
 withdrawn, routed, dead and newly visible actors are not materialized from stale
 Before drawings to celebrate. Filtering happens before clip lookup.
 
-The current 40 unit/actor maps explicitly bind `static.celebrate`: one trusted idle
-image held for 220 ms, not completed celebration artwork. This preserves the old
-terminal beat and original visuals until independently accepted art replaces the
-binding. Multi-frame clips use the same `PrepareActorPose` and geometry owner as
+Torren alone selects `torren.salute`: six painted victory-salute poses over
+900 ms (100/120/160/240/140/140), then returns to his breathing idle. The other
+39 unit/actor maps retain `static.celebrate`: one trusted idle picture for 220 ms,
+not completed celebration artwork. See the [Torren salute review](../../docs/art-torren-salute-20261110/README.md)
+for source and native acceptance. Multi-frame clips use the same `PrepareActorPose` and geometry owner as
 other finite actions. All eligible actors start together without moving their
 logical contacts or changing facing. One group tween on the existing receipt
 clock lasts the greater of 220 ms and the longest declared clip; each actor

@@ -43,6 +43,7 @@ public partial class AnimationChecks : Node
             await CheckTorrenIdlePlayback();
             await CheckTorrenRecoilPlayback();
             await CheckTorrenFallPlayback();
+            await CheckTorrenCelebrationPlayback();
             CheckHealingDefinitions();
             await CheckClock();
             await CheckCelebrationClips();
@@ -457,7 +458,9 @@ public partial class AnimationChecks : Node
         await Tick(board, 0.2201);
         Require(!task.IsCompleted && viewportFeedback.GetNodeOrNull("ViewportEffects/TurnAnnouncement") is null, "Banner leaves in 220 ms before separate game-over beat");
         await Tick(board, 0.2201);
-        Require(await task, "Game-over beat is 220 ms, then caller may show its result modal");
+        Require(!task.IsCompleted, "The original result beat cannot bypass winning Torren's production salute.");
+        await Tick(board, 0.680);
+        Require(task.IsCompleted && await task, "The 900 ms winning salute completes before the caller may show its result modal.");
         board.PresentationRepaintRequested -= Repaint;
     }
 
@@ -536,8 +539,12 @@ public partial class AnimationChecks : Node
         board.ConfigureDynamicState();
         var reattached = board.PresentTransitionAsync(viewportFeedback, transition);
         Require(board.IsPresenting && !reattached.IsCompleted, "Explicit reattach and reconfigure restores the presentation lifecycle");
-        await Tick(board, 0.221);
-        Require(await reattached, "Reattached board can settle a new transition normally");
+        await Tick(board, 0.220);
+        Require(!reattached.IsCompleted && board.IsPresenting,
+            "Reattached production Torren retains the salute gate after the original 220 ms result beat.");
+        await Tick(board, 0.680);
+        Require(reattached.IsCompleted && await reattached,
+            "Reattached board settles the winning production salute at 900 ms without an unbounded wait.");
         Require(initial.ToJsonString() == initialBytes,
             "All presentation tests leave original canonical fixture data unchanged");
     }

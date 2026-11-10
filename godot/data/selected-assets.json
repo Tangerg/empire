@@ -191,6 +191,36 @@
           "span": 180
         }
       ]
+    },
+    "torren.salute": {
+      "unit": "milliseconds",
+      "appearanceId": "torren-salute-v1",
+      "frames": [
+        {
+          "frame": "salute-ready",
+          "span": 100
+        },
+        {
+          "frame": "salute-lift",
+          "span": 120
+        },
+        {
+          "frame": "salute-high",
+          "span": 160
+        },
+        {
+          "frame": "salute-hold",
+          "span": 240
+        },
+        {
+          "frame": "salute-lower",
+          "span": 140
+        },
+        {
+          "frame": "salute-rest",
+          "span": 140
+        }
+      ]
     }
   },
   "assets": [
@@ -3507,6 +3537,92 @@
         ]
       ],
       "qualityTier": "painted-fall-v1-reviewed",
+      "textureFilter": "linear"
+    },
+    {
+      "id": "torren-salute-v1",
+      "topicId": "C01-UNIT-SWORDSMAN",
+      "png": "painted-actions-v1/torren-salute-v1.png",
+      "pixelDensity": 1,
+      "frames": 6,
+      "frameOrder": [
+        "salute-ready",
+        "salute-lift",
+        "salute-high",
+        "salute-hold",
+        "salute-lower",
+        "salute-rest"
+      ],
+      "physicalWidth": 1898,
+      "physicalHeight": 547,
+      "resourcePath": "res://assets/painted-actions-v1/torren-salute-v1.png",
+      "sha256": "126dd0681a6ddf59671237ac1e65048eac917967cb22d36300000df195ba16bd",
+      "presentationScale": 0.09,
+      "frameRegions": [
+        [
+          0,
+          0,
+          317,
+          422
+        ],
+        [
+          317,
+          0,
+          322,
+          425
+        ],
+        [
+          639,
+          0,
+          314,
+          546
+        ],
+        [
+          953,
+          0,
+          314,
+          547
+        ],
+        [
+          1267,
+          0,
+          319,
+          425
+        ],
+        [
+          1586,
+          0,
+          312,
+          419
+        ]
+      ],
+      "frameAnchors": [
+        [
+          154,
+          415
+        ],
+        [
+          156,
+          418
+        ],
+        [
+          154,
+          539
+        ],
+        [
+          154,
+          540
+        ],
+        [
+          161,
+          418
+        ],
+        [
+          156,
+          412
+        ]
+      ],
+      "qualityTier": "painted-salute-v1-reviewed",
       "textureFilter": "linear"
     }
   ]

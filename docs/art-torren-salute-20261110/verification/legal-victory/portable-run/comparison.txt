@@ -1,0 +1,7 @@
+PASS source-campaign-save.json: complete save fields match, excluding only official campaign.savedAt and battle.savedAt in detached comparison copies; preserved open-ground-001 bytes unchanged.
+PASS candidate-001-before.json: complete save fields match, excluding only official campaign.savedAt and battle.savedAt in detached comparison copies; preserved open-ground-001 bytes unchanged.
+PASS candidate-001-after.json: complete save fields match, excluding only official campaign.savedAt and battle.savedAt in detached comparison copies; preserved open-ground-001 bytes unchanged.
+PASS opening-actions.json: exact byte equality.
+PASS derivation-actions.json: exact byte equality.
+PASS candidate-001-receipt.json: exact byte equality.
+PASS same existing compiled assemblies; 214 actions; official before/after reload; next human action replay; full independent core state/events; alive and visible winning Torren at (21,18).

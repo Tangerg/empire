@@ -1,0 +1,5 @@
+repository-output: exit 2
+Output must be outside the repository; audit evidence is read-only.
+
+nonempty-output: exit 2
+Output must be a new or empty directory; refusing to overwrite a previous run.
