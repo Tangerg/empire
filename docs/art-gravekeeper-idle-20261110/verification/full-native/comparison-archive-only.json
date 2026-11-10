@@ -1,0 +1,498 @@
+{
+  "status": "passed",
+  "currentLog": "/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/docs/art-gravekeeper-idle-20261110/verification/full-native/full-native.txt",
+  "currentLogSha256": "70bf3ca37b793e52fb2f42b5f87b5010a73d316448e0c6982cf44fc648ebe410",
+  "exitCode": "0",
+  "sourceCommit": "869078976dd21f5d82932dc4151bdd03fa973c1a",
+  "testedGodotTree": "cfe370846c78c10100fbcfc8d19965efd96be697",
+  "testedToolsTree": "afff6c24fcf143fdff3a5a4facf2f373d1ad3290",
+  "immediateBaselineLog": "/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/docs/art-archer-cheer-20261110/verification/full-native/full-native.txt",
+  "immediateBaselineLogSha256": "727765291d562311f4f65bbcbaf0f7267a77b3aaf548aca89aa3bc46f2cc0df3",
+  "immediateBaselineTestedCommit": "6fa6f8aa12cf4586967955c6898b6dd1409d16ad",
+  "immediateBaselineIsSingleProcessAggregate": true,
+  "stageCoverageReferenceLog": "/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/docs/art-archer-hit-20261110/verification/full-native-staged/full-native-staged.txt",
+  "stageCoverageReferenceMode": "all-original-stages-with-durable-completion-records",
+  "stageCoverageReferenceIsSingleProcessAggregate": false,
+  "checks": {
+    "acceptedStageCoverageBaselineVerified": true,
+    "acceptedCheerAggregateVerified": true,
+    "aggregateExitZeroAndTerminalMarker": true,
+    "sixteenOrderedAiTracesIdentical": true,
+    "sixPlayedFlowMarkersIdentical": true,
+    "normalizedWarningMultisetIdentical": true,
+    "all45StagesCovered": true,
+    "metadata214": true,
+    "buildsZeroWarningsAndErrors": true,
+    "archivedAssemblyHashRecordMatchesTestedBuild": true,
+    "sourceCommitMatchesTestedBuild": true,
+    "sourceWasCleanAtGateLaunch": true,
+    "noErrorOrLeakDiagnostics": true
+  },
+  "aiTraceCount": 16,
+  "independentLegalOrders": 3425,
+  "aiTraces": [
+    [
+      "c01-01",
+      "156",
+      "20e90377ee316e831d17e4f9d165536500d4ae379850f198d91d930e0e771d17"
+    ],
+    [
+      "c01-02",
+      "421",
+      "b026ba1db2b0495a4bb65d5e1c1e1bb4632b540e0a7aa84067c132b9cb0632b0"
+    ],
+    [
+      "c01-03",
+      "116",
+      "a5fdff17e2ebc198717a60473be0a4805df9cfdda9ce38ff938dbda010c7deed"
+    ],
+    [
+      "c01-04",
+      "234",
+      "156730525210e393732c2d8fe808d92d4f8675b23d2e1fc5c5c68346948b574b"
+    ],
+    [
+      "c01-05",
+      "169",
+      "f4b44a6002f6bd3975beedd69c0ba9e7b23700b684af9e84c754de7efda837a5"
+    ],
+    [
+      "c01-06",
+      "130",
+      "f39bbdadabffe8cd697676b84a754364d9340300c7ab4b336eac91618d119c05"
+    ],
+    [
+      "c01-07",
+      "311",
+      "c6b3bf04f0718633bfd105f839673dba774a89ecbd978cfd0fff72c364ad42f5"
+    ],
+    [
+      "c01-08",
+      "144",
+      "3ce380648ae32e8b965d335b9087b96d99299228b18e51ff417822be583d1c74"
+    ],
+    [
+      "c01-09",
+      "59",
+      "2b24e3c596b908c53bc573605bec49e9cc67a63446ffcef962de8d835698bab0"
+    ],
+    [
+      "c01-10",
+      "152",
+      "a89c48de6ac386d7617e286b59814409bcc12dac8279e9c663eba17b29e9dd54"
+    ],
+    [
+      "c01-11",
+      "268",
+      "5748ce7fded062055db6d4a1bfe97eca579f2fdb7464026b8d9d7d0f380f0768"
+    ],
+    [
+      "c01-12",
+      "117",
+      "ae9d694bfc75071f38b4ea1d9db302d59722ad9798b397a4a9249a04df8a3eac"
+    ],
+    [
+      "c01-13",
+      "195",
+      "430328e385ec68bcab97a3ea45bb7a89e7a17d2a2f28f5af06cfd385a1d3bd26"
+    ],
+    [
+      "c01-14",
+      "339",
+      "7ce296acd0b85ca773728562b95067548a7d39fa9f88b2bb4cadd313dbcc4c06"
+    ],
+    [
+      "c01-15",
+      "236",
+      "ee680bb1836eb2f8e8528587d5d7c7ae1f5f1856dff4bbb94ee96097392b4d42"
+    ],
+    [
+      "c01-16",
+      "378",
+      "b61226395df40354816d29650a2bdaac13e7d546adb51f903fd98fab41824d08"
+    ]
+  ],
+  "playedFlowMarkers": [
+    "PLAYED_AI_DEFEAT_OK orders=152; terminal=3dbb09d3; events=10; completions=1; retry=9dae091b; both slots unchanged",
+    "PLAYED_TERMINAL level=c01-01; legal orders=156; outcome=victory; completion views=1; events=524; presented=524; turn=9; state=c46d9172; conclusion={\"kind\":\"lastTeamRemaining\",\"team\":1}",
+    "CARRIED_VICTORY_OK level=c01-01; legal orders=156; events=524; terminal=c46d9172; campaign=17488f7b; next=battle-02",
+    "PLAYED_TERMINAL level=c01-02; legal orders=259; outcome=victory; completion views=1; events=584; presented=584; turn=13; state=5967317c; conclusion={\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}",
+    "CARRIED_VICTORY_OK level=c01-02; legal orders=259; events=584; terminal=5967317c; campaign=d152d095; next=battle-03",
+    "CARRIED_OPENING_OK battles played in this process=415 legal orders; third opening=21 orders; third state=d1103229; outcomes=c01-01:c46d9172:{\"kind\":\"lastTeamRemaining\",\"team\":1};c01-02:5967317c:{\"kind\":\"objectiveCompleted\",\"team\":1,\"player\":1,\"objective\":\"primary\"}. No third-battle victory or full-campaign claim."
+  ],
+  "warningCount": 41,
+  "baselineWarningCount": 41,
+  "addedWarnings": {},
+  "missingWarnings": {},
+  "buildSummaryCount": 4,
+  "recordedAssemblyHashes": {
+    "Empire.dll": "2a6f890c63326c3490c09eb21bbf4c336eda5ebb08aa5f320badb16e57ff6ff7",
+    "Empire.Core.dll": "449a03ce3fe8681b8ee90eeae72b355b523375b263ed511f2853d3a99d558662",
+    "GodotSharp.dll": "2142e62894176d7340f50581f8b2fe84e36ae64e1a85f1b2bd7737a7e8a5c8ba"
+  },
+  "optionalLiveDllChecks": {},
+  "stages": [
+    {
+      "number": 1,
+      "name": "preflight-01",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "OK",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 2,
+      "name": "preflight-02",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "OK",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 3,
+      "name": "preflight-03",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": null,
+      "silentStageRequiresAggregateSuccess": true
+    },
+    {
+      "number": 4,
+      "name": "preflight-04",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Godot source metadata: <uids>; indexed resource companions present; 4219 intentionally unimported audit files.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 5,
+      "name": "preflight-05",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "PASS: historical painting integrity retained separately; native rendering, natural play and GUI acceptance are separate.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 6,
+      "name": "preflight-06",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "PASS: retired nonspatial mission parity, painting bytes and canonical registration 69f0b09cbe9d5daae16e4f36a063b3168af38146a5a7a0b6607c19b2be3656ab",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 7,
+      "name": "preflight-07",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "PASS: retired mission parity, image bytes and canonical registration 5563bc87705ce5b5b8dd4ab6032ba5b2c23c6de17e61a48c27661d7c34da717e",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 8,
+      "name": "preflight-08",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "PASS: C07 96x64; 16 canonical sites, 3798 foot cells (one reviewed isolated nook), 2281 reviewed solid cells. Native movement and normal-AI/GUI gates remain separate.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 9,
+      "name": "build-project",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Build succeeded.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 10,
+      "name": "build-core-tests",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Build succeeded.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 11,
+      "name": "core-replay",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "17 passed; 0 failed",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 12,
+      "name": "objective-outcome-checks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Objective/outcome native contract checks passed: <assertions>.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 13,
+      "name": "catalog-boundary-checks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "PASS 76 external ProjectReference catalog ownership assertions",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 14,
+      "name": "editor-import",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": null,
+      "silentStageRequiresAggregateSuccess": true
+    },
+    {
+      "number": 15,
+      "name": "NarrativeChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Native narrative checks passed: <assertions>, 35 documents / 91 beats, 11 choices.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 16,
+      "name": "OathPadChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Oath pad native checks passed: <assertions>.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 17,
+      "name": "DynamicStateChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Dynamic state presentation checks passed: <assertions>.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 18,
+      "name": "PaintedSurfaceChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Painted elevated surface registration, depth and picking passed.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 19,
+      "name": "SceneSurfaceChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "SCENE_SURFACE_CHECKS_OK <assertions>",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 20,
+      "name": "AssembledGroundChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "ASSEMBLED_GROUND_CHECKS_OK <assertions>",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 21,
+      "name": "PaintedSurfaceBroadPhaseChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "PAINTED_SURFACE_BROAD_PHASE_OK 28251 exact geometry/UV/depth/pointer assertions against full-clip reference",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 22,
+      "name": "BlackFlagCampChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Native BlackFlagCamp passed <assertions>: registration, ten sites, material picking, foundations, staging, save admission and detached legal-command mission probes. Natural route play and GUI acceptance are separate.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 23,
+      "name": "ReedVillageChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Native ReedVillage passed <assertions>: twelve sites, door/roof picking, physical foundations, bridge/water movement, opening civilian escape, T4/T8 no-AI timing and strict save admission. No-AI timing is not normal-play or GUI acceptance.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 24,
+      "name": "WhiteRiverChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Native WhiteRiver passed <assertions>: ten captured/healing sites, door/roof picking, physical foundations, three crossings, escort commands, T4/T6/T14 no-AI timing and strict save admission. No-AI timing is not normal-play or GUI acceptance.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 25,
+      "name": "LuojiaChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Native Luojia passed <assertions>: sixteen sites, authored rendering/picking, route geometry, sequential control objectives, deadline and strict save admission. Detached probes are not normal-AI balance acceptance.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 26,
+      "name": "PresentationChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Presentation resource contracts passed.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 27,
+      "name": "AnimationChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Animation presentation checks passed: <assertions>.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 28,
+      "name": "CameraChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Native camera checks passed: <assertions>.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 29,
+      "name": "CameraIntegrationChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Native camera screen integration passed: <assertions>.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 30,
+      "name": "TacticalHudChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "TACTICAL_HUD_CHECKS_OK <assertions> (headless native controls and host teardown, not visual acceptance)",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 31,
+      "name": "IdleGuidanceChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Idle guidance checks passed: <assertions>; actual C01 guidance and labeled native layout/lifetime fixtures.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 32,
+      "name": "DossierFocusChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Dossier focus checks passed: <assertions>; native reading/navigation and isolated real-session adjustments.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 33,
+      "name": "BattleScreenChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Native BattleScreen real-session integration passed.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 34,
+      "name": "RegenerationFeedbackChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Regeneration feedback native checks passed.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 35,
+      "name": "ScenarioSignalFeedbackChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Scenario signal feedback passed <assertions>: unchanged C06 native retreat/end-turn orders, real AI, controlled playback, journal/load lifetime, and explicitly synthetic declared-signal text boundaries. Not GUI acceptance.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 36,
+      "name": "MoraleFeedbackChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Morale feedback passed <assertions>: formal values, legal C06 AI rout, native dossier/journal, visibility and save/refresh lifetime. Not GUI acceptance.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 37,
+      "name": "ReinforcementFeedbackChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Arrival feedback passed <assertions>: unchanged C03/C10/C12 commands and receipts, registered scenes, native toast/journal, visibility and save/refresh lifetime. Not GUI acceptance.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 38,
+      "name": "BattleResultFlowChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Battle result-flow native checks passed: <assertions>.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 39,
+      "name": "CampaignNavigationChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Campaign navigation native checks passed: <assertions>; 0 failed groups. Ending states are explicit UI fixtures, not campaign outcome parity.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 40,
+      "name": "StagingOpeningChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Staging opening checks passed: <assertions>; actual native New/story/choice/start/camp/save/load/reentry, not GUI visual acceptance.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 41,
+      "name": "CampaignUiFlowChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "CAMPAIGN_UI_FLOW_CHECKS_OK <assertions>",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 42,
+      "name": "LightingLifetimeChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Lighting lifetime checks passed: <assertions>, 3 real-session load/restart/scene-change cycles.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 43,
+      "name": "LightingChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "PASS 1791 source lighting/shadow contracts. Headless resource checks only; live visual acceptance remains pending.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 44,
+      "name": "SceneryChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "PASS 8753 historical source-art and current registered scenery/resource/lifecycle assertions; no GUI acceptance claim.",
+      "silentStageRequiresAggregateSuccess": false
+    },
+    {
+      "number": 45,
+      "name": "CampaignPlayedFlowChecks",
+      "observed": true,
+      "immediateBaselineObserved": true,
+      "marker": "Campaign played-flow checks passed: <assertions>. Native headless behavior, not visual or complete-campaign acceptance.",
+      "silentStageRequiresAggregateSuccess": false
+    }
+  ],
+  "errorDiagnostics": [],
+  "scope": "Headless contracts and played opening only; no GUI/export/full-campaign acceptance claim."
+}

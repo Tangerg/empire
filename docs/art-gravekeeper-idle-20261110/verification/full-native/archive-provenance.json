@@ -1,0 +1,73 @@
+{
+  "status": "passed",
+  "completedAttempt": "repeat of unchanged original full gate",
+  "originalEvidenceDirectory": "/workspace/scratch/84c9fe948755/empire-gravekeeper-idle-20261110/verification-retry",
+  "testedSourceCommit": "869078976dd21f5d82932dc4151bdd03fa973c1a",
+  "restoredArchiveBranchCommit": "32e754f50e880e61e5c9982c2ec42ae86c74f6f8",
+  "testedGodotTree": "cfe370846c78c10100fbcfc8d19965efd96be697",
+  "testedToolsTree": "afff6c24fcf143fdff3a5a4facf2f373d1ad3290",
+  "records": {
+    "full-native.txt": {
+      "sha256": "70bf3ca37b793e52fb2f42b5f87b5010a73d316448e0c6982cf44fc648ebe410",
+      "bytes": 227365,
+      "equalsOriginalBytes": true
+    },
+    "full-native.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "equalsOriginalBytes": true
+    },
+    "full-native-finished.txt": {
+      "sha256": "7c7c7b2a3c3fc571cff1155f86267f6fd5fe9ae5236320baef37c3b2b38f08f6",
+      "bytes": 21,
+      "equalsOriginalBytes": true
+    },
+    "full-native-started.txt": {
+      "sha256": "f2a0972976e92357d6b55ddc0cf53aa513fc6e5b2207140f532e5cbf9b154c68",
+      "bytes": 21,
+      "equalsOriginalBytes": true
+    },
+    "full-native-source-commit.txt": {
+      "sha256": "09ab987c16a64caa9002d4657cd5a0f2c0f4b45d6b9ccefa55a6f40478e6b054",
+      "bytes": 41,
+      "equalsOriginalBytes": true
+    },
+    "full-native-source-status.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "equalsOriginalBytes": true
+    },
+    "frozen-assemblies-sha256.txt": {
+      "sha256": "32aeec13a265123dda8073d8bacce1c3d2fc6aca49fc10f5143b4b9f369f17ad",
+      "bytes": 486,
+      "equalsOriginalBytes": true
+    },
+    "frozen-assembly-comparison.txt": {
+      "sha256": "90a1ae022e76c19296f2f3a785d02a4c890714b1e39b4362580895b406713bdf",
+      "bytes": 82,
+      "equalsOriginalBytes": true
+    }
+  },
+  "interruptedOriginalDirectory": "/workspace/scratch/84c9fe948755/empire-gravekeeper-idle-20261110/verification",
+  "interruptedOriginalRecordBytesEqual": true,
+  "interruptedOriginalHasNoCompletionRecord": true,
+  "interruptedOriginalPartialLogSha256": "96fab4cd33a2f759ab2fd44c24a3cf74916cb7259698ab9ab59707dc3927b109",
+  "noGameBuildOrImportRunByArchivalReview": true,
+  "nativeEvidenceIdentity": {
+    "idle-right": {
+      "proofSha256": "54b17a4f26dca57239625fd8e2ccccf74fd80625bdd1aeb180c32a959425f1ca",
+      "sourceAndTreesMatchCompletedGate": true,
+      "assemblyHashesMatchFrozenAndLiveBytes": true
+    },
+    "idle-left": {
+      "proofSha256": "7febb539b80cc58e9eb1086ce0e072d4a0bdb7300484aa206a6e056a85f3bc9f",
+      "sourceAndTreesMatchCompletedGate": true,
+      "assemblyHashesMatchFrozenAndLiveBytes": true
+    },
+    "recovery-left": {
+      "proofSha256": "ce1715114ffd09fbff19f94c558035573a5ec87c1f24774257b4b74a93389d94",
+      "sourceAndTreesMatchCompletedGate": true,
+      "assemblyHashesMatchFrozenAndLiveBytes": true
+    }
+  }
+}

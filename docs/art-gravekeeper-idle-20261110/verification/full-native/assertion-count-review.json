@@ -1,0 +1,77 @@
+{
+  "status": "reviewed-no-behavioral-difference-found",
+  "baselinePlayedFlowAssertions": 22496,
+  "currentPlayedFlowAssertions": 22394,
+  "difference": -102,
+  "sources": {
+    "godot/Presentation/CampaignPlayedFlowChecks.cs": {
+      "baselineGitBlob": "bd634cea0ddd5fadcba27cf462758323098c3721",
+      "currentGitBlob": "bd634cea0ddd5fadcba27cf462758323098c3721",
+      "sha256": "5e42ea45972c96e195cd84ea96f5e6e9f371398dbb1dfbecb975d4c7c938069d",
+      "byteIdentical": true
+    },
+    "godot/Presentation/CampaignPlayedCarryChecks.cs": {
+      "baselineGitBlob": "ac88bc743ef3332543f684dc15d44498fc871729",
+      "currentGitBlob": "ac88bc743ef3332543f684dc15d44498fc871729",
+      "sha256": "9080b1844f69a682148ddd30371dc13647100e55280086df92335b66bfbbdead",
+      "byteIdentical": true
+    },
+    "tools/godot/verify-native.sh": {
+      "baselineGitBlob": "77da66eec369759884efb1db30110f2c8e4112a9",
+      "currentGitBlob": "77da66eec369759884efb1db30110f2c8e4112a9",
+      "sha256": "4ca078f295e2b3159c0d533afe94f5a5bae146d91a325c4872658166e7e2ab83",
+      "byteIdentical": true
+    }
+  },
+  "variableCountSites": [
+    {
+      "path": "godot/Presentation/CampaignPlayedFlowChecks.cs",
+      "lines": "121-126",
+      "behavior": "One deadline Require per awaited ProcessFrame while the terminal battle screen remains visible."
+    },
+    {
+      "path": "godot/Presentation/CampaignPlayedCarryChecks.cs",
+      "lines": "382-389",
+      "behavior": "Until uses one deadline Require per awaited ProcessFrame until a presentation or AI condition is true."
+    }
+  ],
+  "counterDefinition": {
+    "path": "godot/Presentation/CampaignPlayedFlowChecks.cs",
+    "method": "Require",
+    "behavior": "assertions++ for every call, including repeated deadline polls."
+  },
+  "gateUsesFixedFrameRateForPlayedFlow": false,
+  "comparisonGuardChanged": false,
+  "additionalOrderedProgressAndRosterLinesIdentical": true,
+  "additionalOrderedProgressAndRosterLines": [
+    "CARRIED_PLAY_PROGRESS level=c01-01; legal orders=40; turn=2; state=f5b42655",
+    "CARRIED_PLAY_PROGRESS level=c01-01; legal orders=80; turn=4; state=13dcc0ea",
+    "CARRIED_PLAY_PROGRESS level=c01-01; legal orders=120; turn=6; state=d9f3d359",
+    "CARRIED_ROSTER unit=laiya; disposition=available; hpRatio=1; moraleRatio=1; rank=0; progress=0",
+    "CARRIED_ROSTER unit=torren; disposition=fallen; hpRatio=0; moraleRatio=1; rank=0; progress=17",
+    "CARRIED_ROSTER unit=elin; disposition=available; hpRatio=0.5; moraleRatio=1; rank=1; progress=142",
+    "CARRIED_PLAY_PROGRESS level=c01-02; legal orders=40; turn=2; state=652974c1",
+    "CARRIED_PLAY_PROGRESS level=c01-02; legal orders=80; turn=4; state=2dfea778",
+    "CARRIED_PLAY_PROGRESS level=c01-02; legal orders=120; turn=6; state=aeaf0422",
+    "CARRIED_PLAY_PROGRESS level=c01-02; legal orders=160; turn=8; state=9b390838",
+    "CARRIED_PLAY_PROGRESS level=c01-02; legal orders=200; turn=10; state=c445e9a2",
+    "CARRIED_PLAY_PROGRESS level=c01-02; legal orders=240; turn=12; state=271d4373",
+    "CARRIED_ROSTER unit=laiya; disposition=available; hpRatio=1; moraleRatio=1; rank=0; progress=28",
+    "CARRIED_ROSTER unit=elin; disposition=available; hpRatio=0.8846153846153846; moraleRatio=1; rank=1; progress=281"
+  ],
+  "conclusion": "The assertion total includes variable per-ProcessFrame deadline evaluations, not just semantic checks or scenarios. Unchanged source can produce different totals while all legal-order, event, outcome and digest guards remain exact. The trace-equivalent successful run does not indicate missing behavior coverage.",
+  "limit": "The logs do not record individual polling-loop iteration counts. The exact 102-count difference cannot be assigned among loops or used as a performance measurement.",
+  "otherObservedTotals": {
+    "animation": {
+      "baseline": 6669,
+      "current": 6876,
+      "reason": "The new idle contract checks intentionally expand AnimationChecks."
+    },
+    "campaignNavigation": {
+      "baseline": 9802,
+      "current": 9817,
+      "note": "Navigation sources are unchanged; native wait-loop observations also contribute to this suite total. No exact per-loop attribution is available."
+    }
+  },
+  "navigationSourcesByteIdenticalToCheer": true
+}

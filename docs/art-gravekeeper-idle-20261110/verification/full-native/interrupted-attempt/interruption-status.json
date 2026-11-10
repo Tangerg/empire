@@ -1,0 +1,31 @@
+{
+  "status": "interrupted-without-completion-records",
+  "singleProcessAggregatePass": false,
+  "originalTestedSource": "869078976dd21f5d82932dc4151bdd03fa973c1a",
+  "godotTree": "cfe370846c78c10100fbcfc8d19965efd96be697",
+  "toolsTree": "afff6c24fcf143fdff3a5a4facf2f373d1ad3290",
+  "lastRecordedMarker": "Battle result-flow native checks passed: 402 assertions.",
+  "exitRecordPresent": false,
+  "finishRecordPresent": false,
+  "terminalSuccessMarkerPresent": false,
+  "reason": "Execution environment changed and the original gate process was lost. The implementation parent verified no remaining verify-native/native-process/Godot process and the original exec session returned Unknown process id.",
+  "records": {
+    "full-native.txt": {
+      "sha256": "96fab4cd33a2f759ab2fd44c24a3cf74916cb7259698ab9ab59707dc3927b109",
+      "bytes": 93327
+    },
+    "full-native-source-commit.txt": {
+      "sha256": "09ab987c16a64caa9002d4657cd5a0f2c0f4b45d6b9ccefa55a6f40478e6b054",
+      "bytes": 41
+    },
+    "full-native-source-status.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "full-native-started.txt": {
+      "sha256": "87431d18091a3f4327a2eb49143778984ae98c83e4737b87a947b17416a1e9ae",
+      "bytes": 21
+    }
+  },
+  "limit": "Partial checks are not a complete aggregate pass. No exit code, finish timestamp or terminal success has been inferred or manufactured."
+}

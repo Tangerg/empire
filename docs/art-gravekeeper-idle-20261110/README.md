@@ -83,11 +83,29 @@ simulation seconds from first to last observation, including more than two
 2400 ms cycles. The heal returns to the new idle at observed frame 36 (600 ms)
 and finishes at frame 48 (800 ms). Complete F5 saves match their lawful expected
 states except both changed writer timestamps. The final build and source trees
-are identical across these recordings and the running aggregate. Lossless
+are identical across these recordings and the completed aggregate. Lossless
 packaging and independent visual/evidence review pass all 254 native frames,
 traces, selected screenshots and diagnostic crops. The portable native verifier
 also passes 23 isolated controls.
 
-The original full native aggregate remains pending and is not represented as
-passed. Full-character completion, all-campaign playthrough, standalone export
-and real-time performance remain outside this slice.
+The unchanged full native script passes all 45 stages with strict exit 0 and its
+terminal success marker. The successful repeat ran from clean tested source
+`869078976dd21f5d82932dc4151bdd03fa973c1a`, from 23:13:09 to 23:47:52 UTC on
+2026-11-10. All three runtime DLLs still equal the exact native-recording build.
+Independent comparison preserves all 16 AI traces and their 3,425 legal orders,
+six played-flow markers, and the same 41-warning multiset as the accepted cheer
+aggregate. The eight comparator controls pass.
+
+The actual played-flow run reports 22,394 assertions, two carried victories
+across 415 legal orders and a 21-order third-battle opening. Its assertion total
+includes per-process-frame deadline checks and is not a scenario count; it does
+not replace exact action/event/state comparisons. The earlier full attempt lost
+its process during environment replacement and has no completion record. Its
+partial log is retained separately from the successful complete repeat.
+
+See [native evidence](verification/native/README.md),
+[legal replay](verification/legal/README.md),
+[negative controls](verification/negative-controls/README.md), and
+[full aggregate review](verification/full-native/COMPARISON.md).
+Full-character completion, all-campaign playthrough, standalone export and
+real-time performance remain outside this slice.
