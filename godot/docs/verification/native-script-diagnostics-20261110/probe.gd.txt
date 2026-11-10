@@ -1,0 +1,9 @@
+extends SceneTree
+
+func broken_callback() -> void:
+    var missing: Variant = null
+    print(missing.required_field)
+
+func _initialize() -> void:
+    broken_callback()
+    quit(0)

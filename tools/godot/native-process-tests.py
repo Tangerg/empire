@@ -12,6 +12,7 @@ import unittest
 TOOLS = Path(__file__).resolve().parent
 IMPORT_ERROR = ('ERROR: EditorSettings not instantiated yet when getting setting '
                 '"export/android/android_sdk_path".')
+SCRIPT_ERROR = "SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'."
 SUCCESS = "Current native contracts, replay/save determinism, and application flow passed."
 
 
@@ -49,16 +50,22 @@ editor = "--editor" in args
 mode = os.environ.get("SIMULATED_RESULT", "clean")
 if editor and mode == "import-error":
     print(os.environ["IMPORT_ERROR"], file=sys.stderr)
+elif editor and mode == "import-script-error":
+    print(os.environ["SCRIPT_ERROR"], file=sys.stderr)
 elif editor and mode == "import-nonzero":
     print("Import exited unsuccessfully", file=sys.stderr)
     sys.exit(7)
 elif not editor and mode == "scene-error":
     print("PASS before teardown")
     print("ERROR: simulated scene teardown", file=sys.stderr)
+elif not editor and mode == "scene-script-error":
+    print("PASS before teardown")
+    print(os.environ["SCRIPT_ERROR"], file=sys.stderr)
 else:
     print("Clean simulated process")
 ''', executable=True)
         self.environment["IMPORT_ERROR"] = IMPORT_ERROR
+        self.environment["SCRIPT_ERROR"] = SCRIPT_ERROR
 
     def put(self, name, content, executable=False):
         path = self.root / name
@@ -90,6 +97,23 @@ else:
         result, calls = self.aggregate("import-nonzero")
         self.assertNotEqual(result.returncode, 0)
         self.assertEqual(len(calls), 1)
+        self.assertNotIn(SUCCESS, result.stdout)
+
+    def test_zero_exit_script_error_stops_import_before_native_scenes(self):
+        result, calls = self.aggregate("import-script-error")
+        self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(len(calls), 1)
+        self.assertIn("--editor", calls[0]["args"])
+        self.assertIn(SCRIPT_ERROR, result.stdout + result.stderr)
+        self.assertNotIn(SUCCESS, result.stdout)
+
+    def test_zero_exit_script_error_stops_scene_after_success_marker(self):
+        result, calls = self.aggregate("scene-script-error")
+        self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(len(calls), 2)
+        self.assertIn("res://Scenes/NarrativeChecks.tscn", calls[1]["args"])
+        self.assertIn("PASS before teardown", result.stdout)
+        self.assertIn(SCRIPT_ERROR, result.stdout + result.stderr)
         self.assertNotIn(SUCCESS, result.stdout)
 
     def test_scene_error_after_pass_stops_at_first_scene(self):
@@ -150,14 +174,14 @@ class NativeProcessTests(unittest.TestCase):
         arguments = ["with spaces", "quotation'\"", "中文", "--flag=value with spaces"]
         result = self.run_process([sys.executable, "-c",
                                    "import json,sys; print(json.dumps(sys.argv[1:])); "
-                                   "print('WARNING: explicit diagnostic', file=sys.stderr)", *arguments])
+                                   "print('WARNING: explicit diagnostic mentioning SCRIPT ERROR: as text', file=sys.stderr)", *arguments])
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(result.stdout, self.log.read_text())
         self.assertIn(json.dumps(arguments), result.stdout)
         self.assertIn("WARNING: explicit diagnostic", result.stdout)
 
     def test_zero_exit_diagnostics_are_rejected_on_both_streams(self):
-        for diagnostic in (IMPORT_ERROR, "ObjectDB instances leaked at exit.",
+        for diagnostic in (IMPORT_ERROR, SCRIPT_ERROR, "ObjectDB instances leaked at exit.",
                            "Segmentation fault", "Unhandled Exception: fixture"):
             for stream in ("stdout", "stderr"):
                 with self.subTest(diagnostic=diagnostic, stream=stream):

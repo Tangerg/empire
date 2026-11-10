@@ -1,0 +1,8 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+          at: broken_callback (/workspace/scratch/84c9fe948755/empire-audit-20261110/script-error-probe.gd:5)
+          GDScript backtrace (most recent call first):
+              [0] broken_callback (/workspace/scratch/84c9fe948755/empire-audit-20261110/script-error-probe.gd:5)
+              [1] _initialize (/workspace/scratch/84c9fe948755/empire-audit-20261110/script-error-probe.gd:8)
+Native process/diagnostic gate failed: Native script diagnostic probe (exit 0); /workspace/scratch/84c9fe948755/empire-audit-20261110/script-error-fixed.log

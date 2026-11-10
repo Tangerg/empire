@@ -1,0 +1,134 @@
+.....FF.....FF
+======================================================================
+FAIL: test_zero_exit_script_error_stops_import_before_native_scenes (__main__.NativeGateTests.test_zero_exit_script_error_stops_import_before_native_scenes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-work/tools/godot/native-process-tests.py", line 104, in test_zero_exit_script_error_stops_import_before_native_scenes
+    self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+AssertionError: 0 == 0 : SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Clean simulated process
+Current native contracts, replay/save determinism, and application flow passed. Manual GUI and export acceptance are separate.
+
+
+======================================================================
+FAIL: test_zero_exit_script_error_stops_scene_after_success_marker (__main__.NativeGateTests.test_zero_exit_script_error_stops_scene_after_success_marker)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-work/tools/godot/native-process-tests.py", line 112, in test_zero_exit_script_error_stops_scene_after_success_marker
+    self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+AssertionError: 0 == 0 : Clean simulated process
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.
+PASS before teardown
+Current native contracts, replay/save determinism, and application flow passed. Manual GUI and export acceptance are separate.
+
+
+======================================================================
+FAIL: test_zero_exit_diagnostics_are_rejected_on_both_streams (__main__.NativeProcessTests.test_zero_exit_diagnostics_are_rejected_on_both_streams) (diagnostic="SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.", stream='stdout')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-work/tools/godot/native-process-tests.py", line 191, in test_zero_exit_diagnostics_are_rejected_on_both_streams
+    self.assertNotEqual(result.returncode, 0)
+AssertionError: 0 == 0
+
+======================================================================
+FAIL: test_zero_exit_diagnostics_are_rejected_on_both_streams (__main__.NativeProcessTests.test_zero_exit_diagnostics_are_rejected_on_both_streams) (diagnostic="SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'.", stream='stderr')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/84c9fe948755/empire-work/tools/godot/native-process-tests.py", line 191, in test_zero_exit_diagnostics_are_rejected_on_both_streams
+    self.assertNotEqual(result.returncode, 0)
+AssertionError: 0 == 0
+
+----------------------------------------------------------------------
+Ran 13 tests in 4.565s
+
+FAILED (failures=4)
