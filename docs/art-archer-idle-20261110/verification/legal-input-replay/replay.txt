@@ -1,0 +1,16 @@
+  Determining projects to restore...
+  Restored /workspace/scratch/84c9fe948755/empire-archer-idle-20261110/legal-replay/harness/Probe.csproj (in 81 ms).
+  Probe -> /workspace/scratch/84c9fe948755/empire-archer-idle-20261110/legal-replay/harness/bin/Debug/net8.0/Probe.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.21
+READY_COMMANDS right attack:c01.ranger-bow:1:Coord { X = 21, Y = 20 };wait::0:
+PASS right: 109 legal actions, independent receipts, official save roundtrips and checkpoint replay.
+READY_COMMANDS left attack:c01.ranger-bow:1:Coord { X = 21, Y = 20 };wait::0:
+PASS left: 109 legal actions, independent receipts, official save roundtrips and checkpoint replay.
+READY_COMMANDS mirror-left wait::0:
+PASS mirror-left: 109 legal actions, independent receipts, official save roundtrips and checkpoint replay.
+Verified result directory: /workspace/scratch/84c9fe948755/empire-archer-idle-20261110/legal-replay

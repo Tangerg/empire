@@ -1,0 +1,13 @@
+{
+  "sourceCommit": "287f2e4228c8e9ba0009d720392c6eca8eba2f36",
+  "baselineCommit": "37811bd93951f2bb115d23da607a13fdf3579bd2",
+  "result": "No must-fix issue found.",
+  "productionScope": "Only the new authored asset, idle clip and c01.archer idle binding. No runtime C# changes.",
+  "verifiedContracts": [
+    "Existing board idle owner controls phase, suspension and reduced motion.",
+    "Shot release/recovery/tail 320/600/740 ms and source ownership unchanged.",
+    "Tests retain contact, scale, opacity, shadow, Torren and unrelated static expectations.",
+    "Animation recovery assertions resolve the intentionally changed declared idle."
+  ],
+  "remainingAtReview": "Native/full acceptance was independently pending, not inferred from code review."
+}

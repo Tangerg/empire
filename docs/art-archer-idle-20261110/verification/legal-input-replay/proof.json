@@ -1,0 +1,38 @@
+{
+  "replayExit": 0,
+  "workingDirectory": "/tmp",
+  "implementationCommit": "287f2e4228c8e9ba0009d720392c6eca8eba2f36",
+  "harnessReference": "../../../art-archer-shot-20261110/verification/legal-shot/derive.sh",
+  "routes": [
+    {
+      "directory": "right",
+      "commands": 109,
+      "beforeSha256": "9c8ae5e8705ac02f18ed698621102794e82c87664317c1531b4f5d40849380b4",
+      "afterSha256": "1dc21ecbc363544986eaa45092d741c540fec7fba0bc9cebfb34e2b98a10e5d7",
+      "beforeState": "e78478df",
+      "afterState": "07dcb354",
+      "finalBuildReplayPassed": true,
+      "beforeAfterEquivalentToPublishedInputs": "Exact JSON except two official savedAt timestamps."
+    },
+    {
+      "directory": "left",
+      "commands": 109,
+      "beforeSha256": "28b9391128dd6b230a00d085955d2c49983a91d56bd879afd72f7d9673525902",
+      "afterSha256": "9492d769fb47b7a11eb78d95e1cef38b2b74e63497300405548fcb976ab4078d",
+      "beforeState": "e78478df",
+      "afterState": "560674d7",
+      "finalBuildReplayPassed": true,
+      "beforeAfterEquivalentToPublishedInputs": "Exact JSON except two official savedAt timestamps."
+    },
+    {
+      "directory": "mirror-left",
+      "commands": 109,
+      "beforeSha256": "31f7ce5d8cdf3d898af1666d63c7da358db88e5c7495e6dba5b114074bd34544",
+      "afterSha256": "3a8d9a349f7393b22e0c518ede6f19ca0f11b1b3b3da6ba785fb24d8a0e896a7",
+      "beforeState": "c143a16e",
+      "afterState": "ec273a9e",
+      "finalBuildReplayPassed": true,
+      "beforeAfterEquivalentToPublishedInputs": "Exact JSON except two official savedAt timestamps."
+    }
+  ]
+}

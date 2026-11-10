@@ -26,8 +26,8 @@ Independent source review accepted the four original pictures: identity,
 costume, quiver, bow/string continuity, planted feet, gradual neighboring
 anatomical changes and native-size compatibility with old idle and shot poses.
 The ping-pong order reverses through adjacent pictures; wrap returns from 1 to 0.
-The reviewer inspected GIF frames and metadata, not continuous playback. Final
-native loop and shot-handoff acceptance remain separate below.
+The reviewer inspected GIF frames and metadata, not continuous playback. Native
+loop and shot-handoff acceptance is recorded separately below.
 
 ## Extraction and registration
 
@@ -67,21 +67,75 @@ No range, damage, legal order, save or attack-preview logic changes.
 
 Source review, pixel reproduction and semantic data scope checks pass.
 `verification/data-scope.txt` proves both data documents equal baseline 37811bd9
-when only this asset, clip and idle binding are removed. Focused native AnimationChecks passed **5,192 assertions**, including101
+when only this asset, clip and idle binding are removed. Focused native
+AnimationChecks passed **5,192 assertions**, including 101
 new archer-idle checks. Final build had zero warnings/errors, targeted formatter
 verification passed, and editor import passed the native diagnostic gate using
 the repository toolchain environment. Initial ad-hoc import attempts omitted
 that environment and were correctly rejected; they are not passing evidence.
 
-Three isolated negative controls fail with exit1: idle binding switched to
+Three isolated negative controls fail with exit 1: idle binding switched to
 static, a one-millisecond interval shift preserving total duration, and removal
 of archer idle registration. Restored inputs are byte-identical and the focused
-positive re-passes101 assertions. Existing Torren contracts and all other static
+positive re-passes 101 assertions. Existing Torren contracts and all other static
 idle expectations remain intact; shot tests now resolve the declared idle while
-retaining six poses and320/600/740 boundaries. Controlled receipts in focused
+retaining six poses and 320/600/740 boundaries. Controlled receipts in focused
 checks are synthetic, not legal played orders.
 
-Actual native idle recordings, shot-handoff inspection and the full aggregate
-are still pending. This is not full-character or full-campaign
-completion. Exported performance and projectile flight are not part of this
-idle slice.
+Native idle and shot-handoff inspection passed as detailed below. The full
+aggregate is still pending. This is not full-character or full-campaign
+completion. Exported performance and projectile flight are outside this slice.
+
+## Native battle acceptance
+
+All three runs use the implementation at `287f2e42`, the same frozen Empire/Core
+DLL bytes as the running full gate. Their exact hashes are in each native proof.
+The current build independently replays the earlier archer-shot legal routes,
+including official save serialization, reload and final-action execution. See
+`verification/legal-input-replay`. Historical `left` means moving right on the
+assembled-ground board; the actual left-facing route is `mirror-left`.
+
+Normal native UI loads those preserved, legally derived saves into isolated
+manual slots. No actor, health, facing or battle state was directly edited.
+F5 saves the actual UI state after each recording. Each entire saved JSON equals
+the expected core-produced before/after JSON, excluding only the two official
+`campaign.savedAt` and `battle.savedAt` timestamps:
+
+- Right idle: 84 captures over 336 rendered frames, stride 4. The source remains
+  at `[747.5823, 510.94473]`, unmirrored. No command is executed; its final save
+  equals the input. Low-breath wraps occur at observations 18 and 51.
+- Left idle: the UI first executes the lawful move-and-shot route, with target
+  health 93 to 78. The settled source is truly mirrored at
+  `[843.5823, 511.488]`. Another 84 captures over 336 rendered frames show
+  low-breath wraps at 11, 44 and 77. Its final save equals the expected shot result.
+- Right shot recovery: 45 consecutive captures show all six shot poses starting
+  at observations 0/5/11/19/23/30. Breathing pose 0 returns at 35; presentation is
+  complete at 44. The native preview and actual target health agree: 35 damage,
+  98 to 63. Its final save equals the expected stationary-shot result.
+
+Each idle recording covers 5.6 seconds of fixed-60 simulation, longer than two
+2200 ms periods, and captures at least two wrap boundaries. These are sampled
+observations, not continuous realtime playback. Independent review inspected all
+213 captured source-actor crops and their traces. Both directions retain coherent
+identity, costume, bow/string and quiver. The chest and free arm move while the
+boots remain planted. The shot-ready to idle boundary has no visible size pop
+or foot jump. Scale is fixed within each asset: shot 0.0893, breathing 0.072;
+the differently sized source drawings render at compatible character size.
+
+The two idle traces keep every actor position constant. Recovery keeps the source
+position and support plane constant while the target uses its existing reaction.
+The critical source handoff is unobstructed; other scenery/unit overlap layouts
+are not exhaustively reviewed. A completion badge appears beside the lower body
+at recovery observation 44, after the handoff.
+
+`verification/native-*-lossless.mp4` preserves every captured RGB pixel, verified
+by decoding every frame against the original PNG. Original PNG alpha is not
+preserved in RGB video. Playback rates are 15 fps for the stride-4 idle samples
+and 60 fps for recovery. Proofs retain source PNG/RGB hashes, video hashes, frame
+metadata, actual UI saves and selected full-viewport PNGs. The 3× phase sheets
+are nearest-neighbor diagnostic crops. Capture readback affects wall-clock pacing;
+these recordings do not establish realtime or exported performance. A second
+read-only verification independently decoded all 213 video frames, compared
+the original PNG/JSON data, fitted both sampled loops to the declared 2200 ms
+intervals, and checked the actual UI saves and current/replayed DLL identity; see
+`verification/independent-native-verification.json`.

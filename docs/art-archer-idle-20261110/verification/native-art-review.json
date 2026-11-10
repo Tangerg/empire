@@ -1,0 +1,58 @@
+{
+  "result": "Accepted; no must-fix visual defect found.",
+  "sourceCommit": "287f2e4228c8e9ba0009d720392c6eca8eba2f36",
+  "review": "Independent inspection of all actual captured source-actor PNG crops and JSON traces.",
+  "idleRight": {
+    "frames": 84,
+    "stride": 4,
+    "mirrored": false,
+    "lowBreathEntries": [
+      18,
+      51
+    ],
+    "highBreathEntries": [
+      2,
+      35,
+      68
+    ],
+    "verdict": "Four coherent poses, readable chest/head/free-arm movement, fixed boots and support; no identity change, bow snap or whole-body bob."
+  },
+  "idleLeft": {
+    "frames": 84,
+    "stride": 4,
+    "mirrored": true,
+    "lowBreathEntries": [
+      11,
+      44,
+      77
+    ],
+    "highBreathEntries": [
+      0,
+      28,
+      61
+    ],
+    "verdict": "Neighboring poses, reversals and wrap remain coherent; costume, quiver, bow/string and grounded boots retained."
+  },
+  "shotRecovery": {
+    "frames": 45,
+    "stride": 1,
+    "shotPoseStarts": [
+      0,
+      5,
+      11,
+      19,
+      23,
+      30
+    ],
+    "idlePose0Starts": 35,
+    "verdict": "Shot-ready to breathing idle preserves planted feet, identity and upright bow. Small contour change reads as settling, not a size pop.",
+    "scaleClarification": "Shot scale 0.0893 and idle scale 0.072 are each constant within their differently sized source assets; rendered size is compatible.",
+    "visibility": "Critical source handoff unobstructed; completion badge appears beside lower body at frame 44."
+  },
+  "limits": [
+    "Sampled/consecutive-frame review, not continuous realtime playback.",
+    "Left-facing idle reviewed; current shot-to-idle handoff capture is right-facing.",
+    "Recovery capture covers initial idle pose 0; separate idle captures establish cyclic progression.",
+    "Other overlap layouts, exports and performance are not accepted by these observations."
+  ]
+}

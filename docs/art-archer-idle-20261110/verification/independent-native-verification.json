@@ -1,0 +1,107 @@
+{
+  "method": "Independent read-only decoding and comparison; no rebuild, runtime execution, or production edits.",
+  "sessions": {
+    "idle-right": {
+      "decodedRgbFramesMatched": 84,
+      "pngHashesMatched": 84,
+      "sourceJsonMatchesPublishedTrace": true,
+      "sourcePositionSupportMirrorConstant": true,
+      "allActorPositionsConstant": true,
+      "poseTransitionsMatchProof": true,
+      "wallElapsedMsBetweenFirstLastObservations": 12081,
+      "allSamplesFit2200MsSixIntervalLoop": true,
+      "admissibleInitialPhaseMs": [
+        1000.0,
+        1033.3
+      ],
+      "wrapObservationIndices": [
+        18,
+        51
+      ],
+      "wrapIntervalSimulationMs": 2200,
+      "uiSavedStateDifferencesFromHistoricalExpected": [
+        "/campaign/savedAt",
+        "/battle/savedAt"
+      ],
+      "expectedSavedRoute": "right/before.json"
+    },
+    "idle-left": {
+      "decodedRgbFramesMatched": 84,
+      "pngHashesMatched": 84,
+      "sourceJsonMatchesPublishedTrace": true,
+      "sourcePositionSupportMirrorConstant": true,
+      "allActorPositionsConstant": true,
+      "poseTransitionsMatchProof": true,
+      "wallElapsedMsBetweenFirstLastObservations": 12940,
+      "allSamplesFit2200MsSixIntervalLoop": true,
+      "admissibleInitialPhaseMs": [
+        1466.7,
+        1499.9
+      ],
+      "wrapObservationIndices": [
+        11,
+        44,
+        77
+      ],
+      "wrapIntervalSimulationMs": 2200,
+      "uiSavedStateDifferencesFromHistoricalExpected": [
+        "/campaign/savedAt",
+        "/battle/savedAt"
+      ],
+      "expectedSavedRoute": "mirror-left/after.json"
+    },
+    "recovery": {
+      "decodedRgbFramesMatched": 45,
+      "pngHashesMatched": 45,
+      "sourceJsonMatchesPublishedTrace": true,
+      "sourcePositionSupportMirrorConstant": true,
+      "allActorPositionsConstant": true,
+      "poseTransitionsMatchProof": true,
+      "wallElapsedMsBetweenFirstLastObservations": 1964,
+      "idleReturnObservation": 35,
+      "idleReturnSimulationMs": 600,
+      "shotTransitionMaximumSamplingErrorMs": 16.66666666666663,
+      "receiptNoLongerPresentingAtLastObservation": true,
+      "uiSavedStateDifferencesFromHistoricalExpected": [
+        "/campaign/savedAt",
+        "/battle/savedAt"
+      ],
+      "expectedSavedRoute": "right/after.json"
+    }
+  },
+  "limitations": [
+    "Fixed simulation FPS is not a measured rendering performance claim. Video preserves RGB only, not original PNG alpha.",
+    "Capture samples establish observed phase timing and stable metadata; exact sub-frame boundaries are covered separately by controllable-clock tests."
+  ],
+  "currentAssembliesMatchLegalReplay": true,
+  "assemblies": {
+    "Empire.dll": "d4c705bd3878370c4263213f351e223efe9ceba376fceca98ea3983bd1349d2a",
+    "Empire.Core.dll": "53249b2974a552dbc691f3c77932bbae41bd8afbf6704a130a09e8a0b06e5e7f",
+    "GodotSharp.dll": "2142e62894176d7340f50581f8b2fe84e36ae64e1a85f1b2bd7737a7e8a5c8ba"
+  },
+  "passed": true,
+  "readmeClaimsReview": {
+    "numericalClaimsSupported": true,
+    "fixedFpsPerformanceDisclaimerAppropriate": true,
+    "visualArtClaims": "Not independently adjudicated by this data-integrity pass; separate native-art-review.json is the visual review source.",
+    "inputInteractionClaims": "Reviewed persisted session evidence and exact saved-state equivalence, not live re-execution."
+  },
+  "savedTargetHealthChanges": {
+    "right": [
+      {
+        "id": 17,
+        "before": 98,
+        "after": 63
+      }
+    ],
+    "mirror-left": [
+      {
+        "id": 12,
+        "before": 93,
+        "after": 78
+      }
+    ]
+  },
+  "legalReplayRecordedExit": 0,
+  "threeRecordedLegalReplayRoutesPassed109Actions": true
+}
