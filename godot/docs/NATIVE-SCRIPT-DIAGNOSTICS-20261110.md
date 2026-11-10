@@ -34,7 +34,8 @@ that merely mentions the prefix within its message is not a script-error line.
   `full-native-first-failed.txt`, not counted as a pass.
 - A single bounded rerun of the same scene, unchanged DLLs and command passed
   28,251 assertions with normal exit and the strict diagnostic gate. This does
-  not establish the crash's cause or a fix. A new complete gate is pending.
+  not establish the crash's cause or a fix. A second complete attempt is recorded
+  below; there is still no confirmed complete pass on this change.
 - Before that failure, all 17 core groups and 16 independent level save/replays
   passed. All 3,425 ordered action/event/receipt traces exactly match the prior
   published full-gate log. Source guards, builds, import and the preceding six
@@ -56,3 +57,27 @@ The restored workspace toolchain is Microsoft .NET SDK 8.0.427 and Godot 4.6.3
 Godot release asset's SHA-256. This installation is workspace-local.
 
 No graphical or exported-product acceptance is claimed by this work.
+
+## Recovered second attempt: interrupted, not accepted
+
+The second full run was started on `b779c86e` and its retained aggregate log ends
+at the successful `ReinforcementFeedbackChecks` marker (96 assertions). It had
+reached and passed the formerly failing broad-phase scene, the 3,127-assertion
+animation suite, HUD and battle screen scenes, and the subsequent feedback
+scenes. Core execution again reported 17 passed groups, 0 failed.
+
+At recovery, no verification/Godot process remained, the expected aggregate exit
+file was absent, and there was no final aggregate success marker. The next
+scene's retained log contained only the Godot banner and environment-catalog
+diagnostic, with no `BattleResultFlowChecks` completion marker. Its exit status
+and the reason the run stopped are unknown. Do not classify the second attempt
+as passed, as a reproduced exit-139 crash, or as a successful full gate.
+
+Evidence:
+
+- `full-native-second-interrupted.txt`: recovered aggregate stdout/stderr.
+- `battle-result-second-interrupted.txt`: the incomplete next-scene log.
+
+`BattleResultFlowChecks`, all later navigation/campaign/lifetime scenes,
+lighting/scenery checks and the played campaign opening have no completed result
+from this attempt. A fresh full run is required for aggregate acceptance.
