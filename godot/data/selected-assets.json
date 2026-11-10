@@ -401,6 +401,28 @@
           "span": 140
         }
       ]
+    },
+    "gravekeeper.breathe": {
+      "unit": "milliseconds",
+      "appearanceId": "gravekeeper-breathe-v1",
+      "frames": [
+        {
+          "frame": "breathe-rest",
+          "span": 700
+        },
+        {
+          "frame": "breathe-inhale",
+          "span": 500
+        },
+        {
+          "frame": "breathe-high",
+          "span": 500
+        },
+        {
+          "frame": "breathe-exhale",
+          "span": 700
+        }
+      ]
     }
   },
   "assets": [
@@ -4275,6 +4297,70 @@
         ]
       ],
       "qualityTier": "painted-cheer-v1-reviewed",
+      "textureFilter": "linear"
+    },
+    {
+      "id": "gravekeeper-breathe-v1",
+      "topicId": "C01-UNIT-GRAVEKEEPER",
+      "png": "painted-actions-v1/gravekeeper-breathe-v1.png",
+      "pixelDensity": 1,
+      "frames": 4,
+      "frameOrder": [
+        "breathe-rest",
+        "breathe-inhale",
+        "breathe-high",
+        "breathe-exhale"
+      ],
+      "physicalWidth": 1709,
+      "physicalHeight": 502,
+      "resourcePath": "res://assets/painted-actions-v1/gravekeeper-breathe-v1.png",
+      "sha256": "dc0edb5b4f3607b04ad9fbab8d350392ee61c024a712295dc36482da172ce876",
+      "presentationScale": 0.0792,
+      "frameRegions": [
+        [
+          0,
+          0,
+          425,
+          500
+        ],
+        [
+          425,
+          0,
+          427,
+          502
+        ],
+        [
+          852,
+          0,
+          431,
+          502
+        ],
+        [
+          1283,
+          0,
+          426,
+          499
+        ]
+      ],
+      "frameAnchors": [
+        [
+          231,
+          480
+        ],
+        [
+          231,
+          482
+        ],
+        [
+          231,
+          482
+        ],
+        [
+          231,
+          480
+        ]
+      ],
+      "qualityTier": "painted-breathe-v1-reviewed",
       "textureFilter": "linear"
     }
   ]

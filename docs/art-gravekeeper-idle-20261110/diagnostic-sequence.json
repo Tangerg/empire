@@ -1,0 +1,72 @@
+{
+  "description": "Offline, nonlooping registration diagnostic; not captured gameplay.",
+  "resampling": "Single exact uniform affine scale with bilinear filtering; 3x nearest magnification.",
+  "sequence": [
+    {
+      "item": "old idle",
+      "spanMs": 700,
+      "file": "diagnostic-frames/00.png"
+    },
+    {
+      "item": "breathe-rest",
+      "spanMs": 700,
+      "file": "diagnostic-frames/01.png"
+    },
+    {
+      "item": "breathe-inhale",
+      "spanMs": 500,
+      "file": "diagnostic-frames/02.png"
+    },
+    {
+      "item": "breathe-high",
+      "spanMs": 500,
+      "file": "diagnostic-frames/03.png"
+    },
+    {
+      "item": "breathe-exhale",
+      "spanMs": 700,
+      "file": "diagnostic-frames/04.png"
+    },
+    {
+      "item": "breathe-rest",
+      "spanMs": 700,
+      "file": "diagnostic-frames/05.png"
+    },
+    {
+      "item": "breathe-inhale",
+      "spanMs": 500,
+      "file": "diagnostic-frames/06.png"
+    },
+    {
+      "item": "breathe-high",
+      "spanMs": 500,
+      "file": "diagnostic-frames/07.png"
+    },
+    {
+      "item": "breathe-exhale",
+      "spanMs": 700,
+      "file": "diagnostic-frames/08.png"
+    },
+    {
+      "item": "old idle",
+      "spanMs": 500,
+      "file": "diagnostic-frames/09.png"
+    },
+    {
+      "item": "cast ready",
+      "spanMs": 500,
+      "file": "diagnostic-frames/10.png"
+    },
+    {
+      "item": "cast rest",
+      "spanMs": 500,
+      "file": "diagnostic-frames/11.png"
+    },
+    {
+      "item": "breathe-rest",
+      "spanMs": 700,
+      "file": "diagnostic-frames/12.png"
+    }
+  ],
+  "totalMs": 7700
+}

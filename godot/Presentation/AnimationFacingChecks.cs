@@ -416,7 +416,7 @@ public partial class AnimationChecks
                 && board.GetNode<Label>("BattleEffects/Hit/Number").Text == "-23",
                 "The real lantern release retains source contact and right facing while applying its unchanged target impact.");
             await Tick(board, (clip.Length - clip.RequireRelease()) / 1000);
-            CheckClipSprite(sprite, assets.ResolveUnit("c01.gravekeeper"), 0, 1);
+            CheckClipSprite(sprite, assets.ResolveUnitClip("c01.gravekeeper", "idle", ActorClipUnit.Milliseconds).Asset, 0, 1);
             CheckClipShadow(sprite);
             Require(!task.IsCompleted && board.GetNodeOrNull("BattleEffects/Hit") is not null
                 && actor.GetMeta("logical_contact").AsVector2() == end && actor.Position == board.Projection.Project(end),

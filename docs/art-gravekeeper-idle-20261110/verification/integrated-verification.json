@@ -1,0 +1,23 @@
+{
+  "status": "pass-static-data-and-test-review",
+  "baseline": "f358d5bc",
+  "runtimeSha256": "dc0edb5b4f3607b04ad9fbab8d350392ee61c024a712295dc36482da172ce876",
+  "livePngEqualsAcceptedSourceAtlas": true,
+  "liveGeometryEqualsAcceptedSourceReview": true,
+  "liveClipEqualsAcceptedTiming": true,
+  "onlyExpectedDataDelta": true,
+  "inspectedLifecycleOwnerFilesUnchanged": [
+    "godot/Presentation/BoardView.Idle.cs",
+    "godot/Presentation/BoardView.Animation.cs",
+    "godot/Presentation/BoardView.Impact.cs",
+    "godot/Presentation/AssetCatalog.cs",
+    "godot/Presentation/ActorClip.cs"
+  ],
+  "blockingFindings": [],
+  "notRun": [
+    "Godot build",
+    "native runtime suite",
+    "native battle recordings",
+    "full aggregate"
+  ]
+}

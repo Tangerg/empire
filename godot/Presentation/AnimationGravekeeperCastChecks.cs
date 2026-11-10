@@ -17,12 +17,17 @@ public partial class AnimationChecks
             "The cast slice retains all forty generic and named-actor bindings.");
         var clip = assets.ResolveUnitClip("c01.gravekeeper", "attack", ActorClipUnit.Milliseconds);
         var idle = assets.ResolveUnitClip("c01.gravekeeper", "idle", ActorClipUnit.Milliseconds);
+        var original = assets.ResolveUnit("c01.gravekeeper");
         Require(bindings.Units["c01.gravekeeper"].ActionClips["attack"] == "gravekeeper.channel"
             && clip.Asset.Identity == "gravekeeper-cast-v1" && clip.Length == 600 && clip.RequireRelease() == 300
             && !clip.ShowAccent && clip.Death is null && Mathf.IsEqualApprox(clip.Asset.PresentationScale, .0921053f)
-            && idle.Asset == assets.ResolveUnit("c01.gravekeeper"),
-            "Only the generic gravekeeper attack selects its authored 600 ms channel; its original idle remains intact.");
-        foreach (var (action, expected) in new[] { ("idle", "static.idle"), ("move", "legacy.move"),
+            && clip.Asset.TopicId == original.TopicId,
+            "The generic gravekeeper retains its authored 600 ms channel and exact release, scale and topic.");
+        Require(original.Identity == "C01-FFV1-UNIT-GRAVEKEEPER" && original.TopicId == "C01-UNIT-GRAVEKEEPER"
+            && idle.Asset.Identity == "gravekeeper-breathe-v1" && idle.Asset.TopicId == original.TopicId
+            && idle.Asset != original,
+            "Cast recovery selects the declared breathing appearance without replacing the canonical gravekeeper sheet.");
+        foreach (var (action, expected) in new[] { ("idle", "gravekeeper.breathe"), ("move", "legacy.move"),
             ("hit", "static.hit"), ("death", "static.death"), ("celebrate", "static.celebrate") })
             Require(bindings.Units["c01.gravekeeper"].ActionClips[action] == expected,
                 "Casting does not replace the gravekeeper's other declared actions.");
@@ -102,7 +107,7 @@ public partial class AnimationChecks
                         await Tick(board, .100);
                         CheckSettledClipActor(board, aid, idle.Asset, origin);
                         Require(!playing.IsCompleted && ReferenceEquals(released, board.GetNodeOrNull(effectPath)),
-                            "At 600 ms the original idle returns while the same recipient effect remains active.");
+                            "At 600 ms the declared breathing idle returns while the same recipient effect remains active.");
                         await Tick(board, kind == "heal" ? .199999 : .119999);
                         Require(!playing.IsCompleted && board.GetNodeOrNull(effectPath) is not null,
                             "Recipient duration remains 500 ms for healing and 420 ms for damage.");
@@ -184,7 +189,7 @@ public partial class AnimationChecks
         await Tick(board, .420);
         Require(!ReferenceEquals(first, board.GetNodeOrNull("BattleEffects/Hit"))
             && Actor(board, aid).GetNode<Sprite2D>("AuthoredSprite").GetMeta("art_identity").AsString()
-                == assets.ResolveUnit("c01.gravekeeper").Identity,
+                == assets.ResolveUnitClip("c01.gravekeeper", "idle", ActorClipUnit.Milliseconds).Asset.Identity,
             "castResolved adds no source replay and a second area victim starts only another target impact, after idle restoration.");
         await Tick(board, .420);
         Require(playing.IsCompleted && await playing, "Two victims use one 300 ms wind-up and two unchanged 420 ms impacts.");
@@ -230,8 +235,9 @@ public partial class AnimationChecks
                 board.CancelPresentation();
                 Require(!await playing && !board.IsPresenting && board.GetNodeOrNull("BattleEffects") is null,
                     "Interruption before release, during authored recovery or during recipient-only feedback cleans both owners.");
+                CheckGravekeeperIdleActor(board, aid, origin, 0);
                 await Tick(board, 1);
-                CheckSettledClipActor(board, aid, assets.ResolveUnit("c01.gravekeeper"), origin);
+                CheckGravekeeperIdleActor(board, aid, origin, 1000);
             }
             foreach (var exit in new[] { false, true })
             {
@@ -245,10 +251,11 @@ public partial class AnimationChecks
                 }
                 ConfigureActorClipBoard(board, assets);
                 board.RenderState(state);
+                CheckGravekeeperIdleActor(board, aid, origin, 0);
                 await Tick(board, 1);
                 Require(!await playing && board.GetNodeOrNull("BattleEffects") is null && !board.IsPresenting,
                     "Rebinding or reattaching cannot resurrect a retired production cast.");
-                CheckSettledClipActor(board, aid, assets.ResolveUnit("c01.gravekeeper"), origin);
+                CheckGravekeeperIdleActor(board, aid, origin, 1000);
             }
             board.AnimationsEnabled = false;
             try
@@ -256,7 +263,7 @@ public partial class AnimationChecks
                 var reduced = board.PresentTransitionAsync(viewportFeedback, transition);
                 Require(reduced.IsCompleted && await reduced && board.GetNodeOrNull("BattleEffects") is null,
                     "Reduced motion settles production casting synchronously without a source pose or delayed effect.");
-                CheckSettledClipActor(board, aid, assets.ResolveUnit("c01.gravekeeper"), origin);
+                CheckGravekeeperIdleActor(board, aid, origin, 0);
             }
             finally { board.AnimationsEnabled = true; }
         }

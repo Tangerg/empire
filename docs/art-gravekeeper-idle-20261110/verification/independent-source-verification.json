@@ -1,0 +1,141 @@
+{
+  "status": "pass-source-extraction-and-offline-registration-only",
+  "sourceSha256": "5cd0c76c719f0d51d171b26473fe812713b1b04df765a93e1f1cbe0d56573ee9",
+  "runtimeSha256": "dc0edb5b4f3607b04ad9fbab8d350392ee61c024a712295dc36482da172ce876",
+  "sourceSignificantComponents": 4,
+  "retainedOriginalRgbaPixels": 488890,
+  "discardedDetachedPixels": 27804,
+  "maximumDiscardedAlpha": 9,
+  "allAlphaOver16Retained": true,
+  "allFourAtlasComponentsEqualOriginalRgba": true,
+  "singleChannelMutationRejected": true,
+  "uniformScale": 0.0792,
+  "frameOrder": [
+    "breathe-rest",
+    "breathe-inhale",
+    "breathe-high",
+    "breathe-exhale"
+  ],
+  "playbackFrames": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "playbackSpansMs": [
+    700,
+    500,
+    500,
+    700
+  ],
+  "gifFrameDurationsMs": [
+    700,
+    700,
+    500,
+    500,
+    700,
+    700,
+    500,
+    500,
+    700,
+    500,
+    500,
+    500,
+    700
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "paddingLTRB": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "hash": "2a97ce14209b2e19064b911352c442ac1569634af8f9f6c9ad8c9bfab326af0d",
+      "nonzeroAlphaBoundsFromAnchor": [
+        -219,
+        -468,
+        182,
+        8
+      ],
+      "nativeBoundsFromAnchor": [
+        -17.3448,
+        -37.0656,
+        14.4144,
+        0.6336
+      ]
+    },
+    {
+      "frame": 1,
+      "paddingLTRB": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "hash": "3bf661bbe9a7d2c8b204d755ff5506b73bf730459f611951934f3ece00da3069",
+      "nonzeroAlphaBoundsFromAnchor": [
+        -219,
+        -470,
+        184,
+        8
+      ],
+      "nativeBoundsFromAnchor": [
+        -17.3448,
+        -37.224,
+        14.5728,
+        0.6336
+      ]
+    },
+    {
+      "frame": 2,
+      "paddingLTRB": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "hash": "84552ef6c2b12addc72067e39c36cbf8473e3e8cb2c58b6ec776c27c425a1f89",
+      "nonzeroAlphaBoundsFromAnchor": [
+        -219,
+        -470,
+        188,
+        8
+      ],
+      "nativeBoundsFromAnchor": [
+        -17.3448,
+        -37.224,
+        14.8896,
+        0.6336
+      ]
+    },
+    {
+      "frame": 3,
+      "paddingLTRB": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "hash": "424b7bdb4a5cd80a13bdbd7c00dde7e54e2b372081b7047c4108ac9e964a7826",
+      "nonzeroAlphaBoundsFromAnchor": [
+        -219,
+        -468,
+        183,
+        7
+      ],
+      "nativeBoundsFromAnchor": [
+        -17.3448,
+        -37.0656,
+        14.4936,
+        0.5544
+      ]
+    }
+  ],
+  "limitations": [
+    "Native battle playback not reviewed in this report.",
+    "Offline diagnostic still frames and GIF timing inspected; continuous realtime playback not claimed.",
+    "Production manifest not verified until integration."
+  ]
+}

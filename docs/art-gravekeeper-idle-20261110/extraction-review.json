@@ -1,0 +1,164 @@
+{
+  "status": "proposed-art-only-awaiting-independent-and-native-review",
+  "generator": "built-in image_gen",
+  "source": "source-row.png",
+  "sourceSha256": "5cd0c76c719f0d51d171b26473fe812713b1b04df765a93e1f1cbe0d56573ee9",
+  "sourceRgbaSha256": "b11d8bd4a947f4d62e91fb28b00d9c9ae8c19772abf02f8ca3b37d8055b98b90",
+  "sourceDimensions": [
+    2169,
+    725
+  ],
+  "prompt": "prompt-v1.txt",
+  "promptSha256": "5a3bacc2417106dfe9cd23b4b27866faf33cc05871420035c4cdc69a2fb25e2a",
+  "references": [
+    {
+      "path": "godot/assets/painted-units-v1/unit-gravekeeper-gait-v2.png",
+      "sha256": "fc56281ead32b4ffd70681bdae60a34da721810f2068f7bfab5bc8db63bf8691"
+    },
+    {
+      "path": "godot/assets/painted-actions-v1/gravekeeper-cast-v1.png",
+      "sha256": "d39fd204bd3b6cb01c75f5273cd5e2d5e07a4d9ebcb6e38b72264b79398853f8"
+    }
+  ],
+  "significantComponentAlphaThresholdExclusive": 16,
+  "significantComponentPixelCountExclusive": 1000,
+  "retainedAlphaFringeRadius": 3,
+  "transparentPaddingPixels": 12,
+  "removedPixels": 27804,
+  "maxRemovedAlpha": 9,
+  "originalNonzeroAlphaPixels": 516694,
+  "retainedPixels": 488890,
+  "runtimePng": "gravekeeper-breathe-v1.png",
+  "runtimePngSha256": "dc0edb5b4f3607b04ad9fbab8d350392ee61c024a712295dc36482da172ce876",
+  "runtimeRgbaSha256": "816a0223bc7984a535192e717c2f6132e5590c5ca8f57cf09864307efefbe32b",
+  "runtimeDimensions": [
+    1709,
+    502
+  ],
+  "presentationScale": 0.0792,
+  "frameOrder": [
+    "breathe-rest",
+    "breathe-inhale",
+    "breathe-high",
+    "breathe-exhale"
+  ],
+  "playbackFrames": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "playbackSpansMs": [
+    700,
+    500,
+    500,
+    700
+  ],
+  "durationMs": 2400,
+  "frames": [
+    {
+      "sourceComponent": 0,
+      "frameName": "breathe-rest",
+      "sourceBounds": [
+        72,
+        118,
+        497,
+        618
+      ],
+      "frameRegion": [
+        0,
+        0,
+        425,
+        500
+      ],
+      "sourceAnchor": [
+        303,
+        598
+      ],
+      "frameAnchor": [
+        231,
+        480
+      ],
+      "retainedPixels": 121817,
+      "pixelSha256": "2a97ce14209b2e19064b911352c442ac1569634af8f9f6c9ad8c9bfab326af0d"
+    },
+    {
+      "sourceComponent": 1,
+      "frameName": "breathe-inhale",
+      "sourceBounds": [
+        614,
+        116,
+        1041,
+        618
+      ],
+      "frameRegion": [
+        425,
+        0,
+        427,
+        502
+      ],
+      "sourceAnchor": [
+        845,
+        598
+      ],
+      "frameAnchor": [
+        231,
+        482
+      ],
+      "retainedPixels": 122481,
+      "pixelSha256": "3bf661bbe9a7d2c8b204d755ff5506b73bf730459f611951934f3ece00da3069"
+    },
+    {
+      "sourceComponent": 2,
+      "frameName": "breathe-high",
+      "sourceBounds": [
+        1156,
+        116,
+        1587,
+        618
+      ],
+      "frameRegion": [
+        852,
+        0,
+        431,
+        502
+      ],
+      "sourceAnchor": [
+        1387,
+        598
+      ],
+      "frameAnchor": [
+        231,
+        482
+      ],
+      "retainedPixels": 122971,
+      "pixelSha256": "84552ef6c2b12addc72067e39c36cbf8473e3e8cb2c58b6ec776c27c425a1f89"
+    },
+    {
+      "sourceComponent": 3,
+      "frameName": "breathe-exhale",
+      "sourceBounds": [
+        1698,
+        118,
+        2124,
+        617
+      ],
+      "frameRegion": [
+        1283,
+        0,
+        426,
+        499
+      ],
+      "sourceAnchor": [
+        1929,
+        598
+      ],
+      "frameAnchor": [
+        231,
+        480
+      ],
+      "retainedPixels": 121621,
+      "pixelSha256": "424b7bdb4a5cd80a13bdbd7c00dde7e54e2b372081b7047c4108ac9e964a7826"
+    }
+  ]
+}

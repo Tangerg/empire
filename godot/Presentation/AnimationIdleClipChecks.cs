@@ -66,6 +66,13 @@ public partial class AnimationChecks
                     "C01 archers select four authored breathing pictures in a six-interval idle cycle.");
                 continue;
             }
+            if (type == "c01.gravekeeper")
+            {
+                Require(clip.Asset.Identity == "gravekeeper-breathe-v1" && clip.Asset.TopicId == asset.TopicId
+                    && clip.Asset.FrameCount == 4 && clip.Length == 2400 && clip.ReleaseMs is null && clip.Death is null,
+                    "Generic gravekeepers select four authored breathing phases in their 2400 ms idle cycle.");
+                continue;
+            }
             Require(clip.Asset == asset && clip.FrameAt(0) == AssetCatalog.FrameIndex(asset, "idle")
                 && clip.FrameAt(clip.Length - .001) == clip.FrameAt(0),
                 "Shipped idle declarations preserve the selected existing static idle picture.");

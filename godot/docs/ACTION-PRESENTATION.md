@@ -114,6 +114,11 @@ now select `gravekeeper.channel`: six lantern-casting poses over 600 ms, releasi
 at 300 ms, also without the source accent. Both existing magic weapons and healing
 use this unit's explicit stationary attack action. See the
 [gravekeeper cast review](../../docs/art-gravekeeper-cast-20261110/README.md).
+Their separate `gravekeeper.breathe` idle uses four original rest/inhale/high/exhale
+paintings in direct order over 2400 ms (700/500/500/700). It reuses the existing
+board idle owner; the base gait, finite cast and all other actions are unchanged.
+Mirelle retains her explicit separate appearance and static idle. See the
+[gravekeeper idle review](../../docs/art-gravekeeper-idle-20261110/README.md).
 Generic `c01.archer` now selects `archer.loose`: six retrieve/nock/draw/release/
 recover/rest drawings over 600 ms, releasing at 320 ms without a source accent.
 Elin inherits this generic type binding; base `archer` and Bran remain unchanged.
