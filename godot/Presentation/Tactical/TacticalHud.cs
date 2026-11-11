@@ -301,12 +301,7 @@ public partial class TacticalHud : Control
                 CompactButton(toggle);
                 if (section.Key == "objectives")
                 {
-                    toggle.AddThemeColorOverride("font_color", new Color("#453921"));
-                    toggle.AddThemeColorOverride("font_pressed_color", new Color("#453921"));
-                    toggle.AddThemeColorOverride("font_focus_color", new Color("#453921"));
-                    toggle.AddThemeStyleboxOverride("focus", TacticalHudStyle.Panel("#00000000", 2, "#795a2b"));
-                    toggle.AddThemeStyleboxOverride("normal", TacticalHudStyle.Panel("#00000000", 2, "#00000000"));
-                    toggle.AddThemeStyleboxOverride("pressed", TacticalHudStyle.Panel("#00000000", 2, "#00000000"));
+                    TacticalHudStyle.PaperButton(toggle);
                 }
                 toggle.SetMeta("hud_key", section.Key + "/disclosure");
                 group.AddChild(toggle);
@@ -434,14 +429,7 @@ public partial class TacticalHud : Control
                     var button = Order(row, section.Key, compact: row.Key == "cancel");
                     if (section.Key == "objectives")
                     {
-                        button.AddThemeColorOverride("font_color", new Color("#453921"));
-                        button.AddThemeColorOverride("font_focus_color", new Color("#453921"));
-                        button.AddThemeColorOverride("font_hover_color", new Color("#453921"));
-                        button.AddThemeColorOverride("font_pressed_color", new Color("#453921"));
-                        button.AddThemeStyleboxOverride("normal", TacticalHudStyle.Panel("#00000000", 2, "#00000000"));
-                        button.AddThemeStyleboxOverride("hover", TacticalHudStyle.Panel("#a58c4422", 2, "#795a2b"));
-                        button.AddThemeStyleboxOverride("pressed", TacticalHudStyle.Panel("#a58c4444", 2, "#795a2b"));
-                        button.AddThemeStyleboxOverride("focus", TacticalHudStyle.Panel("#00000000", 2, "#795a2b"));
+                        TacticalHudStyle.PaperButton(button);
                     }
                     if (row.Key == "cancel" && section.Key == "unit")
                     {

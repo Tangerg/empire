@@ -32,3 +32,10 @@ message replaces the single countdown; refusals, errors and battle conclusions
 remain persistent by default. Rebind/unmount cannot carry an old countdown into a
 new battle. The screen's existing `_Process` owns this presentation-only lifetime,
 with no timer callbacks, command changes or extra session state.
+
+Task-paper controls use `TacticalHudStyle.PaperButton` rather than inheriting the
+menus' dark button backgrounds. Disclosure and location buttons share dark ink
+for normal, hover, pressed, hover-pressed and keyboard-focus states; disabled text
+is muted dark ink. Transparent/tinted state backgrounds preserve paper contrast,
+and keyboard focus remains visibly outlined. Native HUD checks cover both control
+types and all state palettes at 960 and 1180 pixels.

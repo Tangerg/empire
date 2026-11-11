@@ -1,0 +1,115 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+HUD_READ_COLD bytes=14573160 snapshot=1423664
+HUD_READ_ALLOCATION kind=Idle sample=0 cells=8 bytes=1587776 snapshot=1423664
+HUD_READ_ALLOCATION kind=Idle sample=1 cells=8 bytes=1587776 snapshot=1423664
+HUD_READ_ALLOCATION kind=Idle sample=2 cells=8 bytes=1587776 snapshot=1423664
+HUD_READ_ALLOCATION kind=Unit sample=0 cells=8 bytes=4593792 snapshot=1423664
+HUD_READ_ALLOCATION kind=Unit sample=1 cells=8 bytes=4593792 snapshot=1423664
+HUD_READ_ALLOCATION kind=Unit sample=2 cells=8 bytes=4593792 snapshot=1423664
+HUD_READ_LIFETIME passed: formal alternating inputs, immutable outputs, snapshot isolation, refusal, exception recovery, face/undo/end-turn and reentrant revision rejection.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+SITE_KEYBOARD_CONTEXT C01-03: selection=Site; selected=BoardCell { X = 38, Y = 23 }; revision=0
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+STRUCTURE_POINTER_INSPECTION_OK C01-09 chain-west / chain-north; actual mouse handoff, popup Close, hover and window leave; no committed actions
+STRUCTURE_INSPECTION_NATIVE_OK C01-09 chain-west / chain-north; state=6fefe68e; actual mouse handoff, Tab, Enter, Close and Escape; no committed actions
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+TACTIC_KEYBOARD_CONTEXT after native HUD click + D: selection=Tactic; revision=0; tile=4, 13
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Healing target witness: actor=米蕾尔; target card=选择目标; state=c0ffdbae
+SYNTHETIC_STRUCTURE_FORECAST width=960: effect lines=1, plate=(278, 419), (388, 213)
+SYNTHETIC_STRUCTURE_FORECAST width=1180: effect lines=1, plate=(278, 419), (388, 213)
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckPointerCapture>d__14.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudChecks.cs:1190)
+         [3] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [5] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckDossierLifetime>d__15.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudChecks.cs:1281)
+         [3] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [5] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckDossierLifetime>d__15.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudChecks.cs:1295)
+         [3] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [5] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckDossierLifetime>d__15.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudChecks.cs:1281)
+         [3] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [5] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckDossierLifetime>d__15.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudChecks.cs:1295)
+         [3] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [5] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckDossierLifetime>d__15.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudChecks.cs:1281)
+         [3] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [5] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckDossierLifetime>d__15.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudChecks.cs:1295)
+         [3] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [4] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [5] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+FORMAL_ROW_RETENTION_OK c01-01
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+FORMAL_ROW_RETENTION_OK c01-07
+WARNING: The Viewport was previously notified that the mouse is in its area. There is no need to notify it at this time.
+     at: notify_mouse_entered (scene/main/viewport.cpp:3594)
+     C# backtrace (most recent call first):
+         [0] void Godot.NativeCalls.godot_icall_0_3(nint, nint) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:51)
+         [1] void Godot.Viewport.NotifyMouseEntered() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Viewport.cs:1766)
+         [2] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckOrderBadgeStates>d__16.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudChecks.cs:1325)
+         [3] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+         [4] System.Threading.Tasks.Task Empire.Presentation.Tactical.TacticalHudChecks.CheckOrderBadgeStates()
+         [5] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckHudFlow>d__21.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudChecks.cs:1837)
+         [6] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [7] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [8] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [9] void System.Threading.Tasks.Task.RunContinuations(object)
+         [10] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [11] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckUnitDetailsRowRetention>d__25.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudRowRetentionChecks.cs:194)
+         [12] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [13] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [14] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+         [15] void System.Threading.Tasks.Task.RunContinuations(object)
+         [16] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+         [17] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckFormalUnitDetailsRetention>d__26.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudRowRetentionChecks.cs:289)
+         [18] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [19] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [20] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+TACTICAL_HUD_CHECKS_OK 1213 assertions (headless native controls and host teardown, not visual acceptance)

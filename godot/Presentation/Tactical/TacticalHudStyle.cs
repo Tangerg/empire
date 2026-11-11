@@ -30,6 +30,19 @@ public static class TacticalHudStyle
         ContentMarginBottom = padding
     };
 
+    public static void PaperButton(Button button)
+    {
+        foreach (var state in new[] { "font_color", "font_hover_color", "font_pressed_color", "font_hover_pressed_color", "font_focus_color" })
+            button.AddThemeColorOverride(state, new Color("#453921"));
+        button.AddThemeColorOverride("font_disabled_color", new Color("#67583f"));
+        foreach (var state in new[] { "normal", "disabled" })
+            button.AddThemeStyleboxOverride(state, Panel("#00000000", 2, "#00000000"));
+        button.AddThemeStyleboxOverride("hover", Panel("#a58c4422", 2, "#795a2b"));
+        foreach (var state in new[] { "pressed", "hover_pressed" })
+            button.AddThemeStyleboxOverride(state, Panel("#a58c4444", 2, "#795a2b"));
+        button.AddThemeStyleboxOverride("focus", Panel("#00000000", 2, "#795a2b"));
+    }
+
     public static TextureRect PaintedImage(string fileName, Rect2 region) => new()
     {
         Texture = new AtlasTexture

@@ -724,7 +724,12 @@ public partial class TacticalHudChecks : Node
         var projection = new TacticalHudProjection(new(1, 1), "选择高亮地格", new[]
         {
             new TacticalHudSection("unit", "莱娅", new[] { new TacticalHudRow("selection", "预览未执行"), new("hp", "生命 116 / 116", Gauge: new(116, 116)) }),
-            new TacticalHudSection("objectives", "作战目标", new[] { new TacticalHudRow("long", objective) }),
+            new TacticalHudSection("objectives", "作战目标", new[]
+            {
+                new TacticalHudRow("long", objective),
+                new("locate", "定位任务区域", Intent: new(new(1, 1), TacticalHudIntentKind.FocusObjective, "locate"),
+                    TargetCells: new[] { new BoardCell(18, 23) })
+            }),
             new TacticalHudSection("forecast", "战斗预测", new[]
             {
                 new TacticalHudRow("attacker", "灰旗卫士"), new("recipient", "戍斗法师"),
@@ -751,7 +756,22 @@ public partial class TacticalHudChecks : Node
             var objectivePlate = (Control)hud.FindChild("objectivesPlate", true, false);
             var objectiveToggle = objectiveGroup.GetChildren().OfType<Button>().Single();
             var expandedBottom = objectivePlate.GetGlobalRect().End.Y;
-            Require(objectiveToggle.GetThemeColor("font_focus_color") == new Color("#453921"), "Keyboard-focused objective text must remain dark on the light paper.");
+            var objectiveLocator = objectiveGroup.GetNode<VBoxContainer>("Content").GetChildren().OfType<Button>().Single();
+            foreach (var button in new[] { objectiveToggle, objectiveLocator })
+                foreach (var colorName in new[] { "font_color", "font_hover_color", "font_pressed_color", "font_hover_pressed_color", "font_focus_color", "font_disabled_color" })
+                {
+                    var expected = new Color(colorName == "font_disabled_color" ? "#67583f" : "#453921");
+                    Require(button.GetThemeColor(colorName) == expected,
+                        $"Objective paper button '{button.Text}' must retain readable dark ink for {colorName} at width {width}.");
+                }
+            foreach (var button in new[] { objectiveToggle, objectiveLocator })
+                foreach (var state in new[] { "normal", "hover", "pressed", "hover_pressed", "focus", "disabled" })
+                {
+                    var expected = new Color(state == "hover" ? "#a58c4422"
+                        : state is "pressed" or "hover_pressed" ? "#a58c4444" : "#00000000");
+                    Require(button.GetThemeStylebox(state) is StyleBoxFlat background && background.BgColor == expected,
+                        $"Objective paper button '{button.Text}' must preserve the light paper through its {state} background at width {width}.");
+                }
             objectiveToggle.GrabFocus();
             objectiveToggle.ButtonPressed = false;
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
