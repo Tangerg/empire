@@ -20,6 +20,42 @@ public partial class TacticalHudChecks : Node
             throw new InvalidOperationException(message);
         assertions++;
     }
+    private void CheckWeaponAreaDisclosure()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var presentation = BattleTextChecks.Session(engine, text);
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-10");
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        var before = EcmaJson.Stringify(session.Snapshot());
+        foreach (var (key, weaponId, shape) in new[]
+        {
+            ("campaign-ivra", "c01.dragon-breath", "line"),
+            ("campaign-tasha", "c01.satchel-charge", "cross1"),
+            ("campaign-torren", "c01.border-blade", "single")
+        })
+        {
+            var actor = session.Snapshot()["units"]!.AsArray().OfType<JsonObject>()
+                .Single(value => value["key"]?.GetValue<string>() == key);
+            var at = new BoardCell(actor["x"]!.GetValue<int>(), actor["y"]!.GetValue<int>());
+            var hit = TacticalHit.Unit(at, actor["id"]!.GetValue<int>());
+            var control = new TacticalSelectionController(session.GetTacticalQueries(0));
+            control.Click(control.Stamp, hit);
+            var rows = session.ProjectHud(control.Stamp, control.Selection, hit, null, false)
+                .Sections.Single(section => section.Key == "unit-details").Rows;
+            Require(engine.Catalog.Definition("weapons", weaponId)!.Value.GetProperty("area").GetString() == shape,
+                "C10 weapon-area witnesses remain bound to their canonical definitions.");
+            var area = rows.SingleOrDefault(row => row.Key == $"weapon-area:{weaponId}");
+            Require(area is not null && area.Label == text.Format("ui.hud.weapon_area", presentation.Content.WeaponAreaDescription(shape))
+                && area.Intent is null && area.Hint.Length == 0,
+                "Weapon shape is disclosed as directly readable text, not hidden in a tooltip or turned into an order.");
+            var keys = rows.Select(row => row.Key).ToArray();
+            Require(Array.IndexOf(keys, $"weapon-area:{weaponId}") == Array.IndexOf(keys, $"weapon:{weaponId}") + 1,
+                "Each weapon's shape follows that weapon rather than describing another armament.");
+            Require(before == EcmaJson.Stringify(session.Snapshot()), "Weapon-area disclosure cannot change battle state.");
+        }
+    }
     private void CheckWeaponCooldownDisclosure()
     {
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
@@ -1965,6 +2001,7 @@ public partial class TacticalHudChecks : Node
         await CheckHealingTarget();
         CheckInspectionOrder();
         CheckWeaponCooldownDisclosure();
+        CheckWeaponAreaDisclosure();
         CheckObjectiveChecklist();
         CheckPinnedUnit();
         await CheckPrimaryOrders();

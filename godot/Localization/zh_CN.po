@@ -3834,3 +3834,18 @@ msgstr "母根被摧毁"
 
 msgid "ui.hud.objective_failure"
 msgstr "失败条件：{0}"
+
+msgid "content.area_shapes.single"
+msgstr "仅目标地格"
+
+msgid "content.area_shapes.cross1"
+msgstr "目标地格及当前网格相邻一格"
+
+msgid "content.area_shapes.ring1"
+msgstr "以目标为中心的 3×3 地格区域"
+
+msgid "content.area_shapes.line"
+msgstr "自身至目标的连线地格，不含自身、不越过目标"
+
+msgid "ui.hud.weapon_area"
+msgstr "作用范围：{0}"

@@ -1,0 +1,59 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+HUD_READ_COLD bytes=14573744 snapshot=1423664
+HUD_READ_ALLOCATION kind=Idle sample=0 cells=8 bytes=1592448 snapshot=1423664
+HUD_READ_ALLOCATION kind=Idle sample=1 cells=8 bytes=1592448 snapshot=1423664
+HUD_READ_ALLOCATION kind=Idle sample=2 cells=8 bytes=1592488 snapshot=1423664
+HUD_READ_ALLOCATION kind=Unit sample=0 cells=8 bytes=4605248 snapshot=1423664
+HUD_READ_ALLOCATION kind=Unit sample=1 cells=8 bytes=4605248 snapshot=1423664
+HUD_READ_ALLOCATION kind=Unit sample=2 cells=8 bytes=4605248 snapshot=1423664
+HUD_READ_LIFETIME passed: formal alternating inputs, immutable outputs, snapshot isolation, refusal, exception recovery, face/undo/end-turn and reentrant revision rejection.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+SITE_KEYBOARD_CONTEXT C01-03: selection=Site; selected=BoardCell { X = 38, Y = 23 }; revision=0
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+STRUCTURE_POINTER_INSPECTION_OK C01-09 chain-west / chain-north; actual mouse handoff, popup Close, hover and window leave; no committed actions
+STRUCTURE_INSPECTION_NATIVE_OK C01-09 chain-west / chain-north; state=6fefe68e; actual mouse handoff, Tab, Enter, Close and Escape; no committed actions
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+TACTIC_KEYBOARD_CONTEXT after native HUD click + D: selection=Tactic; revision=0; tile=4, 13
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Healing target witness: actor=米蕾尔; target card=选择目标; state=c0ffdbae
+ERROR: System.InvalidOperationException: Weapon shape is disclosed as directly readable text, not hidden in a tooltip or turned into an order.
+   at Empire.Presentation.Tactical.TacticalHudChecks.Require(Boolean condition, String message) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudChecks.cs:line 20
+   at Empire.Presentation.Tactical.TacticalHudChecks.CheckWeaponAreaDisclosure() in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudChecks.cs:line 50
+   at Empire.Presentation.Tactical.TacticalHudChecks.CheckHudFlow() in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudChecks.cs:line 2004
+   at Empire.Presentation.Tactical.TacticalHudChecks._Ready() in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudShutdownChecks.cs:line 18
+   at: void Empire.Presentation.Tactical.TacticalHudChecks+<_Ready>d__30.MoveNext() (res://Presentation/Tactical/TacticalHudShutdownChecks.cs:18)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.Tactical.TacticalHudChecks+<_Ready>d__30.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudShutdownChecks.cs:18)
+       [2] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [3] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [4] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [5] void System.Threading.Tasks.Task.RunContinuations(object)
+       [6] void System.Threading.Tasks.Task.FinishSlow(bool)
+       [7] bool System.Threading.Tasks.Task.TrySetException(object)
+       [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetException(System.Exception, System.Threading.Tasks.Task`1[TResult]&)
+       [9] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckHudFlow>d__23.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudChecks.cs:2004)
+       [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [12] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [13] void System.Threading.Tasks.Task.RunContinuations(object)
+       [14] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [15] void Empire.Presentation.Tactical.TacticalHudChecks+<CheckHealingTarget>d__25.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudHealingChecks.cs:161)
+       [16] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [17] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [18] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [19] void System.Threading.Tasks.Task.RunContinuations(object)
+       [20] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [21] void Empire.Presentation.Tactical.TacticalHudChecks+<>c__DisplayClass25_1+<<CheckHealingTarget>g__HoverRecipient|10>d.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudHealingChecks.cs:109)
+       [22] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [23] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [24] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [25] void System.Threading.Tasks.Task.RunContinuations(object)
+       [26] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [27] void Empire.Presentation.Tactical.TacticalHudChecks+<>c__DisplayClass25_0+<<CheckHealingTarget>g__Layout|7>d.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/TacticalHudHealingChecks.cs:70)
+       [28] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [29] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [30] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)

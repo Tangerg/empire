@@ -449,6 +449,8 @@ public sealed partial class GrayFlagSession
                             Amounts(arm["resourceRequirements"])) : "",
                         arm["resourceCosts"]!.AsArray().Count > 0 ? text.Format("ui.hud.weapon_costs", Amounts(arm["resourceCosts"])) : ""),
                     Icon: "weapon:" + id));
+                rows.Add(new($"weapon-area:{id}",
+                    text.Format("ui.hud.weapon_area", contentText.WeaponAreaDescription(S(arm, "area")))));
             }
             var statuses = inspect["statuses"]!.AsArray().OfType<JsonObject>().ToArray();
             if (statuses.Length == 0)

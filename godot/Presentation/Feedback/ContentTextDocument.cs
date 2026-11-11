@@ -18,7 +18,7 @@ public enum ContentTextKind
 }
 
 public sealed record ContentTextDefinitions(ReadOnlyContent Content, AbilityRegistry Abilities,
-    ReactionRegistry Reactions, ResourceAdapterRegistry Resources, GridRegistry Grids);
+    ReactionRegistry Reactions, ResourceAdapterRegistry Resources, GridRegistry Grids, WeaponAreaRegistry AreaShapes);
 
 /// <summary>Immutable message-key bindings validated against the consumed engine composition.</summary>
 public sealed class ContentTextDocument
@@ -47,17 +47,20 @@ public sealed class ContentTextDocument
     private readonly FrozenDictionary<string, DescribedEntry> abilities;
     private readonly FrozenDictionary<string, DescribedEntry> reactions;
     private readonly FrozenDictionary<string, string> resources;
+    private readonly FrozenDictionary<string, string> areaShapes;
     private readonly FrozenDictionary<string, FrozenDictionary<string, string>> directions;
 
     private ContentTextDocument(FrozenDictionary<ContentTextKind, FrozenDictionary<string, Entry>> content,
         FrozenDictionary<string, DescribedEntry> abilities, FrozenDictionary<string, DescribedEntry> reactions,
-        FrozenDictionary<string, string> resources, FrozenDictionary<string, FrozenDictionary<string, string>> directions)
+        FrozenDictionary<string, string> resources, FrozenDictionary<string, FrozenDictionary<string, string>> directions,
+        FrozenDictionary<string, string> areaShapes)
     {
         this.content = content;
         this.abilities = abilities;
         this.reactions = reactions;
         this.resources = resources;
         this.directions = directions;
+        this.areaShapes = areaShapes;
     }
 
     public static ContentTextDocument Parse(ContentTextDefinitions definitions, string json)
@@ -69,12 +72,13 @@ public sealed class ContentTextDocument
         ArgumentNullException.ThrowIfNull(definitions.Reactions);
         ArgumentNullException.ThrowIfNull(definitions.Resources);
         ArgumentNullException.ThrowIfNull(definitions.Grids);
+        ArgumentNullException.ThrowIfNull(definitions.AreaShapes);
         try
         {
             var root = Fields(EcmaJson.Parse(json, rejectDuplicateProperties: true), "content text document",
-                "schema", "content", "abilities", "reactions", "resources", "directions");
+                "schema", "content", "abilities", "reactions", "resources", "directions", "areaShapes");
             var schema = EcmaJson.ToElement(root["schema"]);
-            if (schema.ValueKind != JsonValueKind.Number || !schema.TryGetInt32(out var version) || version != 1)
+            if (schema.ValueKind != JsonValueKind.Number || !schema.TryGetInt32(out var version) || version != 2)
                 throw new LocalizationException("Unsupported content text metadata schema.");
             RequireSameKeys(Families.Values, definitions.Content.Families, "canonical content families");
             var declared = Fields(root["content"], "content families", Families.Values.ToArray());
@@ -99,7 +103,8 @@ public sealed class ContentTextDocument
             return new(content.ToFrozenDictionary(),
                 DescribedEntries(root["abilities"], definitions.Abilities.Keys(), "abilities"),
                 DescribedEntries(root["reactions"], definitions.Reactions.Keys(), "reactions"),
-                Keys(root["resources"], definitions.Resources.Keys(), "resources"), directions);
+                Keys(root["resources"], definitions.Resources.Keys(), "resources"), directions,
+                Keys(root["areaShapes"], definitions.AreaShapes.Keys(), "area shapes"));
         }
         catch (JsonException error)
         {
@@ -112,7 +117,7 @@ public sealed class ContentTextDocument
         var keys = content.Values.SelectMany(entries => entries.Values).SelectMany(entry =>
                 entry.Bonuses.Values.Prepend(entry.Name).Concat(entry.Blurb is { } blurb ? new[] { blurb } : []))
             .Concat(abilities.Values.Concat(reactions.Values).SelectMany(entry => new[] { entry.Name, entry.Hint }))
-            .Concat(resources.Values).Concat(directions.Values.SelectMany(entries => entries.Values)).ToArray();
+            .Concat(resources.Values).Concat(areaShapes.Values).Concat(directions.Values.SelectMany(entries => entries.Values)).ToArray();
         text.ValidateKeys(keys);
         foreach (var key in keys)
             _ = text.Format(key);
@@ -125,6 +130,7 @@ public sealed class ContentTextDocument
     internal string AbilityHintKey(string id) => Lookup(abilities, id, "ability").Hint;
     internal string ReactionNameKey(string id) => Lookup(reactions, id, "reaction").Name;
     internal string ReactionHintKey(string id) => Lookup(reactions, id, "reaction").Hint;
+    internal string WeaponAreaDescriptionKey(string id) => Lookup(areaShapes, id, "weapon area shape");
     internal string ResourceNameKey(string id) => Lookup(resources, id, "resource");
     internal string DirectionNameKey(string gridId, string directionId) =>
         Lookup(Lookup(directions, gridId, "grid"), directionId, $"direction for '{gridId}'");

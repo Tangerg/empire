@@ -514,7 +514,7 @@ BattleEngine ComposeContent(JsonArray source) => BattleEngineFactory.Create(new 
 ]);
 var contentEngine = ComposeContent(contentPacks);
 var contentDefinitions = new ContentTextDefinitions(contentEngine.Catalog, contentEngine.Abilities,
-    contentEngine.Reactions, contentEngine.Resources.Adapters, contentEngine.Grids);
+    contentEngine.Reactions, contentEngine.Resources.Adapters, contentEngine.Grids, contentEngine.AreaShapes);
 var contentMetadata = EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/data/grayflag-content-text.json")))!.AsObject();
 contentMetadata["content"]!["units"]!["soldier"]!["name"] = "test.content.unit";
 contentMetadata["content"]!["weapons"]!["soldier_sword"]!["name"] = "test.content.weapon";
@@ -533,6 +533,7 @@ foreach (var (label, entries) in new (string, Func<JsonObject, JsonObject>)[]
     ("abilities", document => document["abilities"]!.AsObject()),
     ("reactions", document => document["reactions"]!.AsObject()),
     ("resources", document => document["resources"]!.AsObject()),
+    ("area shapes", document => document["areaShapes"]!.AsObject()),
     ("grid directions", document => document["directions"]!["square4"]!.AsObject()),
     ("weapon bonuses", document => document["content"]!["weapons"]!["soldier_sword"]!["bonuses"]!.AsObject()),
 })
@@ -546,6 +547,34 @@ foreach (var (label, entries) in new (string, Func<JsonObject, JsonObject>)[]
     Reject<LocalizationException>(() => ContentTextDocument.Parse(contentDefinitions, EcmaJson.Stringify(extra)),
         $"content metadata rejects undeclared {label}");
 }
+var obsoleteContent = Copy(contentMetadata);
+obsoleteContent["schema"] = 1;
+Reject<LocalizationException>(() => ContentTextDocument.Parse(contentDefinitions, EcmaJson.Stringify(obsoleteContent)),
+    "obsolete content metadata cannot silently omit weapon area descriptions");
+var missingAreaTranslation = Copy(contentMetadata);
+missingAreaTranslation["areaShapes"]!["line"] = "missing.area.description";
+Reject<LocalizationException>(() => new ContentText(firstCatalog,
+    ContentTextDocument.Parse(contentDefinitions, EcmaJson.Stringify(missingAreaTranslation))),
+    "area description translations are validated at composition");
+var extendedAreaDefinitions = contentDefinitions with
+{
+    AreaShapes = contentEngine.AreaShapes.Clone().Register(new WeaponAreaShape("test.area", false,
+        (_, _, target) => new[] { target })).Seal()
+};
+Reject<LocalizationException>(() => ContentTextDocument.Parse(extendedAreaDefinitions, EcmaJson.Stringify(contentMetadata)),
+    "registered extension shapes require their own text without a closed built-in shape switch");
+var extendedAreaMetadata = Copy(contentMetadata);
+extendedAreaMetadata["areaShapes"]!["test.area"] = "test.content.hint";
+var extendedAreaText = new ContentText(firstCatalog,
+    ContentTextDocument.Parse(extendedAreaDefinitions, EcmaJson.Stringify(extendedAreaMetadata)));
+Check(extendedAreaText.WeaponAreaDescription("test.area") == "Attack the enemy",
+    "a custom registered shape renders its independently authored description");
+Reject<LocalizationException>(() => extendedAreaText.WeaponAreaDescription("unregistered.area"),
+    "unknown shapes do not leak raw identifiers or silently fall back");
+Check(extendedAreaText.WeaponAreaDescription("line") == "自身至目标的连线地格，不含自身、不越过目标"
+    && extendedAreaText.WeaponAreaDescription("cross1") == "目标地格及当前网格相邻一格"
+    && extendedAreaText.WeaponAreaDescription("ring1") == "以目标为中心的 3×3 地格区域",
+    "built-in area explanations distinguish bounded line, grid adjacency and the authored three-by-three region");
 var contentDocument = ContentTextDocument.Parse(contentDefinitions, EcmaJson.Stringify(contentMetadata));
 contentMetadata["content"]!["weapons"]!["soldier_sword"]!["bonuses"]!["first"] = "test.content.bonus.second";
 contentMetadata["abilities"]!["attack"]!["name"] = "test.content.weapon";

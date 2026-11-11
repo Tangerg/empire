@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "content": {
     "movementProfiles": {
       "foot": {
@@ -606,5 +606,11 @@
       "hexWest": "content.directions.hex.hex_west",
       "hexNorthwest": "content.directions.hex.hex_northwest"
     }
+  },
+  "areaShapes": {
+    "single": "content.area_shapes.single",
+    "cross1": "content.area_shapes.cross1",
+    "ring1": "content.area_shapes.ring1",
+    "line": "content.area_shapes.line"
   }
 }

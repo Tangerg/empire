@@ -24,6 +24,7 @@ public sealed class ContentText
     public string Name(ContentTextKind kind, string id) => text.Format(document.NameKey(kind, id));
     public string UnitName(string id) => Name(ContentTextKind.Unit, id);
     public string CareerName(string id) => Name(ContentTextKind.Career, id);
+    public string WeaponAreaDescription(string id) => text.Format(document.WeaponAreaDescriptionKey(id));
     public string ResourceName(string id) => text.Format(document.ResourceNameKey(id));
     public string UnitBlurb(string id) => text.Format(document.UnitBlurbKey(id));
     public string AbilityName(string id) => text.Format(document.AbilityNameKey(id));

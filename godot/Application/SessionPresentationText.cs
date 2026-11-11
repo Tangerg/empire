@@ -27,7 +27,7 @@ public sealed record SessionPresentationText(GameText Messages, ActionRefusalTex
             new BattleTextDefinitions(levels, engine.Objectives, engine.ScenarioEffects), battleTextJson));
         var content = new ContentText(text, ContentTextDocument.Parse(
             new ContentTextDefinitions(engine.Catalog, engine.Abilities, engine.Reactions,
-                engine.Resources.Adapters, engine.Grids), contentTextJson));
+                engine.Resources.Adapters, engine.Grids, engine.AreaShapes), contentTextJson));
         var modifiers = CombatModifierText.CreateDefault(new(text, content));
         modifiers.ValidateCoverage(engine.Combat.ModifierKinds);
         var hitEffects = PlannedEffectText.CreateWeaponHit(new(text, content));
