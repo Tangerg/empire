@@ -27,6 +27,8 @@ No screenshots or previously blocked evidence are included in this change.
 - CameraIntegrationChecks: 328 assertions, including limits, reverse buttons,
   busy/unbusy, rebinding and complete battle-state non-mutation.
 - CameraChecks: 36 assertions.
+- BattleScreenChecks: real-session integration passed.
+- ReadyUnitNavigationChecks: 90 assertions passed, including 960/1280/1440 layouts.
 - Native core suite: 17 passed, 0 failed, including all 16 shipped-level exact
   replay/save checks. All 16 action/event/receipt SHA256 traces and final state
   digests exactly match the prior full gate in
