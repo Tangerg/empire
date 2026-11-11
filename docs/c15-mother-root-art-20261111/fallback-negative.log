@@ -1,0 +1,15 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ERROR: System.InvalidOperationException: Every unobscured fallback body pixel must select its canonical structure, not ground behind it.
+   at Empire.Presentation.DynamicStateChecks.Require(Boolean condition, String message) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/DynamicStateChecks.cs:line 575
+   at Empire.Presentation.DynamicStateChecks.CheckUnboundStructurePicking(BattleEngine engine) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/DynamicStateChecks.cs:line 63
+   at Empire.Presentation.DynamicStateChecks.Run() in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/DynamicStateChecks.cs:line 116
+   at Empire.Presentation.DynamicStateChecks._Ready() in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/DynamicStateChecks.cs:line 21
+   at: void Empire.Presentation.DynamicStateChecks._Ready() (res://Presentation/DynamicStateChecks.cs:21)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.DynamicStateChecks._Ready() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/DynamicStateChecks.cs:21)
+       [2] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [3] bool Empire.Presentation.DynamicStateChecks.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Presentation.DynamicStateChecks_ScriptMethods.generated.cs:70)
+       [4] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)

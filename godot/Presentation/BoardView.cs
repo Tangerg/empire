@@ -44,7 +44,8 @@ public partial class BoardView : Node2D
     // Source art-review metadata remains diagnostic evidence, not player-facing acceptance prose.
     public int RenderingIssueCount => Diagnostics.Count(message => message is not
         "Authored scene is marked runtimeReady=false in the source document." and not
-        "Environment catalog is marked runtimeReady=false in the source document.");
+        "Environment catalog is marked runtimeReady=false in the source document." and not
+        "No authored ground outline: canonical rectangular field is rendered; generic perimeter backdrop remains unmigrated.");
     public Vector2 FieldSize => Projection.Size;
     public int RenderedUnitCount
     {

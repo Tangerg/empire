@@ -322,18 +322,18 @@ public sealed class AssetCatalog
         Rect2[]? regions = null;
         if (record.FrameRegions is { } authoredRegions)
         {
-            if (category is not ("combat-unit" or "mission-unit") || authoredRegions.Length != frames
+            if (category is not ("combat-unit" or "mission-unit" or "interactive-structure") || authoredRegions.Length != frames
                 || record.FrameAnchors is null || record.FrameAnchors.Length != frames
                 || density != 1 || record.FrameWidth is not null || record.FrameHeight is not null
                 || record.Width != 0 || record.Height != 0 || record.Anchor is not null || record.GroundFront is not null)
-                throw new InvalidOperationException($"Explicit actor regions require paired contacts, density one and no competing uniform geometry: {identity}.");
+                throw new InvalidOperationException($"Explicit frame regions require paired contacts, density one and no competing uniform geometry: {identity}.");
             regions = authoredRegions.Select(region =>
             {
                 if (region is null || region.Length != 4 || region[0] < 0 || region[1] < 0
                     || region[2] <= 0 || region[3] <= 0
                     || (long)region[0] + region[2] > record.PhysicalWidth
                     || (long)region[1] + region[3] > record.PhysicalHeight)
-                    throw new InvalidOperationException($"Explicit actor region outside physical sheet: {identity}.");
+                    throw new InvalidOperationException($"Explicit frame region outside physical sheet: {identity}.");
                 return new Rect2(region[0], region[1], region[2], region[3]);
             }).ToArray();
             if (regions.Length > 0)
@@ -343,7 +343,7 @@ public sealed class AssetCatalog
             }
         }
         else if (record.FrameAnchors is not null)
-            throw new InvalidOperationException($"Per-frame contacts require explicit actor regions: {identity}.");
+            throw new InvalidOperationException($"Per-frame contacts require explicit frame regions: {identity}.");
         if (string.IsNullOrWhiteSpace(identity) || string.IsNullOrWhiteSpace(record.TopicId)
             || !record.ResourcePath.StartsWith("res://assets/", StringComparison.Ordinal)
             || record.ResourcePath.Contains("..", StringComparison.Ordinal)

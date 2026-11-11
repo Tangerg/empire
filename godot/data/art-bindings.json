@@ -458,6 +458,29 @@
     }
   },
   "CANDIDATE_01_STRUCTURE_ART": {
+    "c01.mother-root": {
+      "normal": {
+        "topicId": "C01-STRUCT-MOTHER-ROOT",
+        "frame": "normal"
+      },
+      "captured": {
+        "topicId": "C01-STRUCT-MOTHER-ROOT",
+        "frame": "normal"
+      },
+      "damaged": {
+        "topicId": "C01-STRUCT-MOTHER-ROOT",
+        "frame": "damaged"
+      },
+      "disabled": {
+        "topicId": "C01-STRUCT-MOTHER-ROOT",
+        "frame": "damaged"
+      },
+      "destroyed": {
+        "topicId": "C01-STRUCT-MOTHER-ROOT",
+        "frame": "destroyed"
+      },
+      "depthRole": "standing"
+    },
     "gate": {
       "normal": {
         "topicId": "C01-STRUCT-REPAIRABLE-GATE",

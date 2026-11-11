@@ -1,0 +1,27 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+WARNING: Empire.Presentation.MissingArtResourceException: test missing art diagnostic
+   at Empire.Presentation.BattleScreenChecks.<>c__DisplayClass19_5.<CheckLocalizedInteraction>b__26(BattlePresentationTransition _, Int32 _) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/BattleScreenChecks.cs:line 1406
+   at Empire.Presentation.BoardView.PresentTransitionAsync(Control viewportFeedback, BattlePresentationTransition transition, IReadOnlySet`1 afterVisibleUnitIds) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/BoardView.Animation.cs:line 128
+   at Empire.Presentation.BattleScreen.PresentCommitted(BattleSnapshot next, BattlePresentationTransition transition) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/BattleScreen.cs:line 542
+     at: void Empire.Presentation.BattleScreen+<PresentCommitted>d__88.MoveNext() (res://Presentation/BattleScreen.cs:542)
+     C# backtrace (most recent call first):
+         [0] void Godot.GD.PushWarning(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:396)
+         [1] void Empire.Presentation.BattleScreen+<PresentCommitted>d__88.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/BattleScreen.cs:542)
+         [2] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+         [3] void Empire.Presentation.BattleScreen.PresentCommitted(Empire.Presentation.BattleSnapshot, Empire.Presentation.BattlePresentationTransition)
+         [4] void Empire.Presentation.BattleScreen.Refresh() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/BattleScreen.cs:513)
+         [5] void Empire.Presentation.BattleScreen.DispatchTactical(Empire.Presentation.Tactical.TacticalRequest) (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/BattleScreen.Tactical.cs:223)
+         [6] void Empire.Presentation.BattleScreen.HandleTactical(Empire.Presentation.Tactical.TacticalInputResult) (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/BattleScreen.Tactical.cs:204)
+         [7] void Empire.Presentation.BattleScreen._UnhandledKeyInput(Godot.InputEvent) (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/BattleScreen.Tactical.cs:307)
+         [8] Empire.Presentation.BoardCell Empire.Presentation.TacticalSceneInputChecks.Move(Empire.Presentation.BattleScreen, Empire.Presentation.ITacticalBattleSession, int) (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/TacticalSceneInputChecks.cs:27)
+         [9] void Empire.Presentation.BattleScreenChecks+<CheckLocalizedInteraction>d__19.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/BattleScreenChecks.cs:1412)
+         [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+         [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+         [12] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+BattleScreen Check()+CheckLocalizedInteraction() SUBSET passed; not full BattleScreenChecks.

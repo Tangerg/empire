@@ -25,6 +25,68 @@ public partial class DynamicStateChecks : Node
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
 
+    private void CheckUnboundStructurePicking(BattleEngine engine)
+    {
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-15");
+        var state = engine.CreateState(level);
+        // Isolate the source-derived body from decorative blockers and actors, regardless of shipped art bindings.
+        state["units"]!.AsArray().Clear();
+        var elevation = state["map"]!["elevation"]!.AsArray();
+        for (var index = 0; index < elevation.Count; index++)
+            elevation[index] = 0;
+        var bindings = PresentationJson.Load<ArtBindings>("res://data/art-bindings.json");
+        bindings.Structures.Remove("c01.mother-root");
+        bindings.MapStructures.Clear();
+        var assets = new AssetCatalog(PresentationJson.Load<AssetManifest>("res://data/selected-assets.json"), bindings);
+        var board = new BoardView { AnimationsEnabled = false };
+        AddChild(board);
+        try
+        {
+            board.Configure(new(assets, EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric), level,
+                new AuthoredScene { LevelId = "c01-15", MapSize = [level["width"]!.GetValue<int>(), level["height"]!.GetValue<int>()], RuntimeReady = true, FramePlacements = [] });
+            board.ConfigureDynamicState();
+            var before = state.ToJsonString();
+            board.RenderState(state);
+            var node = DynamicNodes(board).Single(value => value.HasMeta("structure_id"));
+            var sprite = node.GetNode<Sprite2D>("RuleDerivedStructure");
+            Require(SpriteGroundContact.Offset(sprite).IsEqualApprox(Vector2.Zero),
+                "Procedural structure ground-front must preserve its existing SVG anchor at the canonical contact.");
+            var rectangle = sprite.GetRect();
+            var opaqueHits = 0;
+            var transparentSamples = 0;
+            for (var y = rectangle.Position.Y; y < rectangle.End.Y; y += 2)
+                for (var x = rectangle.Position.X; x < rectangle.End.X; x += 2)
+                {
+                    var point = new Vector2(x, y);
+                    var hit = board.Pick(board.ToLocal(sprite.ToGlobal(point)));
+                    if (sprite.IsPixelOpaque(point))
+                    {
+                        Require(hit == TacticalHit.Object(new(11, 7)), "Every unobscured fallback body pixel must select its canonical structure, not ground behind it.");
+                        opaqueHits++;
+                    }
+                    else
+                    {
+                        Require(hit != TacticalHit.Object(new(11, 7)), "Transparent fallback canvas must not intercept pointer selection.");
+                        transparentSamples++;
+                    }
+                }
+            Require(opaqueHits > 0 && transparentSamples > 0 && state.ToJsonString() == before,
+                "Fallback picking covers opaque and transparent samples without mutating canonical state.");
+            var dead = state.DeepClone().AsObject();
+            dead["structures"]![0]!["hp"] = 0;
+            dead["structures"]![0]!["disabled"] = true;
+            var deadBefore = dead.ToJsonString();
+            board.RenderState(dead);
+            node = DynamicNodes(board).Single(value => value.HasMeta("structure_id"));
+            Require(node.GetNode<Sprite2D>("RuleDerivedStructure").Visible == false
+                && node.GetChildren().OfType<PaintedSurface>().Any(),
+                "Destroyed unbound structures retain the existing projected surface body, not a standing blocker.");
+            Require(dead.ToJsonString() == deadBefore, "Destroyed fallback projection remains read-only.");
+        }
+        finally { board.Free(); }
+    }
+
     private void CheckCatalogBinding(AssetCatalog assets, JsonArray authoringPacks)
     {
         var customPacks = (JsonArray)authoringPacks.DeepClone();
@@ -53,6 +115,7 @@ public partial class DynamicStateChecks : Node
             return;
         }
         CheckCatalogBinding(assets, packs);
+        CheckUnboundStructurePicking(engine);
         CheckPaintedOccluders(packs);
         PaintedPickingChecks.CheckAdmission(Require);
         PaintedPickingChecks.CheckOpenMouth(this, Require);
@@ -105,9 +168,17 @@ public partial class DynamicStateChecks : Node
             }
             if (id == "c01-15")
             {
+                // The shared dynamic fixture is intentionally groundless; this diagnostic belongs to the real ground renderer.
+                board.ConfigureGround(rendering.Ground);
+                board.RenderState(state);
+                Require(board.Diagnostics.Contains("No authored ground outline: canonical rectangular field is rendered; generic perimeter backdrop remains unmigrated.")
+                    && board.RenderingIssueCount == 0,
+                    "Intentional rectangular ground fallback remains diagnostic evidence, not a missing-art notice.");
                 var mother = DynamicNodes(board).Single(node => node.HasMeta("structure_id"));
-                Require(mother.GetMeta("rule_derived").AsBool() && mother.GetMeta("max_hp").AsDouble() == 500,
-                    "Mother-root must use its source rule-derived drawing and canonical 500 HP");
+                Require(!mother.GetMeta("rule_derived").AsBool() && mother.GetMeta("max_hp").AsDouble() == 500
+                    && mother.GetChildren().OfType<Sprite2D>().Any(sprite => sprite.Texture is AtlasTexture)
+                    && !mother.HasNode("RuleDerivedStructure"),
+                    "Mother-root must use its bound atlas sprite rather than the gray fallback, retaining canonical 500 HP");
             }
             if (id == "c01-01")
             {

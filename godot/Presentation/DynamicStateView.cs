@@ -118,9 +118,11 @@ public sealed class DynamicStateView
                 else
                 {
                     var fallback = Svg(StructureMarkup(structure, definition, active ? color : null), "RuleDerivedStructure");
+                    // Svg's uncentered pixel offset anchors (16, 31) at the canonical contact.
+                    // Register that same physical point for standing-depth and pointer geometry.
+                    SpriteGroundContact.Attach(fallback, -fallback.Offset);
                     node.AddChild(fallback);
-                    if (surface)
-                        groundSprite = fallback;
+                    groundSprite = fallback;
                 }
                 if (active && (asset is not null || definition.GetProperty("targetable").GetBoolean()))
                 {

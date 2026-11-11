@@ -1311,6 +1311,11 @@ public partial class BattleScreenChecks : Node
             screen.ConfigureGround(rendering.Ground);
             Require(screen.Board.RenderingIssueCount > 0 && screen.Board.Diagnostics.Any(value => value.Contains("c01.roderick", StringComparison.Ordinal)),
                 "Unavailable actor art remains explicitly diagnosed without changing canonical units.");
+            Require(screen.Board.RenderingIssueCount == screen.Board.Diagnostics.Count(message => message is not
+                "Authored scene is marked runtimeReady=false in the source document." and not
+                "Environment catalog is marked runtimeReady=false in the source document." and not
+                "No authored ground outline: canonical rectangular field is rendered; generic perimeter backdrop remains unmigrated."),
+                "Only documented non-error scene metadata and intentional ground fallback are excluded; missing actor artwork remains counted.");
             Require(Descendants(screen).OfType<Label>().Any(label => label.Text == text.Format("ui.battle.artwork_issues", screen.Board.RenderingIssueCount))
                 && !Descendants(screen).OfType<Control>().Any(control => control.TooltipText.Contains("c01.roderick", StringComparison.Ordinal)),
                 "The actual board notice uses injected wording and never exposes raw resource diagnostics in a tooltip.");

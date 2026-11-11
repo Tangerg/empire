@@ -169,11 +169,47 @@ public partial class PresentationChecks : Node
         board.RenderState(state);
     }
 
+    private static void CheckMotherRootArt(AssetCatalog assets)
+    {
+        var environment = EnvironmentCatalog.Load();
+        foreach (var (state, cellId, frame) in new[]
+        {
+            (StructureVisualState.Normal, "oak-ancient", "normal"),
+            (StructureVisualState.Captured, "oak-ancient", "normal"),
+            (StructureVisualState.Damaged, "stump-hollow", "damaged"),
+            (StructureVisualState.Disabled, "stump-hollow", "damaged"),
+            (StructureVisualState.Destroyed, "stump-low", "destroyed")
+        })
+        {
+            var art = assets.ResolveStructure("c01.mother-root", state)
+                ?? throw new InvalidOperationException("The protected mother root requires authored lifecycle art.");
+            var source = environment.ResolveCell(cellId);
+            var index = AssetCatalog.FrameIndex(art.Asset, art.Frame);
+            var expectedRegion = new Rect2(source.Index % source.Columns * source.CellWidth * source.PixelDensity,
+                source.Index / source.Columns * source.CellHeight * source.PixelDensity,
+                source.CellWidth * source.PixelDensity, source.CellHeight * source.PixelDensity);
+            Require(art.Frame == frame && art.Depth == BoardDepthLayer.Standing
+                && art.Asset.ResourcePath == source.ResourcePath && art.Asset.RegionAt(index) == expectedRegion
+                && art.Asset.AnchorAt(index).IsEqualApprox(source.Anchor * source.PixelDensity),
+                "Mother-root lifecycle uses the existing forest atlas pixels and exact authored contact, not a gray fallback or copied bitmap.");
+            var sprite = assets.CreateSprite(art.Asset, art.Frame);
+            try
+            {
+                Require(sprite.Texture is AtlasTexture texture && texture.Region == expectedRegion
+                    && sprite.Scale == new Vector2(.5f, .5f)
+                    && SpriteGroundContact.Offset(sprite).IsEqualApprox(Vector2.Zero),
+                    "Mother-root atlas regions preserve logical scale and ground registration across lifecycle states.");
+            }
+            finally { sprite.Free(); }
+        }
+    }
+
     private void Check()
     {
         CheckDepthBands();
         ActorFrameRegionChecks.Run();
         var assets = AssetCatalog.Load();
+        CheckMotherRootArt(assets);
         var bindings = PresentationJson.Load<ArtBindings>("res://data/art-bindings.json");
         foreach (var (unitType, binding) in bindings.Units)
         {
