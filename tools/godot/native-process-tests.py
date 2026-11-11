@@ -129,14 +129,16 @@ else:
         result, calls = self.aggregate("clean")
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn(SUCCESS, result.stdout)
-        self.assertEqual(len(calls), 32)
+        self.assertEqual(len(calls), 33)
         self.assertIn("--editor", calls[0]["args"])
         scenes = calls[1:]
-        self.assertEqual(len({call["data"] for call in scenes}), 31)
+        self.assertEqual(len({call["data"] for call in scenes}), 32)
         self.assertTrue(all(Path(call["data"]).is_dir() for call in scenes))
         self.assertNotIn(calls[0]["data"], {call["data"] for call in scenes})
         by_scene = {next(arg for arg in call["args"] if arg.endswith(".tscn")): call for call in scenes}
-        self.assertEqual(len(by_scene), 31)
+        self.assertEqual(len(by_scene), 32)
+        self.assertEqual(by_scene["res://Scenes/ReadyUnitNavigationChecks.tscn"]["args"][-1],
+                         "res://Scenes/ReadyUnitNavigationChecks.tscn")
         self.assertEqual(by_scene["res://Scenes/LightingChecks.tscn"]["args"][-2:],
                          ["--", f"--lighting-oracle={self.root}/godot/tests/oracle/lighting.json"])
         self.assertEqual(by_scene["res://Scenes/SceneryChecks.tscn"]["args"][-2:],
@@ -151,7 +153,7 @@ else:
         self.environment.pop("EMPIRE_CAMPAIGN_TIMEOUT_SECONDS")
         result, calls = self.aggregate("clean")
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertEqual(len(calls), 32)
+        self.assertEqual(len(calls), 33)
         self.assertIn("res://Scenes/CampaignPlayedFlowChecks.tscn", calls[-1]["args"])
         self.assertEqual(calls[-1]["budget"], "2400")
         self.assertTrue(all(call["budget"] == "900" for call in calls[:-1]))
