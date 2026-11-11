@@ -1,0 +1,1256 @@
+[
+  {
+    "id": 1,
+    "type": "c01.laiya",
+    "x": 422.6205,
+    "y": 308.00003,
+    "art": "laiya-stage01",
+    "source": {
+      "textureSize": [
+        524,
+        725
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        524,
+        725
+      ],
+      "scale": [
+        0.0977654,
+        0.0977654
+      ],
+      "canvasAxisLengths": [
+        0.12220675,
+        0.12220675
+      ],
+      "alphaBounds": [
+        96,
+        111,
+        352,
+        470
+      ],
+      "alphaScreenBounds": [
+        400.98993,
+        250.68506,
+        43.016754,
+        57.437164
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        106,
+        145
+      ],
+      "atlasRegion": null,
+      "scale": [
+        5.1142836,
+        5.1142836
+      ],
+      "canvasAxisLengths": [
+        0.62499994,
+        0.62499994
+      ],
+      "alphaBounds": [
+        20,
+        23,
+        69,
+        98
+      ],
+      "alphaScreenBounds": [
+        400.7455,
+        250.50003,
+        43.125,
+        61.25
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "type": "c01.swordsman",
+    "x": 649.04895,
+    "y": 257.09793,
+    "art": "torren-breathe-v1",
+    "source": {
+      "textureSize": [
+        314,
+        399
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        314,
+        399
+      ],
+      "scale": [
+        0.093,
+        0.093
+      ],
+      "canvasAxisLengths": [
+        0.11625,
+        0.11625
+      ],
+      "alphaBounds": [
+        7,
+        6,
+        300,
+        387
+      ],
+      "alphaScreenBounds": [
+        632.8902,
+        212.22543,
+        34.875,
+        44.98874
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        66,
+        89
+      ],
+      "atlasRegion": null,
+      "scale": [
+        5.3763437,
+        5.3763437
+      ],
+      "canvasAxisLengths": [
+        0.62499994,
+        0.62499994
+      ],
+      "alphaBounds": [
+        7,
+        2,
+        56,
+        78
+      ],
+      "alphaScreenBounds": [
+        632.79895,
+        212.09793,
+        35,
+        48.75
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "type": "c01.archer",
+    "x": 522.9779,
+    "y": 386.84317,
+    "art": "archer-breathe-v1",
+    "source": {
+      "textureSize": [
+        352,
+        545
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        352,
+        545
+      ],
+      "scale": [
+        0.072,
+        0.072
+      ],
+      "canvasAxisLengths": [
+        0.089999996,
+        0.089999996
+      ],
+      "alphaBounds": [
+        7,
+        6,
+        338,
+        532
+      ],
+      "alphaScreenBounds": [
+        510.0179,
+        340.58316,
+        30.420013,
+        47.880005
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        66,
+        91
+      ],
+      "atlasRegion": null,
+      "scale": [
+        6.9444447,
+        6.9444447
+      ],
+      "canvasAxisLengths": [
+        0.625,
+        0.625
+      ],
+      "alphaBounds": [
+        9,
+        2,
+        52,
+        80
+      ],
+      "alphaScreenBounds": [
+        507.9779,
+        340.59317,
+        32.5,
+        50
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "type": "c01.gravekeeper",
+    "x": 356.1921,
+    "y": 359.8076,
+    "art": "gravekeeper-breathe-v1",
+    "source": {
+      "textureSize": [
+        431,
+        502
+      ],
+      "atlasRegion": [
+        852,
+        0,
+        431,
+        502
+      ],
+      "scale": [
+        0.0792,
+        0.0792
+      ],
+      "canvasAxisLengths": [
+        0.099,
+        0.099
+      ],
+      "alphaBounds": [
+        15,
+        14,
+        401,
+        473
+      ],
+      "alphaScreenBounds": [
+        334.8081,
+        313.4756,
+        39.699005,
+        46.826996
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        71,
+        93
+      ],
+      "atlasRegion": null,
+      "scale": [
+        6.3131313,
+        6.3131313
+      ],
+      "canvasAxisLengths": [
+        0.625,
+        0.625
+      ],
+      "alphaBounds": [
+        3,
+        4,
+        65,
+        80
+      ],
+      "alphaScreenBounds": [
+        334.3171,
+        313.5576,
+        40.625,
+        50
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "type": "c01.roderick",
+    "x": 596.19214,
+    "y": 361.1658,
+    "art": "roderick-stage01",
+    "source": {
+      "textureSize": [
+        512,
+        725
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        512,
+        725
+      ],
+      "scale": [
+        0.0986842,
+        0.0986842
+      ],
+      "canvasAxisLengths": [
+        0.12335525,
+        0.12335525
+      ],
+      "alphaBounds": [
+        43,
+        126,
+        443,
+        458
+      ],
+      "alphaScreenBounds": [
+        570.6576,
+        307.9997,
+        54.646362,
+        56.496704
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        104,
+        146
+      ],
+      "atlasRegion": null,
+      "scale": [
+        5.066667,
+        5.066667
+      ],
+      "canvasAxisLengths": [
+        0.62499994,
+        0.62499994
+      ],
+      "alphaBounds": [
+        10,
+        26,
+        88,
+        91
+      ],
+      "alphaScreenBounds": [
+        570.56714,
+        308.0408,
+        55,
+        56.875
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "type": "c01.archer",
+    "x": 707.9768,
+    "y": -7.394287,
+    "art": "archer-breathe-v1",
+    "source": {
+      "textureSize": [
+        352,
+        545
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        352,
+        545
+      ],
+      "scale": [
+        0.072,
+        0.072
+      ],
+      "canvasAxisLengths": [
+        0.089999996,
+        0.089999996
+      ],
+      "alphaBounds": [
+        7,
+        6,
+        338,
+        532
+      ],
+      "alphaScreenBounds": [
+        695.0168,
+        -53.654285,
+        30.420044,
+        47.879997
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        66,
+        91
+      ],
+      "atlasRegion": null,
+      "scale": [
+        6.9444447,
+        6.9444447
+      ],
+      "canvasAxisLengths": [
+        0.625,
+        0.625
+      ],
+      "alphaBounds": [
+        9,
+        2,
+        52,
+        80
+      ],
+      "alphaScreenBounds": [
+        692.9768,
+        -53.644287,
+        32.5,
+        50
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "type": "c01.banner-guard",
+    "x": 695.12,
+    "y": 126.89996,
+    "art": "C01-FFV1-UNIT-BANNER-GUARD",
+    "source": {
+      "textureSize": [
+        575,
+        725
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        575,
+        725
+      ],
+      "scale": [
+        0.1014493,
+        0.1014493
+      ],
+      "canvasAxisLengths": [
+        0.12681162,
+        0.12681162
+      ],
+      "alphaBounds": [
+        130,
+        127,
+        332,
+        447
+      ],
+      "alphaScreenBounds": [
+        679.9026,
+        72.11734,
+        42.10144,
+        56.6848
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        119,
+        150
+      ],
+      "atlasRegion": null,
+      "scale": [
+        4.9285703,
+        4.9285703
+      ],
+      "canvasAxisLengths": [
+        0.625,
+        0.625
+      ],
+      "alphaBounds": [
+        27,
+        27,
+        68,
+        94
+      ],
+      "alphaScreenBounds": [
+        679.495,
+        71.89996,
+        42.5,
+        58.75
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "type": "c01.banner-guard",
+    "x": 335.83472,
+    "y": 281.41708,
+    "art": "C01-FFV1-UNIT-BANNER-GUARD",
+    "source": {
+      "textureSize": [
+        575,
+        725
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        575,
+        725
+      ],
+      "scale": [
+        0.1014493,
+        0.1014493
+      ],
+      "canvasAxisLengths": [
+        0.12681162,
+        0.12681162
+      ],
+      "alphaBounds": [
+        130,
+        127,
+        332,
+        447
+      ],
+      "alphaScreenBounds": [
+        320.6173,
+        226.63446,
+        42.10147,
+        56.684784
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        119,
+        150
+      ],
+      "atlasRegion": null,
+      "scale": [
+        4.9285703,
+        4.9285703
+      ],
+      "canvasAxisLengths": [
+        0.625,
+        0.625
+      ],
+      "alphaBounds": [
+        27,
+        27,
+        68,
+        94
+      ],
+      "alphaScreenBounds": [
+        320.20972,
+        226.41708,
+        42.5,
+        58.75
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "type": "c01.archer",
+    "x": 762.2631,
+    "y": 231.64694,
+    "art": "archer-breathe-v1",
+    "source": {
+      "textureSize": [
+        352,
+        545
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        352,
+        545
+      ],
+      "scale": [
+        0.072,
+        0.072
+      ],
+      "canvasAxisLengths": [
+        0.089999996,
+        0.089999996
+      ],
+      "alphaBounds": [
+        7,
+        6,
+        338,
+        532
+      ],
+      "alphaScreenBounds": [
+        749.3031,
+        185.38695,
+        30.420044,
+        47.87999
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        66,
+        91
+      ],
+      "atlasRegion": null,
+      "scale": [
+        6.9444447,
+        6.9444447
+      ],
+      "canvasAxisLengths": [
+        0.625,
+        0.625
+      ],
+      "alphaBounds": [
+        9,
+        2,
+        52,
+        80
+      ],
+      "alphaScreenBounds": [
+        747.2631,
+        185.39694,
+        32.5,
+        50
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "type": "c01.legion-shield",
+    "x": 489.04898,
+    "y": 256.19244,
+    "art": "C01-FFV1-UNIT-LEGION-SHIELD",
+    "source": {
+      "textureSize": [
+        528,
+        724
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        528,
+        724
+      ],
+      "scale": [
+        0.1041667,
+        0.1041667
+      ],
+      "canvasAxisLengths": [
+        0.13020837,
+        0.13020837
+      ],
+      "alphaBounds": [
+        103,
+        208,
+        332,
+        344
+      ],
+      "alphaScreenBounds": [
+        468.60626,
+        211.40076,
+        43.229187,
+        44.791687
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        113,
+        154
+      ],
+      "atlasRegion": null,
+      "scale": [
+        4.7999983,
+        4.7999983
+      ],
+      "canvasAxisLengths": [
+        0.62499994,
+        0.62499994
+      ],
+      "alphaBounds": [
+        23,
+        45,
+        70,
+        78
+      ],
+      "alphaScreenBounds": [
+        468.42398,
+        211.19244,
+        43.74997,
+        48.75
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "type": "c01.knight",
+    "x": 649.7637,
+    "y": 413.6525,
+    "art": "C01-FFV1-UNIT-KNIGHT",
+    "source": {
+      "textureSize": [
+        528,
+        725
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        528,
+        725
+      ],
+      "scale": [
+        0.0847458,
+        0.0847458
+      ],
+      "canvasAxisLengths": [
+        0.10593225,
+        0.10593225
+      ],
+      "alphaBounds": [
+        63,
+        161,
+        356,
+        415
+      ],
+      "alphaScreenBounds": [
+        628.04755,
+        371.9152,
+        37.711914,
+        43.961884
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        93,
+        126
+      ],
+      "atlasRegion": null,
+      "scale": [
+        5.899997,
+        5.899997
+      ],
+      "canvasAxisLengths": [
+        0.625,
+        0.625
+      ],
+      "alphaBounds": [
+        12,
+        29,
+        61,
+        73
+      ],
+      "alphaScreenBounds": [
+        627.8887,
+        371.7775,
+        38.125,
+        45.625
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "type": "c01.legion-shield",
+    "x": 1202.2632,
+    "y": 234.13702,
+    "art": "C01-FFV1-UNIT-LEGION-SHIELD",
+    "source": {
+      "textureSize": [
+        528,
+        724
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        528,
+        724
+      ],
+      "scale": [
+        -0.1041667,
+        0.1041667
+      ],
+      "canvasAxisLengths": [
+        0.13020837,
+        0.13020837
+      ],
+      "alphaBounds": [
+        103,
+        208,
+        332,
+        344
+      ],
+      "alphaScreenBounds": [
+        1179.4767,
+        189.34534,
+        43.229248,
+        44.791687
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        113,
+        154
+      ],
+      "atlasRegion": null,
+      "scale": [
+        4.7999983,
+        4.7999983
+      ],
+      "canvasAxisLengths": [
+        0.62499994,
+        0.62499994
+      ],
+      "alphaBounds": [
+        23,
+        45,
+        70,
+        78
+      ],
+      "alphaScreenBounds": [
+        1179.1382,
+        189.13702,
+        43.75,
+        48.75
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "type": "c01.swordsman",
+    "x": 1289.049,
+    "y": 260.71988,
+    "art": "C01-FFV1-UNIT-SWORDSMAN",
+    "source": {
+      "textureSize": [
+        543,
+        725
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        543,
+        725
+      ],
+      "scale": [
+        -0.0847458,
+        0.0847458
+      ],
+      "canvasAxisLengths": [
+        0.10593225,
+        0.10593225
+      ],
+      "alphaBounds": [
+        108,
+        149,
+        319,
+        420
+      ],
+      "alphaScreenBounds": [
+        1270.4049,
+        216.22833,
+        33.79236,
+        44.491547
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        95,
+        126
+      ],
+      "atlasRegion": null,
+      "scale": [
+        5.899997,
+        5.899997
+      ],
+      "canvasAxisLengths": [
+        0.625,
+        0.625
+      ],
+      "alphaBounds": [
+        19,
+        26,
+        55,
+        78
+      ],
+      "alphaScreenBounds": [
+        1270.299,
+        215.71988,
+        34.375,
+        48.75
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "type": "c01.archer",
+    "x": 1301.9058,
+    "y": 156.42563,
+    "art": "archer-breathe-v1",
+    "source": {
+      "textureSize": [
+        352,
+        545
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        352,
+        545
+      ],
+      "scale": [
+        -0.072,
+        0.072
+      ],
+      "canvasAxisLengths": [
+        0.089999996,
+        0.089999996
+      ],
+      "alphaBounds": [
+        7,
+        6,
+        338,
+        532
+      ],
+      "alphaScreenBounds": [
+        1284.4458,
+        110.165634,
+        30.419922,
+        47.87999
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        66,
+        91
+      ],
+      "atlasRegion": null,
+      "scale": [
+        6.9444447,
+        6.9444447
+      ],
+      "canvasAxisLengths": [
+        0.625,
+        0.625
+      ],
+      "alphaBounds": [
+        9,
+        2,
+        52,
+        80
+      ],
+      "alphaScreenBounds": [
+        1284.4058,
+        110.17563,
+        32.5,
+        50
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "type": "c01.cain",
+    "x": 1442.2632,
+    "y": 235.49524,
+    "art": "cain-stage01",
+    "source": {
+      "textureSize": [
+        516,
+        724
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        516,
+        724
+      ],
+      "scale": [
+        -0.0911458,
+        0.0911458
+      ],
+      "canvasAxisLengths": [
+        0.11393225,
+        0.11393225
+      ],
+      "alphaBounds": [
+        55,
+        82,
+        364,
+        495
+      ],
+      "alphaScreenBounds": [
+        1421.0718,
+        181.03561,
+        41.471313,
+        56.39647
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        97,
+        135
+      ],
+      "atlasRegion": null,
+      "scale": [
+        5.4857163,
+        5.4857163
+      ],
+      "canvasAxisLengths": [
+        0.625,
+        0.625
+      ],
+      "alphaBounds": [
+        11,
+        17,
+        67,
+        93
+      ],
+      "alphaScreenBounds": [
+        1421.0132,
+        181.12024,
+        41.875,
+        58.125
+      ]
+    }
+  },
+  {
+    "id": 16,
+    "type": "c01.legion-shield",
+    "x": 861.191,
+    "y": -32.618942,
+    "art": "C01-FFV1-UNIT-LEGION-SHIELD",
+    "source": {
+      "textureSize": [
+        528,
+        724
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        528,
+        724
+      ],
+      "scale": [
+        0.1041667,
+        0.1041667
+      ],
+      "canvasAxisLengths": [
+        0.13020837,
+        0.13020837
+      ],
+      "alphaBounds": [
+        103,
+        208,
+        332,
+        344
+      ],
+      "alphaScreenBounds": [
+        840.7483,
+        -77.41062,
+        43.229126,
+        44.79168
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        113,
+        154
+      ],
+      "atlasRegion": null,
+      "scale": [
+        4.7999983,
+        4.7999983
+      ],
+      "canvasAxisLengths": [
+        0.62499994,
+        0.62499994
+      ],
+      "alphaBounds": [
+        23,
+        45,
+        70,
+        78
+      ],
+      "alphaScreenBounds": [
+        840.566,
+        -77.61894,
+        43.75,
+        48.75
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "type": "c01.swordsman",
+    "x": 1329.7637,
+    "y": 387.50076,
+    "art": "C01-FFV1-UNIT-SWORDSMAN",
+    "source": {
+      "textureSize": [
+        543,
+        725
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        543,
+        725
+      ],
+      "scale": [
+        -0.0847458,
+        0.0847458
+      ],
+      "canvasAxisLengths": [
+        0.10593225,
+        0.10593225
+      ],
+      "alphaBounds": [
+        108,
+        149,
+        319,
+        420
+      ],
+      "alphaScreenBounds": [
+        1311.1196,
+        343.00922,
+        33.79236,
+        44.491547
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        95,
+        126
+      ],
+      "atlasRegion": null,
+      "scale": [
+        5.899997,
+        5.899997
+      ],
+      "canvasAxisLengths": [
+        0.625,
+        0.625
+      ],
+      "alphaBounds": [
+        19,
+        26,
+        55,
+        78
+      ],
+      "alphaScreenBounds": [
+        1311.0137,
+        342.50076,
+        34.375,
+        48.75
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "type": "c01.archer",
+    "x": 1463.3352,
+    "y": 440.44022,
+    "art": "archer-breathe-v1",
+    "source": {
+      "textureSize": [
+        352,
+        545
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        352,
+        545
+      ],
+      "scale": [
+        -0.072,
+        0.072
+      ],
+      "canvasAxisLengths": [
+        0.089999996,
+        0.089999996
+      ],
+      "alphaBounds": [
+        7,
+        6,
+        338,
+        532
+      ],
+      "alphaScreenBounds": [
+        1445.8752,
+        394.1802,
+        30.419922,
+        47.880005
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        66,
+        91
+      ],
+      "atlasRegion": null,
+      "scale": [
+        6.9444447,
+        6.9444447
+      ],
+      "canvasAxisLengths": [
+        0.625,
+        0.625
+      ],
+      "alphaBounds": [
+        9,
+        2,
+        52,
+        80
+      ],
+      "alphaScreenBounds": [
+        1445.8352,
+        394.19022,
+        32.5,
+        50
+      ]
+    }
+  },
+  {
+    "id": 19,
+    "type": "c01.archer",
+    "x": 1529.0488,
+    "y": 262.0781,
+    "art": "archer-breathe-v1",
+    "source": {
+      "textureSize": [
+        352,
+        545
+      ],
+      "atlasRegion": [
+        0,
+        0,
+        352,
+        545
+      ],
+      "scale": [
+        -0.072,
+        0.072
+      ],
+      "canvasAxisLengths": [
+        0.089999996,
+        0.089999996
+      ],
+      "alphaBounds": [
+        7,
+        6,
+        338,
+        532
+      ],
+      "alphaScreenBounds": [
+        1511.5889,
+        215.8181,
+        30.419922,
+        47.87999
+      ]
+    },
+    "figure": {
+      "textureSize": [
+        66,
+        91
+      ],
+      "atlasRegion": null,
+      "scale": [
+        6.9444447,
+        6.9444447
+      ],
+      "canvasAxisLengths": [
+        0.625,
+        0.625
+      ],
+      "alphaBounds": [
+        9,
+        2,
+        52,
+        80
+      ],
+      "alphaScreenBounds": [
+        1511.5488,
+        215.8281,
+        32.5,
+        50
+      ]
+    }
+  }
+]

@@ -67,4 +67,9 @@ across C01/C02 and 21 orders in the C03 opening, with 22,261 flow assertions.
 See [text logs and checksums](../../docs/hud-ready-units-20261111/README.md).
 
 Headless native input and geometry checks are not manual GUI or exported-package
-acceptance. No current screenshot or manual device acceptance is claimed here.
+acceptance. A separate [real-window acceptance](../../docs/hud-ready-units-20261111/gui/README.md)
+now records native mouse/keyboard operation at 960×640, Wait/Undo and zero-ready
+states, AI-turn isolation and turn-2 restoration, plus actual save comparisons
+and four unedited viewport screenshots. This pass found no HUD defect requiring
+another implementation change. Exported-package, audio, and physical touch-device
+acceptance remain outside that evidence.
