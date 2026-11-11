@@ -69,6 +69,7 @@ public partial class CameraIntegrationChecks : Node
             CheckCancellation();
             CheckOutsideTerrain();
             await CheckFollowAndBusyActions();
+            await CheckTransientFeedback();
             await CheckUnmountAndRebind();
             await PaintedPickingChecks.CheckSouthRoad(this, Require);
             GD.Print($"Native camera screen integration passed: {assertions} assertions.");
@@ -777,6 +778,75 @@ public partial class CameraIntegrationChecks : Node
             exit.EmitSignal(Button.SignalName.Pressed);
             await Layout();
             Require(exits == 1, "An old-binding camp button cannot invoke after a rebind");
+        }
+    }
+
+    private async Task CheckTransientFeedback()
+    {
+        // Drive only presentation time explicitly, without wall-clock waits or timer races.
+        screen.SetProcess(false);
+        try
+        {
+            var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+            Bind(session);
+            await Layout();
+            var feedback = (Label)screen.FindChild("BattleFeedback", true, false);
+            var panel = (Control)screen.FindChild("FeedbackPanel", true, false);
+            TacticalSceneInputChecks.Move(screen, session);
+            Require(session.Revision == 1 && screen.IsPresenting && panel.IsVisibleInTree(),
+                "A real accepted movement displays command feedback during presentation.");
+            var message = feedback.Text;
+            screen._Process(10);
+            Require(feedback.Text == message && panel.Visible, "Playback does not consume command feedback reading time.");
+            Settle();
+            var committed = session.GetSnapshot().State.GetRawText();
+            screen._Process(.5);
+            screen.SetApplicationBusy(true);
+            screen._Process(10);
+            screen.SetApplicationBusy(false);
+            Require(feedback.Text == message && panel.Visible, "Application work pauses transient feedback expiry.");
+            ((Button)screen.FindChild("SystemMenuButton", true, false)).EmitSignal(Button.SignalName.Pressed);
+            await Layout();
+            var menu = (PopupPanel)screen.FindChild("SystemMenu", true, false);
+            Require(menu.Visible && !panel.Visible, "The actual system popup suppresses competing command feedback.");
+            screen._Process(10);
+            menu.Hide();
+            await Layout();
+            screen._Process(2);
+            Require(feedback.Text == message && panel.Visible, "Closing a modal preserves the unspent feedback reading time.");
+            screen._Process(.6);
+            Require(feedback.Text.Length == 0 && !feedback.Visible && !panel.Visible && feedback.TooltipText.Length == 0,
+                "Three visible idle seconds clear successful command text, tooltip and obstructing panel.");
+            Require(session.GetSnapshot().State.GetRawText() == committed && session.Revision == 1,
+                "Feedback expiry cannot dispatch commands or change canonical state.");
+
+            screen.ShowFeedback("第一条成功提示", transient: true);
+            screen._Process(2);
+            screen.ShowFeedback("最新成功提示", transient: true);
+            screen._Process(2);
+            Require(feedback.Text == "最新成功提示" && panel.Visible,
+                "A newer transient message receives a fresh full reading interval.");
+            screen._Process(1.1);
+            Require(feedback.Text.Length == 0 && !panel.Visible,
+                "The replacement transient message expires on its own deadline.");
+
+            screen.ShowFeedback("旧成功提示", transient: true);
+            screen._Process(2);
+            screen.ShowFeedback("持久拒绝原因");
+            screen._Process(10);
+            Require(feedback.Text == "持久拒绝原因" && panel.Visible,
+                "A newer persistent reason is not cleared by an older transient deadline.");
+            screen.ShowFeedback("重新绑定前的成功提示", transient: true);
+            Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
+            Require(feedback.Text.Length == 0 && !panel.Visible, "Rebinding immediately clears old feedback.");
+            screen.ShowFeedback("新会话持久提示");
+            screen._Process(10);
+            Require(feedback.Text == "新会话持久提示" && panel.Visible,
+                "An old binding cannot expire feedback owned by the new session.");
+        }
+        finally
+        {
+            screen.SetProcess(true);
         }
     }
 

@@ -24,3 +24,11 @@ Verification: `bash tools/godot/tactical-selection-checks/run.sh` executes origi
 These files alone are not a production or GUI integration claim. Real session projection and BattleScreen/control wiring, end-to-end undo and native Godot interaction acceptance belong to the integrating batch.
 
 At the native screen boundary, Tab/Shift+Tab traverse Godot controls. Enter/Space and arrow keys belong to a focused button; Escape releases that focus without canceling a battlefield preview. Space cycles actors when no button owns focus. A board click releases stale button focus before selecting. System popups own their input and cannot leak shortcuts to the board.
+
+Successful command/undo feedback is transient: the screen shows it for three
+seconds of visible, idle battlefield time, then clears it. Presentation playback,
+application busy work and modal reading pause that countdown. Every new feedback
+message replaces the single countdown; refusals, errors and battle conclusions
+remain persistent by default. Rebind/unmount cannot carry an old countdown into a
+new battle. The screen's existing `_Process` owns this presentation-only lifetime,
+with no timer callbacks, command changes or extra session state.

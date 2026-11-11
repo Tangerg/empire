@@ -51,6 +51,7 @@ public partial class BattleScreen : Control
     private Window? _inputWindow;
     private Label _feedback = null!;
     private PanelContainer _feedbackPanel = null!;
+    private double _feedbackSeconds;
     private Label _eventLog = null!;
     private readonly BattleLog _messages = new();
     public System.Collections.Generic.IReadOnlyList<string> RecentMessages => _messages.Recent();
@@ -152,6 +153,7 @@ public partial class BattleScreen : Control
         _presentationGeneration++;
         _presenting = false;
         _bound = false;
+        _feedbackSeconds = 0;
         _board.CancelPresentation();
     }
 
@@ -170,6 +172,12 @@ public partial class BattleScreen : Control
         if (!_built)
             return;
         RefreshApplicationActions();
+        if (_bound && _feedbackSeconds > 0 && !IsInputBlocked && !HasVisibleWindow && _feedbackPanel.IsVisibleInTree())
+        {
+            _feedbackSeconds = Math.Max(0, _feedbackSeconds - delta);
+            if (_feedbackSeconds == 0)
+                ShowFeedback("");
+        }
         if (_bound && _camera?.ApplyPendingZoom() == true)
             ApplyCamera();
         var zoomBlocked = !_bound || IsInputBlocked || _camera is null;
@@ -470,9 +478,10 @@ public partial class BattleScreen : Control
         _battleLogText.GrabFocus();
     }
 
-    public void ShowFeedback(string message)
+    public void ShowFeedback(string message, bool transient = false)
     {
         BuildInterface();
+        _feedbackSeconds = transient && message.Length > 0 ? 3 : 0;
         _feedback.Text = message;
         _feedback.Visible = message.Length > 0;
         RefreshFeedbackVisibility();

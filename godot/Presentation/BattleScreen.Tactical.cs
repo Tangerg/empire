@@ -207,7 +207,7 @@ public partial class BattleScreen
         var result = request.Kind == TacticalRequestKind.Undo
             ? _session.Undo(request.Stamp.Revision)
             : _session.Dispatch(request.Action ?? throw new InvalidOperationException("Action request lacks its canonical payload."), request.Stamp.Revision);
-        ShowFeedback(result.Message);
+        ShowFeedback(result.Message, transient: result.Accepted);
         if (!result.Accepted)
             AppendMessage(_text.Format("feedback.battle.refused", result.Message));
         else if (request.Kind == TacticalRequestKind.Undo)
