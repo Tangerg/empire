@@ -25036,7 +25036,12 @@
                   "id": "score-names",
                   "type": "score",
                   "variable": "names",
-                  "atLeast": 3
+                  "atLeast": 3,
+                  "targetZones": [
+                    "name-a",
+                    "name-b",
+                    "name-c"
+                  ]
                 },
                 {
                   "id": "eliminate-colossus",

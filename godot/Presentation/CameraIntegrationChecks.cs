@@ -92,7 +92,7 @@ public partial class CameraIntegrationChecks : Node
         var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>().ToArray();
         var originalSize = screen.Size;
         screen.Size = new Vector2(960, 640);
-        foreach (var id in new[] { "c01-02", "c01-07" })
+        foreach (var id in new[] { "c01-02", "c01-07", "c01-11" })
         {
             var scenario = levels.Single(value => value["id"]!.GetValue<string>() == id);
             var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), scenario);
@@ -102,7 +102,7 @@ public partial class CameraIntegrationChecks : Node
             var overlay = (BoardOverlay)screen.FindChild("LegalTargets", true, false);
             var rows = hud.Projection!.Sections.Single(section => section.Key == "objectives").Rows
                 .Where(row => row.Intent?.Kind == TacticalHudIntentKind.FocusObjective).ToArray();
-            Require(rows.Length == (id == "c01-02" ? 1 : 2), "Only public active spatial objectives have locate controls.");
+            Require(rows.Length == (id == "c01-07" ? 2 : 1), "Only public active spatial objectives have locate controls.");
             var actor = session.GetTacticalQueries(0).Unit(session.GetTacticalQueries(0).Actors()[0])!;
             screen.SelectHit(TacticalHit.Unit(actor.At, actor.Id));
             await Layout();

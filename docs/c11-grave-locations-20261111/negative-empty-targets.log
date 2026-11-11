@@ -1,0 +1,8 @@
+  Objective target cells: C02 six-cell escort, C07 distinct controls, active lifecycle, detached immutability, extension handler and save/outcome invariance passed.
+FAIL escort mission and AI intent: System.Exception: Authored score locations use canonical zones in declaration order, with duplicate coordinates removed.
+   at EscortChecks.Require(Boolean condition, String label) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Empire.Core.Tests/EscortChecks.cs:line 370
+   at EscortChecks.CheckScoreTargets(BattleEngine engine, String data) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Empire.Core.Tests/EscortChecks.cs:line 243
+   at EscortChecks.MissionAndIntent(String oracleRoot) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Empire.Core.Tests/EscortChecks.cs:line 20
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__17() in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Empire.Core.Tests/Program.cs:line 105
+   at Program.<>c__DisplayClass0_0.<<Main>$>g__Check|0(String name, Action test) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Empire.Core.Tests/Program.cs:line 14
+0 passed; 1 failed

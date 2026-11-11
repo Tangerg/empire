@@ -167,7 +167,7 @@
 | 保护单位 | 已实现 | 仅数据可配 | `protect` |
 | 护送单位到区域 | 已实现 | 仅数据可配 | `escort` |
 | 控制区域 | 已实现 | 仅数据可配 | `control` |
-| 分数或变量互动 | 已实现 | 仅数据可配 | `score`、`interact` |
+| 分数或变量互动 | 已实现 | 分数进度与可选地点定位；互动仍数据可配 | `score` 可声明 `targetZones` 引用 canonical zones；`interact` |
 | 全部、任一、阶段组合 | 已实现 | 仅数据可配 | `all`、`any`、`sequence` |
 | 可选目标和失败包装 | 已实现 | 仅数据可配 | `optional`、`failOn` |
 

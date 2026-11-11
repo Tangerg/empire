@@ -22,12 +22,25 @@ internal static class ReplayChecks
         {
             var battle = engine.CreateBattle(level);
             var recorder = engine.RecordBattle(battle.Snapshot());
+            // Author-declared locator links may change serialized definitions, never battle outcomes.
+            var withoutLocations = level.DeepClone().AsObject();
+            var hasLocations = RemoveLocationDeclarations(withoutLocations);
+            var baseline = hasLocations ? engine.CreateBattle(withoutLocations) : null;
             var count = 0;
             using var trace = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
             while (count < 4096 && battle.Snapshot()["phase"]!.GetValue<string>() != "over")
             {
                 var action = engine.Ai.ChooseAction(battle.Snapshot(), 0.58);
                 var receipt = battle.Dispatch(action);
+                if (baseline is not null)
+                {
+                    var original = baseline.Dispatch(action);
+                    Equal(new JsonArray(original.Events.Select(value => (JsonNode)value.DeepClone()).ToArray()),
+                        new JsonArray(receipt.Events.Select(value => (JsonNode)value.DeepClone()).ToArray()), "Objective location declarations must not change events.");
+                    var projectedState = battle.Snapshot();
+                    RemoveLocationDeclarations(projectedState);
+                    Equal(baseline.Snapshot(), projectedState, "Only author-declared targetZones may differ in battle state.");
+                }
                 trace.AppendData(Encoding.UTF8.GetBytes(EcmaJson.Stringify(new JsonObject
                 {
                     ["action"] = action.DeepClone(),
@@ -44,6 +57,22 @@ internal static class ReplayChecks
             Console.WriteLine($"  AI_TRACE {level["id"]}: {count} steps, action/event/receipt SHA256 {Convert.ToHexString(trace.GetHashAndReset()).ToLowerInvariant()}");
             Console.WriteLine($"  {level["id"]}: {count} legal native actions, state {battle.StateHash}, conclusion {battle.Snapshot()["conclusion"]}, exact save/replay round trip (independent level, not carried-state campaign victory).");
         }
+    }
+
+    private static bool RemoveLocationDeclarations(JsonNode node)
+    {
+        var changed = false;
+        if (node is JsonObject value)
+        {
+            changed = value["type"] is JsonValue kind && kind.TryGetValue<string>(out var type) && type == "score"
+                && value.Remove("targetZones");
+            foreach (var child in value.Select(pair => pair.Value).OfType<JsonNode>())
+                changed |= RemoveLocationDeclarations(child);
+        }
+        else if (node is JsonArray array)
+            foreach (var child in array.OfType<JsonNode>())
+                changed |= RemoveLocationDeclarations(child);
+        return changed;
     }
 
     public static void OwnershipAdmission(string oracleRoot)

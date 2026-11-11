@@ -40,3 +40,16 @@ focus identity, hidden ancestors/leaves, busy rejection and stale rebind callbac
 Non-spatial objectives remain text. This does not add minimaps, automatic camera
 following, campaign balance changes, new art, or route planning. Existing source
 catalog `runtimeReady=false` diagnostics remain explicitly unresolved.
+
+## Authored score locations
+
+A score objective may declare `targetZones` (zone IDs, not copied coordinates).
+The score handler validates references and projects their current canonical cells;
+score evaluation still reads only its variable and threshold. Scenario triggers
+remain the only owners of granting score and their once-only execution ledger.
+This is author-declared task geography, not inference from effect names or UI IDs.
+
+C11 links its three grave-reading zones. The locator marks **all three locations**
+until the score stage finishes; it does not claim to track unread graves. The
+instruction explicitly says to arrive and complete an action. No separate read
+button, new action, trigger scan or second progress counter is introduced.

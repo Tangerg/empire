@@ -17,6 +17,7 @@ internal static class EscortChecks
         var level = Read(Path.Combine(data, "grayflag-campaign-levels.json")).AsArray().OfType<JsonObject>()
             .Single(candidate => Text(candidate, "id") == "c01-02");
         CheckObjectiveTargets(engine, data, level);
+        CheckScoreTargets(engine, data);
         var scene = Read(Path.Combine(data, "scenes/c01-02.json"));
         var registration = Text(scene!, "assembledGroundPath");
         Require(registration == "res://data/scenes/c01-02-layered-ground.json", "C02 formal scene selects its independently layered registration");
@@ -221,6 +222,114 @@ internal static class EscortChecks
             && handlers.Project(engine.Victory.Rules, state, 1, custom).TargetCells.Count == 0,
             "Extension handlers supply target semantics through the same detached projection without kind switches.");
         Console.WriteLine("  Objective target cells: C02 six-cell escort, C07 distinct controls, active lifecycle, detached immutability, extension handler and save/outcome invariance passed.");
+    }
+
+    private static void CheckScoreTargets(BattleEngine engine, string data)
+    {
+        var level = Read(Path.Combine(data, "grayflag-campaign-levels.json")).AsArray().OfType<JsonObject>()
+            .Single(candidate => Text(candidate, "id") == "c01-11").DeepClone().AsObject();
+        JsonObject Score(JsonObject source) => source["players"]!.AsArray().OfType<JsonObject>()
+            .Single(player => Integer(player, "id") == 1)["objectives"]![0]!["objective"]!["objectives"]![0]!.AsObject();
+        Score(level).Remove("targetZones");
+        var noTargets = engine.CreateState(level);
+        ObjectiveProgress Project(JsonObject state) => engine.Victory.Handlers.Project(engine.Victory.Rules, state, 1, Score(state));
+        Require(Project(noTargets).TargetCells.Count == 0, "Scores without authored locations must not infer targets from trigger effects.");
+        Score(level)["targetZones"] = new JsonArray("name-a", "name-b", "name-a", "name-c");
+        var state = engine.CreateState(level);
+        var before = EcmaJson.Stringify(state);
+        var saved = EcmaJson.Stringify(engine.SaveBattle(state, "2026-11-11T00:00:00.000Z"));
+        var expected = new[] { new Coord(5, 3), new Coord(14, 7), new Coord(8, 12) };
+        var projected = Project(state);
+        Require(projected.TargetCells.SequenceEqual(expected), "Authored score locations use canonical zones in declaration order, with duplicate coordinates removed.");
+        Require(projected.Facts.GetRawText() == Project(noTargets).Facts.GetRawText(),
+            "Score location metadata cannot change the score assessment.");
+        Require(EcmaJson.Stringify(state) == before && EcmaJson.Stringify(engine.SaveBattle(state, "2026-11-11T00:00:00.000Z")) == saved,
+            "Score location projection must not mutate canonical state or saved state.");
+        try
+        {
+            ((IList<Coord>)projected.TargetCells)[0] = new(-1, -1);
+            throw new Exception("Score target projection exposed writable coordinates.");
+        }
+        catch (NotSupportedException) { }
+        state["scenario"]!["zones"]!["name-a"]![0]!["x"] = 6;
+        Require(Project(state).TargetCells[0] == new Coord(6, 3) && projected.TargetCells.SequenceEqual(expected),
+            "Score targets follow canonical zone changes while prior projections remain detached.");
+        state["scenario"]!["variables"]!["names"] = 3;
+        engine.Victory.Evaluate(state, _ => { });
+        Require(Project(state).Status == "completed" && Project(state).TargetCells.Count == 0,
+            "A completed score no longer exposes active target cells.");
+        CheckScoreVisitEquivalence(engine, level);
+        Score(level)["targetZones"] = new JsonArray("missing-score-zone");
+        try
+        {
+            engine.CreateState(level);
+            throw new Exception("Unknown score target zone was admitted.");
+        }
+        catch (BattleLevelException error)
+        {
+            Require(error.Message.Contains("missing-score-zone", StringComparison.Ordinal),
+                "Score zone references must be rejected by canonical level admission with the missing identity.");
+        }
+        Console.WriteLine("  Score target cells: optional authored zones, deduplication, canonical updates, immutable projection, admission and completion passed.");
+    }
+
+    private static void CheckScoreVisitEquivalence(BattleEngine engine, JsonObject authored)
+    {
+        // Isolate travel distance only; canonical grave zones, triggers and victory conditions are unchanged.
+        var fixture = authored.DeepClone().AsObject();
+        var initial = engine.CreateState(fixture);
+        var movement = new MovementRules(new(engine.Catalog, engine.Grids));
+        var destination = new Coord(5, 3);
+        var start = movement.Board(initial).Neighbours(destination)
+            .First(cell => movement.Battlefield(initial).Cell(cell).Admits("foot")
+                && Units(initial).All(unit => TacticalQueries.Position(unit) != cell));
+        var seed = fixture["units"]!.AsArray().OfType<JsonObject>().Single(unit => Text(unit, "key") == "campaign-laiya");
+        seed["x"] = start.X;
+        seed["y"] = start.Y;
+        JsonObject Score(JsonObject source) => source["players"]!.AsArray().OfType<JsonObject>()
+            .Single(player => Integer(player, "id") == 1)["objectives"]![0]!["objective"]!["objectives"]![0]!.AsObject();
+        var baselineLevel = fixture.DeepClone().AsObject();
+        Score(baselineLevel).Remove("targetZones");
+        var live = engine.CreateBattle(fixture);
+        var baseline = engine.CreateBattle(baselineLevel);
+        void Dispatch(JsonObject action)
+        {
+            var actual = live.Dispatch(action);
+            var expected = baseline.Dispatch(action);
+            Require(actual.Events.Select(EcmaJson.Stringify).SequenceEqual(expected.Events.Select(EcmaJson.Stringify)),
+                "Score location metadata must leave every canonical movement, trigger and turn event identical.");
+            var state = live.Snapshot();
+            Score(state).Remove("targetZones");
+            Require(EcmaJson.Stringify(state) == EcmaJson.Stringify(baseline.Snapshot()),
+                "Only the authored targetZones declaration may differ between battle states.");
+        }
+        void Move(Coord to)
+        {
+            var state = live.Snapshot();
+            var unit = Units(state).Single(value => Text(value, "key") == "campaign-laiya");
+            var field = movement.ComputeMoveField(state, unit);
+            Require(field.Stops.Contains(movement.Board(state).IndexOf(to)), "Grave visit fixture must use a legal movement stop.");
+            Dispatch(new JsonObject
+            {
+                ["kind"] = "command",
+                ["unit"] = Integer(unit, "id"),
+                ["path"] = TacticalQueries.PathJson(movement.PathTo(field, state, to)!),
+                ["command"] = new JsonObject { ["ability"] = "wait" }
+            });
+        }
+        Move(destination);
+        Require(Number(live.Snapshot()["scenario"]!["variables"]!["names"], "names") == 1,
+            "Completing a genuine move-and-wait at the first grave reads one name.");
+        foreach (var to in new[] { start, destination })
+        {
+            Dispatch(new JsonObject { ["kind"] = "endTurn" });
+            Dispatch(new JsonObject { ["kind"] = "endTurn" });
+            Move(to);
+        }
+        var after = live.Snapshot();
+        Require(Number(after["scenario"]!["variables"]!["names"], "names") == 1
+            && after["scenario"]!["firedTriggerIds"]!.AsArray().Count(value => value!.GetValue<string>() == "name-a") == 1,
+            "Leaving and revisiting a grave in later turns cannot read its name twice.");
     }
 
     private static string Status(JsonObject state) => Text(Player(state, 1)["objectiveStates"]!["escort"]!, "status");

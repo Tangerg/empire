@@ -105,7 +105,13 @@ public static class DefaultObjectives
             var value = context.State["scenario"]!["variables"]![Text(objective, "variable")];
             var facts = new JsonObject { ["current"] = NumericFact(ScoreNumber(value)), ["target"] = objective["atLeast"]!.DeepClone() };
             return new ObjectiveAssessment(ScenarioSelection.Compare(value, "gte", objective["atLeast"]) ? "success" : "pending", facts);
-        }))
+        })
+        {
+            References = ScoreReferences,
+            TargetCells = (context, objective) => ScoreTargetZones(objective)
+                .SelectMany(id => Zone(context.State, id))
+                .Select(cell => new Coord(Integer(cell, "x"), Integer(cell, "y"))).Distinct().ToArray()
+        })
         .Register(new("interact", (context, objective) => new ObjectiveAssessment(
             ScenarioSelection.Compare(context.State["scenario"]!["variables"]![Text(objective, "variable")], "eq", objective["equals"]) ? "success" : "pending", new())))
         .Register(new("all", (context, objective) => Stage(context, objective, false))
@@ -152,6 +158,15 @@ public static class DefaultObjectives
             ? outcomes.Contains("success") ? "success" : outcomes.All(value => value == "failure") ? "failure" : "pending"
             : outcomes.Contains("failure") ? "failure" : outcomes.All(value => value == "success") ? "success" : "pending";
         return Assessment(outcome, ("completed", children.Count(child => context.Status(child) == "completed")), ("total", children.Count));
+    }
+    private static IEnumerable<string> ScoreTargetZones(JsonObject objective) => objective["targetZones"] is null
+        ? [] : Array(objective["targetZones"], "targetZones").Select(zone => Text(zone, "target zone"));
+    private static PayloadReferences ScoreReferences(JsonObject objective)
+    {
+        var references = new PayloadReferences();
+        foreach (var zone in ScoreTargetZones(objective))
+            references.Zone(zone);
+        return references;
     }
     private static IReadOnlyList<Coord> ZoneTargetCells(ObjectiveEvaluationContext context, JsonObject objective) =>
         Zone(context.State, Text(objective, "zone")).Select(cell => new Coord(Integer(cell, "x"), Integer(cell, "y"))).ToArray();
