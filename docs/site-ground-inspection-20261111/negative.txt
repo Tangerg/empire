@@ -1,0 +1,34 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ERROR: System.InvalidOperationException: Clicking the located C07 ground cell pins the site without hunting for a separate facade hitbox.
+   at Empire.Presentation.CameraIntegrationChecks.Require(Boolean condition, String message) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/CameraIntegrationChecks.cs:line 951
+   at Empire.Presentation.CameraIntegrationChecks.CheckObjectiveLocations() in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/CameraIntegrationChecks.cs:line 156
+   at Empire.Presentation.CameraIntegrationChecks._Ready() in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/CameraIntegrationChecks.cs:line 54
+   at: void Empire.Presentation.CameraIntegrationChecks+<_Ready>d__10.MoveNext() (res://Presentation/CameraIntegrationChecks.cs:54)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.CameraIntegrationChecks+<_Ready>d__10.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/CameraIntegrationChecks.cs:54)
+       [2] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [3] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [4] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [5] void System.Threading.Tasks.Task.RunContinuations(object)
+       [6] void System.Threading.Tasks.Task.FinishSlow(bool)
+       [7] bool System.Threading.Tasks.Task.TrySetException(object)
+       [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetException(System.Exception, System.Threading.Tasks.Task`1[TResult]&)
+       [9] void Empire.Presentation.CameraIntegrationChecks+<CheckObjectiveLocations>d__12.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/CameraIntegrationChecks.cs:156)
+       [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [12] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [13] void System.Threading.Tasks.Task.RunContinuations(object)
+       [14] bool System.Threading.Tasks.Task`1.TrySetResult(TResult)
+       [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(System.Threading.Tasks.Task`1[TResult], TResult)
+       [16] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [17] void Empire.Presentation.CameraIntegrationChecks+<Layout>d__13.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/CameraIntegrationChecks.cs:201)
+       [18] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [19] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [20] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+Native process/diagnostic gate failed: CameraNegative (exit 1); /tmp/site-ground-negative.log

@@ -621,12 +621,14 @@ public sealed partial class GrayFlagSession
                     UnitIcon = new(card.Unit, null, S(current, "color"))
                 };
             })));
-        var inspectionCell = selection.Kind is TacticalSelectionKind.Site or TacticalSelectionKind.Recruit or TacticalSelectionKind.Structure
-            ? selection.Destination : cursor;
+        var inspectionHit = selection.Kind is TacticalSelectionKind.Site or TacticalSelectionKind.Recruit or TacticalSelectionKind.Structure
+            && selection.Destination is { } pinnedCell
+                ? selection.InspectionKind == TacticalHitKind.Ground ? TacticalHit.Ground(pinnedCell) : TacticalHit.Object(pinnedCell)
+                : cursorHit;
+        var inspectionCell = inspectionHit?.Cell;
         if (inspectionCell is { } tile && engine.Space.Board(state).Contains(new(tile.X, tile.Y)))
         {
-            var structure = selection.Kind is TacticalSelectionKind.Site or TacticalSelectionKind.Recruit or TacticalSelectionKind.Structure
-                || cursorHit?.Kind == TacticalHitKind.Object
+            var structure = inspectionHit?.Kind == TacticalHitKind.Object
                 ? state["structures"]!.AsArray().OfType<JsonObject>().FirstOrDefault(value => TacticalQueries.Position(value) == new Coord(tile.X, tile.Y))
                 : null;
             if (structure is not null)
@@ -734,8 +736,8 @@ public sealed partial class GrayFlagSession
             busy,
             text.Format("ui.common.close") + "  Esc",
             inspect is not null ? TacticalHit.Unit(new(N(inspect, "x"), N(inspect, "y")), N(inspect, "id"))
-                : inspectionCell is { } subjectCell && sections.Any(section => section.Key is "site" or "structure")
-                    ? TacticalHit.Object(subjectCell) : null,
+                : inspectionCell is not null && sections.Any(section => section.Key is "site" or "structure")
+                    ? inspectionHit : null,
             text.Format("ui.hud.dossier_reading_hint"));
         if (stamp.Revision != revision)
             throw new DomainInvariantException("Battle changed during HUD projection.");

@@ -138,6 +138,36 @@ public partial class CameraIntegrationChecks : Node
                 screen.SetApplicationBusy(false);
                 await Layout();
             }
+            if (id == "c01-07")
+            {
+                screen._UnhandledKeyInput(new InputEventKey { Keycode = Key.Escape, Pressed = true });
+                var granary = rows.Single(row => row.Key == "granary");
+                Buttons(hud).Single(value => value.GetMeta("hud_key", "").AsString() == "objectives/granary")
+                    .EmitSignal(BaseButton.SignalName.Pressed);
+                await Layout();
+                var cell = granary.TargetCells!.Single();
+                var contact = screen.Board.Projection.CellCenter(new(cell.X, cell.Y));
+                Require(screen.Board.Pick(contact) == TacticalHit.Ground(cell),
+                    "The actual painted C07 objective contact is exposed site ground, not its facade.");
+                var point = BoardField(contact);
+                GuiButton(MouseButton.Left, true, point);
+                CapturedButton(MouseButton.Left, false, point);
+                await Layout();
+                Require(screen.Selection is { Kind: TacticalSelectionKind.Site } && screen.Selection.Destination == cell,
+                    "Clicking the located C07 ground cell pins the site without hunting for a separate facade hitbox.");
+                map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = map.Size + Vector2.One });
+                await Layout();
+                Require(hud.Projection!.Sections.Any(section => section.Key == "site")
+                    && hud.Projection.DossierSubject == TacticalHit.Ground(cell),
+                    "Moving from objective ground to its dossier preserves the selected site facts.");
+                ((Button)hud.FindChild("DossierButton", true, false)).EmitSignal(BaseButton.SignalName.Pressed);
+                await Layout();
+                Require(((PopupPanel)hud.FindChild("UnitDossier", true, false)).Visible
+                    && session.GetSnapshot().State.GetRawText() == before && session.Revision == 0,
+                    "The real objective-ground-to-dossier flow reads ownership and capabilities without a command.");
+                ((Button)hud.FindChild("DossierClose", true, false)).EmitSignal(BaseButton.SignalName.Pressed);
+                await Layout();
+            }
             var oldButton = Buttons(hud).First(value => value.GetMeta("hud_key", "").AsString().StartsWith("objectives/")
                 && value.GetMeta("hud_key", "").AsString() != "objectives/disclosure");
             oldButton.EmitSignal(Button.SignalName.Pressed);

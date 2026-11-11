@@ -43,12 +43,53 @@ public partial class TacticalHudChecks : Node
             Require(rows.Any(row => row.Key == "disabled") == disabled && (!disabled || rows[2].Key == "disabled"), "Current disabled state precedes structure capabilities.");
             Require(before == EcmaJson.Stringify(session.Snapshot()), "Inspection ordering cannot mutate canonical state.");
         }
+        // Ground inspection owns terrain facts, never an unhit same-cell structure or actor.
+        var structureSite = state.DeepClone().AsObject();
+        var structureIndex = at.Y * level["width"]!.GetValue<int>() + at.X;
+        structureSite["map"]!["tiles"]![structureIndex] = "castle";
+        structureSite["map"]!["owners"]![structureIndex] = 0;
+        var groundSession = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(structureSite));
+        var groundSelection = new TacticalSelectionController(groundSession.GetTacticalQueries(0));
+        groundSelection.Click(groundSelection.Stamp, TacticalHit.Ground(at));
+        foreach (var hover in new TacticalHit?[] { null, TacticalHit.Object(at) })
+        {
+            var groundHud = groundSession.ProjectHud(groundSelection.Stamp, groundSelection.Selection, hover, null, false);
+            Require(groundHud.Sections.Any(section => section.Key == "site")
+                && groundHud.Sections.All(section => section.Key != "structure")
+                && groundHud.DossierSubject == TacticalHit.Ground(at),
+                "Pinned exposed site ground cannot disclose an unhit colocated structure, even after object hover.");
+        }
+        groundSelection.Back(groundSelection.Stamp);
+        groundSelection.Click(groundSelection.Stamp, TacticalHit.Object(at));
+        Require(groundSession.ProjectHud(groundSelection.Stamp, groundSelection.Selection, null, null, false)
+            .Sections.Any(section => section.Key == "structure"),
+            "A genuine object hit still exposes the structure colocated with a site.");
+        var actor = state["units"]!.AsArray().OfType<JsonObject>().First();
+        var actorCell = new BoardCell(actor["x"]!.GetValue<int>(), actor["y"]!.GetValue<int>());
+        var occupiedSite = state.DeepClone().AsObject();
+        occupiedSite["map"]!["tiles"]![actorCell.Y * level["width"]!.GetValue<int>() + actorCell.X] = "castle";
+        var occupiedSession = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(occupiedSite));
+        var occupiedSelection = new TacticalSelectionController(occupiedSession.GetTacticalQueries(0));
+        occupiedSelection.Click(occupiedSelection.Stamp, TacticalHit.Ground(actorCell));
+        occupiedSelection.Leave(occupiedSelection.Stamp);
+        var occupiedHud = occupiedSession.ProjectHud(occupiedSelection.Stamp, occupiedSelection.Selection, null, occupiedSelection.InspectId, false);
+        Require(occupiedSelection.Selection.Kind == TacticalSelectionKind.Site && occupiedSelection.InspectId is null
+            && occupiedHud.Sections.All(section => section.Key is not ("unit" or "unit-details")),
+            "Exposed site ground never turns same-cell unit occupancy into a unit hit.");
         // A detached recruitment fixture: campaign sites need not offer recruits.
         var site = new BoardCell(0, 0);
         state["map"]!["tiles"]![0] = "castle";
         state["map"]!["owners"]![0] = state["currentPlayer"]!.DeepClone();
         var initial = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(state));
         Require(initial.GetTacticalQueries(0).CanOpenRecruitment(site), "Recruitment fixture is reachable through the existing query.");
+        var groundControl = new TacticalSelectionController(initial.GetTacticalQueries(0));
+        Require(groundControl.Click(groundControl.Stamp, TacticalHit.Ground(site)).Request is null
+            && groundControl.Selection.Kind == TacticalSelectionKind.Site,
+            "Ground-site inspection never implicitly enters recruitment, even on an owned producing cell.");
+        groundControl.Back(groundControl.Stamp);
+        Require(groundControl.Click(groundControl.Stamp, TacticalHit.Object(site)).Request is null
+            && groundControl.Selection.Kind == TacticalSelectionKind.Recruit,
+            "Explicit building interaction retains the existing recruitment path.");
         var recruit = initial.ProjectHud(new(0, 0), new()
         {
             Kind = TacticalSelectionKind.Recruit,
@@ -87,6 +128,10 @@ public partial class TacticalHudChecks : Node
         var home = new BoardCell(38, 23);
         var before = EcmaJson.Stringify(session.Snapshot());
         TacticalHudProjection Hud() => session.ProjectHud(control.Stamp, control.Selection, control.CursorHit, control.InspectId, control.Busy);
+        Require(control.Click(control.Stamp, TacticalHit.Ground(home)).Request is null
+            && control.Selection is { Kind: TacticalSelectionKind.Site, Destination: { X: 38, Y: 23 } },
+            "Clicking the canonical site ground cell pins read-only inspection without requiring a facade hit.");
+        control.Back(control.Stamp);
         Require(control.Click(control.Stamp, TacticalHit.Object(home)).Request is null && control.Selection.Kind == TacticalSelectionKind.Site,
             "The real non-recruiting Redstone home opens inspection, not a recruit panel or a domain command.");
         control.Leave(control.Stamp);

@@ -44,6 +44,8 @@ public sealed record TacticalSelection
     {
         get; init;
     }
+    // A pinned site keeps the actual hit kind; exposed terrain does not reveal object material.
+    public TacticalHitKind InspectionKind { get; init; } = TacticalHitKind.Object;
     public IReadOnlyList<BoardCell> Path { get; init; } = Array.Empty<BoardCell>();
     public IReadOnlyList<TacticalTarget> TargetSubjects { get; init; } = Array.Empty<TacticalTarget>();
     public IReadOnlyList<BoardCell> Targets => Array.AsReadOnly(TargetSubjects.Select(target => target.Cell).ToArray());
@@ -253,7 +255,9 @@ public sealed class TacticalSelectionController
         if (unit is not null && queries.HumanTurn && unit.CanAct)
             return Pick(TacticalSelectionKind.Unit, unit.Id);
         if (hit.Kind != TacticalHitKind.Object)
-            return Pick(TacticalSelectionKind.Idle);
+            return hit.Kind == TacticalHitKind.Ground && queries.IsSite(hit.Cell)
+                ? new TacticalSelection { Kind = TacticalSelectionKind.Site, Destination = hit.Cell, InspectionKind = hit.Kind }
+                : Pick(TacticalSelectionKind.Idle);
         return queries.HumanTurn && queries.CanOpenRecruitment(hit.Cell)
             ? new TacticalSelection { Kind = TacticalSelectionKind.Recruit, Destination = hit.Cell }
             : queries.IsSite(hit.Cell)
