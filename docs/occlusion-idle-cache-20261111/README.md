@@ -64,6 +64,9 @@ not a complete campaign playthrough. No private saves/screenshots are included.
 Checkpoint: build (0 warnings/errors), formatting, indexed source metadata,
 76 catalog boundary assertions and PresentationChecks (including all 193 forced
 fresh comparisons) pass. Negative control exits 1 at the expected assertion.
-DynamicState, PaintedSurface, Animation and BattleScreen checks are still running
-at this checkpoint; their final status will be appended separately. The full
-sixteen-scene aggregate is not claimed by this focused performance change.
+Final focused regressions also pass under the strict native process/diagnostic
+gate: DynamicState (750 assertions), PaintedSurface, Animation (8257 assertions,
+including finite animation/cancellation/reduced-motion behavior), and BattleScreen.
+Each uses isolated XDG_DATA_HOME; the wrapper timeout was 900 seconds. No forced
+termination was required. The full sixteen-scene aggregate was not run, and no
+remote CI result is claimed by this focused performance change.
