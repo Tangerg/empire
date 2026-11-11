@@ -1,0 +1,96 @@
+{
+  "status": "pass-read-only-data-and-atlas-integration",
+  "baseline": "9dc658041886002d35f9b89647a701852d6a2047",
+  "exactJsonDelta": "One generic keeper hit binding, one appearance, one finite clip; all other JSON values equal baseline.",
+  "runtimeAtlasSha256": "412f0aca8abefd0ce039c24fedeb0ef283d60fef207cc16430b2b126564ae5d0",
+  "runtimeAtlasEqualsAcceptedOriginalExtraction": true,
+  "runtimeScale": 0.0688,
+  "clip": {
+    "unit": "milliseconds",
+    "appearanceId": "gravekeeper-recoil-v1",
+    "frames": [
+      {
+        "frame": "recoil-onset",
+        "span": 40
+      },
+      {
+        "frame": "recoil-peak",
+        "span": 110
+      },
+      {
+        "frame": "recoil-recover",
+        "span": 90
+      },
+      {
+        "frame": "recoil-ready",
+        "span": 80
+      }
+    ]
+  },
+  "frameRegions": [
+    [
+      0,
+      0,
+      478,
+      574
+    ],
+    [
+      478,
+      0,
+      531,
+      572
+    ],
+    [
+      1009,
+      0,
+      490,
+      575
+    ],
+    [
+      1499,
+      0,
+      466,
+      576
+    ]
+  ],
+  "frameAnchors": [
+    [
+      244,
+      553
+    ],
+    [
+      282,
+      550
+    ],
+    [
+      248,
+      553
+    ],
+    [
+      241,
+      554
+    ]
+  ],
+  "modifiedTrackedFiles": [
+    "godot/Presentation/AnimationArcherRecoilChecks.cs",
+    "godot/Presentation/AnimationChecks.cs",
+    "godot/Presentation/AnimationGravekeeperCastChecks.cs",
+    "godot/Presentation/AnimationGravekeeperIdleChecks.cs",
+    "godot/Presentation/AnimationReactionChecks.cs",
+    "godot/data/art-bindings.json",
+    "godot/data/selected-assets.json"
+  ],
+  "newFiles": [
+    "godot/Presentation/AnimationGravekeeperRecoilChecks.cs",
+    "godot/Presentation/AnimationGravekeeperRecoilChecks.cs.uid",
+    "godot/assets/painted-actions-v1/gravekeeper-recoil-v1.png",
+    "godot/assets/painted-actions-v1/gravekeeper-recoil-v1.png.import"
+  ],
+  "focusedTestSha256": "a8e1a30e03fac21e94cb528ff88abf2c9d8b98bd8dae7ddf38007ef9e59596ce",
+  "focusedEntryPointCount": 1,
+  "newScriptUidUnique": true,
+  "limits": [
+    "No build, import, Godot game process or runtime tests executed by this reviewer.",
+    "Source review is not native gameplay, full-gate or performance acceptance."
+  ]
+}

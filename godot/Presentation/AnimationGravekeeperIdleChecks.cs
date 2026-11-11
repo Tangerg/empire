@@ -204,7 +204,8 @@ public partial class AnimationChecks
             MainAttackScope(attacker, state["units"]![0]!.AsObject(), "c01.border-blade", Strike("attack", Int(attacker, "id"), id))));
         await Tick(board, .08);
         var sprite = Actor(board, id).GetNode<Sprite2D>("AuthoredSprite");
-        CheckClipSprite(sprite, original, 0, sprite.Scale.X < 0 ? -1 : 1);
+        var recoil = assets.ResolveUnitClip("c01.gravekeeper", "hit", ActorClipUnit.Milliseconds);
+        CheckClipSprite(sprite, recoil.Asset, 0, sprite.Scale.X < 0 ? -1 : 1);
         await Drain(board, hit);
         CheckGravekeeperIdleActor(board, id, Actor(board, id).Position, 0);
 

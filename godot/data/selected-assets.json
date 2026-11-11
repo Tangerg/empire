@@ -423,6 +423,28 @@
           "span": 700
         }
       ]
+    },
+    "gravekeeper.recoil": {
+      "unit": "milliseconds",
+      "appearanceId": "gravekeeper-recoil-v1",
+      "frames": [
+        {
+          "frame": "recoil-onset",
+          "span": 40
+        },
+        {
+          "frame": "recoil-peak",
+          "span": 110
+        },
+        {
+          "frame": "recoil-recover",
+          "span": 90
+        },
+        {
+          "frame": "recoil-ready",
+          "span": 80
+        }
+      ]
     }
   },
   "assets": [
@@ -4361,6 +4383,70 @@
         ]
       ],
       "qualityTier": "painted-breathe-v1-reviewed",
+      "textureFilter": "linear"
+    },
+    {
+      "id": "gravekeeper-recoil-v1",
+      "topicId": "C01-UNIT-GRAVEKEEPER",
+      "png": "painted-actions-v1/gravekeeper-recoil-v1.png",
+      "pixelDensity": 1,
+      "frames": 4,
+      "frameOrder": [
+        "recoil-onset",
+        "recoil-peak",
+        "recoil-recover",
+        "recoil-ready"
+      ],
+      "physicalWidth": 1965,
+      "physicalHeight": 576,
+      "resourcePath": "res://assets/painted-actions-v1/gravekeeper-recoil-v1.png",
+      "sha256": "412f0aca8abefd0ce039c24fedeb0ef283d60fef207cc16430b2b126564ae5d0",
+      "presentationScale": 0.0688,
+      "frameRegions": [
+        [
+          0,
+          0,
+          478,
+          574
+        ],
+        [
+          478,
+          0,
+          531,
+          572
+        ],
+        [
+          1009,
+          0,
+          490,
+          575
+        ],
+        [
+          1499,
+          0,
+          466,
+          576
+        ]
+      ],
+      "frameAnchors": [
+        [
+          244,
+          553
+        ],
+        [
+          282,
+          550
+        ],
+        [
+          248,
+          553
+        ],
+        [
+          241,
+          554
+        ]
+      ],
+      "qualityTier": "painted-recoil-v1-reviewed",
       "textureFilter": "linear"
     }
   ]

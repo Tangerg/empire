@@ -1,0 +1,66 @@
+# Shared C01 gravekeeper recoil
+
+This slice replaces only the generic `c01.gravekeeper` hit binding. Field-cleric
+and bridge-cleric inherit this appearance; Mirelle retains her explicit static
+hit. The existing breathing, casting, gait, death and celebration bindings stay
+unchanged. No battle rule, attack preview or runtime animation owner changes.
+
+Four original paintings show recoil onset, peak, recovery and readiness over
+40/110/90/80 ms, totaling 320 ms. The grey-haired keeper retains his beard,
+scarf, dark coat, pouches and flask. His right hand keeps the pointed steel shovel
+and his left keeps the oil lantern. Boots stay planted; shoulders, torso and arms
+react without blood, dropped gear or new magic. These are distinct anatomical
+poses, not translations or rotations of one drawing.
+
+## Source and registration
+
+The source and exact image-tool prompt are preserved. Extraction retains all
+612,081 original RGBA pixels assigned to the four figures and removes 98,383
+detached pixels whose alpha never exceeds 7/255. Every pixel above alpha 16 is
+retained. The 1965×576 runtime atlas has twelve transparent padding pixels around
+each crop, original unmodified pixels, recorded boot-contact anchors and one
+uniform scale of 0.0688. There is no per-pose fit or rescaling.
+
+Both-facing contact sheets and a nonlooping handoff GIF are offline registration
+diagnostics, not real-time gameplay. Independent review accepts their anatomy,
+equipment identity and continuity with the existing breathe/cast artwork. The
+status inside `extraction-review.json` records the original art-only proposal;
+this document records subsequent integration acceptance.
+
+`verify-extraction.py` reproduces exact retained pixels and rejects a one-channel
+mutation. `verify-registration.py` checks the actual PNG, frame geometry, scale,
+anchors and clip intervals. `verify-data-scope.py` proves both production JSON
+files match baseline `9dc6580` after removing only the new appearance, clip and
+keeper hit binding. To reproduce offline review images, pass the repository root
+to `prepare-review.py --reference-root`; this never edits production assets.
+
+## Ownership and timing
+
+The existing receipt clock still owns reaction and impact progress. Positive
+nonhealing drawn-recipient damage selects the finite hit clip. It restores the
+keeper's declared breathing idle at 320 ms; the existing damage feedback remains
+420 ms. A generic source releases at 75 ms, so recoil ends at 395 ms and the
+receipt at 495 ms. A keeper magic source still releases at 300 ms and recovers at
+600 ms; its recipient recovers at 620 ms and the impact finishes at 720 ms.
+Healing and regeneration do not select recoil.
+
+Both attack/counter orders retain their 1215 ms composition. Area receipts stay
+ordered, including a repeated same recipient starting a fresh pose at 495 ms.
+A fatal generic hit still publishes at 495 ms, waits the existing 40 ms fatal
+beat and starts the unchanged 220 ms static death at 535 ms, ending at 755 ms.
+HP zero or a killed flag alone does not create a death action.
+
+Focused tests cover exact half-open frame boundaries, flat/dimetric geometry,
+both facings, source and recipient ownership, attack/counter/support/parting,
+collision/status, zero damage, magic versus healing, area ordering, static death,
+cancellation/rebind/tree exit, coarse steps, reduced motion and hidden actors.
+Synthetic fixtures test presenter contracts, not newly legal battle commands.
+
+## Verification status
+
+Source extraction, independent art/integration review, registration and semantic
+production-data scope pass. The initial native build and editor import pass.
+Formatter and 215 unique script UIDs pass. Complete AnimationChecks pass all
+7,487 assertions with strict exit 0. Deliberate mutation controls, real UI
+recordings and the unchanged full native gate are still pending. This implementation checkpoint is
+not final gameplay acceptance or completion of every keeper action.

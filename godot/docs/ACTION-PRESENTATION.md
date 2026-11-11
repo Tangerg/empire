@@ -272,8 +272,9 @@ a corpse marker nor absence from the final snapshot starts death. Only the
 ordered `death` event starts the explicit `death` clip. Transport passengers have
 no drawn pre-transition actor and receive no invented death presentation.
 
-All maps except Torren's hit/death and C01 archers' hit retain `static.hit` (150 ms) and
-`static.death` (220 ms). Both use the existing trusted idle image.
+Except Torren, C01 archers and the shared C01 gravekeeper, hit maps retain
+`static.hit` (150 ms). Death maps except Torren and C01 archers retain
+`static.death` (220 ms). These static clips use the canonical trusted image.
 The static hit is an authored hold within the existing 420 ms impact; static death retains
 the previous normalized fade and 35% shrink through its explicit
 `death: { "mode": "during-clip" }` policy. These are declared placeholders,
@@ -292,11 +293,19 @@ C01 archers select `archer.recoil`, also four original hit poses over
 40/110/90/80 ms. This intentionally replaces their 150 ms static hold with
 320 ms of anatomical recoil; it remains inside the existing 420 ms impact and
 does not extend command, counterattack or fatal-beat boundaries. It returns to
-`archer.breathe`; all other action bindings, including their 220 ms static death,
-are retained. See the [archer hit review](../../docs/art-archer-hit-20261110/README.md)
+`archer.breathe`; its integration leaves the separately authored fall and
+celebration bindings unchanged. See the [archer hit review](../../docs/art-archer-hit-20261110/README.md)
 for source registration and the current verification status.
 
-Torren alone now selects `torren.fall`: six independently painted collapse poses
+The shared C01 gravekeeper selects `gravekeeper.recoil`: four distinct poses over
+40/110/90/80 ms. It restores `gravekeeper.breathe` after 320 ms without extending
+the existing 420 ms damage feedback. Field-cleric and bridge-cleric inherit this
+hit; Mirelle keeps her explicit static hit. Casting release/recovery, ordered
+counter/area receipts and the keeper's 220 ms static death are unchanged. See the
+[keeper hit review](../../docs/art-gravekeeper-hit-20261111/README.md) for exact
+source registration, ownership tests and current native acceptance status.
+
+Torren selects `torren.fall`: six independently painted collapse poses
 over 620 ms, then `death: { "mode": "after-clip", "fadeMs": 160 }`. The still
 prone pose holds for its last 180 ms interval before fading. See the
 [Torren fall review](../../docs/art-torren-fall-20261110/README.md). In this mode

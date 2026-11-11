@@ -75,6 +75,13 @@ public partial class AnimationChecks
                         "Only the generic C01 archer hit replaces its static placeholder with authored recoil.");
                     continue;
                 }
+                if (type == "c01.gravekeeper" && key is null && action == "hit")
+                {
+                    Require(clip.Asset.Identity == "gravekeeper-recoil-v1" && clip.Length == 320
+                        && clip.FrameAt(0) == 0 && clip.FrameAt(319.999) == 3 && clip.ReleaseMs is null && clip.Death is null,
+                        "The generic C01 gravekeeper selects its authored recoil without replacing other healer appearances.");
+                    continue;
+                }
                 if (key == "campaign-torren" && action == "hit")
                 {
                     Require(clip.Asset.Identity == "torren-recoil-v1" && clip.Length == 320

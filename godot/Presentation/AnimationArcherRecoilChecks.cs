@@ -31,12 +31,12 @@ public partial class AnimationChecks
         foreach (var (type, key) in bindings.Units.Keys.Select(type => (type, (string?)null))
             .Concat(bindings.Actors.Select(pair => (pair.Value.ExpectedUnitType, (string?)pair.Key))))
         {
-            if (type == "c01.archer" && key is null || key == "campaign-torren")
+            if ((type == "c01.archer" || type == "c01.gravekeeper") && key is null || key == "campaign-torren")
                 continue;
             var other = assets.ResolveUnitClip(type, "hit", ActorClipUnit.Milliseconds, key);
             Require(other.Asset == assets.ResolveUnit(type, key) && other.Length == 150
                 && other.FrameAt(0) == other.FrameAt(149.999) && other.ReleaseMs is null,
-                "Every other generic or named actor, including the base archer and Bran, retains its static hit.");
+                "Every remaining generic or named actor, including the base archer, Bran and Mirelle, retains its static hit.");
         }
         var starts = new[] { 0.0, 40, 150, 240 };
         var pictures = new HashSet<string>();

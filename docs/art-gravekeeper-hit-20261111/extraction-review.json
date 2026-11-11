@@ -1,0 +1,168 @@
+{
+  "status": "proposed-art-only-awaiting-independent-and-native-review",
+  "generator": "built-in image_gen",
+  "source": "source-row.png",
+  "sourceSha256": "7d28c53b7b8ea69c56f738cad22153132d13ee55eb15c4c18e76aaf1fb080f75",
+  "sourceRgbaSha256": "d911a03fd31150f1f75d14ba6a6f653e73e85f315497bde8b78f188352f8f085",
+  "sourceDimensions": [
+    2168,
+    725
+  ],
+  "prompt": "prompt-v1.txt",
+  "promptSha256": "a8e23931320c9baf717f81c2bdfe3a1b181679b988c33213067ed53ddea77997",
+  "references": [
+    {
+      "path": "godot/assets/painted-units-v1/unit-gravekeeper-gait-v2.png",
+      "sha256": "fc56281ead32b4ffd70681bdae60a34da721810f2068f7bfab5bc8db63bf8691"
+    },
+    {
+      "path": "godot/assets/painted-actions-v1/gravekeeper-breathe-v1.png",
+      "sha256": "dc0edb5b4f3607b04ad9fbab8d350392ee61c024a712295dc36482da172ce876"
+    },
+    {
+      "path": "godot/assets/painted-actions-v1/gravekeeper-cast-v1.png",
+      "sha256": "d39fd204bd3b6cb01c75f5273cd5e2d5e07a4d9ebcb6e38b72264b79398853f8"
+    }
+  ],
+  "significantComponentAlphaThresholdExclusive": 16,
+  "significantComponentPixelCountExclusive": 1000,
+  "retainedAlphaFringeRadius": 3,
+  "transparentPaddingPixels": 12,
+  "removedPixels": 98383,
+  "maxRemovedAlpha": 7,
+  "originalNonzeroAlphaPixels": 710464,
+  "retainedPixels": 612081,
+  "runtimePng": "gravekeeper-recoil-v1.png",
+  "runtimePngSha256": "412f0aca8abefd0ce039c24fedeb0ef283d60fef207cc16430b2b126564ae5d0",
+  "runtimeRgbaSha256": "a4d7da568b9ff6182dbdf0eb93d44bd30c4da5201fa9f496c9a0a40998d761f4",
+  "runtimeDimensions": [
+    1965,
+    576
+  ],
+  "presentationScale": 0.0688,
+  "frameOrder": [
+    "recoil-onset",
+    "recoil-peak",
+    "recoil-recover",
+    "recoil-ready"
+  ],
+  "playbackFrames": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "playbackSpansMs": [
+    40,
+    110,
+    90,
+    80
+  ],
+  "durationMs": 320,
+  "frames": [
+    {
+      "sourceComponent": 0,
+      "frameName": "recoil-onset",
+      "sourceBounds": [
+        71,
+        85,
+        549,
+        659
+      ],
+      "frameRegion": [
+        0,
+        0,
+        478,
+        574
+      ],
+      "sourceAnchor": [
+        315,
+        638
+      ],
+      "frameAnchor": [
+        244,
+        553
+      ],
+      "retainedPixels": 152670,
+      "pixelSha256": "0a5e5b3a4eb3e9791afd2d9e83b4870a071d1cce10729768d07411684bb06575"
+    },
+    {
+      "sourceComponent": 1,
+      "frameName": "recoil-peak",
+      "sourceBounds": [
+        548,
+        88,
+        1079,
+        660
+      ],
+      "frameRegion": [
+        478,
+        0,
+        531,
+        572
+      ],
+      "sourceAnchor": [
+        830,
+        638
+      ],
+      "frameAnchor": [
+        282,
+        550
+      ],
+      "retainedPixels": 154319,
+      "pixelSha256": "7c74594a3e20991a007b5cfb0b3c1bfbcf40d6d70dad09099c89c5ab593ff914"
+    },
+    {
+      "sourceComponent": 2,
+      "frameName": "recoil-recover",
+      "sourceBounds": [
+        1105,
+        85,
+        1595,
+        660
+      ],
+      "frameRegion": [
+        1009,
+        0,
+        490,
+        575
+      ],
+      "sourceAnchor": [
+        1353,
+        638
+      ],
+      "frameAnchor": [
+        248,
+        553
+      ],
+      "retainedPixels": 151580,
+      "pixelSha256": "d82622d0f8b527598d2017ed60421a955a19bcbe2701e9d14a652e93cfd577e5"
+    },
+    {
+      "sourceComponent": 3,
+      "frameName": "recoil-ready",
+      "sourceBounds": [
+        1647,
+        84,
+        2113,
+        660
+      ],
+      "frameRegion": [
+        1499,
+        0,
+        466,
+        576
+      ],
+      "sourceAnchor": [
+        1888,
+        638
+      ],
+      "frameAnchor": [
+        241,
+        554
+      ],
+      "retainedPixels": 153512,
+      "pixelSha256": "624c48ba1ff19e64ca8859bf33494c419553710a6fcaa2abacbc9000d8d27b19"
+    }
+  ]
+}

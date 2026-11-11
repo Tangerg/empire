@@ -1,0 +1,154 @@
+{
+  "status": "pass-source-extraction-only",
+  "sourceSha256": "7d28c53b7b8ea69c56f738cad22153132d13ee55eb15c4c18e76aaf1fb080f75",
+  "runtimeSha256": "412f0aca8abefd0ce039c24fedeb0ef283d60fef207cc16430b2b126564ae5d0",
+  "reconstructionMethod": "Per-component Euclidean radius-3 binary dilation",
+  "significantComponents": 4,
+  "tinyAbove16ComponentSizes": [
+    1,
+    1,
+    2
+  ],
+  "retainedOriginalRgbaPixels": 612081,
+  "discardedDetachedPixels": 98383,
+  "maxDiscardedAlpha": 7,
+  "everyAbove16AlphaPixelRetained": true,
+  "allOriginalPoseAndAtlasPixelsReconstructedExactly": true,
+  "singleChannelMutationRejected": true,
+  "uniformScale": 0.0688,
+  "frames": [
+    {
+      "index": 0,
+      "name": "recoil-onset",
+      "retainedPixels": 152670,
+      "sourceAnchor": [
+        315,
+        638
+      ],
+      "paddingLTRB": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "nonzeroBoundsFromAnchor": [
+        -232,
+        -541,
+        222,
+        9
+      ],
+      "nativeBoundsFromAnchor": [
+        -15.9616,
+        -37.2208,
+        15.2736,
+        0.6192
+      ],
+      "sha256": "0a5e5b3a4eb3e9791afd2d9e83b4870a071d1cce10729768d07411684bb06575"
+    },
+    {
+      "index": 1,
+      "name": "recoil-peak",
+      "retainedPixels": 154319,
+      "sourceAnchor": [
+        830,
+        638
+      ],
+      "paddingLTRB": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "nonzeroBoundsFromAnchor": [
+        -270,
+        -538,
+        237,
+        10
+      ],
+      "nativeBoundsFromAnchor": [
+        -18.576,
+        -37.0144,
+        16.3056,
+        0.688
+      ],
+      "sha256": "7c74594a3e20991a007b5cfb0b3c1bfbcf40d6d70dad09099c89c5ab593ff914"
+    },
+    {
+      "index": 2,
+      "name": "recoil-recover",
+      "retainedPixels": 151580,
+      "sourceAnchor": [
+        1353,
+        638
+      ],
+      "paddingLTRB": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "nonzeroBoundsFromAnchor": [
+        -236,
+        -541,
+        230,
+        10
+      ],
+      "nativeBoundsFromAnchor": [
+        -16.2368,
+        -37.2208,
+        15.824,
+        0.688
+      ],
+      "sha256": "d82622d0f8b527598d2017ed60421a955a19bcbe2701e9d14a652e93cfd577e5"
+    },
+    {
+      "index": 3,
+      "name": "recoil-ready",
+      "retainedPixels": 153512,
+      "sourceAnchor": [
+        1888,
+        638
+      ],
+      "paddingLTRB": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "nonzeroBoundsFromAnchor": [
+        -229,
+        -542,
+        213,
+        10
+      ],
+      "nativeBoundsFromAnchor": [
+        -15.7552,
+        -37.2896,
+        14.6544,
+        0.688
+      ],
+      "sha256": "624c48ba1ff19e64ca8859bf33494c419553710a6fcaa2abacbc9000d8d27b19"
+    }
+  ],
+  "gifDurationsMs": [
+    700,
+    40,
+    110,
+    90,
+    80,
+    700,
+    700,
+    40,
+    110,
+    90,
+    80,
+    700,
+    500,
+    500,
+    700
+  ],
+  "limits": [
+    "Visual source/registration review is separately documented.",
+    "No runtime test, build, native gameplay, or performance acceptance."
+  ]
+}
