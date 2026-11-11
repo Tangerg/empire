@@ -1,0 +1,30 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+ERROR: System.InvalidOperationException: Opening a retained entry resolves its current section rather than its original binding.
+   at Empire.Presentation.Tactical.DossierFocusChecks.Require(Boolean condition, String message) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/DossierFocusChecks.cs:line 21
+   at Empire.Presentation.Tactical.DossierFocusChecks.CheckNamedEntry() in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/DossierFocusChecks.cs:line 151
+   at Empire.Presentation.Tactical.DossierFocusChecks._Ready() in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/DossierFocusChecks.cs:line 434
+   at: void Empire.Presentation.Tactical.DossierFocusChecks+<_Ready>d__10.MoveNext() (res://Presentation/Tactical/DossierFocusChecks.cs:434)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.Tactical.DossierFocusChecks+<_Ready>d__10.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/DossierFocusChecks.cs:434)
+       [2] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [3] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [4] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [5] void System.Threading.Tasks.Task.RunContinuations(object)
+       [6] void System.Threading.Tasks.Task.FinishSlow(bool)
+       [7] bool System.Threading.Tasks.Task.TrySetException(object)
+       [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetException(System.Exception, System.Threading.Tasks.Task`1[TResult]&)
+       [9] void Empire.Presentation.Tactical.DossierFocusChecks+<CheckNamedEntry>d__6.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/DossierFocusChecks.cs:151)
+       [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [12] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [13] void System.Threading.Tasks.Task.RunContinuations(object)
+       [14] bool System.Threading.Tasks.Task`1.TrySetResult(TResult)
+       [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(System.Threading.Tasks.Task`1[TResult], TResult)
+       [16] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [17] void Empire.Presentation.Tactical.DossierFocusChecks+<Settle>d__2.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/Tactical/DossierFocusChecks.cs:29)
+       [18] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [19] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [20] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+Native process/diagnostic gate failed: DossierNegative (exit 1); /tmp/dossier-entry-negative.log

@@ -74,7 +74,8 @@ public partial class DossierFocusChecks : Node
         await Settle();
         var popup = (PopupPanel)hud.FindChild("UnitDossier", true, false);
         var scroll = (ScrollContainer)hud.FindChild("DetailScroll", true, false);
-        Disclosure("unit-details").ButtonPressed = true;
+        Require(Disclosure("unit-details").ButtonPressed,
+            "A named dossier entry immediately reveals its own section, not an empty collapsed index.");
         Disclosure("stances").ButtonPressed = true;
         await Settle();
         await Tab(popup);
@@ -122,6 +123,49 @@ public partial class DossierFocusChecks : Node
         hud.Free();
         await Settle();
         Require(!GodotObject.IsInstanceValid(hud), "Pending refresh callbacks must not retain or resurrect an unloaded HUD.");
+    }
+
+    private async Task CheckNamedEntry()
+    {
+        var hud = new TacticalHud { Theme = TacticalHudStyle.Create() };
+        AddChild(hud);
+        hud.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+        var intents = 0;
+        hud.IntentRequested += _ => intents++;
+        Button? previous = null;
+        foreach (var key in new[] { "roster", "unit-details", "site", "structure" })
+        {
+            hud.Apply(new(new(1, 1), "", new[]
+            {
+                new TacticalHudSection(key, "Reading " + key, new[]
+                {
+                    new TacticalHudRow("fact", "Read-only information"),
+                    new("action-a", "Do not activate", Intent: new(new(1, 1), TacticalHudIntentKind.Command, "a")),
+                    new("action-b", "Do not activate either", Intent: new(new(1, 1), TacticalHudIntentKind.Command, "b"))
+                })
+            }));
+            await Settle();
+            var opener = (Button)hud.FindChild("DossierButton", true, false);
+            Require(previous is null || ReferenceEquals(previous, opener), "A same-subject refresh retains the native opener.");
+            previous = opener;
+            Require(opener.Text == "Reading " + key, "The retained entry names the currently available section.");
+            opener.EmitSignal(BaseButton.SignalName.Pressed);
+            await Settle();
+            var group = (VBoxContainer)hud.FindChild(key, true, false);
+            var disclosure = group.GetChildren().OfType<Button>()
+                .SingleOrDefault(button => button.GetMeta("hud_key", "").AsString() == key + "/disclosure");
+            Require(disclosure is null || disclosure.ButtonPressed,
+                "Opening a retained entry resolves its current section rather than its original binding.");
+            Require(group.FindChildren("*", "Label", true, false).OfType<Label>()
+                .Any(label => label.IsVisibleInTree() && label.Text == "Read-only information"),
+                "Both collapsible and ordinary dossier sections expose their information immediately.");
+            ((Button)hud.FindChild("DossierClose", true, false)).EmitSignal(BaseButton.SignalName.Pressed);
+            await Settle();
+        }
+        Require(intents == 0, "Opening named information never dispatches a tactical intent.");
+        RemoveChild(hud);
+        hud.Free();
+        await Settle();
     }
 
     private async Task CheckCommittedOrder()
@@ -233,8 +277,11 @@ public partial class DossierFocusChecks : Node
         await Tab(popup);
         var disclosure = ((VBoxContainer)hud.FindChild("unit-details", true, false)).GetChildren().OfType<Button>().Single();
         Require(disclosure.HasFocus(), "Tab still reaches the actual unit disclosure after the reading surface.");
+        Require(disclosure.ButtonPressed, "Opening the named entry already expands the real commander's details.");
         await Press(popup, Key.Enter);
-        Require(disclosure.ButtonPressed, "Native Enter expands the real commander's read-only details.");
+        Require(!disclosure.ButtonPressed, "Native Enter can still collapse the automatically revealed details.");
+        await Press(popup, Key.Enter);
+        Require(disclosure.ButtonPressed, "Native Enter can reopen the real commander's read-only details.");
         await Tab(popup, true);
         Require(scroll.HasFocus(), "Reverse Tab returns to continuous reading without activating an order.");
         await Press(popup, Key.Pagedown);
@@ -273,6 +320,12 @@ public partial class DossierFocusChecks : Node
         await Settle();
         Require(scroll.HasFocus() && scroll.ScrollVertical == offset, "A HUD refresh preserves continuous reading focus and offset.");
         Require(readingHint.Text == projection.ReadingHint + " · 阅读", "A same-stamp projection refresh updates existing reading instructions.");
+        ((Button)hud.FindChild("DossierClose", true, false)).EmitSignal(BaseButton.SignalName.Pressed);
+        await Settle();
+        ((Button)hud.FindChild("DossierButton", true, false)).EmitSignal(BaseButton.SignalName.Pressed);
+        await Settle();
+        Require(scroll.ScrollVertical == offset, "Reopening already expanded details preserves the player's reading position.");
+        await Tab(popup);
         await Press(popup, Key.End);
         Require(scroll.ScrollVertical >= scroll.GetVScrollBar().MaxValue - scroll.GetVScrollBar().Page - 1,
             "End reaches the final dossier section without a mouse.");
@@ -390,6 +443,7 @@ public partial class DossierFocusChecks : Node
     {
         try
         {
+            await CheckNamedEntry();
             await CheckContinuousReading();
             await CheckCommittedOrder();
             await CheckCloseBoundaries();

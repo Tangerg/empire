@@ -220,10 +220,14 @@ public partial class TacticalHud : Control
                         || !GodotObject.IsInstanceValid(button) || button.IsQueuedForDeletion() || !button.IsInsideTree() || !IsAncestorOf(button)
                         || !GodotObject.IsInstanceValid(popup) || popup.IsQueuedForDeletion() || !popup.IsInsideTree() || popup.Visible)
                         return;
-                    if (expandedKey is not null && details.FindChild(expandedKey, true, false) is VBoxContainer section)
+                    var readingKey = expandedKey ?? DossierSection(current)?.Key;
+                    if (readingKey is not null && details.GetNodeOrNull<VBoxContainer>(readingKey) is { } section
+                        && section.GetChildren().OfType<Button>().SingleOrDefault(button =>
+                            button.GetMeta("hud_key", "").AsString() == readingKey + "/disclosure") is { } disclosure)
                     {
-                        section.GetChildren().OfType<Button>().Single().ButtonPressed = true;
-                        detailScroll!.ScrollVertical = 0;
+                        if (expandedKey is not null || !disclosure.ButtonPressed)
+                            detailScroll!.ScrollVertical = 0;
+                        disclosure.ButtonPressed = true;
                     }
                     detailOpenerName = button.Name;
                     detailOpeningStamp = openingStamp;
@@ -480,13 +484,7 @@ public partial class TacticalHud : Control
                 details.MoveChild(group, detailIndex++);
         if (hasDossier)
         {
-            var dossierTitle = (projection.Sections.Any(section => section.Key == "unit")
-                ? projection.Sections.FirstOrDefault(section => section.Key == "unit-details")?.Title
-                : null)
-                ?? projection.Sections.FirstOrDefault(section => section.Key == "site")?.Title
-                ?? projection.Sections.FirstOrDefault(section => section.Key == "structure")?.Title
-                ?? projection.Sections.FirstOrDefault(section => section.Key == "unit-details")?.Title
-                ?? projection.Sections.FirstOrDefault(section => section.Key == "roster")?.Title ?? "";
+            var dossierTitle = DossierSection(projection)?.Title ?? "";
             var dossier = GetNodeOrNull<Button>("DossierButton");
             if (dossier is null)
             {
@@ -907,6 +905,14 @@ public partial class TacticalHud : Control
         label.AddThemeColorOverride("font_color", color);
         return label;
     }
+
+    private static TacticalHudSection? DossierSection(TacticalHudProjection projection) =>
+        (projection.Sections.Any(section => section.Key == "unit")
+            ? projection.Sections.FirstOrDefault(section => section.Key == "unit-details") : null)
+        ?? projection.Sections.FirstOrDefault(section => section.Key == "site")
+        ?? projection.Sections.FirstOrDefault(section => section.Key == "structure")
+        ?? projection.Sections.FirstOrDefault(section => section.Key == "unit-details")
+        ?? projection.Sections.FirstOrDefault(section => section.Key == "roster");
 
     private static int Priority(string key) => key switch
     {
