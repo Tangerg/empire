@@ -132,7 +132,7 @@ public partial class CameraIntegrationChecks : Node
                     "Equal detached target arrays retain the focused objective control during refresh.");
                 button.EmitSignal(Button.SignalName.Pressed);
                 await Layout();
-                Require(overlay.ObjectiveCells.SequenceEqual(row.TargetCells), "A read-only locate button remains repeatable.");
+                Require(overlay.ObjectiveCells.SequenceEqual(row.TargetCells!), "A read-only locate button remains repeatable.");
                 screen.SetApplicationBusy(true);
                 button.EmitSignal(Button.SignalName.Pressed);
                 await Layout();
