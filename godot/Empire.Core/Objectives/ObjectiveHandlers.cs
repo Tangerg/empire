@@ -1,6 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
+using Empire.Core.Geometry;
 using Empire.Core.References;
 using Empire.Core.Registries;
 using Empire.Core.Scenario;
@@ -64,7 +65,13 @@ public sealed class ObjectiveProgress
         get;
     }
 
-    internal ObjectiveProgress(JsonObject objective, string status, string role, JsonElement facts, IEnumerable<ObjectiveProgress> children)
+    public IReadOnlyList<Coord> TargetCells
+    {
+        get;
+    }
+
+    internal ObjectiveProgress(JsonObject objective, string status, string role, JsonElement facts, IEnumerable<ObjectiveProgress> children,
+        IEnumerable<Coord> targetCells)
     {
         Id = Text(objective, "id");
         Kind = Text(objective, "type");
@@ -73,6 +80,7 @@ public sealed class ObjectiveProgress
         Definition = EcmaJson.ToElement(objective);
         Facts = facts.Clone();
         Children = System.Array.AsReadOnly(children.ToArray());
+        TargetCells = System.Array.AsReadOnly(targetCells.ToArray());
     }
 }
 
@@ -92,6 +100,10 @@ public sealed record ObjectiveHandler(string Kind, Func<ObjectiveEvaluationConte
 {
     public string Role { get; init; } = "primary";
     public string Refresh { get; init; } = "self";
+    public Func<ObjectiveEvaluationContext, JsonObject, IReadOnlyList<Coord>>? TargetCells
+    {
+        get; init;
+    }
     public Func<JsonObject, IReadOnlyList<JsonObject>>? Children
     {
         get; init;
@@ -125,7 +137,10 @@ public sealed class ObjectiveHandlerRegistry() : KeyedRegistry<ObjectiveHandler,
     public string Evaluate(ObjectiveRules rules, JsonObject state, int owner, JsonObject objective) => Assess(rules, state, owner, objective).Outcome;
     public ObjectiveProgress Project(ObjectiveRules rules, JsonObject state, int owner, JsonObject objective) =>
         new(objective, Status(state, owner, objective), Role(objective), Assess(rules, state, owner, objective).Facts,
-            Children(objective).Select(child => Project(rules, state, owner, child)));
+            Children(objective).Select(child => Project(rules, state, owner, child)),
+            Status(state, owner, objective) == "active"
+                ? Get(Text(objective, "type")).TargetCells?.Invoke(new(rules, state, owner, this), objective) ?? []
+                : []);
     public static string Status(JsonObject state, int owner, JsonObject objective) => objective["id"] is { } id &&
         Object(Player(state, owner)["objectiveStates"], "objective states")[Text(id, "objective id")] is JsonObject runtime ? Text(runtime, "status") : "active";
 }

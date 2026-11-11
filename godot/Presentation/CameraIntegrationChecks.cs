@@ -51,6 +51,8 @@ public partial class CameraIntegrationChecks : Node
             await Layout();
             map = (Control)screen.FindChild("MapArea", true, false);
             world = map.GetNode<Node2D>("World");
+            await CheckObjectiveLocations();
+            Bind(initial);
             var snapshotReads = initial.SnapshotReads;
             map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = Field(new Vector2(10.5f, 15.5f) * 32) });
             map.EmitSignal(Control.SignalName.GuiInput, new InputEventMouseMotion { Position = Field(new Vector2(10.6f, 15.5f) * 32) });
@@ -75,14 +77,92 @@ public partial class CameraIntegrationChecks : Node
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
 
-    private void Bind(ITacticalBattleSession session)
+    private void Bind(ITacticalBattleSession session, JsonObject? scenario = null)
     {
-        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
-        var rendering = BoardSceneRendering.Load(scene, level, engine.CreateState(level)["map"]!.AsObject());
+        var boundLevel = scenario ?? level;
+        var scene = AuthoredScene.Load($"res://data/scenes/{boundLevel["id"]!.GetValue<string>()}.json");
+        var rendering = BoardSceneRendering.Load(scene, boundLevel, engine.CreateState(boundLevel)["map"]!.AsObject());
         screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(),
-            engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);
+            engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), boundLevel, scene);
         screen.ConfigureGround(rendering.Ground);
     }
+    private async Task CheckObjectiveLocations()
+    {
+        var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>().ToArray();
+        var originalSize = screen.Size;
+        screen.Size = new Vector2(960, 640);
+        foreach (var id in new[] { "c01-02", "c01-07" })
+        {
+            var scenario = levels.Single(value => value["id"]!.GetValue<string>() == id);
+            var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), scenario);
+            Bind(session, scenario);
+            await Layout();
+            var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
+            var overlay = (BoardOverlay)screen.FindChild("LegalTargets", true, false);
+            var rows = hud.Projection!.Sections.Single(section => section.Key == "objectives").Rows
+                .Where(row => row.Intent?.Kind == TacticalHudIntentKind.FocusObjective).ToArray();
+            Require(rows.Length == (id == "c01-02" ? 1 : 2), "Only public active spatial objectives have locate controls.");
+            var actor = session.GetTacticalQueries(0).Unit(session.GetTacticalQueries(0).Actors()[0])!;
+            screen.SelectHit(TacticalHit.Unit(actor.At, actor.Id));
+            await Layout();
+            var before = session.GetSnapshot().State.GetRawText();
+            var selection = screen.Selection;
+            foreach (var row in rows)
+            {
+                var button = Buttons(hud).Single(value => value.GetMeta("hud_key", "").AsString() == "objectives/" + row.Key);
+                Require(button.IsVisibleInTree() && new Rect2(Vector2.Zero, screen.Size).Encloses(button.GetGlobalRect()),
+                    "Locate controls remain visible in the formal minimum viewport.");
+                button.GrabFocus();
+                foreach (var down in new[] { true, false })
+                    GetViewport().PushInput(new InputEventKey { Keycode = Key.Enter, PhysicalKeycode = Key.Enter, Pressed = down }, true);
+                await Layout();
+                Require(overlay.ObjectiveCells.SequenceEqual(row.TargetCells!), "Native Enter locates the exact canonical task region.");
+                Require(session.Revision == 0 && session.GetSnapshot().State.GetRawText() == before && screen.Selection == selection,
+                    "Locating a task cannot change units, pending commands, events or canonical state.");
+                var center = row.TargetCells!.Select(cell => screen.Board.Projection.CellCenter(new(cell.X, cell.Y)))
+                    .Aggregate(Vector2.Zero, (sum, value) => sum + value) / row.TargetCells!.Count;
+                Require(new Rect2(new Vector2(16, 110), screen.Size - new Vector2(32, 244)).HasPoint(BoardField(center)),
+                    "The located task is inside the camera safe viewport.");
+                screen.Refresh();
+                await Layout();
+                Require(IsInstanceValid(button) && button.IsInsideTree() && button.HasFocus(),
+                    "Equal detached target arrays retain the focused objective control during refresh.");
+                button.EmitSignal(Button.SignalName.Pressed);
+                await Layout();
+                Require(overlay.ObjectiveCells.SequenceEqual(row.TargetCells), "A read-only locate button remains repeatable.");
+                screen.SetApplicationBusy(true);
+                button.EmitSignal(Button.SignalName.Pressed);
+                await Layout();
+                Require(overlay.ObjectiveCells.Count == 0, "Busy interaction clears task markers and rejects pending locator actions.");
+                screen.SetApplicationBusy(false);
+                await Layout();
+            }
+            var oldButton = Buttons(hud).First(value => value.GetMeta("hud_key", "").AsString().StartsWith("objectives/")
+                && value.GetMeta("hud_key", "").AsString() != "objectives/disclosure");
+            oldButton.EmitSignal(Button.SignalName.Pressed);
+            Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
+            await Layout();
+            Require(overlay.ObjectiveCells.Count == 0, "Rebinding drops a deferred old-level objective location.");
+
+            var state = session.Snapshot();
+            var owner = state["players"]!.AsArray().OfType<JsonObject>().First(value => value["controller"]!.GetValue<string>() == "human");
+            foreach (var hidden in new[] { "primary", rows[0].Key })
+            {
+                var fixture = state.DeepClone().AsObject();
+                var player = fixture["players"]!.AsArray().OfType<JsonObject>().Single(value => value["id"]!.GetValue<int>() == owner["id"]!.GetValue<int>());
+                player["objectiveStates"]![hidden]!["hidden"] = true;
+                var concealed = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(fixture));
+                var projection = concealed.ProjectHud(new(0, 0), new(), null, null, false);
+                var targets = projection.Sections.Where(section => section.Key == "objectives").SelectMany(section => section.Rows)
+                    .Where(row => row.TargetCells is { Count: > 0 }).ToArray();
+                Require(hidden == "primary" ? targets.Length == 0 : targets.All(row => row.Key != hidden),
+                    "A hidden objective or parent never exposes spatial targets through HUD rows.");
+            }
+        }
+        screen.Size = originalSize;
+        await Layout();
+    }
+
     private async Task Layout()
     {
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);

@@ -480,6 +480,11 @@ instructions project canonical terrain ownership, recruitment content and
 gestures still receive releases outside it, without treating HUD space as terrain.
 Registered objective handlers own immutable `ObjectiveAssessment` facts and outcomes;
 `ObjectiveHandlerRegistry` projects `ObjectiveProgress` without recomputing those rules.
+Registered handlers also own optional immutable active `TargetCells`; escort and control
+resolve their existing canonical zones. The application removes hidden/disabled task
+locations before HUD projection. `BattleScreen` may center the camera and mark these
+public locations without selecting, moving, or issuing orders. No UI kind switch,
+AI agenda inference, second target state, or save-schema extension is involved.
 `VictorySystem` selects a `BattleConclusion`; `BattleLifecycle` alone commits it.
 `BattleConclusion` owns the strict semantic codec and allowed field combinations.
 `CampaignBattleResult` owns the detached result contract used by both the bridge and

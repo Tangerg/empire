@@ -114,3 +114,9 @@ exit and teardown checks.
 
 Add `--verify-guard` to compile a temporary threshold mutant (`> 6` instead of
 `>= 6`) and prove the live source vectors reject it. The checkout is not mutated.
+
+## Public objective focus
+
+Spatial task rows reuse `CenterOn` and the existing safe viewport, without changing
+selection or sending a battle action. See [Public objective locations](OBJECTIVE-LOCATIONS.md)
+for handler ownership, visibility filtering, marker lifecycle and native checks.

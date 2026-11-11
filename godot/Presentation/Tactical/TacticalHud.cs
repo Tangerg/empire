@@ -288,7 +288,7 @@ public partial class TacticalHud : Control
             if (collapsible)
             {
                 header.Visible = false;
-                var summary = section.Key == "objectives" ? section.Rows.FirstOrDefault(row => row.Hint.Length > 0) : null;
+                var summary = section.Key == "objectives" ? section.Rows.FirstOrDefault(row => row.Hint.Length > 0 && row.Intent is null) : null;
                 var title = DisclosureTitle(section);
                 var toggle = new Button
                 {
@@ -427,11 +427,22 @@ public partial class TacticalHud : Control
                     continue;
                 if (section.Key == "unit" && row.Key is "selection" or "owner")
                     continue;
-                if (section.Key == "objectives" && row.Hint.Length > 0)
+                if (section.Key == "objectives" && row.Hint.Length > 0 && row.Intent is null)
                     continue;
                 if (row.Intent is not null)
                 {
                     var button = Order(row, section.Key, compact: row.Key == "cancel");
+                    if (section.Key == "objectives")
+                    {
+                        button.AddThemeColorOverride("font_color", new Color("#453921"));
+                        button.AddThemeColorOverride("font_focus_color", new Color("#453921"));
+                        button.AddThemeColorOverride("font_hover_color", new Color("#453921"));
+                        button.AddThemeColorOverride("font_pressed_color", new Color("#453921"));
+                        button.AddThemeStyleboxOverride("normal", TacticalHudStyle.Panel("#00000000", 2, "#00000000"));
+                        button.AddThemeStyleboxOverride("hover", TacticalHudStyle.Panel("#a58c4422", 2, "#795a2b"));
+                        button.AddThemeStyleboxOverride("pressed", TacticalHudStyle.Panel("#a58c4444", 2, "#795a2b"));
+                        button.AddThemeStyleboxOverride("focus", TacticalHudStyle.Panel("#00000000", 2, "#795a2b"));
+                    }
                     if (row.Key == "cancel" && section.Key == "unit")
                     {
                         button.Text = "×";
@@ -661,7 +672,7 @@ public partial class TacticalHud : Control
                     pendingOrder = null;
                     if (!CanActivate())
                         return;
-                    submitted = true;
+                    submitted = intent.Kind != TacticalHudIntentKind.FocusObjective;
                     IntentRequested?.Invoke(intent);
                 }).CallDeferred();
             };
@@ -673,11 +684,14 @@ public partial class TacticalHud : Control
     private static bool SameRow(TacticalHudRow first, TacticalHudRow second) =>
         first with
         {
-            Intent = null
+            Intent = null,
+            TargetCells = null
         } == second with
         {
-            Intent = null
+            Intent = null,
+            TargetCells = null
         }
+        && (first.TargetCells ?? System.Array.Empty<BoardCell>()).SequenceEqual(second.TargetCells ?? System.Array.Empty<BoardCell>())
         && (first.Intent is null ? second.Intent is null : second.Intent is { } other
             && first.Intent with
             {
@@ -794,7 +808,7 @@ public partial class TacticalHud : Control
     }
 
     private static string DisclosureTitle(TacticalHudSection section) => section.Key == "objectives"
-        ? section.Rows.FirstOrDefault(row => row.Hint.Length > 0)?.Label ?? section.Title : section.Title;
+        ? section.Rows.FirstOrDefault(row => row.Hint.Length > 0 && row.Intent is null)?.Label ?? section.Title : section.Title;
 
     private static bool SameTextStructure(TacticalHudSection first, TacticalHudSection second) =>
         first.Rows.Count == second.Rows.Count && first.Rows.Zip(second.Rows).All(pair =>

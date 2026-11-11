@@ -5,6 +5,7 @@ using Empire.Core.Ai;
 using Empire.Core.Determinism;
 using Empire.Core.Engine;
 using Empire.Core.Geometry;
+using Empire.Core.Objectives;
 using Empire.Core.Tactics;
 
 internal static class EscortChecks
@@ -15,6 +16,7 @@ internal static class EscortChecks
         var engine = new BattleEngine(Read(Path.Combine(data, "content-packs.json")).AsArray());
         var level = Read(Path.Combine(data, "grayflag-campaign-levels.json")).AsArray().OfType<JsonObject>()
             .Single(candidate => Text(candidate, "id") == "c01-02");
+        CheckObjectiveTargets(engine, data, level);
         var scene = Read(Path.Combine(data, "scenes/c01-02.json"));
         var registration = Text(scene!, "assembledGroundPath");
         Require(registration == "res://data/scenes/c01-02-layered-ground.json", "C02 formal scene selects its independently layered registration");
@@ -161,6 +163,64 @@ internal static class EscortChecks
             Require(!double.IsFinite(new TileAppraisal(invalidContext, actor, at).MissionPositionValue), "Test exercises a non-finite composed mission value");
             Require(engine.Ai.Intents.TryGet("command")!.Propose(invalidContext) is null, "Common scorer rejects NaN and overflowing final totals without clamping or selecting an invalid candidate");
         }
+    }
+
+    private static void CheckObjectiveTargets(BattleEngine engine, string data, JsonObject level)
+    {
+        var state = engine.CreateState(level);
+        var before = EcmaJson.Stringify(state);
+        var saved = EcmaJson.Stringify(engine.SaveBattle(state, "2026-11-11T00:00:00.000Z"));
+        var primary = Player(state, 1)["objectives"]![0]!.AsObject();
+        var outcome = engine.Victory.Outcome(state, 1, primary);
+        IEnumerable<ObjectiveProgress> Flatten(IEnumerable<ObjectiveProgress> values) =>
+            values.SelectMany(value => new[] { value }.Concat(Flatten(value.Children)));
+        ObjectiveProgress Escort() => Flatten(engine.Victory.Objectives(state, 1)).Single(value => value.Kind == "escort");
+        var escort = Escort();
+        var expected = new[] { new Coord(18, 23), new Coord(19, 23), new Coord(20, 23), new Coord(18, 24), new Coord(19, 24), new Coord(20, 24) };
+        Require(escort.TargetCells.SequenceEqual(expected), "C02 escort projects exactly the six canonical east-safety cells.");
+        Require(Flatten(engine.Victory.Objectives(state, 1)).Where(value => value.Kind != "escort").All(value => value.TargetCells.Count == 0),
+            "Non-spatial objectives and wrappers do not invent map targets.");
+        Require(EcmaJson.Stringify(state) == before && EcmaJson.Stringify(engine.SaveBattle(state, "2026-11-11T00:00:00.000Z")) == saved
+            && engine.Victory.Outcome(state, 1, primary) == outcome,
+            "Target projection cannot change state, saves or victory assessment.");
+        try
+        {
+            ((IList<Coord>)escort.TargetCells)[0] = new(-1, -1);
+            throw new Exception("Target projection exposed writable coordinates.");
+        }
+        catch (NotSupportedException) { }
+        state["scenario"]!["zones"]!["east-safety"]![0]!["x"] = 17;
+        Require(Escort().TargetCells[0] == new Coord(17, 23) && escort.TargetCells.SequenceEqual(expected),
+            "Current targets follow canonical zone changes without modifying previously detached projections.");
+        var objectiveState = Player(state, 1)["objectiveStates"]![escort.Id]!.AsObject();
+        foreach (var status in new[] { "completed", "failed", "inactive", "cancelled" })
+        {
+            objectiveState["status"] = status;
+            Require(Escort().TargetCells.Count == 0, $"{status} objectives do not offer active map targets.");
+        }
+        objectiveState["status"] = "active";
+        Require(Escort().TargetCells.Count == 6, "Reactivated objectives derive their current targets again.");
+
+        var city = Read(Path.Combine(data, "grayflag-campaign-levels.json")).AsArray().OfType<JsonObject>()
+            .Single(candidate => Text(candidate, "id") == "c01-07");
+        var cityState = engine.CreateState(city);
+        var controls = Flatten(engine.Victory.Objectives(cityState, 1)).Where(value => value.Kind == "control").ToDictionary(value => value.Id);
+        Require(controls.Count == 2 && controls["granary"].TargetCells.SequenceEqual(new[] { new Coord(35, 14) })
+            && controls["militia-barracks"].TargetCells.SequenceEqual(new[] { new Coord(65, 14) }),
+            "C07 control goals project their distinct canonical capture cells, not a combined inferred center.");
+
+        var supplied = new List<Coord> { new(2, 3), new(4, 5) };
+        var handlers = engine.Victory.Handlers.Clone().Register(new ObjectiveHandler("test-target-location", (_, _) => new("pending", new()))
+        {
+            TargetCells = (_, _) => supplied
+        });
+        var custom = new JsonObject { ["id"] = "test-location", ["type"] = "test-target-location" };
+        var projected = handlers.Project(engine.Victory.Rules, state, 1, custom);
+        supplied.Clear();
+        Require(projected.TargetCells.SequenceEqual(new[] { new Coord(2, 3), new Coord(4, 5) })
+            && handlers.Project(engine.Victory.Rules, state, 1, custom).TargetCells.Count == 0,
+            "Extension handlers supply target semantics through the same detached projection without kind switches.");
+        Console.WriteLine("  Objective target cells: C02 six-cell escort, C07 distinct controls, active lifecycle, detached immutability, extension handler and save/outcome invariance passed.");
     }
 
     private static string Status(JsonObject state) => Text(Player(state, 1)["objectiveStates"]!["escort"]!, "status");

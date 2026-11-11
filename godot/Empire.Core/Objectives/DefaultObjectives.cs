@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Text.Json.Nodes;
 using Empire.Core.References;
+using Empire.Core.Geometry;
 using Empire.Core.Scenario;
 using static Empire.Core.State.StateJson;
 using static Empire.Core.Lifecycle.TurnOrderSystem;
@@ -85,7 +86,8 @@ public static class DefaultObjectives
             return Result(arrived >= target, ("arrived", arrived), ("target", target));
         })
         {
-            References = EscortReferences
+            References = EscortReferences,
+            TargetCells = ZoneTargetCells
         })
         .Register(new("control", (context, objective) =>
         {
@@ -95,7 +97,8 @@ public static class DefaultObjectives
             return Result(cells.Length > 0 && owned == cells.Length, ("owned", owned), ("total", cells.Length));
         })
         {
-            References = objective => new PayloadReferences().Zone(Text(objective, "zone"))
+            References = objective => new PayloadReferences().Zone(Text(objective, "zone")),
+            TargetCells = ZoneTargetCells
         })
         .Register(new("score", (context, objective) =>
         {
@@ -150,6 +153,9 @@ public static class DefaultObjectives
             : outcomes.Contains("failure") ? "failure" : outcomes.All(value => value == "success") ? "success" : "pending";
         return Assessment(outcome, ("completed", children.Count(child => context.Status(child) == "completed")), ("total", children.Count));
     }
+    private static IReadOnlyList<Coord> ZoneTargetCells(ObjectiveEvaluationContext context, JsonObject objective) =>
+        Zone(context.State, Text(objective, "zone")).Select(cell => new Coord(Integer(cell, "x"), Integer(cell, "y"))).ToArray();
+
     private static IEnumerable<JsonObject> Zone(JsonObject state, string id) => Objects(state["scenario"]!["zones"]![id] ?? new JsonArray(), "zone");
     private static IEnumerable<JsonObject> OwnedTerrains(ObjectiveEvaluationContext context, int owner)
     {

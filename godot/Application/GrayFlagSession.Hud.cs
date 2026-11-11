@@ -122,15 +122,24 @@ public sealed partial class GrayFlagSession
                 Gauge: new(cast.Progress, 1))));
         var objectivePlayer = state["players"]!.AsArray().OfType<JsonObject>()
             .FirstOrDefault(player => S(player, "controller") == "human") ?? state["players"]![0]!.AsObject();
-        IEnumerable<TacticalHudRow> ObjectiveRows(Empire.Core.Objectives.ObjectiveProgress objective, bool root = true)
+        IEnumerable<TacticalHudRow> ObjectiveRows(Empire.Core.Objectives.ObjectiveProgress objective, bool root = true, bool spatialAvailable = true)
         {
             if (objectivePlayer["objectiveStates"]?[objective.Id]?["hidden"]?.GetValue<bool>() == true)
                 yield break;
+            spatialAvailable &= objective.Status == "active";
             var description = battleText.ObjectiveDescription(S(state, "levelId"), Viewer(state), objective);
             var progress = battleText.ObjectiveProgress(objective);
             if (objective.Children.Count == 0)
-                yield return new(objective.Id, text.Format("ui.hud.objective_task", description, progress),
-                    Selected: objective.Status == "completed");
+            {
+                var cells = spatialAvailable && objective.TargetCells.Count > 0
+                    ? System.Array.AsReadOnly(objective.TargetCells.Select(cell => new BoardCell(cell.X, cell.Y)).ToArray()) : null;
+                var label = text.Format("ui.hud.objective_task", description, progress);
+                yield return new(objective.Id, cells is null ? label : text.Format("ui.hud.objective_locate_label", label),
+                    Hint: cells is null ? "" : text.Format("ui.hud.objective_locate_hint"),
+                    Selected: objective.Status == "completed",
+                    Intent: cells is null ? null : new(stamp, TacticalHudIntentKind.FocusObjective, objective.Id),
+                    TargetCells: cells);
+            }
             else
             {
                 // Wrappers (such as failOn) have one child even when that child
@@ -141,7 +150,7 @@ public sealed partial class GrayFlagSession
                 if (root && tasks.Children.Count > 1)
                     yield return new(objective.Id, progress, description);
                 foreach (var child in objective.Children)
-                    foreach (var row in ObjectiveRows(child, false))
+                    foreach (var row in ObjectiveRows(child, false, spatialAvailable))
                         yield return row;
             }
         }

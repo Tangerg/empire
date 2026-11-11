@@ -13,6 +13,8 @@ public partial class BoardOverlay : Node2D
     private TacticalSelectionOverlay? _tactical;
     private BoardProjection? _projection;
     private BoardCell[] _unseen = [];
+    private BoardCell[] _objective = [];
+    internal IReadOnlyList<BoardCell> ObjectiveCells => System.Array.AsReadOnly(_objective);
     private KeyValuePair<BoardCell, double>[] _incoming = [];
     private FrozenSet<BoardCell> _interactiveCells = FrozenSet<BoardCell>.Empty;
     private BoardDecorations? _resources;
@@ -77,6 +79,14 @@ public partial class BoardOverlay : Node2D
             foreach (var plane in _ranges)
                 plane.QueueRedraw();
     }
+    public void ShowObjective(IReadOnlyList<BoardCell> cells)
+    {
+        if (_objective.SequenceEqual(cells))
+            return;
+        _objective = cells.ToArray();
+        QueueRedraw();
+    }
+
     private void RedrawPlanes()
     {
         QueueRedraw();
@@ -188,6 +198,24 @@ public partial class BoardOverlay : Node2D
     {
         if (_resources is null || _projection is null)
             return;
+        // Public task geometry sits above fog without exposing actors or terrain facts.
+        // Use the authored surface triangles, not a second square/isometric projection.
+        foreach (var cell in _objective.Where(Contains))
+        {
+            var triangles = _projection.Triangles.Where(triangle => triangle.Cell.X == cell.X && triangle.Cell.Y == cell.Y);
+            var edges = triangles.SelectMany(triangle => new[]
+            {
+                (A: triangle.ProjectedA, B: triangle.ProjectedB),
+                (A: triangle.ProjectedB, B: triangle.ProjectedC),
+                (A: triangle.ProjectedC, B: triangle.ProjectedA)
+            }).ToArray();
+            foreach (var edge in edges.Where(edge => edges.Count(other =>
+                other.A == edge.A && other.B == edge.B || other.A == edge.B && other.B == edge.A) == 1))
+            {
+                DrawLine(edge.A, edge.B, new Color("#30251c"), 4, true);
+                DrawLine(edge.A, edge.B, new Color("#ffe39a"), 2, true);
+            }
+        }
         if (_tactical?.Selected is { } selected && Contains(selected))
             DrawDecoration(this, _resources.Ring("selection"), ContactRingOffset(selected));
         if (_tactical?.Cursor is { } cursor && Contains(cursor))

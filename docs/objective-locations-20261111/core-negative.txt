@@ -1,0 +1,7 @@
+FAIL escort mission and AI intent: System.Exception: C02 escort projects exactly the six canonical east-safety cells.
+   at EscortChecks.Require(Boolean condition, String label) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Empire.Core.Tests/EscortChecks.cs:line 261
+   at EscortChecks.CheckObjectiveTargets(BattleEngine engine, String data, JsonObject level) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Empire.Core.Tests/EscortChecks.cs:line 180
+   at EscortChecks.MissionAndIntent(String oracleRoot) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Empire.Core.Tests/EscortChecks.cs:line 19
+   at Program.<>c__DisplayClass0_0.<<Main>$>b__17() in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Empire.Core.Tests/Program.cs:line 105
+   at Program.<>c__DisplayClass0_0.<<Main>$>g__Check|0(String name, Action test) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Empire.Core.Tests/Program.cs:line 14
+0 passed; 1 failed

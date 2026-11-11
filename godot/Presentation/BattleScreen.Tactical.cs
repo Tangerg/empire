@@ -1,5 +1,6 @@
 #nullable enable
 using System;
+using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
@@ -38,6 +39,7 @@ public partial class BattleScreen
     }
 
     private (TacticalStamp Stamp, bool Busy)? _globalOrderBinding;
+    private string? _focusedObjective;
 
     private void UpdateTactical()
     {
@@ -48,6 +50,12 @@ public partial class BattleScreen
         var applyGeneration = ++_hudApplyGeneration;
         var projection = _session.ProjectHud(stamp, _tactical.Selection, _tactical.CursorHit, _tactical.InspectId, IsInputBlocked);
         _hud.Apply(projection);
+        var objectiveCells = !IsInputBlocked && _focusedObjective is not null
+            ? projection.Sections.FirstOrDefault(section => section.Key == "objectives")?.Rows
+                .FirstOrDefault(row => row.Key == _focusedObjective)?.TargetCells : null;
+        if (objectiveCells is not { Count: > 0 })
+            _focusedObjective = null;
+        _overlay.ShowObjective(objectiveCells ?? Array.Empty<BoardCell>());
         var overlay = _tactical.Overlay();
         _overlay.ShowTactical(overlay);
         _board.ShowTacticalEmphasis(overlay);
@@ -124,6 +132,23 @@ public partial class BattleScreen
     {
         if (_tactical is null || !Current(intent.Stamp))
             return;
+        if (intent.Kind == TacticalHudIntentKind.FocusObjective)
+        {
+            var projection = _session!.ProjectHud(intent.Stamp, _tactical.Selection, _tactical.CursorHit, _tactical.InspectId, false);
+            var cells = projection.Sections.FirstOrDefault(section => section.Key == "objectives")?.Rows
+                .FirstOrDefault(row => row.Key == intent.Key && row.Intent?.Kind == TacticalHudIntentKind.FocusObjective)?.TargetCells;
+            if (cells is not { Count: > 0 } || cells.Any(cell => !_tactical.InteractiveCells.Contains(cell)))
+                return;
+            _focusedObjective = intent.Key;
+            _pointerMapPosition = null;
+            _pointerBoundaryGeneration++;
+            _gestures?.Cancel();
+            var points = cells.Select(cell => CellCenter(new(cell.X, cell.Y))).ToArray();
+            _camera?.CenterOn(new(points.Average(point => point.X), points.Average(point => point.Y)));
+            ApplyCamera();
+            UpdateTactical();
+            return;
+        }
         if (intent.Kind == TacticalHudIntentKind.Action)
         {
             if (intent.Action is { } action)
@@ -147,6 +172,7 @@ public partial class BattleScreen
 
     private void HandleTactical(TacticalInputResult result)
     {
+        _focusedObjective = null;
         // Explicit keyboard/roster focus replaces pointer ownership before camera
         // movement, so Reveal cannot revive an older physical pointer hit.
         if (result.CursorFocused)
