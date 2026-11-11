@@ -129,6 +129,8 @@ public sealed partial class GrayFlagSession
             spatialAvailable &= objective.Status == "active";
             var description = battleText.ObjectiveDescription(S(state, "levelId"), Viewer(state), objective);
             var progress = battleText.ObjectiveProgress(objective);
+            if (spatialAvailable && battleText.ObjectiveFailureDescription(S(state, "levelId"), Viewer(state), objective) is { } failure)
+                yield return new($"failure:{objective.Id}", text.Format("ui.hud.objective_failure", failure));
             if (objective.Children.Count == 0)
             {
                 var cells = spatialAvailable && objective.TargetCells.Count > 0

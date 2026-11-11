@@ -1,5 +1,5 @@
 {
-  "schema": 3,
+  "schema": 4,
   "levels": {
     "c01-01": {
       "players": {
@@ -9,7 +9,10 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_01.p1.primary"
+              "key": "objective.c01_01.p1.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "route": {
               "key": "objective.c01_01.p1.route"
@@ -51,7 +54,10 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_02.p1.primary"
+              "key": "objective.c01_02.p1.primary",
+              "failure": {
+                "key": "objective.failure.escort"
+              }
             },
             "bridge-all": {
               "key": "objective.c01_02.p1.bridge_all"
@@ -98,7 +104,10 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_03.p1.primary"
+              "key": "objective.c01_03.p1.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "redstone-path": {
               "key": "objective.c01_03.p1.redstone_path"
@@ -151,7 +160,10 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_04.p1.primary"
+              "key": "objective.c01_04.p1.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "black-camp-sequence": {
               "key": "objective.c01_04.p1.black_camp_sequence"
@@ -202,7 +214,10 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_05.p1.primary"
+              "key": "objective.c01_05.p1.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "save-village": {
               "key": "objective.c01_05.p1.save_village"
@@ -247,7 +262,10 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_06.p1.primary"
+              "key": "objective.c01_06.p1.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "escort-north-bank": {
               "key": "objective.c01_06.p1.escort_north_bank"
@@ -289,7 +307,10 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_07.p1.primary"
+              "key": "objective.c01_07.p1.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "city-control": {
               "key": "objective.c01_07.p1.city_control"
@@ -330,10 +351,16 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_08.p1.primary"
+              "key": "objective.c01_08.p1.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "protect-tasha": {
-              "key": "objective.c01_08.p1.protect_tasha"
+              "key": "objective.c01_08.p1.protect_tasha",
+              "failure": {
+                "key": "objective.failure.tasha"
+              }
             },
             "route": {
               "key": "objective.c01_08.p1.route"
@@ -372,7 +399,10 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_09.p1.primary"
+              "key": "objective.c01_09.p1.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "break-chains": {
               "key": "objective.c01_09.p1.break_chains"
@@ -395,7 +425,10 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_09.p3.primary"
+              "key": "objective.c01_09.p3.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "break-chains": {
               "key": "objective.c01_09.p3.break_chains"
@@ -422,7 +455,10 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_10.p1.primary"
+              "key": "objective.c01_10.p1.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "escort-east-pass": {
               "key": "objective.c01_10.p1.escort_east_pass"
@@ -463,7 +499,10 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_11.p1.primary"
+              "key": "objective.c01_11.p1.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "grave-sequence": {
               "key": "objective.c01_11.p1.grave_sequence"
@@ -514,7 +553,10 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_12.p1.primary"
+              "key": "objective.c01_12.p1.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "bell-mechanism": {
               "key": "objective.c01_12.p1.bell_mechanism"
@@ -555,7 +597,10 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_13.p1.primary"
+              "key": "objective.c01_13.p1.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "archive-sequence": {
               "key": "objective.c01_13.p1.archive_sequence"
@@ -606,7 +651,10 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_14.p1.primary"
+              "key": "objective.c01_14.p1.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "forge-all": {
               "key": "objective.c01_14.p1.forge_all"
@@ -654,10 +702,16 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_15.p1.primary"
+              "key": "objective.c01_15.p1.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "protect-root": {
-              "key": "objective.c01_15.p1.protect_root"
+              "key": "objective.c01_15.p1.protect_root",
+              "failure": {
+                "key": "objective.failure.root"
+              }
             },
             "eliminate-oath-forces": {
               "key": "objective.c01_15.p1.eliminate_oath_forces"
@@ -680,10 +734,16 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_15.p3.primary"
+              "key": "objective.c01_15.p3.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "protect-root": {
-              "key": "objective.c01_15.p3.protect_root"
+              "key": "objective.c01_15.p3.protect_root",
+              "failure": {
+                "key": "objective.failure.root"
+              }
             },
             "eliminate-oath-forces": {
               "key": "objective.c01_15.p3.eliminate_oath_forces"
@@ -708,7 +768,10 @@
           },
           "objectives": {
             "primary": {
-              "key": "objective.c01_16.p1.primary"
+              "key": "objective.c01_16.p1.primary",
+              "failure": {
+                "key": "objective.failure.laiya"
+              }
             },
             "true-name-all": {
               "key": "objective.c01_16.p1.true_name_all"

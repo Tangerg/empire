@@ -606,10 +606,59 @@ public partial class TacticalHudChecks : Node
         var singleTask = openingObjectives.Single().Children.Single();
         var openingRows = openingSession.ProjectHud(new(0, 0), new(), null, null, false)
             .Sections.Single(section => section.Key == "objectives").Rows;
-        Require(openingRows.Count == 1 && openingRows[0].Key == singleTask.Id && openingRows[0].Hint.Length == 0
-            && openingRows[0].Label.Contains(presentation.Battle.ObjectiveProgress(singleTask), StringComparison.Ordinal),
+        var openingTask = openingRows.Single(row => row.Key == singleTask.Id);
+        Require(openingRows.Count == 2 && openingTask.Hint.Length == 0
+            && openingTask.Label.Contains(presentation.Battle.ObjectiveProgress(singleTask), StringComparison.Ordinal),
             "A single-task C01 objective shows its canonical progress once, on the named task.");
         Require(openingBefore == EcmaJson.Stringify(openingSession.Snapshot()), "Objective compaction cannot change battle facts.");
+        var warning = openingRows.Single(row => row.Key == "failure:primary");
+        Require(warning.Label == text.Format("ui.hud.objective_failure", text.Format("objective.failure.laiya"))
+            && warning.Intent is null && warning.TargetCells is null && warning.Hint.Length == 0,
+            "Single-task compaction retains the critical loss condition as a visible read-only row.");
+        foreach (var (levelId, criticalId, condition) in new[]
+        {
+            ("c01-05", "primary", "laiya"), ("c01-08", "protect-tasha", "tasha"),
+            ("c01-15", "protect-root", "root"), ("c01-02", "primary", "escort"),
+        })
+        {
+            var criticalLevel = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json")
+                .OfType<JsonObject>().Single(value => value["id"]!.GetValue<string>() == levelId);
+            var criticalState = engine.CreateState(criticalLevel);
+            var owner = criticalState["players"]!.AsArray().OfType<JsonObject>()
+                .Single(player => player["controller"]!.GetValue<string>() == "human");
+            var statuses = owner["objectiveStates"]!.AsObject();
+            foreach (var (hidden, status, visible) in new[] { (false, "active", true), (true, "active", false), (false, "completed", false) })
+            {
+                statuses[criticalId]!["hidden"] = hidden;
+                statuses[criticalId]!["status"] = status;
+                var criticalSession = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(criticalState));
+                var before = EcmaJson.Stringify(criticalSession.Snapshot());
+                var rows = criticalSession.ProjectHud(new(0, 0), new(), null, null, false).Sections
+                    .Where(section => section.Key == "objectives").SelectMany(section => section.Rows).ToArray();
+                var failure = rows.SingleOrDefault(row => row.Key == $"failure:{criticalId}");
+                Require((failure is not null) == visible, $"{levelId} only discloses active visible critical conditions.");
+                if (failure is not null)
+                    Require(failure.Label == text.Format("ui.hud.objective_failure", text.Format($"objective.failure.{condition}"))
+                        && failure.Intent is null && failure.TargetCells is null,
+                        $"{levelId} discloses its authored critical condition without a tactical command.");
+                Require(before == EcmaJson.Stringify(criticalSession.Snapshot()), "Failure disclosure cannot change battle facts.");
+            }
+            if (criticalId != "primary")
+            {
+                statuses[criticalId]!["hidden"] = false;
+                statuses[criticalId]!["status"] = "active";
+                foreach (var (hidden, status) in new[] { (true, "active"), (false, "completed") })
+                {
+                    statuses["primary"]!["hidden"] = hidden;
+                    statuses["primary"]!["status"] = status;
+                    var inactiveSession = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(criticalState));
+                    Require(!inactiveSession.ProjectHud(new(0, 0), new(), null, null, false).Sections
+                        .Where(section => section.Key == "objectives").SelectMany(section => section.Rows)
+                        .Any(row => row.Key == $"failure:{criticalId}"),
+                        "Hidden or inactive ancestry cannot leak a nested critical condition.");
+                }
+            }
+        }
         var objectiveStates = state["players"]![0]!["objectiveStates"]!.AsObject();
         objectiveStates["granary"]!["status"] = "completed";
         foreach (var hidden in new[] { false, true })

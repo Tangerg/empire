@@ -316,7 +316,7 @@ internal static class HitEffectProjectionChecks
     };
 
     private static string BattleTextJson() => """
-        {"schema":3,"levels":{"test.hud.hit-effects":{
+        {"schema":4,"levels":{"test.hud.hit-effects":{
           "title":{"literal":"Synthetic effect disclosure"},
           "description":{"literal":"Isolated projection contract, not a campaign battle."},
           "signals":{},"actors":{},"players":{

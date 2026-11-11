@@ -79,7 +79,7 @@ var level = EcmaJson.Parse("""
 """)!.AsObject();
 const string metadata = """
 {
-  "schema": 3,
+  "schema": 4,
   "levels": {
     "test.objective-outcomes": {
       "actors": {},
@@ -175,6 +175,82 @@ Check(firstText.LevelTitle("test.objective-outcomes") == "Semantic objective fix
     secondText.LevelTitle("test.objective-outcomes") == "Alternate mission" &&
     firstText.LevelDescription("test.objective-outcomes") != secondText.LevelDescription("test.objective-outcomes"),
     "level title and briefing follow the injected catalog without entering gameplay definitions");
+// Failure descriptions are authored separately from task and success descriptions.
+var shippedLevels = EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/data/grayflag-campaign-levels.json")))!.AsArray();
+var shippedMetadata = EcmaJson.Parse(File.ReadAllText(Path.Combine(root, "godot/data/grayflag-battle-text.json")))!.AsObject();
+BattleText ShippedText(JsonObject document) => new(new(firstCatalog, firstFormatters),
+    BattleTextDocument.Parse(new(shippedLevels, engine.Objectives, engine.ScenarioEffects), EcmaJson.Stringify(document)));
+JsonObject ShippedObjective(JsonObject document, string levelId, string objectiveId) =>
+    document["levels"]![levelId]!["players"]!["1"]!["objectives"]![objectiveId]!.AsObject();
+var oldMetadata = Copy(shippedMetadata);
+oldMetadata["schema"] = 3;
+Reject<LocalizationException>(() => ShippedText(oldMetadata), "obsolete battle text schema is refused without adaptation");
+var absentFailure = Copy(shippedMetadata);
+ShippedObjective(absentFailure, "c01-05", "primary").Remove("failure");
+Reject<LocalizationException>(() => ShippedText(absentFailure), "critical metadata cannot omit its failure description");
+var extraFailure = Copy(shippedMetadata);
+ShippedObjective(extraFailure, "c01-05", "hold-seven")["failure"] = new JsonObject { ["literal"] = "Not a critical guard" };
+Reject<LocalizationException>(() => ShippedText(extraFailure), "noncritical metadata cannot invent a failure description");
+var generatedFailure = Copy(shippedMetadata);
+ShippedObjective(generatedFailure, "c01-05", "primary")["failure"] = new JsonObject { ["generated"] = true };
+Reject<LocalizationException>(() => ShippedText(generatedFailure), "failure descriptions cannot use generic generated text");
+var missingFailureKey = Copy(shippedMetadata);
+ShippedObjective(missingFailureKey, "c01-05", "primary")["failure"] = new JsonObject { ["key"] = "missing.failure.description" };
+Reject<LocalizationException>(() => ShippedText(missingFailureKey), "failure localization keys are validated at composition");
+var alternateFailures = Copy(shippedMetadata);
+foreach (var declaredLevel in alternateFailures["levels"]!.AsObject())
+    foreach (var declaredPlayer in declaredLevel.Value!["players"]!.AsObject())
+        foreach (var declaredObjective in declaredPlayer.Value!["objectives"]!.AsObject())
+            if (declaredObjective.Value!.AsObject().ContainsKey("failure"))
+                declaredObjective.Value["failure"] = new JsonObject { ["literal"] = "Independent literal failure text" };
+var shippedText = ShippedText(shippedMetadata);
+var alternateFailureText = ShippedText(alternateFailures);
+var criticalCount = 0;
+IEnumerable<ObjectiveProgress> Descendants(ObjectiveProgress objective)
+{
+    yield return objective;
+    foreach (var child in objective.Children)
+        foreach (var descendant in Descendants(child))
+            yield return descendant;
+}
+foreach (var shippedLevel in shippedLevels.OfType<JsonObject>())
+{
+    var state = engine.CreateState(shippedLevel);
+    var before = EcmaJson.Stringify(state);
+    var levelId = shippedLevel["id"]!.GetValue<string>();
+    foreach (var player in state["players"]!.AsArray().OfType<JsonObject>())
+    {
+        var playerId = player["id"]!.GetValue<int>();
+        foreach (var projected in engine.Victory.Objectives(state, playerId).SelectMany(Descendants))
+        {
+            if (projected.Role != "critical")
+            {
+                Check(shippedText.ObjectiveFailureDescription(levelId, playerId, projected) is null,
+                    "noncritical targets do not project invented failure rules");
+                continue;
+            }
+            criticalCount++;
+            var condition = projected.Definition.GetProperty("condition");
+            var expectedCondition = levelId == "c01-02"
+                ? """{"type":"any","conditions":[{"type":"unitCount","selector":{"keys":["campaign-laiya"]},"op":"lte","value":0},{"type":"unitCount","selector":{"keys":["refugee-1","refugee-2","refugee-3"]},"op":"lte","value":2}]}"""
+                : projected.Id == "protect-root" ? """{"type":"structure","id":"mother-root","state":"destroyed"}"""
+                : projected.Id == "protect-tasha" ? """{"type":"unitCount","selector":{"keys":["campaign-tasha"]},"op":"lte","value":0}"""
+                : """{"type":"unitCount","selector":{"keys":["campaign-laiya"]},"op":"lte","value":0}""";
+            Check(JsonNode.DeepEquals(EcmaJson.Parse(condition.GetRawText()), EcmaJson.Parse(expectedCondition)),
+                $"authored failure wording is reviewed against the exact canonical guard for {levelId}/{playerId}/{projected.Id}");
+            var expectedText = levelId == "c01-02" ? "莱娅或任一护送平民阵亡"
+                : projected.Id == "protect-root" ? "母根被摧毁" : projected.Id == "protect-tasha" ? "塔莎阵亡" : "莱娅阵亡";
+            Check(shippedText.ObjectiveFailureDescription(levelId, playerId, projected) == expectedText,
+                $"shipped critical guard has the matching localized explanation for {levelId}/{playerId}/{projected.Id}");
+            Check(alternateFailureText.ObjectiveFailureDescription(levelId, playerId, projected) == "Independent literal failure text"
+                && alternateFailureText.ObjectiveDescription(levelId, playerId, projected) == shippedText.ObjectiveDescription(levelId, playerId, projected),
+                "failure text accepts literals without contaminating the task description used by successful conclusions");
+        }
+    }
+    Check(EcmaJson.Stringify(state) == before, "failure presentation never mutates canonical mission state");
+}
+Check(criticalCount == 21, "all 21 shipped primary, nested and other-player critical objectives have failure authoring");
+
 var declaredSignalLevel = Copy(level);
 declaredSignalLevel["scenario"]!["triggers"] = new JsonArray(new JsonObject
 {

@@ -20,7 +20,9 @@ public sealed class BattleTextDocument
         public string? Resolve(GameText text) => Key is { } key ? text.Format(key) : Literal;
     }
 
-    private sealed record PlayerEntry(TextEntry Name, IReadOnlyDictionary<string, TextEntry> Objectives);
+    private sealed record ObjectiveEntry(TextEntry Description, TextEntry? Failure);
+
+    private sealed record PlayerEntry(TextEntry Name, IReadOnlyDictionary<string, ObjectiveEntry> Objectives);
 
     private sealed record LevelEntry(TextEntry Title, TextEntry Description,
         IReadOnlyDictionary<string, TextEntry> Signals, IReadOnlyDictionary<int, PlayerEntry> Players,
@@ -47,7 +49,7 @@ public sealed class BattleTextDocument
         ArgumentNullException.ThrowIfNull(handlers);
         ArgumentNullException.ThrowIfNull(effects);
         var root = Fields(EcmaJson.Parse(json, rejectDuplicateProperties: true), "battle text document", "schema", "levels");
-        if (Integer(root["schema"], "battle text metadata schema") != 3)
+        if (Integer(root["schema"], "battle text metadata schema") != 4)
             throw new LocalizationException("Unsupported battle text metadata schema.");
         var declaredLevels = Properties(root["levels"], "battle text levels");
         var canonicalLevels = new Dictionary<string, JsonObject>(StringComparer.Ordinal);
@@ -93,13 +95,14 @@ public sealed class BattleTextDocument
                 var name = Entry(declaredPlayer["name"], $"player name '{path}'", allowGenerated: false);
                 var declaredObjectives = Properties(declaredPlayer["objectives"], $"objectives for '{path}'");
                 var objectiveIds = new HashSet<string>(StringComparer.Ordinal);
+                var criticalIds = new HashSet<string>(StringComparer.Ordinal);
                 var authored = player["objectives"] is { } rawObjectives ? Array(rawObjectives, $"objectives for '{path}'") : null;
                 var effective = authored is { Count: > 0 } ? authored : Array(level["victory"], $"victory for '{levelId}'");
                 foreach (var raw in effective)
                     Visit(Object(raw, "objective"));
                 RequireSameKeys(objectiveIds, declaredObjectives.Keys, $"objectives for '{path}'");
                 var descriptions = declaredObjectives.ToDictionary(pair => pair.Key,
-                    pair => Entry(pair.Value, $"objective '{path}/{pair.Key}'", allowGenerated: true), StringComparer.Ordinal);
+                    pair => Objective(pair.Value, $"objective '{path}/{pair.Key}'", criticalIds.Contains(pair.Key)), StringComparer.Ordinal);
                 playerEntries.Add(int.Parse(playerId, CultureInfo.InvariantCulture), new(name, descriptions));
 
                 void Visit(JsonObject objective)
@@ -110,6 +113,8 @@ public sealed class BattleTextDocument
                     var kind = RequiredString(objective["type"], $"objective kind for '{path}/{id}'");
                     if (!handlers.Has(kind))
                         throw new LocalizationException($"Unknown objective kind '{kind}' for '{path}/{id}'.");
+                    if (handlers.Role(objective) == "critical")
+                        criticalIds.Add(id);
                     foreach (var child in handlers.Children(objective))
                         Visit(child);
                 }
@@ -149,7 +154,9 @@ public sealed class BattleTextDocument
     internal void ValidateKeys(GameText text)
     {
         var entries = levels.Values.SelectMany(level => level.Players.Values
-            .SelectMany(player => player.Objectives.Values.Prepend(player.Name))
+            .SelectMany(player => player.Objectives.Values
+                .SelectMany(objective => objective.Failure is { } failure
+                    ? new[] { objective.Description, failure } : new[] { objective.Description }).Prepend(player.Name))
             .Concat(level.Signals.Values).Append(level.Title).Append(level.Description)).ToArray();
         text.ValidateKeys(entries.Where(entry => entry.Key is not null).Select(entry => entry.Key!));
         foreach (var entry in entries.Where(entry => !entry.Generated))
@@ -167,7 +174,14 @@ public sealed class BattleTextDocument
     internal string? ObjectiveDescription(GameText text, string levelId, int playerId, string objectiveId)
     {
         var player = Player(levelId, playerId);
-        return player.Objectives.TryGetValue(objectiveId, out var entry) ? entry.Resolve(text)
+        return player.Objectives.TryGetValue(objectiveId, out var entry) ? entry.Description.Resolve(text)
+            : throw new LocalizationException($"Missing objective presentation '{levelId}/{playerId}/{objectiveId}'.");
+    }
+
+    internal string? ObjectiveFailureDescription(GameText text, string levelId, int playerId, string objectiveId)
+    {
+        var player = Player(levelId, playerId);
+        return player.Objectives.TryGetValue(objectiveId, out var entry) ? entry.Failure?.Resolve(text)
             : throw new LocalizationException($"Missing objective presentation '{levelId}/{playerId}/{objectiveId}'.");
     }
 
@@ -181,6 +195,20 @@ public sealed class BattleTextDocument
     {
         return Level(levelId).Players.TryGetValue(playerId, out var player) ? player
             : throw new LocalizationException($"Missing player presentation '{levelId}/{playerId}'.");
+    }
+
+    private static ObjectiveEntry Objective(JsonNode? value, string path, bool critical)
+    {
+        var fields = Properties(value, path);
+        var hasFailure = fields.Remove("failure", out var failure);
+        if (hasFailure != critical)
+            throw new LocalizationException(critical
+                ? $"{path} requires a failure description for its critical objective."
+                : $"{path} must not declare a failure description for a noncritical objective.");
+        var description = new JsonObject(fields.Select(pair =>
+            new KeyValuePair<string, JsonNode?>(pair.Key, pair.Value?.DeepClone())));
+        return new(Entry(description, path, allowGenerated: true),
+            critical ? Entry(failure, $"failure description for {path}", allowGenerated: false) : null);
     }
 
     private static TextEntry Entry(JsonNode? value, string path, bool allowGenerated)

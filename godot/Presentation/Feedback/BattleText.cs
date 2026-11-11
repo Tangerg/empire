@@ -51,6 +51,12 @@ public sealed class BattleText
             ?? objectiveText.Describe(objective, child => ObjectiveDescription(levelId, playerId, child));
     }
 
+    public string? ObjectiveFailureDescription(string levelId, int playerId, ObjectiveProgress objective)
+    {
+        ArgumentNullException.ThrowIfNull(objective);
+        return document.ObjectiveFailureDescription(text, levelId, playerId, objective.Id);
+    }
+
     public string ObjectiveProgress(ObjectiveProgress objective) => objectiveText.Progress(objective);
 
     public string DescribeConclusion(JsonElement state)

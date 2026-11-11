@@ -366,7 +366,7 @@ public partial class AnimationChecks
         var text = GodotTextCatalog.LoadSimplifiedChinese();
         var presentation = SessionPresentationText.Compose(new(engine, text, new Dictionary<string, string>()),
             new JsonArray(fixtureLevel.DeepClone()), """
-            {"schema":3,"levels":{"fixture.celebration":{
+            {"schema":4,"levels":{"fixture.celebration":{
               "title":{"literal":"Celebration timing fixture"},"description":{"literal":"Synthetic lawful rout"},
               "signals":{},"actors":{},"players":{
                 "1":{"name":{"literal":"Allies"},"objectives":{"rout":{"generated":true}}},
