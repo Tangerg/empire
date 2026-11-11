@@ -21,6 +21,7 @@ public partial class PresentationChecks : Node
         AddChild(viewportFeedback);
         try
         {
+            CheckCoveredTerrainActors();
             CheckPaintedGround();
             Check();
             TerrainChecks.Run(this);
@@ -32,6 +33,52 @@ public partial class PresentationChecks : Node
             GD.PushError(error.ToString());
             GetTree().Quit(1);
         }
+    }
+
+    private void CheckCoveredTerrainActors()
+    {
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json")
+            .OfType<JsonObject>().Single(value => value["id"]!.GetValue<string>() == "c01-10");
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var state = engine.CreateState(level);
+        var scene = AuthoredScene.Load("res://data/scenes/c01-10.json");
+        var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
+        var board = new BoardView { AnimationsEnabled = false };
+        AddChild(board);
+        try
+        {
+            board.Configure(new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane), level, scene);
+            board.ConfigureGround(rendering.Ground);
+            var before = state.ToJsonString();
+            board.RenderState(state);
+            Require(!board.Diagnostics.Any(issue => issue.StartsWith("No unobstructed occlusion cue position", StringComparison.Ordinal)),
+                "C10 must find safe positions for all covered render-visible actors, not silently omit distant placements.");
+            foreach (var key in new[] { "campaign-laiya", "campaign-torren", "campaign-tasha", "campaign-ivra", "old-banner-cleric", "old-banner-guard" })
+            {
+                var unit = state["units"]!.AsArray().OfType<JsonObject>().Single(value => value["key"]!.GetValue<string>() == key);
+                var id = unit["id"]!.GetValue<int>();
+                var cue = board.GetNodeOrNull<Polygon2D>($"CanonicalProjection/OccludedUnitCues/UnitCue_{id}");
+                Require(cue is not null && cue.IsVisibleInTree(), $"C10 terrain-covered {key} must retain a visible independent cue.");
+                var cell = new BoardCell(unit["x"]!.GetValue<int>(), unit["y"]!.GetValue<int>());
+                Require(board.Pick(board.ToLocal(cue!.ToGlobal(Vector2.Zero))) == TacticalHit.Unit(cell, id),
+                    $"C10 {key} cue must identify its exact unit, without changing terrain hit semantics.");
+            }
+            var placements = board.GetNode<Node2D>("CanonicalProjection/OccludedUnitCues").GetChildren()
+                .OfType<Polygon2D>().Select(cue => (cue.Name, cue.Position)).ToArray();
+            var timings = new double[3];
+            for (var repeat = 0; repeat < timings.Length; repeat++)
+            {
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+                board.RenderState(state);
+                timings[repeat] = watch.Elapsed.TotalMilliseconds;
+                Require(board.GetNode<Node2D>("CanonicalProjection/OccludedUnitCues").GetChildren()
+                    .OfType<Polygon2D>().Select(cue => (cue.Name, cue.Position)).SequenceEqual(placements),
+                    "C10 identical snapshots must rebuild the same cue identities and positions.");
+            }
+            GD.Print(FormattableString.Invariant($"C10 full-board warm rebuild observations: {string.Join(", ", timings.Select(value => value.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)))} ms; includes scenery and actors, not an isolated cue or frame-time benchmark."));
+            Require(state.ToJsonString() == before, "Terrain occlusion cues must not mutate canonical battle state.");
+        }
+        finally { board.Free(); }
     }
 
     private static void CheckPaintedGround()

@@ -65,16 +65,21 @@ public partial class BoardView
                     top = Math.Min(top, ToLocal(global).Y);
                     if (frames.Any(frame => frame.Bounds.HasPoint(global) && frame.Visual.Covers(global)))
                         continue;
-                    if (foreground.Any(item => item.Bounds.HasPoint(global) && item.Visual.Covers(global) && !item.Visual.ContainsPointer(global)))
+                    if (foreground.Any(item => item.Bounds.HasPoint(global) && item.Visual.Covers(global)))
                         obscured++;
                 }
             // A cue identifies a mostly covered, already render-visible actor; it never reveals a fog-filtered actor.
             if (sampled == 0 || obscured * 2 < sampled)
                 continue;
             var head = new Vector2(actor.Node.Position.X, top - CueRadius - 4);
-            var candidates = from row in new[] { 0, -1, 1, -2, 2, -3 }
-                             from column in new[] { 0, -1, 1, -2, 2, -3, 3 }
-                             select head + new Vector2(column * 24, row * 24);
+            const int spacing = 24;
+            var firstColumn = (int)Math.Ceiling((CueRadius - head.X) / spacing);
+            var lastColumn = (int)Math.Floor((FieldSize.X - CueRadius - head.X) / spacing);
+            var firstRow = (int)Math.Ceiling((CueRadius - head.Y) / spacing);
+            var lastRow = (int)Math.Floor((FieldSize.Y - CueRadius - head.Y) / spacing);
+            var candidates = from row in Enumerable.Range(firstRow, Math.Max(0, lastRow - firstRow + 1))
+                             from column in Enumerable.Range(firstColumn, Math.Max(0, lastColumn - firstColumn + 1))
+                             select head + new Vector2(column * spacing, row * spacing);
             var position = candidates.OrderBy(point => point.DistanceSquaredTo(head)).Where(point => CueFits(point, blockers, surfaces)).Select(point => (Vector2?)point).FirstOrDefault();
             if (position is not { } center)
             {

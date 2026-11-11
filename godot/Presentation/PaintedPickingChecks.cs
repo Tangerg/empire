@@ -191,6 +191,25 @@ internal static class PaintedPickingChecks
                 board.ConfigureGround((_, _) => PaintedGroundView.Create(art, texture, map, engine.Catalog));
                 board.RenderState(state);
             }
+            // Receiving pointer input does not make opaque foreground any less visually occluding.
+            // No pass-through roof participates in this witness.
+            Materials(Material("TargetOnlyCover", 64, 48, 160, 132, 164, true));
+            var targetOnlyCue = board.GetNodeOrNull<Polygon2D>("CanonicalProjection/OccludedUnitCues/UnitCue_2");
+            require(targetOnlyCue is not null && targetOnlyCue.IsVisibleInTree(),
+                "A pure pointer-receiving foreground blocker must produce a visible cue for its obscured actor.");
+            var targetOnlyCenter = board.ToLocal(targetOnlyCue!.ToGlobal(Vector2.Zero));
+            require(board.Pick(targetOnlyCenter) == TacticalHit.Unit(new(3, 3), 2),
+                "The independent cue remains an explicit clickable unit target outside the pointer blocker.");
+            require(board.Pick(new(112, 90)) == TacticalHit.Object(new(3, 3))
+                && OpaqueActorPoints(board, 2).All(point => board.Pick(point)?.Kind != TacticalHitKind.Unit),
+                "A pointer-blocking cover retains its Object hit; cue creation never makes the original body click through.");
+            board.RenderState(state, new HashSet<int>());
+            require(!Descendants(board).Any(node => node.Name == "UnitCue_2"),
+                "Pointer-receiving occluders cannot reveal a fog-filtered actor through a cue.");
+            Materials(Material("TargetOnlyBackground", 64, 48, 160, 132, 40, true));
+            require(!Descendants(board).Any(node => node.Name == "UnitCue_2")
+                && OpaqueActorPoints(board, 2).All(point => board.Pick(point) == TacticalHit.Unit(new(3, 3), 2)),
+                "The same opaque pointer material behind the actor neither hides its body nor creates a false cue.");
             var cueRoof = Material("CueRoof", 64, 48, 160, 132, 164, false);
             foreach (var owner in new[] { 1, 2 })
             {
