@@ -55,7 +55,7 @@ public partial class BattleScreen : Control
     private readonly BattleLog _messages = new();
     public System.Collections.Generic.IReadOnlyList<string> RecentMessages => _messages.Recent();
     private Label _coverage = null!;
-    private HBoxContainer _globalOrders = null!;
+    private VBoxContainer _globalOrders = null!;
     private GridContainer _applicationActions = null!;
     private PopupPanel _systemMenu = null!;
     private Button _systemMenuButton = null!;
@@ -774,9 +774,9 @@ public partial class BattleScreen : Control
         _restartConfirmation.Canceled += () => _restartRequest = null;
         AddChild(_restartConfirmation);
         Resized += ResizeHud;
-        _globalOrders = new HBoxContainer { ZIndex = 4001 };
+        _globalOrders = new VBoxContainer { Name = "GlobalOrders", Alignment = BoxContainer.AlignmentMode.End, ZIndex = 4001 };
         AddChild(_globalOrders);
-        OverlayRect(_globalOrders, 1, 1, 1, 1, -184, -84, -26, -30);
+        OverlayRect(_globalOrders, 1, 1, 1, 1, -184, -128, -26, -30);
         _feedbackPanel = new PanelContainer { Name = "FeedbackPanel", ZIndex = 4001, MouseFilter = MouseFilterEnum.Ignore, Visible = false };
         _feedbackPanel.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#29251ef2", 10, "#a98b57"));
         AddChild(_feedbackPanel);

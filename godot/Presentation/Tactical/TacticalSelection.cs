@@ -104,6 +104,7 @@ public sealed class TacticalSelectionController
     }
     public TacticalStamp Stamp => stamp;
     public IReadOnlySet<BoardCell> InteractiveCells => queries.InteractiveCells;
+    public int ReadyUnitCount => queries.HumanTurn ? CycleActors().Length : 0;
     public BoardCell? HoverTarget => queries.Stamp == stamp && CursorHit is { } hit && AcceptsTarget(Selection, hit) ? hit.Cell : null;
     public bool ShowTactics => !Busy && queries.Stamp == stamp && queries.HumanTurn && Selection.Kind == TacticalSelectionKind.Idle;
 
@@ -464,9 +465,12 @@ public sealed class TacticalSelectionController
             ? Action(new JsonObject { ["kind"] = "recruit", ["at"] = Cell(at), ["unit"] = type }) : Result(TacticalInputStatus.Ignored);
     }
 
+    private int[] CycleActors() => queries.Actors()
+        .Where(id => queries.Unit(id) is { } unit && InteractiveCells.Contains(unit.At)).ToArray();
+
     private TacticalInputResult Cycle()
     {
-        var actors = queries.Actors().Where(id => queries.Unit(id) is { } unit && InteractiveCells.Contains(unit.At)).ToArray();
+        var actors = CycleActors();
         if (actors.Length == 0)
             return Result(TacticalInputStatus.Ignored);
         var current = Selection.Kind == TacticalSelectionKind.Unit ? Selection.UnitId : null;

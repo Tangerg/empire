@@ -60,7 +60,7 @@ public partial class BattleScreen
             ? focusedGlobal.Name.ToString() : null;
         Clear(_globalOrders);
         var queries = _session.GetTacticalQueries(_tacticalBinding);
-        void Add(string name, string label, bool enabled, Action action)
+        void Add(Container parent, string name, string label, bool enabled, Action action, string tooltip = "")
         {
             Button button = null!;
             var pending = false;
@@ -85,12 +85,13 @@ public partial class BattleScreen
             button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
             button.AutowrapMode = TextServer.AutowrapMode.Off;
             button.AddThemeFontSizeOverride("font_size", 14);
-            button.CustomMinimumSize = new Vector2(name == "EndTurn" ? 100 : 48, 50);
+            button.CustomMinimumSize = name == "NextUnit" ? new Vector2(158, 40) : new Vector2(name == "EndTurn" ? 100 : 48, 50);
+            button.TooltipText = tooltip;
             button.SizeFlagsHorizontal = SizeFlags.ShrinkCenter;
             if (name == "EndTurn")
                 TacticalHudStyle.OrderBadge(button, prominent: true);
             button.Disabled = !enabled || IsInputBlocked;
-            _globalOrders.AddChild(button);
+            parent.AddChild(button);
             if (globalFocusName == name && !button.Disabled)
                 Callable.From(() =>
                 {
@@ -98,14 +99,23 @@ public partial class BattleScreen
                         button.GrabFocus();
                 }).CallDeferred();
         }
+        var turnOrders = new HBoxContainer { Name = "TurnOrders" };
+        _globalOrders.AddChild(turnOrders);
         if (queries.Phase == "deployment")
-            Add("FinishDeployment", _text.Format("ui.battle.finish_deployment"), queries.HumanInput,
+            Add(turnOrders, "FinishDeployment", _text.Format("ui.battle.finish_deployment"), queries.HumanInput,
                 () => DispatchTactical(new(stamp, TacticalRequestKind.Action, EcmaJson.ToElement(new JsonObject { ["kind"] = "finishDeployment" }))));
         else if (queries.Phase != "over")
         {
-            Add("EndTurn", _text.Format("ui.battle.end_turn"), queries.HumanTurn,
+            var ready = _tactical.ReadyUnitCount;
+            if (queries.HumanTurn)
+            {
+                Add(_globalOrders, "NextUnit", ready > 0 ? _text.Format("ui.battle.next_unit", ready) : _text.Format("ui.battle.no_ready_units"), ready > 0,
+                    () => HandleTactical(_tactical.Key(stamp, " ")), _text.Format("ui.battle.next_unit_hint"));
+                _globalOrders.MoveChild(turnOrders, -1);
+            }
+            Add(turnOrders, "EndTurn", _text.Format("ui.battle.end_turn"), queries.HumanTurn,
                 () => HandleTactical(_tactical.Key(stamp, "e")));
-            Add("Undo", _text.Format("ui.battle.undo"), queries.HumanTurn && queries.CanUndo,
+            Add(turnOrders, "Undo", _text.Format("ui.battle.undo"), queries.HumanTurn && queries.CanUndo,
                 () => HandleTactical(_tactical.Key(stamp, "u")));
         }
     }
