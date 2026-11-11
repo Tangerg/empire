@@ -1,0 +1,129 @@
+{
+  "status": "pass-exact-qa-to-archive-copies",
+  "sourceDirectory": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native",
+  "archiveDirectory": "docs/art-gravekeeper-hit-20261111/verification/full-native",
+  "records": [
+    {
+      "file": "COMPARISON.md",
+      "source": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native/COMPARISON.md",
+      "archiveRelativePath": "docs/art-gravekeeper-hit-20261111/verification/full-native/COMPARISON.md",
+      "bytes": 6516,
+      "sha256": "233e0e475b8b658d2624aea5c1adca30c26546e7c114ee364fd60db72ca81a10",
+      "byteIdentical": true
+    },
+    {
+      "file": "compare-gate.py",
+      "source": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native/compare-gate.py",
+      "archiveRelativePath": "docs/art-gravekeeper-hit-20261111/verification/full-native/compare-gate.py",
+      "bytes": 14102,
+      "sha256": "da3916b9afa4ff5c2402472c3d2c78ffba061a78e61b37998a2db5ab1d522d0e",
+      "byteIdentical": true
+    },
+    {
+      "file": "test-compare-gate.py",
+      "source": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native/test-compare-gate.py",
+      "archiveRelativePath": "docs/art-gravekeeper-hit-20261111/verification/full-native/test-compare-gate.py",
+      "bytes": 7468,
+      "sha256": "611c40a9935d5fc09aeb22679b36b9a54fab83ee3ad4f258cf6861243a8c06dc",
+      "byteIdentical": true
+    },
+    {
+      "file": "comparison-controls.txt",
+      "source": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native/comparison-controls.txt",
+      "archiveRelativePath": "docs/art-gravekeeper-hit-20261111/verification/full-native/comparison-controls.txt",
+      "bytes": 2787,
+      "sha256": "79a1fb7663c66376e91ebfde5473deccde20d3d0eb85bc3e40a97b923e41c2ed",
+      "byteIdentical": true
+    },
+    {
+      "file": "full-native.txt",
+      "source": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native/full-native.txt",
+      "archiveRelativePath": "docs/art-gravekeeper-hit-20261111/verification/full-native/full-native.txt",
+      "bytes": 228615,
+      "sha256": "66704d2e898cc84517869df4c50cac801a3af2dea1bdfc83c7855c64bafa9c4c",
+      "byteIdentical": true
+    },
+    {
+      "file": "full-native.exit",
+      "source": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native/full-native.exit",
+      "archiveRelativePath": "docs/art-gravekeeper-hit-20261111/verification/full-native/full-native.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "byteIdentical": true
+    },
+    {
+      "file": "full-native-started.txt",
+      "source": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native/full-native-started.txt",
+      "archiveRelativePath": "docs/art-gravekeeper-hit-20261111/verification/full-native/full-native-started.txt",
+      "bytes": 21,
+      "sha256": "9cb19db48a9dc19d2fa98dea318d106db481d11f08668845368431e31b42938d",
+      "byteIdentical": true
+    },
+    {
+      "file": "full-native-finished.txt",
+      "source": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native/full-native-finished.txt",
+      "archiveRelativePath": "docs/art-gravekeeper-hit-20261111/verification/full-native/full-native-finished.txt",
+      "bytes": 21,
+      "sha256": "b29f8e74b15283eb6d33b56a1b68fdd0bb742aaa1de234bd3db65a9a81c68fea",
+      "byteIdentical": true
+    },
+    {
+      "file": "full-native-source-commit.txt",
+      "source": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native/full-native-source-commit.txt",
+      "archiveRelativePath": "docs/art-gravekeeper-hit-20261111/verification/full-native/full-native-source-commit.txt",
+      "bytes": 41,
+      "sha256": "a9728fba97478936cce0e884220075bb43c179ac57403a44281ba0623c488af6",
+      "byteIdentical": true
+    },
+    {
+      "file": "full-native-source-status.txt",
+      "source": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native/full-native-source-status.txt",
+      "archiveRelativePath": "docs/art-gravekeeper-hit-20261111/verification/full-native/full-native-source-status.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteIdentical": true
+    },
+    {
+      "file": "full-native-source-trees.txt",
+      "source": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native/full-native-source-trees.txt",
+      "archiveRelativePath": "docs/art-gravekeeper-hit-20261111/verification/full-native/full-native-source-trees.txt",
+      "bytes": 82,
+      "sha256": "93cc1602d1fc08b2230d4e58f920feb41b0b78f8f807190f41b3a0677703a56b",
+      "byteIdentical": true
+    },
+    {
+      "file": "frozen-assemblies-sha256.txt",
+      "source": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native/frozen-assemblies-sha256.txt",
+      "archiveRelativePath": "docs/art-gravekeeper-hit-20261111/verification/full-native/frozen-assemblies-sha256.txt",
+      "bytes": 483,
+      "sha256": "e8c6509aa414d205b18ebc961ad02c0a3ac520cfbc5c8ee244789293eddbf0ca",
+      "byteIdentical": true
+    },
+    {
+      "file": "assertion-count-review.json",
+      "source": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native/assertion-count-review.json",
+      "archiveRelativePath": "docs/art-gravekeeper-hit-20261111/verification/full-native/assertion-count-review.json",
+      "bytes": 5473,
+      "sha256": "76a12203bf77f8479e1082c06968d4aaa2e59e99bc176d23ef9f14fa26d1eec3",
+      "byteIdentical": true
+    },
+    {
+      "file": "final-build-review.json",
+      "source": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native/final-build-review.json",
+      "archiveRelativePath": "docs/art-gravekeeper-hit-20261111/verification/full-native/final-build-review.json",
+      "bytes": 1565,
+      "sha256": "5c8ac4916de04c3ea5c6b0e6e14abb54034dc9cae747becd0959d5d18f2c2d31",
+      "byteIdentical": true
+    },
+    {
+      "file": "final-review.md",
+      "source": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/full-native/final-review.md",
+      "archiveRelativePath": "docs/art-gravekeeper-hit-20261111/verification/full-native/final-review.md",
+      "bytes": 1601,
+      "sha256": "5306cf2460e0f48a04ddfbb50a9d5c48cd31feb5d8987f60979f2a30b782c492",
+      "byteIdentical": true
+    }
+  ],
+  "derivedComparisonReports": "Regenerated against archived records so default paths and portability are independently exercised.",
+  "excluded": "Historical pending snapshots and Python bytecode stay outside the accepted final evidence packet."
+}

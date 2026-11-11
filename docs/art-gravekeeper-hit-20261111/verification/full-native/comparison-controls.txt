@@ -1,0 +1,31 @@
+test_added_warning_rejected (__main__.ComparisonControls.test_added_warning_rejected) ... ok
+test_build_warning_rejected (__main__.ComparisonControls.test_build_warning_rejected) ... ok
+test_changed_assertion_total_allowed (__main__.ComparisonControls.test_changed_assertion_total_allowed) ... ok
+test_changed_order_count_rejected (__main__.ComparisonControls.test_changed_order_count_rejected) ... ok
+test_changed_played_outcome_rejected (__main__.ComparisonControls.test_changed_played_outcome_rejected) ... ok
+test_changed_progress_marker_rejected (__main__.ComparisonControls.test_changed_progress_marker_rejected) ... ok
+test_changed_trace_digest_rejected (__main__.ComparisonControls.test_changed_trace_digest_rejected) ... ok
+test_dirty_source_rejected (__main__.ComparisonControls.test_dirty_source_rejected) ... ok
+test_duplicate_assembly_hash_errors (__main__.ComparisonControls.test_duplicate_assembly_hash_errors) ... ok
+test_duplicate_trace_rejected (__main__.ComparisonControls.test_duplicate_trace_rejected) ... ok
+test_duplicate_uid_marker_rejected (__main__.ComparisonControls.test_duplicate_uid_marker_rejected) ... ok
+test_duplicate_warning_rejected (__main__.ComparisonControls.test_duplicate_warning_rejected) ... ok
+test_equivalent_complete_fixture (__main__.ComparisonControls.test_equivalent_complete_fixture) ... ok
+test_error_diagnostic_rejected (__main__.ComparisonControls.test_error_diagnostic_rejected) ... ok
+test_leak_diagnostic_rejected (__main__.ComparisonControls.test_leak_diagnostic_rejected) ... ok
+test_missing_exit_remains_pending (__main__.ComparisonControls.test_missing_exit_remains_pending) ... ok
+test_missing_log_and_exit_remains_pending (__main__.ComparisonControls.test_missing_log_and_exit_remains_pending) ... ok
+test_missing_log_with_completed_exit_rejected (__main__.ComparisonControls.test_missing_log_with_completed_exit_rejected) ... ok
+test_missing_stage_marker_rejected (__main__.ComparisonControls.test_missing_stage_marker_rejected) ... ok
+test_missing_terminal_rejected (__main__.ComparisonControls.test_missing_terminal_rejected) ... ok
+test_missing_warning_rejected (__main__.ComparisonControls.test_missing_warning_rejected) ... ok
+test_nonzero_exit_rejected (__main__.ComparisonControls.test_nonzero_exit_rejected) ... ok
+test_old_uid_count_rejected (__main__.ComparisonControls.test_old_uid_count_rejected) ... ok
+test_unpinned_build_rejected (__main__.ComparisonControls.test_unpinned_build_rejected) ... ok
+test_wrong_assembly_record_rejected (__main__.ComparisonControls.test_wrong_assembly_record_rejected) ... ok
+test_wrong_tested_source_rejected (__main__.ComparisonControls.test_wrong_tested_source_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.889s
+
+OK

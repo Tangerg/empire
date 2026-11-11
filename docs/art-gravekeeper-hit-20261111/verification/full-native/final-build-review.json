@@ -1,0 +1,31 @@
+{
+  "status": "pass-frozen-tested-and-current-runtime-identity",
+  "testedSource": "27de886c111600c64a868f9d57fc6868a6db45e4",
+  "currentDocumentationHeadAtReview": "42be25af00341e0a5e9845a7c61d7eec87e61467",
+  "currentGodotTree": "02b18b80aff45880bb58e503574b858c921449aa",
+  "currentToolsTree": "afff6c24fcf143fdff3a5a4facf2f373d1ad3290",
+  "matchesTestedSourceTrees": true,
+  "liveAndFrozenDlls": {
+    "liveFrozenDlls": {
+      "directory": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/final-assemblies",
+      "sha256": {
+        "Empire.Core.dll": "ab6a38e4b863a6a09acce6505aac93a4fe72975f0c9e41329d1b8645a7c56faa",
+        "Empire.dll": "9c26ba406a55703a0d5a0b07141cfc094ece56b0842157ec47a03d465f0ec9c0",
+        "GodotSharp.dll": "2142e62894176d7340f50581f8b2fe84e36ae64e1a85f1b2bd7737a7e8a5c8ba"
+      },
+      "matchesRecorded": true
+    },
+    "liveRuntimeDlls": {
+      "directory": "/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/.godot/mono/temp/bin/Debug",
+      "sha256": {
+        "Empire.Core.dll": "ab6a38e4b863a6a09acce6505aac93a4fe72975f0c9e41329d1b8645a7c56faa",
+        "Empire.dll": "9c26ba406a55703a0d5a0b07141cfc094ece56b0842157ec47a03d465f0ec9c0",
+        "GodotSharp.dll": "2142e62894176d7340f50581f8b2fe84e36ae64e1a85f1b2bd7737a7e8a5c8ba"
+      },
+      "matchesRecorded": true
+    }
+  },
+  "originalGateSha256": "4ca078f295e2b3159c0d533afe94f5a5bae146d91a325c4872658166e7e2ab83",
+  "gateExit": "0",
+  "completeLogSha256": "66704d2e898cc84517869df4c50cac801a3af2dea1bdfc83c7855c64bafa9c4c"
+}

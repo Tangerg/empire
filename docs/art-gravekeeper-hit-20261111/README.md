@@ -82,14 +82,25 @@ mutations per orientation. Independent final visual/evidence review passes all
 damage and status overlays remain visible;
 they partly cover torso and lower-right equipment detail during the hit.
 
-The unchanged full native gate is running from clean implementation commit
-`27de886c111600c64a868f9d57fc6868a6db45e4`. Its complete result is still pending;
-passing focused and UI checks does not count as an aggregate pass. No battle
-rules, attack preview or runtime implementation changed.
+The unchanged full native gate passes all 45 ordered stages with strict exit 0
+and its terminal success marker. It ran from clean implementation commit
+`27de886c111600c64a868f9d57fc6868a6db45e4`, from 00:18:25 to 00:53:23 UTC on
+2026-11-11. All three runtime DLLs still equal the exact native-recording build.
+Independent comparison with the accepted idle aggregate preserves all 16 AI
+traces and 3,425 legal orders, six played-flow markers, fourteen progress/roster
+markers and the same 41-warning multiset. Four builds have zero warnings/errors.
+
+The actual played-flow run reports 22,257 assertions, two carried victories
+across 415 legal orders and a 21-order third-battle opening. Its assertion total
+includes per-process-frame deadline checks and is not a scenario count. Exact
+state, event and action comparisons remain unchanged. No battle rules, attack
+preview or runtime implementation changed. Native and negative-control evidence
+also verifies from an isolated Git archive, without unindexed working files.
 
 See [native evidence](verification/native/README.md),
 [independent native review](verification/native-review/native-final-review.md),
 [legal replay](verification/legal/README.md), and
-[negative controls](verification/negative-controls/README.md).
+[negative controls](verification/negative-controls/README.md), and
+[full aggregate review](verification/full-native/COMPARISON.md).
 Full-character completion, all-campaign playthrough, standalone export and
 real-time performance remain outside this slice.

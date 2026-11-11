@@ -1,0 +1,90 @@
+{
+  "status": "reviewed-no-semantic-difference-found",
+  "baselineTestedSource": "869078976dd21f5d82932dc4151bdd03fa973c1a",
+  "currentTestedSource": "27de886c111600c64a868f9d57fc6868a6db45e4",
+  "baselinePlayedFlowAssertions": 22394,
+  "currentPlayedFlowAssertions": 22257,
+  "difference": -137,
+  "sources": {
+    "godot/Presentation/CampaignPlayedFlowChecks.cs": {
+      "baselineGitBlob": "bd634cea0ddd5fadcba27cf462758323098c3721",
+      "currentGitBlob": "bd634cea0ddd5fadcba27cf462758323098c3721",
+      "sha256": "5e42ea45972c96e195cd84ea96f5e6e9f371398dbb1dfbecb975d4c7c938069d",
+      "byteIdentical": true
+    },
+    "godot/Presentation/CampaignPlayedCarryChecks.cs": {
+      "baselineGitBlob": "ac88bc743ef3332543f684dc15d44498fc871729",
+      "currentGitBlob": "ac88bc743ef3332543f684dc15d44498fc871729",
+      "sha256": "9080b1844f69a682148ddd30371dc13647100e55280086df92335b66bfbbdead",
+      "byteIdentical": true
+    },
+    "tools/godot/verify-native.sh": {
+      "baselineGitBlob": "77da66eec369759884efb1db30110f2c8e4112a9",
+      "currentGitBlob": "77da66eec369759884efb1db30110f2c8e4112a9",
+      "sha256": "4ca078f295e2b3159c0d533afe94f5a5bae146d91a325c4872658166e7e2ab83",
+      "byteIdentical": true
+    }
+  },
+  "variableCountSites": [
+    {
+      "path": "godot/Presentation/CampaignPlayedFlowChecks.cs",
+      "lines": "121-126",
+      "behavior": "One deadline Require per awaited ProcessFrame until the terminal battle screen changes."
+    },
+    {
+      "path": "godot/Presentation/CampaignPlayedCarryChecks.cs",
+      "lines": "382-389",
+      "behavior": "Until increments one deadline Require per awaited ProcessFrame while waiting for presentation or AI conditions."
+    }
+  ],
+  "counterDefinition": {
+    "path": "godot/Presentation/CampaignPlayedFlowChecks.cs",
+    "lines": "304-308",
+    "behavior": "Require increments assertions on every call, including repeated deadline polls."
+  },
+  "gateUsesFixedFrameRateForPlayedFlow": false,
+  "semanticPlayedMarkersIdentical": true,
+  "additionalOrderedProgressAndRosterLinesIdentical": true,
+  "additionalOrderedProgressAndRosterLines": [
+    "CARRIED_PLAY_PROGRESS level=c01-01; legal orders=40; turn=2; state=f5b42655",
+    "CARRIED_PLAY_PROGRESS level=c01-01; legal orders=80; turn=4; state=13dcc0ea",
+    "CARRIED_PLAY_PROGRESS level=c01-01; legal orders=120; turn=6; state=d9f3d359",
+    "CARRIED_ROSTER unit=laiya; disposition=available; hpRatio=1; moraleRatio=1; rank=0; progress=0",
+    "CARRIED_ROSTER unit=torren; disposition=fallen; hpRatio=0; moraleRatio=1; rank=0; progress=17",
+    "CARRIED_ROSTER unit=elin; disposition=available; hpRatio=0.5; moraleRatio=1; rank=1; progress=142",
+    "CARRIED_PLAY_PROGRESS level=c01-02; legal orders=40; turn=2; state=652974c1",
+    "CARRIED_PLAY_PROGRESS level=c01-02; legal orders=80; turn=4; state=2dfea778",
+    "CARRIED_PLAY_PROGRESS level=c01-02; legal orders=120; turn=6; state=aeaf0422",
+    "CARRIED_PLAY_PROGRESS level=c01-02; legal orders=160; turn=8; state=9b390838",
+    "CARRIED_PLAY_PROGRESS level=c01-02; legal orders=200; turn=10; state=c445e9a2",
+    "CARRIED_PLAY_PROGRESS level=c01-02; legal orders=240; turn=12; state=271d4373",
+    "CARRIED_ROSTER unit=laiya; disposition=available; hpRatio=1; moraleRatio=1; rank=0; progress=28",
+    "CARRIED_ROSTER unit=elin; disposition=available; hpRatio=0.8846153846153846; moraleRatio=1; rank=1; progress=281"
+  ],
+  "comparatorGuardsNotRelaxedForObservedCounts": true,
+  "navigationSourcesByteIdenticalToIdle": true,
+  "navigationSourcesSha256": {
+    "godot/Presentation/CampaignNavigationChecks.cs": "a1f09d9c0a45cb75bd77b7f9a429fa81ac7d4ad5662ccf6f5a18d1c2e502bda7",
+    "godot/Presentation/CampaignNavigationContentAdmissionChecks.cs": "7e61c45ed9603042135bac2f63d512f07dca32595fd81959b71bb186169e89ed",
+    "godot/Presentation/CampaignNavigationModalPointerChecks.cs": "0280d82f6abde3772185eeb72be52a03f1c80105cbf1697fd63c56dc7d789ee5",
+    "godot/Presentation/CampaignNavigationNativeRouteChecks.cs": "36b53bc8c23db8950718a73c181af2ae6087df57f396ea24c633d9be534e049b",
+    "godot/Presentation/CampaignNavigationPointerChecks.cs": "4c081278dd4c230393b628b1b44e83e0d05f56f865999bbbc408f4c5fd6085c6",
+    "godot/Presentation/CampaignNavigationPollingChecks.cs": "da6939b6a56f44267dbb1a4c0a8ca07ff718c7fbfc627c16b3e9951aef92384f",
+    "godot/Presentation/CampaignNavigationSaveChecks.cs": "0e0671479acde0f12d14521fea9dcb63c7416d4c743b844f50b1925ae5e82a50",
+    "godot/Presentation/CampaignNavigationTouchChecks.cs": "a4d26f3c3b0d39c12d6d6ac3954270a1b314fa4310e14fb7a4d168499d4c0682"
+  },
+  "otherObservedTotals": {
+    "animation": {
+      "baseline": 6876,
+      "current": 7487,
+      "reason": "Intentional added recoil checks; this is an assertion count, not a scenario count."
+    },
+    "campaignNavigation": {
+      "baseline": 9817,
+      "current": 9767,
+      "note": "Unchanged sources and zero failed groups; this suite also counts polling observations."
+    }
+  },
+  "conclusion": "The 137-count reduction is a difference in a counter that includes process-frame polling, not evidence of removed semantic checks or changed scenario coverage. Relevant sources, all six played outcomes, fourteen progress/roster markers, legal-order counts and outcome digests are unchanged.",
+  "limit": "Logs do not expose per-loop iteration counts, so the exact 137-count difference cannot be attributed among individual polling loops or used as a performance measurement."
+}
