@@ -55,6 +55,13 @@ indicates an actual scale change, including false at a clamp. `CenterOn`, `Pan`,
 and `Reveal` all use the same scroll/clamp path. `ToField` only inverts projection;
 it does not decide which cell exists or may receive an action.
 
+The native zoom buttons project the camera's current limits after pending zoom is
+applied: zoom out is disabled at 0.5, zoom in at 2.2. The reverse direction remains
+available. Both remain disabled while unbound or input-blocked. No second zoom
+state or limit is stored in the HUD. `CameraIntegrationChecks` exercises wheel
+clamping, button recovery, busy/unbusy and rebind behavior in the same frame,
+including complete battle-state non-mutation.
+
 `BattlefieldGestures` receives explicit projection and output callbacks. Button IDs
 are source IDs 0/1/2, not Godot enum values. Its boolean results mean prevent-default,
 not whether a callback fired. The screen owns platform input routing and capture,

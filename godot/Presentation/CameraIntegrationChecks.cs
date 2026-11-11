@@ -58,6 +58,7 @@ public partial class CameraIntegrationChecks : Node
             CheckHeldPointerProjection();
             await CheckOverlayViewport();
             CheckInitialAndGestures();
+            CheckZoomLimits();
             CheckZoomAndResize();
             screen.Size = new Vector2(960, 640);
             await Layout();
@@ -122,6 +123,46 @@ public partial class CameraIntegrationChecks : Node
         screen.Size = originalSize;
         await Layout();
         Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
+    }
+
+    private void CheckZoomLimits()
+    {
+        var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        Bind(session);
+        var before = session.GetSnapshot().State.GetRawText();
+        var zoomOut = Buttons(screen).Single(button => button.Name == "ZoomOut");
+        var zoomIn = Buttons(screen).Single(button => button.Name == "ZoomIn");
+        screen._Process(0);
+        Require(!zoomOut.Disabled && !zoomIn.Disabled, "Initial zoom offers both directions.");
+        for (var i = 0; i < 30; i++)
+            Wheel(MouseButton.WheelDown, ctrl: true);
+        screen._Process(0);
+        Near(world.Scale, Vector2.One * (float)BattlefieldCamera.MinimumZoom, "Wheel reaches the minimum zoom");
+        Require(zoomOut.Disabled && !zoomIn.Disabled, "Minimum zoom disables only zoom out in the same presentation frame.");
+        zoomIn.EmitSignal(Button.SignalName.Pressed);
+        screen._Process(0);
+        Require(!zoomOut.Disabled && !zoomIn.Disabled && world.Scale.X > BattlefieldCamera.MinimumZoom,
+            "The opposite button leaves the limit and restores both directions.");
+        for (var i = 0; i < 30; i++)
+            Wheel(MouseButton.WheelUp, ctrl: true);
+        screen._Process(0);
+        Near(world.Scale, Vector2.One * (float)BattlefieldCamera.MaximumZoom, "Wheel reaches the maximum zoom");
+        Require(!zoomOut.Disabled && zoomIn.Disabled, "Maximum zoom disables only zoom in in the same presentation frame.");
+        screen.SetApplicationBusy(true);
+        screen._Process(0);
+        Require(zoomOut.Disabled && zoomIn.Disabled, "Application busy still disables both zoom controls.");
+        screen.SetApplicationBusy(false);
+        screen._Process(0);
+        Require(!zoomOut.Disabled && zoomIn.Disabled, "Leaving busy preserves the actual zoom boundary.");
+        zoomOut.EmitSignal(Button.SignalName.Pressed);
+        screen._Process(0);
+        Require(!zoomOut.Disabled && !zoomIn.Disabled && world.Scale.X < BattlefieldCamera.MaximumZoom,
+            "Zoom out restores both directions after leaving the upper limit.");
+        Require(session.Revision == 0 && session.GetSnapshot().State.GetRawText() == before,
+            "Zoom control availability never changes battle state.");
+        Bind(new GrayFlagSession(new(engine, presentation, new JsonArray()), level));
+        screen._Process(0);
+        Require(!zoomOut.Disabled && !zoomIn.Disabled, "Rebinding restores initial camera availability.");
     }
 
     private void CheckHeldPointerProjection()

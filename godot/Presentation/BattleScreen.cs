@@ -168,10 +168,12 @@ public partial class BattleScreen : Control
     {
         if (!_built)
             return;
-        _zoomOut.Disabled = _zoomIn.Disabled = !_bound || IsInputBlocked;
         RefreshApplicationActions();
         if (_bound && _camera?.ApplyPendingZoom() == true)
             ApplyCamera();
+        var zoomBlocked = !_bound || IsInputBlocked || _camera is null;
+        _zoomOut.Disabled = zoomBlocked || _camera!.Zoom <= BattlefieldCamera.MinimumZoom;
+        _zoomIn.Disabled = zoomBlocked || _camera!.Zoom >= BattlefieldCamera.MaximumZoom;
     }
 
     public override void _Notification(int what)
