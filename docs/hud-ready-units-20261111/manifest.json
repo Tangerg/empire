@@ -1,0 +1,45 @@
+{
+  "verified_source_commit": "3204d655becbb6c41992915c328575ec89debc7b",
+  "implementation_commit": "1532052fae86584df30fbc267b4dd8a39af8a650",
+  "godot_version": "4.6.3 .NET",
+  "full_native_exit_code": 0,
+  "focused_ready_unit_assertions": 90,
+  "localized_messages": 1243,
+  "negative_control": {
+    "change": "CycleActors excludes the first canonical actor using Skip(1).",
+    "expected_exit_code": 1,
+    "observed_exit_code": 1,
+    "restored_source_rebuilt_and_passed": true
+  },
+  "logs": [
+    {
+      "path": "verification/battle-screen.txt",
+      "bytes": 11476,
+      "sha256": "5987b12e78503ffb938a89680b42c6cc0016a354de9da427770ba5050234720c"
+    },
+    {
+      "path": "verification/full-native.txt",
+      "bytes": 229568,
+      "sha256": "943a166a808688446d7695e48231be8aae6befc7ad8358cbb4b947d47ab700ba"
+    },
+    {
+      "path": "verification/localization.txt",
+      "bytes": 2496,
+      "sha256": "b71e55b5c0dc5c502075ecaccddb96d32ae30cce6c176ca356d680baf7501bd3"
+    },
+    {
+      "path": "verification/missing-actor-negative.txt",
+      "bytes": 2783,
+      "sha256": "3fe7bc9505789fe14b0d8cc6d5c5451e356879472cb70980331e003533eefd29"
+    },
+    {
+      "path": "verification/ready-units.txt",
+      "bytes": 701,
+      "sha256": "a98df2db5bc173dc7c7f74ead9f3167e3433520967421d3f6581f15221c55172"
+    }
+  ],
+  "limits": [
+    "Native headless input and geometry checks only; no manual GUI, physical-device or exported-package acceptance.",
+    "Played flow covers C01/C02 victories and C03 opening, not complete campaign victory."
+  ]
+}

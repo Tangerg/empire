@@ -19,7 +19,11 @@ The game opens the original prologue, briefing and authored choices, then starts
 Select a friendly unit, choose an action category and destination, then confirm
 the complete order. Movement commits the destination and waiting together;
 attack orders include their exact firing position. End turn lets the original
-ported AI play the opposing side. The native core revalidates every command.
+ported AI play the opposing side. The ready-unit button above End Turn shows
+how many selectable units remain and locates the next one; battlefield Space
+uses the same navigation without issuing an order. See the
+[ready-unit control contract and verification](docs/READY-UNIT-NAVIGATION.md).
+The native core revalidates every command.
 
 From the repository root, `bash tools/godot/run-native.sh` builds, imports and
 launches using the configured workspace-local toolchain. See

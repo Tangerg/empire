@@ -1,0 +1,17 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ERROR: System.InvalidOperationException: Displayed readiness and enablement match canonical actors exactly.
+   at Empire.Presentation.ReadyUnitNavigationChecks.Require(Boolean condition, String message) in /workspace/scratch/84c9fe948755/empire-hud-polish-20261111/godot/Presentation/ReadyUnitNavigationChecks.cs:line 23
+   at Empire.Presentation.ReadyUnitNavigationChecks.<>c__DisplayClass5_0.<Check>g__Count|3(Int32 expected) in /workspace/scratch/84c9fe948755/empire-hud-polish-20261111/godot/Presentation/ReadyUnitNavigationChecks.cs:line 84
+   at Empire.Presentation.ReadyUnitNavigationChecks.Check() in /workspace/scratch/84c9fe948755/empire-hud-polish-20261111/godot/Presentation/ReadyUnitNavigationChecks.cs:line 90
+   at Empire.Presentation.ReadyUnitNavigationChecks._Ready() in /workspace/scratch/84c9fe948755/empire-hud-polish-20261111/godot/Presentation/ReadyUnitNavigationChecks.cs:line 53
+   at: void Empire.Presentation.ReadyUnitNavigationChecks+<_Ready>d__4.MoveNext() (res://Presentation/ReadyUnitNavigationChecks.cs:53)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.ReadyUnitNavigationChecks+<_Ready>d__4.MoveNext() (/workspace/scratch/84c9fe948755/empire-hud-polish-20261111/godot/Presentation/ReadyUnitNavigationChecks.cs:53)
+       [2] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [3] void Empire.Presentation.ReadyUnitNavigationChecks._Ready()
+       [4] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [5] bool Empire.Presentation.ReadyUnitNavigationChecks.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-hud-polish-20261111/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Presentation.ReadyUnitNavigationChecks_ScriptMethods.generated.cs:50)
+       [6] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)

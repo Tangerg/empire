@@ -60,7 +60,11 @@ Focused native verification passed 90 assertions. A negative control removed
 one canonical actor from the shared cycling cohort; the check failed on the
 initial readiness count. The restored implementation passed again. Native
 localization checked all 1,243 catalog messages, including strict argument arity.
-The full aggregate gate is pending at this implementation checkpoint.
+The full aggregate gate passed on source commit
+`3204d655becbb6c41992915c328575ec89debc7b`, including all 16 independent-level
+save/replays and 32 native scenes. Its played opening completed 415 legal orders
+across C01/C02 and 21 orders in the C03 opening, with 22,261 flow assertions.
+See [text logs and checksums](../../docs/hud-ready-units-20261111/README.md).
 
 Headless native input and geometry checks are not manual GUI or exported-package
 acceptance. No current screenshot or manual device acceptance is claimed here.
