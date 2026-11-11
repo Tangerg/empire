@@ -1,0 +1,28 @@
+Selected gate summary; full local log retained outside repository.
+Campaign navigation group passed: fresh menu, local beats, choice and autosave
+Campaign navigation group passed: native campaign route
+Campaign navigation group passed: menu cannot overwrite a played manual save
+Campaign navigation group passed: idle polling after play, undo and load
+Campaign navigation group passed: popup dismissal owns its pointer gesture
+Campaign navigation group passed: battle window minimum follows committed view and lifecycle
+Campaign navigation group passed: root notice leaves with its view
+Campaign navigation group passed: startup resume, battle restart, camp and Continue
+Campaign navigation group passed: held end-turn key across real AI playback
+Campaign navigation group passed: modified save shortcut preserves the manual slot
+Campaign navigation group passed: modified load shortcut preserves unsaved battle progress
+Campaign navigation group passed: story/choice return, rebind and unmount
+Campaign navigation group passed: overwrite cancellation, stale dialog and confirmation
+Campaign navigation group passed: overwrite dialog unmount
+Campaign navigation group passed: native overwrite and restart confirmation input
+Campaign navigation group passed: invalid save notice and explicit replacement
+Campaign navigation group passed: ending active/completed/failed UI fixtures
+Campaign navigation group passed: story, choice, ending and staging write failures
+Campaign navigation group passed: victory settlement UI fixture and autosave
+Campaign navigation group passed: played victory confirmation, playback and carried continuation
+Campaign navigation group passed: read/delete failure preserves menu
+Campaign navigation group passed: manual load admission and view activation are atomic
+Campaign navigation group passed: saved campaign content admission preserves live progress
+Campaign navigation group passed: formal Redstone entry, carried-roster fixture, resume and settlement
+ERROR: native pointer refresh preserves unchanged HUD content: System.InvalidOperationException: Native keyboard activation must continue toggling a retained dossier disclosure.
+ERROR: native touch activation and dossier handoff: System.InvalidOperationException: Touch targets an enabled, visible native control.
+Campaign navigation native checks failed: 9605 assertions; 2 failed groups. Ending states are explicit UI fixtures, not campaign outcome parity.

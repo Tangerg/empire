@@ -119,9 +119,18 @@ public partial class CampaignNavigationChecks
                     await Touch(ButtonPoint(Button(screen, "DossierButton")), split: true);
                     var dossier = (PopupPanel)screen.FindChild("UnitDossier", true, false);
                     Require(dossier.Visible, "The ordinary touch order sequence opens the real dossier.");
+                    var details = (VBoxContainer)hud.FindChild("unit-details", true, false);
+                    var detailsToggle = details.GetChildren().OfType<Button>().Single();
+                    Require(detailsToggle.ButtonPressed && details.GetNode<Control>("Content").Visible,
+                        "The named dossier entry reveals unit details before touch navigation.");
+                    await Touch(ButtonPoint(detailsToggle));
+                    Require(!detailsToggle.ButtonPressed && !details.GetNode<Control>("Content").Visible,
+                        "Native touch collapses the opened details to expose the following stance section.");
                     var stances = (VBoxContainer)hud.FindChild("stances", true, false);
                     var disclosure = stances.GetChildren().OfType<Button>().Single();
                     await Touch(ButtonPoint(disclosure));
+                    Require(disclosure.ButtonPressed && stances.GetNode<Control>("Content").Visible,
+                        "Native touch expands the visible stance section before issuing an order.");
                     var face = Buttons(stances).Single(button => button.GetMeta("hud_key", "").AsString() == "stances/face:north");
                     await Touch(ButtonPoint(face));
                     await SettleBattle();

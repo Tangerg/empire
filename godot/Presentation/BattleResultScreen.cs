@@ -14,6 +14,7 @@ public partial class BattleResultScreen : Control
     private BoxContainer actions = null!;
     private CampaignShell? shell;
     private ConfirmationDialog? campConfirmation;
+    private ReadingScroll? readingScroll;
     public System.Collections.Generic.IReadOnlyList<string> RenderingDiagnostics => shell?.RenderingDiagnostics ?? Array.Empty<string>();
     public override void _ExitTree()
     {
@@ -21,17 +22,57 @@ public partial class BattleResultScreen : Control
         handled = true;
     }
 
-    public void ShowCompletion(GameText text, string heading, string reason, bool victory, Action settle, Action retry, Action exit)
+    public void ShowCompletion(GameText text, string heading, string reason, bool victory, Action settle, Action retry, Action exit,
+        System.Collections.Generic.IReadOnlyList<string>? journal = null)
     {
         var column = Begin(readingHint: text.Format("ui.campaign.reading_hint"));
         Line(column, heading, 36);
         Line(column, reason);
+        AddJournal(column, journal, text.Format("ui.battle.log"));
         if (victory)
             ActionButton(actions, "Settle", text.Format("ui.result.settle"), settle);
         ActionButton(actions, "Retry", text.Format("ui.result.retry"), retry);
         Button exitButton = null!;
         exitButton = ActionButton(actions, "Exit", text.Format("ui.result.camp"), exit,
             commit => RequestCampExit(text, commit, exitButton));
+    }
+
+    private void AddJournal(VBoxContainer column, System.Collections.Generic.IReadOnlyList<string>? journal, string journalTitle)
+    {
+        if (journal is not { Count: > 0 })
+            return;
+        var token = generation;
+        var scroll = readingScroll ?? throw new InvalidOperationException("Completion reading surface is absent.");
+        var button = new Button { Name = "CompletionBattleLog", Text = "+ " + journalTitle, CustomMinimumSize = new Vector2(0, 42) };
+        var body = new RichTextLabel
+        {
+            Name = "CompletionBattleLogText",
+            Text = string.Join("\n\n", journal),
+            Visible = false,
+            BbcodeEnabled = false,
+            FitContent = true,
+            ScrollActive = false,
+            SelectionEnabled = true,
+            AutowrapMode = TextServer.AutowrapMode.WordSmart,
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            FocusMode = FocusModeEnum.None
+        };
+        column.AddChild(button);
+        column.AddChild(body);
+        CampaignButtonActivation.Connect(this, button,
+            () => !handled && token == generation && IsInsideTree() && campConfirmation is null,
+            () =>
+            {
+                body.Visible = !body.Visible;
+                button.Text = (body.Visible ? "− " : "+ ") + journalTitle;
+                if (body.Visible)
+                    scroll.GrabFocus();
+                else
+                {
+                    scroll.ScrollVertical = 0;
+                    button.GrabFocus();
+                }
+            });
     }
 
     private void RequestCampExit(GameText text, Action commit, Button button)
@@ -68,6 +109,7 @@ public partial class BattleResultScreen : Control
         }
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         shell = null;
+        readingScroll = null;
         if (shellView is not null)
         {
             ArgumentNullException.ThrowIfNull(onExit);
@@ -110,6 +152,7 @@ public partial class BattleResultScreen : Control
             HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
             SizeFlagsVertical = SizeFlags.ExpandFill
         };
+        readingScroll = scroll;
         layout.AddChild(scroll);
         var column = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
         column.AddThemeConstantOverride("separation", 22);

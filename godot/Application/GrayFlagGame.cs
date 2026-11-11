@@ -138,6 +138,7 @@ public partial class GrayFlagGame : Node
             {
                 var expectedSession = session;
                 var report = campaign.BattleSummary();
+                var journal = screen?.RecentMessages.ToArray() ?? Array.Empty<string>();
                 var result = new BattleResultScreen();
                 screen = null;
                 SetView(result);
@@ -187,7 +188,7 @@ public partial class GrayFlagGame : Node
                         if (ReferenceEquals(session, expectedSession)
                             && ReferenceEquals(view, result))
                             ExitBattle();
-                    });
+                    }, journal);
                 resultOffered = true;
             }
             return;

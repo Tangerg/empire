@@ -39,6 +39,7 @@ public partial class BattleResultFlowChecks : Node
         catch (Exception error) { GD.PushError("Result-flow safety guard: " + error); GetTree().Quit(1); return; }
         await Check("isolated clean prebattle autosave", CheckPrebattleAutosave);
         await Check("completion one-shot navigation", CheckCompletionButtons);
+        await Check("completion readonly journal", CheckCompletionJournal);
         await Check("result summary and invalid outcomes", CheckSummary);
         await Check("stale rebind and unmount callbacks", CheckStaleButtons);
         Check("historical battle save remains rejected", CheckHistoricalBattleSaveRejected);
@@ -62,6 +63,70 @@ public partial class BattleResultFlowChecks : Node
             GD.Print($"Battle result-flow native checks failed: {failures.Count} groups, {assertions} assertions reached.");
             GetTree().Quit(1);
         }
+    }
+
+    private async Task CheckCompletionJournal()
+    {
+        var screen = new BattleResultScreen();
+        AddChild(screen);
+        screen.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);
+        screen.Size = new Vector2(960, 640);
+        var calls = 0;
+        // Layout stress input, not a change to the production BattleLog's 60-entry bound.
+        var journal = Enumerable.Range(0, 80).Select(index => $"可见战报 {index:D2}：本条记录只来自战场已过滤的文本快照。伤害与阵亡细节供战后查阅。").ToList();
+        journal.Add("最后一条可见记录 [b]不解释标记[/b]");
+        screen.ShowCompletion(messages, "胜利", "Fixture reason", true, () => calls++, () => calls++, () => calls++, journal);
+        screen.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);
+        screen.Size = new Vector2(960, 640);
+        var toggle = Descendants(screen).OfType<Button>().Single(button => button.Name == "CompletionBattleLog");
+        var body = Descendants(screen).OfType<RichTextLabel>().Single(label => label.Name == "CompletionBattleLogText");
+        var scroll = Descendants(screen).OfType<ReadingScroll>().Single();
+        var expected = string.Join("\n\n", journal);
+        journal.Clear();
+        journal.Add("later mutation must not appear");
+        Require(body.Text == expected && !body.Visible && !body.BbcodeEnabled && !body.ScrollActive,
+            "Completion journal is a detached, collapsed plain-text snapshot using the existing reading surface.");
+        Press(toggle);
+        Press(toggle);
+        await Layout();
+        Require(body.Visible && calls == 0 && scroll.HasFocus(), "Repeated queued journal activation expands once and focuses keyboard reading without navigating.");
+        await Layout();
+        scroll._GuiInput(new InputEventKey { Keycode = Key.End, Pressed = true });
+        await Layout();
+        var bar = scroll.GetVScrollBar();
+        Require(bar.MaxValue > bar.Page && Math.Abs(scroll.ScrollVertical - (bar.MaxValue - bar.Page)) <= 1,
+            "End reaches the final journal entry in the existing ReadingScroll at 960x640.");
+        var footer = Descendants(screen).OfType<PanelContainer>().Single(panel => panel.Name == "ResultActions");
+        Require(footer.GetGlobalRect().End.Y <= screen.GetGlobalRect().End.Y + 1,
+            "A long completion journal never pushes navigation below the result viewport.");
+        Press(toggle);
+        await Layout();
+        Require(!body.Visible && scroll.ScrollVertical == 0 && calls == 0, "Collapsing restores compact completion without navigating.");
+        Press(CompletionButtons(screen).Single(button => button.Name == "Exit"));
+        await Layout();
+        var confirmation = CampConfirmation(screen);
+        Press(toggle);
+        await Layout();
+        Require(!body.Visible && calls == 0 && confirmation.Visible, "Journal cannot bypass or steal focus from pending Camp confirmation.");
+        Press(confirmation.GetCancelButton());
+        await Layout();
+        Press(toggle);
+        await Layout();
+        Require(body.Visible && calls == 0, "Canceling Camp restores readonly journal access.");
+        Press(toggle);
+        screen.ShowCompletion(messages, "New", "New reason", false, () => calls++, () => calls++, () => calls++, []);
+        await Layout();
+        Require(!Descendants(screen).OfType<Button>().Any(button => button.Name == "CompletionBattleLog") && calls == 0,
+            "Empty replacement journal has no entry and an old queued toggle cannot survive rebind.");
+        screen.ShowCompletion(messages, "Again", "Reason", true, () => calls++, () => calls++, () => calls++, ["visible"]);
+        var detached = Descendants(screen).OfType<Button>().Single(button => button.Name == "CompletionBattleLog");
+        var detachedBody = Descendants(screen).OfType<RichTextLabel>().Single();
+        Press(detached);
+        RemoveChild(screen);
+        AddChild(screen);
+        await Layout();
+        Require(!detachedBody.Visible && calls == 0, "Unmounting invalidates a queued journal toggle even when the screen is reattached.");
+        Retire(screen);
     }
 
     private async Task CheckCompletionButtons()
@@ -310,9 +375,25 @@ public partial class BattleResultFlowChecks : Node
         SetField(game, "session", campaign.Battle);
         SetField(game, "screen", null);
         SetField(game, "resultOffered", false);
+        var transfersJournal = outcome == "victory" && first == "Settle";
+        if (transfersJournal)
+        {
+            // Terminal state above is explicitly synthetic; this checks production UI handoff, not legal battle progression.
+            typeof(GrayFlagGame).GetMethod("ShowBattle", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(game, new object?[] { null });
+            var outgoing = Field<BattleScreen>(game, "screen");
+            outgoing.AppendMessage("Visible filtered final damage");
+            outgoing.AppendMessage("Visible filtered final victory");
+        }
         var pending = StateDigest.Hash(campaign.Snapshot());
         game._Process(0);
         var completion = Field<Control>(game, "view") as BattleResultScreen ?? throw new Exception("Game did not show a completion screen.");
+        if (transfersJournal)
+        {
+            var transferred = Descendants(completion).OfType<RichTextLabel>().Single(label => label.Name == "CompletionBattleLogText");
+            Require(transferred.Text.EndsWith("Visible filtered final damage\n\nVisible filtered final victory", StringComparison.Ordinal),
+                "Normal completion receives the outgoing BattleScreen's filtered journal before unmounting it.");
+            Require(!transferred.Text.Contains("gameOver", StringComparison.Ordinal), "Result journal does not reconstruct raw canonical events.");
+        }
         if (conclusion.Kind == "lastTeamRemaining")
             Require(Labels(completion).Contains(messages.Format("battle.result." + outcome))
                 && Labels(completion).Contains("仅剩一个阵营未被击败")

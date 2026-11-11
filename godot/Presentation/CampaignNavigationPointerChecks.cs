@@ -125,8 +125,10 @@ public partial class CampaignNavigationChecks
             Require(popup.Visible, "A real pointer click must still open the dossier after repeated HUD retention.");
             var unitDetails = (VBoxContainer)hud.FindChild("unit-details", true, false);
             var toggle = unitDetails.GetChildren().OfType<Button>().Single();
+            Require(toggle.ButtonPressed && unitDetails.GetNode<Control>("Content").Visible,
+                "The named dossier entry opens its unit details before keyboard reading.");
             toggle.GrabFocus();
-            foreach (var open in new[] { true, false })
+            foreach (var open in new[] { false, true })
             {
                 foreach (var pressed in new[] { true, false })
                 {

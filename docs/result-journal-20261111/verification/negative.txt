@@ -1,0 +1,34 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ERROR: game victory/Settle: System.InvalidOperationException: Sequence contains no matching element
+   at System.Linq.ThrowHelper.ThrowNoMatchException()
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source, Func`2 predicate)
+   at Empire.Presentation.BattleResultFlowChecks.CheckGameFlow(String outcome, String first) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/BattleResultFlowChecks.cs:line 391
+   at Empire.Presentation.BattleResultFlowChecks.Check(String name, Func`1 test) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/BattleResultFlowChecks.cs:line 772
+   at: void Empire.Presentation.BattleResultFlowChecks+<_Ready>d__4.MoveNext() (res://Presentation/BattleResultFlowChecks.cs:62)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.BattleResultFlowChecks+<_Ready>d__4.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/BattleResultFlowChecks.cs:62)
+       [2] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [3] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [4] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [5] void System.Threading.Tasks.Task.RunContinuations(object)
+       [6] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [7] void Empire.Presentation.BattleResultFlowChecks+<CheckBusySaveLoad>d__11.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/BattleResultFlowChecks.cs:599)
+       [8] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [9] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [10] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [11] void System.Threading.Tasks.Task.RunContinuations(object)
+       [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [13] void Empire.Presentation.BattleResultFlowChecks+<Layout>d__12.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/BattleResultFlowChecks.cs:605)
+       [14] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [16] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)
+Battle result-flow native checks failed: 1 groups, 372 assertions reached.
