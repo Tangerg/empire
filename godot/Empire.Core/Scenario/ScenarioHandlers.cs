@@ -1,5 +1,6 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
+using Empire.Core.Geometry;
 using Empire.Core.References;
 using Empire.Core.Registries;
 using Empire.Core.State;
@@ -20,6 +21,11 @@ public sealed class ScenarioConditionContext(JsonObject state, ScenarioCondition
 
 public sealed record ScenarioConditionHandler(string Kind, Func<ScenarioConditionContext, JsonObject, bool> Evaluate)
 {
+    /// <summary>Optional public spatial facts. Must not evaluate conditions, consume RNG or mutate state.</summary>
+    public Func<ScenarioConditionContext, JsonObject, IReadOnlyList<Coord>>? TargetCells
+    {
+        get; init;
+    }
     public Func<JsonObject, IReadOnlyList<JsonObject>>? Children
     {
         get; init;
@@ -37,6 +43,8 @@ public sealed class ScenarioConditionHandlerRegistry(IBattleRandomSource random)
     protected override string KeyOf(ScenarioConditionHandler handler) => handler.Kind;
     public bool Evaluate(JsonObject state, JsonObject condition, ReadOnlyContent content) =>
         Get(StateJson.Text(condition, "type")).Evaluate(new(state, this, content), condition);
+    public IReadOnlyList<Coord> TargetCells(JsonObject state, JsonObject condition, ReadOnlyContent content) =>
+        System.Array.AsReadOnly((Get(StateJson.Text(condition, "type")).TargetCells?.Invoke(new(state, this, content), condition) ?? []).ToArray());
     public IReadOnlyList<JsonObject> Children(JsonObject condition) => Get(StateJson.Text(condition, "type")).Children?.Invoke(condition) ?? [];
     public PayloadReferences References(JsonObject condition) => TryGet(StateJson.Text(condition, "type"))?.References?.Invoke(condition) ?? new();
     public ScenarioConditionHandlerRegistry Clone(IBattleRandomSource? random = null) => CopyInto(new ScenarioConditionHandlerRegistry(random ?? Random));

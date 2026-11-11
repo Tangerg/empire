@@ -142,7 +142,9 @@ public static class DefaultObjectives
             Role = "critical",
             Refresh = "children",
             Children = Nested,
-            References = objective => new PayloadReferences().Condition(Object(objective["condition"], "condition"))
+            References = objective => new PayloadReferences().Condition(Object(objective["condition"], "condition")),
+            TargetCells = (context, objective) => context.ScenarioConditions.TargetCells(context.State,
+                Object(objective["condition"], "condition"), context.Content)
         });
 
     private static ObjectiveAssessment Result(bool success, params (string Key, double Value)[] facts) => Assessment(success ? "success" : "pending", facts);

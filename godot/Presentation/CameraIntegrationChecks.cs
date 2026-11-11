@@ -92,7 +92,7 @@ public partial class CameraIntegrationChecks : Node
         var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>().ToArray();
         var originalSize = screen.Size;
         screen.Size = new Vector2(960, 640);
-        foreach (var id in new[] { "c01-02", "c01-07", "c01-11", "c01-12", "c01-13", "c01-14" })
+        foreach (var id in new[] { "c01-02", "c01-07", "c01-11", "c01-12", "c01-13", "c01-14", "c01-15" })
         {
             var scenario = levels.Single(value => value["id"]!.GetValue<string>() == id);
             var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), scenario);
@@ -179,7 +179,8 @@ public partial class CameraIntegrationChecks : Node
 
             var state = session.Snapshot();
             var owner = state["players"]!.AsArray().OfType<JsonObject>().First(value => value["controller"]!.GetValue<string>() == "human");
-            foreach (var hidden in new[] { "primary", rows[0].Key })
+            var targetObjective = rows[0].Key.StartsWith("failure:", StringComparison.Ordinal) ? rows[0].Key[8..] : rows[0].Key;
+            foreach (var hidden in new[] { "primary", targetObjective })
             {
                 var fixture = state.DeepClone().AsObject();
                 var player = fixture["players"]!.AsArray().OfType<JsonObject>().Single(value => value["id"]!.GetValue<int>() == owner["id"]!.GetValue<int>());
@@ -188,7 +189,7 @@ public partial class CameraIntegrationChecks : Node
                 var projection = concealed.ProjectHud(new(0, 0), new(), null, null, false);
                 var targets = projection.Sections.Where(section => section.Key == "objectives").SelectMany(section => section.Rows)
                     .Where(row => row.TargetCells is { Count: > 0 }).ToArray();
-                Require(hidden == "primary" ? targets.Length == 0 : targets.All(row => row.Key != hidden),
+                Require(hidden == "primary" ? targets.Length == 0 : targets.All(row => row.Key != hidden && row.Key != "failure:" + hidden),
                     "A hidden objective or parent never exposes spatial targets through HUD rows.");
             }
         }

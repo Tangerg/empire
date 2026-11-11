@@ -741,7 +741,7 @@ public partial class TacticalHudChecks : Node
             var owner = criticalState["players"]!.AsArray().OfType<JsonObject>()
                 .Single(player => player["controller"]!.GetValue<string>() == "human");
             var statuses = owner["objectiveStates"]!.AsObject();
-            foreach (var (hidden, status, visible) in new[] { (false, "active", true), (true, "active", false), (false, "completed", false) })
+            foreach (var (hidden, status, visible) in new[] { (false, "active", true), (true, "active", false), (false, "completed", false), (false, "inactive", false), (false, "failed", false) })
             {
                 statuses[criticalId]!["hidden"] = hidden;
                 statuses[criticalId]!["status"] = status;
@@ -752,9 +752,18 @@ public partial class TacticalHudChecks : Node
                 var failure = rows.SingleOrDefault(row => row.Key == $"failure:{criticalId}");
                 Require((failure is not null) == visible, $"{levelId} only discloses active visible critical conditions.");
                 if (failure is not null)
-                    Require(failure.Label == text.Format("ui.hud.objective_failure", text.Format($"objective.failure.{condition}"))
-                        && failure.Intent is null && failure.TargetCells is null,
-                        $"{levelId} discloses its authored critical condition without a tactical command.");
+                {
+                    var label = text.Format("ui.hud.objective_failure", text.Format($"objective.failure.{condition}"));
+                    if (levelId == "c01-15")
+                        Require(failure.Label == text.Format("ui.hud.objective_locate_label", label)
+                            && failure.Intent?.Kind == TacticalHudIntentKind.FocusObjective
+                            && failure.Intent.Key == failure.Key
+                            && failure.TargetCells!.SequenceEqual(new[] { new BoardCell(11, 7) }),
+                            "C15's public protection warning locates its canonical structure without becoming a battle command.");
+                    else
+                        Require(failure.Label == label && failure.Intent is null && failure.TargetCells is null,
+                            $"{levelId} discloses its authored critical condition without inferring actor locations.");
+                }
                 if (levelId == "c01-08" && !hidden && status == "active")
                 {
                     var criticalViewer = owner["id"]!.GetValue<int>();
@@ -777,7 +786,7 @@ public partial class TacticalHudChecks : Node
             {
                 statuses[criticalId]!["hidden"] = false;
                 statuses[criticalId]!["status"] = "active";
-                foreach (var (hidden, status) in new[] { (true, "active"), (false, "completed") })
+                foreach (var (hidden, status) in new[] { (true, "active"), (false, "completed"), (false, "inactive"), (false, "failed") })
                 {
                     statuses["primary"]!["hidden"] = hidden;
                     statuses["primary"]!["status"] = status;

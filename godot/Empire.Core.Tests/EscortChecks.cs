@@ -22,6 +22,7 @@ internal static class EscortChecks
         CheckArchiveTargets(engine, data);
         CheckValveTargets(engine, data);
         CheckCompositeTargets(engine, data);
+        CheckProtectedStructureTargets(engine, data);
         var scene = Read(Path.Combine(data, "scenes/c01-02.json"));
         var registration = Text(scene!, "assembledGroundPath");
         Require(registration == "res://data/scenes/c01-02-layered-ground.json", "C02 formal scene selects its independently layered registration");
@@ -455,6 +456,63 @@ internal static class EscortChecks
         Require(CompositeRules.Status(repeated, "bell-controls").Neutralized == 2
             && Project(repeated).TargetCells.SequenceEqual(expected.Skip(1)), "Repeated neutralized part references retain existing counting semantics.");
         Console.WriteLine("  Composite target cells: canonical positions, movement, disabled/dead/missing/captured states, completion, threshold override and duplicate references passed.");
+    }
+
+    private static void CheckProtectedStructureTargets(BattleEngine engine, string data)
+    {
+        var level = Read(Path.Combine(data, "grayflag-campaign-levels.json")).AsArray().OfType<JsonObject>()
+            .Single(candidate => Text(candidate, "id") == "c01-15");
+        var state = engine.CreateState(level);
+        var before = EcmaJson.Stringify(state);
+        var saved = EcmaJson.Stringify(engine.SaveBattle(state, "2026-11-11T00:00:00.000Z"));
+        var objective = Player(state, 1)["objectives"]![0]!["objective"]!.AsObject();
+        var conditions = engine.Victory.Rules.ScenarioConditions;
+        ObjectiveProgress Project() => engine.Victory.Handlers.Project(engine.Victory.Rules, state, 1, objective);
+        var projected = Project();
+        Require(projected.Id == "protect-root" && projected.TargetCells.SequenceEqual(new[] { new Coord(11, 7) }),
+            "C15 failure protection exposes the canonical mother-root location through the condition owner.");
+        var direct = conditions.TargetCells(state, objective["condition"]!.AsObject(), engine.Catalog);
+        foreach (var cells in new[] { projected.TargetCells, direct })
+        {
+            try
+            {
+                ((IList<Coord>)cells)[0] = new(-1, -1);
+                throw new Exception("Protection target coordinates were writable.");
+            }
+            catch (NotSupportedException) { }
+        }
+        var chance = new JsonObject { ["type"] = "chance", ["percent"] = 50, ["stream"] = "test.target-purity" };
+        var selector = Player(state, 1)["objectives"]![0]!["condition"]!.AsObject();
+        var compositeCondition = new JsonObject { ["type"] = "all", ["conditions"] = new JsonArray(objective["condition"]!.DeepClone()) };
+        foreach (var condition in new[] { chance, selector, compositeCondition })
+            Require(conditions.TargetCells(state, condition, engine.Catalog).Count == 0,
+                "Non-spatial conditions neither evaluate RNG, expose unit selectors nor implicitly recurse into children.");
+        Require(EcmaJson.Stringify(state) == before && EcmaJson.Stringify(engine.SaveBattle(state, "2026-11-11T00:00:00.000Z")) == saved,
+            "Protection projection must preserve complete canonical state, including RNG and saved state.");
+        var root = state["structures"]!.AsArray().OfType<JsonObject>().Single(value => Text(value, "id") == "mother-root");
+        root["x"] = 12;
+        Require(Project().TargetCells.SequenceEqual(new[] { new Coord(12, 7) })
+            && direct.SequenceEqual(new[] { new Coord(11, 7) }) && projected.TargetCells.SequenceEqual(direct),
+            "Protection targets track current canonical positions while previous condition and objective projections remain detached.");
+        root["disabled"] = true;
+        root["owner"] = 2;
+        Require(Project().TargetCells.SequenceEqual(new[] { new Coord(12, 7) }),
+            "A living disabled or captured protected structure remains locatable; these states do not mean destroyed.");
+        root["hp"] = 0;
+        Require(Project().TargetCells.Count == 0, "A dead protected structure has no live protection target.");
+        state["structures"]!.AsArray().Remove(root);
+        Require(Project().TargetCells.Count == 0, "A missing protected structure cannot reveal a stale location.");
+        var supplied = new List<Coord> { new(3, 4) };
+        var extension = conditions.Clone().Register(new ScenarioConditionHandler("test-protection-location",
+            (_, _) => throw new Exception("Spatial projection evaluated a condition."))
+        {
+            TargetCells = (_, _) => supplied
+        });
+        var detached = extension.TargetCells(state, new JsonObject { ["type"] = "test-protection-location" }, engine.Catalog);
+        supplied.Clear();
+        Require(detached.SequenceEqual(new[] { new Coord(3, 4) }),
+            "Registered condition extensions provide detached locations without evaluation or a condition-kind switch.");
+        Console.WriteLine("  Protected structure targets: C15 location, detached immutability, live state changes, absent/dead filtering, opaque selectors and pure extensible condition projection passed.");
     }
 
     private static string Status(JsonObject state) => Text(Player(state, 1)["objectiveStates"]!["escort"]!, "status");

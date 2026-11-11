@@ -85,3 +85,12 @@ C14's score objective links both canonical valve zones. Each zone has two valid
 interaction cells; the locator shows all four, not an inferred prop center. The
 task explains arrival plus action completion. Valve triggers remain once-only;
 locations are not an unclosed-only checklist and disappear at score completion.
+
+Public active failOn warnings can locate a condition's explicitly projected
+spatial target. Scenario condition handlers own this optional pure read model;
+structure conditions expose the current position of their living named
+structure. Missing/dead structures return none, while disabled or captured live
+structures remain locatable. Unit selectors, random conditions and composed
+conditions do not infer positions. Projection never evaluates the condition.
+C15 uses this to identify the protected mother root without an order or fogged
+unit disclosure; hidden/inactive objective ancestry still suppresses the row.

@@ -129,18 +129,20 @@ public sealed partial class GrayFlagSession
             spatialAvailable &= objective.Status == "active";
             var description = battleText.ObjectiveDescription(S(state, "levelId"), Viewer(state), objective);
             var progress = battleText.ObjectiveProgress(objective);
+            var cells = spatialAvailable && objective.TargetCells.Count > 0
+                ? System.Array.AsReadOnly(objective.TargetCells.Select(cell => new BoardCell(cell.X, cell.Y)).ToArray()) : null;
+            TacticalHudRow LocatedRow(string key, string label, bool completed = false) => new(key,
+                cells is null ? label : text.Format("ui.hud.objective_locate_label", label),
+                Hint: cells is null ? "" : text.Format("ui.hud.objective_locate_hint"),
+                Selected: completed,
+                Intent: cells is null ? null : new(stamp, TacticalHudIntentKind.FocusObjective, key),
+                TargetCells: cells);
             if (spatialAvailable && battleText.ObjectiveFailureDescription(S(state, "levelId"), Viewer(state), objective) is { } failure)
-                yield return new($"failure:{objective.Id}", text.Format("ui.hud.objective_failure", failure));
+                yield return LocatedRow($"failure:{objective.Id}", text.Format("ui.hud.objective_failure", failure));
             if (objective.Children.Count == 0)
             {
-                var cells = spatialAvailable && objective.TargetCells.Count > 0
-                    ? System.Array.AsReadOnly(objective.TargetCells.Select(cell => new BoardCell(cell.X, cell.Y)).ToArray()) : null;
                 var label = text.Format("ui.hud.objective_task", description, progress);
-                yield return new(objective.Id, cells is null ? label : text.Format("ui.hud.objective_locate_label", label),
-                    Hint: cells is null ? "" : text.Format("ui.hud.objective_locate_hint"),
-                    Selected: objective.Status == "completed",
-                    Intent: cells is null ? null : new(stamp, TacticalHudIntentKind.FocusObjective, objective.Id),
-                    TargetCells: cells);
+                yield return LocatedRow(objective.Id, label, objective.Status == "completed");
             }
             else
             {

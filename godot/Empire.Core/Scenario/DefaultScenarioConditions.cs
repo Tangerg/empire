@@ -1,6 +1,7 @@
 using System.Text.Json.Nodes;
 using Empire.Core.Determinism;
 using Empire.Core.References;
+using Empire.Core.Tactics;
 using static Empire.Core.State.StateJson;
 using static Empire.Core.Lifecycle.TurnOrderSystem;
 
@@ -78,7 +79,14 @@ public static class DefaultScenarioConditions
             return requested == "destroyed" ? hp <= 0 : requested == "disabled" ? hp > 0 && IsTrue(structure["disabled"]) : hp > 0 && !IsTrue(structure["disabled"]);
         })
         {
-            References = condition => new PayloadReferences().Structure(Text(condition, "id"))
+            References = condition => new PayloadReferences().Structure(Text(condition, "id")),
+            TargetCells = (context, condition) =>
+            {
+                var structure = Objects(context.State["structures"], "structures")
+                    .FirstOrDefault(value => Text(value, "id") == Text(condition, "id"));
+                return structure is not null && Number(structure["hp"], "hp") > 0
+                    ? [TacticalQueries.Position(structure)] : [];
+            }
         })
         .Register(new("composite", (context, condition) => CompositeRules.Status(context.State, Text(condition, "id")).State == Text(condition, "state"))
         {
