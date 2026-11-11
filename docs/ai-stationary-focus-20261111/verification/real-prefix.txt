@@ -1,0 +1,6 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+ISOLATED REAL-PREFIX FIXTURE initial=0e41b5f8
+before=74663d55 turn=1 currentPlayer=2 next={"kind":"command","unit":20,"path":[{"x":7,"y":10}],"command":{"ability":"attack","weapon":"c01.inquisitor-flame","target":{"x":6,"y":10}}}
+after=fdd2d9da events=[{"type":"attackActivated","attacker":20,"weapon":"c01.inquisitor-flame","from":{"x":7,"y":10},"at":{"x":6,"y":10}},{"type":"attack","attacker":20,"defender":7,"weapon":"c01.inquisitor-flame","damage":20,"killed":false},{"type":"moraleChanged","unit":7,"amount":-6,"current":114,"reason":"damage"},{"type":"rankProgressChanged","unit":20,"amount":20,"current":20},{"type":"statusApplied","unit":7,"status":"silenced","remaining":1,"stacks":1},{"type":"attackCompleted","attacker":20,"weapon":"c01.inquisitor-flame"}]
+StationaryAttackProbe verified actual AI prefix17; attacker20=(7,10), target7=(6,10).

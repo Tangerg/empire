@@ -224,6 +224,17 @@ public partial class CameraChecks : Node
         Near(ToVector(camera.Position), ToVector(At(new(20, 15))), "AI destination uses the same camera geometry");
         var hidden = new BattlePresentationTransition(8, state.RootElement, action.RootElement, [], state.RootElement, true, new System.Collections.Generic.HashSet<int>());
         Require(BattlefieldFocus.CommandDestination(hidden, At) is null, "Canonical fog IDs suppress hidden AI camera locations");
+        using var stationary = JsonDocument.Parse("""{"kind":"command","unit":7,"path":[{"x":1,"y":1}]}""");
+        using var activation = JsonDocument.Parse("""{"type":"attackActivated","attacker":7,"from":{"x":1,"y":1},"at":{"x":4,"y":3}}""");
+        var attack = new BattlePresentationTransition(9, state.RootElement, stationary.RootElement, [activation.RootElement], state.RootElement, true);
+        Require(BattlefieldFocus.StationaryAttack(attack, At) == (At(new(1, 1)), At(new(4, 3))), "Visible stationary AI attacks frame committed activation endpoints.");
+        Require(BattlefieldFocus.StationaryAttack(attack with { IsComputerAction = false }, At) is null, "Human stationary attacks never steal camera focus.");
+        Require(BattlefieldFocus.StationaryAttack(new(9, state.RootElement, stationary.RootElement, [], state.RootElement, true), At) is null, "Stationary waits and commands without committed activation do not move camera.");
+        Require(BattlefieldFocus.StationaryAttack(new(9, state.RootElement, stationary.RootElement, [activation.RootElement], state.RootElement, true, new System.Collections.Generic.HashSet<int>()), At) is null, "Hidden stationary attackers never disclose coordinates through camera focus.");
+        Require(BattlefieldFocus.StationaryAttack(new(9, state.RootElement, action.RootElement, [activation.RootElement], state.RootElement, true), At) is null, "Moving commands retain their existing destination-follow policy.");
+        Require(BattlefieldFocus.StationaryAttack(new(9, state.RootElement, stationary.RootElement, [activation.RootElement], state.RootElement, true, new System.Collections.Generic.HashSet<int> { 7 }), At) == (At(new(1, 1)), At(new(1, 1))), "A visible attacker cannot expose a hidden aim cell through camera framing.");
+        using var bothVisible = JsonDocument.Parse("""{"units":[{"id":7,"x":1,"y":1},{"id":8,"x":4,"y":3}]}""");
+        Require(BattlefieldFocus.StationaryAttack(new(9, bothVisible.RootElement, stationary.RootElement, [activation.RootElement], bothVisible.RootElement, true, new System.Collections.Generic.HashSet<int> { 7, 8 }), At) == (At(new(1, 1)), At(new(4, 3))), "Fog-visible defender permits framing both visible combat endpoints.");
         Require(before == state.RootElement.GetRawText(), "Camera focus reads detached facts without mutating rules");
     }
 

@@ -534,6 +534,13 @@ public partial class BattleScreen : Control
             _camera?.CenterOn(destination);
             ApplyCamera();
         }
+        else if (BattlefieldFocus.StationaryAttack(transition, CellCenter) is { } attack)
+        {
+            // Keep both committed endpoints inside the unobscured viewport, with room for actor clips.
+            _camera?.FrameBounds(new(Math.Min(attack.Source.X, attack.Target.X), Math.Min(attack.Source.Y, attack.Target.Y)),
+                new(Math.Max(attack.Source.X, attack.Target.X), Math.Max(attack.Source.Y, attack.Target.Y)), 96);
+            ApplyCamera();
+        }
         _snapshot = next;
         SynchronizeTactical(next);
         UpdateTactical();

@@ -51,6 +51,7 @@ public partial class CameraIntegrationChecks : Node
             await Layout();
             map = (Control)screen.FindChild("MapArea", true, false);
             world = map.GetNode<Node2D>("World");
+            await CheckStationaryAttackFocus();
             await CheckObjectiveLocations();
             Bind(initial);
             var snapshotReads = initial.SnapshotReads;
@@ -76,6 +77,60 @@ public partial class CameraIntegrationChecks : Node
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
+    }
+
+    private async Task CheckStationaryAttackFocus()
+    {
+        var c14 = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>().Single(value => value["id"]!.GetValue<string>() == "c01-14");
+        var fixture = PresentationJson.Load<JsonObject>("res://tests/native/c01-14-collision-forecast.json");
+        var battle = engine.CreateBattle(c14);
+        var prefix = fixture["prefix"]!.AsArray();
+        for (var index = 0; index < 17; index++)
+            battle.Dispatch(prefix[index]!.AsObject());
+        Require(battle.StateHash == "74663d55", "Stationary attack witness starts from the unchanged lawful C14 prefix.");
+        var saved = engine.SaveBattle(battle.Snapshot());
+        var expected = battle.Dispatch(prefix[17]!.AsObject());
+        Require(battle.StateHash == "fdd2d9da", "Stationary attack witness retains its exact canonical outcome.");
+        var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), saved);
+        var oldSize = screen.Size;
+        screen.Size = new Vector2(960, 640);
+        Bind(session, c14);
+        await Layout();
+        for (var index = 0; index < 30; index++)
+            Wheel(MouseButton.WheelUp, ctrl: true);
+        screen._Process(0);
+        Near(world.Scale, Vector2.One * (float)BattlefieldCamera.MaximumZoom, "Stationary attack fixture starts at maximum zoom.");
+        GuiButton(MouseButton.Middle, true, new Vector2(300, 300));
+        CapturedMove(new Vector2(-1200, -1200));
+        CapturedButton(MouseButton.Middle, false, new Vector2(-1200, -1200));
+        var beforeOrigin = world.Position;
+        Require(session.AdvanceComputerStep() is { Committed: true }, "The normal C14 AI commits the recorded stationary attack.");
+        Require(Empire.Core.Determinism.EcmaJson.Stringify(session.ActionLog.Single()) == Empire.Core.Determinism.EcmaJson.Stringify(prefix[17]), "Normal AI chooses prefix17, not a fixture-injected attack.");
+        Require(session.Events.Select(Empire.Core.Determinism.EcmaJson.Stringify).SequenceEqual(expected.Events.Select(Empire.Core.Determinism.EcmaJson.Stringify)), "Camera acceptance preserves every canonical committed event.");
+        Require(Empire.Core.Determinism.EcmaJson.Sha256(new JsonArray(session.Events.Select(value => (JsonNode)value.DeepClone()).ToArray())) == "d5f04e500465e0468e000480a9767964d27d05cf7fe87134e4b1113861468efe", "Stationary AI attack retains the fixed original ordered event SHA.");
+        var canonical = session.GetSnapshot().State.GetRawText();
+        screen.Refresh();
+        Require(world.Position != beforeOrigin, "Offscreen stationary AI attack must move the camera before playback.");
+        foreach (var cell in new[] { new Empire.Core.Geometry.Coord(7, 10), new Empire.Core.Geometry.Coord(6, 10) })
+        {
+            var point = BoardField(screen.Board.Projection.CellCenter(cell));
+            Require(point.X >= 16 + 80 && point.X <= map.Size.X - 16 - 80 && point.Y >= 110 + 80 && point.Y <= map.Size.Y - 134 - 80,
+                $"Stationary combat endpoint {cell} is visible with clip margin at 960x640 and high zoom: {point}, viewport {map.Size}.");
+        }
+        foreach (var id in new[] { 20, 7 })
+        {
+            var sprite = screen.Board.GetNode<Sprite2D>($"CanonicalProjection/Unit_{id}/AuthoredSprite");
+            var rect = sprite.GetRect();
+            foreach (var corner in new[] { rect.Position, rect.End, new Vector2(rect.Position.X, rect.End.Y), new Vector2(rect.End.X, rect.Position.Y) })
+            {
+                var point = BoardField(screen.Board.ToLocal(sprite.ToGlobal(corner)));
+                Require(point.X >= 16 && point.X <= map.Size.X - 16 && point.Y >= 110 && point.Y <= map.Size.Y - 134,
+                    $"Stationary combat actor {id} full sprite bounds fit safe viewport: {point}.");
+            }
+        }
+        Settle();
+        Require(session.GetSnapshot().State.GetRawText() == canonical, "Camera focus and playback do not change committed battle state.");
+        screen.Size = oldSize;
     }
 
     private void Bind(ITacticalBattleSession session, JsonObject? scenario = null)
