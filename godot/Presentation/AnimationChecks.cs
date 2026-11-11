@@ -50,6 +50,7 @@ public partial class AnimationChecks : Node
             await CheckGravekeeperRecoilPlayback();
             await CheckTorrenFallPlayback();
             await CheckArcherFallPlayback();
+            await CheckGravekeeperFallPlayback();
             await CheckTorrenCelebrationPlayback();
             await CheckArcherCelebrationPlayback();
             CheckHealingDefinitions();

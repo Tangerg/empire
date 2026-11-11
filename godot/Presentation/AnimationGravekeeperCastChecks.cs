@@ -28,7 +28,7 @@ public partial class AnimationChecks
             && idle.Asset != original,
             "Cast recovery selects the declared breathing appearance without replacing the canonical gravekeeper sheet.");
         foreach (var (action, expected) in new[] { ("idle", "gravekeeper.breathe"), ("move", "legacy.move"),
-            ("hit", "gravekeeper.recoil"), ("death", "static.death"), ("celebrate", "static.celebrate") })
+            ("hit", "gravekeeper.recoil"), ("death", "gravekeeper.fall"), ("celebrate", "static.celebrate") })
             Require(bindings.Units["c01.gravekeeper"].ActionClips[action] == expected,
                 "Casting does not replace the gravekeeper's other declared actions.");
         var starts = new[] { 0.0, 90, 190, 300, 400, 500 };

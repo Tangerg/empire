@@ -81,13 +81,14 @@ public partial class AnimationChecks
         {
             var binding = key is null ? shipped.Units[type] : shipped.Actors[key].UnitArt;
             var clip = assets.ResolveUnitClip(type, "death", ActorClipUnit.Milliseconds, key);
-            if (key == "campaign-torren" || type == "c01.archer" && key is null)
+            if (key == "campaign-torren" || key is null && type is "c01.archer" or "c01.gravekeeper")
             {
-                Require(binding.ActionClips["death"] == (key == "campaign-torren" ? "torren.fall" : "archer.fall")
-                    && clip.Asset.Identity == (key == "campaign-torren" ? "torren-fall-v1" : "archer-fall-v1")
+                var actor = key == "campaign-torren" ? "torren" : type == "c01.archer" ? "archer" : "gravekeeper";
+                Require(binding.ActionClips["death"] == $"{actor}.fall"
+                    && clip.Asset.Identity == $"{actor}-fall-v1"
                     && clip.Length == 620 && clip.FrameIndices.Count == 6 && clip.ReleaseMs is null
                     && clip.RequireDeath().Mode == ActorDeathMode.AfterClip && clip.RequireDeath().TerminalFadeMs == 160,
-                    "Torren and the C01 archer select six authored falling poses followed by their explicit 160 ms terminal fade.");
+                    "Torren, the C01 archer and gravekeeper select six authored falling poses followed by their explicit 160 ms terminal fade.");
                 continue;
             }
             Require(binding.ActionClips["death"] == "static.death" && clip.Length == 220

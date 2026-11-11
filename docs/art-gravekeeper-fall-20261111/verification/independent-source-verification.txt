@@ -1,0 +1,279 @@
+{
+  "status": "PASS-source-and-offline-registration-only",
+  "sourceSha256": "a60966fbdd436e675060f64baffdb22e9ce957c0e3c801eabb83548487e8991e",
+  "runtimePngSha256": "b6467bfb6ad3c5c6a09332034798a0afc2478962817fa3060d44917c2b364326",
+  "runtimeRgbaSha256": "7df08dee73e18372913d6579336f80391186385f4305859d2a7d3dfe8eedb304",
+  "sourceDimensions": [
+    2172,
+    724
+  ],
+  "runtimeDimensions": [
+    2154,
+    405
+  ],
+  "preservedSourceMatchesAvailableOriginalGeneration": true,
+  "exactPromptAndReferenceProvenance": true,
+  "allOriginalAlphaAbove8Retained": true,
+  "retainedOriginalRgbaPixels": 341766,
+  "removedPixels": 187405,
+  "maxRemovedAlpha": 8,
+  "removedAlphaHistogram": {
+    "1": 183882,
+    "2": 3056,
+    "3": 384,
+    "4": 37,
+    "5": 33,
+    "6": 9,
+    "7": 3,
+    "8": 1
+  },
+  "allCropsAndAtlasExact": true,
+  "paddingEachSidePixels": 12,
+  "presentationScale": 0.1,
+  "sixDistinctCropHashes": true,
+  "visibleOneChannelMutationRejected": true,
+  "offlineDiagnosticImageAreasExactlyReconstructed": 26,
+  "nonloopingGifFrames": 26,
+  "gifTotalMs": 3310,
+  "fallSpansMs": [
+    60,
+    70,
+    90,
+    110,
+    110,
+    180
+  ],
+  "clipMs": 620,
+  "fadeMs": 160,
+  "fadeUsesUnchangedStillPoseGeometry": true,
+  "frames": [
+    {
+      "name": "fall-buckle",
+      "rawBounds": [
+        30,
+        190,
+        301,
+        571
+      ],
+      "sourceBounds": [
+        18,
+        178,
+        313,
+        583
+      ],
+      "frameRegion": [
+        0,
+        0,
+        295,
+        405
+      ],
+      "sourceAnchor": [
+        164,
+        562
+      ],
+      "frameAnchor": [
+        146,
+        384
+      ],
+      "retainedPixels": 64818,
+      "originalPixelsSha256": "1f1499f899ae2c562839349455fa1cd7eb152689393953129fe34064a1a1c3a2",
+      "nativeNonzeroAlphaExtentsFromAnchor": [
+        -13.4,
+        -37.2,
+        13.7,
+        0.9
+      ]
+    },
+    {
+      "name": "fall-kneel",
+      "rawBounds": [
+        304,
+        242,
+        601,
+        572
+      ],
+      "sourceBounds": [
+        292,
+        230,
+        613,
+        584
+      ],
+      "frameRegion": [
+        295,
+        0,
+        321,
+        354
+      ],
+      "sourceAnchor": [
+        446,
+        562
+      ],
+      "frameAnchor": [
+        154,
+        332
+      ],
+      "retainedPixels": 60175,
+      "originalPixelsSha256": "3aedbda80867420abdb2b23362ed4c6c413341d032bb49671d2658f87cf80cb5",
+      "nativeNonzeroAlphaExtentsFromAnchor": [
+        -14.2,
+        -32.0,
+        15.5,
+        1.0
+      ]
+    },
+    {
+      "name": "fall-collapse",
+      "rawBounds": [
+        605,
+        299,
+        914,
+        571
+      ],
+      "sourceBounds": [
+        593,
+        287,
+        926,
+        583
+      ],
+      "frameRegion": [
+        616,
+        0,
+        333,
+        296
+      ],
+      "sourceAnchor": [
+        738,
+        562
+      ],
+      "frameAnchor": [
+        145,
+        275
+      ],
+      "retainedPixels": 57435,
+      "originalPixelsSha256": "f542077ec94159e418c1de13ad64631174ca4891a3269dcbdcf5a6f12a72d3cb",
+      "nativeNonzeroAlphaExtentsFromAnchor": [
+        -13.3,
+        -26.3,
+        17.6,
+        0.9
+      ]
+    },
+    {
+      "name": "fall-contact",
+      "rawBounds": [
+        929,
+        350,
+        1287,
+        581
+      ],
+      "sourceBounds": [
+        917,
+        338,
+        1299,
+        593
+      ],
+      "frameRegion": [
+        949,
+        0,
+        382,
+        255
+      ],
+      "sourceAnchor": [
+        1023,
+        553
+      ],
+      "frameAnchor": [
+        106,
+        215
+      ],
+      "retainedPixels": 52650,
+      "originalPixelsSha256": "23f381e61734727ac69a20651a09d6bc144df6949fb019c4b31f3c1dba5f52a5",
+      "nativeNonzeroAlphaExtentsFromAnchor": [
+        -9.4,
+        -20.3,
+        26.4,
+        2.8
+      ]
+    },
+    {
+      "name": "fall-settle",
+      "rawBounds": [
+        1313,
+        380,
+        1694,
+        585
+      ],
+      "sourceBounds": [
+        1301,
+        368,
+        1706,
+        597
+      ],
+      "frameRegion": [
+        1331,
+        0,
+        405,
+        229
+      ],
+      "sourceAnchor": [
+        1411,
+        553
+      ],
+      "frameAnchor": [
+        110,
+        185
+      ],
+      "retainedPixels": 53046,
+      "originalPixelsSha256": "562b5261f05ab4132e8e63df0532c245f57fb618f05c80c24cc92abbaa43e612",
+      "nativeNonzeroAlphaExtentsFromAnchor": [
+        -9.8,
+        -17.3,
+        28.3,
+        3.2
+      ]
+    },
+    {
+      "name": "fall-still",
+      "rawBounds": [
+        1732,
+        395,
+        2126,
+        589
+      ],
+      "sourceBounds": [
+        1720,
+        383,
+        2138,
+        601
+      ],
+      "frameRegion": [
+        1736,
+        0,
+        418,
+        218
+      ],
+      "sourceAnchor": [
+        1832,
+        553
+      ],
+      "frameAnchor": [
+        112,
+        170
+      ],
+      "retainedPixels": 53642,
+      "originalPixelsSha256": "198054d5d818492e43cd3e38632a2026479861458af97c45725cdf212f8f3824",
+      "nativeNonzeroAlphaExtentsFromAnchor": [
+        -10.0,
+        -15.8,
+        29.4,
+        3.6
+      ]
+    }
+  ],
+  "excluded": [
+    "production integration",
+    "native playback",
+    "legal gameplay",
+    "performance"
+  ]
+}

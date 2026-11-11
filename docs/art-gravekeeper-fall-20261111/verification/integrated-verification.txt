@@ -1,0 +1,42 @@
+{
+  "status": "PASS-static-integration-review",
+  "baseline": "ea0eb0513e48ed650c2c04d259bfc4baee7f3021",
+  "normalizedProductionJsonExactlyEqualsBaseline": true,
+  "onlyAssetAddition": "gravekeeper-fall-v1",
+  "onlyClipAddition": "gravekeeper.fall",
+  "onlyBindingChange": "CANDIDATE_01_UNIT_ART.c01.gravekeeper.actionClips.death",
+  "acceptedAtlasByteEqual": true,
+  "atlasSha256": "b6467bfb6ad3c5c6a09332034798a0afc2478962817fa3060d44917c2b364326",
+  "assetMetadataMatchesSourceAcceptance": true,
+  "newCheckSha256": "c8902484d0ce7daf972533c2c171604f85b4c786eacf010133e993830eeb3455",
+  "newCheckRegisteredOnce": true,
+  "newUidOccurrenceCount": 1,
+  "allCsUidFileCount": 378,
+  "allCsUidsUnique": true,
+  "noChangedRuntimeRuleOrPreviewFile": true,
+  "trackedChangedFiles": [
+    "godot/Presentation/AnimationChecks.cs",
+    "godot/Presentation/AnimationDeathPolicyChecks.cs",
+    "godot/Presentation/AnimationGravekeeperCastChecks.cs",
+    "godot/Presentation/AnimationGravekeeperFallChecks.cs",
+    "godot/Presentation/AnimationGravekeeperFallChecks.cs.uid",
+    "godot/Presentation/AnimationGravekeeperIdleChecks.cs",
+    "godot/Presentation/AnimationGravekeeperRecoilChecks.cs",
+    "godot/Presentation/AnimationReactionChecks.cs",
+    "godot/Presentation/AnimationTorrenFallChecks.cs",
+    "godot/assets/painted-actions-v1/gravekeeper-fall-v1.png",
+    "godot/assets/painted-actions-v1/gravekeeper-fall-v1.png.import",
+    "godot/data/art-bindings.json",
+    "godot/data/selected-assets.json",
+    "godot/docs/ACTION-PRESENTATION.md"
+  ],
+  "pngImportCompanionPresent": true,
+  "gitDiffCheckClean": true,
+  "notRun": [
+    "build",
+    "editor import",
+    "native tests",
+    "native gameplay",
+    "performance"
+  ]
+}

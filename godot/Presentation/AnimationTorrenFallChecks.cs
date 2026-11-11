@@ -62,7 +62,7 @@ public partial class AnimationChecks
         GD.Print("Torren fall: six production poses, 620+160 ms phases, mirrors/contact, event ownership, result wait and lifecycle boundaries passed.");
     }
 
-    // Torren and C01 archer share these authored 620+160 ms acceptance boundaries.
+    // Authored fall clips share these 620+160 ms acceptance boundaries.
     private async Task CheckAuthoredFallBoundaries(BoardView board, JsonObject state, int id, ActorClip clip, int sign)
     {
         var after = WithoutDeathActor(state, id);

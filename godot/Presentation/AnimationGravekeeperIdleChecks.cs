@@ -228,10 +228,11 @@ public partial class AnimationChecks
             [new JsonObject { ["type"] = "death", ["unit"] = id, ["at"] = At(12, 16) }]));
         await Tick(board, .05);
         sprite = Actor(board, id).GetNode<Sprite2D>("AuthoredSprite");
-        CheckClipSprite(sprite, original, 0, sprite.Scale.X < 0 ? -1 : 1);
+        var fall = assets.ResolveUnitClip("c01.gravekeeper", "death", ActorClipUnit.Milliseconds);
+        CheckClipSprite(sprite, fall.Asset, 0, sprite.Scale.X < 0 ? -1 : 1);
         await Drain(board, death);
         await Tick(board, 3);
         Require(board.GetNodeOrNull($"CanonicalProjection/Unit_{id}") is null,
-            "Breathing cannot replace the existing static death or resurrect a retired keeper.");
+            "Breathing cannot replace the authored fall or resurrect a retired keeper.");
     }
 }

@@ -1,0 +1,40 @@
+{
+  "tool": "image_gen__imagegen",
+  "mode": "built-in identity-preserving generation from official references",
+  "generationDate": "2026-11-11",
+  "candidateCount": 1,
+  "originalOutputPath": "/workspace/scratch/84c9fe948755/generated_images/exec-0cb7e3c4-b23e-4c64-ab39-d90d975ea8e8.png",
+  "sourceCopy": "source-row.png",
+  "sourceSha256": "a60966fbdd436e675060f64baffdb22e9ce957c0e3c801eabb83548487e8991e",
+  "promptFile": "prompt-v1.txt",
+  "prompt": "Use case: identity-preserve.\nAsset type: six-frame hand-painted 2D tactical-game death animation sprite sheet on genuine transparent alpha.\nEdit the referenced official Empire gravekeeper character into SIX distinct full-body collapse poses. References 1-4 are exact identity/equipment/style references, not a scene to reproduce. Preserve the same compact old man, swept-back gray hair, short gray beard, expressive thick eyebrows, blue-gray scarf, dark charcoal sleeveless coat, cream shirt sleeves, brown belt and leather pouches, hanging silver flask, brown trousers and thick brown boots. Match the reference's polished readable hand-painted game rendering, anatomy, palette, outline weight, and large head/small body proportions exactly.\nEquipment invariants in ALL SIX frames: his anatomical RIGHT hand (screen-left in standing three-quarter view) holds ONE long wooden pointed STEEL SHOVEL, visibly a broad pointed digging spade with metal socket and capped wooden shaft. His anatomical LEFT hand (screen-right in standing view) holds ONE small rectangular iron oil LANTERN by its top ring. Keep visible hand-to-tool connections throughout. Warm yellow light is confined INSIDE the lantern glass only. The shovel must NEVER become a staff, spear or lantern-topped weapon.\nLayout: exactly SIX isolated frames in ONE horizontal row, chronological left to right, on a wide 3:1 canvas. Generous transparent gutters between frames and outer padding, NO dividers or frame labels. Full equipment and all limbs fit within each isolated slot. SAME anatomical size and camera projection in every frame, NEVER fit-to-cell resize. Ground contact baseline is identical across all six slots, although no ground is drawn. Later prone frames are wider but naturally lower; keep the head, torso, hands and equipment at exactly the same scale as standing.\nPose 1: wounded standing buckle, feet still planted, knees starting to fold, chin tucked, pained eyes closing, torso folding slightly forward; shovel still nearly upright, lantern lowered.\nPose 2: one knee meets the ground while the other knee bends deeply, hips drop, torso tilts toward screen-right, elbows and wrists bend anatomically; shovel tilts diagonally in his right hand and lantern descends in his left hand.\nPose 3: both knees have collapsed, pelvis rolls onto his screen-right hip, upper body falling sideways toward screen-right, head notably lower; arms and tools follow gravity naturally, NO floating feet.\nPose 4: hip and forearm make ground contact, torso nearly diagonal to horizontal, head approaches ground at screen-right, bent legs extend behind toward screen-left; shovel lowers close to the implied ground, lantern reaches ground beside his left hand.\nPose 5: nearly fully grounded on his side, torso supported by ground and shoulder, face exhausted and eyes closed, boots and bent legs lie behind him to screen-left. Shovel lies almost flat in front of him with his right hand still loosely around the shaft; lantern rests on the same implied ground immediately next to his left hand, ring still in that hand.\nPose 6: fully lifeless grounded resting pose on his side, head at screen-right resting on bent forearm, shoulder/hip/legs fully supported on the same implied ground. Distinct final settling anatomy from pose 5, not a rotated or translated copy. Right hand loosely retains the shovel shaft, the ENTIRE shovel rests physically on the ground in front of the body with its pointed metal blade clearly readable. Left hand still meets the lantern ring, and lantern rests on the ground next to it. No tool or limb is hovering.\nDraw real anatomical changes across all six frames: knees fold, pelvis rolls, spine bends, shoulders rotate, elbows flex and hands descend. Do NOT create the animation by translating, rotating, squashing, warping or fading one standing sprite. No duplicate limbs, hands, equipment or ghost silhouettes. No gore, blood, splatter, impact flash, sparkles, smoke, magic aura, text, numbers, guides, shadow blobs, floor, backdrop or environmental objects. Output only the six complete character/equipment RGBA sprites on fully transparent background.\n",
+  "parameters": {
+    "transparent_background": true,
+    "referenced_image_paths": [
+      "/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/assets/painted-units-v1/unit-gravekeeper-gait-v2.png",
+      "/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/assets/painted-actions-v1/gravekeeper-breathe-v1.png",
+      "/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/assets/painted-actions-v1/gravekeeper-cast-v1.png",
+      "/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/assets/painted-actions-v1/gravekeeper-recoil-v1.png"
+    ]
+  },
+  "referenceChecksums": [
+    {
+      "path": "godot/assets/painted-units-v1/unit-gravekeeper-gait-v2.png",
+      "sha256": "fc56281ead32b4ffd70681bdae60a34da721810f2068f7bfab5bc8db63bf8691"
+    },
+    {
+      "path": "godot/assets/painted-actions-v1/gravekeeper-breathe-v1.png",
+      "sha256": "dc0edb5b4f3607b04ad9fbab8d350392ee61c024a712295dc36482da172ce876"
+    },
+    {
+      "path": "godot/assets/painted-actions-v1/gravekeeper-cast-v1.png",
+      "sha256": "d39fd204bd3b6cb01c75f5273cd5e2d5e07a4d9ebcb6e38b72264b79398853f8"
+    },
+    {
+      "path": "godot/assets/painted-actions-v1/gravekeeper-recoil-v1.png",
+      "sha256": "412f0aca8abefd0ce039c24fedeb0ef283d60fef207cc16430b2b126564ae5d0"
+    }
+  ],
+  "originalPreserved": true,
+  "postProcessing": "Exact original RGBA component extraction only; no repaint, pixel resampling, rotation, warp, alpha modification or per-pose scale fit. Detached alpha1..8 noise only is removed. See extraction-review.json."
+}

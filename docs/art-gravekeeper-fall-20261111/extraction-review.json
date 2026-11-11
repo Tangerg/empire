@@ -1,0 +1,246 @@
+{
+  "status": "proposed-art-only-awaiting-independent-and-native-review",
+  "generator": "built-in image_gen",
+  "source": "source-row.png",
+  "sourceSha256": "a60966fbdd436e675060f64baffdb22e9ce957c0e3c801eabb83548487e8991e",
+  "sourceRgbaSha256": "a923c020e6e8970b0e273990f4e4aba37a66ce5c74cc479ea2c48bc304c6487b",
+  "sourceDimensions": [
+    2172,
+    724
+  ],
+  "prompt": "prompt-v1.txt",
+  "promptSha256": "68a4aa9801aeb2525fdf757c7ba83e039920b536ccf76667420188c46a56c6ac",
+  "references": [
+    {
+      "path": "godot/assets/painted-units-v1/unit-gravekeeper-gait-v2.png",
+      "sha256": "fc56281ead32b4ffd70681bdae60a34da721810f2068f7bfab5bc8db63bf8691"
+    },
+    {
+      "path": "godot/assets/painted-actions-v1/gravekeeper-breathe-v1.png",
+      "sha256": "dc0edb5b4f3607b04ad9fbab8d350392ee61c024a712295dc36482da172ce876"
+    },
+    {
+      "path": "godot/assets/painted-actions-v1/gravekeeper-cast-v1.png",
+      "sha256": "d39fd204bd3b6cb01c75f5273cd5e2d5e07a4d9ebcb6e38b72264b79398853f8"
+    },
+    {
+      "path": "godot/assets/painted-actions-v1/gravekeeper-recoil-v1.png",
+      "sha256": "412f0aca8abefd0ce039c24fedeb0ef283d60fef207cc16430b2b126564ae5d0"
+    }
+  ],
+  "significantComponentAlphaThresholdExclusive": 16,
+  "significantComponentPixelCountExclusive": 1000,
+  "retainedAlphaFringeRadius": 3,
+  "transparentPaddingPixels": 12,
+  "removedPixels": 187405,
+  "maxRemovedAlpha": 8,
+  "removedAlphaSum": 191542,
+  "removedAlphaHistogram": {
+    "1": 183882,
+    "2": 3056,
+    "3": 384,
+    "4": 37,
+    "5": 33,
+    "6": 9,
+    "7": 3,
+    "8": 1
+  },
+  "originalNonzeroAlphaPixels": 529171,
+  "retainedPixels": 341766,
+  "runtimePng": "gravekeeper-fall-v1.png",
+  "runtimePngSha256": "b6467bfb6ad3c5c6a09332034798a0afc2478962817fa3060d44917c2b364326",
+  "runtimeRgbaSha256": "7df08dee73e18372913d6579336f80391186385f4305859d2a7d3dfe8eedb304",
+  "runtimeDimensions": [
+    2154,
+    405
+  ],
+  "presentationScale": 0.1,
+  "frameOrder": [
+    "fall-buckle",
+    "fall-kneel",
+    "fall-collapse",
+    "fall-contact",
+    "fall-settle",
+    "fall-still"
+  ],
+  "playbackFrames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "playbackSpansMs": [
+    60,
+    70,
+    90,
+    110,
+    110,
+    180
+  ],
+  "durationMs": 620,
+  "death": {
+    "mode": "after-clip",
+    "fadeMs": 160
+  },
+  "anchorPolicy": "Anatomical support registration: first three shoe/knee contacts at source y562; final three side/hip contacts at y553. Foreground shovel projects below the body support line, consistent with three-quarter ground-plane depth. One shared scale, no per-frame size fit.",
+  "frames": [
+    {
+      "sourceComponent": 0,
+      "frameName": "fall-buckle",
+      "sourceBounds": [
+        18,
+        178,
+        313,
+        583
+      ],
+      "frameRegion": [
+        0,
+        0,
+        295,
+        405
+      ],
+      "sourceAnchor": [
+        164,
+        562
+      ],
+      "frameAnchor": [
+        146,
+        384
+      ],
+      "retainedPixels": 64818,
+      "pixelSha256": "1f1499f899ae2c562839349455fa1cd7eb152689393953129fe34064a1a1c3a2"
+    },
+    {
+      "sourceComponent": 1,
+      "frameName": "fall-kneel",
+      "sourceBounds": [
+        292,
+        230,
+        613,
+        584
+      ],
+      "frameRegion": [
+        295,
+        0,
+        321,
+        354
+      ],
+      "sourceAnchor": [
+        446,
+        562
+      ],
+      "frameAnchor": [
+        154,
+        332
+      ],
+      "retainedPixels": 60175,
+      "pixelSha256": "3aedbda80867420abdb2b23362ed4c6c413341d032bb49671d2658f87cf80cb5"
+    },
+    {
+      "sourceComponent": 2,
+      "frameName": "fall-collapse",
+      "sourceBounds": [
+        593,
+        287,
+        926,
+        583
+      ],
+      "frameRegion": [
+        616,
+        0,
+        333,
+        296
+      ],
+      "sourceAnchor": [
+        738,
+        562
+      ],
+      "frameAnchor": [
+        145,
+        275
+      ],
+      "retainedPixels": 57435,
+      "pixelSha256": "f542077ec94159e418c1de13ad64631174ca4891a3269dcbdcf5a6f12a72d3cb"
+    },
+    {
+      "sourceComponent": 3,
+      "frameName": "fall-contact",
+      "sourceBounds": [
+        917,
+        338,
+        1299,
+        593
+      ],
+      "frameRegion": [
+        949,
+        0,
+        382,
+        255
+      ],
+      "sourceAnchor": [
+        1023,
+        553
+      ],
+      "frameAnchor": [
+        106,
+        215
+      ],
+      "retainedPixels": 52650,
+      "pixelSha256": "23f381e61734727ac69a20651a09d6bc144df6949fb019c4b31f3c1dba5f52a5"
+    },
+    {
+      "sourceComponent": 4,
+      "frameName": "fall-settle",
+      "sourceBounds": [
+        1301,
+        368,
+        1706,
+        597
+      ],
+      "frameRegion": [
+        1331,
+        0,
+        405,
+        229
+      ],
+      "sourceAnchor": [
+        1411,
+        553
+      ],
+      "frameAnchor": [
+        110,
+        185
+      ],
+      "retainedPixels": 53046,
+      "pixelSha256": "562b5261f05ab4132e8e63df0532c245f57fb618f05c80c24cc92abbaa43e612"
+    },
+    {
+      "sourceComponent": 5,
+      "frameName": "fall-still",
+      "sourceBounds": [
+        1720,
+        383,
+        2138,
+        601
+      ],
+      "frameRegion": [
+        1736,
+        0,
+        418,
+        218
+      ],
+      "sourceAnchor": [
+        1832,
+        553
+      ],
+      "frameAnchor": [
+        112,
+        170
+      ],
+      "retainedPixels": 53642,
+      "pixelSha256": "198054d5d818492e43cd3e38632a2026479861458af97c45725cdf212f8f3824"
+    }
+  ]
+}

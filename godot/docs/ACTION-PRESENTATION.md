@@ -273,8 +273,8 @@ ordered `death` event starts the explicit `death` clip. Transport passengers hav
 no drawn pre-transition actor and receive no invented death presentation.
 
 Except Torren, C01 archers and the shared C01 gravekeeper, hit maps retain
-`static.hit` (150 ms). Death maps except Torren and C01 archers retain
-`static.death` (220 ms). These static clips use the canonical trusted image.
+`static.hit` (150 ms). Death maps except Torren, C01 archers and the shared C01
+gravekeeper retain `static.death` (220 ms). These static clips use the canonical trusted image.
 The static hit is an authored hold within the existing 420 ms impact; static death retains
 the previous normalized fade and 35% shrink through its explicit
 `death: { "mode": "during-clip" }` policy. These are declared placeholders,
@@ -301,8 +301,8 @@ The shared C01 gravekeeper selects `gravekeeper.recoil`: four distinct poses ove
 40/110/90/80 ms. It restores `gravekeeper.breathe` after 320 ms without extending
 the existing 420 ms damage feedback. Field-cleric and bridge-cleric inherit this
 hit; Mirelle keeps her explicit static hit. Casting release/recovery, ordered
-counter/area receipts and the keeper's 220 ms static death are unchanged. See the
-[keeper hit review](../../docs/art-gravekeeper-hit-20261111/README.md) for exact
+counter/area receipts are unchanged. Its separately authored death is described
+below. See the [keeper hit review](../../docs/art-gravekeeper-hit-20261111/README.md) for exact
 source registration, ownership tests and current native acceptance status.
 
 Torren selects `torren.fall`: six independently painted collapse poses
@@ -314,6 +314,16 @@ the explicit terminal fade, preserving the starting tint, root position and scal
 there is no shrink or idle restoration. Frame spans remain the sole owner of
 collapse duration, and `fadeMs` owns only the subsequent fade. Both stages use the
 existing receipt clock, including accumulated overshoot across their boundary.
+
+The shared C01 gravekeeper selects `gravekeeper.fall`: six distinct buckle, kneel,
+collapse, contact, settle and still drawings over 60/70/90/110/110/180 ms. The final
+180 ms grounded hold precedes a separate 160 ms terminal fade, using the same
+`after-clip` policy. Field-cleric and bridge-cleric inherit this fall; Mirelle and
+unrelated healers keep static death. This extends only the death presentation from
+220 to 780 ms. The existing ordered death event, recoil/impact/fatal-beat timing,
+source recovery ownership and single retirement path remain unchanged. See the
+[keeper fall review](../../docs/art-gravekeeper-fall-20261111/README.md) for source,
+registration, ownership checks and current native acceptance status.
 
 Every bound death action must declare one of these policies; other actions must
 not carry it. Death clips require milliseconds and forbid attack release metadata.

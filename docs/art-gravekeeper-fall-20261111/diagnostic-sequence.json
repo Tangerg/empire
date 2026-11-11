@@ -1,0 +1,189 @@
+{
+  "description": "Offline nonlooping right/left registration diagnostic, not captured gameplay. Two paths: idle to fall, then recoil to fall, each with 180 ms fully grounded hold and subsequent 160 ms fade.",
+  "resampling": "Single uniform affine scale with bilinear filtering; 3x nearest magnification. Mirroring and alpha fade affect diagnostics only.",
+  "sequence": [
+    {
+      "item": "breathe rest",
+      "spanMs": 500,
+      "alpha": 1.0,
+      "label": "idle handoff",
+      "file": "diagnostic-frames/00.png"
+    },
+    {
+      "item": "fall-buckle",
+      "spanMs": 60,
+      "alpha": 1.0,
+      "label": "fall-buckle",
+      "file": "diagnostic-frames/01.png"
+    },
+    {
+      "item": "fall-kneel",
+      "spanMs": 70,
+      "alpha": 1.0,
+      "label": "fall-kneel",
+      "file": "diagnostic-frames/02.png"
+    },
+    {
+      "item": "fall-collapse",
+      "spanMs": 90,
+      "alpha": 1.0,
+      "label": "fall-collapse",
+      "file": "diagnostic-frames/03.png"
+    },
+    {
+      "item": "fall-contact",
+      "spanMs": 110,
+      "alpha": 1.0,
+      "label": "fall-contact",
+      "file": "diagnostic-frames/04.png"
+    },
+    {
+      "item": "fall-settle",
+      "spanMs": 110,
+      "alpha": 1.0,
+      "label": "fall-settle",
+      "file": "diagnostic-frames/05.png"
+    },
+    {
+      "item": "fall-still",
+      "spanMs": 180,
+      "alpha": 1.0,
+      "label": "fall-still",
+      "file": "diagnostic-frames/06.png"
+    },
+    {
+      "item": "fall-still",
+      "spanMs": 40,
+      "alpha": 0.75,
+      "label": "fade 1/4",
+      "file": "diagnostic-frames/07.png"
+    },
+    {
+      "item": "fall-still",
+      "spanMs": 40,
+      "alpha": 0.5,
+      "label": "fade 2/4",
+      "file": "diagnostic-frames/08.png"
+    },
+    {
+      "item": "fall-still",
+      "spanMs": 40,
+      "alpha": 0.25,
+      "label": "fade 3/4",
+      "file": "diagnostic-frames/09.png"
+    },
+    {
+      "item": "fall-still",
+      "spanMs": 40,
+      "alpha": 0.0,
+      "label": "fade 4/4",
+      "file": "diagnostic-frames/10.png"
+    },
+    {
+      "item": "fall-still",
+      "spanMs": 300,
+      "alpha": 0.0,
+      "label": "removed",
+      "file": "diagnostic-frames/11.png"
+    },
+    {
+      "item": "breathe rest",
+      "spanMs": 500,
+      "alpha": 1.0,
+      "label": "recoil handoff",
+      "file": "diagnostic-frames/12.png"
+    },
+    {
+      "item": "recoil onset",
+      "spanMs": 40,
+      "alpha": 1.0,
+      "label": "recoil onset",
+      "file": "diagnostic-frames/13.png"
+    },
+    {
+      "item": "recoil peak",
+      "spanMs": 110,
+      "alpha": 1.0,
+      "label": "recoil peak",
+      "file": "diagnostic-frames/14.png"
+    },
+    {
+      "item": "fall-buckle",
+      "spanMs": 60,
+      "alpha": 1.0,
+      "label": "fall-buckle",
+      "file": "diagnostic-frames/15.png"
+    },
+    {
+      "item": "fall-kneel",
+      "spanMs": 70,
+      "alpha": 1.0,
+      "label": "fall-kneel",
+      "file": "diagnostic-frames/16.png"
+    },
+    {
+      "item": "fall-collapse",
+      "spanMs": 90,
+      "alpha": 1.0,
+      "label": "fall-collapse",
+      "file": "diagnostic-frames/17.png"
+    },
+    {
+      "item": "fall-contact",
+      "spanMs": 110,
+      "alpha": 1.0,
+      "label": "fall-contact",
+      "file": "diagnostic-frames/18.png"
+    },
+    {
+      "item": "fall-settle",
+      "spanMs": 110,
+      "alpha": 1.0,
+      "label": "fall-settle",
+      "file": "diagnostic-frames/19.png"
+    },
+    {
+      "item": "fall-still",
+      "spanMs": 180,
+      "alpha": 1.0,
+      "label": "fall-still",
+      "file": "diagnostic-frames/20.png"
+    },
+    {
+      "item": "fall-still",
+      "spanMs": 40,
+      "alpha": 0.75,
+      "label": "fade 1/4",
+      "file": "diagnostic-frames/21.png"
+    },
+    {
+      "item": "fall-still",
+      "spanMs": 40,
+      "alpha": 0.5,
+      "label": "fade 2/4",
+      "file": "diagnostic-frames/22.png"
+    },
+    {
+      "item": "fall-still",
+      "spanMs": 40,
+      "alpha": 0.25,
+      "label": "fade 3/4",
+      "file": "diagnostic-frames/23.png"
+    },
+    {
+      "item": "fall-still",
+      "spanMs": 40,
+      "alpha": 0.0,
+      "label": "fade 4/4",
+      "file": "diagnostic-frames/24.png"
+    },
+    {
+      "item": "fall-still",
+      "spanMs": 300,
+      "alpha": 0.0,
+      "label": "removed",
+      "file": "diagnostic-frames/25.png"
+    }
+  ],
+  "totalMs": 3310
+}

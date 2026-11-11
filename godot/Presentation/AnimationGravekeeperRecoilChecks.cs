@@ -28,7 +28,7 @@ public partial class AnimationChecks
             && bindings.Units["c01.gravekeeper"].ActionClips["idle"] == "gravekeeper.breathe"
             && bindings.Units["c01.gravekeeper"].ActionClips["attack"] == "gravekeeper.channel"
             && bindings.Units["c01.gravekeeper"].ActionClips["move"] == "legacy.move"
-            && bindings.Units["c01.gravekeeper"].ActionClips["death"] == "static.death"
+            && bindings.Units["c01.gravekeeper"].ActionClips["death"] == "gravekeeper.fall"
             && bindings.Units["c01.gravekeeper"].ActionClips["celebrate"] == "static.celebrate",
             "Recipient recoil does not replace the keeper's canonical sheet or any other declared action.");
         foreach (var key in new[] { "field-cleric", "bridge-cleric" })
@@ -383,15 +383,37 @@ public partial class AnimationChecks
             await AdvanceTo(535);
             var death = assets.ResolveUnitClip("c01.gravekeeper", "death", ActorClipUnit.Milliseconds);
             CheckClipSprite(sprite, death.Asset, 0, 1);
-            Require(death.Asset == assets.ResolveUnit("c01.gravekeeper") && death.Length == 220
-                && death.RequireDeath().Mode == ActorDeathMode.DuringClip && published.SequenceEqual(new[] { 0, 1 }),
-                "Only the ordered death event acquires the unchanged canonical keeper death policy.");
-            await AdvanceTo(645);
-            Require(Mathf.IsEqualApprox(actor.SelfModulate.A, .5f) && actor.Scale.IsEqualApprox(Vector2.One * .825f),
-                "The existing static death still owns its normalized half-duration fade and shrink.");
-            await AdvanceTo(754.999);
-            Require(!playing.IsCompleted && exits == 0, "Recoil cannot shorten the existing 755 ms fatal receipt endpoint.");
-            await AdvanceTo(755);
+            Require(death.Asset.Identity == "gravekeeper-fall-v1" && death.Length == 620
+                && death.RequireDeath().Mode == ActorDeathMode.AfterClip && death.RequireDeath().TerminalFadeMs == 160
+                && actor.SelfModulate == Colors.White && actor.Scale == Vector2.One
+                && published.SequenceEqual(new[] { 0, 1 }) && !playing.IsCompleted,
+                "Only the ordered death event starts the authored keeper fall at 535 ms after release, impact and fatal beat.");
+            // Bracket seconds-to-milliseconds rounding; ActorClip checks the exact 440 ms boundary directly.
+            await AdvanceTo(974.999);
+            CheckClipSprite(sprite, death.Asset, 4, 1);
+            await AdvanceTo(975.001);
+            CheckClipSprite(sprite, death.Asset, 5, 1);
+            Require(actor.SelfModulate == Colors.White && actor.Scale == Vector2.One && !playing.IsCompleted,
+                "The last keeper drawing begins its opaque grounded hold across 975 ms without shrinking or restoring idle.");
+            await AdvanceTo(1154.999);
+            CheckClipSprite(sprite, death.Asset, 5, 1);
+            Require(actor.SelfModulate == Colors.White && actor.Scale == Vector2.One && exits == 0
+                && published.SequenceEqual(new[] { 0, 1 }) && !playing.IsCompleted,
+                "The grounded keeper stays fully opaque throughout the final 180 ms authored pose.");
+            await AdvanceTo(1155);
+            CheckClipSprite(sprite, death.Asset, 5, 1);
+            Require(actor.SelfModulate == Colors.White && actor.Scale == Vector2.One
+                && published.SequenceEqual(new[] { 0, 1 }) && !playing.IsCompleted,
+                "At 1155 ms the full 620 ms fall ends before its independent terminal fade advances.");
+            await AdvanceTo(1235);
+            Require(Mathf.IsEqualApprox(actor.SelfModulate.A, .5f) && actor.Scale == Vector2.One
+                && Frame(actor) == 5 && !playing.IsCompleted,
+                "Terminal fade halves alpha without shrinking or replacing the grounded keeper drawing.");
+            await AdvanceTo(1314.999);
+            Require(!playing.IsCompleted && exits == 0 && Frame(actor) == 5 && actor.SelfModulate.A > 0
+                && actor.Scale == Vector2.One && published.SequenceEqual(new[] { 0, 1 }),
+                "The full authored keeper death remains present and unpublished until the 1315 ms fatal receipt endpoint.");
+            await AdvanceTo(1315);
             Require(playing.IsCompleted && await playing && exits == 1
                 && board.GetNodeOrNull($"CanonicalProjection/Unit_{did}") is null
                 && published.SequenceEqual(Enumerable.Range(0, events.Length)),
