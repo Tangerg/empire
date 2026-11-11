@@ -20,6 +20,39 @@ public partial class TacticalHudChecks : Node
             throw new InvalidOperationException(message);
         assertions++;
     }
+    private void CheckWeaponCooldownDisclosure()
+    {
+        var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var presentation = BattleTextChecks.Session(engine, text);
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-09");
+        var state = engine.CreateState(level);
+        var actor = state["units"]!.AsArray().OfType<JsonObject>()
+            .Single(value => value["key"]?.GetValue<string>() == "campaign-tasha");
+        var id = actor["id"]!.GetValue<int>();
+        var at = new BoardCell(actor["x"]!.GetValue<int>(), actor["y"]!.GetValue<int>());
+        // Isolated read-model probes, not claims about a played combat sequence.
+        foreach (var remaining in new[] { 0, 3, 1, 0 })
+        {
+            actor["weaponState"]!["c01.satchel-charge"]!["cooldownRemaining"] = remaining;
+            var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(state));
+            var before = EcmaJson.Stringify(session.Snapshot());
+            var control = new TacticalSelectionController(session.GetTacticalQueries(0));
+            control.Click(control.Stamp, TacticalHit.Unit(at, id));
+            var rows = session.ProjectHud(control.Stamp, control.Selection, TacticalHit.Unit(at, id), null, false)
+                .Sections.Single(section => section.Key == "unit-details").Rows;
+            var weapon = rows.Single(row => row.Key == "weapon:c01.satchel-charge");
+            Require(weapon.Label.Contains(text.Format("ui.hud.weapon_cooldown_after_use", 3), StringComparison.Ordinal),
+                "C09 discloses the weapon definition's three-turn cooldown before its first use and throughout recovery.");
+            Require(weapon.Label.Contains(text.Format("ui.hud.weapon_cooldown", remaining), StringComparison.Ordinal) == (remaining > 0),
+                "Current remaining cooldown is distinct from the fixed use cost and clears when ready.");
+            var hammer = rows.Single(row => row.Key != weapon.Key && row.Key.StartsWith("weapon:", StringComparison.Ordinal));
+            Require(!hammer.Label.Contains("冷却", StringComparison.Ordinal),
+                "A ready zero-cooldown weapon does not gain a misleading cooldown warning.");
+            Require(before == EcmaJson.Stringify(session.Snapshot()), "Weapon disclosure cannot change cooldowns or battle state.");
+        }
+    }
     private void CheckInspectionOrder()
     {
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
@@ -1931,6 +1964,7 @@ public partial class TacticalHudChecks : Node
         await CheckTacticKeyboardContext();
         await CheckHealingTarget();
         CheckInspectionOrder();
+        CheckWeaponCooldownDisclosure();
         CheckObjectiveChecklist();
         CheckPinnedUnit();
         await CheckPrimaryOrders();

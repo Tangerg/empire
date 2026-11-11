@@ -434,6 +434,9 @@ public sealed partial class GrayFlagSession
                 var id = S(arm, "id");
                 var stock = Accounts("weapon", inspect, id);
                 var cooldown = D(inspect["weaponState"]![id]!.AsObject(), "cooldownRemaining");
+                var useCooldown = D(arm, "cooldown");
+                var cooldownText = (useCooldown > 0 ? text.Format("ui.hud.weapon_cooldown_after_use", useCooldown) : "")
+                    + (cooldown > 0 ? text.Format("ui.hud.weapon_cooldown", cooldown) : "");
                 rows.Add(new($"weapon:{id}",
                     text.Format("ui.hud.weapon",
                         contentText.Name(ContentTextKind.Weapon, id),
@@ -441,7 +444,7 @@ public sealed partial class GrayFlagSession
                         D(arm, "power"),
                         Range(new[] { arm }),
                         stock.Length > 0 ? stock : text.Format("ui.hud.unlimited"),
-                        cooldown > 0 ? text.Format("ui.hud.weapon_cooldown", cooldown) : "",
+                        cooldownText,
                         arm["resourceRequirements"]!.AsArray().Count > 0 ? text.Format("ui.hud.weapon_requirements",
                             Amounts(arm["resourceRequirements"])) : "",
                         arm["resourceCosts"]!.AsArray().Count > 0 ? text.Format("ui.hud.weapon_costs", Amounts(arm["resourceCosts"])) : ""),
