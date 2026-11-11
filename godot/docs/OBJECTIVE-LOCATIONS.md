@@ -53,3 +53,17 @@ C11 links its three grave-reading zones. The locator marks **all three locations
 until the score stage finishes; it does not claim to track unread graves. The
 instruction explicitly says to arrive and complete an action. No separate read
 button, new action, trigger scan or second progress counter is introduced.
+
+## Composite neutralization locations
+
+An active `neutralizeComposite` objective locates its current non-neutralized
+parts. CompositeRules owns both the count and the part eligibility predicate:
+missing, dead or disabled parts are already neutralized; a living enabled part
+remains a target after ownership changes. Positions come from current structures,
+so composite movement cannot leave stale objective coordinates. Objective-specific
+thresholds still govern completion; the locator does not use the composite's
+aggregate status as a replacement victory decision.
+
+This follows the existing public-objective/structure visibility boundary, not a
+new hidden-structure discovery system. Hidden objective ancestors and leaves do
+not publish location intents. No fogged units are revealed.

@@ -92,7 +92,7 @@ public partial class CameraIntegrationChecks : Node
         var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>().ToArray();
         var originalSize = screen.Size;
         screen.Size = new Vector2(960, 640);
-        foreach (var id in new[] { "c01-02", "c01-07", "c01-11" })
+        foreach (var id in new[] { "c01-02", "c01-07", "c01-11", "c01-12" })
         {
             var scenario = levels.Single(value => value["id"]!.GetValue<string>() == id);
             var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), scenario);

@@ -17,14 +17,23 @@ public static class CompositeRules
     public static CompositeStatus Status(JsonObject state, string id)
     {
         var composite = Require(state, id);
-        var structures = Objects(state["structures"], "structures").ToArray();
-        var neutralized = Array(composite["parts"], "parts").Count(part =>
-        {
-            var structure = structures.FirstOrDefault(value => Text(value, "id") == Text(part, "part"));
-            return structure is null || Number(structure, "hp", 0) <= 0 || IsTrue(structure["disabled"]);
-        });
+        var neutralized = Array(composite["parts"], "parts").Count - RemainingParts(state, id).Count();
         return new(neutralized, neutralized >= Number(composite["minimumNeutralized"], "minimumNeutralized")
             ? "neutralized" : neutralized > 0 ? "damaged" : "intact");
+    }
+
+    // Preserve authored part occurrences: a repeated reference contributes repeatedly to Status as before.
+    public static IReadOnlyList<Coord> RemainingPartCells(JsonObject state, string id) =>
+        System.Array.AsReadOnly(RemainingParts(state, id).Select(TacticalQueries.Position).Distinct().ToArray());
+
+    private static IEnumerable<JsonObject> RemainingParts(JsonObject state, string id)
+    {
+        var composite = Require(state, id);
+        var structures = Objects(state["structures"], "structures").ToArray();
+        return Array(composite["parts"], "parts")
+            .Select(part => structures.FirstOrDefault(value => Text(value, "id") == Text(part, "part")))
+            .Where(structure => structure is not null && !(Number(structure, "hp", 0) <= 0) && !IsTrue(structure["disabled"]))
+            .Select(structure => structure!);
     }
 
     public static void Move(JsonObject state, string id, double dx, double dy, Action<JsonObject> emit)

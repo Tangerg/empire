@@ -6,6 +6,7 @@ using Empire.Core.Determinism;
 using Empire.Core.Engine;
 using Empire.Core.Geometry;
 using Empire.Core.Objectives;
+using Empire.Core.Scenario;
 using Empire.Core.Tactics;
 
 internal static class EscortChecks
@@ -18,6 +19,7 @@ internal static class EscortChecks
             .Single(candidate => Text(candidate, "id") == "c01-02");
         CheckObjectiveTargets(engine, data, level);
         CheckScoreTargets(engine, data);
+        CheckCompositeTargets(engine, data);
         var scene = Read(Path.Combine(data, "scenes/c01-02.json"));
         var registration = Text(scene!, "assembledGroundPath");
         Require(registration == "res://data/scenes/c01-02-layered-ground.json", "C02 formal scene selects its independently layered registration");
@@ -330,6 +332,71 @@ internal static class EscortChecks
         Require(Number(after["scenario"]!["variables"]!["names"], "names") == 1
             && after["scenario"]!["firedTriggerIds"]!.AsArray().Count(value => value!.GetValue<string>() == "name-a") == 1,
             "Leaving and revisiting a grave in later turns cannot read its name twice.");
+    }
+
+    private static void CheckCompositeTargets(BattleEngine engine, string data)
+    {
+        var level = Read(Path.Combine(data, "grayflag-campaign-levels.json")).AsArray().OfType<JsonObject>()
+            .Single(candidate => Text(candidate, "id") == "c01-12");
+        JsonObject Objective(JsonObject state) => Player(state, 1)["objectives"]![0]!["objective"]!.AsObject();
+        ObjectiveProgress Project(JsonObject state) => engine.Victory.Handlers.Project(engine.Victory.Rules, state, 1, Objective(state));
+        JsonObject Part(JsonObject state, string id) => state["structures"]!.AsArray().OfType<JsonObject>().Single(part => Text(part, "id") == id);
+        var initial = engine.CreateState(level);
+        var before = EcmaJson.Stringify(initial);
+        var saved = EcmaJson.Stringify(engine.SaveBattle(initial, "2026-11-11T00:00:00.000Z"));
+        var expected = new[] { new Coord(6, 4), new Coord(16, 4), new Coord(11, 10) };
+        var projected = Project(initial);
+        Require(projected.TargetCells.SequenceEqual(expected), "C12 composite targets identify all three canonical bell parts.");
+        Require(EcmaJson.Stringify(initial) == before && EcmaJson.Stringify(engine.SaveBattle(initial, "2026-11-11T00:00:00.000Z")) == saved,
+            "Composite target projection must not mutate state or save content.");
+        try
+        {
+            ((IList<Coord>)projected.TargetCells)[0] = new(-1, -1);
+            throw new Exception("Composite target coordinates were writable.");
+        }
+        catch (NotSupportedException) { }
+        var moved = initial.DeepClone().AsObject();
+        CompositeRules.Move(moved, "bell-controls", 0, 1, _ => { });
+        Require(Project(moved).TargetCells.SequenceEqual(expected.Select(cell => new Coord(cell.X, cell.Y + 1)))
+            && projected.TargetCells.SequenceEqual(expected), "Composite target locations follow canonical movement without changing old projections.");
+        foreach (var mode in new[] { "disabled", "dead", "missing", "captured" })
+        {
+            var state = initial.DeepClone().AsObject();
+            var part = Part(state, "bell-a");
+            if (mode == "disabled")
+                part["disabled"] = true;
+            else if (mode == "dead")
+                part["hp"] = 0;
+            else if (mode == "missing")
+                state["structures"]!.AsArray().Remove(part);
+            else
+                part["owner"] = 1;
+            Require(Project(state).TargetCells.SequenceEqual(mode == "captured" ? expected : expected.Skip(1))
+                && CompositeRules.Status(state, "bell-controls").Neutralized == (mode == "captured" ? 0 : 1),
+                $"Composite {mode} target projection must share the exact neutralization semantics.");
+        }
+        var completed = initial.DeepClone().AsObject();
+        Part(completed, "bell-a")["disabled"] = true;
+        Part(completed, "bell-b")["hp"] = 0;
+        engine.Victory.Evaluate(completed, _ => { });
+        Require(Project(completed).Status == "completed" && Project(completed).TargetCells.Count == 0,
+            "Reaching the objective threshold removes all active targets, including a surviving optional third part.");
+        var overridden = initial.DeepClone().AsObject();
+        Objective(overridden)["minimumNeutralized"] = 3;
+        Part(overridden, "bell-a")["disabled"] = true;
+        Part(overridden, "bell-b")["hp"] = 0;
+        engine.Victory.Evaluate(overridden, _ => { });
+        Require(CompositeRules.Status(overridden, "bell-controls").State == "neutralized"
+            && Project(overridden).Status == "active" && Project(overridden).TargetCells.SequenceEqual(expected.Skip(2)),
+            "An objective threshold override must retain its remaining target even after the composite default threshold is met.");
+        var repeated = initial.DeepClone().AsObject();
+        repeated["composites"]!.AsArray().OfType<JsonObject>().Single(value => Text(value, "id") == "bell-controls")["parts"]!.AsArray().Add("bell-a");
+        Require(CompositeRules.Status(repeated, "bell-controls").Neutralized == 0
+            && Project(repeated).TargetCells.SequenceEqual(expected), "Repeated part references preserve status multiplicity but never duplicate target coordinates.");
+        Part(repeated, "bell-a")["disabled"] = true;
+        Require(CompositeRules.Status(repeated, "bell-controls").Neutralized == 2
+            && Project(repeated).TargetCells.SequenceEqual(expected.Skip(1)), "Repeated neutralized part references retain existing counting semantics.");
+        Console.WriteLine("  Composite target cells: canonical positions, movement, disabled/dead/missing/captured states, completion, threshold override and duplicate references passed.");
     }
 
     private static string Status(JsonObject state) => Text(Player(state, 1)["objectiveStates"]!["escort"]!, "status");

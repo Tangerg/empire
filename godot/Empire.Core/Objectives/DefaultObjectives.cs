@@ -65,7 +65,8 @@ public static class DefaultObjectives
             return Result(neutralized >= target, ("neutralized", neutralized), ("target", target));
         })
         {
-            References = CompositeReferences
+            References = CompositeReferences,
+            TargetCells = (context, objective) => CompositeRules.RemainingPartCells(context.State, Text(objective, "composite"))
         })
         .Register(new("protect", (context, objective) =>
         {

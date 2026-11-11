@@ -163,7 +163,7 @@
 | 坚守回合 | 已实现 | 已实现 | `surviveTurns`，编辑器表单只切换类型，参数能力有限 |
 | 消灭指定单位 | 已实现 | 仅数据可配 | `eliminate` |
 | 摧毁指定结构 | 已实现 | 仅数据可配 | `destroy` |
-| 瘫痪复合目标 | 已实现 | 仅数据可配 | `neutralizeComposite` |
+| 瘫痪复合目标 | 已实现 | 进度与未瘫痪部件定位 | `neutralizeComposite`；部件判定与位置由 `CompositeRules` 持有 |
 | 保护单位 | 已实现 | 仅数据可配 | `protect` |
 | 护送单位到区域 | 已实现 | 仅数据可配 | `escort` |
 | 控制区域 | 已实现 | 仅数据可配 | `control` |
