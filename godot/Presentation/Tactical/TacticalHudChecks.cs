@@ -686,6 +686,22 @@ public partial class TacticalHudChecks : Node
                     Require(failure.Label == text.Format("ui.hud.objective_failure", text.Format($"objective.failure.{condition}"))
                         && failure.Intent is null && failure.TargetCells is null,
                         $"{levelId} discloses its authored critical condition without a tactical command.");
+                if (levelId == "c01-08" && !hidden && status == "active")
+                {
+                    var criticalViewer = owner["id"]!.GetValue<int>();
+                    var route = engine.Victory.Objectives(criticalSession.Snapshot(), criticalViewer).Single().Children.Single().Children.Single();
+                    const string task = "击退全部抢粮敌军";
+                    Require(route.Kind == "routEnemies" && presentation.Battle.ObjectiveDescription(levelId, criticalViewer, route) == task,
+                        "C08 task text describes its canonical rout requirement, not an unimplemented three-granary defense objective.");
+                    var routeRow = rows.Single(row => row.Key == route.Id);
+                    Require(routeRow.Label.Contains(task, StringComparison.Ordinal)
+                        && routeRow.Label.Contains(presentation.Battle.ObjectiveProgress(route), StringComparison.Ordinal)
+                        && routeRow.Intent is null && routeRow.TargetCells is null,
+                        "C08 shows enemy progress without invented granary locations or orders.");
+                    Require(rows.Single(row => row.Key == "failure:primary").Label
+                        == text.Format("ui.hud.objective_failure", text.Format("objective.failure.laiya")),
+                        "C08 retains Laiya's failure warning alongside Tasha's nested protection warning.");
+                }
                 Require(before == EcmaJson.Stringify(criticalSession.Snapshot()), "Failure disclosure cannot change battle facts.");
             }
             if (criticalId != "primary")
