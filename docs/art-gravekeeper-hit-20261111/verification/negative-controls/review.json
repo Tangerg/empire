@@ -1,0 +1,122 @@
+{
+  "status": "passed",
+  "sourceCommit": "27de886c111600c64a868f9d57fc6868a6db45e4",
+  "godotTree": "02b18b80aff45880bb58e503574b858c921449aa",
+  "toolsTree": "afff6c24fcf143fdff3a5a4facf2f373d1ad3290",
+  "negativeControls": [
+    {
+      "name": "static-hit-binding",
+      "mutation": [
+        {
+          "pointer": "/CANDIDATE_01_UNIT_ART/c01.gravekeeper/actionClips/hit",
+          "before": "gravekeeper.recoil",
+          "after": "static.hit"
+        }
+      ],
+      "expectedError": "Casting does not replace the gravekeeper's other declared actions.",
+      "expectedMethod": "CheckGravekeeperCastPlayback",
+      "gateExit": 1,
+      "passed": true,
+      "logSha256": "6b70f4ee353dee0df327a6f378c56f38915e3253be6dd67079d18f3ed67aad7f",
+      "gateLogSha256": "f57dc87423d4a2a3dced4fee550a2f59bee39ba93bdead112c51a05556657c6d",
+      "restoredInputs": {
+        "data/art-bindings.json": "cbe84319ee0b4952293fe85b72165662b371233d8599899b2027be3ba544b104",
+        "data/selected-assets.json": "f0bad0547cc5f433987ed930fd45bd7de02d1d2cc37ed81c40a404387b4fc278"
+      }
+    },
+    {
+      "name": "one-ms-first-to-second",
+      "mutation": [
+        {
+          "pointer": "/actorClips/gravekeeper.recoil/frames/0/span",
+          "before": 40,
+          "after": 39
+        },
+        {
+          "pointer": "/actorClips/gravekeeper.recoil/frames/1/span",
+          "before": 110,
+          "after": 111
+        }
+      ],
+      "expectedError": "Every keeper recoil pose occupies its exact half-open 40/110/90/80 ms interval.",
+      "expectedMethod": "CheckGravekeeperRecoilPlayback",
+      "gateExit": 1,
+      "passed": true,
+      "logSha256": "9184257886ac1eb2311fcfd1fac4cf3bb916d0774fde668c62046c40033072d8",
+      "gateLogSha256": "b3e52f1f865fe23d3f94a9cf96d11008abcbb4aeba691b9b071c41e8e8f15973",
+      "restoredInputs": {
+        "data/art-bindings.json": "cbe84319ee0b4952293fe85b72165662b371233d8599899b2027be3ba544b104",
+        "data/selected-assets.json": "f0bad0547cc5f433987ed930fd45bd7de02d1d2cc37ed81c40a404387b4fc278"
+      }
+    },
+    {
+      "name": "repeat-ready-frame",
+      "mutation": [
+        {
+          "pointer": "/actorClips/gravekeeper.recoil/frames/3/frame",
+          "before": "recoil-ready",
+          "after": "recoil-recover"
+        }
+      ],
+      "expectedError": "Every keeper recoil pose occupies its exact half-open 40/110/90/80 ms interval.",
+      "expectedMethod": "CheckGravekeeperRecoilPlayback",
+      "gateExit": 1,
+      "passed": true,
+      "logSha256": "9184257886ac1eb2311fcfd1fac4cf3bb916d0774fde668c62046c40033072d8",
+      "gateLogSha256": "de71b710ca9e8f1186e09450ef9f96ca9b6c4a1f39c9483ee86301e6f65ad4cb",
+      "restoredInputs": {
+        "data/art-bindings.json": "cbe84319ee0b4952293fe85b72165662b371233d8599899b2027be3ba544b104",
+        "data/selected-assets.json": "f0bad0547cc5f433987ed930fd45bd7de02d1d2cc37ed81c40a404387b4fc278"
+      }
+    },
+    {
+      "name": "presentation-scale",
+      "mutation": [
+        {
+          "selector": "assets[id=gravekeeper-recoil-v1].presentationScale",
+          "before": 0.0688,
+          "after": 0.0687
+        }
+      ],
+      "expectedError": "The shared keeper selects four original recoil poses at the exact uniform scale and 320 ms duration, without release or death policy.",
+      "expectedMethod": "CheckGravekeeperRecoilPlayback",
+      "gateExit": 1,
+      "passed": true,
+      "logSha256": "44e7f23d909029386ff85501c528491379ae6d6cf021527ee2bf6717dbb3439f",
+      "gateLogSha256": "fe41044c992d3d35bfdf7ddbb57455381f20e854b92ae832b0f08046440626ec",
+      "restoredInputs": {
+        "data/art-bindings.json": "cbe84319ee0b4952293fe85b72165662b371233d8599899b2027be3ba544b104",
+        "data/selected-assets.json": "f0bad0547cc5f433987ed930fd45bd7de02d1d2cc37ed81c40a404387b4fc278"
+      }
+    }
+  ],
+  "restoredPositive": {
+    "assertions": 7487,
+    "gateExit": 0,
+    "errors": [],
+    "logSha256": "e78baf6d1ad92ec8f5d9b438af1162e0d5628eff2ce8a8a32de4d3a8919d3947",
+    "gateLogSha256": "e78baf6d1ad92ec8f5d9b438af1162e0d5628eff2ce8a8a32de4d3a8919d3947"
+  },
+  "integrity": {
+    "restoredInputsMatch": true,
+    "productionInputsUnchanged": true,
+    "assembliesUnchanged": true,
+    "sourceCommitUnchanged": true
+  },
+  "allSourceAndStagedInputHashesMatch": true,
+  "eachNegativeRestoredExactOriginalJsonHashes": true,
+  "frozenAndStagedAssemblyHashes": {
+    "Empire.Core.dll": "ab6a38e4b863a6a09acce6505aac93a4fe72975f0c9e41329d1b8645a7c56faa",
+    "Empire.dll": "9c26ba406a55703a0d5a0b07141cfc094ece56b0842157ec47a03d465f0ec9c0",
+    "GodotSharp.dll": "2142e62894176d7340f50581f8b2fe84e36ae64e1a85f1b2bd7737a7e8a5c8ba"
+  },
+  "archivedLogsByteExact": true,
+  "runnerSha256": "f8281b23ffdd35a29f347713a5a42ceaf2306ec9b655f9eb7a3e58837653ae46",
+  "excluded": [
+    "staged project",
+    "runtime HOME/XDG directories",
+    "imported resource/cache contents",
+    "DLL contents"
+  ],
+  "scope": "Four isolated data-guard sensitivities and restored full headless AnimationChecks. Not a GUI, full-campaign, exported-package, performance, or remote-CI acceptance claim."
+}

@@ -1,0 +1,71 @@
+{
+  "sourceBaseline": "9dc658041886002d35f9b89647a701852d6a2047",
+  "scope": "Planning against previous gravekeeper-idle frozen assemblies; not final new-hit acceptance.",
+  "compiledProbeSourceEqualsPackage": true,
+  "probeProgramSha256": "c49cfb5807c40c250360ac8142bca7518e96b272acb9e1c44c12fd78cfc10845",
+  "inputFiles": {
+    "godot/data/content-packs.json": "44be9f2e36587889f5fe183e141298a9131705588299fdcc5a4400c41cf35586",
+    "godot/data/grayflag-campaign.json": "02e22bda14a163092b8650600f06f346bd6970a834441f09c05942b023d4d14c",
+    "godot/data/grayflag-campaign-levels.json": "e226041272be12ea1686be7297953f332606002908ce44fa8d15028c0435ed42",
+    "godot/data/grayflag-story.json": "0710f260edafc3e2e88059cec8b83b7b312ffad1a965b4a21ef9f0a2f9e33827",
+    "godot/data/grayflag-battle-text.json": "44f20ba059780e0e4c07471781d13da847f82db91cd91b8d2b886d4805afa1b5",
+    "godot/data/grayflag-content-text.json": "b171896a35e05c1344b24fad3f6c18d7d18fcdf7a3d77edafd9e4a1b0c716df3",
+    "godot/Localization/zh_CN.po": "b3aee799e70ff0747142ec027458d9446301ca666d9100e1ca92910006707532",
+    "docs/art-gravekeeper-idle-20261110/verification/legal/source-package/heal-right/derivation-actions.json": "8558d5091b232e26fabf978a29bc3d9130d7d7d7188f3327e367d21aee64629c",
+    "docs/art-gravekeeper-idle-20261110/verification/legal/source-package/heal-right/source-campaign-save.json": "71f24bbfe4f966ee841ea9d3713a0a21c65e3832b52f31b89e2d1a61adba37cc",
+    "docs/art-gravekeeper-idle-20261110/verification/legal/source-package/heal-right/opening-actions.json": "c481afcdcd583a703dd5fadb365573f89e8afb3a1de467e93573bdf6c7389bb7"
+  },
+  "saveComparisons": [
+    {
+      "name": "right",
+      "file": "before.json",
+      "passed": true,
+      "report": "right-before-comparison.json"
+    },
+    {
+      "name": "right",
+      "file": "after.json",
+      "passed": true,
+      "report": "right-after-comparison.json"
+    },
+    {
+      "name": "right",
+      "file": "ui-trigger-before.json",
+      "passed": true,
+      "report": "right-ui-trigger-before-comparison.json"
+    },
+    {
+      "name": "right",
+      "file": "ui-settled.json",
+      "passed": true,
+      "report": "right-ui-settled-comparison.json"
+    },
+    {
+      "name": "left",
+      "file": "before.json",
+      "passed": true,
+      "report": "left-before-comparison.json"
+    },
+    {
+      "name": "left",
+      "file": "after.json",
+      "passed": true,
+      "report": "left-after-comparison.json"
+    },
+    {
+      "name": "left",
+      "file": "ui-trigger-before.json",
+      "passed": true,
+      "report": "left-ui-trigger-before-comparison.json"
+    },
+    {
+      "name": "left",
+      "file": "ui-settled.json",
+      "passed": true,
+      "report": "left-ui-settled-comparison.json"
+    }
+  ],
+  "fullTraceByteEquality": true,
+  "nativeGuiAutomationRun": false,
+  "productionBuildRun": false
+}

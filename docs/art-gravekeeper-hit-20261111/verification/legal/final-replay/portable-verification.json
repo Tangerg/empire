@@ -1,0 +1,101 @@
+{
+  "passed": true,
+  "invokedFrom": "/tmp",
+  "sourcePackage": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/archive-legal",
+  "scratchOutput": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/legal-final-portable",
+  "sourceHarnessByteEquality": true,
+  "runtimeFrozenAssemblyEquality": true,
+  "completeTraceByteEquality": true,
+  "completeSaveComparisons": [
+    {
+      "route": "right",
+      "save": "before.json",
+      "passed": true,
+      "primarySha256": "44fce2fc3e914773225c06b22717483e39c15d684e827c7a070e571463b5e6b3",
+      "portableSha256": "faf7e164535004e35f2a5bb09bf5ba54807dace7059fb01c6d70d23218603a90",
+      "onlyOmissions": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ]
+    },
+    {
+      "route": "right",
+      "save": "after.json",
+      "passed": true,
+      "primarySha256": "084c9c1defa884b40c718e0b27eeabbf0d9b2b6fd17fd1707016cb450bfd6aa8",
+      "portableSha256": "9aab5c4ab6fe2aed8c332e5c7f54dc05c14e852a939ecb28af7a15032c0355e7",
+      "onlyOmissions": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ]
+    },
+    {
+      "route": "right",
+      "save": "ui-trigger-before.json",
+      "passed": true,
+      "primarySha256": "0b8a806df4b6f1af9b755ee89da1b2d45a971febf6e4836d9b2466fee3a43f0f",
+      "portableSha256": "b18771d878442dc86346abfe3e2f1216781c3b294dfc803fc0736f9f5c4e6d4f",
+      "onlyOmissions": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ]
+    },
+    {
+      "route": "right",
+      "save": "ui-settled.json",
+      "passed": true,
+      "primarySha256": "37e28c8b8c3eb1717a4d5eb447220c7645adbb2de115423a6000e17dbb5feafd",
+      "portableSha256": "5b4e2b635fced90400e7286173c84bf2ebf46d2378259e60c6564d679b41114e",
+      "onlyOmissions": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ]
+    },
+    {
+      "route": "left",
+      "save": "before.json",
+      "passed": true,
+      "primarySha256": "cd7d0f3575ac6f34641150969eefbaa81902205cdc9c8fb6fa7bd443d06d5eb1",
+      "portableSha256": "bff0d779f18a6724a2d13205d083317388ffed9defbf32e66b1b957cd1e1cacd",
+      "onlyOmissions": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ]
+    },
+    {
+      "route": "left",
+      "save": "after.json",
+      "passed": true,
+      "primarySha256": "ad84a21f22651f4f14376ae668fcafc896dc5a6fbc920080913db008352bb4fc",
+      "portableSha256": "2b7ce1aca1d561d5907ba07d89073ab02e24825eb8a637869c837f435910a265",
+      "onlyOmissions": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ]
+    },
+    {
+      "route": "left",
+      "save": "ui-trigger-before.json",
+      "passed": true,
+      "primarySha256": "33b6d62de969fb4ff91db6971c11d6473ee2111dfbfb2f945a50cae1c3b52757",
+      "portableSha256": "ae80ab90c3b875711af3fd408fd4ff638e0575fa42de842c106b869153dfcfef",
+      "onlyOmissions": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ]
+    },
+    {
+      "route": "left",
+      "save": "ui-settled.json",
+      "passed": true,
+      "primarySha256": "8853068cab87acc462ecc0f478f3f63398d3508e892d1d81fe4028a925ce5dc8",
+      "portableSha256": "ed9d10892330abea41602130119e5333a0a9038d90984887e64019ae9da1127f",
+      "onlyOmissions": [
+        "campaign.savedAt",
+        "battle.savedAt"
+      ]
+    }
+  ],
+  "exit": 0,
+  "productionBuildOrImport": false
+}

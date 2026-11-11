@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "baseline": "9dc658041886002d35f9b89647a701852d6a2047",
+  "testedImplementation": "27de886c111600c64a868f9d57fc6868a6db45e4",
+  "productionGodotDelta": [
+    "godot/Presentation/AnimationArcherRecoilChecks.cs",
+    "godot/Presentation/AnimationChecks.cs",
+    "godot/Presentation/AnimationGravekeeperCastChecks.cs",
+    "godot/Presentation/AnimationGravekeeperIdleChecks.cs",
+    "godot/Presentation/AnimationGravekeeperRecoilChecks.cs",
+    "godot/Presentation/AnimationGravekeeperRecoilChecks.cs.uid",
+    "godot/Presentation/AnimationReactionChecks.cs",
+    "godot/assets/painted-actions-v1/gravekeeper-recoil-v1.png",
+    "godot/assets/painted-actions-v1/gravekeeper-recoil-v1.png.import",
+    "godot/data/art-bindings.json",
+    "godot/data/selected-assets.json",
+    "godot/docs/ACTION-PRESENTATION.md"
+  ],
+  "runtimeImplementationChanged": false,
+  "battleRulesChanged": false,
+  "previewChanged": false,
+  "toolsChanged": false,
+  "basis": "All changed C# files are AnimationChecks partial contracts. Two data documents are separately proven equal after removing exactly one new appearance/clip and keeper hit binding."
+}

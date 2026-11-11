@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "source": {
+    "sourceCommit": "27de886c111600c64a868f9d57fc6868a6db45e4",
+    "godotSourceTree": "02b18b80aff45880bb58e503574b858c921449aa",
+    "toolsSourceTree": "afff6c24fcf143fdff3a5a4facf2f373d1ad3290"
+  },
+  "facings": {
+    "hit-right": {
+      "passed": true,
+      "rawFramesComparedPixelForPixel": 50,
+      "rawTracesComparedByteForByte": 50,
+      "untouchedFullFrameStills": 13,
+      "exactNearest3xDiagnosticSheets": 3,
+      "completeOutputEqualsLegalSettlementExcept": [
+        "battle.savedAt",
+        "campaign.savedAt"
+      ],
+      "nativeExit": 0,
+      "proofSha256": "4d3159352c714b3044a7a2c237954ca147a1ff7855366e05fed48712ef0dade6",
+      "videoSha256": "42672566e142bdd0a83b036b6e8a13cc9073286dc2e2e5c1ba3ef2bf70029ec1"
+    },
+    "hit-left": {
+      "passed": true,
+      "rawFramesComparedPixelForPixel": 50,
+      "rawTracesComparedByteForByte": 50,
+      "untouchedFullFrameStills": 13,
+      "exactNearest3xDiagnosticSheets": 3,
+      "completeOutputEqualsLegalSettlementExcept": [
+        "battle.savedAt",
+        "campaign.savedAt"
+      ],
+      "nativeExit": 0,
+      "proofSha256": "1ee54bd3b8a609b24a737d7827dcda51e6b3163d1aab4cd1bd5151b659f4a4f9",
+      "videoSha256": "a1a56aa8705402993c5f3de6ad88415861bb36c7ab5e0830b20bc83ff56a6ca5"
+    }
+  }
+}

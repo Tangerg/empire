@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "completeSaveEqualExceptTwoWriterTimestamps": true,
+  "freshOfficialSaveTimestamps": true,
+  "omittedPaths": [
+    "$.campaign.savedAt",
+    "$.battle.savedAt"
+  ],
+  "expectedFile": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/archive-legal/right/after.json",
+  "expectedSha256": "04227e7ad3afa57bf5a0fafd162a64e6cd9dca702ed737b0325c1095bf03e681",
+  "actualFile": "/workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/legal-final/right/after.json",
+  "actualSha256": "084c9c1defa884b40c718e0b27eeabbf0d9b2b6fd17fd1707016cb450bfd6aa8",
+  "timestamps": {
+    "campaign.savedAt": {
+      "expected": "2026-11-11T00:03:52.969Z",
+      "actual": "2026-11-11T00:20:57.556Z",
+      "changed": true
+    },
+    "battle.savedAt": {
+      "expected": "2026-11-11T00:03:52.969Z",
+      "actual": "2026-11-11T00:20:57.556Z",
+      "changed": true
+    }
+  },
+  "differences": []
+}

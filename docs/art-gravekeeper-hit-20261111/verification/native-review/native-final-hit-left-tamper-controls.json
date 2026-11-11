@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "kind": "hit-left",
+  "baselineArchiveVerified": true,
+  "syntheticControlsAreNotNativeEvidence": true,
+  "mutationsRejected": [
+    {
+      "control": "byte mutation: native-input.json",
+      "rejected": true,
+      "reason": "Archive artifact hash differs: native-input.json"
+    },
+    {
+      "control": "byte mutation: native-output.json",
+      "rejected": true,
+      "reason": "Archive artifact hash differs: native-output.json"
+    },
+    {
+      "control": "byte mutation: native-source.txt",
+      "rejected": true,
+      "reason": "Archive artifact hash differs: native-source.txt"
+    },
+    {
+      "control": "byte mutation: native-assemblies-sha256.txt",
+      "rejected": true,
+      "reason": "Archive artifact hash differs: native-assemblies-sha256.txt"
+    },
+    {
+      "control": "byte mutation: native.log",
+      "rejected": true,
+      "reason": "Archive artifact hash differs: native.log"
+    },
+    {
+      "control": "byte mutation: native.exit",
+      "rejected": true,
+      "reason": "Archive artifact hash differs: native.exit"
+    },
+    {
+      "control": "byte mutation: native-frames.jsonl",
+      "rejected": true,
+      "reason": "Archive artifact hash differs: native-frames.jsonl"
+    },
+    {
+      "control": "byte mutation: native-lossless.mp4",
+      "rejected": true,
+      "reason": "Archive artifact hash differs: native-lossless.mp4"
+    },
+    {
+      "control": "byte mutation: native-proof.json",
+      "rejected": true,
+      "reason": "Extra data: line 705 column 1 (char 26101)"
+    },
+    {
+      "control": "byte mutation: native-observation-000.png",
+      "rejected": true,
+      "reason": "Archive artifact hash differs: native-observation-000.png"
+    },
+    {
+      "control": "byte mutation: native-keeper-poses-3x.png",
+      "rejected": true,
+      "reason": "Archive artifact hash differs: native-keeper-poses-3x.png"
+    },
+    {
+      "control": "byte mutation: native-startup.png",
+      "rejected": true,
+      "reason": "Archive artifact hash differs: native-startup.png"
+    },
+    {
+      "control": "byte mutation: save-comparison.json",
+      "rejected": true,
+      "reason": "Archive artifact hash differs: save-comparison.json"
+    },
+    {
+      "control": "semantic mutation with recalculated archive hashes: keeper-pose",
+      "rejected": true,
+      "reason": "Keeper registration changed"
+    },
+    {
+      "control": "semantic mutation with recalculated archive hashes: output-hp",
+      "rejected": true,
+      "reason": "Official output differs beyond the two writer timestamps"
+    },
+    {
+      "control": "semantic mutation with recalculated archive hashes: source-identity",
+      "rejected": true,
+      "reason": "Native source/tree identity differs from frozen tested build"
+    },
+    {
+      "control": "semantic mutation with recalculated archive hashes: log-error",
+      "rejected": true,
+      "reason": "Native session contains error/leak diagnostics"
+    },
+    {
+      "control": "semantic mutation with recalculated archive hashes: exit-failure",
+      "rejected": true,
+      "reason": "Native process did not exit successfully"
+    },
+    {
+      "control": "semantic mutation with recalculated archive hashes: crop-pixels",
+      "rejected": true,
+      "reason": "Diagnostic tile differs from nearest-neighbor source crop"
+    }
+  ],
+  "count": 19
+}

@@ -59,8 +59,37 @@ Synthetic fixtures test presenter contracts, not newly legal battle commands.
 ## Verification status
 
 Source extraction, independent art/integration review, registration and semantic
-production-data scope pass. The initial native build and editor import pass.
-Formatter and 215 unique script UIDs pass. Complete AnimationChecks pass all
-7,487 assertions with strict exit 0. Deliberate mutation controls, real UI
-recordings and the unchanged full native gate are still pending. This implementation checkpoint is
-not final gameplay acceptance or completion of every keeper action.
+production-data scope pass. Native builds and editor import pass. Formatter and
+215 unique script UIDs pass. Complete AnimationChecks pass all 7,487 assertions
+with strict exit 0. Four isolated mutations fail at their intended first
+assertions, then byte-exact restoration passes all 7,487 assertions again.
+
+The final frozen build verifies both complete 175-entry lawful routes and their
+state/event histories. These retain 350 entries with a shared 164-order prefix;
+the derivation executes that prefix once, totaling 186 main dispatches plus six
+checkpoint replays. Official save reloads and full-document comparisons pass.
+This is not 350 unique scenarios.
+
+Both actual UI captures contain 50 original 960×640 observations. Each shows the
+normal AI archer moving and inflicting 33 damage, keeper HP 37→4, all four recoil
+poses, recovery and completed presentation. The normal next AI endTurn returns
+player control. Both F5 saves match the lawful settled output except the two
+changed writer timestamps. The same frozen source and DLLs are used throughout.
+Lossless RGB video, exact trace bytes, untouched stills and nearest-neighbor 3×
+crops pass verification, including 40 isolated controls and 19 actual-archive
+mutations per orientation. Independent final visual/evidence review passes all
+100 frames and traces, 26 original stills and six exact 3× sheets. Expected
+damage and status overlays remain visible;
+they partly cover torso and lower-right equipment detail during the hit.
+
+The unchanged full native gate is running from clean implementation commit
+`27de886c111600c64a868f9d57fc6868a6db45e4`. Its complete result is still pending;
+passing focused and UI checks does not count as an aggregate pass. No battle
+rules, attack preview or runtime implementation changed.
+
+See [native evidence](verification/native/README.md),
+[independent native review](verification/native-review/native-final-review.md),
+[legal replay](verification/legal/README.md), and
+[negative controls](verification/negative-controls/README.md).
+Full-character completion, all-campaign playthrough, standalone export and
+real-time performance remain outside this slice.

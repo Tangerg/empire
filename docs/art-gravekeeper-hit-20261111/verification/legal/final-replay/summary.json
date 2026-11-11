@@ -1,0 +1,412 @@
+{
+  "passed": true,
+  "sourceCommit": "27de886c111600c64a868f9d57fc6868a6db45e4",
+  "godotTree": "02b18b80aff45880bb58e503574b858c921449aa",
+  "toolsTree": "afff6c24fcf143fdff3a5a4facf2f373d1ad3290",
+  "frozenAt": "2026-11-11T00:20:33Z",
+  "assemblySha256": {
+    "Empire.dll": "9c26ba406a55703a0d5a0b07141cfc094ece56b0842157ec47a03d465f0ec9c0",
+    "Empire.Core.dll": "ab6a38e4b863a6a09acce6505aac93a4fe72975f0c9e41329d1b8645a7c56faa",
+    "GodotSharp.dll": "2142e62894176d7340f50581f8b2fe84e36ae64e1a85f1b2bd7737a7e8a5c8ba"
+  },
+  "runtimeCopiesMatchFrozenAssemblies": true,
+  "probeSourceMatchesArchivedHarness": true,
+  "probeProgramSha256": "c49cfb5807c40c250360ac8142bca7518e96b272acb9e1c44c12fd78cfc10845",
+  "inputFilesUnchangedFromPlanning": {
+    "godot/data/content-packs.json": "44be9f2e36587889f5fe183e141298a9131705588299fdcc5a4400c41cf35586",
+    "godot/data/grayflag-campaign.json": "02e22bda14a163092b8650600f06f346bd6970a834441f09c05942b023d4d14c",
+    "godot/data/grayflag-campaign-levels.json": "e226041272be12ea1686be7297953f332606002908ce44fa8d15028c0435ed42",
+    "godot/data/grayflag-story.json": "0710f260edafc3e2e88059cec8b83b7b312ffad1a965b4a21ef9f0a2f9e33827",
+    "godot/data/grayflag-battle-text.json": "44f20ba059780e0e4c07471781d13da847f82db91cd91b8d2b886d4805afa1b5",
+    "godot/data/grayflag-content-text.json": "b171896a35e05c1344b24fad3f6c18d7d18fcdf7a3d77edafd9e4a1b0c716df3",
+    "godot/Localization/zh_CN.po": "b3aee799e70ff0747142ec027458d9446301ca666d9100e1ca92910006707532",
+    "docs/art-gravekeeper-idle-20261110/verification/legal/source-package/heal-right/derivation-actions.json": "8558d5091b232e26fabf978a29bc3d9130d7d7d7188f3327e367d21aee64629c",
+    "docs/art-gravekeeper-idle-20261110/verification/legal/source-package/heal-right/source-campaign-save.json": "71f24bbfe4f966ee841ea9d3713a0a21c65e3832b52f31b89e2d1a61adba37cc",
+    "docs/art-gravekeeper-idle-20261110/verification/legal/source-package/heal-right/opening-actions.json": "c481afcdcd583a703dd5fadb365573f89e8afb3a1de467e93573bdf6c7389bb7"
+  },
+  "completeRouteEntriesCompared": 350,
+  "routeActionCounts": {
+    "right": 175,
+    "left": 175
+  },
+  "sharedPrefixActionsReplayedOnce": 164,
+  "mainDerivationDispatches": 186,
+  "additionalReloadedCheckpointDispatches": 6,
+  "countExplanation": "350 retained route entries include the same 164-order prefix twice. The harness replays that prefix once, then each 11-order branch, plus three checkpoint orders per facing. It does not claim 350 unique scenarios or 350 independent main-loop dispatches.",
+  "allCompleteRouteActionsStatesEventsMatchPriorPackage": true,
+  "traceByteComparisons": [
+    {
+      "route": "right",
+      "file": "receipt.json",
+      "byteIdentical": true,
+      "sha256": "3cde721ca3a8c1ea395c7e2ccb2b9d3a863738c6f433a07e0d5728ed796cf0c7"
+    },
+    {
+      "route": "right",
+      "file": "derivation-actions.json",
+      "byteIdentical": true,
+      "sha256": "397ba4fda9b1bea0f83445200c6031be31280a6a5cff5d58f2d8a7714e7fdc32"
+    },
+    {
+      "route": "right",
+      "file": "ui-settled-extra-actions.json",
+      "byteIdentical": true,
+      "sha256": "bd2dab84189eaa03f3f6df66d2fe13d082d138279a0493cd4f75ea7d45c1fc4e"
+    },
+    {
+      "route": "right",
+      "file": "ui-settled-derivation-actions.json",
+      "byteIdentical": true,
+      "sha256": "7ee64370358cc8d15e5a84c017ca4ef20cbdefa4e9a46a95061737293e06b33a"
+    },
+    {
+      "route": "right",
+      "file": "ui-trigger-action.json",
+      "byteIdentical": true,
+      "sha256": "1f2d157a06263145e68e6cd8c4f964256e02b46218c86b833656e1cdbe244634"
+    },
+    {
+      "route": "left",
+      "file": "receipt.json",
+      "byteIdentical": true,
+      "sha256": "4b86940787a830e60166d4dd9628ced9f41415ad8e5bd1454799ae26fe6c49af"
+    },
+    {
+      "route": "left",
+      "file": "derivation-actions.json",
+      "byteIdentical": true,
+      "sha256": "7b427c1db4e25d9adfbd1ba65300ee1772310dee1ba3e9885c88d786e5832770"
+    },
+    {
+      "route": "left",
+      "file": "ui-settled-extra-actions.json",
+      "byteIdentical": true,
+      "sha256": "efbbeb3c7ed8012050ba12c877cb51853cb79e302e5e985b26429110a929c2bf"
+    },
+    {
+      "route": "left",
+      "file": "ui-settled-derivation-actions.json",
+      "byteIdentical": true,
+      "sha256": "8be150f60c05e39cc85a0af7ffcc754f7ae2f55dbaaef696e0e75340e1564627"
+    },
+    {
+      "route": "left",
+      "file": "ui-trigger-action.json",
+      "byteIdentical": true,
+      "sha256": "1f2d157a06263145e68e6cd8c4f964256e02b46218c86b833656e1cdbe244634"
+    }
+  ],
+  "officialCheckpointSaveComparisons": [
+    {
+      "route": "right",
+      "save": "before.json",
+      "passed": true,
+      "report": "save-comparisons/right-before.json"
+    },
+    {
+      "route": "right",
+      "save": "after.json",
+      "passed": true,
+      "report": "save-comparisons/right-after.json"
+    },
+    {
+      "route": "right",
+      "save": "ui-trigger-before.json",
+      "passed": true,
+      "report": "save-comparisons/right-ui-trigger-before.json"
+    },
+    {
+      "route": "right",
+      "save": "ui-settled.json",
+      "passed": true,
+      "report": "save-comparisons/right-ui-settled.json"
+    },
+    {
+      "route": "left",
+      "save": "before.json",
+      "passed": true,
+      "report": "save-comparisons/left-before.json"
+    },
+    {
+      "route": "left",
+      "save": "after.json",
+      "passed": true,
+      "report": "save-comparisons/left-after.json"
+    },
+    {
+      "route": "left",
+      "save": "ui-trigger-before.json",
+      "passed": true,
+      "report": "save-comparisons/left-ui-trigger-before.json"
+    },
+    {
+      "route": "left",
+      "save": "ui-settled.json",
+      "passed": true,
+      "report": "save-comparisons/left-ui-settled.json"
+    }
+  ],
+  "sourceCampaignFullSaveComparison": "save-comparisons/source-campaign-save.json",
+  "permittedSaveOmissions": [
+    "campaign.savedAt",
+    "battle.savedAt"
+  ],
+  "cameraFocusUnchanged": true,
+  "scenarios": [
+    {
+      "passed": true,
+      "name": "right",
+      "originalCampaignStart": true,
+      "preservedPrefixActions": 164,
+      "fullRouteActions": 175,
+      "independentCoreStateAndEvents": true,
+      "officialSaveRoundtrip": true,
+      "reloadedNextActionAndSettlementEquality": true,
+      "nativeEndTurnControllerEquality": true,
+      "beforeHash": "abc88921",
+      "afterHash": "ae3b6da9",
+      "settledHash": "a660a150",
+      "eventsSha256": "fec49aa54578a2a711fa65a1066a088caa499a4299feaad91ef5488df97e510a",
+      "keeperBefore": {
+        "id": 4,
+        "type": "c01.gravekeeper",
+        "owner": 1,
+        "x": 23,
+        "y": 18,
+        "hp": 37,
+        "done": true,
+        "capture": 0,
+        "statuses": [],
+        "weaponState": {
+          "c01.lantern-staff": {
+            "cooldownRemaining": 0,
+            "resources": {}
+          },
+          "c01.oath-dispel": {
+            "cooldownRemaining": 0,
+            "resources": {}
+          }
+        },
+        "commanderId": null,
+        "rank": 1,
+        "rankProgress": 147,
+        "resources": {},
+        "reaction": "counter",
+        "reactionUsedRound": -1,
+        "facing": "east",
+        "morale": {
+          "current": 100,
+          "maximum": 100,
+          "resilience": 0.1
+        },
+        "formation": null,
+        "directive": {
+          "mode": "assault",
+          "waypoints": [],
+          "cursor": 0
+        },
+        "career": {
+          "current": null,
+          "unlocked": [],
+          "mastery": {}
+        },
+        "learnedAbilities": [],
+        "key": "field-cleric"
+      },
+      "keeperAfter": {
+        "id": 4,
+        "type": "c01.gravekeeper",
+        "owner": 1,
+        "x": 23,
+        "y": 18,
+        "hp": 4,
+        "done": true,
+        "capture": 0,
+        "statuses": [],
+        "weaponState": {
+          "c01.lantern-staff": {
+            "cooldownRemaining": 0,
+            "resources": {}
+          },
+          "c01.oath-dispel": {
+            "cooldownRemaining": 0,
+            "resources": {}
+          }
+        },
+        "commanderId": null,
+        "rank": 1,
+        "rankProgress": 147,
+        "resources": {},
+        "reaction": "counter",
+        "reactionUsedRound": -1,
+        "facing": "east",
+        "morale": {
+          "current": 100,
+          "maximum": 100,
+          "resilience": 0.1
+        },
+        "formation": null,
+        "directive": {
+          "mode": "assault",
+          "waypoints": [],
+          "cursor": 0
+        },
+        "career": {
+          "current": null,
+          "unlocked": [],
+          "mastery": {}
+        },
+        "learnedAbilities": [],
+        "key": "field-cleric"
+      },
+      "hit": {
+        "type": "attack",
+        "attacker": 18,
+        "defender": 4,
+        "weapon": "c01.ranger-bow",
+        "damage": 33,
+        "killed": false
+      },
+      "foregroundCellsUnoccupied": true,
+      "playerVisible": true,
+      "normalAiActionsFromNativeBefore": 2,
+      "nativeCameraFocusQueryVerified": true,
+      "cameraDestinationCell": {
+        "x": 24,
+        "y": 20
+      },
+      "nativePixelAcceptance": "Not run; final-build CUA required."
+    },
+    {
+      "passed": true,
+      "name": "left",
+      "originalCampaignStart": true,
+      "preservedPrefixActions": 164,
+      "fullRouteActions": 175,
+      "independentCoreStateAndEvents": true,
+      "officialSaveRoundtrip": true,
+      "reloadedNextActionAndSettlementEquality": true,
+      "nativeEndTurnControllerEquality": true,
+      "beforeHash": "459afc95",
+      "afterHash": "f3a5082b",
+      "settledHash": "d54d535c",
+      "eventsSha256": "fec49aa54578a2a711fa65a1066a088caa499a4299feaad91ef5488df97e510a",
+      "keeperBefore": {
+        "id": 4,
+        "type": "c01.gravekeeper",
+        "owner": 1,
+        "x": 23,
+        "y": 18,
+        "hp": 37,
+        "done": true,
+        "capture": 0,
+        "statuses": [],
+        "weaponState": {
+          "c01.lantern-staff": {
+            "cooldownRemaining": 0,
+            "resources": {}
+          },
+          "c01.oath-dispel": {
+            "cooldownRemaining": 0,
+            "resources": {}
+          }
+        },
+        "commanderId": null,
+        "rank": 1,
+        "rankProgress": 172,
+        "resources": {},
+        "reaction": "counter",
+        "reactionUsedRound": -1,
+        "facing": "west",
+        "morale": {
+          "current": 100,
+          "maximum": 100,
+          "resilience": 0.1
+        },
+        "formation": null,
+        "directive": {
+          "mode": "assault",
+          "waypoints": [],
+          "cursor": 0
+        },
+        "career": {
+          "current": null,
+          "unlocked": [],
+          "mastery": {}
+        },
+        "learnedAbilities": [],
+        "key": "field-cleric"
+      },
+      "keeperAfter": {
+        "id": 4,
+        "type": "c01.gravekeeper",
+        "owner": 1,
+        "x": 23,
+        "y": 18,
+        "hp": 4,
+        "done": true,
+        "capture": 0,
+        "statuses": [],
+        "weaponState": {
+          "c01.lantern-staff": {
+            "cooldownRemaining": 0,
+            "resources": {}
+          },
+          "c01.oath-dispel": {
+            "cooldownRemaining": 0,
+            "resources": {}
+          }
+        },
+        "commanderId": null,
+        "rank": 1,
+        "rankProgress": 172,
+        "resources": {},
+        "reaction": "counter",
+        "reactionUsedRound": -1,
+        "facing": "west",
+        "morale": {
+          "current": 100,
+          "maximum": 100,
+          "resilience": 0.1
+        },
+        "formation": null,
+        "directive": {
+          "mode": "assault",
+          "waypoints": [],
+          "cursor": 0
+        },
+        "career": {
+          "current": null,
+          "unlocked": [],
+          "mastery": {}
+        },
+        "learnedAbilities": [],
+        "key": "field-cleric"
+      },
+      "hit": {
+        "type": "attack",
+        "attacker": 18,
+        "defender": 4,
+        "weapon": "c01.ranger-bow",
+        "damage": 33,
+        "killed": false
+      },
+      "foregroundCellsUnoccupied": true,
+      "playerVisible": true,
+      "normalAiActionsFromNativeBefore": 2,
+      "nativeCameraFocusQueryVerified": true,
+      "cameraDestinationCell": {
+        "x": 24,
+        "y": 20
+      },
+      "nativePixelAcceptance": "Not run; final-build CUA required."
+    }
+  ],
+  "productionBuildOrImportRunByThisProbe": false,
+  "nativeCaptureRunByThisProbe": false,
+  "nativePixelAcceptance": "Separate final-build native capture required.",
+  "actualUiF5Acceptance": "Separate actual application F5 comparison required.",
+  "portableArchiveReproductionPassed": true,
+  "portableVerification": "portable-verification.json",
+  "countScope": "Counts above describe the primary final replay; a separate portable archive rerun repeats the same verification."
+}
