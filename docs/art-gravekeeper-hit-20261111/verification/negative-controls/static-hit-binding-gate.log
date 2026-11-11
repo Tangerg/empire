@@ -1,0 +1,40 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Animation facing checks passed, including the lawful C04 receipt.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Torren thrust: six production poses, 160 ms release, 360 ms recovery, mirrors/cancellation/reduced motion passed.
+ERROR: System.InvalidOperationException: Casting does not replace the gravekeeper's other declared actions.
+   at Empire.Presentation.AnimationChecks.Require(Boolean condition, String message) in /workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:line 632
+   at Empire.Presentation.AnimationChecks.CheckGravekeeperCastPlayback() in /workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationGravekeeperCastChecks.cs:line 32
+   at Empire.Presentation.AnimationChecks._Ready() in /workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:line 43
+   at: void Empire.Presentation.AnimationChecks+<_Ready>d__78.MoveNext() (/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:43)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.AnimationChecks+<_Ready>d__78.MoveNext() (/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:43)
+       [2] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [3] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [4] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [5] void System.Threading.Tasks.Task.RunContinuations(object)
+       [6] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(System.Threading.Tasks.Task`1[TResult], TResult)
+       [7] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [8] void Empire.Presentation.AnimationChecks+<CheckTorrenThrustPlayback>d__242.MoveNext() (/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationTorrenThrustChecks.cs:108)
+       [9] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [10] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [11] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [12] void System.Threading.Tasks.Task.RunContinuations(object)
+       [13] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(System.Threading.Tasks.Task`1[TResult], TResult)
+       [14] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [15] void Empire.Presentation.AnimationChecks+<Tick>d__91.MoveNext() (/workspace/scratch/84c9fe948755/empire-archer-fall-20261111/repo/godot/Presentation/AnimationChecks.cs:596)
+       [16] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [17] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [18] void System.Runtime.CompilerServices.YieldAwaitable+YieldAwaiter+<>c.<System.Runtime.CompilerServices.IStateMachineBoxAwareAwaiter.AwaitUnsafeOnCompleted>b__5_0(object)
+       [19] void Godot.GodotSynchronizationContext.ExecutePendingContinuations() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GodotSynchronizationContext.cs:51)
+       [20] void Godot.GodotTaskScheduler.Activate() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GodotTaskScheduler.cs:76)
+       [21] void Godot.Bridge.ScriptManagerBridge.FrameCallback() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/ScriptManagerBridge.cs:84)
+Native process/diagnostic gate failed: static-hit-binding (exit 1); /workspace/scratch/84c9fe948755/empire-gravekeeper-hit-20261110/verification/negative-controls/static-hit-binding.log
