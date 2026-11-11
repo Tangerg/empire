@@ -1314,6 +1314,33 @@ public partial class BattleScreenChecks : Node
             Require(Descendants(screen).OfType<Label>().Any(label => label.Text == text.Format("ui.battle.artwork_issues", screen.Board.RenderingIssueCount))
                 && !Descendants(screen).OfType<Control>().Any(control => control.TooltipText.Contains("c01.roderick", StringComparison.Ordinal)),
                 "The actual board notice uses injected wording and never exposes raw resource diagnostics in a tooltip.");
+            var coverage = Descendants(screen).OfType<Label>().Single(label =>
+                label.Text == text.Format("ui.battle.artwork_issues", screen.Board.RenderingIssueCount));
+            screen.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.TopLeft);
+            var originalNotice = coverage.Text;
+            foreach (var notice in new[] { originalNotice, text.Format("ui.battle.surface_pending") })
+            {
+                coverage.Text = notice;
+                foreach (var size in new[] { new Vector2(960, 640), new Vector2(1280, 720), new Vector2(1920, 1080), new Vector2(960, 640) })
+                {
+                    screen.Size = size;
+                    await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                    await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                    var noticeRect = coverage.GetGlobalRect();
+                    Require(coverage.Size.X >= 280 && coverage.GetLineCount() <= 2 && coverage.MaxLinesVisible == -1
+                        && screen.GetGlobalRect().Encloses(noticeRect),
+                        "The actual artwork notice has a readable bounded width at every supported battle size, including resize back to minimum.");
+                    var eventLog = (Label)screen.FindChild("BattleEventLog", true, false);
+                    Require(noticeRect.Position.Y >= eventLog.GetGlobalRect().End.Y
+                        && !Descendants(screen).OfType<Button>().Where(button => button.IsVisibleInTree())
+                            .Any(button => button.GetGlobalRect().Intersects(noticeRect)),
+                        "Artwork diagnostics do not cover event feedback or actionable HUD controls.");
+                    Require(coverage.MouseFilter == Control.MouseFilterEnum.Ignore && coverage.ZIndex == 4001,
+                        "The readable notice stays above the board without intercepting tactical pointer input.");
+                }
+            }
+            coverage.Text = originalNotice;
+            screen.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
             var origin = session.GetTacticalQueries(0).Unit(2)!.At;
             screen.SelectHit(TacticalHit.Unit(origin, 2));
             var nativeHud = (TacticalHud)screen.FindChild("TacticalHud", true, false);

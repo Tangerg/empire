@@ -813,10 +813,18 @@ public partial class BattleScreen : Control
         AddChild(_eventLog);
         OverlayRect(_eventLog, 0, 0, 0, 0, 28, 104, 324, 148);
         _coverage = Wrapped("");
+        _coverage.Name = "ArtworkNotice";
         _coverage.AddThemeFontSizeOverride("font_size", 12);
         _coverage.AddThemeColorOverride("font_color", new Color("#ada69d"));
+        _coverage.AddThemeColorOverride("font_shadow_color", new Color("#15130c"));
+        _coverage.AddThemeConstantOverride("shadow_outline_size", 2);
+        _coverage.ZIndex = 4001;
+        _coverage.MouseFilter = MouseFilterEnum.Ignore;
         _coverage.Visible = false;
         AddChild(_coverage);
+        // This is a direct overlay child, not container-managed: give wrapping an
+        // explicit reading width below the event log, clear of battle controls.
+        OverlayRect(_coverage, 0, 0, 0, 0, 28, 152, 324, 190);
         ResizeHud();
     }
 
