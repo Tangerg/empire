@@ -98,6 +98,33 @@ public sealed class BattlefieldCamera
             SceneOrigin.Y + (fieldPoint.Y + sceneInsets.Top) * Zoom - UsefulCenter.Y));
     }
 
+    /// <summary>Frames field bounds without zooming in. False means the current viewport or legal zoom/scroll limits cannot fit the requested margin.</summary>
+    public bool FrameBounds(CameraPoint minimum, CameraPoint maximum, double screenMargin)
+    {
+        RequirePoint(minimum, nameof(minimum));
+        RequirePoint(maximum, nameof(maximum));
+        if (maximum.X < minimum.X || maximum.Y < minimum.Y)
+            throw new ArgumentOutOfRangeException(nameof(maximum));
+        if (!double.IsFinite(screenMargin) || screenMargin < 0)
+            throw new ArgumentOutOfRangeException(nameof(screenMargin));
+        var extent = new CameraPoint(maximum.X - minimum.X, maximum.Y - minimum.Y);
+        RequirePoint(extent, nameof(maximum));
+        pendingZoom = 0;
+        if (!HasViewport)
+            return false;
+        var availableX = Math.Max(0, viewport.X - padding.Left - padding.Right - 2 * screenMargin);
+        var availableY = Math.Max(0, viewport.Y - padding.Top - padding.Bottom - 2 * screenMargin);
+        var fitX = extent.X > 0 ? availableX / extent.X : Zoom;
+        var fitY = extent.Y > 0 ? availableY / extent.Y : Zoom;
+        Zoom = Math.Clamp(Math.Min(Zoom, Math.Min(fitX, fitY)), MinimumZoom, MaximumZoom);
+        CenterOn(new(minimum.X + extent.X / 2, minimum.Y + extent.Y / 2));
+        const double tolerance = 0.000001;
+        return FieldOrigin.X + minimum.X * Zoom >= padding.Left + screenMargin - tolerance
+            && FieldOrigin.Y + minimum.Y * Zoom >= padding.Top + screenMargin - tolerance
+            && FieldOrigin.X + maximum.X * Zoom <= viewport.X - padding.Right - screenMargin + tolerance
+            && FieldOrigin.Y + maximum.Y * Zoom <= viewport.Y - padding.Bottom - screenMargin + tolerance;
+    }
+
     public void Pan(CameraPoint screenDelta)
     {
         RequirePoint(screenDelta, nameof(screenDelta));

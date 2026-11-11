@@ -15,6 +15,7 @@ public partial class CameraChecks : Node
         try
         {
             CheckWorldTransform();
+            CheckBoundsFraming();
             CheckRegisteredOpening();
             CheckGestureTransform();
             CheckFollow();
@@ -22,6 +23,68 @@ public partial class CameraChecks : Node
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
+    }
+
+    private void CheckBoundsFraming()
+    {
+        var camera = new BattlefieldCamera(new(1800, 1400), new(74, 62, 74, 74), new(600, 500));
+        var viewport = new CameraPoint(960, 640);
+        var padding = new CameraInsets(16, 110, 16, 134);
+        camera.Resize(viewport, padding);
+        var minimum = new CameraPoint(180, 160);
+        var maximum = new CameraPoint(1000, 700);
+        const double margin = 12;
+        // A skewed set's bounds, not the mean of its three points, determine framing.
+        var skewed = new[] { minimum, new CameraPoint(1000, 160), maximum };
+        camera.QueueZoom(.8);
+        Require(camera.FrameBounds(minimum, maximum, margin), "A wide objective set must fit the HUD-safe viewport when legal zoom permits.");
+        Require(camera.Zoom < BattlefieldCamera.InitialZoom && camera.Zoom >= BattlefieldCamera.MinimumZoom,
+            "Framing shrinks only as far as needed within the legal zoom range.");
+        foreach (var point in skewed)
+        {
+            var x = camera.FieldOrigin.X + point.X * camera.Zoom;
+            var y = camera.FieldOrigin.Y + point.Y * camera.Zoom;
+            Require(x >= padding.Left + margin - .000001 && x <= viewport.X - padding.Right - margin + .000001
+                && y >= padding.Top + margin - .000001 && y <= viewport.Y - padding.Bottom - margin + .000001,
+                "Every skewed objective extent must fit the actual post-clamp screen transform.");
+        }
+        var zoom = camera.Zoom;
+        var scroll = camera.Scroll;
+        Require(!camera.ApplyPendingZoom() && camera.Zoom == zoom && camera.Scroll == scroll,
+            "A deliberate objective framing cancels stale queued wheel zoom.");
+        Require(camera.FrameBounds(minimum, maximum, margin) && camera.Zoom == zoom && camera.Scroll == scroll,
+            "Repeated objective framing must be stable.");
+        camera.FrameBounds(new(500, 400), new(500, 400), margin);
+        Require(camera.Zoom == zoom, "A single target must neither shrink nor zoom back in.");
+        camera.Resize(new(1920, 1080), padding);
+        Require(camera.FrameBounds(minimum, maximum, margin) && camera.Zoom == zoom,
+            "A larger viewport must not enlarge an already readable objective set.");
+        camera.Resize(viewport, padding);
+        Require(!camera.FrameBounds(new(0, 0), new(1800, 1400), margin)
+            && camera.Zoom == BattlefieldCamera.MinimumZoom,
+            "An unfit set reports failure instead of violating the minimum zoom limit.");
+        var edge = new BattlefieldCamera(new(1800, 1400), default, new(500, 400));
+        edge.Resize(viewport, padding);
+        Require(!edge.FrameBounds(new(0, 0), new(0, 0), margin)
+            && edge.Zoom == BattlefieldCamera.InitialZoom,
+            "A scroll-clamped edge cannot falsely claim to provide unavailable screen margin.");
+        var unlaid = new BattlefieldCamera(new(800, 600), default, new(400, 300));
+        Require(!unlaid.FrameBounds(new(10, 10), new(50, 50), margin), "Framing before usable layout must report no fitted viewport.");
+        foreach (var invalid in new Action[]
+        {
+            () => camera.FrameBounds(new(double.NaN, 0), maximum, margin),
+            () => camera.FrameBounds(maximum, minimum, margin),
+            () => camera.FrameBounds(minimum, maximum, -1),
+            () => camera.FrameBounds(minimum, maximum, double.PositiveInfinity)
+        })
+        {
+            try
+            {
+                invalid();
+                throw new Exception("Invalid bounds framing input was accepted.");
+            }
+            catch (ArgumentOutOfRangeException) { assertions++; }
+        }
     }
 
     private void CheckRegisteredOpening()

@@ -67,3 +67,16 @@ aggregate status as a replacement victory decision.
 This follows the existing public-objective/structure visibility boundary, not a
 new hidden-structure discovery system. Hidden objective ancestors and leaves do
 not publish location intents. No fogged units are revealed.
+
+C13 likewise declares its three archive zones on the score objective. The task
+explains that arrival followed by a completed action reads the archive. Its three
+archive locations and the existing escort exit remain separate task locators;
+archive locations are not mislabeled as only unread records. Scenario still owns
+the one-time grants, and score completion removes its locator naturally.
+
+
+Objective focus frames the surface-triangle bounds of the published target cells.
+The camera only zooms out when the set needs more space, retaining legal limits
+and the current selection. Minimum zoom or edge scroll constraints may prevent
+arbitrarily large sets from fitting; the camera model reports that result rather
+than breaking its limits. The formal C13 archive set fits the 960×640 safe area.

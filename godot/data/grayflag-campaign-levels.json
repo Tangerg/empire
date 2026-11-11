@@ -26687,7 +26687,12 @@
                   "id": "score-archives",
                   "type": "score",
                   "variable": "archives",
-                  "atLeast": 3
+                  "atLeast": 3,
+                  "targetZones": [
+                    "archive-a",
+                    "archive-b",
+                    "archive-c"
+                  ]
                 },
                 {
                   "id": "escort-archive-exit",

@@ -143,8 +143,14 @@ public partial class BattleScreen
             _pointerMapPosition = null;
             _pointerBoundaryGeneration++;
             _gestures?.Cancel();
-            var points = cells.Select(cell => CellCenter(new(cell.X, cell.Y))).ToArray();
-            _camera?.CenterOn(new(points.Average(point => point.X), points.Average(point => point.Y)));
+            // Frame the same authored surface vertices used by the objective overlay.
+            // A centroid alone can leave widely separated task markers behind the HUD.
+            var points = Board.Projection.Triangles
+                .Where(triangle => cells.Any(cell => cell.X == triangle.Cell.X && cell.Y == triangle.Cell.Y))
+                .SelectMany(triangle => new[] { triangle.ProjectedA, triangle.ProjectedB, triangle.ProjectedC }).ToArray();
+            if (points.Length > 0)
+                _camera?.FrameBounds(new(points.Min(point => point.X), points.Min(point => point.Y)),
+                    new(points.Max(point => point.X), points.Max(point => point.Y)), 12);
             ApplyCamera();
             UpdateTactical();
             return;

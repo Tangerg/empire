@@ -92,7 +92,7 @@ public partial class CameraIntegrationChecks : Node
         var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>().ToArray();
         var originalSize = screen.Size;
         screen.Size = new Vector2(960, 640);
-        foreach (var id in new[] { "c01-02", "c01-07", "c01-11", "c01-12" })
+        foreach (var id in new[] { "c01-02", "c01-07", "c01-11", "c01-12", "c01-13" })
         {
             var scenario = levels.Single(value => value["id"]!.GetValue<string>() == id);
             var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), scenario);
@@ -102,7 +102,7 @@ public partial class CameraIntegrationChecks : Node
             var overlay = (BoardOverlay)screen.FindChild("LegalTargets", true, false);
             var rows = hud.Projection!.Sections.Single(section => section.Key == "objectives").Rows
                 .Where(row => row.Intent?.Kind == TacticalHudIntentKind.FocusObjective).ToArray();
-            Require(rows.Length == (id == "c01-07" ? 2 : 1), "Only public active spatial objectives have locate controls.");
+            Require(rows.Length == (id is "c01-07" or "c01-13" ? 2 : 1), "Only public active spatial objectives have locate controls.");
             var actor = session.GetTacticalQueries(0).Unit(session.GetTacticalQueries(0).Actors()[0])!;
             screen.SelectHit(TacticalHit.Unit(actor.At, actor.Id));
             await Layout();
@@ -120,10 +120,12 @@ public partial class CameraIntegrationChecks : Node
                 Require(overlay.ObjectiveCells.SequenceEqual(row.TargetCells!), "Native Enter locates the exact canonical task region.");
                 Require(session.Revision == 0 && session.GetSnapshot().State.GetRawText() == before && screen.Selection == selection,
                     "Locating a task cannot change units, pending commands, events or canonical state.");
-                var center = row.TargetCells!.Select(cell => screen.Board.Projection.CellCenter(new(cell.X, cell.Y)))
-                    .Aggregate(Vector2.Zero, (sum, value) => sum + value) / row.TargetCells!.Count;
-                Require(new Rect2(new Vector2(16, 110), screen.Size - new Vector2(32, 244)).HasPoint(BoardField(center)),
-                    "The located task is inside the camera safe viewport.");
+                var vertices = screen.Board.Projection.Triangles
+                    .Where(triangle => row.TargetCells!.Any(cell => cell.X == triangle.Cell.X && cell.Y == triangle.Cell.Y))
+                    .SelectMany(triangle => new[] { triangle.ProjectedA, triangle.ProjectedB, triangle.ProjectedC }).ToArray();
+                var safeViewport = new Rect2(new Vector2(16, 110), screen.Size - new Vector2(32, 244));
+                Require(vertices.Length > 0 && vertices.All(point => safeViewport.HasPoint(BoardField(point))),
+                    "Every located task marker fits inside the camera safe viewport: " + id + "/" + row.Key);
                 screen.Refresh();
                 await Layout();
                 Require(IsInstanceValid(button) && button.IsInsideTree() && button.HasFocus(),

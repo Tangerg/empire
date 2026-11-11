@@ -19,6 +19,7 @@ internal static class EscortChecks
             .Single(candidate => Text(candidate, "id") == "c01-02");
         CheckObjectiveTargets(engine, data, level);
         CheckScoreTargets(engine, data);
+        CheckArchiveTargets(engine, data);
         CheckCompositeTargets(engine, data);
         var scene = Read(Path.Combine(data, "scenes/c01-02.json"));
         var registration = Text(scene!, "assembledGroundPath");
@@ -260,7 +261,7 @@ internal static class EscortChecks
         engine.Victory.Evaluate(state, _ => { });
         Require(Project(state).Status == "completed" && Project(state).TargetCells.Count == 0,
             "A completed score no longer exposes active target cells.");
-        CheckScoreVisitEquivalence(engine, level);
+        CheckScoreVisitEquivalence(engine, level, new Coord(5, 3), "names", "name-a");
         Score(level)["targetZones"] = new JsonArray("missing-score-zone");
         try
         {
@@ -275,13 +276,33 @@ internal static class EscortChecks
         Console.WriteLine("  Score target cells: optional authored zones, deduplication, canonical updates, immutable projection, admission and completion passed.");
     }
 
-    private static void CheckScoreVisitEquivalence(BattleEngine engine, JsonObject authored)
+    private static void CheckArchiveTargets(BattleEngine engine, string data)
     {
-        // Isolate travel distance only; canonical grave zones, triggers and victory conditions are unchanged.
+        var level = Read(Path.Combine(data, "grayflag-campaign-levels.json")).AsArray().OfType<JsonObject>()
+            .Single(candidate => Text(candidate, "id") == "c01-13");
+        var state = engine.CreateState(level);
+        var score = Player(state, 1)["objectives"]![0]!["objective"]!["objectives"]![0]!.AsObject();
+        Require(Text(score, "id") == "score-archives"
+            && score["targetZones"] is JsonArray zones
+            && zones.Select(value => value!.GetValue<string>()).SequenceEqual(new[] { "archive-a", "archive-b", "archive-c" }),
+            "Formal C13 must explicitly associate its archive score with the three canonical archive zones.");
+        var before = EcmaJson.Stringify(state);
+        var saved = EcmaJson.Stringify(engine.SaveBattle(state, "2026-11-11T00:00:00.000Z"));
+        var projected = engine.Victory.Handlers.Project(engine.Victory.Rules, state, 1, score);
+        Require(projected.TargetCells.SequenceEqual(new[] { new Coord(4, 3), new Coord(20, 3), new Coord(20, 12) }),
+            "Formal C13 archive collection targets must identify exactly the three authored collection cells, not the later exit zone.");
+        Require(EcmaJson.Stringify(state) == before && EcmaJson.Stringify(engine.SaveBattle(state, "2026-11-11T00:00:00.000Z")) == saved,
+            "C13 target projection must not change state or saves.");
+        CheckScoreVisitEquivalence(engine, level, new Coord(4, 3), "archives", "archive-a");
+        Console.WriteLine("  C13 archive targets: formal three-cell declaration, readonly projection, lawful collection/revisit and complete metadata-only event/state equivalence passed.");
+    }
+
+    private static void CheckScoreVisitEquivalence(BattleEngine engine, JsonObject authored, Coord destination, string variable, string trigger)
+    {
+        // Isolate travel distance only; canonical zones, triggers and victory conditions are unchanged.
         var fixture = authored.DeepClone().AsObject();
         var initial = engine.CreateState(fixture);
         var movement = new MovementRules(new(engine.Catalog, engine.Grids));
-        var destination = new Coord(5, 3);
         var start = movement.Board(initial).Neighbours(destination)
             .First(cell => movement.Battlefield(initial).Cell(cell).Admits("foot")
                 && Units(initial).All(unit => TacticalQueries.Position(unit) != cell));
@@ -310,7 +331,7 @@ internal static class EscortChecks
             var state = live.Snapshot();
             var unit = Units(state).Single(value => Text(value, "key") == "campaign-laiya");
             var field = movement.ComputeMoveField(state, unit);
-            Require(field.Stops.Contains(movement.Board(state).IndexOf(to)), "Grave visit fixture must use a legal movement stop.");
+            Require(field.Stops.Contains(movement.Board(state).IndexOf(to)), "Score visit fixture must use a legal movement stop.");
             Dispatch(new JsonObject
             {
                 ["kind"] = "command",
@@ -320,8 +341,8 @@ internal static class EscortChecks
             });
         }
         Move(destination);
-        Require(Number(live.Snapshot()["scenario"]!["variables"]!["names"], "names") == 1,
-            "Completing a genuine move-and-wait at the first grave reads one name.");
+        Require(Number(live.Snapshot()["scenario"]!["variables"]![variable], variable) == 1,
+            $"Completing a genuine move-and-wait at {trigger} increments {variable} once.");
         foreach (var to in new[] { start, destination })
         {
             Dispatch(new JsonObject { ["kind"] = "endTurn" });
@@ -329,9 +350,9 @@ internal static class EscortChecks
             Move(to);
         }
         var after = live.Snapshot();
-        Require(Number(after["scenario"]!["variables"]!["names"], "names") == 1
-            && after["scenario"]!["firedTriggerIds"]!.AsArray().Count(value => value!.GetValue<string>() == "name-a") == 1,
-            "Leaving and revisiting a grave in later turns cannot read its name twice.");
+        Require(Number(after["scenario"]!["variables"]![variable], variable) == 1
+            && after["scenario"]!["firedTriggerIds"]!.AsArray().Count(value => value!.GetValue<string>() == trigger) == 1,
+            $"Leaving and revisiting {trigger} in later turns cannot collect it twice.");
     }
 
     private static void CheckCompositeTargets(BattleEngine engine, string data)
