@@ -16,12 +16,13 @@ public partial class PresentationChecks : Node
         Size = new Vector2(1180, 812),
         MouseFilter = Control.MouseFilterEnum.Ignore
     };
-    public override void _Ready()
+    public override async void _Ready()
     {
         AddChild(viewportFeedback);
         try
         {
             CheckCoveredTerrainActors();
+            await CheckIdleOcclusionCache();
             CheckPaintedGround();
             Check();
             TerrainChecks.Run(this);

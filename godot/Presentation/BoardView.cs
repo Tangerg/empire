@@ -109,6 +109,7 @@ public partial class BoardView : Node2D
             _terrain.QueueFree();
         }
         _terrain = replacement;
+        ClearOcclusionPoses();
     }
 
     public void ConfigureDynamicState()
@@ -225,6 +226,7 @@ public partial class BoardView : Node2D
             throw;
         }
 
+        ClearOcclusionPoses();
         _idleActors.Clear();
         ReplaceChild(ref _projection, null);
         _unitCues.Clear();

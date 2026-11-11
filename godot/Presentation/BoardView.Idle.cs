@@ -124,6 +124,6 @@ public partial class BoardView
             return;
         SortAnimatedStanding();
         if (!IsPresenting)
-            RefreshOcclusionCues();
+            RefreshIdleOcclusionCues();
     }
 }

@@ -11,27 +11,60 @@ namespace Empire.Presentation;
 public partial class BoardView
 {
     private const float CueRadius = 10;
+    // A settled projection owns stationary geometry; idle frame selection is its only changing shape input.
+    // Cache values, never nodes, and retire them with the projection or its transform.
+    private const int OcclusionPoseCapacity = 128;
+    private sealed record OcclusionCue(int UnitId, Coord Cell, int Owner, Vector2 Contact, Vector2 Center);
+    private sealed record OcclusionLayout(OcclusionCue[] Cues, string[] Diagnostics);
+    private readonly Dictionary<string, OcclusionLayout> _occlusionPoses = new(StringComparer.Ordinal);
+    private readonly Queue<string> _occlusionPoseOrder = new();
+    private Transform2D? _occlusionPoseTransform;
     private readonly List<(Polygon2D Marker, Coord Cell, int UnitId)> _unitCues = new();
     private Node2D? _cueLayer;
     private IReadOnlyDictionary<int, Color>? _occlusionColors;
     private IReadOnlyList<string> _projectionDiagnostics = Array.Empty<string>();
 
-    private void RefreshOcclusionCues()
+    private void ClearOcclusionPoses()
+    {
+        _occlusionPoses.Clear();
+        _occlusionPoseOrder.Clear();
+        _occlusionPoseTransform = null;
+    }
+
+    internal void RefreshOcclusionCues()
+    {
+        ClearOcclusionPoses();
+        RefreshIdleOcclusionCues();
+    }
+
+    private void RefreshIdleOcclusionCues()
     {
         if (_projection is null || _occlusionColors is null)
             return;
+        if (IsPresenting || _occlusionPoseTransform != GlobalTransform)
+            ClearOcclusionPoses();
+        _occlusionPoseTransform = GlobalTransform;
+        var pose = string.Join(";", _idleActors.OrderBy(pair => pair.Key.GetInstanceId())
+            .Select(pair => $"{pair.Key.GetInstanceId()}:{pair.Value.Frame}"));
+        if (!_occlusionPoses.TryGetValue(pose, out var layout))
+        {
+            layout = CalculateOcclusionLayout();
+            if (_occlusionPoses.Count == OcclusionPoseCapacity)
+                _occlusionPoses.Remove(_occlusionPoseOrder.Dequeue());
+            _occlusionPoses.Add(pose, layout);
+            _occlusionPoseOrder.Enqueue(pose);
+        }
         if (_cueLayer is not null)
             RemoveEffect(_cueLayer);
-        _diagnostics = _projectionDiagnostics.Concat(RebuildOcclusionCues(_occlusionColors))
+        RenderOcclusionLayout(layout, _occlusionColors);
+        _diagnostics = _projectionDiagnostics.Concat(layout.Diagnostics)
             .Distinct(StringComparer.Ordinal).ToList().AsReadOnly();
     }
 
-    private IReadOnlyList<string> RebuildOcclusionCues(IReadOnlyDictionary<int, Color> colors)
+    private OcclusionLayout CalculateOcclusionLayout()
     {
         var diagnostics = new List<string>();
-        _unitCues.Clear();
-        _cueLayer = new Node2D { Name = "OccludedUnitCues", ZAsRelative = false, ZIndex = 2047, Visible = !IsPresenting };
-        _projection!.AddChild(_cueLayer);
+        var cues = new List<OcclusionCue>();
         var materials = _standing.Where(entry => entry.Visual is { } visual && StandingVisual.IsVisibleWithin(visual.Node, this) && visual.Node.Modulate.A > 0)
             .Select(entry => (Entry: entry, Visual: entry.Visual!, Bounds: entry.Visual!.GlobalBounds)).ToArray();
         var frames = _scenery!.GetNode<Node2D>("AuthoredFrame").GetChildren().OfType<Sprite2D>()
@@ -80,23 +113,35 @@ public partial class BoardView
             var candidates = from row in Enumerable.Range(firstRow, Math.Max(0, lastRow - firstRow + 1))
                              from column in Enumerable.Range(firstColumn, Math.Max(0, lastColumn - firstColumn + 1))
                              select head + new Vector2(column * spacing, row * spacing);
-            var position = candidates.OrderBy(point => point.DistanceSquaredTo(head)).Where(point => CueFits(point, blockers, surfaces)).Select(point => (Vector2?)point).FirstOrDefault();
+            var position = candidates.OrderBy(point => point.DistanceSquaredTo(head)).Where(point => CueFits(point, blockers, surfaces, cues)).Select(point => (Vector2?)point).FirstOrDefault();
             if (position is not { } center)
             {
                 diagnostics.Add($"No unobstructed occlusion cue position for unit {actor.UnitId}.");
                 continue;
             }
+            cues.Add(new(actor.UnitId!.Value, actor.SelectionCell!.Value, actor.Node.GetMeta("owner").AsInt32(), actor.Node.Position, center));
+        }
+        return new(cues.ToArray(), diagnostics.ToArray());
+    }
+
+    private void RenderOcclusionLayout(OcclusionLayout layout, IReadOnlyDictionary<int, Color> colors)
+    {
+        _unitCues.Clear();
+        _cueLayer = new Node2D { Name = "OccludedUnitCues", ZAsRelative = false, ZIndex = 2047, Visible = !IsPresenting };
+        _projection!.AddChild(_cueLayer);
+        foreach (var cue in layout.Cues)
+        {
             var marker = new Polygon2D
             {
-                Name = $"UnitCue_{actor.UnitId}",
-                Position = center,
+                Name = $"UnitCue_{cue.UnitId}",
+                Position = cue.Center,
                 Polygon = [new(-7, -9), new(7, -9), new(7, 5), new(0, 10), new(-7, 5)],
-                Color = colors[actor.Node.GetMeta("owner").AsInt32()]
+                Color = colors[cue.Owner]
             };
             var leader = new Line2D
             {
-                Name = $"UnitCueLeader_{actor.UnitId}",
-                Points = [actor.Node.Position, center],
+                Name = $"UnitCueLeader_{cue.UnitId}",
+                Points = [cue.Contact, cue.Center],
                 Width = 1,
                 DefaultColor = new Color(0.94f, 0.9f, 0.76f, 0.7f),
                 Antialiased = true
@@ -117,16 +162,15 @@ public partial class BoardView
                 Polygon = Enumerable.Range(0, 16).Select(index => Vector2.FromAngle(index * Mathf.Tau / 16) * 2.5f).ToArray()
             });
             marker.AddChild(new Polygon2D { Color = Colors.White, Polygon = [new(-3.5f, 4), new(-2.5f, .5f), new(2.5f, .5f), new(3.5f, 4)] });
-            _unitCues.Add((marker, actor.SelectionCell!.Value, actor.UnitId!.Value));
+            _unitCues.Add((marker, cue.Cell, cue.UnitId));
         }
-        return diagnostics;
     }
 
     private bool CueFits(Vector2 center, IReadOnlyList<(StandingVisual Visual, Rect2 Bounds)> blockers,
-        IReadOnlyList<(Vector2[] Polygon, Rect2 Bounds)> surfaces)
+        IReadOnlyList<(Vector2[] Polygon, Rect2 Bounds)> surfaces, IReadOnlyList<OcclusionCue> cues)
     {
         if (center.X < CueRadius || center.Y < CueRadius || center.X > FieldSize.X - CueRadius || center.Y > FieldSize.Y - CueRadius
-            || _unitCues.Any(cue => cue.Marker.Position.DistanceTo(center) < 2 * CueRadius + 4))
+            || cues.Any(cue => cue.Center.DistanceTo(center) < 2 * CueRadius + 4))
             return false;
         // Test the actual filled polygon against pointer material, rather than sampling a grid that can miss thin posts.
         var polygon = Enumerable.Range(0, 24).Select(index => ToGlobal(center + Vector2.FromAngle(index * Mathf.Tau / 24) * CueRadius)).ToArray();

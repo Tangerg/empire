@@ -1,0 +1,29 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+C10 full-board warm rebuild observations: 51.09, 48.96, 49.91 ms; includes scenery and actors, not an isolated cue or frame-time benchmark.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ERROR: System.InvalidOperationException: Repeated C10 idle pose 3: UnitCue_2 placement, owner color and shape must match full reconstruction.
+   at Empire.Presentation.PresentationChecks.Require(Boolean condition, String message) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/PresentationChecks.cs:line 473
+   at Empire.Presentation.PresentationChecks.<>c__DisplayClass10_0.<CheckIdleOcclusionCache>g__Compare|2(String context) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/PresentationChecks.Occlusion.cs:line 51
+   at Empire.Presentation.PresentationChecks.CheckIdleOcclusionCache() in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/PresentationChecks.Occlusion.cs:line 99
+   at Empire.Presentation.PresentationChecks._Ready() in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/PresentationChecks.cs:line 25
+   at: void Empire.Presentation.PresentationChecks+<_Ready>d__1.MoveNext() (res://Presentation/PresentationChecks.cs:25)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.PresentationChecks+<_Ready>d__1.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/PresentationChecks.cs:25)
+       [2] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [3] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [4] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [5] void System.Threading.Tasks.Task.RunContinuations(object)
+       [6] void System.Threading.Tasks.Task.FinishSlow(bool)
+       [7] bool System.Threading.Tasks.Task.TrySetException(object)
+       [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetException(System.Exception, System.Threading.Tasks.Task`1[TResult]&)
+       [9] void Empire.Presentation.PresentationChecks+<CheckIdleOcclusionCache>d__10.MoveNext() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/PresentationChecks.Occlusion.cs:99)
+       [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [12] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/SignalAwaiter.cs:65)

@@ -55,6 +55,7 @@ public partial class BoardView
     public override void _ExitTree()
     {
         _exiting = true;
+        ClearOcclusionPoses();
         _idleActors.Clear();
         CancelPresentation();
     }
