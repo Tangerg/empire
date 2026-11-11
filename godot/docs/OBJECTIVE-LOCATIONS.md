@@ -80,3 +80,8 @@ The camera only zooms out when the set needs more space, retaining legal limits
 and the current selection. Minimum zoom or edge scroll constraints may prevent
 arbitrarily large sets from fitting; the camera model reports that result rather
 than breaking its limits. The formal C13 archive set fits the 960×640 safe area.
+
+C14's score objective links both canonical valve zones. Each zone has two valid
+interaction cells; the locator shows all four, not an inferred prop center. The
+task explains arrival plus action completion. Valve triggers remain once-only;
+locations are not an unclosed-only checklist and disappear at score completion.

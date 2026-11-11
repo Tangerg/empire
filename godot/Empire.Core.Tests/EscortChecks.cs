@@ -20,6 +20,7 @@ internal static class EscortChecks
         CheckObjectiveTargets(engine, data, level);
         CheckScoreTargets(engine, data);
         CheckArchiveTargets(engine, data);
+        CheckValveTargets(engine, data);
         CheckCompositeTargets(engine, data);
         var scene = Read(Path.Combine(data, "scenes/c01-02.json"));
         var registration = Text(scene!, "assembledGroundPath");
@@ -297,14 +298,50 @@ internal static class EscortChecks
         Console.WriteLine("  C13 archive targets: formal three-cell declaration, readonly projection, lawful collection/revisit and complete metadata-only event/state equivalence passed.");
     }
 
+    private static void CheckValveTargets(BattleEngine engine, string data)
+    {
+        var level = Read(Path.Combine(data, "grayflag-campaign-levels.json")).AsArray().OfType<JsonObject>()
+            .Single(candidate => Text(candidate, "id") == "c01-14");
+        var state = engine.CreateState(level);
+        var score = Player(state, 1)["objectives"]![0]!["objective"]!["objectives"]![0]!.AsObject();
+        Require(Text(score, "id") == "score-valves"
+            && score["targetZones"] is JsonArray zones
+            && zones.Select(value => value!.GetValue<string>()).SequenceEqual(new[] { "valve-a", "valve-b" }),
+            "Formal C14 must explicitly associate its valve score with both canonical valve zones.");
+        var before = EcmaJson.Stringify(state);
+        var saved = EcmaJson.Stringify(engine.SaveBattle(state, "2026-11-11T00:00:00.000Z"));
+        var projected = engine.Victory.Handlers.Project(engine.Victory.Rules, state, 1, score);
+        var expected = new[] { new Coord(5, 5), new Coord(6, 5), new Coord(14, 8), new Coord(15, 8) };
+        Require(projected.TargetCells.SequenceEqual(expected),
+            "Formal C14 valve targets must expose all four valid interaction cells, not only one center per valve.");
+        Require(EcmaJson.Stringify(state) == before && EcmaJson.Stringify(engine.SaveBattle(state, "2026-11-11T00:00:00.000Z")) == saved,
+            "C14 target projection must not change state or saves.");
+        try
+        {
+            ((IList<Coord>)projected.TargetCells)[0] = new(-1, -1);
+            throw new Exception("C14 valve targets were writable.");
+        }
+        catch (NotSupportedException) { }
+        state["scenario"]!["zones"]!["valve-a"]![0]!["x"] = 4;
+        Require(projected.TargetCells.SequenceEqual(expected)
+            && engine.Victory.Handlers.Project(engine.Victory.Rules, state, 1, score).TargetCells[0] == new Coord(4, 5),
+            "C14 targets must remain detached while fresh projections follow canonical valve zones.");
+        CheckScoreVisitEquivalence(engine, level, new Coord(5, 5), "valves", "valve-a");
+        Console.WriteLine("  C14 valve targets: formal four-cell declaration, immutable projection, lawful activation/revisit and complete metadata-only event/state equivalence passed.");
+    }
+
     private static void CheckScoreVisitEquivalence(BattleEngine engine, JsonObject authored, Coord destination, string variable, string trigger)
     {
         // Isolate travel distance only; canonical zones, triggers and victory conditions are unchanged.
         var fixture = authored.DeepClone().AsObject();
         var initial = engine.CreateState(fixture);
         var movement = new MovementRules(new(engine.Catalog, engine.Grids));
+        var triggerZone = initial["scenario"]!["triggers"]!.AsArray().OfType<JsonObject>()
+            .Single(value => Text(value, "id") == trigger)["condition"]!["zone"]!.GetValue<string>();
+        var interactionCells = initial["scenario"]!["zones"]![triggerZone]!.AsArray().OfType<JsonObject>()
+            .Select(TacticalQueries.Position).ToHashSet();
         var start = movement.Board(initial).Neighbours(destination)
-            .First(cell => movement.Battlefield(initial).Cell(cell).Admits("foot")
+            .First(cell => !interactionCells.Contains(cell) && movement.Battlefield(initial).Cell(cell).Admits("foot")
                 && Units(initial).All(unit => TacticalQueries.Position(unit) != cell));
         var seed = fixture["units"]!.AsArray().OfType<JsonObject>().Single(unit => Text(unit, "key") == "campaign-laiya");
         seed["x"] = start.X;

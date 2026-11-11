@@ -27506,7 +27506,11 @@
                   "id": "score-valves",
                   "type": "score",
                   "variable": "valves",
-                  "atLeast": 2
+                  "atLeast": 2,
+                  "targetZones": [
+                    "valve-a",
+                    "valve-b"
+                  ]
                 },
                 {
                   "id": "route",
