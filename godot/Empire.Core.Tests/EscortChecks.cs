@@ -21,6 +21,7 @@ internal static class EscortChecks
         CheckScoreTargets(engine, data);
         CheckArchiveTargets(engine, data);
         CheckValveTargets(engine, data);
+        CheckTrueNameTargets(engine, data);
         CheckCompositeTargets(engine, data);
         CheckProtectedStructureTargets(engine, data);
         var scene = Read(Path.Combine(data, "scenes/c01-02.json"));
@@ -329,6 +330,27 @@ internal static class EscortChecks
             "C14 targets must remain detached while fresh projections follow canonical valve zones.");
         CheckScoreVisitEquivalence(engine, level, new Coord(5, 5), "valves", "valve-a");
         Console.WriteLine("  C14 valve targets: formal four-cell declaration, immutable projection, lawful activation/revisit and complete metadata-only event/state equivalence passed.");
+    }
+
+    private static void CheckTrueNameTargets(BattleEngine engine, string data)
+    {
+        var level = Read(Path.Combine(data, "grayflag-campaign-levels.json")).AsArray().OfType<JsonObject>()
+            .Single(candidate => Text(candidate, "id") == "c01-16");
+        var state = engine.CreateState(level);
+        var score = Player(state, 1)["objectives"]![0]!["objective"]!["objectives"]![0]!.AsObject();
+        Require(Text(score, "id") == "score-true_names"
+            && score["targetZones"] is JsonArray zones
+            && zones.Select(value => value!.GetValue<string>()).SequenceEqual(new[] { "truth-a", "truth-b", "truth-c" }),
+            "Formal C16 must explicitly associate its true-name score with all three canonical truth zones.");
+        var before = EcmaJson.Stringify(state);
+        var saved = EcmaJson.Stringify(engine.SaveBattle(state, "2026-11-11T00:00:00.000Z"));
+        var projected = engine.Victory.Handlers.Project(engine.Victory.Rules, state, 1, score);
+        Require(projected.TargetCells.SequenceEqual(new[] { new Coord(6, 3), new Coord(16, 8), new Coord(8, 13) }),
+            "Formal C16 true-name collection targets must identify exactly the three canonical interaction cells.");
+        Require(EcmaJson.Stringify(state) == before && EcmaJson.Stringify(engine.SaveBattle(state, "2026-11-11T00:00:00.000Z")) == saved,
+            "C16 target projection must not change state or saves.");
+        CheckScoreVisitEquivalence(engine, level, new Coord(6, 3), "true_names", "truth-a");
+        Console.WriteLine("  C16 true-name targets: formal three-cell declaration, readonly projection, lawful response/revisit and complete metadata-only event/state equivalence passed.");
     }
 
     private static void CheckScoreVisitEquivalence(BattleEngine engine, JsonObject authored, Coord destination, string variable, string trigger)

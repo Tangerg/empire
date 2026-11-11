@@ -1,0 +1,23 @@
+Baseline: docs/c15-protection-location-20261111/core.log
+Current: all-replay.log
+c01-01: EXACT same action/event/receipt trace and final state
+c01-02: EXACT same action/event/receipt trace and final state
+c01-03: EXACT same action/event/receipt trace and final state
+c01-04: EXACT same action/event/receipt trace and final state
+c01-05: EXACT same action/event/receipt trace and final state
+c01-06: EXACT same action/event/receipt trace and final state
+c01-07: EXACT same action/event/receipt trace and final state
+c01-08: EXACT same action/event/receipt trace and final state
+c01-09: EXACT same action/event/receipt trace and final state
+c01-10: EXACT same action/event/receipt trace and final state
+c01-11: EXACT same action/event/receipt trace and final state
+c01-12: EXACT same action/event/receipt trace and final state
+c01-13: EXACT same action/event/receipt trace and final state
+c01-14: EXACT same action/event/receipt trace and final state
+c01-15: EXACT same action/event/receipt trace and final state
+c01-16: METADATA CHANGE
+  old trace: 378 steps, action/event/receipt SHA256 b61226395df40354816d29650a2bdaac13e7d546adb51f903fd98fab41824d08
+  new trace: 378 steps, action/event/receipt SHA256 ee094e3c7833563ccace20a5b5174717a5c215fdd07b6bfec666771880d34631
+  old state: 378 legal native actions, state 5e0c3b77
+  new state: 378 legal native actions, state ce3fc957
+Built-in dual-track proof passed: identical full events and full canonical state after removing authored targetZones at every action. No rule or hash expectation changed.

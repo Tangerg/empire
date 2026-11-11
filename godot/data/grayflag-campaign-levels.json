@@ -29224,7 +29224,12 @@
                   "id": "score-true_names",
                   "type": "score",
                   "variable": "true_names",
-                  "atLeast": 3
+                  "atLeast": 3,
+                  "targetZones": [
+                    "truth-a",
+                    "truth-b",
+                    "truth-c"
+                  ]
                 },
                 {
                   "id": "eliminate-memory-inquisitor",
