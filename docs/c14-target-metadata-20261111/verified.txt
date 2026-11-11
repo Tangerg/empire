@@ -1,0 +1,24 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Empire.Core -> /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Empire.Core/bin/Debug/net8.0/Empire.Core.dll
+  C14TargetMetadataChecks -> /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/tools/godot/c14-target-metadata-checks/bin/Debug/net8.0/C14TargetMetadataChecks.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.86
+WITNESS recorded-status-feedback.json
+initialStateHash: legacy=10b86025, current=0e41b5f8
+actionsSha256=dddf8206098fa3fbb4e952aeb77301dc5b2e2762b0c901097d1d51063a7366c6
+checkpoint 56 beforeStateHash: legacy=dd871f64, current=170a6193
+checkpoint 56 afterStateHash: legacy=7c78b141, current=1c832d84; eventsSha256=984c94ebccc269dc6fa113626eed5960b8e8dc73f163fb115080bae7c87d313a
+checkpoint 129 beforeStateHash: legacy=cb85a026, current=a6221ce1
+checkpoint 129 afterStateHash: legacy=2eeda816, current=c70103c1; eventsSha256=fc7d54011479b06e7f569c237015fe7aa12e08a6d59f6a3a21512dc60176e94c
+PASS recorded-status-feedback.json: 130 independently accepted actions; every complete event sequence and canonical state identical after removing only targetZones; all legacy checkpoint hashes and event hashes verified.
+WITNESS recorded-displacement.json
+initialStateHash: legacy=10b86025, current=0e41b5f8
+actionsSha256=499b6dafe624d4fabc8cf81efcec4377b55a46110c7811468246a02fd6f9967c
+checkpoint 58 beforeStateHash: legacy=1fc73c28, current=78332f81
+checkpoint 58 afterStateHash: legacy=60fee9f7, current=0450955e; eventsSha256=c20e94a13e3089397908d7760d11259d2652097cb115055a0cbc91bb0ce84833
+PASS recorded-displacement.json: 59 independently accepted actions; every complete event sequence and canonical state identical after removing only targetZones; all legacy checkpoint hashes and event hashes verified.

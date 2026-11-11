@@ -1,0 +1,14 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Empire.Core -> /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Empire.Core/bin/Debug/net8.0/Empire.Core.dll
+  C14TargetMetadataChecks -> /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/tools/godot/c14-target-metadata-checks/bin/Debug/net8.0/C14TargetMetadataChecks.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.14
+WITNESS recorded-status-feedback.json
+NEGATIVE CONTROL REJECTED recorded-status-feedback.json: turnLimit rule change: Nonmetadata canonical state divergence at initial.
+WITNESS recorded-displacement.json
+NEGATIVE CONTROL REJECTED recorded-displacement.json: turnLimit rule change: Nonmetadata canonical state divergence at initial.

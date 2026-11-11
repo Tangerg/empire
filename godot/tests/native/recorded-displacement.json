@@ -246,7 +246,7 @@
   },
   {
     "levelId": "c01-14",
-    "initialStateHash": "10b86025",
+    "initialStateHash": "0e41b5f8",
     "actions": [
       {"kind":"command","unit":1,"path":[{"x":1,"y":8},{"x":1,"y":7},{"x":1,"y":6},{"x":2,"y":6}],"command":{"ability":"capture"}},
       {"kind":"reaction","unit":4,"stance":"support"},
@@ -308,6 +308,6 @@
       {"kind":"command","unit":4,"path":[{"x":4,"y":4},{"x":4,"y":5}],"command":{"ability":"attack","weapon":"c01.lantern-staff","target":{"x":6,"y":5}}},
       {"kind":"command","unit":1,"path":[{"x":3,"y":4},{"x":4,"y":4},{"x":4,"y":5},{"x":5,"y":5}],"command":{"ability":"attack","weapon":"c01.gray-oath","target":{"x":6,"y":5}}}
     ],
-    "checkpoints": [{"index":58,"beforeStateHash":"1fc73c28","afterStateHash":"60fee9f7","eventsSha256":"c20e94a13e3089397908d7760d11259d2652097cb115055a0cbc91bb0ce84833"}]
+    "checkpoints": [{"index":58,"beforeStateHash":"78332f81","afterStateHash":"0450955e","eventsSha256":"c20e94a13e3089397908d7760d11259d2652097cb115055a0cbc91bb0ce84833"}]
   }
 ]
