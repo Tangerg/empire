@@ -1,0 +1,15 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Scene diagnostic: Authored scene is marked runtimeReady=false in the source document.
+Scene diagnostic: Environment catalog is marked runtimeReady=false in the source document.
+ERROR: System.InvalidOperationException: C10 terrain-covered campaign-laiya must retain a visible independent cue.
+   at Empire.Presentation.PresentationChecks.Require(Boolean condition, String message) in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/PresentationChecks.cs:line 459
+   at Empire.Presentation.PresentationChecks.CheckCoveredTerrainActors() in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/PresentationChecks.cs:line 61
+   at Empire.Presentation.PresentationChecks._Ready() in /workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/PresentationChecks.cs:line 24
+   at: void Empire.Presentation.PresentationChecks._Ready() (res://Presentation/PresentationChecks.cs:24)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void Empire.Presentation.PresentationChecks._Ready() (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/Presentation/PresentationChecks.cs:24)
+       [2] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2646)
+       [3] bool Empire.Presentation.PresentationChecks.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/workspace/scratch/84c9fe948755/empire-battle-readability-20261111/godot/.godot/mono/temp/obj/Debug/Godot.SourceGenerators/Godot.SourceGenerators.ScriptMethodsGenerator/Empire.Presentation.PresentationChecks_ScriptMethods.generated.cs:90)
+       [4] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)

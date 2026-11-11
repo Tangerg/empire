@@ -56,7 +56,12 @@ surface/cliff occlusion is not newly implemented in this slice.
 - The first AnimationChecks invocation used native-process.sh's standalone
   300-second default and timed out (exit 124), producing forced-shutdown errors.
   It is not a pass. The rerun uses verify-native.sh's normal 900-second per-process
-  budget without changing assertions or diagnostic checks.
+  budget without changing assertions or diagnostic checks; it passed 8,257
+  assertions with strict process/diagnostic exit 0.
+- WhiteRiverChecks passed 1,759 assertions, retaining the pre-existing C06 cue
+  and scenario contracts. Detached no-AI probes are not combat-balance acceptance.
+- BattleScreenChecks real-session integration passed with strict exit 0. Build,
+  format check, catalog boundaries (76 assertions) and whitespace checks pass.
 - Real GUI after repair: blue allied cues and red enemy cues are visible outside
   terrain at 960×640. Clicking two distinct blue markers selected Laiya (116/116)
   and Torren (98/98), respectively, without advancing the turn. Mountain artwork
