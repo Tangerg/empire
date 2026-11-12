@@ -125,6 +125,57 @@ public partial class DossierFocusChecks : Node
         Require(!GodotObject.IsInstanceValid(hud), "Pending refresh callbacks must not retain or resurrect an unloaded HUD.");
     }
 
+    private async Task CheckReadingSubject()
+    {
+        var hud = new TacticalHud { Theme = TacticalHudStyle.Create() };
+        AddChild(hud);
+        hud.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+        var intents = 0;
+        hud.IntentRequested += _ => intents++;
+        TacticalHudProjection Frame(int unit, int binding = 1, int revision = 1) => new(new(binding, revision), "", new[]
+        {
+            new TacticalHudSection("unit-details", "Unit " + unit, Enumerable.Range(0, 35)
+                .Select(i => new TacticalHudRow("fact-" + i, "Read-only fact " + i)).ToArray())
+        }, DossierSubject: TacticalHit.Unit(new BoardCell(1, 1), unit));
+        async Task Open()
+        {
+            ((Button)hud.FindChild("DossierButton", true, false)).EmitSignal(BaseButton.SignalName.Pressed);
+            await Settle();
+        }
+        hud.Apply(Frame(1));
+        await Settle();
+        await Open();
+        var scroll = (ScrollContainer)hud.FindChild("DetailScroll", true, false);
+        var popup = (PopupPanel)hud.FindChild("UnitDossier", true, false);
+        scroll.ScrollVertical = 200;
+        await Settle();
+        Require(scroll.ScrollVertical == 200, "Reading-subject fixture must have a nonzero readable offset.");
+        popup.Hide();
+        await Settle();
+        hud.Apply(Frame(1, revision: 2));
+        await Settle();
+        await Open();
+        Require(scroll.ScrollVertical == 200, "Reopening the same subject after a revision preserves its reading position.");
+        popup.Hide();
+        await Settle();
+        hud.Apply(Frame(2, revision: 2));
+        await Settle();
+        await Open();
+        Require(scroll.ScrollVertical == 0, "A different dossier subject must open at its beginning, not the previous subject's offset.");
+        scroll.ScrollVertical = 200;
+        await Settle();
+        popup.Hide();
+        await Settle();
+        hud.Apply(Frame(2, binding: 2));
+        await Settle();
+        await Open();
+        Require(scroll.ScrollVertical == 0, "A new battle binding must not inherit an old dossier's reading position.");
+        Require(intents == 0, "Changing dossier reading position never dispatches a gameplay action.");
+        RemoveChild(hud);
+        hud.Free();
+        await Settle();
+    }
+
     private async Task CheckNamedEntry()
     {
         var hud = new TacticalHud { Theme = TacticalHudStyle.Create() };
@@ -444,6 +495,7 @@ public partial class DossierFocusChecks : Node
         try
         {
             await CheckNamedEntry();
+            await CheckReadingSubject();
             await CheckContinuousReading();
             await CheckCommittedOrder();
             await CheckCloseBoundaries();

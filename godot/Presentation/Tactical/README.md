@@ -39,3 +39,9 @@ for normal, hover, pressed, hover-pressed and keyboard-focus states; disabled te
 is muted dark ink. Transparent/tinted state backgrounds preserve paper contrast,
 and keyboard focus remains visibly outlined. Native HUD checks cover both control
 types and all state palettes at 960 and 1180 pixels.
+
+Dossier reading position belongs to the current battle binding and inspected
+subject. A refresh or reopening of that subject preserves its reading offset;
+a different subject or binding begins at the top instead of inheriting another
+unit's partially read description. Keyboard focus inside the old reading body
+must not restore that unrelated offset after native layout.

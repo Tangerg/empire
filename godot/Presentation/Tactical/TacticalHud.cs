@@ -128,9 +128,12 @@ public partial class TacticalHud : Control
                 retained.Add(instructionBacking);
         }
         var focused = detailPopup?.GuiGetFocusOwner() ?? GetViewport()?.GuiGetFocusOwner();
-        var focusKey = focused?.GetMeta("hud_key", "").AsString();
-        var scrollPosition = detailScroll?.ScrollVertical ?? 0;
-        var preserveVisibleFocus = focused is not null && detailScroll is not null
+        var sameReadingSubject = current is not null && current.Stamp.Binding == projection.Stamp.Binding
+            && current.DossierSubject == projection.DossierSubject;
+        var focusKey = !sameReadingSubject && focused is not null && detailScroll?.IsAncestorOf(focused) == true
+            ? null : focused?.GetMeta("hud_key", "").AsString();
+        var scrollPosition = sameReadingSubject ? detailScroll?.ScrollVertical ?? 0 : 0;
+        var preserveVisibleFocus = sameReadingSubject && focused is not null && detailScroll is not null
             && detailScroll.IsAncestorOf(focused) && detailScroll.GetGlobalRect().Encloses(focused.GetGlobalRect());
         if (refreshUnitDetails)
             RefreshUnitDetails(unitDetailsGroup!, oldUnitDetails!, nextUnitDetails!);
