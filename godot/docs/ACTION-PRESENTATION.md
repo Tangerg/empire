@@ -750,3 +750,7 @@ The native healing HUD regression also traverses undo and reissue: undo must res
 ### Impact outline follow-through
 
 Damage impacts now pair the brief solid core with an open, six-part expanding outline and short outward rays. The existing 420 ms impact clock owns scale and linear fade, so the outline outlasts the initial flash without delaying gameplay or covering the actor with a filled disk. It draws behind the original effect strip and damage number, adds no timer/process callback, and inherits the existing visibility, cancellation, reduced-motion and cleanup boundaries. Healing retains its separate recovery cue. This is neutral hit feedback, not a new damage-type or critical-hit claim.
+
+### Quiet completion acknowledgement
+
+Transient acknowledgements (including command completion and undo) occupy a 400-pixel bottom-center strip within the idle order area, rather than a 480-pixel panel across the lower battlefield. Persistent errors retain their prior reading position. Both use the existing brown/gold panel and remain mouse-transparent; no new state, timer, command or severity classifier is introduced. Playback hiding, the three-second readable lifetime, modal pauses, new-selection clearing and rebind cleanup remain unchanged.

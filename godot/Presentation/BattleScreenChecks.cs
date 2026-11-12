@@ -626,6 +626,8 @@ public partial class BattleScreenChecks : Node
             "Timeline completion must settle the committed revision and release input.");
         Require(feedback.Visible && feedback.GetChild<Label>(0).Text == completionText,
             "Settled playback reveals the unchanged acknowledgement without consuming its readable lifetime.");
+        Require(feedback.Position.Y >= screen.Size.Y - 110 && feedback.Size.X <= 400,
+            "Successful command acknowledgement stays in the bottom idle order area, not over the battlefield.");
         screen._Process(2.9);
         Require(feedback.Visible, "The acknowledgement retains its full reading window after animation.");
         screen._Process(.11);
@@ -688,6 +690,12 @@ public partial class BattleScreenChecks : Node
         TacticalSceneInputChecks.Move(screen, reduced);
         Require(!screen.IsPresenting && feedback.Visible,
             "Reduced-motion commands reveal their acknowledgement immediately after synchronous settlement.");
+        screen.ShowFeedback("明确的错误提示");
+        Require(feedback.Visible && feedback.Position.Y < screen.Size.Y - 200,
+            "A persistent error restores its original reading position after a compact acknowledgement.");
+        screen.ShowFeedback(completionText, transient: true);
+        Require(feedback.Position.Y >= screen.Size.Y - 110 && feedback.MouseFilter == Control.MouseFilterEnum.Ignore,
+            "A later success returns to the quiet bottom area without intercepting battlefield input.");
         screen.Board.AnimationsEnabled = true;
         var last = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         Bind(last);

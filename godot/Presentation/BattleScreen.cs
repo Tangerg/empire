@@ -483,6 +483,10 @@ public partial class BattleScreen : Control
         BuildInterface();
         _feedbackSeconds = transient && message.Length > 0 ? 3 : 0;
         _feedback.Text = message;
+        if (transient)
+            OverlayRect(_feedbackPanel, .5f, 1, .5f, 1, -200, -110, 200, -56);
+        else
+            OverlayRect(_feedbackPanel, .5f, 1, .5f, 1, -240, -304, 240, -250);
         _feedback.Visible = message.Length > 0;
         RefreshFeedbackVisibility();
         _feedback.TooltipText = message;
@@ -813,7 +817,6 @@ public partial class BattleScreen : Control
         _feedbackPanel = new PanelContainer { Name = "FeedbackPanel", ZIndex = 4001, MouseFilter = MouseFilterEnum.Ignore, Visible = false };
         _feedbackPanel.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#29251ef2", 10, "#a98b57"));
         AddChild(_feedbackPanel);
-        OverlayRect(_feedbackPanel, .5f, 1, .5f, 1, -240, -304, 240, -250);
         _feedback = Wrapped("");
         _feedback.Name = "BattleFeedback";
         _feedback.MaxLinesVisible = 2;
