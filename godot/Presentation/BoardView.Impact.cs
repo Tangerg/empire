@@ -36,9 +36,13 @@ public partial class BoardView
                 healing ? new Color("#eaffee") : Colors.White, healing ? new Color("#1c5c33") : new Color("#7a1208"), healing ? -34 : -36, size: 18);
             var origin = number.Position;
             effect.AddChild(number);
+            ImpactPulse? pulse = null;
             Polygon2D? burst = null;
             if (!healing)
             {
+                pulse = new ImpactPulse { Name = "Pulse", Position = new Vector2(0, -12) };
+                effect.AddChild(pulse);
+                effect.MoveChild(pulse, 0);
                 burst = new Polygon2D
                 {
                     Name = "Burst",
@@ -48,7 +52,7 @@ public partial class BoardView
                         Vector2.FromAngle(index * Mathf.Tau / 8 - Mathf.Pi / 4) * (index % 2 == 0 ? 15 : 3)).ToArray()
                 };
                 effect.AddChild(burst);
-                effect.MoveChild(burst, sprite is null ? 0 : 1);
+                effect.MoveChild(burst, sprite is null ? 1 : 2);
             }
             var duration = ImpactDuration(healing);
             return new ImpactVisual(effect, t =>
@@ -56,6 +60,7 @@ public partial class BoardView
                 if (sprite is not null)
                     SetFrame(sprite, art!, StripFrame(art!, t * duration));
                 aura?.Sample(t);
+                pulse?.Sample(t);
                 number.Position = origin + new Vector2(0, (float)(-(healing ? 16 : 14) * t));
                 var fade = Math.Max(0, (t - .5) * 2);
                 number.Modulate = new Color(1, 1, 1, (float)(1 - fade * fade));

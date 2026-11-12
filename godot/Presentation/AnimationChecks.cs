@@ -295,9 +295,14 @@ public partial class AnimationChecks : Node
         var hit = board.GetNode<Node2D>("BattleEffects/Hit");
         Require(hit.Position == at && Frame(actor) == 2, "Impact starts at the explicit forward release while the actor still owns recovery.");
         Require(hit.GetNode<Label>("Number").Text == "-12", "Damage number comes directly from emitted damage");
+        Require(hit.GetNodeOrNull<Node2D>("Pulse") is not null,
+            "Damage retains a clock-owned expanding impact outline after the brief core flash.");
         var damageNumber = hit.GetNode<Label>("Number");
         Require(damageNumber.GetThemeFontSize("font_size") == 18 && damageNumber.Position.Y < -40,
             "Damage feedback is readable above the actor silhouette, not buried in its torso.");
+        var pulse = hit.GetNode<Node2D>("Pulse");
+        Require(pulse.Scale == Vector2.One * .5f && pulse.Modulate.A == 1,
+            "The impact outline starts at the release boundary without its own timer.");
         var numberY = hit.GetNode<Label>("Number").Position.Y;
         await Tick(board, 0.076);
         Require(Frame(actor) == 0 && actor.Position == origin, "The actor returns idle/origin at its own clip end while impact continues.");
@@ -305,6 +310,8 @@ public partial class AnimationChecks : Node
         Require(hit.GetNode<Sprite2D>("Strip").GetMeta("frame").AsInt32() == 2, "Hit plays original numeric FX frames at twelve fps");
         Require(Mathf.IsEqualApprox(hit.GetNode<Label>("Number").Position.Y, numberY - 7)
             && Mathf.IsEqualApprox(damageNumber.Modulate.A, 1), "Damage keeps its 14 px rise and remains opaque through the first half of impact.");
+        Require(pulse.Scale.IsEqualApprox(Vector2.One) && Mathf.IsEqualApprox(pulse.Modulate.A, .5f),
+            "Impact outline expands and fades on the same half-complete damage clock.");
         await Tick(board, .105);
         Require(Mathf.IsEqualApprox(damageNumber.Modulate.A, .75f),
             "Damage fades quadratically only after its readable hold, without extending impact lifetime.");
