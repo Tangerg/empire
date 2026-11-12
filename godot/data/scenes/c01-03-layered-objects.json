@@ -366,6 +366,63 @@
         150,
         6
       ]
+    },
+    "grain-wall": {
+      "resourcePath": "res://assets/native/c08-layered-v1/grain-wall-v2.png",
+      "pixelSize": [
+        1108,
+        1420
+      ],
+      "anchorPixels": [
+        650,
+        1290
+      ],
+      "groundFrontPixels": [
+        650,
+        1290
+      ],
+      "contactShadowRadiiPixels": [
+        150,
+        10
+      ]
+    },
+    "grain-stock": {
+      "resourcePath": "res://assets/native/c08-layered-v1/grain-stock-v1.png",
+      "pixelSize": [
+        1254,
+        1254
+      ],
+      "anchorPixels": [
+        600,
+        1020
+      ],
+      "groundFrontPixels": [
+        600,
+        1020
+      ],
+      "contactShadowRadiiPixels": [
+        220,
+        20
+      ]
+    },
+    "ledger-desk": {
+      "resourcePath": "res://assets/native/c08-layered-v1/ledger-desk-v1.png",
+      "pixelSize": [
+        1312,
+        1199
+      ],
+      "anchorPixels": [
+        700,
+        1020
+      ],
+      "groundFrontPixels": [
+        700,
+        1020
+      ],
+      "contactShadowRadiiPixels": [
+        250,
+        20
+      ]
     }
   }
 }

@@ -565,16 +565,9 @@ public partial class LuojiaChecks : Node
 
     private void ExportGuiFixtures(BattleEngine engine, JsonArray levels)
     {
-        const string prefix = "--export-c07-gui-dir=";
-        var supplied = OS.GetCmdlineUserArgs();
-        Require(supplied.All(argument => argument.StartsWith(prefix, StringComparison.Ordinal)) && supplied.Length <= 1,
-            "Only the explicit C07 evidence export option is supported.");
-        var args = supplied.Where(argument => argument.StartsWith(prefix, StringComparison.Ordinal)).ToArray();
-        if (args.Length == 0)
+        var path = GuiExportDirectory(C07ExportPrefix);
+        if (path is null)
             return;
-        var path = args[0][prefix.Length..];
-        Require(Path.IsPathFullyQualified(path) && !Path.GetFullPath(path).StartsWith(Path.GetFullPath(OS.GetUserDataDir()), StringComparison.Ordinal),
-            "GUI fixtures require an absolute caller-selected evidence directory outside user saves.");
         var definition = PresentationJson.Load<JsonObject>("res://data/grayflag-campaign.json");
         var detached = definition.DeepClone().AsObject();
         detached["start"] = "brief-07";

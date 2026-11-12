@@ -1,0 +1,649 @@
+{
+  "levelId": "c01-08",
+  "levelSourceSha256": "c3895c5463000c022ceae230e700a5370e803e69c95812e2a468c0252e9604fd",
+  "pixelSize": [
+    1536,
+    1024
+  ],
+  "worldScale": 0.8,
+  "originPixels": [
+    128,
+    220
+  ],
+  "cellXPixels": [
+    48,
+    0
+  ],
+  "cellYPixels": [
+    6,
+    40
+  ],
+  "resourcePath": "res://assets/native/c08-layered-v1/ground-v4.png",
+  "objectCatalogPath": "res://data/scenes/c01-03-layered-objects.json",
+  "objects": [
+    {
+      "id": "site-1-1",
+      "assetId": "tower",
+      "contact": [
+        1.5,
+        1.6
+      ],
+      "scale": 0.10725,
+      "selectionCell": [
+        1,
+        1
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "site-20-1",
+      "assetId": "tower",
+      "contact": [
+        20.5,
+        1.6
+      ],
+      "scale": 0.10725,
+      "selectionCell": [
+        20,
+        1
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "site-10-2",
+      "assetId": "southwest-house",
+      "contact": [
+        10.3,
+        2.6
+      ],
+      "scale": 0.105,
+      "selectionCell": [
+        10,
+        2
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "site-1-3",
+      "assetId": "grounded-cabin",
+      "contact": [
+        1.3,
+        3.6
+      ],
+      "scale": 0.1,
+      "selectionCell": [
+        1,
+        3
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "site-4-3",
+      "assetId": "shed",
+      "contact": [
+        4.5,
+        3.6
+      ],
+      "scale": 0.10725,
+      "selectionCell": [
+        4,
+        3
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "site-15-3",
+      "assetId": "shed",
+      "contact": [
+        15.5,
+        3.6
+      ],
+      "scale": 0.10725,
+      "selectionCell": [
+        15,
+        3
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "site-19-3",
+      "assetId": "grounded-cabin",
+      "contact": [
+        19.85,
+        3.6
+      ],
+      "scale": 0.1,
+      "selectionCell": [
+        19,
+        3
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "site-5-7",
+      "assetId": "grounded-cabin",
+      "contact": [
+        5.3,
+        7.6
+      ],
+      "scale": 0.112,
+      "selectionCell": [
+        5,
+        7
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "site-15-7",
+      "assetId": "grounded-cabin",
+      "contact": [
+        15.3,
+        7.6
+      ],
+      "scale": 0.107,
+      "selectionCell": [
+        15,
+        7
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "site-1-10",
+      "assetId": "southwest-house",
+      "contact": [
+        1.3,
+        10.6
+      ],
+      "scale": 0.105,
+      "selectionCell": [
+        1,
+        10
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "site-4-10",
+      "assetId": "shed",
+      "contact": [
+        4.5,
+        10.6
+      ],
+      "scale": 0.10725,
+      "selectionCell": [
+        4,
+        10
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "site-15-10",
+      "assetId": "shed",
+      "contact": [
+        15.5,
+        10.6
+      ],
+      "scale": 0.10725,
+      "selectionCell": [
+        15,
+        10
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "site-19-10",
+      "assetId": "grounded-cabin",
+      "contact": [
+        19.85,
+        10.6
+      ],
+      "scale": 0.1,
+      "selectionCell": [
+        19,
+        10
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "site-10-11",
+      "assetId": "grounded-cabin",
+      "contact": [
+        10.3,
+        11.6
+      ],
+      "scale": 0.112,
+      "selectionCell": [
+        10,
+        11
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "site-1-12",
+      "assetId": "tower",
+      "contact": [
+        1.5,
+        12.6
+      ],
+      "scale": 0.10725,
+      "selectionCell": [
+        1,
+        12
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "site-20-12",
+      "assetId": "tower",
+      "contact": [
+        20.5,
+        12.6
+      ],
+      "scale": 0.10725,
+      "selectionCell": [
+        20,
+        12
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "wall-2-2-4",
+      "assetId": "grain-wall",
+      "contact": [
+        2.6,
+        4.95
+      ],
+      "scale": 0.08384279475982533,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "wall-2-6-8",
+      "assetId": "grain-wall",
+      "contact": [
+        2.6,
+        8.95
+      ],
+      "scale": 0.08384279475982533,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "wall-2-10-11",
+      "assetId": "grain-wall",
+      "contact": [
+        2.6,
+        11.95
+      ],
+      "scale": 0.05589519650655022,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "wall-7-2-4",
+      "assetId": "grain-wall",
+      "contact": [
+        7.6,
+        4.95
+      ],
+      "scale": 0.08384279475982533,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "wall-7-10-11",
+      "assetId": "grain-wall",
+      "contact": [
+        7.6,
+        11.95
+      ],
+      "scale": 0.05589519650655022,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "wall-10-5-6",
+      "assetId": "grain-wall",
+      "contact": [
+        10.6,
+        6.95
+      ],
+      "scale": 0.05589519650655022,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "wall-10-8-9",
+      "assetId": "grain-wall",
+      "contact": [
+        10.6,
+        9.95
+      ],
+      "scale": 0.05589519650655022,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "wall-13-2-4",
+      "assetId": "grain-wall",
+      "contact": [
+        13.6,
+        4.95
+      ],
+      "scale": 0.08384279475982533,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "wall-13-10-11",
+      "assetId": "grain-wall",
+      "contact": [
+        13.6,
+        11.95
+      ],
+      "scale": 0.05589519650655022,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "wall-18-2-4",
+      "assetId": "grain-wall",
+      "contact": [
+        18.6,
+        4.95
+      ],
+      "scale": 0.08384279475982533,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "wall-18-6-8",
+      "assetId": "grain-wall",
+      "contact": [
+        18.6,
+        8.95
+      ],
+      "scale": 0.08384279475982533,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "wall-18-10-11",
+      "assetId": "grain-wall",
+      "contact": [
+        18.6,
+        11.95
+      ],
+      "scale": 0.05589519650655022,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "block"
+    },
+    {
+      "id": "border-pine-0",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        -1.4,
+        -0.35
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "border-pine-1",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        -0.8,
+        4.6
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "border-pine-2",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        -0.9,
+        9.2
+      ],
+      "scale": 0.11,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "border-pine-3",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        -1.4,
+        12.65
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "border-pine-4",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        23.2,
+        0.6
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "border-pine-5",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        23.1,
+        5.2
+      ],
+      "scale": 0.11,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "border-pine-6",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        22.6,
+        9.65
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "border-pine-7",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        23.2,
+        13.6
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "border-pine-8",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        3.1,
+        -1.8
+      ],
+      "scale": 0.11,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "border-pine-9",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        8.6,
+        -2.35
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "border-pine-10",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        16.2,
+        -1.4
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "border-pine-11",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        21.1,
+        -1.8
+      ],
+      "scale": 0.11,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "border-pine-12",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        3.6,
+        15.65
+      ],
+      "scale": 0.15,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "border-pine-13",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        11.2,
+        16.6
+      ],
+      "scale": 0.105,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "border-pine-14",
+      "assetId": "west-pine-faithful",
+      "contact": [
+        18.1,
+        16.2
+      ],
+      "scale": 0.11,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "grain-loading-0",
+      "assetId": "grain-stock",
+      "contact": [
+        5.25,
+        3.9
+      ],
+      "scale": 0.033,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "grain-loading-1",
+      "assetId": "grain-stock",
+      "contact": [
+        14.5,
+        3.8
+      ],
+      "scale": 0.033,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "grain-loading-2",
+      "assetId": "grain-stock",
+      "contact": [
+        5.35,
+        10.85
+      ],
+      "scale": 0.033,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "grain-loading-3",
+      "assetId": "grain-stock",
+      "contact": [
+        14.6,
+        10.8
+      ],
+      "scale": 0.033,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "ledger-landmark",
+      "assetId": "ledger-desk",
+      "contact": [
+        11,
+        7.95
+      ],
+      "scale": 0.026,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    }
+  ]
+}

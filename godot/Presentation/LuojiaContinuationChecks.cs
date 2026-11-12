@@ -15,6 +15,7 @@ public partial class LuojiaChecks
 {
     private void CheckNormalAiContinuation(BattleEngine engine, JsonArray levels)
     {
+        var exportDirectory = GuiExportDirectory(C08ExportPrefix);
         var fixture = PresentationJson.Load<JsonObject>("res://tests/native/c01-07-normal-ai-continuation.json");
         var definition = PresentationJson.Load<JsonObject>("res://data/grayflag-campaign.json");
         var detached = definition.DeepClone().AsObject();
@@ -85,14 +86,17 @@ public partial class LuojiaChecks
             "This played victory must retain Torren's casualty, Bran's authored hero recovery floor and Elin's actual advancement.");
         campaign.Advance();
         Require(Text(campaign.Node(), "id") == "brief-08", "C07 aftermath must lead to the real C08 briefing.");
+        var briefingSave = campaign.Save();
         campaign.Advance();
         Require(Text(campaign.Node(), "id") == "choice-mercenary-contract", "C08 must retain its authored contract choice.");
+        var choiceSave = campaign.Save();
         campaign.Choose("create-pension-ledger");
         Require(Text(campaign.Node(), "id") == "battle-08", "The authored choice must lead to C08 staging.");
         restored = new GrayFlagCampaign(rules, definition, levels);
         restored.Load(campaign.Save());
         Require(!restored.HasPendingBattle && EcmaJson.DeepEquals(restored.Snapshot(), campaign.Snapshot()),
             "C08 staging must round-trip with the actually settled roster and choice.");
+        var ledgerStagingSave = campaign.Save();
         campaign.BeginBattle();
         var next = campaign.Battle!.Snapshot();
         Require(Text(next, "levelId") == "c01-08" && StateDigest.Hash(next) == Text(fixture, "c08OpeningHash")
@@ -105,7 +109,8 @@ public partial class LuojiaChecks
         Require(StateDigest.Hash(restored.Battle!.Snapshot()) == StateDigest.Hash(next)
             && EcmaJson.DeepEquals(restored.Snapshot(), campaign.Snapshot()),
             "The real carried C08 opening must survive production save/load without health or progression reset.");
-        CheckContinuationProjection(engine, campaign.RequestSnapshot()!["level"]!.AsObject(), next);
+        CheckContinuationProjection(engine, levels.OfType<JsonObject>().Single(value => Text(value, "id") == "c01-08"),
+            campaign.RequestSnapshot()!["level"]!.AsObject(), next);
         var paid = new GrayFlagCampaign(rules, definition, levels);
         paid.Load(settledSave);
         paid.Advance();
@@ -123,6 +128,7 @@ public partial class LuojiaChecks
             && campaign.Snapshot()["variables"]!["institutions"]!.GetValue<double>() == settled["variables"]!["institutions"]!.GetValue<double>() + 1
             && paid.Snapshot()["variables"]!["institutions"]!.GetValue<double>() == settled["variables"]!["institutions"]!.GetValue<double>(),
             "Both authored contracts must apply their own relation and institution effects exactly once.");
+        var paidStagingSave = paid.Save();
         paid.BeginBattle();
         var ledgerFunds = next["players"]!.AsArray().OfType<JsonObject>().Single(player => Integer(player, "id") == 1)["resources"]!["funds"]!["current"]!.GetValue<double>();
         var paidFunds = paid.Battle!.Snapshot()["players"]!.AsArray().OfType<JsonObject>().Single(player => Integer(player, "id") == 1)["resources"]!["funds"]!["current"]!.GetValue<double>();
@@ -135,6 +141,10 @@ public partial class LuojiaChecks
             && paid.Snapshot()["battleHistory"]!.AsArray().Count == 1
             && EcmaJson.DeepEquals(restored.Snapshot(), paid.Snapshot()),
             "The alternative paid-debt choice must also enter and round-trip the carried C08 battle.");
+        if (exportDirectory is not null)
+            ExportC08GuiFixtures(exportDirectory, engine, levels,
+                new("c08-carried-briefing", briefingSave), new("c08-carried-choice", choiceSave),
+                new("c08-ledger-staging", ledgerStagingSave), new("c08-paid-staging", paidStagingSave));
         GD.Print($"C08_BOTH_CHOICES_OK ledger={StateDigest.Hash(next)}; paid={StateDigest.Hash(paid.Battle.Snapshot())}; no branch leakage.");
         GD.Print($"C07_NORMAL_AI_CONTINUATION_OK orders={actions.Count}; computer={computerOrders}; turn={terminal["turn"]}; events={events.Count}; terminal={StateDigest.Hash(terminal)}; C08={StateDigest.Hash(next)}. Detached C07 start; no C01-C06, GUI or balance acceptance claim.");
     }
@@ -163,10 +173,10 @@ public partial class LuojiaChecks
         }
     }
 
-    private void CheckContinuationProjection(BattleEngine engine, JsonObject level, JsonObject state)
+    private void CheckContinuationProjection(BattleEngine engine, JsonObject registeredLevel, JsonObject level, JsonObject state)
     {
         var scene = AuthoredScene.Load("res://data/scenes/c01-08.json");
-        var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
+        var rendering = BoardSceneRendering.Load(scene, registeredLevel, engine.CreateState(registeredLevel)["map"]!.AsObject());
         var board = new BoardView();
         AddChild(board);
         var before = EcmaJson.Stringify(state);
