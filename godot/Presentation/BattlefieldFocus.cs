@@ -54,6 +54,23 @@ public static class BattlefieldFocus
         if (!transition.IsComputerAction || action.GetProperty("kind").GetString() != "command"
             || !action.TryGetProperty("path", out var path) || path.GetArrayLength() != 1)
             return null;
+        return AttackEndpoints(transition, pointAt);
+    }
+
+    public static (CameraPoint Source, CameraPoint Target)? PlayerAttack(BattlePresentationTransition transition,
+        Func<CameraPoint, CameraPoint> pointAt)
+    {
+        var action = transition.Action;
+        if (transition.IsComputerAction || action.GetProperty("kind").GetString() != "command"
+            || !action.TryGetProperty("path", out var path) || path.GetArrayLength() == 0)
+            return null;
+        return AttackEndpoints(transition, pointAt);
+    }
+
+    private static (CameraPoint Source, CameraPoint Target)? AttackEndpoints(BattlePresentationTransition transition,
+        Func<CameraPoint, CameraPoint> pointAt)
+    {
+        var action = transition.Action;
         var id = action.GetProperty("unit").GetInt32();
         if (transition.BeforeVisibleUnitIds is not null && !transition.BeforeVisibleUnitIds.Contains(id))
             return null;

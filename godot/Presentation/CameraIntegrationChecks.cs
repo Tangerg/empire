@@ -51,6 +51,7 @@ public partial class CameraIntegrationChecks : Node
             await Layout();
             map = (Control)screen.FindChild("MapArea", true, false);
             world = map.GetNode<Node2D>("World");
+            await CheckPlayerAttackVisibility();
             await CheckStationaryAttackFocus();
             await CheckObjectiveLocations();
             Bind(initial);
@@ -77,6 +78,55 @@ public partial class CameraIntegrationChecks : Node
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
+    }
+
+    private async Task CheckPlayerAttackVisibility()
+    {
+        var c11 = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-11");
+        var oldSize = screen.Size;
+        screen.Size = new Vector2(1180, 812);
+        foreach (var obscured in new[] { true, false })
+        {
+            var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), c11);
+            Bind(session, c11);
+            await Layout();
+            var state = session.Snapshot();
+            var actor = state["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["key"]?.GetValue<string>() == "campaign-tasha");
+            var target = state["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["key"]?.GetValue<string>() == "west-ghost");
+            var targetHit = TacticalHit.Unit(new(6, 10), target["id"]!.GetValue<int>());
+            screen.SelectHit(TacticalHit.Unit(new(4, 8), actor["id"]!.GetValue<int>()));
+            screen.SelectHit(TacticalHit.Ground(new(4, 10)));
+            screen.SelectHit(targetHit);
+            var sourcePoint = screen.Board.Projection.CellCenter(new(4, 10));
+            var targetPoint = screen.Board.Projection.CellCenter(new(6, 10));
+            var midpoint = BoardField((sourcePoint + targetPoint) / 2);
+            var desired = obscured ? new Vector2(900, 105) : new Vector2(590, 360);
+            var pointer = new Vector2(500, 300);
+            GuiButton(MouseButton.Middle, true, pointer);
+            CapturedMove(pointer + desired - midpoint);
+            CapturedButton(MouseButton.Middle, false, pointer + desired - midpoint);
+            var origin = world.Position;
+            var zoom = world.Scale;
+            screen.SelectHit(targetHit);
+            Require(session.Revision == 1 && screen.IsPresenting,
+                "The unchanged C11 player movement attack commits once through the real selection/session path.");
+            Require(obscured ? world.Position != origin : world.Position == origin,
+                "Player attack framing must reveal obstructed combat but preserve an already readable manual camera.");
+            Require(world.Scale == zoom, "Nearby player combat needs no zoom change.");
+            foreach (var point in new[] { sourcePoint, targetPoint })
+            {
+                var visible = BoardField(point);
+                Require(visible.X >= 96 && visible.X <= map.Size.X - 96
+                    && visible.Y >= 210 && visible.Y <= map.Size.Y - 214,
+                    "Player attack endpoints must leave room for actors below the objective paper and above command trays.");
+            }
+            var committed = session.GetSnapshot().State.GetRawText();
+            Settle();
+            Require(session.GetSnapshot().State.GetRawText() == committed,
+                "Camera presentation cannot alter the committed canonical combat state.");
+        }
+        screen.Size = oldSize;
     }
 
     private async Task CheckStationaryAttackFocus()

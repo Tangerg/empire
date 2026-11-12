@@ -16,6 +16,7 @@ public partial class CameraChecks : Node
         {
             CheckWorldTransform();
             CheckBoundsFraming();
+            CheckBoundsReveal();
             CheckRegisteredOpening();
             CheckGestureTransform();
             CheckFollow();
@@ -23,6 +24,48 @@ public partial class CameraChecks : Node
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
+    }
+
+    private void CheckBoundsReveal()
+    {
+        var camera = new BattlefieldCamera(new(1800, 1400), new(74, 62, 74, 74), new(600, 500));
+        camera.Resize(new(1180, 812), new(16, 110, 16, 134));
+        var minimum = new CameraPoint(520, 440);
+        var maximum = new CameraPoint(680, 560);
+        var scroll = camera.Scroll;
+        var zoom = camera.Zoom;
+        Require(camera.RevealBounds(minimum, maximum, 60) && camera.Scroll == scroll && camera.Zoom == zoom,
+            "Readable combat leaves the player's exact manual framing unchanged.");
+        camera.Pan(new(0, -350));
+        var x = camera.Scroll.X;
+        Require(camera.RevealBounds(minimum, maximum, 60) && camera.Scroll.X == x && camera.Zoom == zoom,
+            "A vertical obstruction only corrects vertical scroll, without recentering or zooming.");
+        Require(Math.Abs(camera.FieldOrigin.Y + minimum.Y * camera.Zoom - 170) < .000001,
+            "Reveal uses the smallest correction to the safe boundary, not a cinematic recenter.");
+        scroll = camera.Scroll;
+        Require(camera.RevealBounds(minimum, maximum, 60) && camera.Scroll == scroll,
+            "Repeated visibility correction is stable.");
+        Require(camera.RevealBounds(new(200, 160), new(1000, 700), 12) && camera.Zoom < zoom,
+            "Only bounds too large for the current viewport may reduce zoom.");
+        Require(!camera.RevealBounds(new(0, 0), new(1800, 1400), 60),
+            "Impossible framing reports failure while retaining legal camera limits.");
+        var unlaid = new BattlefieldCamera(new(800, 600), default, new(400, 300));
+        Require(!unlaid.RevealBounds(minimum, maximum, 60), "Unlaid visibility cannot claim readable combat.");
+        foreach (var invalid in new Action[]
+        {
+            () => camera.RevealBounds(new(double.NaN, 0), maximum, 60),
+            () => camera.RevealBounds(maximum, minimum, 60),
+            () => camera.RevealBounds(minimum, maximum, -1),
+            () => camera.RevealBounds(minimum, maximum, double.PositiveInfinity)
+        })
+        {
+            try
+            {
+                invalid();
+                throw new Exception("Invalid reveal input was accepted.");
+            }
+            catch (ArgumentOutOfRangeException) { assertions++; }
+        }
     }
 
     private void CheckBoundsFraming()
@@ -228,7 +271,19 @@ public partial class CameraChecks : Node
         using var activation = JsonDocument.Parse("""{"type":"attackActivated","attacker":7,"from":{"x":1,"y":1},"at":{"x":4,"y":3}}""");
         var attack = new BattlePresentationTransition(9, state.RootElement, stationary.RootElement, [activation.RootElement], state.RootElement, true);
         Require(BattlefieldFocus.StationaryAttack(attack, At) == (At(new(1, 1)), At(new(4, 3))), "Visible stationary AI attacks frame committed activation endpoints.");
-        Require(BattlefieldFocus.StationaryAttack(attack with { IsComputerAction = false }, At) is null, "Human stationary attacks never steal camera focus.");
+        Require(BattlefieldFocus.PlayerAttack(attack, At) is null,
+            "The player visibility policy never replaces the AI follow policy.");
+        Require(BattlefieldFocus.PlayerAttack(attack with
+        {
+            IsComputerAction = false
+        }, At) == (At(new(1, 1)), At(new(4, 3))),
+            "Player attacks expose committed endpoints for conditional visibility correction.");
+        Require(BattlefieldFocus.PlayerAttack(new(9, state.RootElement, action.RootElement, [activation.RootElement], state.RootElement, false,
+                new System.Collections.Generic.HashSet<int> { 7 }), At) == (At(new(1, 1)), At(new(1, 1))),
+            "A player visibility correction must not disclose an unseen target.");
+        Require(BattlefieldFocus.PlayerAttack(new(9, state.RootElement, action.RootElement, [], state.RootElement, false), At) is null,
+            "Movement and waiting alone must retain player camera control.");
+        Require(BattlefieldFocus.StationaryAttack(attack with { IsComputerAction = false }, At) is null, "The AI stationary-attack policy ignores human commands.");
         Require(BattlefieldFocus.StationaryAttack(new(9, state.RootElement, stationary.RootElement, [], state.RootElement, true), At) is null, "Stationary waits and commands without committed activation do not move camera.");
         Require(BattlefieldFocus.StationaryAttack(new(9, state.RootElement, stationary.RootElement, [activation.RootElement], state.RootElement, true, new System.Collections.Generic.HashSet<int>()), At) is null, "Hidden stationary attackers never disclose coordinates through camera focus.");
         Require(BattlefieldFocus.StationaryAttack(new(9, state.RootElement, action.RootElement, [activation.RootElement], state.RootElement, true), At) is null, "Moving commands retain their existing destination-follow policy.");

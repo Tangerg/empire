@@ -665,3 +665,33 @@ phase, reentrant replacement, failure cleanup, rebind, unmount/reattach and
 reduced motion. These are native headless geometry and lifecycle guards, not
 GUI acceptance or a claim of pixel-identical desktop output. Control anchoring
 and input behavior follow the [Godot 4.6 Control reference](https://docs.godotengine.org/en/4.6/classes/class_control.html).
+
+### Player attack visibility correction
+
+Player attacks now use a separate conditional visibility policy, not the AI's
+cinematic following rule. A committed `attackActivated` supplies the firing and
+target positions through the existing visibility-filtered endpoint projection.
+Movement-only orders, waits, and unseen targets do not gain a new camera policy.
+
+A readable player composition retains its exact zoom and scroll. Otherwise the
+camera pans by the smallest legal displacement that brings the combat bounds
+into the HUD-safe area. It only zooms out when the bounds cannot fit at the current
+zoom, never zooms in, and remains within normal scroll/zoom limits. The bounds
+reserve 64 world pixels around endpoints for actor clips and 60 screen pixels
+inside existing HUD padding to clear the objective paper. This does not change
+battle coordinates, outcomes, event order, attack timing, or AI camera behavior.
+
+Checks cover stable readable framing, one-axis minimal correction, repeated
+correction, constrained zoom, hidden targets, noncombat orders, and real C11
+player selection/command dispatch with and without obstruction. This slice is
+independent of the separately recovered AI moving-attack camera work.
+
+Real C01 acceptance used a played opening: ridge-scout advances east, the normal
+AI takes its turn, then the player cycles to Laiya, reselects the scout, previews
+one further cell east and commits a bow attack on north-shield. In the original
+build the target/impact was behind the upper-right paper. Repeating that exact
+camera path on the player fix preserved horizontal framing and zoom while moving
+the fight below the paper; native frame readback visibly contains the hit effect
+and 10-damage number. The canonical result remained 10 damage/six events. This is
+one real player attack, not all-skill visual or audio acceptance. Capture readback
+affects frame pacing, so its frame counts are not a performance benchmark.

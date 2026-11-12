@@ -541,6 +541,15 @@ public partial class BattleScreen : Control
                 new(Math.Max(attack.Source.X, attack.Target.X), Math.Max(attack.Source.Y, attack.Target.Y)), 96);
             ApplyCamera();
         }
+        else if (BattlefieldFocus.PlayerAttack(transition, CellCenter) is { } playerAttack)
+        {
+            // The 64-world-pixel envelope covers actor clips; 60 screen pixels clear the task paper.
+            _camera?.RevealBounds(new(Math.Min(playerAttack.Source.X, playerAttack.Target.X) - 64,
+                    Math.Min(playerAttack.Source.Y, playerAttack.Target.Y) - 64),
+                new(Math.Max(playerAttack.Source.X, playerAttack.Target.X) + 64,
+                    Math.Max(playerAttack.Source.Y, playerAttack.Target.Y) + 64), 60);
+            ApplyCamera();
+        }
         _snapshot = next;
         SynchronizeTactical(next);
         UpdateTactical();

@@ -125,6 +125,37 @@ public sealed class BattlefieldCamera
             && FieldOrigin.Y + maximum.Y * Zoom <= viewport.Y - padding.Bottom - screenMargin + tolerance;
     }
 
+    /// <summary>Preserves readable manual framing; otherwise pans only enough to reveal the bounds.</summary>
+    public bool RevealBounds(CameraPoint minimum, CameraPoint maximum, double screenMargin)
+    {
+        RequirePoint(minimum, nameof(minimum));
+        RequirePoint(maximum, nameof(maximum));
+        if (maximum.X < minimum.X || maximum.Y < minimum.Y)
+            throw new ArgumentOutOfRangeException(nameof(maximum));
+        if (!double.IsFinite(screenMargin) || screenMargin < 0)
+            throw new ArgumentOutOfRangeException(nameof(screenMargin));
+        if (!HasViewport)
+            return false;
+        var left = padding.Left + screenMargin;
+        var top = padding.Top + screenMargin;
+        var right = viewport.X - padding.Right - screenMargin;
+        var bottom = viewport.Y - padding.Bottom - screenMargin;
+        if ((maximum.X - minimum.X) * Zoom > right - left || (maximum.Y - minimum.Y) * Zoom > bottom - top)
+            return FrameBounds(minimum, maximum, screenMargin);
+        var origin = FieldOrigin;
+        var dx = Math.Clamp(0, origin.X + maximum.X * Zoom - right, origin.X + minimum.X * Zoom - left);
+        var dy = Math.Clamp(0, origin.Y + maximum.Y * Zoom - bottom, origin.Y + minimum.Y * Zoom - top);
+        if (dx == 0 && dy == 0)
+            return true;
+        pendingZoom = 0;
+        ScrollTo(new(Scroll.X + dx, Scroll.Y + dy));
+        const double tolerance = .000001;
+        return FieldOrigin.X + minimum.X * Zoom >= left - tolerance
+            && FieldOrigin.Y + minimum.Y * Zoom >= top - tolerance
+            && FieldOrigin.X + maximum.X * Zoom <= right + tolerance
+            && FieldOrigin.Y + maximum.Y * Zoom <= bottom + tolerance;
+    }
+
     public void Pan(CameraPoint screenDelta)
     {
         RequirePoint(screenDelta, nameof(screenDelta));
