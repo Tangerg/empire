@@ -9,3 +9,11 @@ The eight reviewed poses are contact, compression, passing and swing for each le
 Only `campaign-torren` selects `torren.walk`. The eight quarter-cell intervals preserve the original two-cell cycle and existing movement speed. Other units and named actors retain `legacy.move`. The canonical move, duration, logical contact, event stream, collision and depth ownership are unchanged.
 
 Native regression and desktop acceptance results are recorded after running them; source inspection alone does not prove motion quality.
+
+## Verification scope
+
+The focused native production-gait checks passed 279 assertions. Negative controls independently changed the first frame's distance, swapped the first two frames, and restored the old actor binding; each failed the named-actor movement contract, then the original manifest was restored.
+
+A temporary desktop review harness played the production BoardView at unchanged human (160 ms/cell) and AI (110 ms/cell) speeds, east and west, with idle → four-cell movement → attack → idle. Actual desktop frames were inspected for alternating steps, uncut silhouettes, matching body scale and action handoffs. The harness used detached presentation receipts, not lawful campaign orders; it does not claim a complete campaign playthrough, audio acceptance or continuous frame-by-frame video review. The temporary harness was removed before the final build.
+
+Final unmodified-source validation: native AnimationChecks passed 8,474 assertions; native BattleScreen real-session integration passed; source extraction verification, source metadata, formatting check and `git diff --check` passed. Final build had zero warnings and errors. The expected missing-art diagnostic fixture in BattleScreen is not a runtime resource failure. Full campaign aggregate checks were not rerun for this actor-only presentation change.
