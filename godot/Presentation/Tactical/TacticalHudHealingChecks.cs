@@ -88,9 +88,9 @@ public partial class TacticalHudChecks
             }
             var viewport = GetViewport();
             void Motion(Vector2 point) => viewport.PushInput(new InputEventMouseMotion { Position = point, GlobalPosition = point }, true);
-            var sprite = screen.Board.GetNode<Node2D>("CanonicalProjection/Unit_6").GetNode<Sprite2D>("AuthoredSprite");
             Vector2 RecipientPixel()
             {
+                var sprite = screen.Board.GetNode<Node2D>("CanonicalProjection/Unit_6").GetNode<Sprite2D>("AuthoredSprite");
                 var rect = sprite.GetRect();
                 for (var y = rect.Position.Y + .5f; y < rect.End.Y; y++)
                     for (var x = rect.Position.X + .5f; x < rect.End.X; x++)
@@ -151,6 +151,26 @@ public partial class TacticalHudChecks
                 && session.Events.Single(value => value["type"]!.GetValue<string>() == "heal")["amount"]!.GetValue<double>() == 27,
                 "Only explicit target confirmation heals the original 27 HP with the exact canonical receipt and state.");
             Require(hud.Projection!.Sections.All(section => section.Key != "forecast"), "Committed healing cannot leave a stale recipient card.");
+            // The real player can undo recovery, then inspect and repeat the same order.
+            using var undo = new InputEventKey { Keycode = Key.U, Pressed = true };
+            screen._Input(undo);
+            Require(session.Revision == 2 && EcmaJson.Stringify(session.Snapshot()) == before
+                && session.Events.Count == 0 && !session.CanUndo,
+                "Undoing healing restores the exact wounded checkpoint and consumes only its own history.");
+            screen.SelectHit(TacticalHit.Unit(new(7, 4), 4));
+            ((GridContainer)hud.FindChild("Orders", true, false)).GetChildren().OfType<Button>()
+                .Single(button => button.GetMeta("hud_key", "").AsString() == "commands/heal")
+                .EmitSignal(BaseButton.SignalName.Pressed);
+            await Layout();
+            await HoverRecipient();
+            var restored = hud.Projection!.Sections.Single(section => section.Key == "forecast");
+            Require(restored.Rows.Any(row => row.Key == "hp" && row.Gauge == new TacticalHudGauge(65, 92)),
+                "After undo the target card uses restored health, not the completed healing preview.");
+            screen.SelectHit(TacticalHit.Unit(new(8, 4), 6));
+            screen.Refresh();
+            Require(session.Revision == 3 && StateDigest.Hash(session.Snapshot()) == fixture["afterStateHash"]!.GetValue<string>()
+                && EcmaJson.Sha256(new JsonArray(session.Events.Select(value => (JsonNode)value.DeepClone()).ToArray())) == fixture["eventsSha256"]!.GetValue<string>(),
+                "Repeating healing after undo reproduces the exact state and ordered receipt without duplicate recovery.");
         }
         finally
         {
