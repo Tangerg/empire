@@ -496,7 +496,7 @@ public partial class BattleScreen : Control
     private void RefreshFeedbackVisibility()
     {
         if (IsInstanceValid(_feedbackPanel))
-            _feedbackPanel.Visible = _feedback.Visible && !_hud.DossierVisible && !VisibleWindow(_systemMenu) && !VisibleWindow(_battleLogDialog);
+            _feedbackPanel.Visible = _feedback.Visible && !_presenting && !_hud.DossierVisible && !VisibleWindow(_systemMenu) && !VisibleWindow(_battleLogDialog);
     }
 
     /// <summary>Allows the application root to refresh after an external session transition.</summary>
@@ -518,6 +518,7 @@ public partial class BattleScreen : Control
             _presentationGeneration++;
             _presenting = false;
             _board.CancelPresentation();
+            RefreshFeedbackVisibility();
         }
         ApplySnapshot(next);
     }
@@ -529,6 +530,7 @@ public partial class BattleScreen : Control
         _gestures?.Cancel();
         _board.CancelPresentation();
         _presenting = true;
+        RefreshFeedbackVisibility();
         if (BattlefieldFocus.CommandDestination(transition, CellCenter) is { } destination)
         {
             _camera?.CenterOn(destination);
@@ -580,6 +582,7 @@ public partial class BattleScreen : Control
             if (generation == _presentationGeneration && !_board.IsExiting && IsInsideTree())
             {
                 _presenting = false;
+                RefreshFeedbackVisibility();
                 UpdateTactical();
             }
         }

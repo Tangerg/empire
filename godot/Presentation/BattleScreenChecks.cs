@@ -608,6 +608,12 @@ public partial class BattleScreenChecks : Node
         var destination = TacticalSceneInputChecks.Move(screen, session);
         Require(screen.RecentMessages.Count == 1, "Event text must wait until its animation completes.");
         Require(screen.IsPresenting && screen.Board.IsPresenting, "Accepted move must hold the presentation gate.");
+        var feedback = screen.GetNode<PanelContainer>("FeedbackPanel");
+        var completionText = feedback.GetChild<Label>(0).Text;
+        Require(completionText.Length > 0 && !feedback.Visible,
+            "Command acknowledgement waits offscreen while committed action animation is playing.");
+        screen._Process(10);
+
         var revision = session.GetSnapshot().Revision;
         screen.SelectHit(TacticalHit.Ground(destination));
         screen.SelectHit(TacticalHit.Unit(session.GetTacticalQueries(0).Unit(2)!.At, 2));
@@ -618,6 +624,12 @@ public partial class BattleScreenChecks : Node
             screen.Board.AdvancePresentation(0.1);
         Require(!screen.IsPresenting && !screen.Board.IsPresenting && screen.DisplayedRevision == revision,
             "Timeline completion must settle the committed revision and release input.");
+        Require(feedback.Visible && feedback.GetChild<Label>(0).Text == completionText,
+            "Settled playback reveals the unchanged acknowledgement without consuming its readable lifetime.");
+        screen._Process(2.9);
+        Require(feedback.Visible, "The acknowledgement retains its full reading window after animation.");
+        screen._Process(.11);
+        Require(!feedback.Visible, "The settled acknowledgement expires normally, without becoming sticky.");
         Require(projectionMounts == 2,
             "A successful move mounts its before projection once and its settled projection once; screen synchronization must not mount after a second time.");
         var expectedLog = new Feedback.BattleLog();
@@ -656,6 +668,7 @@ public partial class BattleScreenChecks : Node
             "Canceled playback still renders committed state rather than taking the successful-settlement adoption path.");
         Require(!screen.IsPresenting && screen.DisplayedRevision == canceled.GetSnapshot().Revision,
             "Same-session cancellation must settle both board and controls to committed state.");
+        Require(feedback.Visible, "Canceling visuals still reveals the acknowledgement for the already committed command.");
         var fresh = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         Bind(fresh);
         TacticalSceneInputChecks.Move(screen, fresh);
@@ -664,10 +677,18 @@ public partial class BattleScreenChecks : Node
         Bind(loaded);
         Require(!screen.IsPresenting && !screen.Board.IsPresenting && screen.DisplayedRevision == 0,
             "Rebinding a loaded session must cancel old playback without replaying its history.");
+        Require(!feedback.Visible, "Rebinding clears the old command acknowledgement instead of leaking it into the loaded battle.");
         screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), loaded, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), level, AuthoredScene.Load("res://data/scenes/c01-01.json"), initialLogMessage: "已读取第 1 回合的存档");
         Require(screen.RecentMessages.SequenceEqual(new[] { "已读取第 1 回合的存档" }), "Load must clear history and keep one load line.");
         screen.Board.AdvancePresentation(100);
         Require(screen.DisplayedRevision == 0, "Stale timeline completion overwrote the rebound view.");
+        var reduced = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
+        Bind(reduced);
+        screen.Board.AnimationsEnabled = false;
+        TacticalSceneInputChecks.Move(screen, reduced);
+        Require(!screen.IsPresenting && feedback.Visible,
+            "Reduced-motion commands reveal their acknowledgement immediately after synchronous settlement.");
+        screen.Board.AnimationsEnabled = true;
         var last = new GrayFlagSession(new(engine, presentation, new JsonArray()), level);
         Bind(last);
         TacticalSceneInputChecks.Move(screen, last);

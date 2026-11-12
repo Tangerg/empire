@@ -701,3 +701,14 @@ the fight below the paper; native frame readback visibly contains the hit effect
 and 10-damage number. The canonical result remained 10 damage/six events. This is
 one real player attack, not all-skill visual or audio acceptance. Capture readback
 affects frame pacing, so its frame counts are not a performance benchmark.
+
+### Command acknowledgement and playback
+
+The screen's command acknowledgement panel is hidden while a committed action
+is presenting. It must not announce completion over an attack's anticipation,
+release or recovery. After settlement it reveals the unchanged session message;
+the existing transient timer only consumes visible, idle reading time. Canceling
+visual playback still settles the committed command and reveals its message,
+whereas rebinding clears the old acknowledgement. Event-specific descriptions
+continue to use their ordered presenter/journal timing, independently of this
+command-level panel. No receipt, combat result or clip timing changes.
