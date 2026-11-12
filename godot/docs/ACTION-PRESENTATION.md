@@ -242,7 +242,7 @@ recovery and the recipient's existing 500 ms healing effect sample one receipt
 clock. Static healer poses release at 75 ms, restore idle at 150 ms, and finish
 recipient feedback at 575 ms. The generic gravekeeper releases at 300 ms, restores
 idle at 600 ms, and finishes the same recipient feedback at 800 ms. The recipient keeps its emitted amount,
-current drawn contact, original effect strip, number rise and fade. No extra
+current drawn contact, original effect strip, and shared impact-number sampling. No extra
 `attack` or `heal` receipt is produced.
 
 The existing recipient gate is preserved: it must remain in `After`, have been
@@ -500,7 +500,13 @@ Supported native presenters (including the explicit recovery and displacement re
 | gameOver | visible surviving winning-team actors | concurrent explicit celebrate clips, overlapping the 220 ms result beat; neutral outcomes retain only the beat |
 
 A declared lunge follows the normalized projected direction with a 7-pixel release-aligned approach/recovery; stationary policies do not translate the actor. Hit effects last 420 ms; their number rises 14 pixels and
-fades quadratically. Fatal hits add a 40 ms beat before the next presenter.
+holds its opacity for the first half, then fades quadratically over the remaining
+half. Healing retains its 500 ms lifetime and 16-pixel rise with the same opacity
+profile. Both use 18-pixel signed numbers above the actor silhouette (damage
+baseline -36, healing -34), rather than the former 13-pixel torso-level numbers.
+This intentional readability refinement changes no receipt values, release
+moments, effect-strip cadence, or total action latency. Fatal hits add a 40 ms
+beat before the next presenter.
 Effects use cell center; actors retain the canonical cell-foot contact. Moving
 actors participate in the existing standing-depth ordering.
 

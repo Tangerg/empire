@@ -295,14 +295,20 @@ public partial class AnimationChecks : Node
         var hit = board.GetNode<Node2D>("BattleEffects/Hit");
         Require(hit.Position == at && Frame(actor) == 2, "Impact starts at the explicit forward release while the actor still owns recovery.");
         Require(hit.GetNode<Label>("Number").Text == "-12", "Damage number comes directly from emitted damage");
+        var damageNumber = hit.GetNode<Label>("Number");
+        Require(damageNumber.GetThemeFontSize("font_size") == 18 && damageNumber.Position.Y < -40,
+            "Damage feedback is readable above the actor silhouette, not buried in its torso.");
         var numberY = hit.GetNode<Label>("Number").Position.Y;
         await Tick(board, 0.076);
         Require(Frame(actor) == 0 && actor.Position == origin, "The actor returns idle/origin at its own clip end while impact continues.");
         await Tick(board, 0.134);
         Require(hit.GetNode<Sprite2D>("Strip").GetMeta("frame").AsInt32() == 2, "Hit plays original numeric FX frames at twelve fps");
         Require(Mathf.IsEqualApprox(hit.GetNode<Label>("Number").Position.Y, numberY - 7)
-            && Mathf.IsEqualApprox(hit.GetNode<Label>("Number").Modulate.A, 0.75f), "Damage number follows source 14 px rise and quadratic fade");
-        await Tick(board, 0.211);
+            && Mathf.IsEqualApprox(damageNumber.Modulate.A, 1), "Damage keeps its 14 px rise and remains opaque through the first half of impact.");
+        await Tick(board, .105);
+        Require(Mathf.IsEqualApprox(damageNumber.Modulate.A, .75f),
+            "Damage fades quadratically only after its readable hold, without extending impact lifetime.");
+        await Tick(board, 0.106);
         Require(await task && board.GetNodeOrNull("BattleEffects") is null, "420 ms hit removes every transient node");
 
         foreach (var kind in new[] { "areaAttack", "partingShot", "counter", "supportAttack" })

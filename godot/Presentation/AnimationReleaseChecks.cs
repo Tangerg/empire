@@ -292,9 +292,9 @@ public partial class AnimationChecks
         var progress = milliseconds / 420;
         var number = hit.GetNode<Label>("Number");
         Require(number.Position.IsEqualApprox(origin + new Vector2(0, (float)(-14 * progress)))
-            && Mathf.IsEqualApprox(number.Modulate.A, (float)(1 - progress * progress))
+            && Mathf.IsEqualApprox(number.Modulate.A, (float)(1 - Math.Pow(Math.Max(0, (progress - .5) * 2), 2)))
             && hit.GetNode<Sprite2D>("Strip").GetMeta("frame").AsInt32() == Math.Min(3, (int)(milliseconds * 12 / 1000)),
-            "Impact strip, number rise and quadratic fade sample time since release, including overshoot in the release tick.");
+            "Impact strip, number rise and hold-then-fade sample time since release, including overshoot in the release tick.");
     }
 
     private async Task CheckWeaponActionIndependence(BoardView board, AssetCatalog catalog, JsonObject state, int aid, int did)

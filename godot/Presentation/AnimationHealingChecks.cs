@@ -114,6 +114,8 @@ public partial class AnimationChecks
         var heal = board.GetNode<Node2D>("BattleEffects/Heal");
         var number = heal.GetNode<Label>("Number");
         var numberOrigin = number.Position;
+        Require(number.GetThemeFontSize("font_size") == 18 && number.Position.Y < -40 && number.Modulate.A == 1,
+            "Healing numbers share the above-silhouette size and readable initial hold without changing signed amounts.");
         Require(heal.Position == Actor(board, target).Position && number.Text == "+20" && Frame(Actor(board, source)) == 2,
             "Healing releases one unchanged recipient effect while the selected source clip recovers.");
         await Tick(board, .160);
@@ -127,7 +129,7 @@ public partial class AnimationChecks
         const double progress = 268.0 / 500;
         Require(Frame(Actor(board, source)) == 0
             && number.Position.IsEqualApprox(numberOrigin + new Vector2(0, (float)(-16 * progress)))
-            && Mathf.IsEqualApprox(number.Modulate.A, (float)(1 - progress * progress)),
+            && Mathf.IsEqualApprox(number.Modulate.A, (float)(1 - Math.Pow((progress - .5) * 2, 2))),
             "A coarse tick samples healing rise and fade from release overshoot, not from the tick's endpoint.");
         await Drain(board, task);
         task = board.PresentTransitionAsync(viewportFeedback, transition);
