@@ -19,6 +19,9 @@ public partial class AnimationChecks
 
     private void CheckReleaseDefinitions()
     {
+        var mirelle = assets.ResolveUnitClip("c01.mirelle", "attack", ActorClipUnit.Milliseconds);
+        Require(mirelle.Asset.Identity == "mirelle-cast-v1" && mirelle.FrameIndices.Distinct().Count() == 6,
+            "Mirelle uses six personal casting poses instead of a static pose or the generic gravekeeper's appearance.");
         var shipped = PresentationJson.Load<ArtBindings>("res://data/art-bindings.json");
         var weapons = packs.OfType<JsonObject>().SelectMany(pack => (pack["weapons"] as JsonArray ?? new JsonArray())
             .OfType<JsonObject>()).Select(weapon => weapon["id"]!.GetValue<string>()).ToHashSet(StringComparer.Ordinal);
@@ -35,13 +38,13 @@ public partial class AnimationChecks
             .Concat(shipped.Actors.Select(pair => (pair.Value.ExpectedUnitType, (string?)pair.Key))))
         {
             var shippedClip = assets.ResolveUnitClip(type, "attack", ActorClipUnit.Milliseconds, key);
-            var channel = type == "c01.gravekeeper" && key is null;
+            var channel = type is "c01.gravekeeper" or "c01.mirelle" && key is null;
             var shot = type == "c01.archer" && key is null;
             var duration = key == "campaign-torren" ? 360 : channel || shot ? 600 : 150;
             var release = key == "campaign-torren" ? 160 : channel ? 300 : shot ? 320 : 75;
             Require(shippedClip.Length == duration && shippedClip.ReleaseMs == release && shippedClip.RequireRelease() == release
                 && shippedClip.ShowAccent == (key != "campaign-torren" && !channel && !shot),
-                "Torren thrust, gravekeeper channel and C01 archer shot use authored releases; every other attack/work binding retains its precise static duration, release and accent.");
+                "Torren thrust, gravekeeper/Mirelle channels and C01 archer shot use authored releases; every other attack/work binding retains its precise static duration, release and accent.");
         }
 
         var (manifest, bindings) = ReleaseFixture();

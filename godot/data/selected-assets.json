@@ -517,6 +517,38 @@
           "span": 0.25
         }
       ]
+    },
+    "mirelle.channel": {
+      "unit": "milliseconds",
+      "appearanceId": "mirelle-cast-v1",
+      "releaseMs": 300,
+      "showAccent": false,
+      "frames": [
+        {
+          "frame": "cast-ready",
+          "span": 90
+        },
+        {
+          "frame": "cast-gather",
+          "span": 100
+        },
+        {
+          "frame": "cast-raise",
+          "span": 110
+        },
+        {
+          "frame": "cast-release",
+          "span": 100
+        },
+        {
+          "frame": "cast-recover",
+          "span": 100
+        },
+        {
+          "frame": "cast-rest",
+          "span": 100
+        }
+      ]
     }
   },
   "assets": [
@@ -4771,6 +4803,92 @@
         ]
       ],
       "qualityTier": "painted-walk-v1-reviewed",
+      "textureFilter": "linear"
+    },
+    {
+      "id": "mirelle-cast-v1",
+      "topicId": "C01-UNIT-GRAVEKEEPER",
+      "png": "painted-actions-v1/mirelle-cast-v1.png",
+      "pixelDensity": 1,
+      "frames": 6,
+      "frameOrder": [
+        "cast-ready",
+        "cast-gather",
+        "cast-raise",
+        "cast-release",
+        "cast-recover",
+        "cast-rest"
+      ],
+      "physicalWidth": 1536,
+      "physicalHeight": 1024,
+      "resourcePath": "res://assets/painted-actions-v1/mirelle-cast-v1.png",
+      "sha256": "e2514b12f8b866bd5a6e6bed91f58bb49a8cd74e72ad372a21ae87a2194ca319",
+      "presentationScale": 0.0806452,
+      "frameRegions": [
+        [
+          0,
+          0,
+          512,
+          512
+        ],
+        [
+          512,
+          0,
+          512,
+          512
+        ],
+        [
+          1024,
+          0,
+          512,
+          512
+        ],
+        [
+          0,
+          512,
+          512,
+          512
+        ],
+        [
+          512,
+          512,
+          512,
+          512
+        ],
+        [
+          1024,
+          512,
+          512,
+          512
+        ]
+      ],
+      "frameAnchors": [
+        [
+          245,
+          474
+        ],
+        [
+          235,
+          474
+        ],
+        [
+          240,
+          474
+        ],
+        [
+          257,
+          474
+        ],
+        [
+          243,
+          474
+        ],
+        [
+          242,
+          474
+        ]
+      ],
+      "qualityTier": "painted-mirelle-cast-v1-reviewed",
       "textureFilter": "linear"
     }
   ]

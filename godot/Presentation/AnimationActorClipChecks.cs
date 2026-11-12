@@ -164,12 +164,12 @@ public partial class AnimationChecks
                 "Torren alone selects his six-pose authored thrust and its own release/recovery timing.");
             return;
         }
-        if (type == "c01.gravekeeper" && key is null)
+        if (type is "c01.gravekeeper" or "c01.mirelle" && key is null)
         {
-            Require(clip.Asset.Identity == "gravekeeper-cast-v1" && clip.Asset.TopicId == asset.TopicId
+            Require(clip.Asset.Identity == (type == "c01.mirelle" ? "mirelle-cast-v1" : "gravekeeper-cast-v1") && clip.Asset.TopicId == asset.TopicId
                 && clip.Asset.FrameCount == 6 && clip.Length == 600 && clip.RequireRelease() == 300
                 && !clip.ShowAccent,
-                "The generic gravekeeper selects its six-pose authored channel with exact release/recovery timing and no accent.");
+                "Each gravekeeper and Mirelle selects its own six-pose authored channel with exact release/recovery timing and no accent.");
             return;
         }
         if (type == "c01.archer" && key is null)

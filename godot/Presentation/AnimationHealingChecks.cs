@@ -20,8 +20,8 @@ public partial class AnimationChecks
         foreach (var type in new[] { "cleric", "c01.mirelle", "c01.gravekeeper", "c01.druid" })
         {
             var clip = assets.ResolveUnitClip(type, selected.Action, ActorClipUnit.Milliseconds);
-            Require(clip.Length == (type == "c01.gravekeeper" ? 600 : 150)
-                && clip.RequireRelease() == (type == "c01.gravekeeper" ? 300 : 75),
+            Require(clip.Length == (type is "c01.gravekeeper" or "c01.mirelle" ? 600 : 150)
+                && clip.RequireRelease() == (type is "c01.gravekeeper" or "c01.mirelle" ? 300 : 75),
                 "Every shipped healer admits the selected timed actor action and release marker.");
         }
         var (manifest, bindings) = HealingFixture();
@@ -433,19 +433,19 @@ public partial class AnimationChecks
                 var source = Actor(board, sourceId);
                 var origin = source.Position;
                 var target = Actor(board, targetId);
-                Require(Frame(source) == 2 && source.Position == origin && Frame(target) == 0
+                Require(Frame(source) == 0 && source.Position == origin && Frame(target) == 0
                     && board.GetNodeOrNull("BattleEffects/Heal") is null,
                     "The legal C12 heal starts the caster's explicit stationary attack pose, not the recipient's pose or feedback.");
-                await Tick(board, .075);
+                await Tick(board, .300);
                 var effect = board.GetNode<Node2D>("BattleEffects/Heal");
-                Require(Frame(source) == 2 && source.Position == origin && effect.Position == target.Position
+                Require(Frame(source) == 3 && source.Position == origin && effect.Position == target.Position
                     && effect.GetNode<Label>("Number").Text == "+27",
-                    "C12 releases its unchanged +27 healing at the shipped 75 ms marker during caster recovery.");
-                await Tick(board, .075);
+                    "C12 releases its unchanged +27 healing at the personal 300 ms marker during caster recovery.");
+                await Tick(board, .300);
                 Require(Frame(source) == 0 && source.Position == origin && ReferenceEquals(effect, board.GetNode<Node2D>("BattleEffects/Heal"))
                     && !task.IsCompleted,
-                    "C12 caster resumes idle at 150 ms while the same recipient effect continues.");
-                await Tick(board, .424);
+                    "C12 caster resumes idle at 600 ms while the same recipient effect continues.");
+                await Tick(board, .199);
                 Require(!task.IsCompleted && board.GetNodeOrNull("BattleEffects/Heal") is not null,
                     "C12 healing stays active until release plus its unchanged 500 ms duration.");
                 await Tick(board, .002);
@@ -459,7 +459,7 @@ public partial class AnimationChecks
                     && original == transition.Before.GetRawText() + transition.After.GetRawText() + transition.Action.GetRawText()
                         + string.Concat(transition.Events.Select(value => value.GetRawText())),
                     "Healing presentation preserves C12's initial/before/after witness, emitted event bytes, ordered publication and immutable receipt.");
-                GD.Print("Healing C12: stationary source 4, release75, target6 +27, idle150, effect575; all recorded hashes unchanged.");
+                GD.Print("Healing C12: stationary source 4, release300, target6 +27, idle600, effect800; all recorded hashes unchanged.");
             }
             finally { board.EventPresented -= Presented; }
         }

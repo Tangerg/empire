@@ -754,3 +754,7 @@ Damage impacts now pair the brief solid core with an open, six-part expanding ou
 ### Quiet completion acknowledgement
 
 Transient acknowledgements (including command completion and undo) occupy a 400-pixel bottom-center strip within the idle order area, rather than a 480-pixel panel across the lower battlefield. Persistent errors retain their prior reading position. Both use the existing brown/gold panel and remain mouse-transparent; no new state, timer, command or severity classifier is introduced. Playback hiding, the three-second readable lifetime, modal pauses, new-selection clearing and rebind cleanup remain unchanged.
+
+### Mirelle personal casting
+
+Mirelle now raises and releases her lantern through six personal authored poses rather than a 150 ms static attack frame. Her existing attack/heal action selects a 600 ms channel with a 300 ms release and no generic source accent. Her identity, scale and foot contacts are retained through explicit frame rectangles/anchors; recovery returns to her original idle appearance. Other actions and canonical combat rules are unchanged. See `art-provenance/mirelle-cast-v1/README.md`.
