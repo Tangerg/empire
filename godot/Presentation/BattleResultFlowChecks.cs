@@ -42,6 +42,7 @@ public partial class BattleResultFlowChecks : Node
         await Check("completion readonly journal", CheckCompletionJournal);
         await Check("result summary and invalid outcomes", CheckSummary);
         await Check("stale rebind and unmount callbacks", CheckStaleButtons);
+        await Check("confirmation owner lifetime", CheckConfirmationOwnerLifetime);
         Check("historical battle save remains rejected", CheckHistoricalBattleSaveRejected);
         foreach (var outcome in new[] { "victory", "defeat", "draw" })
             foreach (var action in outcome == "victory" ? new[] { "Settle", "Retry", "Exit" } : new[] { "Retry", "Exit" })
@@ -234,6 +235,50 @@ public partial class BattleResultFlowChecks : Node
             alternateSummary.Metrics.Select(metric => metric.Value).SequenceEqual(Summary.Metrics.Select(metric => metric.Value)),
             "Result labels did not change independently of the canonical result facts.");
         Retire(screen);
+    }
+
+    private async Task CheckConfirmationOwnerLifetime()
+    {
+        foreach (var hideBeforeConfirmation in new[] { true, false })
+        {
+            var parent = new Control();
+            var owner = new Control();
+            parent.AddChild(owner);
+            AddChild(parent);
+            var calls = 0;
+            var dismissed = 0;
+            var dialog = new ConfirmationDialog();
+            CampaignUiStyle.OpenConfirmation(owner, dialog, () => true, () => calls++, () => dismissed++);
+            await Layout();
+            if (hideBeforeConfirmation)
+                parent.Hide();
+            dialog.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+            parent.Hide();
+            await Layout();
+            Require(calls == 0, "A hidden confirmation owner committed navigation.");
+            parent.Show();
+            if (GodotObject.IsInstanceValid(dialog) && !dialog.IsQueuedForDeletion())
+                dialog.EmitSignal(ConfirmationDialog.SignalName.Canceled);
+            await Layout();
+            Require(dismissed == 1, "Interrupted confirmation did not release its modal state exactly once.");
+            var fresh = new ConfirmationDialog();
+            CampaignUiStyle.OpenConfirmation(owner, fresh, () => true, () => calls++, () => dismissed++);
+            await Layout();
+            fresh.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+            await Layout();
+            Require(calls == 1 && dismissed == 2, "A restored confirmation owner cannot accept a fresh action.");
+            Retire(parent);
+        }
+        var retiringOwner = new Control();
+        AddChild(retiringOwner);
+        var retiringCalls = 0;
+        var retiringDialog = new ConfirmationDialog();
+        CampaignUiStyle.OpenConfirmation(retiringOwner, retiringDialog, () => true, () => retiringCalls++, () => { });
+        await Layout();
+        retiringDialog.EmitSignal(ConfirmationDialog.SignalName.Confirmed);
+        retiringOwner.QueueFree();
+        await Layout();
+        Require(retiringCalls == 0, "A confirmation owner queued for deletion committed navigation.");
     }
 
     private async Task CheckStaleButtons()

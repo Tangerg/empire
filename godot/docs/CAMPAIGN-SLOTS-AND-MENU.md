@@ -87,6 +87,12 @@ unmounted or remounted-but-not-rebound callbacks cannot act on campaign state.
 Confirmation, overwrite policy, state assignment and menu-return transitions remain
 root-owned, with additional integration tests required there.
 
+The shared native confirmation boundary admits intent only while its owner is
+visible in the tree and neither owner nor dialog is queued for deletion. It checks
+again after native dispatch, before committing; interruption still releases the
+modal state exactly once. A newly opened confirmation may act after visibility is
+restored.
+
 ## Evidence boundary
 
 Verified on 2026-10-20: 299 isolated .NET assertions against 27 original storage

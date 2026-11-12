@@ -126,6 +126,10 @@ public static class CampaignUiStyle
     {
         var handled = false;
         var released = false;
+        bool CanConfirm() => GodotObject.IsInstanceValid(owner) && owner.IsInsideTree()
+            && owner.IsVisibleInTree() && !owner.IsQueuedForDeletion()
+            && GodotObject.IsInstanceValid(dialog) && dialog.IsInsideTree()
+            && !dialog.IsQueuedForDeletion() && !released && current();
         void Release()
         {
             if (released)
@@ -154,15 +158,14 @@ public static class CampaignUiStyle
         }
         dialog.Confirmed += () =>
         {
-            if (handled || !dialog.IsInsideTree() || !current())
+            if (handled || !CanConfirm())
                 return;
             handled = true;
             dialog.Hide();
             // Confirming may unmount the owning screen. Finish native Window input dispatch first.
             Callable.From(() =>
             {
-                var canCommit = GodotObject.IsInstanceValid(owner) && owner.IsInsideTree()
-                    && GodotObject.IsInstanceValid(dialog) && dialog.IsInsideTree() && !released && current();
+                var canCommit = CanConfirm();
                 Release();
                 if (canCommit)
                     confirmed();
