@@ -19,6 +19,7 @@ public partial class TacticalHud : Control
     private VBoxContainer? details;
     private PopupPanel? detailPopup;
     private Button? detailClose;
+    private Label? detailHeading;
     private string? detailOpenerName;
     private TacticalStamp? detailOpeningStamp;
     private readonly HashSet<string> expanded = new() { "objectives" };
@@ -161,10 +162,23 @@ public partial class TacticalHud : Control
             var body = new VBoxContainer { Name = "DossierBody" };
             body.AddThemeConstantOverride("separation", 8);
             detailPopup.AddChild(body);
+            var header = new HBoxContainer { Name = "DossierHeader" };
+            header.AddThemeConstantOverride("separation", 8);
+            body.AddChild(header);
+            detailHeading = new Label
+            {
+                Name = "DossierHeading",
+                SizeFlagsHorizontal = SizeFlags.ExpandFill,
+                TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis,
+                MouseFilter = MouseFilterEnum.Pass
+            };
+            detailHeading.AddThemeFontSizeOverride("font_size", 18);
+            detailHeading.AddThemeColorOverride("font_color", TacticalHudStyle.Ink);
+            header.AddChild(detailHeading);
             detailClose = new Button { Name = "DossierClose", Text = projection.CloseLabel, SizeFlagsHorizontal = SizeFlags.ShrinkEnd };
             CompactButton(detailClose);
             detailClose.Pressed += () => detailPopup.Hide();
-            body.AddChild(detailClose);
+            header.AddChild(detailClose);
             detailPopup.PopupHide += () =>
             {
                 var openerName = detailOpenerName;
@@ -196,6 +210,9 @@ public partial class TacticalHud : Control
             body.AddChild(detailScroll.CreateReadingHint(projection.ReadingHint));
         }
         detailClose!.Text = projection.CloseLabel;
+        detailHeading!.Text = projection.Sections.FirstOrDefault(section => section.Key == "unit")?.Title
+            ?? DossierSection(projection)?.Title ?? "";
+        detailHeading.TooltipText = detailHeading.Text;
         detailScroll!.SetReadingHint(projection.ReadingHint);
         foreach (var child in details!.GetChildren())
         {

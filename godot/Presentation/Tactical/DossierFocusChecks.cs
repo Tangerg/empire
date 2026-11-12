@@ -134,6 +134,7 @@ public partial class DossierFocusChecks : Node
         hud.IntentRequested += _ => intents++;
         TacticalHudProjection Frame(int unit, int binding = 1, int revision = 1) => new(new(binding, revision), "", new[]
         {
+            new TacticalHudSection("unit", "角色 " + unit, Array.Empty<TacticalHudRow>()),
             new TacticalHudSection("unit-details", "Unit " + unit, Enumerable.Range(0, 35)
                 .Select(i => new TacticalHudRow("fact-" + i, "Read-only fact " + i)).ToArray())
         }, DossierSubject: TacticalHit.Unit(new BoardCell(1, 1), unit));
@@ -150,6 +151,9 @@ public partial class DossierFocusChecks : Node
         scroll.ScrollVertical = 200;
         await Settle();
         Require(scroll.ScrollVertical == 200, "Reading-subject fixture must have a nonzero readable offset.");
+        var heading = hud.FindChild("DossierHeading", true, false) as Label;
+        Require(heading is not null && heading.Text == "角色 1" && heading.IsVisibleInTree()
+            && !scroll.IsAncestorOf(heading), "The inspected identity remains visible outside the scrolling description.");
         popup.Hide();
         await Settle();
         hud.Apply(Frame(1, revision: 2));
@@ -162,6 +166,8 @@ public partial class DossierFocusChecks : Node
         await Settle();
         await Open();
         Require(scroll.ScrollVertical == 0, "A different dossier subject must open at its beginning, not the previous subject's offset.");
+        Require(heading!.Text == "角色 2" && heading.TooltipText == heading.Text,
+            "The fixed heading updates from the inspected unit, retaining its full accessible text.");
         scroll.ScrollVertical = 200;
         await Settle();
         popup.Hide();
@@ -170,7 +176,24 @@ public partial class DossierFocusChecks : Node
         await Settle();
         await Open();
         Require(scroll.ScrollVertical == 0, "A new battle binding must not inherit an old dossier's reading position.");
-        Require(intents == 0, "Changing dossier reading position never dispatches a gameplay action.");
+        var longName = string.Concat(Enumerable.Repeat("长名称角色", 20));
+        var renamed = Frame(2, binding: 2);
+        hud.Apply(renamed with
+        {
+            Sections = renamed.Sections.Select(section => section.Key == "unit"
+                ? new TacticalHudSection(section.Key, longName, section.Rows) : section).ToArray()
+        });
+        await Settle();
+        var close = (Button)hud.FindChild("DossierClose", true, false);
+        Require(heading.Text == longName && heading.TooltipText == longName && popup.Size.X == 360
+            && heading.GetGlobalRect().End.X <= close.GetGlobalRect().Position.X,
+            "Long localized identities elide within the fixed header without covering Close or widening the dossier.");
+        popup.Hide();
+        hud.Apply(new(new(2, 1), "", new[] { new TacticalHudSection("site", "边境村落", Array.Empty<TacticalHudRow>()) }));
+        await Settle();
+        await Open();
+        Require(heading.Text == "边境村落", "A non-unit dossier uses its own projected title, not a stale unit identity.");
+        Require(intents == 0, "Changing dossier reading position and identity never dispatches a gameplay action.");
         RemoveChild(hud);
         hud.Free();
         await Settle();

@@ -45,3 +45,9 @@ subject. A refresh or reopening of that subject preserves its reading offset;
 a different subject or binding begins at the top instead of inheriting another
 unit's partially read description. Keyboard focus inside the old reading body
 must not restore that unrelated offset after native layout.
+
+The dossier header keeps its inspected identity visible while the body scrolls.
+It renders the existing unit-section title (or the selected dossier section for
+non-unit subjects), never a second selection cache. Long localized titles elide
+inside the fixed-width header and retain their full text as a tooltip; Close and
+the keyboard reading order remain available.
