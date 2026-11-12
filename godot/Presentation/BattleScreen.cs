@@ -544,14 +544,7 @@ public partial class BattleScreen : Control
             ApplyCamera();
         }
         else if (BattlefieldFocus.PlayerAttack(transition, CellCenter) is { } playerAttack)
-        {
-            // The 64-world-pixel envelope covers actor clips; 60 screen pixels clear the task paper.
-            _camera?.RevealBounds(new(Math.Min(playerAttack.Source.X, playerAttack.Target.X) - 64,
-                    Math.Min(playerAttack.Source.Y, playerAttack.Target.Y) - 64),
-                new(Math.Max(playerAttack.Source.X, playerAttack.Target.X) + 64,
-                    Math.Max(playerAttack.Source.Y, playerAttack.Target.Y) + 64), 60);
-            ApplyCamera();
-        }
+            RevealPlayerAction(playerAttack.Source, playerAttack.Target);
         _snapshot = next;
         SynchronizeTactical(next);
         UpdateTactical();
@@ -586,6 +579,14 @@ public partial class BattleScreen : Control
                 UpdateTactical();
             }
         }
+    }
+
+    private void RevealPlayerAction(CameraPoint source, CameraPoint target)
+    {
+        // One envelope for player previews and committed clips: actor silhouettes and HUD clearance.
+        _camera?.RevealBounds(new(Math.Min(source.X, target.X) - 64, Math.Min(source.Y, target.Y) - 64),
+            new(Math.Max(source.X, target.X) + 64, Math.Max(source.Y, target.Y) + 64), 60);
+        ApplyCamera();
     }
 
     private static JsonObject ReadSnapshotState(BattleSnapshot snapshot) =>

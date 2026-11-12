@@ -195,6 +195,14 @@ public partial class BattleScreen
                 _camera.Reveal(point, 32 * _camera.Zoom / 2);
             ApplyCamera();
         }
+        if (result.Request is null && _tactical?.Selection is
+            { Kind: TacticalSelectionKind.Target, Destination: { } source, PreviewTarget: { } target })
+        {
+            // Explicit target selection owns this preview; a reframe must not repick the old screen pixel.
+            _pointerMapPosition = null;
+            _pointerBoundaryGeneration++;
+            RevealPlayerAction(CellCenter(new(source.X, source.Y)), CellCenter(new(target.Cell.X, target.Cell.Y)));
+        }
         if (result.Status == TacticalInputStatus.Ready && _snapshot?.State.GetProperty("phase").GetString() != "over")
             ShowFeedback("");
         if (result.Status is TacticalInputStatus.InvalidDestination or TacticalInputStatus.InvalidTarget)

@@ -51,6 +51,7 @@ public partial class CameraIntegrationChecks : Node
             await Layout();
             map = (Control)screen.FindChild("MapArea", true, false);
             world = map.GetNode<Node2D>("World");
+            await CheckPlayerAttackPreviewVisibility();
             await CheckPlayerAttackVisibility();
             await CheckStationaryAttackFocus();
             await CheckObjectiveLocations();
@@ -78,6 +79,53 @@ public partial class CameraIntegrationChecks : Node
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
+    }
+
+    private async Task CheckPlayerAttackPreviewVisibility()
+    {
+        var c11 = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+            .Single(value => value["id"]!.GetValue<string>() == "c01-11");
+        var oldSize = screen.Size;
+        screen.Size = new Vector2(1180, 812);
+        foreach (var obscured in new[] { true, false })
+        {
+            var session = new GrayFlagSession(new(engine, presentation, new JsonArray()), c11);
+            Bind(session, c11);
+            await Layout();
+            var state = session.Snapshot();
+            var actor = state["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["key"]?.GetValue<string>() == "campaign-tasha");
+            var target = state["units"]!.AsArray().OfType<JsonObject>().Single(unit => unit["key"]?.GetValue<string>() == "west-ghost");
+            var targetHit = TacticalHit.Unit(new(6, 10), target["id"]!.GetValue<int>());
+            screen.SelectHit(TacticalHit.Unit(new(4, 8), actor["id"]!.GetValue<int>()));
+            screen.SelectHit(TacticalHit.Ground(new(4, 10)));
+            var sourcePoint = screen.Board.Projection.CellCenter(new(4, 10));
+            var targetPoint = screen.Board.Projection.CellCenter(new(6, 10));
+            var midpoint = BoardField((sourcePoint + targetPoint) / 2);
+            var desired = obscured ? new Vector2(900, 105) : new Vector2(590, 360);
+            var pointer = new Vector2(500, 300);
+            GuiButton(MouseButton.Middle, true, pointer);
+            CapturedMove(pointer + desired - midpoint);
+            CapturedButton(MouseButton.Middle, false, pointer + desired - midpoint);
+            var origin = world.Position;
+            var zoom = world.Scale;
+            screen.SelectHit(targetHit);
+            Require(session.Revision == 0 && !screen.IsPresenting && screen.Selection is { Kind: TacticalSelectionKind.Target, PreviewTarget: not null },
+                "Choosing the visible lawful target must retain an uncommitted attack preview.");
+            GD.Print($"PREVIEW_REVEAL obscured={obscured} origin={origin} final={world.Position} destination={screen.Selection?.Destination} target={screen.Selection?.PreviewTarget}");
+            Require(obscured ? world.Position != origin : world.Position == origin,
+                "Player preview framing must reveal obstructed combat but preserve an already readable manual camera.");
+            Require(world.Scale == zoom, "Nearby player preview needs no zoom change.");
+            foreach (var point in new[] { sourcePoint, targetPoint })
+            {
+                var visible = BoardField(point);
+                Require(visible.X >= 96 && visible.X <= map.Size.X - 96
+                    && visible.Y >= 210 && visible.Y <= map.Size.Y - 214,
+                    "Player preview endpoints must leave room for actors below the objective paper and above command trays.");
+            }
+            Require(session.ActionLog.Count == 0 && session.Events.Count == 0,
+                "Revealing an attack preview cannot dispatch or create any combat facts.");
+        }
+        screen.Size = oldSize;
     }
 
     private async Task CheckPlayerAttackVisibility()
@@ -931,11 +979,11 @@ public partial class CameraIntegrationChecks : Node
             var feedback = (Label)screen.FindChild("BattleFeedback", true, false);
             var panel = (Control)screen.FindChild("FeedbackPanel", true, false);
             TacticalSceneInputChecks.Move(screen, session);
-            Require(session.Revision == 1 && screen.IsPresenting && panel.IsVisibleInTree(),
-                "A real accepted movement displays command feedback during presentation.");
+            Require(session.Revision == 1 && screen.IsPresenting && !panel.IsVisibleInTree(),
+                "A real accepted movement retains command feedback offscreen during presentation.");
             var message = feedback.Text;
             screen._Process(10);
-            Require(feedback.Text == message && panel.Visible, "Playback does not consume command feedback reading time.");
+            Require(feedback.Text == message && !panel.Visible, "Playback neither displays nor consumes command feedback reading time.");
             Settle();
             var committed = session.GetSnapshot().State.GetRawText();
             screen._Process(.5);

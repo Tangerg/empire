@@ -712,3 +712,13 @@ visual playback still settles the committed command and reveals its message,
 whereas rebinding clears the old acknowledgement. Event-specific descriptions
 continue to use their ordered presenter/journal timing, independently of this
 command-level panel. No receipt, combat result or clip timing changes.
+
+### Player target-preview visibility
+
+An uncommitted target preview uses the same player-action envelope as committed
+playback: the source destination and selected target retain 64 world pixels for
+actor silhouettes and 60 screen pixels of HUD clearance. Only obscured previews
+pan; already readable manual framing and zoom stay unchanged. This applies after
+an explicit tactical selection result, not passive pointer motion, and never
+issues the command. The existing forecast remains the confirmation boundary.
+Computer-action focus policy is unchanged.
