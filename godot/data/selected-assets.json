@@ -479,6 +479,44 @@
           "span": 180
         }
       ]
+    },
+    "torren.walk": {
+      "unit": "cells",
+      "appearanceId": "torren-walk-v1",
+      "frames": [
+        {
+          "frame": "walk-01",
+          "span": 0.25
+        },
+        {
+          "frame": "walk-02",
+          "span": 0.25
+        },
+        {
+          "frame": "walk-03",
+          "span": 0.25
+        },
+        {
+          "frame": "walk-04",
+          "span": 0.25
+        },
+        {
+          "frame": "walk-05",
+          "span": 0.25
+        },
+        {
+          "frame": "walk-06",
+          "span": 0.25
+        },
+        {
+          "frame": "walk-07",
+          "span": 0.25
+        },
+        {
+          "frame": "walk-08",
+          "span": 0.25
+        }
+      ]
     }
   },
   "assets": [
@@ -4626,6 +4664,114 @@
         ]
       ],
       "textureFilter": "nearest"
+    },
+    {
+      "id": "torren-walk-v1",
+      "topicId": "C01-UNIT-SWORDSMAN",
+      "png": "painted-actions-v1/torren-walk-v1.png",
+      "pixelDensity": 1,
+      "frames": 8,
+      "frameOrder": [
+        "walk-01",
+        "walk-02",
+        "walk-03",
+        "walk-04",
+        "walk-05",
+        "walk-06",
+        "walk-07",
+        "walk-08"
+      ],
+      "physicalWidth": 2389,
+      "physicalHeight": 406,
+      "resourcePath": "res://assets/painted-actions-v1/torren-walk-v1.png",
+      "sha256": "3aa2c99413078558ede4c9ec36c9f77ba9b9ecdcfb2cab9c345b9842bfda093b",
+      "presentationScale": 0.1,
+      "frameRegions": [
+        [
+          0,
+          0,
+          300,
+          392
+        ],
+        [
+          300,
+          0,
+          293,
+          398
+        ],
+        [
+          593,
+          0,
+          282,
+          390
+        ],
+        [
+          875,
+          0,
+          309,
+          386
+        ],
+        [
+          1184,
+          0,
+          310,
+          406
+        ],
+        [
+          1494,
+          0,
+          297,
+          401
+        ],
+        [
+          1791,
+          0,
+          298,
+          401
+        ],
+        [
+          2089,
+          0,
+          300,
+          401
+        ]
+      ],
+      "frameAnchors": [
+        [
+          154,
+          362
+        ],
+        [
+          153,
+          366
+        ],
+        [
+          141,
+          367
+        ],
+        [
+          168,
+          366
+        ],
+        [
+          164,
+          366
+        ],
+        [
+          151,
+          363
+        ],
+        [
+          151,
+          368
+        ],
+        [
+          154,
+          370
+        ]
+      ],
+      "qualityTier": "painted-walk-v1-reviewed",
+      "textureFilter": "linear"
     }
   ]
 }

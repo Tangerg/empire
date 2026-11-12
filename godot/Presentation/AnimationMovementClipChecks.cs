@@ -41,13 +41,15 @@ public partial class AnimationChecks
         foreach (var (type, key) in shipped.Units.Keys.Select(type => (type, (string?)null))
             .Concat(shipped.Actors.Select(pair => (pair.Value.ExpectedUnitType, (string?)pair.Key))))
         {
+            if (key == "campaign-torren")
+                continue;
             var clip = assets.ResolveUnitClip(type, "move", ActorClipUnit.Cells, key);
             var selected = assets.ResolveUnit(type, key);
             Require(clip.Unit == ActorClipUnit.Cells && clip.Asset == selected && clip.Length == 2
                 && clip.FrameAt(0) == AssetCatalog.FrameIndex(selected, "walk-a")
                 && clip.FrameAt(.999) == AssetCatalog.FrameIndex(selected, "walk-a")
                 && clip.FrameAt(1) == AssetCatalog.FrameIndex(selected, "walk-b"),
-                "Every shipped unit and named actor explicitly retains its two existing one-cell support poses.");
+                "Every other shipped unit and named actor retains its two existing one-cell support poses.");
         }
         var (manifest, bindings) = MovementClipFixture();
         var catalog = new AssetCatalog(manifest, bindings);
@@ -73,7 +75,10 @@ public partial class AnimationChecks
             "A movement clip cannot be sampled as a timed action.");
         Throws(() => catalog.ResolveUnitClip("c01.swordsman", "attack", ActorClipUnit.Cells),
             "A timed action cannot be sampled as movement distance.");
-        Require(catalog.ResolveUnitClip("c01.swordsman", "move", ActorClipUnit.Cells, "campaign-torren").Length == 2,
+        var named = catalog.ResolveUnitClip("c01.swordsman", "move", ActorClipUnit.Cells, "campaign-torren");
+        Require(bindings.Actors["campaign-torren"].UnitArt.ActionClips["move"] == "torren.walk"
+            && named.Asset.Identity == "torren-walk-v1" && named.Length == 2
+            && named.FrameIndices.SequenceEqual(Enumerable.Range(0, 8)),
             "A named actor owns its movement binding rather than borrowing the generic alternate clip.");
         bindings.Actors["campaign-torren"].UnitArt.ActionClips.Remove("move");
         var missingNamed = new AssetCatalog(manifest, bindings);
@@ -105,6 +110,7 @@ public partial class AnimationChecks
     private async Task CheckMovementClipPlayback()
     {
         CheckMovementClipDefinitions();
+        await CheckTorrenMovementPlayback();
         var (manifest, bindings) = MovementClipFixture();
         var catalog = new AssetCatalog(manifest, bindings);
         var board = NewActorClipBoard(catalog);
@@ -132,6 +138,81 @@ public partial class AnimationChecks
         finally { RemoveChild(board); board.Free(); }
         await CheckMovementClipDepth();
         await CheckMovementClipLegalReceipt();
+    }
+
+    private async Task CheckTorrenMovementPlayback()
+    {
+        var bindings = PresentationJson.Load<ArtBindings>("res://data/art-bindings.json");
+        var clip = assets.ResolveUnitClip("c01.swordsman", "move", ActorClipUnit.Cells, "campaign-torren");
+        var names = Enumerable.Range(1, 8).Select(index => $"walk-{index:00}").ToArray();
+        Require(bindings.Actors["campaign-torren"].UnitArt.ActionClips["move"] == "torren.walk"
+            && clip.Asset.Identity == "torren-walk-v1" && clip.Unit == ActorClipUnit.Cells
+            && clip.Asset.FrameOrder.SequenceEqual(names) && clip.FrameIndices.SequenceEqual(Enumerable.Range(0, 8))
+            && clip.Length == 2 && clip.ReleaseMs is null && clip.Death is null,
+            "Torren alone selects eight ordered production walking poses over two cells, without a timed action policy.");
+        var pictures = new HashSet<string>();
+        for (var index = 0; index < 8; index++)
+        {
+            Require(clip.FrameAt(index * .25) == index && clip.FrameAt((index + 1) * .25 - .0001) == index,
+                "Every production walking pose owns its exact half-open quarter-cell interval.");
+            using var image = assets.CreateFrameTexture(clip.Asset, index).GetImage();
+            var used = image.GetUsedRect();
+            Require(used.HasArea() && used.Position.X >= 4 && used.Position.Y >= 4
+                && used.End.X <= image.GetWidth() - 4 && used.End.Y <= image.GetHeight() - 4,
+                "Each production walking picture retains its complete padded silhouette.");
+            pictures.Add(Convert.ToBase64String(image.GetData()));
+        }
+        Require(pictures.Count == 8 && clip.FrameAt(2) == 7 && clip.FrameAt(1000) == 7,
+            "Eight distinct walking pictures clamp in the finite sampler; only travelled-distance playback owns looping.");
+
+        // Real production artwork on a detached presentation receipt, not a lawful campaign order.
+        var board = NewActorClipBoard(assets);
+        try
+        {
+            foreach (var direction in new[] { -1, 1 })
+            foreach (var computer in new[] { false, true })
+            {
+                var before = IdleClipState();
+                var unit = before["units"]![0]!.AsObject();
+                unit["key"] = "campaign-torren";
+                unit["x"] = 12;
+                unit["y"] = 16;
+                unit["facing"] = direction < 0 ? "west" : "east";
+                var id = Int(unit, "id");
+                var path = new JsonArray(Enumerable.Range(0, 5).Select(index => (JsonNode)At(12 + direction * index, 16)).ToArray());
+                Require(path.OfType<JsonObject>().All(point => level["terrain"]![Int(point, "y")]!.GetValue<string>()[Int(point, "x")] != '_'),
+                    "Torren's detached gait witness stays on rendered terrain.");
+                var after = (JsonObject)before.DeepClone();
+                after["units"]![0]!["x"] = 12 + direction * 4;
+                var action = MovementAction(id, path);
+                var transition = Transition(before, after, action,
+                    [new JsonObject { ["type"] = "move", ["unit"] = id, ["path"] = path.DeepClone() }]) with { IsComputerAction = computer };
+                var task = board.PresentTransitionAsync(viewportFeedback, transition);
+                var actor = Actor(board, id);
+                var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
+                var pace = computer ? .110 : .160;
+                var elapsed = 0.0;
+                for (var sample = 0; sample < 16; sample++)
+                {
+                    var distance = sample * .25 + .125;
+                    await Tick(board, (distance - elapsed) * pace);
+                    elapsed = distance;
+                    CheckClipSprite(sprite, clip.Asset, sample % 8, direction);
+                    CheckClipShadow(sprite);
+                    var start = board.Projection.LogicalCellContact(new(12, 16));
+                    var end = board.Projection.LogicalCellContact(new(12 + direction * 4, 16));
+                    var contact = start.Lerp(end, (float)(distance / 4));
+                    Require(actor.GetMeta("logical_contact").AsVector2().IsEqualApprox(contact)
+                        && actor.Position.IsEqualApprox(board.Projection.Project(contact)) && actor.Scale == Vector2.One
+                        && !task.IsCompleted,
+                        "Both paces and mirrors display two complete authored cycles without changing root contact or movement duration.");
+                }
+                await Tick(board, (4 - elapsed) * pace + .001);
+                Require(await task && !board.IsPresenting,
+                    "The production gait finishes at the unchanged four-cell duration.");
+            }
+        }
+        finally { RemoveChild(board); board.Free(); }
     }
 
     private static JsonObject MovementAction(int id, JsonArray path) => new()
