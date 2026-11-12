@@ -114,11 +114,20 @@ public partial class AnimationChecks
         var heal = board.GetNode<Node2D>("BattleEffects/Heal");
         var number = heal.GetNode<Label>("Number");
         var numberOrigin = number.Position;
+        Require(heal.GetNodeOrNull<Node2D>("Aura") is not null,
+            "A visible healing recipient receives a distinct upward recovery aura on the existing impact clock.");
         Require(number.GetThemeFontSize("font_size") == 18 && number.Position.Y < -40 && number.Modulate.A == 1,
             "Healing numbers share the above-silhouette size and readable initial hold without changing signed amounts.");
         Require(heal.Position == Actor(board, target).Position && number.Text == "+20" && Frame(Actor(board, source)) == 2,
             "Healing releases one unchanged recipient effect while the selected source clip recovers.");
+        var aura = heal.GetNode<Node2D>("Aura");
+        Require(aura.Modulate.A == 0 && aura.Position == Vector2.Zero && aura.Scale == Vector2.One,
+            "Healing aura begins without a flash and shares the recipient's original contact.");
         await Tick(board, .160);
+        Require(aura.Position.IsEqualApprox(new Vector2(0, -8 * .32f))
+            && aura.Scale.IsEqualApprox(Vector2.One * (1 + .4f * .32f))
+            && Mathf.IsEqualApprox(aura.Modulate.A, Mathf.Sin(Mathf.Pi * .32f)),
+            "Recovery aura rises, expands and fades smoothly from exact time since release.");
         Require(Frame(Actor(board, source)) == 0 && ReferenceEquals(heal, board.GetNode<Node2D>("BattleEffects/Heal"))
             && !task.IsCompleted, "Ability clip ends independently at 192 ms without restarting its healing effect.");
         await Drain(board, task);
@@ -127,6 +136,10 @@ public partial class AnimationChecks
         heal = board.GetNode<Node2D>("BattleEffects/Heal");
         number = heal.GetNode<Label>("Number");
         const double progress = 268.0 / 500;
+        aura = heal.GetNode<Node2D>("Aura");
+        Require(aura.Position.IsEqualApprox(new Vector2(0, (float)(-8 * progress)))
+            && Mathf.IsEqualApprox(aura.Modulate.A, Mathf.Sin(Mathf.Pi * (float)progress)),
+            "Coarse release overshoot samples the same aura rather than restarting its own effect timer.");
         Require(Frame(Actor(board, source)) == 0
             && number.Position.IsEqualApprox(numberOrigin + new Vector2(0, (float)(-16 * progress)))
             && Mathf.IsEqualApprox(number.Modulate.A, (float)(1 - Math.Pow((progress - .5) * 2, 2))),

@@ -26,6 +26,12 @@ public partial class BoardView
                 sprite.SetMeta("frame", 0);
                 effect.AddChild(sprite);
             }
+            HealingAura? aura = null;
+            if (healing)
+            {
+                aura = new HealingAura { Name = "Aura" };
+                effect.AddChild(aura);
+            }
             var number = NumberLabel((healing ? "+" : "-") + amount.ToString(CultureInfo.InvariantCulture),
                 healing ? new Color("#eaffee") : Colors.White, healing ? new Color("#1c5c33") : new Color("#7a1208"), healing ? -34 : -36, size: 18);
             var origin = number.Position;
@@ -49,6 +55,7 @@ public partial class BoardView
             {
                 if (sprite is not null)
                     SetFrame(sprite, art!, StripFrame(art!, t * duration));
+                aura?.Sample(t);
                 number.Position = origin + new Vector2(0, (float)(-(healing ? 16 : 14) * t));
                 var fade = Math.Max(0, (t - .5) * 2);
                 number.Modulate = new Color(1, 1, 1, (float)(1 - fade * fade));

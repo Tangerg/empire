@@ -722,3 +722,23 @@ pan; already readable manual framing and zoom stay unchanged. This applies after
 an explicit tactical selection result, not passive pointer motion, and never
 issues the command. The existing forecast remains the confirmation boundary.
 Computer-action focus policy is unchanged.
+
+### Healing-recipient recovery cue
+
+Healing and regeneration add a compact green recovery aura beneath the signed
+number: two shallow rings and five upward glints, without a full-screen flash.
+Its scale, rise and smooth opacity sample the same normalized 500 ms impact
+clock as the existing effect strip. It adds no timer, receipt, caster action,
+wait or gameplay mutation. Existing visibility, cancellation and reduced-motion
+ownership apply to the complete recipient effect, including this aura.
+
+`res://Scenes/HealingWitnessChecks.tscn` is an interactive visual-QA entry point.
+It reconstructs the existing C12 healing witness through its recorded legal
+orders and checks both initial and checkpoint state hashes before mounting the
+normal BattleScreen. Its permanent on-screen label distinguishes this controlled
+checkpoint from a continuously played campaign. Run it through NativeCapture's
+`--capture-scene=res://Scenes/HealingWitnessChecks.tscn`; then select Mirelle at
+(7,4), choose heal, focus Tasha at (8,4), and confirm through the native UI.
+No command is dispatched automatically after the checkpoint. The scene is
+inspection-only tooling excluded from release compilation by the existing
+`*Checks.cs` rule, not a new campaign entry or a claim of complete C12 ground art.
