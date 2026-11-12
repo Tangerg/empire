@@ -742,3 +742,5 @@ checkpoint from a continuously played campaign. Run it through NativeCapture's
 No command is dispatched automatically after the checkpoint. The scene is
 inspection-only tooling excluded from release compilation by the existing
 `*Checks.cs` rule, not a new campaign entry or a claim of complete C12 ground art.
+
+The healing witness must use `BoardSceneRendering.Load` with the registered initial map, then configure ground and dynamic state just like the campaign composition root. It rejects missing ground or rendering issues before opening the checkpoint. The former “surface pending” screenshot was caused by missing witness setup, not evidence of a C12 campaign ground failure. Source-art review readiness remains a separate diagnostic.

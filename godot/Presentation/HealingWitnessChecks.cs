@@ -31,13 +31,19 @@ public partial class HealingWitnessChecks : Control
             var text = GodotTextCatalog.LoadSimplifiedChinese();
             var presentation = BattleTextChecks.Session(engine, text);
             var session = GrayFlagSession.FromSave(new(engine, presentation, new JsonArray()), engine.SaveBattle(battle.Snapshot()));
+            var scene = AuthoredScene.Load("res://data/scenes/c01-12.json");
+            var rendering = BoardSceneRendering.Load(scene, level, engine.CreateState(level)["map"]!.AsObject());
             var screen = new BattleScreen();
             AddChild(screen);
             screen.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
             screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), session,
-                new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)),
-                level, AuthoredScene.Load("res://data/scenes/c01-12.json"),
+                new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)),
+                level, scene,
                 initialLogMessage: "C12 治疗验收：已恢复合法回放检查点");
+            screen.ConfigureGround(rendering.Ground);
+            screen.ConfigureDynamicState();
+            if (!screen.Board.SurfaceReady || screen.Board.RenderingIssueCount != 0)
+                throw new InvalidOperationException("Healing witness requires the production ground renderer without rendering issues.");
             var marker = new Label
             {
                 Text = "C12 治疗验收 · 合法回放检查点 · 非连续实玩战绩",
