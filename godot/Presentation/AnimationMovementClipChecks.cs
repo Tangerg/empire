@@ -170,47 +170,50 @@ public partial class AnimationChecks
         try
         {
             foreach (var direction in new[] { -1, 1 })
-            foreach (var computer in new[] { false, true })
-            {
-                var before = IdleClipState();
-                var unit = before["units"]![0]!.AsObject();
-                unit["key"] = "campaign-torren";
-                unit["x"] = 12;
-                unit["y"] = 16;
-                unit["facing"] = direction < 0 ? "west" : "east";
-                var id = Int(unit, "id");
-                var path = new JsonArray(Enumerable.Range(0, 5).Select(index => (JsonNode)At(12 + direction * index, 16)).ToArray());
-                Require(path.OfType<JsonObject>().All(point => level["terrain"]![Int(point, "y")]!.GetValue<string>()[Int(point, "x")] != '_'),
-                    "Torren's detached gait witness stays on rendered terrain.");
-                var after = (JsonObject)before.DeepClone();
-                after["units"]![0]!["x"] = 12 + direction * 4;
-                var action = MovementAction(id, path);
-                var transition = Transition(before, after, action,
-                    [new JsonObject { ["type"] = "move", ["unit"] = id, ["path"] = path.DeepClone() }]) with { IsComputerAction = computer };
-                var task = board.PresentTransitionAsync(viewportFeedback, transition);
-                var actor = Actor(board, id);
-                var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
-                var pace = computer ? .110 : .160;
-                var elapsed = 0.0;
-                for (var sample = 0; sample < 16; sample++)
+                foreach (var computer in new[] { false, true })
                 {
-                    var distance = sample * .25 + .125;
-                    await Tick(board, (distance - elapsed) * pace);
-                    elapsed = distance;
-                    CheckClipSprite(sprite, clip.Asset, sample % 8, direction);
-                    CheckClipShadow(sprite);
-                    var start = board.Projection.LogicalCellContact(new(12, 16));
-                    var end = board.Projection.LogicalCellContact(new(12 + direction * 4, 16));
-                    var contact = start.Lerp(end, (float)(distance / 4));
-                    Require(actor.GetMeta("logical_contact").AsVector2().IsEqualApprox(contact)
-                        && actor.Position.IsEqualApprox(board.Projection.Project(contact)) && actor.Scale == Vector2.One
-                        && !task.IsCompleted,
-                        "Both paces and mirrors display two complete authored cycles without changing root contact or movement duration.");
+                    var before = IdleClipState();
+                    var unit = before["units"]![0]!.AsObject();
+                    unit["key"] = "campaign-torren";
+                    unit["x"] = 12;
+                    unit["y"] = 16;
+                    unit["facing"] = direction < 0 ? "west" : "east";
+                    var id = Int(unit, "id");
+                    var path = new JsonArray(Enumerable.Range(0, 5).Select(index => (JsonNode)At(12 + direction * index, 16)).ToArray());
+                    Require(path.OfType<JsonObject>().All(point => level["terrain"]![Int(point, "y")]!.GetValue<string>()[Int(point, "x")] != '_'),
+                        "Torren's detached gait witness stays on rendered terrain.");
+                    var after = (JsonObject)before.DeepClone();
+                    after["units"]![0]!["x"] = 12 + direction * 4;
+                    var action = MovementAction(id, path);
+                    var transition = Transition(before, after, action,
+                        [new JsonObject { ["type"] = "move", ["unit"] = id, ["path"] = path.DeepClone() }]) with
+                    {
+                        IsComputerAction = computer
+                    };
+                    var task = board.PresentTransitionAsync(viewportFeedback, transition);
+                    var actor = Actor(board, id);
+                    var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
+                    var pace = computer ? .110 : .160;
+                    var elapsed = 0.0;
+                    for (var sample = 0; sample < 16; sample++)
+                    {
+                        var distance = sample * .25 + .125;
+                        await Tick(board, (distance - elapsed) * pace);
+                        elapsed = distance;
+                        CheckClipSprite(sprite, clip.Asset, sample % 8, direction);
+                        CheckClipShadow(sprite);
+                        var start = board.Projection.LogicalCellContact(new(12, 16));
+                        var end = board.Projection.LogicalCellContact(new(12 + direction * 4, 16));
+                        var contact = start.Lerp(end, (float)(distance / 4));
+                        Require(actor.GetMeta("logical_contact").AsVector2().IsEqualApprox(contact)
+                            && actor.Position.IsEqualApprox(board.Projection.Project(contact)) && actor.Scale == Vector2.One
+                            && !task.IsCompleted,
+                            "Both paces and mirrors display two complete authored cycles without changing root contact or movement duration.");
+                    }
+                    await Tick(board, (4 - elapsed) * pace + .001);
+                    Require(await task && !board.IsPresenting,
+                        "The production gait finishes at the unchanged four-cell duration.");
                 }
-                await Tick(board, (4 - elapsed) * pace + .001);
-                Require(await task && !board.IsPresenting,
-                    "The production gait finishes at the unchanged four-cell duration.");
-            }
         }
         finally { RemoveChild(board); board.Free(); }
     }

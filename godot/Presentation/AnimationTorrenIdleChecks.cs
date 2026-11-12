@@ -86,13 +86,13 @@ public partial class AnimationChecks
                     && board.GetNodeOrNull("BattleEffects") is null,
                     "Repeated, hidden and reduced-motion breathing never gates input, publishes events or mutates battle data.");
             }
-            await CheckTorrenIdleHandoffs(board, state, id, clip, original);
+            await CheckTorrenIdleHandoffs(board, state, id, clip);
         }
         finally { board.EventPresented -= Presented; RemoveChild(board); board.Free(); }
         GD.Print("Torren idle: four authored pictures, six intervals, 1800 ms loop, mirrors/contact and finite handoffs passed.");
     }
 
-    private async Task CheckTorrenIdleHandoffs(BoardView board, JsonObject state, int id, ActorClip idle, RuntimeAsset original)
+    private async Task CheckTorrenIdleHandoffs(BoardView board, JsonObject state, int id, ActorClip idle)
     {
         var after = (JsonObject)state.DeepClone();
         after["units"]![0]!["x"] = 9;
@@ -109,7 +109,10 @@ public partial class AnimationChecks
         await Tick(board, .450);
         Require(!movement.IsCompleted, "Movement retains pose ownership beyond the first 440 ms idle boundary.");
         var sprite = Actor(board, id).GetNode<Sprite2D>("AuthoredSprite");
-        CheckClipSprite(sprite, original, 1, -1);
+        var walk = assets.ResolveUnitClip("c01.swordsman", "move", ActorClipUnit.Cells, "campaign-torren");
+        // 450 ms at 160 ms/cell is 2.8125 cells: the second cycle
+        // owns walk-04, not the retired two-pose sheet or a breathing pose.
+        CheckClipSprite(sprite, walk.Asset, 3, -1);
         await Drain(board, movement);
         sprite = Actor(board, id).GetNode<Sprite2D>("AuthoredSprite");
         CheckClipSprite(sprite, idle.Asset, 0, sprite.Scale.X < 0 ? -1 : 1);
