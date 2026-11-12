@@ -11,6 +11,6 @@
     <ProjectReference Include="Empire.Core/Empire.Core.csproj" />
   </ItemGroup>
   <ItemGroup Condition="'$(Configuration)' == 'ExportRelease'">
-    <Compile Remove="Presentation/**/*Checks.cs;Presentation/NativeCapture.cs;Presentation/TerrainPreview.cs" />
+    <Compile Remove="Presentation/**/*Checks.cs;Presentation/**/*Checks.*.cs;Presentation/NativeCapture.cs;Presentation/TerrainPreview.cs" />
   </ItemGroup>
 </Project>

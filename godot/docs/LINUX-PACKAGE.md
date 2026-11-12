@@ -44,7 +44,9 @@ limit and a 15-second grace. A timeout is a failed check, not a success.
 
 The production preset includes runtime JSON and imported art, but no source-test
 scenes, oracle fixtures, source text or development documentation. ExportRelease
-also excludes the source-test classes from compilation. Existing development
+also excludes both `*Checks.cs` source-test classes and their `*Checks.*.cs`
+partial companions from compilation. Excluding only the primary file leaves
+partial test bodies without their base class and breaks the release build. Existing development
 tests are unchanged and still run in Debug. One dedicated `ReleaseDiagnostics`
 scene checks the actual shipped application using only real runtime content,
 authored story and art; it refuses any package containing a `tests` directory.
