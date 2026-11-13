@@ -1,12 +1,17 @@
 {
   "schemaVersion": "environment-scene-v1.1",
   "levelId": "c01-09",
-  "runtimeReady": false,
+  "runtimeReady": true,
   "mapSize": [
     21,
     15
   ],
   "placements": [],
   "framePlacements": [],
-  "zones": []
+  "zones": [],
+  "assembledGroundPath": "res://data/scenes/c01-09-candidate-ground.json",
+  "openingFocus": [
+    7,
+    7
+  ]
 }

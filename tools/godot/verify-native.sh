@@ -43,7 +43,7 @@ run_scene() {
     "$GODOT_NET" --headless --path godot "res://Scenes/$scene.tscn" "$@"
 }
 export EMPIRE_NARRATIVE_EXPECTATIONS="$PWD/godot/tests/native/narrative.json"
-for scene in NarrativeChecks OathPadChecks DynamicStateChecks PaintedSurfaceChecks SceneSurfaceChecks AssembledGroundChecks PaintedSurfaceBroadPhaseChecks BlackFlagCampChecks ReedVillageChecks WhiteRiverChecks LuojiaChecks GrainRoadChecks LedgerHintChecks PresentationChecks AnimationChecks CameraChecks CameraIntegrationChecks TacticalHudChecks IdleGuidanceChecks DossierFocusChecks ReadyUnitNavigationChecks BattleScreenChecks RegenerationFeedbackChecks ScenarioSignalFeedbackChecks MoraleFeedbackChecks ReinforcementFeedbackChecks BattleResultFlowChecks CampaignNavigationChecks StagingOpeningChecks CampaignUiFlowChecks LightingLifetimeChecks; do
+for scene in NarrativeChecks OathPadChecks DynamicStateChecks PaintedSurfaceChecks SceneSurfaceChecks AssembledGroundChecks PaintedSurfaceBroadPhaseChecks BlackFlagCampChecks ReedVillageChecks WhiteRiverChecks LuojiaChecks C09CandidateChecks GrainRoadChecks LedgerHintChecks PresentationChecks AnimationChecks CameraChecks CameraIntegrationChecks TacticalHudChecks IdleGuidanceChecks DossierFocusChecks ReadyUnitNavigationChecks BattleScreenChecks RegenerationFeedbackChecks ScenarioSignalFeedbackChecks MoraleFeedbackChecks ReinforcementFeedbackChecks BattleResultFlowChecks CampaignNavigationChecks StagingOpeningChecks CampaignUiFlowChecks LightingLifetimeChecks; do
   run_scene "$scene"
 done
 run_scene LightingChecks -- "--lighting-oracle=$PWD/godot/tests/oracle/lighting.json"
