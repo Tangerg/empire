@@ -4643,7 +4643,7 @@
       "textureFilter": "linear"
     },
     {
-      "assetId": "C01-MOTHER-ROOT-FOREST-ATLAS",
+      "assetId": "C15-PAINTED-MOTHER-ROOT",
       "topicId": "C01-STRUCT-MOTHER-ROOT",
       "label": "银林母根",
       "category": "interactive-structure",
@@ -4658,47 +4658,47 @@
         1
       ],
       "preserveAuthoredPalette": true,
-      "physicalWidth": 768,
-      "physicalHeight": 768,
+      "physicalWidth": 2172,
+      "physicalHeight": 724,
       "pixelDensity": 1,
-      "resourcePath": "res://assets/environment-builder-v1/runtime/atlas/forest-temperate@2x.png",
-      "sha256": "f42c7ed4611882cb61128b5b5a5ee6e13d02d8b7f9b19e3e440bb5942b6c4992",
-      "presentationScale": 0.5,
+      "resourcePath": "res://assets/native/c15-silverwood-v1/mother-root.png",
+      "sha256": "d79e7444e84991ef8a03f45586e360e22b6308891e069fc46e991d8e945599e4",
+      "presentationScale": 0.08,
       "frameRegions": [
         [
           0,
           0,
-          192,
-          192
+          724,
+          724
         ],
         [
-          384,
-          384,
-          192,
-          192
+          724,
+          0,
+          724,
+          724
         ],
         [
-          192,
-          384,
-          192,
-          192
+          1448,
+          0,
+          724,
+          724
         ]
       ],
       "frameAnchors": [
         [
-          97.78309409888357,
-          167.7352472089314
+          362,
+          582
         ],
         [
-          95.725677830941,
-          146.47527910685807
+          362,
+          582
         ],
         [
-          96,
-          130.70175438596493
+          362,
+          582
         ]
       ],
-      "textureFilter": "nearest"
+      "textureFilter": "linear"
     },
     {
       "id": "torren-walk-v1",

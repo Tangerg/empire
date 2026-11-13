@@ -171,32 +171,29 @@ public partial class PresentationChecks : Node
 
     private static void CheckMotherRootArt(AssetCatalog assets)
     {
-        var environment = EnvironmentCatalog.Load();
-        foreach (var (state, cellId, frame) in new[]
+        foreach (var (state, expectedIndex, frame) in new[]
         {
-            (StructureVisualState.Normal, "oak-ancient", "normal"),
-            (StructureVisualState.Captured, "oak-ancient", "normal"),
-            (StructureVisualState.Damaged, "stump-hollow", "damaged"),
-            (StructureVisualState.Disabled, "stump-hollow", "damaged"),
-            (StructureVisualState.Destroyed, "stump-low", "destroyed")
+            (StructureVisualState.Normal, 0, "normal"),
+            (StructureVisualState.Captured, 0, "normal"),
+            (StructureVisualState.Damaged, 1, "damaged"),
+            (StructureVisualState.Disabled, 1, "damaged"),
+            (StructureVisualState.Destroyed, 2, "destroyed")
         })
         {
             var art = assets.ResolveStructure("c01.mother-root", state)
                 ?? throw new InvalidOperationException("The protected mother root requires authored lifecycle art.");
-            var source = environment.ResolveCell(cellId);
             var index = AssetCatalog.FrameIndex(art.Asset, art.Frame);
-            var expectedRegion = new Rect2(source.Index % source.Columns * source.CellWidth * source.PixelDensity,
-                source.Index / source.Columns * source.CellHeight * source.PixelDensity,
-                source.CellWidth * source.PixelDensity, source.CellHeight * source.PixelDensity);
+            var expectedRegion = new Rect2(expectedIndex * 724, 0, 724, 724);
             Require(art.Frame == frame && art.Depth == BoardDepthLayer.Standing
-                && art.Asset.ResourcePath == source.ResourcePath && art.Asset.RegionAt(index) == expectedRegion
-                && art.Asset.AnchorAt(index).IsEqualApprox(source.Anchor * source.PixelDensity),
-                "Mother-root lifecycle uses the existing forest atlas pixels and exact authored contact, not a gray fallback or copied bitmap.");
+                && art.Asset.ResourcePath == "res://assets/native/c15-silverwood-v1/mother-root.png"
+                && index == expectedIndex && art.Asset.RegionAt(index) == expectedRegion
+                && art.Asset.AnchorAt(index).IsEqualApprox(new Vector2(362, 582)),
+                "Mother-root lifecycle uses its three hand-painted states and shared authored ground contact, not a generic tree or gray fallback.");
             var sprite = assets.CreateSprite(art.Asset, art.Frame);
             try
             {
                 Require(sprite.Texture is AtlasTexture texture && texture.Region == expectedRegion
-                    && sprite.Scale == new Vector2(.5f, .5f)
+                    && sprite.Scale.IsEqualApprox(new Vector2(.08f, .08f))
                     && SpriteGroundContact.Offset(sprite).IsEqualApprox(Vector2.Zero),
                     "Mother-root atlas regions preserve logical scale and ground registration across lifecycle states.");
             }

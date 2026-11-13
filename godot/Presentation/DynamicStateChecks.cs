@@ -168,12 +168,27 @@ public partial class DynamicStateChecks : Node
             }
             if (id == "c01-15")
             {
-                // The shared dynamic fixture is intentionally groundless; this diagnostic belongs to the real ground renderer.
                 board.ConfigureGround(rendering.Ground);
                 board.RenderState(state);
-                Require(board.Diagnostics.Contains("No authored ground outline: canonical rectangular field is rendered; generic perimeter backdrop remains unmigrated.")
+                const string fallbackDiagnostic = "No authored ground outline: canonical rectangular field is rendered; generic perimeter backdrop remains unmigrated.";
+                Require(scene.AssembledGroundPath is not null && !board.Diagnostics.Contains(fallbackDiagnostic)
                     && board.RenderingIssueCount == 0,
-                    "Intentional rectangular ground fallback remains diagnostic evidence, not a missing-art notice.");
+                    "C15 must use its registered hand-painted ground without rectangular fallback.");
+                // Fallback coverage must not depend on a shipped level remaining visually unmigrated.
+                var fallbackScene = new AuthoredScene { LevelId = id, MapSize = [24, 16], RuntimeReady = false };
+                var fallbackRendering = BoardSceneRendering.Load(fallbackScene, level, state["map"]!.AsObject());
+                var fallbackBoard = new BoardView();
+                AddChild(fallbackBoard);
+                try
+                {
+                    fallbackBoard.Configure(new(assets, environment, engine.Grids.Get("square4"), engine.Catalog, fallbackRendering.Plane), level, fallbackScene);
+                    fallbackBoard.ConfigureDynamicState();
+                    fallbackBoard.ConfigureGround(fallbackRendering.Ground);
+                    fallbackBoard.RenderState(state);
+                    Require(fallbackBoard.Diagnostics.Contains(fallbackDiagnostic) && fallbackBoard.RenderingIssueCount == 0,
+                        "Intentional rectangular ground fallback remains diagnostic evidence, not a missing-art notice: " + string.Join(" | ", fallbackBoard.Diagnostics));
+                }
+                finally { fallbackBoard.Free(); }
                 var mother = DynamicNodes(board).Single(node => node.HasMeta("structure_id"));
                 Require(!mother.GetMeta("rule_derived").AsBool() && mother.GetMeta("max_hp").AsDouble() == 500
                     && mother.GetChildren().OfType<Sprite2D>().Any(sprite => sprite.Texture is AtlasTexture)
