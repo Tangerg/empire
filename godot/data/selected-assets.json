@@ -2185,17 +2185,17 @@
       ]
     },
     {
-      "assetId": "C01-FFV1-STRUCT-SUNKEN-BELL-SLUICE",
+      "assetId": "C12-PAINTED-STRUCT-BELL-CONTROL",
       "topicId": "C01-STRUCT-SUNKEN-BELL-SLUICE",
       "label": "沉钟水闸",
       "category": "interactive-structure",
-      "png": "runtime-approved-v5/interactive-structure/struct-sunken-bell-sluice@2x.png",
-      "width": 384,
-      "height": 128,
+      "png": "native/c12-candidate-v1/bell-control.png",
+      "width": 2172,
+      "height": 724,
       "runtimeReady": true,
-      "qualityTier": "approved-chunky-v5-export-verified",
-      "frameWidth": 128,
-      "frameHeight": 128,
+      "qualityTier": "c12-handpainted-candidate",
+      "frameWidth": 724,
+      "frameHeight": 724,
       "frames": 3,
       "stateOrder": [
         "normal",
@@ -2203,22 +2203,25 @@
         "captured"
       ],
       "anchor": [
-        61.7025472473295,
-        112.22678718159409
+        350,
+        575
       ],
       "footprint": [
         2,
         2
       ],
-      "physicalWidth": 768,
-      "physicalHeight": 256,
-      "pixelDensity": 2,
-      "resourcePath": "res://assets/runtime-approved-v5/interactive-structure/struct-sunken-bell-sluice@2x.png",
-      "sha256": "fc511c10f580b297f4454aeb51b0f00902d8eb567abadba7ccc387411b0c1d93",
+      "physicalWidth": 2172,
+      "physicalHeight": 724,
+      "pixelDensity": 1,
+      "resourcePath": "res://assets/native/c12-candidate-v1/bell-control.png",
+      "sha256": "bc0741f142a5f724fe7aa06ada234153026d65ff285516ca828e283e08724221",
       "groundFront": [
-        61.7025472473295,
-        112.22678718159409
-      ]
+        350,
+        575
+      ],
+      "presentationScale": 0.08,
+      "preserveAuthoredPalette": true,
+      "textureFilter": "linear"
     },
     {
       "assetId": "C01-FFV1-STRUCT-WASTELAND-CHEVAUX",
