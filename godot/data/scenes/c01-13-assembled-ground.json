@@ -1,0 +1,655 @@
+{
+  "levelId": "c01-13",
+  "levelSourceSha256": "3e742fd904c6b1e44be5b0e1063780e7ef4de1378d9fd3f61aead34d7de23ea7",
+  "pixelSize": [
+    1536,
+    1024
+  ],
+  "worldScale": 1.0,
+  "originPixels": [
+    190,
+    220
+  ],
+  "cellXPixels": [
+    40,
+    0
+  ],
+  "cellYPixels": [
+    5,
+    30
+  ],
+  "resourcePath": "res://assets/native/c13-archive-v1/ground.png",
+  "objectCatalogPath": "res://data/scenes/c01-13-objects.json",
+  "objects": [
+    {
+      "id": "Site-1-1",
+      "assetId": "west-house-faithful",
+      "contact": [
+        1.5,
+        1.92
+      ],
+      "scale": 0.042,
+      "selectionCell": [
+        1,
+        1
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-24-1",
+      "assetId": "west-house-faithful",
+      "contact": [
+        24.5,
+        1.92
+      ],
+      "scale": 0.042,
+      "selectionCell": [
+        24,
+        1
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-1-3",
+      "assetId": "west-house-faithful",
+      "contact": [
+        1.5,
+        3.92
+      ],
+      "scale": 0.053,
+      "selectionCell": [
+        1,
+        3
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-4-3",
+      "assetId": "archive-hall",
+      "contact": [
+        4.5,
+        3.2
+      ],
+      "scale": 0.083,
+      "selectionCell": [
+        4,
+        3
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-9-3",
+      "assetId": "west-house-faithful",
+      "contact": [
+        9.5,
+        3.92
+      ],
+      "scale": 0.053,
+      "selectionCell": [
+        9,
+        3
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-16-3",
+      "assetId": "west-house-faithful",
+      "contact": [
+        16.5,
+        3.92
+      ],
+      "scale": 0.053,
+      "selectionCell": [
+        16,
+        3
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-20-3",
+      "assetId": "archive-hall",
+      "contact": [
+        20.5,
+        3.2
+      ],
+      "scale": 0.083,
+      "selectionCell": [
+        20,
+        3
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-22-3",
+      "assetId": "west-house-faithful",
+      "contact": [
+        22.5,
+        3.92
+      ],
+      "scale": 0.053,
+      "selectionCell": [
+        22,
+        3
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-5-8",
+      "assetId": "west-house-faithful",
+      "contact": [
+        5.5,
+        8.92
+      ],
+      "scale": 0.053,
+      "selectionCell": [
+        5,
+        8
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-20-8",
+      "assetId": "west-house-faithful",
+      "contact": [
+        20.5,
+        8.92
+      ],
+      "scale": 0.053,
+      "selectionCell": [
+        20,
+        8
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-1-12",
+      "assetId": "west-house-faithful",
+      "contact": [
+        1.5,
+        12.92
+      ],
+      "scale": 0.053,
+      "selectionCell": [
+        1,
+        12
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-4-12",
+      "assetId": "west-house-faithful",
+      "contact": [
+        4.5,
+        12.92
+      ],
+      "scale": 0.053,
+      "selectionCell": [
+        4,
+        12
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-9-12",
+      "assetId": "west-house-faithful",
+      "contact": [
+        9.5,
+        12.92
+      ],
+      "scale": 0.053,
+      "selectionCell": [
+        9,
+        12
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-16-12",
+      "assetId": "west-house-faithful",
+      "contact": [
+        16.5,
+        12.92
+      ],
+      "scale": 0.053,
+      "selectionCell": [
+        16,
+        12
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-20-12",
+      "assetId": "archive-hall",
+      "contact": [
+        20.5,
+        12.2
+      ],
+      "scale": 0.083,
+      "selectionCell": [
+        20,
+        12
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-22-12",
+      "assetId": "west-house-faithful",
+      "contact": [
+        22.5,
+        12.92
+      ],
+      "scale": 0.053,
+      "selectionCell": [
+        22,
+        12
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-1-14",
+      "assetId": "west-house-faithful",
+      "contact": [
+        1.5,
+        14.92
+      ],
+      "scale": 0.042,
+      "selectionCell": [
+        1,
+        14
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-24-14",
+      "assetId": "west-house-faithful",
+      "contact": [
+        24.5,
+        14.92
+      ],
+      "scale": 0.042,
+      "selectionCell": [
+        24,
+        14
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Wall-v-2-2",
+      "assetId": "archive-wall-vertical",
+      "contact": [
+        2.5,
+        5
+      ],
+      "scale": 0.06716417910447761,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-6-2",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        6.5,
+        2.7
+      ],
+      "scale": 0.029985007496251874,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-v-12-2",
+      "assetId": "archive-wall-vertical",
+      "contact": [
+        12.5,
+        6
+      ],
+      "scale": 0.08955223880597014,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-v-13-2",
+      "assetId": "archive-wall-vertical",
+      "contact": [
+        13.5,
+        6
+      ],
+      "scale": 0.08955223880597014,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-18-2",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        18.5,
+        2.7
+      ],
+      "scale": 0.029985007496251874,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-22-2",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        22.5,
+        2.7
+      ],
+      "scale": 0.029985007496251874,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-21-3",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        21.5,
+        3.7
+      ],
+      "scale": 0.029985007496251874,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-6-4",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        6.5,
+        4.7
+      ],
+      "scale": 0.029985007496251874,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-18-4",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        18.5,
+        4.7
+      ],
+      "scale": 0.029985007496251874,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-22-4",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        22.5,
+        4.7
+      ],
+      "scale": 0.029985007496251874,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-2-6",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        3.5,
+        6.7
+      ],
+      "scale": 0.08995502248875563,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-v-8-6",
+      "assetId": "archive-wall-vertical",
+      "contact": [
+        8.5,
+        10
+      ],
+      "scale": 0.08955223880597014,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-v-9-6",
+      "assetId": "archive-wall-vertical",
+      "contact": [
+        9.5,
+        10
+      ],
+      "scale": 0.08955223880597014,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-12-6",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        13.0,
+        6.7
+      ],
+      "scale": 0.05997001499250375,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-v-16-6",
+      "assetId": "archive-wall-vertical",
+      "contact": [
+        16.5,
+        10
+      ],
+      "scale": 0.08955223880597014,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-v-17-6",
+      "assetId": "archive-wall-vertical",
+      "contact": [
+        17.5,
+        10
+      ],
+      "scale": 0.08955223880597014,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-21-6",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        22.5,
+        6.7
+      ],
+      "scale": 0.08995502248875563,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-v-2-8",
+      "assetId": "archive-wall-vertical",
+      "contact": [
+        2.5,
+        11
+      ],
+      "scale": 0.06716417910447761,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-v-23-8",
+      "assetId": "archive-wall-vertical",
+      "contact": [
+        23.5,
+        11
+      ],
+      "scale": 0.06716417910447761,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-3-10",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        4.0,
+        10.7
+      ],
+      "scale": 0.05997001499250375,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-9-10",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        9.5,
+        10.7
+      ],
+      "scale": 0.029985007496251874,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-v-12-10",
+      "assetId": "archive-wall-vertical",
+      "contact": [
+        12.5,
+        14
+      ],
+      "scale": 0.08955223880597014,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-v-13-10",
+      "assetId": "archive-wall-vertical",
+      "contact": [
+        13.5,
+        14
+      ],
+      "scale": 0.08955223880597014,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-16-10",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        16.5,
+        10.7
+      ],
+      "scale": 0.029985007496251874,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-21-10",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        22.0,
+        10.7
+      ],
+      "scale": 0.05997001499250375,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-v-2-12",
+      "assetId": "archive-wall-vertical",
+      "contact": [
+        2.5,
+        14
+      ],
+      "scale": 0.04477611940298507,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-21-12",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        21.5,
+        12.7
+      ],
+      "scale": 0.029985007496251874,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-6-13",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        6.5,
+        13.7
+      ],
+      "scale": 0.029985007496251874,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-18-13",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        18.5,
+        13.7
+      ],
+      "scale": 0.029985007496251874,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Wall-h-22-13",
+      "assetId": "archive-wall-horizontal",
+      "contact": [
+        22.5,
+        13.7
+      ],
+      "scale": 0.029985007496251874,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    }
+  ]
+}
