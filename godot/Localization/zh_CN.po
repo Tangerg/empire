@@ -3421,7 +3421,7 @@ msgid "level.c01_08.description"
 msgstr "名字、数目、日期——先结清死人留下的账。"
 
 msgid "battle.signal.mercenary_dead_paid"
-msgstr "支付佣兵抚恤"
+msgstr "已取得佣兵账本"
 
 msgid "level.c01_09.title"
 msgstr "09 · 笼中之火"
@@ -3849,3 +3849,9 @@ msgstr "自身至目标的连线地格，不含自身、不越过目标"
 
 msgid "ui.hud.weapon_area"
 msgstr "作用范围：{0}"
+
+msgid "battle.hint.c01_08.ledger.title"
+msgstr "可选：取回佣兵账本"
+
+msgid "battle.hint.c01_08.ledger.instruction"
+msgstr "让任一我方单位停在标记区域并完成一次行动（待机即可）；仅经过不会取得。"

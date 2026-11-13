@@ -41,6 +41,7 @@ public sealed class BattleText
     public string LevelTitle(string levelId) => document.LevelTitle(text, levelId);
     public string LevelDescription(string levelId) => document.LevelDescription(text, levelId);
     public string SignalName(string levelId, string signalId) => document.SignalName(text, levelId, signalId);
+    public IReadOnlyList<ScenarioHintProjection> ScenarioHints(JsonObject state, int viewer) => document.ScenarioHints(text, state, viewer);
 
     public string PlayerName(string levelId, int playerId) => document.PlayerName(text, levelId, playerId);
 

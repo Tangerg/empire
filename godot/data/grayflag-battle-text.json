@@ -389,7 +389,23 @@
           "key": "battle.signal.mercenary_dead_paid"
         }
       },
-      "actors": {}
+      "actors": {},
+      "scenarioHints": [
+        {
+          "trigger": "recover-ledger",
+          "zone": "ledger",
+          "owner": 1,
+          "title": {
+            "key": "battle.hint.c01_08.ledger.title"
+          },
+          "instruction": {
+            "key": "battle.hint.c01_08.ledger.instruction"
+          },
+          "completed": {
+            "key": "battle.signal.mercenary_dead_paid"
+          }
+        }
+      ]
     },
     "c01-09": {
       "players": {

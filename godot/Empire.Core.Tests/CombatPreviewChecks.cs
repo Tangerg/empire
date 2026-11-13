@@ -25,6 +25,7 @@ internal static class CombatPreviewChecks
         var timer = Stopwatch.StartNew();
         var unitAttacks = 0;
         var structureAttacks = 0;
+        var grainRoadUnitAttacks = 0;
         var collisions = 0;
         Require(levels.Count == 16, "The preview sweep covers all sixteen shipped campaign openings.");
         foreach (var level in levels)
@@ -49,7 +50,11 @@ internal static class CombatPreviewChecks
                                 context + ": delayed casts need a later-resolution oracle, not an immediate damage comparison.");
                             var result = VerifyCommand(engine, battle, state, Integer(actor, "id"), at, target, option.Weapon!, context);
                             if (result.Plan.PrimaryUnit is not null)
+                            {
                                 unitAttacks++;
+                                if (Text(level, "id") == "c01-08")
+                                    grainRoadUnitAttacks++;
+                            }
                             else
                                 structureAttacks++;
                             collisions += result.Receipt.Events.Count(value => Text(value, "type") == "collisionDamage");
@@ -58,8 +63,9 @@ internal static class CombatPreviewChecks
             }
             Require(EcmaJson.Stringify(level) == authored, "Opening checks must not rewrite the authored level.");
         }
-        Require(unitAttacks == 197, $"The unchanged campaign exposes 197 opening unit attacks; checked {unitAttacks}.");
-        Console.WriteLine($"  Unchanged campaign: 16 levels, {unitAttacks} unit attacks, {structureAttacks} structure attacks; receipts and final HP verified in {timer.Elapsed.TotalSeconds:F3}s.");
+        Require(grainRoadUnitAttacks == 17, $"The reviewed courtyard exposes 17 opening unit attacks; checked {grainRoadUnitAttacks}.");
+        Require(unitAttacks == 196, $"The reviewed campaign exposes 196 opening unit attacks; checked {unitAttacks}.");
+        Console.WriteLine($"  Reviewed campaign: 16 levels, {unitAttacks} unit attacks, {structureAttacks} structure attacks; receipts and final HP verified in {timer.Elapsed.TotalSeconds:F3}s.");
         Console.WriteLine($"  Scope: no delayed casts or parting shots; {collisions} separately emitted collision effects accounted for after the forecast exchange.");
     }
 

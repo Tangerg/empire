@@ -1,3 +1,5 @@
+> Historical first-pass materialization. Current courtyard layout and contracts are documented in ../c08-courtyard/README.md.
+
 # C08 grain-road first materialized pass
 
 This scene retains the canonical 22 × 14 level, roster, objective, choices and

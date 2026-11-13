@@ -13,7 +13,7 @@ public sealed record BattleTextDefinitions(JsonArray Levels, ObjectiveHandlerReg
     ScenarioEffectHandlerRegistry ScenarioEffects);
 
 /// <summary>Validated presentation metadata addressed only by canonical battle identities.</summary>
-public sealed class BattleTextDocument
+public sealed partial class BattleTextDocument
 {
     private sealed record TextEntry(string? Key, string? Literal, bool Generated = false)
     {
@@ -26,7 +26,7 @@ public sealed class BattleTextDocument
 
     private sealed record LevelEntry(TextEntry Title, TextEntry Description,
         IReadOnlyDictionary<string, TextEntry> Signals, IReadOnlyDictionary<int, PlayerEntry> Players,
-        FrozenSet<string> UnitKeys, FrozenDictionary<string, string> Actors);
+        FrozenSet<string> UnitKeys, FrozenDictionary<string, string> Actors, IReadOnlyList<ScenarioHintEntry> ScenarioHints);
 
     private readonly IReadOnlyDictionary<string, LevelEntry> levels;
     private readonly ObjectiveHandlerRegistry handlers;
@@ -65,7 +65,10 @@ public sealed class BattleTextDocument
         var result = new Dictionary<string, LevelEntry>(StringComparer.Ordinal);
         foreach (var (levelId, level) in canonicalLevels)
         {
-            var declaredLevel = Fields(declaredLevels[levelId], $"level '{levelId}'", "title", "description", "signals", "players", "actors");
+            var declaredLevel = Properties(declaredLevels[levelId], $"level '{levelId}'");
+            var hasHints = declaredLevel.Remove("scenarioHints", out var rawHints);
+            RequireSameKeys(new[] { "title", "description", "signals", "players", "actors" }, declaredLevel.Keys, $"level '{levelId}'");
+            var hints = hasHints ? ParseScenarioHints(rawHints, level) : System.Array.Empty<ScenarioHintEntry>();
             var title = Entry(declaredLevel["title"], $"level title '{levelId}'", allowGenerated: false);
             var description = Entry(declaredLevel["description"], $"level description '{levelId}'", allowGenerated: false);
             var declaredSignals = Properties(declaredLevel["signals"], $"signals for '{levelId}'");
@@ -127,7 +130,7 @@ public sealed class BattleTextDocument
             foreach (var key in actors.Keys)
                 if (!unitKeys.Contains(key))
                     throw new LocalizationException($"Actor binding references unknown unit key '{levelId}/{key}'.");
-            result.Add(levelId, new(title, description, signals, playerEntries, unitKeys, actors));
+            result.Add(levelId, new(title, description, signals, playerEntries, unitKeys, actors, hints));
         }
         return new BattleTextDocument(result, handlers);
     }
@@ -157,7 +160,7 @@ public sealed class BattleTextDocument
             .SelectMany(player => player.Objectives.Values
                 .SelectMany(objective => objective.Failure is { } failure
                     ? new[] { objective.Description, failure } : new[] { objective.Description }).Prepend(player.Name))
-            .Concat(level.Signals.Values).Append(level.Title).Append(level.Description)).ToArray();
+            .Concat(level.Signals.Values).Concat(level.ScenarioHints.SelectMany(hint => new[] { hint.Title, hint.Instruction, hint.Completed })).Append(level.Title).Append(level.Description)).ToArray();
         text.ValidateKeys(entries.Where(entry => entry.Key is not null).Select(entry => entry.Key!));
         foreach (var entry in entries.Where(entry => !entry.Generated))
             _ = entry.Resolve(text);

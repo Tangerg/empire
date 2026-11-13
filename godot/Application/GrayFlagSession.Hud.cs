@@ -158,9 +158,29 @@ public sealed partial class GrayFlagSession
                         yield return row;
             }
         }
+        IEnumerable<TacticalHudRow> ScenarioHintRows()
+        {
+            foreach (var hint in battleText.ScenarioHints(state, Viewer(state)))
+            {
+                var key = $"scenario-hint:{hint.Trigger}";
+                var board = engine.Space.Board(state);
+                var visibleCells = engine.Space.VisibleTiles(state, Viewer(state));
+                var active = !hint.IsCompleted && !busy && S(state, "phase") == "playing"
+                    && hint.Cells.All(cell => visibleCells.Contains(board.IndexOf(cell)));
+                var cells = active ? System.Array.AsReadOnly(hint.Cells.Select(cell => new BoardCell(cell.X, cell.Y)).ToArray()) : null;
+                yield return new(key,
+                    hint.IsCompleted ? hint.Completed : cells is null ? hint.Title : text.Format("ui.hud.objective_locate_label", hint.Title),
+                    Hint: hint.IsCompleted ? "" : hint.Instruction,
+                    Selected: hint.IsCompleted,
+                    Intent: cells is null ? null : new(stamp, TacticalHudIntentKind.FocusObjective, key),
+                    TargetCells: cells);
+                if (!hint.IsCompleted)
+                    yield return new($"{key}:instruction", hint.Instruction);
+            }
+        }
         Section("objectives",
             text.Format("battle.objective.heading"),
-            engine.Victory.Objectives(state, N(objectivePlayer, "id")).SelectMany(objective => ObjectiveRows(objective)));
+            engine.Victory.Objectives(state, N(objectivePlayer, "id")).SelectMany(objective => ObjectiveRows(objective)).Concat(ScenarioHintRows()));
         Section("roster",
             text.Format("ui.hud.roster"),
             state["players"]!.AsArray().OfType<JsonObject>().Select(player => new TacticalHudRow($"player:{player["id"]}",

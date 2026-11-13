@@ -1,9 +1,9 @@
 {
   "levelId": "c01-08",
   "isComputerAction": true,
-  "initialStateHash": "aa114045",
-  "beforeStateHash": "d6cb8299",
-  "afterStateHash": "0532d985",
+  "initialStateHash": "cd8ce4dc",
+  "beforeStateHash": "ca6fad3e",
+  "afterStateHash": "ab8881b4",
   "eventsSha256": "87f7f56bebf362039840c60c692f157663cc0fdac932f00f758f2d218d6b7bfe",
   "action": {
     "kind": "endTurn"
@@ -127,10 +127,6 @@
         "path": [
           {
             "x": 5,
-            "y": 2
-          },
-          {
-            "x": 5,
             "y": 3
           }
         ],
@@ -182,10 +178,6 @@
           {
             "x": 3,
             "y": 1
-          },
-          {
-            "x": 3,
-            "y": 2
           }
         ],
         "command": {
@@ -293,9 +285,9 @@
         }
       }
     ],
-    "beforeStateHash": "995687ce",
-    "fogBeforeStateHash": "37d4785b",
-    "fogAfterStateHash": "108c3396",
+    "beforeStateHash": "e6c82a4b",
+    "fogBeforeStateHash": "d1f96b78",
+    "fogAfterStateHash": "14f2948d",
     "action": {
       "kind": "endTurn"
     },
@@ -314,7 +306,7 @@
     {"kind":"command","unit":11,"path":[{"x":6,"y":8},{"x":6,"y":7},{"x":6,"y":6},{"x":7,"y":6}],"command":{"ability":"wait"}},
     {"kind":"command","unit":2,"path":[{"x":3,"y":6},{"x":3,"y":5},{"x":3,"y":4},{"x":3,"y":3}],"command":{"ability":"wait"}},
     {"kind":"command","unit":6,"path":[{"x":5,"y":8},{"x":6,"y":8},{"x":6,"y":9},{"x":6,"y":10}],"command":{"ability":"wait"}},
-    {"kind":"command","unit":3,"path":[{"x":3,"y":8},{"x":4,"y":8},{"x":4,"y":9},{"x":4,"y":10}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":3,"path":[{"x":3,"y":8},{"x":4,"y":8},{"x":5,"y":8},{"x":5,"y":9}],"command":{"ability":"wait"}},
     {"kind":"command","unit":8,"path":[{"x":4,"y":8},{"x":5,"y":8},{"x":5,"y":9},{"x":5,"y":10}],"command":{"ability":"wait"}},
     {"kind":"endTurn"},
     {"kind":"tactic","commander":"enemy-command","tactic":"rally","target":{"x":19,"y":5}},
@@ -334,7 +326,7 @@
     {"kind":"reaction","unit":10,"stance":"support"},
     {"kind":"command","unit":9,"path":[{"x":12,"y":10}],"command":{"ability":"attack","weapon":"c01.ranger-bow","target":{"x":10,"y":10}}},
     {"kind":"command","unit":7,"path":[{"x":10,"y":11}],"command":{"ability":"attack","weapon":"c01.guard-spear","target":{"x":10,"y":10}}},
-    {"kind":"command","unit":2,"path":[{"x":3,"y":3},{"x":3,"y":2},{"x":4,"y":2},{"x":5,"y":2}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":2,"path":[{"x":3,"y":3},{"x":4,"y":3},{"x":5,"y":3}],"command":{"ability":"wait"}},
     {"kind":"command","unit":11,"path":[{"x":7,"y":6},{"x":7,"y":5},{"x":8,"y":5},{"x":8,"y":4}],"command":{"ability":"wait"}},
     {"kind":"command","unit":1,"path":[{"x":1,"y":3},{"x":1,"y":2}],"command":{"ability":"wait"}},
     {"kind":"command","unit":4,"path":[{"x":5,"y":7},{"x":5,"y":6},{"x":5,"y":5},{"x":5,"y":4}],"command":{"ability":"wait"}},
@@ -342,7 +334,7 @@
     {"kind":"command","unit":8,"path":[{"x":5,"y":10},{"x":5,"y":9},{"x":5,"y":8},{"x":5,"y":7}],"command":{"ability":"wait"}},
     {"kind":"command","unit":12,"path":[{"x":6,"y":12},{"x":7,"y":12},{"x":8,"y":12},{"x":8,"y":11}],"command":{"ability":"wait"}},
     {"kind":"reaction","unit":10,"stance":"counter"},
-    {"kind":"command","unit":3,"path":[{"x":4,"y":10},{"x":5,"y":10},{"x":6,"y":10}],"command":{"ability":"wait"}},
+    {"kind":"command","unit":3,"path":[{"x":5,"y":9},{"x":6,"y":9},{"x":6,"y":10}],"command":{"ability":"wait"}},
     {"kind":"command","unit":10,"path":[{"x":5,"y":12},{"x":5,"y":11},{"x":5,"y":10},{"x":4,"y":10}],"command":{"ability":"wait"}},
     {"kind":"endTurn"},
     {"kind":"command","unit":13,"path":[{"x":10,"y":2}],"command":{"ability":"capture"}},
