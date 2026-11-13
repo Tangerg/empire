@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "objects": {
+    "west-house-faithful": {
+      "resourcePath": "res://assets/native/c01-faithful-sample-v4/west-house.png",
+      "pixelSize": [
+        1374,
+        1145
+      ],
+      "anchorPixels": [
+        746,
+        942
+      ],
+      "groundFrontPixels": [
+        746,
+        942
+      ],
+      "contactShadowRadiiPixels": [
+        400,
+        50
+      ]
+    },
+    "archive-wall-horizontal": {
+      "resourcePath": "res://assets/native/c13-archive-v1/wall-horizontal.png",
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "anchorPixels": [
+        768,
+        631
+      ],
+      "groundFrontPixels": [
+        768,
+        631
+      ],
+      "contactShadowRadiiPixels": [
+        60,
+        10
+      ]
+    },
+    "valve-landmark": {
+      "resourcePath": "res://assets/native/c14-forge-v1/valve-landmark.png",
+      "pixelSize": [
+        1586,
+        992
+      ],
+      "anchorPixels": [
+        782,
+        795
+      ],
+      "groundFrontPixels": [
+        782,
+        795
+      ],
+      "contactShadowRadiiPixels": [
+        300,
+        25
+      ]
+    }
+  }
+}
