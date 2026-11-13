@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "environment-scene-v1.1",
+  "levelId": "c01-10",
+  "runtimeReady": false,
+  "mapSize": [
+    25,
+    14
+  ],
+  "selection": {
+    "allowAtlases": [
+      "forest-temperate",
+      "cliff-modules-temperate"
+    ]
+  },
+  "zones": [
+    {
+      "id": "clearance-17-7",
+      "bounds": [
+        17,
+        7,
+        17,
+        7
+      ],
+      "role": "mounted-approach-understory",
+      "authoredTerrainScenery": [
+        "forest"
+      ]
+    },
+    {
+      "id": "clearance-19-6",
+      "bounds": [
+        19,
+        6,
+        19,
+        6
+      ],
+      "role": "hill-contact-clearance",
+      "authoredTerrainScenery": [
+        "hill"
+      ]
+    }
+  ],
+  "placements": [
+    {
+      "id": "fern-bed",
+      "x": 17.535420625,
+      "y": 7.18,
+      "layer": "under-units",
+      "scale": 0.48,
+      "flip": true
+    },
+    {
+      "id": "temperate-low-ledge",
+      "x": 19.493515625,
+      "y": 5.75,
+      "layer": "under-units",
+      "scale": 0.5605696,
+      "flip": false,
+      "standingShadow": true
+    }
+  ]
+}

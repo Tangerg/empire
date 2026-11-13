@@ -1,0 +1,472 @@
+{
+  "levelId": "c01-10",
+  "levelSourceSha256": "67352af588d1f82a6600c42a992551d80ec7e09d9ee8cb47c0405bc25671d26b",
+  "pixelSize": [
+    1536,
+    1024
+  ],
+  "worldScale": 1.2000000000000002,
+  "originPixels": [
+    244.0,
+    290.66666666666663
+  ],
+  "cellXPixels": [
+    32.0,
+    0
+  ],
+  "cellYPixels": [
+    4.0,
+    26.666666666666664
+  ],
+  "resourcePath": "res://assets/native/c10-candidate-v1/ground.png",
+  "objectCatalogPath": "res://data/scenes/c01-01-objects.json",
+  "objects": [
+    {
+      "id": "Forest-3-0",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        3.2800000000000002,
+        0.55
+      ],
+      "scale": 0.045,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-3-0-sapling",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        3.74,
+        0.4
+      ],
+      "scale": 0.037,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-12-1",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        12.28,
+        1.55
+      ],
+      "scale": 0.045,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-12-1-sapling",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        12.74,
+        1.4
+      ],
+      "scale": 0.037,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Site-19-1",
+      "assetId": "west-house-faithful",
+      "contact": [
+        19.5,
+        1.5
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        19,
+        1
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-1-2",
+      "assetId": "west-house-faithful",
+      "contact": [
+        1.5,
+        2.5
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        1,
+        2
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Forest-16-3",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        16.28,
+        3.55
+      ],
+      "scale": 0.045,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-16-3-sapling",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        16.74,
+        3.4
+      ],
+      "scale": 0.037,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-1-4",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        1.28,
+        4.55
+      ],
+      "scale": 0.045,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-1-4-sapling",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        1.74,
+        4.4
+      ],
+      "scale": 0.037,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-19-4",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        19.28,
+        4.55
+      ],
+      "scale": 0.045,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-19-4-sapling",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        19.74,
+        4.4
+      ],
+      "scale": 0.037,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Site-3-5",
+      "assetId": "central-house-faithful",
+      "contact": [
+        3.5,
+        5.5
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        3,
+        5
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-14-5",
+      "assetId": "central-house-faithful",
+      "contact": [
+        14.5,
+        5.5
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        14,
+        5
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Forest-6-6",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        6.28,
+        6.55
+      ],
+      "scale": 0.045,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-6-6-sapling",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        6.74,
+        6.4
+      ],
+      "scale": 0.037,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-17-7",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        17.28,
+        7.55
+      ],
+      "scale": 0.045,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-17-7-sapling",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        17.74,
+        7.4
+      ],
+      "scale": 0.037,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-1-8",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        1.28,
+        8.55
+      ],
+      "scale": 0.045,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-1-8-sapling",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        1.74,
+        8.4
+      ],
+      "scale": 0.037,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Site-21-8",
+      "assetId": "west-house-faithful",
+      "contact": [
+        21.5,
+        8.5
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        21,
+        8
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Forest-4-9",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        4.28,
+        9.55
+      ],
+      "scale": 0.045,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-4-9-sapling",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        4.74,
+        9.4
+      ],
+      "scale": 0.037,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Site-2-10",
+      "assetId": "central-house-faithful",
+      "contact": [
+        2.5,
+        10.5
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        2,
+        10
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Forest-8-10",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        8.1,
+        10.2
+      ],
+      "scale": 0.03,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-8-10-sapling",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        8.9,
+        10.2
+      ],
+      "scale": 0.03,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-16-10",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        16.28,
+        10.55
+      ],
+      "scale": 0.045,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-16-10-sapling",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        16.74,
+        10.4
+      ],
+      "scale": 0.037,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Site-20-10",
+      "assetId": "central-house-faithful",
+      "contact": [
+        20.5,
+        10.5
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        20,
+        10
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-1-12",
+      "assetId": "west-house-faithful",
+      "contact": [
+        1.5,
+        12.5
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        1,
+        12
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Forest-4-12",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        4.28,
+        12.55
+      ],
+      "scale": 0.045,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-4-12-sapling",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        4.74,
+        12.4
+      ],
+      "scale": 0.037,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-17-12",
+      "assetId": "pine-young-faithful",
+      "contact": [
+        17.28,
+        12.55
+      ],
+      "scale": 0.045,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Forest-17-12-sapling",
+      "assetId": "pine-tall-faithful",
+      "contact": [
+        17.74,
+        12.4
+      ],
+      "scale": 0.037,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "Site-23-12",
+      "assetId": "west-house-faithful",
+      "contact": [
+        23.5,
+        12.5
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        23,
+        12
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    }
+  ]
+}

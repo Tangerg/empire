@@ -21,7 +21,7 @@ public partial class PresentationChecks
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var state = engine.CreateState(level);
         var original = state.ToJsonString();
-        var scene = AuthoredScene.Load("res://data/scenes/c01-10.json");
+        var scene = AuthoredScene.Load("res://tests/native/c10-occlusion-scene.json");
         var assets = AssetCatalog.Load();
         var environment = EnvironmentCatalog.Load();
         var liveParent = new Node2D();

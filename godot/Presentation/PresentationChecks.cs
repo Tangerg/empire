@@ -42,7 +42,7 @@ public partial class PresentationChecks : Node
             .OfType<JsonObject>().Single(value => value["id"]!.GetValue<string>() == "c01-10");
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var state = engine.CreateState(level);
-        var scene = AuthoredScene.Load("res://data/scenes/c01-10.json");
+        var scene = AuthoredScene.Load("res://tests/native/c10-occlusion-scene.json");
         var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
         var board = new BoardView { AnimationsEnabled = false };
         AddChild(board);

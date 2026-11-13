@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "levelId": "c01-10",
+  "ground": {
+    "path": "assets/native/c10-candidate-v1/ground.png",
+    "sha256": "ea13302688b50dd702e5ad7129107399c239709540bdd3dd38cee69d1c2650e3",
+    "generation": "Built-in image generation with source-derived terrain layout guide; C01 faithful ground style reference; local pass framing edit.",
+    "pixelSize": [
+      1536,
+      1024
+    ],
+    "designCanvas": [
+      2304,
+      1536
+    ],
+    "designToImageScale": 0.6666666666666666
+  },
+  "scope": "Presentation only. Terrain, elevation, ownership, movement, objectives and scenario events remain canonical.",
+  "registrationPath": "data/scenes/c01-10-candidate-ground.json"
+}
