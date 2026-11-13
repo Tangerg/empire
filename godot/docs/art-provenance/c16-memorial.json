@@ -1,0 +1,17 @@
+{
+  "level": "c01-16",
+  "generation": "OpenAI image generation; reconstructed after environment reset",
+  "style": "C01-direction hand-painted 2D; registered low ground and static plaque",
+  "files": {
+    "name-plaque.png": {
+      "sha256": "b57ec10849e8625b65de18ed7b15c59954bbfad9d91727fd5fcc05888287c315",
+      "description": "Generated raster preserved without pixel edits."
+    },
+    "ground.png": {
+      "sha256": "07c8ff9ac04e5eea7dbdd525ccf6c2d896cef12254e1cf01012c92fc40d4e57b",
+      "description": "Generated raster preserved without pixel edits."
+    }
+  },
+  "reused": "res://assets/native/c01-faithful-sample-v4/west-house.png",
+  "ownership": "Canonical battle owns terrain, sites, objectives and actor state. Art is projection only."
+}

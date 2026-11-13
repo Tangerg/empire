@@ -1,0 +1,196 @@
+{
+  "levelId": "c01-16",
+  "levelSourceSha256": "897626d8df6f3303d8c84c06fc4caf793aeb61c017f160f081a5799003bacd23",
+  "pixelSize": [
+    1536,
+    1024
+  ],
+  "worldScale": 1,
+  "originPixels": [
+    220,
+    210
+  ],
+  "cellXPixels": [
+    40,
+    0
+  ],
+  "cellYPixels": [
+    5,
+    30
+  ],
+  "resourcePath": "res://assets/native/c16-memorial-v1/ground.png",
+  "objectCatalogPath": "res://data/scenes/c01-16-objects.json",
+  "objects": [
+    {
+      "id": "Site-1-1",
+      "assetId": "west-house-faithful",
+      "contact": [
+        1.5,
+        1.25
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        1,
+        1
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-5-4",
+      "assetId": "west-house-faithful",
+      "contact": [
+        5.5,
+        4.25
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        5,
+        4
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-18-4",
+      "assetId": "west-house-faithful",
+      "contact": [
+        18.5,
+        4.25
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        18,
+        4
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-7-7",
+      "assetId": "west-house-faithful",
+      "contact": [
+        7.5,
+        7.25
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        7,
+        7
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-19-7",
+      "assetId": "west-house-faithful",
+      "contact": [
+        19.5,
+        7.25
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        19,
+        7
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-1-8",
+      "assetId": "west-house-faithful",
+      "contact": [
+        1.5,
+        8.25
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        1,
+        8
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-22-8",
+      "assetId": "west-house-faithful",
+      "contact": [
+        22.08,
+        8.1
+      ],
+      "scale": 0.035,
+      "selectionCell": [
+        22,
+        8
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-1-13",
+      "assetId": "west-house-faithful",
+      "contact": [
+        1.5,
+        13.25
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        1,
+        13
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "Site-21-13",
+      "assetId": "west-house-faithful",
+      "contact": [
+        21.5,
+        13.25
+      ],
+      "scale": 0.05,
+      "selectionCell": [
+        21,
+        13
+      ],
+      "ownsMapStructureBody": true,
+      "pointer": "target"
+    },
+    {
+      "id": "TrueName-6-3",
+      "assetId": "name-plaque",
+      "contact": [
+        6.5,
+        3.12
+      ],
+      "scale": 0.025693035835023664,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "TrueName-16-8",
+      "assetId": "name-plaque",
+      "contact": [
+        16.5,
+        8.12
+      ],
+      "scale": 0.025693035835023664,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    },
+    {
+      "id": "TrueName-8-13",
+      "assetId": "name-plaque",
+      "contact": [
+        8.5,
+        13.12
+      ],
+      "scale": 0.025693035835023664,
+      "selectionCell": null,
+      "ownsMapStructureBody": false,
+      "pointer": "pass-through"
+    }
+  ]
+}
