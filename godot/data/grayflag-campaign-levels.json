@@ -1233,24 +1233,24 @@
       },
       {
         "key": "vanguard-1",
-        "x": 25,
-        "y": 14,
+        "x": 21,
+        "y": 13,
         "unit": "c01.legion-shield",
         "owner": 2,
         "facing": "west"
       },
       {
         "key": "vanguard-2",
-        "x": 29,
-        "y": 15,
+        "x": 25,
+        "y": 14,
         "unit": "c01.swordsman",
         "owner": 2,
         "facing": "west"
       },
       {
         "key": "vanguard-archer",
-        "x": 30,
-        "y": 11,
+        "x": 23,
+        "y": 12,
         "unit": "c01.archer",
         "owner": 2,
         "facing": "west"
@@ -1358,8 +1358,26 @@
               "value": 0
             },
             "objective": {
-              "id": "route",
-              "type": "routEnemies"
+              "id": "secure-village",
+              "type": "all",
+              "objectives": [
+                {
+                  "id": "village-control",
+                  "type": "control",
+                  "zone": "central-village"
+                },
+                {
+                  "id": "break-vanguard",
+                  "type": "eliminate",
+                  "selector": {
+                    "keys": [
+                      "vanguard-1",
+                      "vanguard-2",
+                      "vanguard-archer"
+                    ]
+                  }
+                }
+              ]
             }
           }
         ]
@@ -1398,20 +1416,13 @@
       "baseResourceGrants": []
     },
     "scenario": {
-      "triggers": [
+      "zones": [
         {
-          "id": "matching-orders",
-          "timing": "afterAction",
-          "condition": {
-            "type": "eventCount",
-            "event": "death",
-            "op": "gte",
-            "value": 1
-          },
-          "effects": [
+          "id": "central-village",
+          "cells": [
             {
-              "type": "emitSignal",
-              "signal": "found_matching_orders"
+              "x": 18,
+              "y": 13
             }
           ]
         }

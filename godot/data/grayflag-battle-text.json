@@ -14,8 +14,14 @@
                 "key": "objective.failure.laiya"
               }
             },
-            "route": {
-              "key": "objective.c01_01.p1.route"
+            "secure-village": {
+              "key": "objective.c01_01.p1.secure_village"
+            },
+            "village-control": {
+              "key": "objective.c01_01.p1.village_control"
+            },
+            "break-vanguard": {
+              "key": "objective.c01_01.p1.break_vanguard"
             }
           }
         },
@@ -36,11 +42,7 @@
       "description": {
         "key": "level.c01_01.description"
       },
-      "signals": {
-        "found_matching_orders": {
-          "key": "battle.signal.found_matching_orders"
-        }
-      },
+      "signals": {},
       "actors": {
         "roderick-reserve": "roderick",
         "vanguard-cain": "cain"
