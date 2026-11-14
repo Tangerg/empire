@@ -24,7 +24,9 @@ public partial class BattleScreenChecks
         GetWindow().Size = new Vector2I(1180, 760);
         try
         {
-            foreach (var fixture in PresentationJson.Load<JsonArray>("res://tests/native/recorded-status-feedback.json").OfType<JsonObject>())
+            var fixtures = PresentationJson.Load<JsonArray>("res://tests/native/recorded-status-feedback.json").OfType<JsonObject>()
+                .Prepend(PresentationJson.Load<JsonObject>("res://tests/native/c01-tactic-keyboard.json"));
+            foreach (var fixture in fixtures)
             {
                 var levelId = fixture["levelId"]!.GetValue<string>();
                 var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()

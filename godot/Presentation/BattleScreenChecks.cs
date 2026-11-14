@@ -1181,7 +1181,10 @@ public partial class BattleScreenChecks : Node
         var deploymentLevel = EcmaJson.Parse(EcmaJson.Stringify(level))!.AsObject();
         var own = deploymentLevel["units"]!.AsArray().OfType<JsonObject>().Where(unit => unit["owner"]!.GetValue<int>() == 1).ToArray();
         var cells = new JsonArray(own.Select(unit => (JsonNode)new JsonObject { ["x"] = unit["x"]!.GetValue<int>(), ["y"] = unit["y"]!.GetValue<int>() }).ToArray());
-        deploymentLevel["scenario"]!.AsObject()["zones"] = new JsonArray(new JsonObject { ["id"] = "selection-check-zone", ["cells"] = cells });
+        var deploymentZones = deploymentLevel["scenario"]!["zones"]!.AsArray();
+        Require(deploymentZones.OfType<JsonObject>().All(zone => zone["id"]!.GetValue<string>() != "selection-check-zone"),
+            "Deployment input fixture must not replace an existing canonical zone.");
+        deploymentZones.Add(new JsonObject { ["id"] = "selection-check-zone", ["cells"] = cells });
         deploymentLevel["deployment"] = new JsonObject { ["order"] = new JsonArray(1), ["zones"] = new JsonArray(new JsonObject { ["player"] = 1, ["zone"] = "selection-check-zone" }) };
         var deployment = new GrayFlagSession(new(engine, presentation, new JsonArray()), deploymentLevel);
         screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), deployment, new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)), deploymentLevel, AuthoredScene.Load("res://data/scenes/c01-01.json"));
