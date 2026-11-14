@@ -295,20 +295,7 @@ public partial class PaintedSurfaceChecks : Node
             }] }]
         };
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
-        var level = BattleTextChecks.OpeningLevel().DeepClone().AsObject();
-        level["id"] = art.LevelId;
-        level["width"] = map["width"]!.DeepClone();
-        level["height"] = map["height"]!.DeepClone();
-        level["terrain"] = new JsonArray("......", "......", "......", "......", "......");
-        level["elevation"] = map["elevation"]!.DeepClone();
-        level["cliffs"] = map["cliffs"]!.DeepClone();
-        level["owners"] = new JsonArray();
-        level["commanders"] = new JsonArray();
-        level["scenario"] = new JsonObject();
-        level["units"] = new JsonArray(
-            new JsonObject { ["key"] = "campaign-laiya", ["x"] = 0, ["y"] = 4, ["unit"] = "c01.laiya", ["owner"] = 1 },
-            new JsonObject { ["key"] = "cliff-check-enemy", ["x"] = 5, ["y"] = 0, ["unit"] = "c01.swordsman", ["owner"] = 2 });
-        level["structures"] = new JsonArray();
+        var level = SyntheticSurfaceLevel(art.LevelId, map, new Coord(0, 4), "cliff-check-enemy");
         var state = engine.CreateState(level);
         var fixtureMap = state["map"]!.AsObject();
         var board = new BoardView { AdvanceAnimationsAutomatically = false };
@@ -385,22 +372,52 @@ public partial class PaintedSurfaceChecks : Node
         }
     }
 
+    // Synthetic surface geometry, not a resized campaign battle or a campaign mission witness.
+    private static JsonObject SyntheticSurfaceLevel(string id, JsonObject map, Coord actorCell, string enemyKey)
+    {
+        var native = BattleTextChecks.OpeningLevel();
+        JsonObject Player(int owner) => new()
+        {
+            ["id"] = owner,
+            ["team"] = owner,
+            ["color"] = owner == 1 ? "#4d86b8" : "#a8493f",
+            ["controller"] = owner == 1 ? "human" : "ai",
+            ["resources"] = new JsonObject(),
+            ["objectives"] = new JsonArray(new JsonObject { ["id"] = "surface-rout", ["type"] = "routEnemies" })
+        };
+        var level = new JsonObject
+        {
+            ["schema"] = native["schema"]!.DeepClone(),
+            ["id"] = id,
+            ["width"] = map["width"]!.DeepClone(),
+            ["height"] = map["height"]!.DeepClone(),
+            ["terrain"] = new JsonArray("......", "......", "......", "......", "......"),
+            ["elevation"] = map["elevation"]!.DeepClone(),
+            ["cliffs"] = map["cliffs"]!.DeepClone(),
+            ["owners"] = new JsonArray(),
+            ["commanders"] = new JsonArray(),
+            ["scenario"] = new JsonObject(),
+            ["structures"] = new JsonArray(),
+            ["rules"] = native["rules"]!.DeepClone(),
+            ["players"] = new JsonArray(Player(1), Player(2)),
+            ["units"] = new JsonArray(
+                new JsonObject { ["key"] = "campaign-laiya", ["x"] = actorCell.X, ["y"] = actorCell.Y, ["unit"] = "c01.laiya", ["owner"] = 1 },
+                new JsonObject { ["key"] = enemyKey, ["x"] = 5, ["y"] = 0, ["unit"] = "c01.swordsman", ["owner"] = 2 })
+        };
+        Require(level["scenario"]!.AsObject().Count == 0
+            && level["players"]!.AsArray().OfType<JsonObject>().All(player =>
+                player["objectives"]!.AsArray() is { Count: 1 } objectives
+                && objectives[0]!.AsObject() is { Count: 2 } objective
+                && objective["id"]!.GetValue<string>() == "surface-rout"
+                && objective["type"]!.GetValue<string>() == "routEnemies"),
+            "Synthetic surface players must not inherit campaign objectives or scenario-zone dependencies.");
+        return level;
+    }
+
     private async Task Preview(PaintedGroundDocument art, JsonObject map, Texture2D texture)
     {
         Require(DisplayServer.GetName() != "headless", "Preview requires a real native window.");
-        var level = BattleTextChecks.OpeningLevel();
-        level["id"] = art.LevelId;
-        level["width"] = map["width"]!.DeepClone();
-        level["height"] = map["height"]!.DeepClone();
-        level["terrain"] = new JsonArray("......", "......", "......", "......", "......");
-        level["elevation"] = map["elevation"]!.DeepClone();
-        level["cliffs"] = map["cliffs"]!.DeepClone();
-        level["owners"] = new JsonArray();
-        level["commanders"] = new JsonArray();
-        level["scenario"] = new JsonObject();
-        level["units"] = new JsonArray(
-            new JsonObject { ["key"] = "campaign-laiya", ["x"] = 2, ["y"] = 4, ["unit"] = "c01.laiya", ["owner"] = 1 },
-            new JsonObject { ["key"] = "preview-enemy", ["x"] = 5, ["y"] = 0, ["unit"] = "c01.swordsman", ["owner"] = 2 });
+        var level = SyntheticSurfaceLevel(art.LevelId, map, new Coord(2, 4), "preview-enemy");
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new BattleEngine(packs);
         var battle = engine.CreateBattle(level);
