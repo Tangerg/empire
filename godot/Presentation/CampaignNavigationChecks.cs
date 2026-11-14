@@ -1069,6 +1069,10 @@ public partial class CampaignNavigationChecks : Node
             }
             WriteFixture(driver.Snapshot());
             driver.BeginBattle();
+            var recordedRoute = PresentationJson.Load<JsonObject>("res://tests/native/c01-steady-victory.json");
+            var actions = recordedRoute["actions"]!.AsArray();
+            Require(StateDigest.Hash(driver.Battle!.Snapshot()) == recordedRoute["initialStateHash"]!.GetValue<string>(),
+                "The recorded player route must begin at the actual unchanged steady campaign opening.");
             JsonObject? checkpoint = null;
             JsonObject? terminalOrder = null;
             var terminalComputer = false;
@@ -1081,7 +1085,11 @@ public partial class CampaignNavigationChecks : Node
                 Require(!battle.IsConcluded, "A running legal campaign battle cannot project a stale conclusion.");
                 checkpoint = driver.Save();
                 terminalComputer = battle.IsComputerTurn;
-                terminalOrder = engine.Ai.ChooseAction(battle.Snapshot());
+                Require(orders <= actions.Count, "The recorded C01 player route ended without a real conclusion.");
+                terminalOrder = actions[orders - 1]!.AsObject();
+                if (terminalComputer)
+                    Require(EcmaJson.DeepEquals(engine.Ai.ChooseAction(battle.Snapshot()), terminalOrder),
+                        "The recorded opponent order must still match the live canonical AI decision.");
                 if (terminalComputer)
                     Require(battle.AdvanceComputerStep() is { Committed: true }, "The actual opponent refused its generated order.");
                 else
@@ -1096,6 +1104,8 @@ public partial class CampaignNavigationChecks : Node
                     && battle.IsConcluded == (committed["phase"]!.GetValue<string>() == "over"),
                     "Every real order, including turn handoff and victory, must invalidate its session status projection.");
             }
+            Require(orders == actions.Count && StateDigest.Hash(driver.Battle!.Snapshot()) == recordedRoute["finalStateHash"]!.GetValue<string>(),
+                "The complete admitted route must retain its exact final state.");
             Require(driver.BattleSummary().Outcome == "victory" && !terminalComputer
                 && terminalOrder?["command"]?["ability"]?.GetValue<string>() == "attack" && checkpoint is not null,
                 "The opening route must produce a real victory with a final human attack for this input check.");

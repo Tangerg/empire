@@ -41,6 +41,12 @@ public partial class CampaignPlayedFlowChecks
                 Require(session.Snapshot()["scenario"]!["engagementRules"]!.AsArray().OfType<JsonObject>()
                     .Any(rule => rule["id"]!.GetValue<string>() == "bridge-truce" && rule["mode"]!.GetValue<string>() == "no-attacks"),
                     "The accepted bridge truce must remain an actual no-attacks rule in the carried second battle.");
+            var recordedRoute = level == "c01-01"
+                ? PresentationJson.Load<JsonObject>("res://tests/native/c01-steady-victory.json") : null;
+            var recordedOrders = recordedRoute?["actions"]?.AsArray();
+            if (recordedRoute is not null)
+                Require(StateDigest.Hash(session.Snapshot()) == recordedRoute["initialStateHash"]!.GetValue<string>(),
+                    "The first carried battle must begin at the recorded actual steady campaign opening.");
             var campaignBefore = campaign.Snapshot();
             var automaticBefore = File.ReadAllBytes(automaticPath);
             var automaticStamp = File.GetLastWriteTimeUtc(automaticPath);
@@ -67,7 +73,13 @@ public partial class CampaignPlayedFlowChecks
                 Require(step < 1024, "The current test-player policy did not conclude its carried battle within the legal-order bound.");
                 var revision = session.Revision;
                 var human = !session.IsComputerTurn;
-                var action = human ? ChoosePlayedOrder(engine, session.Snapshot()) : engine.Ai.ChooseAction(session.Snapshot());
+                Require(recordedOrders is null || step < recordedOrders.Count,
+                    "The recorded first-battle route ended without a real conclusion.");
+                var action = recordedOrders is not null ? recordedOrders[step]!.AsObject()
+                    : human ? ChoosePlayedOrder(engine, session.Snapshot()) : engine.Ai.ChooseAction(session.Snapshot());
+                if (!human && recordedOrders is not null)
+                    Require(EcmaJson.DeepEquals(action, engine.Ai.ChooseAction(session.Snapshot())),
+                        "Recorded first-battle enemy orders must match the actual AI, not replace it.");
                 if (human)
                 {
                     await Until(() => !screen.IsInputBlocked, "The carried player's previous order did not finish playback.");
@@ -106,6 +118,9 @@ public partial class CampaignPlayedFlowChecks
             await Until(() => View<Control>(game) is BattleResultScreen, "Played victory did not complete normal terminal presentation.");
             game.ChildEnteredTree -= Entered;
             var terminal = session.Snapshot();
+            if (recordedRoute is not null)
+                Require(step == recordedOrders!.Count && StateDigest.Hash(terminal) == recordedRoute["finalStateHash"]!.GetValue<string>(),
+                    "The first carried route must finish at its exact legally recorded terminal state.");
             GD.Print($"PLAYED_TERMINAL level={level}; legal orders={step}; outcome={campaign.BattleSummary().Outcome}; completion views={completionCount}; events={expectedEvents.Count}; presented={presentedEvents.Count}; turn={terminal["turn"]}; state={StateDigest.Hash(terminal)}; conclusion={EcmaJson.Stringify(terminal["conclusion"])}");
             Require(session.IsConcluded && campaign.BattleSummary().Outcome == "victory" && completionCount == 1,
                 "Continuous legal play must produce its own victory and exactly one completion, never a written terminal fixture.");

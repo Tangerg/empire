@@ -207,17 +207,34 @@ public partial class CampaignPlayedFlowChecks : Node
         var campaign = Campaign(game);
         var engine = Field<BattleEngine>(game, "engine");
         var session = campaign.Battle!;
+        var recordedRoute = session.Snapshot()["levelId"]!.GetValue<string>() == "c01-01"
+            ? PresentationJson.Load<JsonObject>("res://tests/native/c01-steady-victory.json") : null;
+        var recordedOrders = recordedRoute?["actions"]?.AsArray();
+        if (recordedRoute is not null)
+            Require(StateDigest.Hash(session.Snapshot()) == recordedRoute["initialStateHash"]!.GetValue<string>(),
+                "Diagnostic C01 replay requires the unchanged recorded campaign opening.");
         var steps = 0;
         while (!session.IsConcluded)
         {
             Require(++steps <= 1024, "The diagnostic test-player route did not conclude within its legal order bound.");
+            Require(recordedOrders is null || steps <= recordedOrders.Count,
+                "The recorded diagnostic first-battle route ended without a conclusion.");
+            var action = recordedOrders is not null ? recordedOrders[steps - 1]!.AsObject()
+                : session.IsComputerTurn ? engine.Ai.ChooseAction(session.Snapshot()) : ChoosePlayedOrder(engine, session.Snapshot());
             if (session.IsComputerTurn)
+            {
+                Require(EcmaJson.DeepEquals(action, engine.Ai.ChooseAction(session.Snapshot())),
+                    "Diagnostic recorded opponent commands must still match the live AI.");
                 Require(session.AdvanceComputerStep() is { Committed: true }, "Diagnostic AI decision was not committed.");
+            }
             else
-                Require(session.Dispatch(EcmaJson.ToElement(ChoosePlayedOrder(engine, session.Snapshot())), session.Revision).Accepted,
+                Require(session.Dispatch(EcmaJson.ToElement(action), session.Revision).Accepted,
                     "Diagnostic player query generated an illegal order.");
         }
         var state = session.Snapshot();
+        if (recordedRoute is not null)
+            Require(steps == recordedOrders!.Count && StateDigest.Hash(state) == recordedRoute["finalStateHash"]!.GetValue<string>(),
+                "Diagnostic C01 replay must consume its complete route and retain the recorded final state.");
         GD.Print($"DERIVED_ROUTE_RESULT orders={steps}; outcome={campaign.BattleSummary().Outcome}; state={StateDigest.Hash(state)}; conclusion={EcmaJson.Stringify(state["conclusion"])}; turn={state["turn"]}. Legal derivation only, not native playback acceptance.");
         PreserveDiagnostic(game);
     }
