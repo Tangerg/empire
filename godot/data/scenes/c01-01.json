@@ -8,79 +8,11 @@
     30
   ],
   "openingFocus": [
-    13,
-    14
+    18,
+    13
   ],
+  "miniatureScenePath": "res://assets/c01-miniature-environment/battlefield.tscn",
   "placements": [],
   "framePlacements": [],
-  "zones": [
-    {
-      "id": "gray-camp",
-      "bounds": [
-        1,
-        14,
-        14,
-        23
-      ],
-      "role": "player-camp"
-    },
-    {
-      "id": "north-hill",
-      "bounds": [
-        7,
-        0,
-        20,
-        11
-      ],
-      "role": "elevation-2",
-      "authoredTerrainScenery": [
-        "hill"
-      ],
-      "authoredTerrainSurface": [
-        "hill"
-      ]
-    },
-    {
-      "id": "central-village",
-      "bounds": [
-        16,
-        10,
-        25,
-        18
-      ],
-      "role": "neutral-village",
-      "authoredTerrainScenery": [
-        "plain",
-        "road",
-        "village"
-      ]
-    },
-    {
-      "id": "east-hill",
-      "bounds": [
-        22,
-        18,
-        33,
-        27
-      ],
-      "role": "elevation-2",
-      "authoredTerrainScenery": [
-        "hill"
-      ],
-      "authoredTerrainSurface": [
-        "hill"
-      ]
-    },
-    {
-      "id": "vilsa-camp",
-      "bounds": [
-        28,
-        10,
-        35,
-        17
-      ],
-      "role": "enemy-vanguard"
-    }
-  ],
-  "assembledGroundPath": "res://data/scenes/c01-01-assembled-ground.json"
+  "zones": []
 }

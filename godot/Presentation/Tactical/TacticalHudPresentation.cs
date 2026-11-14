@@ -13,6 +13,10 @@ public sealed record TacticalHudPresentation
     {
         get; init;
     }
+    public bool PlainSurfaces
+    {
+        get; init;
+    }
     public static TacticalHudPresentation Default { get; } = new();
 
     public static TacticalHudPresentation Resolve(AuthoredScene scene)

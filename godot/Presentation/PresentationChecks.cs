@@ -288,7 +288,8 @@ public partial class PresentationChecks : Node
                 "Reflected fence foreground contact must use frame-local reflection and placement scale exactly once.");
         }
         finally { fenceSprite.Free(); }
-        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
+        // This block checks the legacy 2D sprite compositor, not current miniature C01.
+        var scene = HistoricalPaintedC01Fixture.Scene;
         var placement = environment.ResolveCell("temperate-hill-cap");
         var propSprite = environment.CreateSprite(placement.Id, 0.82f, true);
         try
@@ -300,7 +301,7 @@ public partial class PresentationChecks : Node
         }
         finally { propSprite.Free(); }
 
-        var level = BattleTextChecks.OpeningLevel();
+        var level = HistoricalPaintedC01Fixture.Level;
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var state = engine.CreateBattle(level).Snapshot();
         var before = state.ToJsonString();

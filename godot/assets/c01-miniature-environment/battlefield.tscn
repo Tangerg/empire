@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/c01-miniature-environment/c01_house_3x6.glb" id="1_n1"]
+[ext_resource type="PackedScene" path="res://assets/c01-miniature-environment/c01_row_6x2.glb" id="2_n2"]
+[ext_resource type="PackedScene" path="res://assets/c01-miniature-environment/c01_house_3x3.glb" id="3_w1"]
+[ext_resource type="PackedScene" path="res://assets/c01-miniature-environment/c01_store_4x4.glb" id="4_e2"]
+[ext_resource type="PackedScene" path="res://assets/c01-miniature-environment/c01_market_6x3.glb" id="5_s1"]
+[ext_resource type="PackedScene" path="res://assets/c01-miniature-environment/c01_row_4x2.glb" id="6_row"]
+[ext_resource type="PackedScene" path="res://assets/c01-miniature-environment/c01_n3_lower_gallery.glb" id="7_lower"]
+
+[ext_resource type="PackedScene" path="res://assets/c01-miniature-environment/c01_n3_upper_market.glb" id="8_n3"]
+
+[node name="C01MiniatureEnvironment" type="Node3D"]
+
+[node name="N1WesternResidence" parent="." instance=ExtResource("1_n1")]
+position = Vector3(10.5, 1.5, 8)
+
+[node name="N2NorthernRow" parent="." instance=ExtResource("2_n2")]
+position = Vector3(19, 1.5, 6)
+
+[node name="N3UpperMarket" parent="." instance=ExtResource("8_n3")]
+position = Vector3(18, 1.5, 10)
+
+[node name="N3LowerMarket" parent="." instance=ExtResource("7_lower")]
+position = Vector3(18, 0.75, 11.5)
+
+[node name="W1RainStreet" parent="." instance=ExtResource("3_w1")]
+position = Vector3(10.5, 0.75, 13.5)
+
+[node name="S1Workshop" parent="." instance=ExtResource("5_s1")]
+position = Vector3(17, 0, 17.5)
+
+[node name="E1EasternStore" parent="." instance=ExtResource("6_row")]
+position = Vector3(24, 0.75, 12)
+
+[node name="E2RainStreet" parent="." instance=ExtResource("4_e2")]
+position = Vector3(24, 0, 18)

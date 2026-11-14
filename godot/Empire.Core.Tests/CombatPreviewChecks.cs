@@ -64,7 +64,8 @@ internal static class CombatPreviewChecks
             Require(EcmaJson.Stringify(level) == authored, "Opening checks must not rewrite the authored level.");
         }
         Require(grainRoadUnitAttacks == 17, $"The reviewed courtyard exposes 17 opening unit attacks; checked {grainRoadUnitAttacks}.");
-        Require(unitAttacks == 196, $"The reviewed campaign exposes 196 opening unit attacks; checked {unitAttacks}.");
+        // C01's hillside streets expose twelve additional opening exchanges; C02–C16 are unchanged.
+        Require(unitAttacks == 208, $"The reviewed campaign exposes 208 opening unit attacks; checked {unitAttacks}.");
         Console.WriteLine($"  Reviewed campaign: 16 levels, {unitAttacks} unit attacks, {structureAttacks} structure attacks; receipts and final HP verified in {timer.Elapsed.TotalSeconds:F3}s.");
         Console.WriteLine($"  Scope: no delayed casts or parting shots; {collisions} separately emitted collision effects accounted for after the forecast exchange.");
     }

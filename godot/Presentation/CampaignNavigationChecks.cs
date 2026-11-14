@@ -1107,8 +1107,8 @@ public partial class CampaignNavigationChecks : Node
             Require(orders == actions.Count && StateDigest.Hash(driver.Battle!.Snapshot()) == recordedRoute["finalStateHash"]!.GetValue<string>(),
                 "The complete admitted route must retain its exact final state.");
             Require(driver.BattleSummary().Outcome == "victory" && !terminalComputer
-                && terminalOrder?["command"]?["ability"]?.GetValue<string>() == "attack" && checkpoint is not null,
-                "The opening route must produce a real victory with a final human attack for this input check.");
+                && terminalOrder?["command"]?["ability"]?.GetValue<string>() == "capture" && checkpoint is not null,
+                "The market route must produce a real victory with a final human capture for this input check.");
             SaveFile.WriteDocument(manualPath, checkpoint!);
             var manual = File.ReadAllBytes(manualPath);
             var loadedStamp = Stamp(manualPath);
@@ -1139,34 +1139,22 @@ public partial class CampaignNavigationChecks : Node
             var campaignBefore = campaign.Snapshot();
             var queries = session.GetTacticalQueries(0);
             var actor = queries.Unit(terminalOrder!["unit"]!.GetValue<int>())!;
-            var target = terminalOrder["command"]!["target"]!;
-            var targetCell = new BoardCell(target["x"]!.GetValue<int>(), target["y"]!.GetValue<int>());
-            var enemy = queries.UnitAt(targetCell)!;
-            screen.SelectHit(TacticalHit.Unit(actor.At, actor.Id));
-            var previous = new Dictionary<BoardCell, BoardCell> { [actor.At] = actor.At };
-            var queue = new Queue<BoardCell>();
-            queue.Enqueue(actor.At);
-            while (queue.TryDequeue(out var cell) && !previous.ContainsKey(targetCell))
-                foreach (var next in queries.DirectionSteps(cell).Where(queries.InteractiveCells.Contains))
-                    if (previous.TryAdd(next, cell))
-                        queue.Enqueue(next);
-            Require(previous.ContainsKey(targetCell), "The final enemy must be reachable by the canonical keyboard cursor.");
-            var route = new Stack<BoardCell>();
-            for (var cell = targetCell; cell != actor.At; cell = previous[cell])
-                route.Push(cell);
-            var from = actor.At;
-            foreach (var cell in route)
+            var route = terminalOrder["path"]!.AsArray().OfType<JsonObject>()
+                .Select(cell => new BoardCell(cell["x"]!.GetValue<int>(), cell["y"]!.GetValue<int>())).ToArray();
+            var market = route.Single();
+            Require(market == actor.At && queries.IsSite(market),
+                "The witness ends with an eligible unit already standing on the contested market.");
+            for (var step = 0; step < 32 && screen.SelectedUnitId != actor.Id; step++)
             {
-                var key = cell.X > from.X ? Key.Right : cell.X < from.X ? Key.Left : cell.Y > from.Y ? Key.Down : Key.Up;
-                KeyEvent(key);
-                KeyEvent(key, false);
-                from = cell;
+                KeyEvent(Key.Space);
+                KeyEvent(Key.Space, false);
             }
+            Require(screen.SelectedUnitId == actor.Id, "Native ready-unit cycling reaches the real market holder.");
             KeyEvent(Key.Enter);
             var preview = screen.Selection;
-            Require(preview is { Kind: TacticalSelectionKind.Target }
-                && preview.PreviewTarget == TacticalHit.Unit(targetCell, enemy.Id) && session.Revision == 0,
-                "First Enter must preview the genuine final attack without committing it.");
+            Require(preview is { Kind: TacticalSelectionKind.Destination } && preview.UnitId == actor.Id
+                && preview.Destination == market && preview.Path.SequenceEqual(route) && session.Revision == 0,
+                "First Enter must preview the genuine market destination without committing it.");
             for (var repeat = 0; repeat < 3; repeat++)
                 KeyEvent(Key.Enter, echo: true);
             await Layout();
@@ -1174,7 +1162,7 @@ public partial class CampaignNavigationChecks : Node
                 && session.Revision == 0 && session.ActionLog.Count == 0
                 && EcmaJson.DeepEquals(session.Snapshot(), before) && EcmaJson.DeepEquals(campaign.Snapshot(), campaignBefore)
                 && EcmaJson.Stringify(new JsonArray(session.Events.Select(value => (JsonNode)value.DeepClone()).ToArray())) == beforeEvents,
-                "Held Enter must not win the battle, change the campaign, or leave its final-attack preview.");
+                "Held Enter must not win the battle, change the campaign, or leave its market destination preview.");
             ManualUnchanged();
             var presented = new List<int>();
             var presentedOnBattle = true;
@@ -1184,24 +1172,27 @@ public partial class CampaignNavigationChecks : Node
                 presentedOnBattle &= ReferenceEquals(View<Control>(game), screen) && screen.IsPresenting;
             };
             KeyEvent(Key.Enter, false);
-            KeyEvent(Key.Enter);
-            KeyEvent(Key.Enter, false);
+            KeyEvent(Key.C);
+            KeyEvent(Key.C, echo: true);
+            KeyEvent(Key.C, false);
             var receipt = session.GetSnapshot().Transition!;
             Require(session.Revision == 1 && session.ActionLog.Count == 1 && screen.IsPresenting
                 && session.Snapshot()["phase"]!.GetValue<string>() == "over" && campaign.BattleSummary().Outcome == "victory",
-                "A released, fresh Enter must commit one real victory and begin its terminal playback.");
+                "The explicit capture shortcut must commit one real victory and begin terminal playback.");
             var action = receipt.Action;
             var command = action.GetProperty("command");
             Require(action.GetProperty("kind").GetString() == "command"
                 && action.GetProperty("unit").GetInt32() == actor.Id && preview!.UnitId == actor.Id
-                && command.GetProperty("ability").GetString() == "attack" && preview.Ability == "attack"
-                && command.GetProperty("weapon").GetString() == preview.Weapon
-                && command.GetProperty("target").GetProperty("x").GetInt32() == targetCell.X
-                && command.GetProperty("target").GetProperty("y").GetInt32() == targetCell.Y
+                && command.GetProperty("ability").GetString() == "capture"
                 && action.GetProperty("path").EnumerateArray()
                     .Select(cell => new BoardCell(cell.GetProperty("x").GetInt32(), cell.GetProperty("y").GetInt32()))
-                    .SequenceEqual(preview.Path),
-                "The final native order must use the exact actor, command, weapon, target, and path shown by its preview.");
+                    .SequenceEqual(preview.Path)
+                && EcmaJson.DeepEquals(EcmaJson.Parse(action.GetRawText()), terminalOrder)
+                && receipt.Events.Any(item => item.GetProperty("type").ValueEquals("capture")
+                    && item.GetProperty("captured").GetBoolean()
+                    && item.GetProperty("at").GetProperty("x").GetInt32() == market.X
+                    && item.GetProperty("at").GetProperty("y").GetInt32() == market.Y),
+                "The final native order must match the recorded exact actor/path and actually capture the previewed site.");
             var reference = new GrayFlagCampaign(new(engine, Field<SessionPresentationText>(game, "presentationText")),
                 definition, Field<JsonArray>(game, "levels"));
             reference.Load(checkpoint);

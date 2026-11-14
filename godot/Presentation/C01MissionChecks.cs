@@ -1,20 +1,111 @@
 using System.Text.Json.Nodes;
+using Empire.Application;
+using Empire.Core.Determinism;
 using Empire.Core.Engine;
+using Empire.Localization;
 using Godot;
 
 namespace Empire.Presentation;
-/// <summary>C01 objective contracts use detached adversarial fixtures, not a claimed playable route.</summary>
+/// <summary>Detached objective negatives and authored campaign routes test different boundaries.</summary>
 public partial class C01MissionChecks : Node
 {
     public override void _Ready()
     {
         try
         {
-            Run(new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json")), BattleTextChecks.OpeningLevel());
+            var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
+            Run(engine, BattleTextChecks.OpeningLevel());
+            CheckCampaignRoutes(engine);
             GetTree().Quit(0);
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
     }
+    private static void CheckCampaignRoutes(BattleEngine engine)
+    {
+        var text = GodotTextCatalog.LoadSimplifiedChinese();
+        var presentation = BattleTextChecks.Session(engine, text);
+        var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
+        var definition = PresentationJson.Load<JsonObject>("res://data/grayflag-campaign.json");
+        var rules = new CampaignApplicationRules(engine, presentation);
+        foreach (var file in new[] { "c01-steady-victory", "c01-rush-victory" })
+        {
+            var route = PresentationJson.Load<JsonObject>($"res://tests/native/{file}.json");
+            var choice = route["choice"]!.GetValue<string>();
+            var campaign = new GrayFlagCampaign(rules, definition, levels);
+            ReachOpening(campaign, choice, route["levelId"]!.GetValue<string>());
+            campaign.BeginBattle();
+            Check(StateDigest.Hash(campaign.Battle!.Snapshot()) == route["initialStateHash"]!.GetValue<string>(),
+                $"{choice} must start from the authored C01 deployment and campaign funds.");
+            var actions = route["actions"]!.AsArray();
+            for (var index = 0; index < actions.Count; index++)
+            {
+                var battle = campaign.Battle!;
+                var action = actions[index]!.AsObject();
+                Check(!battle.IsConcluded, $"{choice} cannot finish before recorded order {index}.");
+                if (battle.IsComputerTurn)
+                {
+                    Check(EcmaJson.DeepEquals(engine.Ai.ChooseAction(battle.Snapshot()), action),
+                        $"{choice} recorded order {index} must match the live opponent.");
+                    Check(battle.AdvanceComputerStep() is { Committed: true }, $"AI order {index} failed to commit.");
+                }
+                else
+                {
+                    var result = battle.Dispatch(EcmaJson.ToElement(action), battle.Revision);
+                    Check(result.Accepted, $"{choice} order {index} was rejected: {result.Message}");
+                }
+
+                if (index == actions.Count / 2)
+                {
+                    var reloaded = new GrayFlagCampaign(rules, definition, levels);
+                    reloaded.Load(campaign.Save());
+                    Check(EcmaJson.DeepEquals(battle.Snapshot(), reloaded.Battle!.Snapshot()),
+                        $"{choice} midpoint save must preserve the complete battle.");
+                    campaign = reloaded;
+                }
+            }
+
+            var state = campaign.Battle!.Snapshot();
+            Check(StateDigest.Hash(state) == route["finalStateHash"]!.GetValue<string>()
+                && state["conclusion"]?["objective"]?.GetValue<string>() == "primary"
+                && campaign.BattleSummary().Outcome == "victory", $"{choice} must win by the authored primary objective.");
+            campaign.FinishBattle();
+            Check(campaign.Node()["id"]!.GetValue<string>() == "aftermath-01", $"{choice} must reach the matching-orders aftermath.");
+            ReachOpening(campaign, "accept-truce", "c01-02");
+            campaign.BeginBattle();
+            Check(campaign.Battle!.Snapshot()["levelId"]!.GetValue<string>() == "c01-02", $"{choice} must carry into C02.");
+            GD.Print($"C01_CAMPAIGN_ROUTE_OK choice={choice} orders={actions.Count} turn={state["turn"]} hash={StateDigest.Hash(state)}");
+        }
+    }
+
+    private static void ReachOpening(GrayFlagCampaign campaign, string choice, string levelId)
+    {
+        for (var step = 0; step < 48; step++)
+        {
+            var node = campaign.Node();
+            switch (node["type"]!.GetValue<string>())
+            {
+                case "battle":
+                    Check(node["level"]!.GetValue<string>() == levelId, $"Expected campaign level {levelId}.");
+                    return;
+                case "story":
+                    campaign.Advance();
+                    break;
+                case "choice":
+                    campaign.Choose(choice);
+                    break;
+                default:
+                    throw new InvalidOperationException($"Unexpected campaign node before {levelId}: {node}.");
+            }
+        }
+        throw new InvalidOperationException($"Campaign did not reach {levelId}.");
+    }
+
+    private static void Check(bool condition, string message)
+    {
+        if (!condition)
+            throw new InvalidOperationException(message);
+    }
+
     private static void Run(BattleEngine engine, JsonObject level)
     {
         int passed = 0;

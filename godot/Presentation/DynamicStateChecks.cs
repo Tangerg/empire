@@ -123,16 +123,21 @@ public partial class DynamicStateChecks : Node
         var levels = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json");
         var environment = EnvironmentCatalog.Load();
         var total = 0;
-        foreach (var level in levels.OfType<JsonObject>())
+        foreach (var shippedLevel in levels.OfType<JsonObject>())
         {
-            var id = level["id"]!.GetValue<string>();
+            var id = shippedLevel["id"]!.GetValue<string>();
+            // Marker/badge/body ownership below is a detached 2D compositor proof.
+            // Keep its exact negative controls on the frozen painted fixture; all later
+            // levels continue to use their live canonical data and authored scenes.
+            var level = id == "c01-01" ? HistoricalPaintedC01Fixture.Level : shippedLevel;
             var path = $"res://data/scenes/{id}.json";
-            var scene = Godot.FileAccess.FileExists(path) ? AuthoredScene.Load(path) : new AuthoredScene
-            {
-                LevelId = id,
-                MapSize = [level["width"]!.GetValue<int>(), level["height"]!.GetValue<int>()],
-                RuntimeReady = false,
-            };
+            var scene = id == "c01-01" ? HistoricalPaintedC01Fixture.Scene
+                : Godot.FileAccess.FileExists(path) ? AuthoredScene.Load(path) : new AuthoredScene
+                {
+                    LevelId = id,
+                    MapSize = [level["width"]!.GetValue<int>(), level["height"]!.GetValue<int>()],
+                    RuntimeReady = false,
+                };
             var board = new BoardView();
             AddChild(board);
             var state = engine.CreateState(level);

@@ -1,0 +1,130 @@
+{
+  "N1": {
+    "inclusive_bounds": [
+      9,
+      5,
+      11,
+      10
+    ],
+    "canonical_wall_cells": 18,
+    "elevation": 2,
+    "root_position": [
+      10.5,
+      1.5,
+      8.0
+    ],
+    "asset_path": "res://assets/c01-miniature-environment/c01_house_3x6.glb"
+  },
+  "N2": {
+    "inclusive_bounds": [
+      16,
+      5,
+      21,
+      6
+    ],
+    "canonical_wall_cells": 12,
+    "elevation": 2,
+    "root_position": [
+      19.0,
+      1.5,
+      6.0
+    ],
+    "asset_path": "res://assets/c01-miniature-environment/c01_row_6x2.glb"
+  },
+  "N3Upper": {
+    "inclusive_bounds": [
+      16,
+      9,
+      19,
+      10
+    ],
+    "canonical_wall_cells": 8,
+    "elevation": 2,
+    "root_position": [
+      18.0,
+      1.5,
+      10.0
+    ],
+    "asset_path": "res://assets/c01-miniature-environment/c01_n3_upper_market.glb"
+  },
+  "N3Lower": {
+    "inclusive_bounds": [
+      16,
+      11,
+      19,
+      11
+    ],
+    "canonical_wall_cells": 4,
+    "elevation": 1,
+    "root_position": [
+      18.0,
+      0.75,
+      11.5
+    ],
+    "asset_path": "res://assets/c01-miniature-environment/c01_n3_lower_gallery.glb"
+  },
+  "W1": {
+    "inclusive_bounds": [
+      9,
+      12,
+      11,
+      14
+    ],
+    "canonical_wall_cells": 9,
+    "elevation": 1,
+    "root_position": [
+      10.5,
+      0.75,
+      13.5
+    ],
+    "asset_path": "res://assets/c01-miniature-environment/c01_house_3x3.glb"
+  },
+  "S1": {
+    "inclusive_bounds": [
+      14,
+      16,
+      19,
+      18
+    ],
+    "canonical_wall_cells": 18,
+    "elevation": 0,
+    "root_position": [
+      17.0,
+      0.0,
+      17.5
+    ],
+    "asset_path": "res://assets/c01-miniature-environment/c01_market_6x3.glb"
+  },
+  "E1": {
+    "inclusive_bounds": [
+      22,
+      11,
+      25,
+      12
+    ],
+    "canonical_wall_cells": 8,
+    "elevation": 1,
+    "root_position": [
+      24.0,
+      0.75,
+      12.0
+    ],
+    "asset_path": "res://assets/c01-miniature-environment/c01_row_4x2.glb"
+  },
+  "E2": {
+    "inclusive_bounds": [
+      22,
+      16,
+      25,
+      19
+    ],
+    "canonical_wall_cells": 16,
+    "elevation": 0,
+    "root_position": [
+      24.0,
+      0.0,
+      18.0
+    ],
+    "asset_path": "res://assets/c01-miniature-environment/c01_store_4x4.glb"
+  }
+}

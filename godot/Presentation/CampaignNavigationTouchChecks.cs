@@ -65,18 +65,7 @@ public partial class CampaignNavigationChecks
                         Require(!screen.IsInputBlocked, "Touch orders settle before the next explicit order.");
                     }
                     var unit = session.GetTacticalQueries(0).Unit(1)!;
-                    var sprite = screen.Board.GetNode<Sprite2D>("CanonicalProjection/Unit_1/AuthoredSprite");
-                    var rect = sprite.GetRect();
-                    Vector2? pixel = null;
-                    for (var y = rect.Position.Y + .5f; y < rect.End.Y && pixel is null; y++)
-                        for (var x = rect.Position.X + .5f; x < rect.End.X && pixel is null; x++)
-                        {
-                            var local = new Vector2(x, y);
-                            var at = sprite.GetGlobalTransformWithCanvas() * local;
-                            if (sprite.IsPixelOpaque(local) && map.GetGlobalRect().HasPoint(at)
-                                && screen.Board.Pick(screen.Board.ToLocal(at)) == TacticalHit.Unit(unit.At, unit.Id))
-                                pixel = at;
-                        }
+                    var pixel = CampaignNavigationMiniaturePointer.Find(screen, TacticalHit.Unit(unit.At, unit.Id));
                     var actorPoint = pixel ?? throw new InvalidOperationException("Touch fixture requires an actual selectable C01 actor pixel.");
                     var original = EcmaJson.Stringify(session.Snapshot());
                     await Touch(actorPoint);

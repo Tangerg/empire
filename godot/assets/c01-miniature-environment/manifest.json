@@ -1,0 +1,284 @@
+{
+  "units": "1 meter = 1 canonical cell; Godot X=column,Z=row,Y=height",
+  "visual_only": true,
+  "collisions": false,
+  "cell_height_step_m": 0.75,
+  "placement": "root centered on wall footprint, y=canonical cell elevation * .75; paths remain canonical",
+  "assets": [
+    {
+      "path": "res://assets/c01-miniature-environment/c01_house_3x6.glb",
+      "footprint_cells": [
+        3,
+        6
+      ],
+      "ridge_axis": "Y",
+      "ground_anchor": [
+        0,
+        0,
+        0
+      ],
+      "height_m": 1.9960000477731228,
+      "roof_node": "Roof",
+      "wall_node": "Walls",
+      "mesh_objects": 2,
+      "bytes": 4166108,
+      "triangles": 53574,
+      "aabb_min": [
+        -1.4687043707712053,
+        -3.725290298461914e-09,
+        -2.8512000566134548
+      ],
+      "aabb_max": [
+        1.4687043707712053,
+        1.9960000477731228,
+        2.8512000566134548
+      ],
+      "sha256": "0273e492d52f0198ebd0931a7a1772aa3caa148d3606f38116e9d7bb601c41ab",
+      "surfaces": 2,
+      "materials": 1,
+      "generation": "approved original mesh generation + PBR palette atlas/dark sandstone stage",
+      "door_height_m": 0.77
+    },
+    {
+      "path": "res://assets/c01-miniature-environment/c01_row_6x2.glb",
+      "footprint_cells": [
+        6,
+        2
+      ],
+      "ridge_axis": "X",
+      "ground_anchor": [
+        0,
+        0,
+        0
+      ],
+      "height_m": 1.9960000477731228,
+      "roof_node": "Roof",
+      "wall_node": "Walls",
+      "mesh_objects": 2,
+      "bytes": 3178208,
+      "triangles": 43638,
+      "aabb_min": [
+        -2.8511999637365335,
+        -3.725290298461914e-09,
+        -0.9695039532444483
+      ],
+      "aabb_max": [
+        2.8511999637365335,
+        1.9960000477731228,
+        0.9695039532444483
+      ],
+      "sha256": "72d2fae548fc72bc616212815d7f1ca31ee1156ea265d99215acad28b5d4db81",
+      "surfaces": 2,
+      "materials": 1,
+      "generation": "approved original mesh generation + PBR palette atlas/dark sandstone stage",
+      "door_height_m": 0.77
+    },
+    {
+      "path": "res://assets/c01-miniature-environment/c01_house_3x3.glb",
+      "footprint_cells": [
+        3,
+        3
+      ],
+      "ridge_axis": "Y",
+      "ground_anchor": [
+        0,
+        0,
+        0
+      ],
+      "height_m": 1.9960000477731228,
+      "roof_node": "Roof",
+      "wall_node": "Walls",
+      "mesh_objects": 2,
+      "bytes": 2054264,
+      "triangles": 27870,
+      "aabb_min": [
+        -1.4687041772944565,
+        -3.725290298461914e-09,
+        -1.4112001380890722
+      ],
+      "aabb_max": [
+        1.4687041772944565,
+        1.9960000477731228,
+        1.4112001380890722
+      ],
+      "sha256": "0cad9f475561849c9373d017765eb5c5d54d6199391043de5a063ffa98c9ccb8",
+      "surfaces": 2,
+      "materials": 1,
+      "generation": "approved original mesh generation + PBR palette atlas/dark sandstone stage",
+      "door_height_m": 0.77
+    },
+    {
+      "path": "res://assets/c01-miniature-environment/c01_store_4x4.glb",
+      "footprint_cells": [
+        4,
+        4
+      ],
+      "ridge_axis": "X",
+      "ground_anchor": [
+        0,
+        0,
+        0
+      ],
+      "height_m": 1.9960000477731228,
+      "roof_node": "Roof",
+      "wall_node": "Walls",
+      "mesh_objects": 2,
+      "bytes": 3030916,
+      "triangles": 42342,
+      "aabb_min": [
+        -1.8911999851942056,
+        -3.725290298461914e-09,
+        -1.967903779866461
+      ],
+      "aabb_max": [
+        1.8911999851942056,
+        1.9960000477731228,
+        1.967903779866461
+      ],
+      "sha256": "07f8524b61c2f9fa50cf71967ce14473f2c45702b975146e0639ff2a825e64a7",
+      "surfaces": 2,
+      "materials": 1,
+      "generation": "approved original mesh generation + PBR palette atlas/dark sandstone stage",
+      "door_height_m": 0.77
+    },
+    {
+      "path": "res://assets/c01-miniature-environment/c01_market_6x3.glb",
+      "footprint_cells": [
+        6,
+        3
+      ],
+      "ridge_axis": "X",
+      "ground_anchor": [
+        0,
+        0,
+        0
+      ],
+      "height_m": 1.9960000477731228,
+      "roof_node": "Roof",
+      "wall_node": "Walls",
+      "mesh_objects": 2,
+      "bytes": 4166008,
+      "triangles": 53574,
+      "aabb_min": [
+        -2.8511999637365335,
+        -3.725290298461914e-09,
+        -1.4687040382168277
+      ],
+      "aabb_max": [
+        2.8511999637365335,
+        1.9960000477731228,
+        1.4687040382168277
+      ],
+      "sha256": "04b3aec0899dba8a6914b125af6e8e54f65de40b9c6a69df4c4db97c6f0bb8e1",
+      "surfaces": 2,
+      "materials": 1,
+      "generation": "approved original mesh generation + PBR palette atlas/dark sandstone stage",
+      "door_height_m": 0.77
+    },
+    {
+      "path": "res://assets/c01-miniature-environment/c01_row_4x2.glb",
+      "footprint_cells": [
+        4,
+        2
+      ],
+      "ridge_axis": "X",
+      "ground_anchor": [
+        0,
+        0,
+        0
+      ],
+      "height_m": 1.9960000477731228,
+      "door_height_m": 1.02,
+      "roof_node": "Roof",
+      "wall_node": "Walls",
+      "mesh_objects": 2,
+      "triangles": 28950,
+      "bytes": 2099996,
+      "sha256": "00f250b239b9313f65e486190c863ea11f449eba12a82e1dffec8d413873c6cc",
+      "aabb_min": [
+        -1.8911999851942056,
+        -3.725290298461914e-09,
+        -0.9695039532444483
+      ],
+      "aabb_max": [
+        1.8911999851942056,
+        1.9960000477731228,
+        0.9695039532444483
+      ],
+      "surfaces": 2,
+      "materials": 1,
+      "generation": "approved original mesh generation + PBR palette atlas/dark sandstone stage"
+    },
+    {
+      "path": "res://assets/c01-miniature-environment/c01_n3_upper_market.glb",
+      "footprint_cells": [
+        4,
+        2
+      ],
+      "ground_anchor": [
+        0,
+        0,
+        0
+      ],
+      "height_m": 2.25249981880188,
+      "roof_node": "Roof",
+      "wall_node": "Walls",
+      "triangles": 10658,
+      "bytes": 868948,
+      "surfaces": 2,
+      "materials": 1,
+      "aabb_min": [
+        -1.9500000476837158,
+        0.0,
+        -0.9825000762939453
+      ],
+      "aabb_max": [
+        1.9500000476837158,
+        2.25249981880188,
+        0.9825000762939453
+      ],
+      "door_height_m": 1.12,
+      "eave_height_m": 1.65,
+      "sha256": "7510cfc460c45b468ff637b59af3ee3ef67f9b91bea90c153f43997d7fb34a7f",
+      "generation": "N3 third architecture: tiled PBR surface with real ridge/eaves; no per-interior-tile solids",
+      "alpha_mode": "OPAQUE"
+    },
+    {
+      "path": "res://assets/c01-miniature-environment/c01_n3_lower_gallery.glb",
+      "footprint_cells": [
+        4,
+        1
+      ],
+      "ground_anchor": [
+        0,
+        0,
+        0
+      ],
+      "height_m": 1.6325000524520874,
+      "roof_node": "Roof",
+      "wall_node": "Walls",
+      "triangles": 10158,
+      "bytes": 833956,
+      "surfaces": 2,
+      "materials": 1,
+      "aabb_min": [
+        -1.9500000476837158,
+        0.0,
+        -0.4825001060962677
+      ],
+      "aabb_max": [
+        1.9500000476837158,
+        1.6325000524520874,
+        0.4899999797344208
+      ],
+      "door_height_m": 1.04,
+      "eave_height_m": 1.3,
+      "sha256": "5dd9a73b32f6890336e1b700b91b810e1e373922e0876349ecd3e924d805c402",
+      "generation": "N3 third architecture: tiled PBR surface with real ridge/eaves; no per-interior-tile solids",
+      "alpha_mode": "OPAQUE"
+    }
+  ],
+  "stage": "approved-plinth-pbr-atlas-v1",
+  "placed_instances_triangle_total": 270764,
+  "unused_retained_modules": []
+}

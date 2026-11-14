@@ -84,6 +84,7 @@ public partial class BoardView
 
     private void ResumeIdle(Node2D actor)
     {
+        ActorPosePresented?.Invoke(new(actor.GetMeta("unit_id").AsInt32(), "idle", 0, 0, null));
         _playback?.ActorDepths.Remove(actor);
         var asset = UnitAsset(actor);
         SetFrame(actor.GetNode<Sprite2D>("AuthoredSprite"), asset, AssetCatalog.FrameIndex(asset, "idle"));

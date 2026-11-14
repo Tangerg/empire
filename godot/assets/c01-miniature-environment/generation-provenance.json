@@ -1,0 +1,24 @@
+{
+  "approved_stage": "original authored mesh -> 64x64 basecolor + ORM swatches -> dark sandstone grade",
+  "blender_version": "4.3.2",
+  "color_encoding": "scene-linear colors converted to sRGB8 basecolor; roughness/metallic stored Non-Color8",
+  "stone_grade_linear_rgb": [
+    0.56,
+    0.6,
+    0.66
+  ],
+  "triangle_details": "all original triangles retained; Roof/Walls remain separate; 2 primitives total",
+  "source_base_sha256": {
+    "c01_market_6x3.glb": "363b476e35335bae27b9db7480dfd6391b472fb348a42f36f88b442e73ffa990",
+    "c01_row_6x2.glb": "204fd357c6dc5a99268b389dcbd3c9e4a7bc16a8f98e47fce5f78e94cdf63f94",
+    "c01_row_4x2.glb": "1e3fb252b83dcdc96eef82fe5787d4a4678ed15697a4c2b1d893323ec0b06e55",
+    "c01_house_3x3.glb": "899af6590748e5b2f6a7b2909989daae04fe1bc92bc3823fbdd267baec1cc367",
+    "c01_house_3x6.glb": "725a5eaa8ea033b8f63c9c8b8c550dbed8d6d677d992fef9341a1a2593b32a79",
+    "c01_store_4x4.glb": "a5390980c0f44296dbdd4013743ede273fdd0d60047787e5baab6e4e4ba1e8b3"
+  },
+  "rebuild_note": "Generator plus optimizer reproduce the authored geometry/material specification; byte-identical glTF serialization across Blender versions is not promised. Current approved shipped hashes are pinned in manifest.json.",
+  "retired_source_evidence": {
+    "c01_row_4x1.glb": "af38c1ce2a607cfd7eb1c7b2fe043fdb1dbe063d4b1e594ce0587992194f9449",
+    "note": "Historical base and optimized output archived outside runtime; no current instance or generator output."
+  }
+}

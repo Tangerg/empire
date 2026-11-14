@@ -56,8 +56,10 @@ public static class TacticalHudStyle
         MouseFilter = Control.MouseFilterEnum.Ignore
     };
 
-    public static Control CommandTray()
+    public static Control CommandTray(bool plain = false)
     {
+        if (plain)
+            return SlatePlate();
         const float density = .15f;
         var surface = new Control { MouseFilter = Control.MouseFilterEnum.Stop };
         var frame = new NinePatchRect
@@ -80,8 +82,13 @@ public static class TacticalHudStyle
         return surface;
     }
 
-    public static void OrderBadge(Button button, bool prominent = false)
+    public static void OrderBadge(Button button, bool prominent = false, bool plain = false)
     {
+        if (plain)
+        {
+            PlainButton(button, 10);
+            return;
+        }
         var empty = new StyleBoxEmpty
         {
             ContentMarginLeft = 10,
@@ -97,6 +104,51 @@ public static class TacticalHudStyle
         // BaseButton owns hover, keyboard focus, press, toggle and disabled state.
         // Its native draw invalidation also covers programmatic Disabled changes.
         button.Draw += plate.QueueRedraw;
+    }
+
+    public static Panel SlatePlate()
+    {
+        var panel = new Panel { MouseFilter = Control.MouseFilterEnum.Stop };
+        panel.AddThemeStyleboxOverride("panel", Panel("#293235f5", 0, "#68746e"));
+        return panel;
+    }
+
+    public static void PlainButton(Button button, int padding = 9)
+    {
+        foreach (var (state, fill, edge) in new[]
+        {
+            ("normal", "#3b4949", "#78867c"),
+            ("hover", "#52635e", "#b9c3ae"),
+            ("pressed", "#263d3b", "#d4dac4"),
+            ("hover_pressed", "#263d3b", "#d4dac4"),
+            ("disabled", "#303737", "#515b57")
+        })
+        {
+            var surface = Panel(fill, padding, edge);
+            surface.ContentMarginTop = 4;
+            surface.ContentMarginBottom = 8;
+            button.AddThemeStyleboxOverride(state, surface);
+        }
+        var focus = Panel("#00000000", 0, "#e1dec9");
+        focus.BorderWidthLeft = focus.BorderWidthRight = focus.BorderWidthTop = focus.BorderWidthBottom = 2;
+        button.AddThemeStyleboxOverride("focus", focus);
+    }
+
+    public static Theme CreatePlain()
+    {
+        var theme = Create();
+        foreach (var type in new[] { "Label", "Button", "TooltipLabel" })
+            theme.SetColor("font_color", type, new Color("#e6e2d3"));
+        theme.SetColor("font_hover_color", "Button", new Color("#faf6e8"));
+        theme.SetColor("font_pressed_color", "Button", new Color("#faf6e8"));
+        theme.SetStylebox("panel", "TooltipPanel", Panel("#293235", 10, "#68746e"));
+        theme.SetStylebox("panel", "AcceptDialog", Panel("#293235", 16, "#68746e"));
+        var button = new Button();
+        PlainButton(button);
+        foreach (var state in new[] { "normal", "hover", "pressed", "hover_pressed", "disabled", "focus" })
+            theme.SetStylebox(state, "Button", button.GetThemeStylebox(state));
+        button.Free();
+        return theme;
     }
 
     public static Theme Create()

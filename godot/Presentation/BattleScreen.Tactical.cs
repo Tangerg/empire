@@ -59,6 +59,7 @@ public partial class BattleScreen
         var overlay = _tactical.Overlay();
         _overlay.ShowTactical(overlay);
         _board.ShowTacticalEmphasis(overlay);
+        _miniature?.ShowOverlay(overlay, objectiveCells ?? Array.Empty<BoardCell>());
         var globalBinding = (stamp, IsInputBlocked);
         if (_globalOrderBinding == globalBinding)
             return;
@@ -97,7 +98,7 @@ public partial class BattleScreen
             button.TooltipText = tooltip;
             button.SizeFlagsHorizontal = SizeFlags.ShrinkCenter;
             if (name == "EndTurn")
-                TacticalHudStyle.OrderBadge(button, prominent: true);
+                TacticalHudStyle.OrderBadge(button, prominent: true, plain: _hudProfile.PlainSurfaces);
             button.Disabled = !enabled || IsInputBlocked;
             parent.AddChild(button);
             if (globalFocusName == name && !button.Disabled)
@@ -236,9 +237,9 @@ public partial class BattleScreen
         if (_tactical is null || !Current(_tactical.Stamp, true))
             return;
         TacticalHit? hit = null;
-        if (point is { } at && at.X >= 0 && at.Y >= 0 && at.X < _board.FieldSize.X && at.Y < _board.FieldSize.Y && _state is not null)
+        if (point is { } at && _state is not null)
         {
-            if (_board.Pick(new Vector2((float)at.X, (float)at.Y)) is { } picked
+            if (PickPresentedField(at) is { } picked
                 && _tactical.InteractiveCells.Contains(picked.Cell))
                 hit = picked;
         }

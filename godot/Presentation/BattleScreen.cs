@@ -29,6 +29,7 @@ public partial class BattleScreen : Control
     private JsonObject? _state;
     private readonly BoardView _board = new() { Name = "Board" };
     private BoardOverlay _overlay = null!;
+    private MiniatureBoardView? _miniature;
     private readonly Control _mapArea;
     private readonly Node2D _world;
     private readonly Control _viewportFeedback;
@@ -44,6 +45,7 @@ public partial class BattleScreen : Control
     private long _tacticalBinding;
     private bool _applicationBusy;
     private TacticalHud _hud = null!;
+    private TacticalHudPresentation _hudProfile = TacticalHudPresentation.Default;
     private long _hudApplyGeneration;
     private readonly List<(Button Button, string Tooltip)> _idleActions = new();
     public bool IsInputBlocked => _presenting || _applicationBusy;
@@ -172,6 +174,8 @@ public partial class BattleScreen : Control
         if (!_built)
             return;
         RefreshApplicationActions();
+        if (_miniature is not null && _board.IsPresenting)
+            _board.AdvancePresentation(delta);
         if (_bound && _feedbackSeconds > 0 && !IsInputBlocked && !HasVisibleWindow && _feedbackPanel.IsVisibleInTree())
         {
             _feedbackSeconds = Math.Max(0, _feedbackSeconds - delta);
@@ -280,8 +284,28 @@ public partial class BattleScreen : Control
         _snapshot = null;
         _presentedRevision = session.Revision;
         _board.Configure(rules.Board, level, authoredScene);
+        if (_miniature is not null)
+        {
+            _mapArea.RemoveChild(_miniature);
+            _miniature.QueueFree();
+            _miniature = null;
+        }
+        if (authoredScene.MiniatureScenePath is { } miniaturePath)
+        {
+            if (authoredScene.PaintedGroundPath is not null || authoredScene.AssembledGroundPath is not null)
+                throw new InvalidOperationException("Miniature scenes cannot also select a painted ground renderer.");
+            _miniature = new MiniatureBoardView(rules.Board.Content);
+            _mapArea.AddChild(_miniature);
+            _mapArea.MoveChild(_miniature, 0);
+            _miniature.LoadAuthoredScene(miniaturePath);
+        }
+        _board.AdvanceAnimationsAutomatically = _miniature is null;
+        _world.Visible = _miniature is null;
+        _viewportFeedback.Visible = _miniature is null;
         _hud.ConfigureArt(TacticalHudArt.Load(rules.Board.Assets, rules.Portraits));
-        _hud.ConfigurePresentation(TacticalHudPresentation.Resolve(authoredScene));
+        _hudProfile = TacticalHudPresentation.Resolve(authoredScene);
+        _hud.ConfigurePresentation(_hudProfile);
+        Theme = _hudProfile.PlainSurfaces ? TacticalHudStyle.CreatePlain() : TacticalHudStyle.Create();
         _session = session;
         _tactical = new TacticalSelectionController(_session.GetTacticalQueries(_tacticalBinding));
         _applicationBusy = false;
@@ -307,6 +331,8 @@ public partial class BattleScreen : Control
 
     public void ConfigureGround(BoardGroundFactory createGround)
     {
+        if (_miniature is not null)
+            return;
         _board.ConfigureGround(createGround);
         if (_state is not null)
             Refresh();
@@ -314,6 +340,8 @@ public partial class BattleScreen : Control
 
     public void ConfigureDynamicState()
     {
+        if (_miniature is not null)
+            return;
         _board.ConfigureDynamicState();
         if (_state is not null)
             Refresh();
@@ -612,13 +640,14 @@ public partial class BattleScreen : Control
         _snapshot = next;
         _presentedRevision = next.Revision;
         _state = state;
+        _miniature?.Render(_board.Projection, state, next.VisibleUnitIds);
         SynchronizeTactical(next);
         if (_gestures?.ActivePointerId is null && _pointerMapPosition is { } pointer)
             HoverField(ProjectMapPoint(pointer));
         _overlay.ShowPublicState(_board.Projection, _tactical!.InteractiveCells, _snapshot.VisibleCells, _snapshot.Incoming);
         UpdateHeader();
         UpdateTactical();
-        _coverage.Text = !_board.SurfaceReady ? _text.Format("ui.battle.surface_pending")
+        _coverage.Text = _miniature is not null ? "" : !_board.SurfaceReady ? _text.Format("ui.battle.surface_pending")
             : _board.RenderingIssueCount > 0 ? _text.Format("ui.battle.artwork_issues", _board.RenderingIssueCount) : "";
         _coverage.TooltipText = "";
         _coverage.Visible = _coverage.Text.Length > 0;
@@ -631,10 +660,15 @@ public partial class BattleScreen : Control
         if (_text is null)
             throw new InvalidOperationException("Bind the battle text dependencies before building the screen.");
         _built = true;
+        _board.ActorContactPresented += (id, logical) => _miniature?.PresentContact(id, logical);
+        _board.ActorPosePresented += sample => _miniature?.PresentPose(sample);
         _board.EventPresented += (transition, index) =>
         {
             if (_presenting && _bound && IsInsideTree() && transition.Revision == _presentedRevision)
+            {
                 AppendMessage(transition.EventDescriptions[index]);
+                _miniature?.PresentEvent(transition.Events[index]);
+            }
         };
         _board.PresentationRepaintRequested += () =>
         {
@@ -884,6 +918,7 @@ public partial class BattleScreen : Control
     {
         if (_camera is null || !_camera.HasViewport)
             return;
+        _miniature?.SyncCamera(_camera, _mapArea.Size);
         var scale = Vector2.One * (float)_camera.Zoom;
         var position = new Vector2((float)_camera.FieldOrigin.X, (float)_camera.FieldOrigin.Y);
         if (_world.Scale == scale && _world.Position == position)
@@ -991,15 +1026,13 @@ public partial class BattleScreen : Control
     private CameraPoint? ProjectMapPoint(CameraPoint point) =>
         _camera?.HasViewport == true && point.X >= 0 && point.Y >= 0
         && point.X < _mapArea.Size.X && point.Y < _mapArea.Size.Y
-            ? _camera.ToField(point) : null;
+            ? _miniature is not null ? point : _camera.ToField(point) : null;
 
     private void PressField(CameraPoint point, int button)
     {
         if (IsInputBlocked || !_bound || !IsInsideTree() || _state is null)
             return;
-        if (point.X < 0 || point.Y < 0 || point.X >= _board.FieldSize.X || point.Y >= _board.FieldSize.Y)
-            return;
-        if (_board.Pick(new Vector2((float)point.X, (float)point.Y)) is not { } picked)
+        if (PickPresentedField(point) is not { } picked)
             return;
         if (_tactical is null || !Current(_tactical.Stamp) || !_tactical.InteractiveCells.Contains(picked.Cell))
             return;

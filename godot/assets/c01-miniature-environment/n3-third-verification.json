@@ -1,0 +1,46 @@
+[
+  {
+    "file": "c01_n3_upper_market.glb",
+    "old_triangles": 28950,
+    "new_triangles": 10658,
+    "reduction_percent": 63.18480138169258,
+    "surfaces": 2,
+    "materials": 1,
+    "aabb_min": [
+      -1.9500000476837158,
+      0.0,
+      -0.9825000762939453
+    ],
+    "aabb_max": [
+      1.9500000476837158,
+      2.25249981880188,
+      0.9825000762939453
+    ],
+    "fits_original_footprint": true,
+    "root_and_placement_unchanged": true,
+    "no_physics_or_tactical_metadata": true,
+    "comparison_baseline_file": "c01_row_4x2.glb"
+  },
+  {
+    "file": "c01_n3_lower_gallery.glb",
+    "old_triangles": 25710,
+    "new_triangles": 10158,
+    "reduction_percent": 60.49008168028005,
+    "surfaces": 2,
+    "materials": 1,
+    "aabb_min": [
+      -1.9500000476837158,
+      0.0,
+      -0.4825001060962677
+    ],
+    "aabb_max": [
+      1.9500000476837158,
+      1.6325000524520874,
+      0.4899999797344208
+    ],
+    "fits_original_footprint": true,
+    "root_and_placement_unchanged": true,
+    "no_physics_or_tactical_metadata": true,
+    "comparison_baseline_file": "c01_row_4x1.glb"
+  }
+]

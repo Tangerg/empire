@@ -41,7 +41,10 @@ public partial class AssembledGroundChecks : Node
     private async Task Check()
     {
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
-        var level = BattleTextChecks.OpeningLevel();
+        // This suite proves the historical assembled renderer and its negative controls.
+        // Current C01 intentionally no longer owns painted scenery; SceneryChecks verifies
+        // its explicit miniature contract, while this frozen fixture cannot enter a campaign.
+        var level = HistoricalPaintedC01Fixture.Level;
         var state = engine.CreateState(level);
         var before = EcmaJson.Stringify(state);
         var map = state["map"]!.AsObject();
@@ -59,14 +62,14 @@ public partial class AssembledGroundChecks : Node
                 var terrain = engine.Catalog.Definition("terrains", map["tiles"]![y * width + x]!.GetValue<string>())!.Value;
                 outside = terrain.GetProperty("tags").EnumerateArray().Any(tag => tag.GetString() == "outside");
             }
-            Require(outside, $"C01 decorative tree foot cannot occupy a playable cell: {decoration.Id}.");
+            Require(outside, $"Historical painted decorative tree foot cannot occupy a playable cell: {decoration.Id}.");
         }
         var actualCatalog = PresentationJson.Load<SceneObjectCatalog>(actual.ObjectCatalogPath);
         foreach (var site in actual.Objects.Where(item => item.SelectionCell is not null))
         {
             var entrance = actualCatalog.Objects[site.AssetId];
             Require(entrance.GroundFrontPixels is { } front && entrance.AnchorPixels.SequenceEqual(front),
-                $"C01 doorway is the building sorting front; root shrubs must not bury a unit at the entrance: {site.Id}.");
+                $"Historical painted doorway is the building sorting front; root shrubs must not bury a unit at the entrance: {site.Id}.");
         }
         foreach (var assetId in actual.Objects.Select(item => item.AssetId).Distinct())
         {
@@ -74,9 +77,9 @@ public partial class AssembledGroundChecks : Node
             var texture = ResourceLoader.Load<Texture2D>(asset.ResourcePath);
             using var image = texture.GetImage();
             Require(image.DetectAlpha() != Image.AlphaMode.None,
-                $"C01 standing artwork must retain real transparent pixels: {assetId}.");
+                $"Historical painted standing artwork must retain real transparent pixels: {assetId}.");
             Require(image.HasMipmaps(),
-                $"C01 minified artwork needs imported mip levels, not only a filter setting: {assetId}.");
+                $"Historical painted minified artwork needs imported mip levels, not only a filter setting: {assetId}.");
         }
         var sites = new[] { new Coord(3, 16), new Coord(18, 13), new Coord(22, 16), new Coord(34, 13) };
         SceneObjectPlacement Site(Coord cell) => new()

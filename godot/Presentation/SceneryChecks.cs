@@ -35,12 +35,37 @@ public partial class SceneryChecks : Node
             var oracle = JsonNode.Parse(input)!;
             var environment = EnvironmentCatalog.Load();
             var assets = AssetCatalog.Load();
+            CheckC01MiniatureContract();
             HistoricalFrames(oracle, environment);
             await CoversAndLifecycle(oracle, assets, environment);
             GD.Print($"PASS {_checks} historical source-art and current registered scenery/resource/lifecycle assertions; no GUI acceptance claim.");
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
+    }
+
+    private void CheckC01MiniatureContract()
+    {
+        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
+        Require(!string.IsNullOrWhiteSpace(scene.MiniatureScenePath),
+            "Rebuilt C01 must explicitly own a miniature 3D scene; the historical painted renderer is not a fallback.");
+        Require(scene.PaintedGroundPath is null && scene.AssembledGroundPath is null,
+            "C01 must have one environment owner, not miniature and historical painted grounds together.");
+        Require(scene.HasAuthoredFramePlacements && scene.FramePlacements.Count == 0 && scene.Placements.Count == 0,
+            "C01's 3D scene must not silently retain the old 2D props or generic perimeter.");
+        Require(ResourceLoader.Exists(scene.MiniatureScenePath!),
+            $"C01 declares a missing miniature resource: {scene.MiniatureScenePath}.");
+        var packed = ResourceLoader.Load<PackedScene>(scene.MiniatureScenePath!);
+        Require(packed is not null, "C01 miniature resource must load as a real PackedScene.");
+        var instance = packed!.Instantiate();
+        try
+        {
+            Require(instance is Node3D, "C01 miniature environment must have a Node3D root.");
+            Require(instance.FindChildren("*", "MeshInstance3D", true, false)
+                .OfType<MeshInstance3D>().Any(mesh => mesh.Mesh is not null),
+                "C01 miniature scene must contain real mesh geometry, not an empty root or a painted screenshot.");
+        }
+        finally { instance.Free(); }
     }
 
     private void HistoricalFrames(JsonNode oracle, EnvironmentCatalog environment)
@@ -109,11 +134,14 @@ public partial class SceneryChecks : Node
     private async Task CoversAndLifecycle(JsonNode oracle, AssetCatalog assets, EnvironmentCatalog environment)
     {
         var engine = new Empire.Core.Engine.BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
-        var level = BattleTextChecks.OpeningLevel();
+        // C02 remains a shipped painted level. Exercise the live legacy renderer there,
+        // rather than requiring the rebuilt C01 to preserve the obsolete renderer.
+        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json")
+            .OfType<JsonObject>().Single(value => value["id"]!.GetValue<string>() == "c01-02");
         var state = engine.CreateState(level);
-        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
+        var scene = AuthoredScene.Load("res://data/scenes/c01-02.json");
         Require(scene.AssembledGroundPath is not null && scene.HasAuthoredFramePlacements && scene.FramePlacements.Count == 0,
-            "Current C01 owns its assembled scenery and explicitly suppresses legacy generic frames.");
+            "Unchanged C02 owns its assembled scenery and explicitly suppresses generic frames.");
         var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
         var board = new BoardView { AdvanceAnimationsAutomatically = false };
         AddChild(board);

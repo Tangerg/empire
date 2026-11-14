@@ -15,6 +15,8 @@ public partial class TacticalHud : Control
     private bool submitted;
     private Button? pendingOrder;
     private TacticalHudArt? art;
+    private Color Accent => presentation.PlainSurfaces ? new Color("#d7d9c6") : TacticalHudStyle.Gold;
+    private Color MutedInk => presentation.PlainSurfaces ? new Color("#b8c0b5") : TacticalHudStyle.Muted;
     private TacticalHudPresentation presentation = TacticalHudPresentation.Default;
     public void ConfigurePresentation(TacticalHudPresentation value)
     {
@@ -22,6 +24,8 @@ public partial class TacticalHud : Control
         if (presentation == value)
             return;
         presentation = value;
+        Theme = value.PlainSurfaces ? TacticalHudStyle.CreatePlain() : TacticalHudStyle.Create();
+        detailPopup?.AddThemeStyleboxOverride("panel", DossierSurface());
         pendingOrder = null;
         current = null;
         if (value.CompactHeaders)
@@ -170,7 +174,7 @@ public partial class TacticalHud : Control
         if (detailPopup is null)
         {
             detailPopup = new PopupPanel { Name = "UnitDossier", MinSize = DossierSize, WrapControls = false };
-            detailPopup.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#30291e", 14, "#756344"));
+            detailPopup.AddThemeStyleboxOverride("panel", DossierSurface());
             AddChild(detailPopup);
             detailPopup.VisibilityChanged += () => DossierVisibilityChanged?.Invoke();
             var body = new VBoxContainer { Name = "DossierBody" };
@@ -274,7 +278,7 @@ public partial class TacticalHud : Control
         }
         if (!retainedSections.Contains("unit") && projection.Sections.Any(section => section.Key == "unit"))
         {
-            var portraitTray = TacticalHudStyle.CommandTray();
+            var portraitTray = TacticalHudStyle.CommandTray(presentation.PlainSurfaces);
             portraitTray.Name = "PortraitTray";
             AddChild(portraitTray);
             Place(portraitTray, 0, 1, 0, 1, 14, -126, 274, -8);
@@ -284,7 +288,7 @@ public partial class TacticalHud : Control
         var actionSlots = Math.Max(2, Math.Min(maximumActionSlots, actionCount));
         if (actionCount > 0 && !preserveActions)
         {
-            var actionTray = TacticalHudStyle.CommandTray();
+            var actionTray = TacticalHudStyle.CommandTray(presentation.PlainSurfaces);
             actionTray.Name = "OrderTray";
             AddChild(actionTray);
             Place(actionTray, 0, 1, 0, 1, 278, -126, 278 + actionSlots * 106 + 28, -8);
@@ -318,7 +322,7 @@ public partial class TacticalHud : Control
                 details.AddChild(group);
             var header = new HBoxContainer { Name = "Heading", SizeFlagsHorizontal = SizeFlags.ExpandFill };
             var heading = Label(section.Title, section.Key == "crown" && presentation.CompactHeaders ? 17 : section.Key is "crown" or "unit" ? 19 : 13,
-                section.Key == "objectives" ? presentation.CompactHeaders ? TacticalHudStyle.Gold : new Color("#453921") : section.Key is "crown" or "unit" or "forecast" or "commands" ? TacticalHudStyle.Gold : TacticalHudStyle.Muted);
+                section.Key == "objectives" ? presentation.CompactHeaders ? Accent : new Color("#453921") : section.Key is "crown" or "unit" or "forecast" or "commands" ? Accent : MutedInk);
             header.AddChild(heading);
             group.AddChild(header);
             var collapsible = section.Key is "objectives" or "forecast-details" or "unit-details" or "roster" or "tile" or "stances" or "formations" or "careers";
@@ -386,7 +390,9 @@ public partial class TacticalHud : Control
                 if (projection.Portrait is { } portrait && art is not null)
                 {
                     var portraitPlate = new PanelContainer { Name = "PortraitMedallion" };
-                    var rim = TacticalHudStyle.Panel("#37382b", 3, "#b29862");
+                    var rim = presentation.PlainSurfaces
+                        ? TacticalHudStyle.Panel("#35403f", 3, "#78867c")
+                        : TacticalHudStyle.Panel("#37382b", 3, "#b29862");
                     rim.CornerRadiusTopLeft = rim.CornerRadiusTopRight = rim.CornerRadiusBottomLeft = rim.CornerRadiusBottomRight = 36;
                     rim.BorderWidthLeft = rim.BorderWidthRight = rim.BorderWidthTop = rim.BorderWidthBottom = 2;
                     portraitPlate.AddThemeStyleboxOverride("panel", rim);
@@ -407,7 +413,7 @@ public partial class TacticalHud : Control
                 var identity = section.Rows.FirstOrDefault(row => row.Key == "selection");
                 if (identity is not null)
                 {
-                    var state = Label(identity.Label, 12, TacticalHudStyle.Muted);
+                    var state = Label(identity.Label, 12, MutedInk);
                     state.TooltipText = identity.Hint;
                     state.AutowrapMode = TextServer.AutowrapMode.Off;
                     rows.AddChild(state);
@@ -438,7 +444,7 @@ public partial class TacticalHud : Control
                 foreach (var row in section.Rows.Where(row => row.Key is not ("attacker" or "recipient" or "strike" or "counter" or "forecast-scope")
                     && !row.Key.StartsWith("hit-effect-", StringComparison.Ordinal)))
                 {
-                    var effect = Label(row.Label, 12, row.Key is "recipient-dies" or "attacker-dies" ? new Color("#e5a08b") : TacticalHudStyle.Gold);
+                    var effect = Label(row.Label, 12, row.Key is "recipient-dies" or "attacker-dies" ? new Color("#e5a08b") : Accent);
                     effect.Name = row.Key;
                     effect.TooltipText = row.Hint;
                     effects.AddChild(effect);
@@ -490,7 +496,7 @@ public partial class TacticalHud : Control
                         button.VerticalIconAlignment = dense ? VerticalAlignment.Center : VerticalAlignment.Top;
                         if (dense)
                             button.AddThemeConstantOverride("icon_max_width", 18);
-                        TacticalHudStyle.OrderBadge(button);
+                        TacticalHudStyle.OrderBadge(button, plain: presentation.PlainSurfaces);
                         commandGrid.AddChild(button);
                     }
                     else
@@ -507,7 +513,7 @@ public partial class TacticalHud : Control
             if (section.Key == "forecast")
                 foreach (var row in section.Rows.Where(row => row.Key == "forecast-scope" || row.Key.StartsWith("hit-effect-", StringComparison.Ordinal)))
                 {
-                    var notice = Label(row.Label, row.Key == "forecast-scope" ? 11 : 12, TacticalHudStyle.Gold);
+                    var notice = Label(row.Label, row.Key == "forecast-scope" ? 11 : 12, Accent);
                     notice.Name = row.Key;
                     notice.TooltipText = row.Hint.Length > 0 ? row.Hint : row.Label;
                     notice.MaxLinesVisible = 1;
@@ -537,7 +543,7 @@ public partial class TacticalHud : Control
         }
         if (!preserveInstruction)
         {
-            var hint = Label(projection.Hint, 13, TacticalHudStyle.Gold);
+            var hint = Label(projection.Hint, 13, Accent);
             hint.Name = "SelectionHint";
             hint.Visible = ShowHint && projection.Hint.Length > 0;
             hint.TooltipText = projection.Hint;
@@ -556,7 +562,7 @@ public partial class TacticalHud : Control
                 var hintSlots = mainActions is null ? maximumActionSlots : actionSlots;
                 if (mainActions is null && hint.Visible)
                 {
-                    var instructionTray = TacticalHudStyle.CommandTray();
+                    var instructionTray = TacticalHudStyle.CommandTray(presentation.PlainSurfaces);
                     instructionTray.Name = "InstructionTray";
                     AddChild(instructionTray);
                     Place(instructionTray, 0, 1, 0, 1, 278, -50, 278 + hintSlots * 106 + 28, -8);
@@ -868,6 +874,10 @@ public partial class TacticalHud : Control
         control.OffsetBottom = y2;
     }
 
+    private StyleBoxFlat DossierSurface() => presentation.PlainSurfaces
+        ? TacticalHudStyle.Panel("#293235", 14, "#68746e")
+        : TacticalHudStyle.Panel("#30291e", 14, "#756344");
+
     private static Panel CompactHeaderPlate()
     {
         var panel = new Panel();
@@ -881,10 +891,10 @@ public partial class TacticalHud : Control
         AddChild(panel);
         Place(panel, left, top, right, bottom, x1, y1, x2, y2);
         var compact = presentation.CompactHeaders && (content.Name == "crown" || content.Name == "objectives");
-        Control plate = compact ? CompactHeaderPlate() : content.Name == "crown"
+        Control plate = presentation.PlainSurfaces ? TacticalHudStyle.SlatePlate() : compact ? CompactHeaderPlate() : content.Name == "crown"
             ? TacticalHudStyle.PaintedImage("battle-banner-v1.png", new Rect2(20, 180, 1960, 415))
             : paper ? TacticalHudStyle.PaintedImage("objectives-paper-v1.png", new Rect2(20, 46, 2120, 605))
-            : TacticalHudStyle.CommandTray();
+            : TacticalHudStyle.CommandTray(presentation.PlainSurfaces);
         plate.MouseFilter = MouseFilterEnum.Ignore;
         panel.AddChild(plate);
         plate.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
@@ -918,7 +928,7 @@ public partial class TacticalHud : Control
         line.AddChild(label);
         destination.AddChild(line);
         if (row.Selected)
-            label.AddThemeColorOverride("font_color", TacticalHudStyle.Gold);
+            label.AddThemeColorOverride("font_color", Accent);
         if (row.Gauge is { } gauge)
         {
             var bar = new ProgressBar
@@ -935,10 +945,15 @@ public partial class TacticalHud : Control
         }
     }
 
-    private static void CompactButton(Button button)
+    private void CompactButton(Button button)
     {
         button.CustomMinimumSize = new Vector2(0, 26);
         button.AddThemeFontSizeOverride("font_size", 13);
+        if (presentation.PlainSurfaces)
+        {
+            TacticalHudStyle.PlainButton(button, 4);
+            return;
+        }
         button.AddThemeStyleboxOverride("normal", TacticalHudStyle.Panel("#30291e", 4, "#756344"));
         button.AddThemeStyleboxOverride("hover", TacticalHudStyle.Panel("#655033", 4, "#b4a477"));
         button.AddThemeStyleboxOverride("pressed", TacticalHudStyle.Panel("#493b29", 4, "#b4a477"));

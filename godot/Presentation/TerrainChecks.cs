@@ -67,11 +67,14 @@ internal static class TerrainChecks
                 Require(board.Diagnostics.Contains("Authored scene is marked runtimeReady=false in the source document.") == !scene.RuntimeReady,
                     "Scene review diagnostics must reflect the actual authored metadata.");
                 if (scene.LevelId == "c01-01")
-                    CheckOpeningHills(engine, state);
+                    CheckCurrentC01Terraces(engine, state);
                 GD.Print($"Authored scene projection: {scene.LevelId}, {board.ProjectionUnitCount} actors, {board.Diagnostics.Count} diagnostics.");
             }
             finally { parent.RemoveChild(board); board.Free(); }
         }
+        // Keep the exact two-hill/old-ramp negative controls as historical technical
+        // evidence, not requirements imposed on the rebuilt live three-tier C01.
+        CheckOpeningHills(engine, engine.CreateState(HistoricalPaintedC01Fixture.Level));
         var fixture = MaterialSceneFixtureChecks.Scene;
         var fixtureState = engine.CreateState(MaterialSceneFixtureChecks.Level);
         var fixtureTiles = fixtureState["map"]!["tiles"]!.AsArray().Select(tile => tile!.GetValue<string>()).ToArray();
@@ -89,7 +92,57 @@ internal static class TerrainChecks
         CheckRiverGeometry();
         CheckRoadShoulder();
         CheckEdgeSupport(materials);
-        GD.Print("Terrain checks passed: authored scene renderers, opening hill access and connectivity, independent material river/bridge registration, raw diagonal occupancy, river width validation and junction topology.");
+        GD.Print("Terrain checks passed: authored scene renderers, live C01 terrace edges and historical hill access/connectivity, independent material river/bridge registration, raw diagonal occupancy, river width validation and junction topology.");
+    }
+
+    private static void CheckCurrentC01Terraces(BattleEngine engine, JsonObject state)
+    {
+        var field = new TacticalBattlefield(state, engine.Catalog);
+        var cliffs = state["map"]!["cliffs"]!.AsArray().OfType<JsonObject>().ToArray();
+        Require(cliffs.Length == 31, "Live miniature C01 must retain its 31 canonical terrace edges.");
+        var edges = new HashSet<string>(StringComparer.Ordinal);
+        var withoutCliffs = state.DeepClone().AsObject();
+        withoutCliffs["map"]!["cliffs"] = new JsonArray();
+        var open = new TacticalBattlefield(withoutCliffs, engine.Catalog);
+        var openNegativeControls = 0;
+        foreach (var cliff in cliffs)
+        {
+            var from = new Coord(cliff["from"]!["x"]!.GetValue<int>(), cliff["from"]!["y"]!.GetValue<int>());
+            var to = new Coord(cliff["to"]!["x"]!.GetValue<int>(), cliff["to"]!["y"]!.GetValue<int>());
+            Require(Math.Abs(from.X - to.X) + Math.Abs(from.Y - to.Y) == 1,
+                "Live C01 cliffs must connect adjacent canonical cells, not painted boundaries.");
+            var a = field.IndexOf(from);
+            var b = field.IndexOf(to);
+            Require(edges.Add($"{Math.Min(a, b)}:{Math.Max(a, b)}"), "Live C01 has a duplicate terrace edge.");
+            Require(Math.Abs(field.Cell(from).Elevation - field.Cell(to).Elevation) == 1,
+                "Live C01 terrace walls must separate adjacent height tiers.");
+            foreach (var profile in new[] { "foot", "mounted", "heavy" })
+            {
+                Require(field.IsCliff(from, to) && field.IsCliff(to, from)
+                    && field.TraversalCost(from, to, profile) is null
+                    && field.TraversalCost(to, from, profile) is null,
+                    "Live C01 terrace edges must block ground movement in both directions.");
+                if (field.Cell(from).Admits(profile) && field.Cell(to).Admits(profile))
+                {
+                    Require(open.TraversalCost(from, to, profile) is > 0
+                        && open.TraversalCost(to, from, profile) is > 0,
+                        "Removing a live C01 cliff must reopen its otherwise walkable tier boundary.");
+                    openNegativeControls++;
+                }
+            }
+        }
+        Require(openNegativeControls > 0, "Live C01 cliff negative controls must exercise walkable edges.");
+        foreach (var (y, ports) in new[] { (10, new[] { 14, 15, 26, 27 }), (15, new[] { 12, 13, 26, 27 }) })
+            foreach (var x in ports)
+            {
+                var from = new Coord(x, y);
+                var to = new Coord(x, y + 1);
+                Require(!field.IsCliff(from, to), "A live C01 double-width ramp must not become a cliff.");
+                foreach (var profile in new[] { "foot", "mounted", "heavy" })
+                    Require(field.TraversalCost(from, to, profile) is > 0
+                        && field.TraversalCost(to, from, profile) is > 0,
+                        "Live C01 ramps must connect both tiers for every ground movement class.");
+            }
     }
 
     internal static void CheckOpeningHills(BattleEngine engine, JsonObject state)

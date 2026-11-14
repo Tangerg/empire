@@ -45,11 +45,23 @@ public partial class RegenerationFeedbackChecks : Node
     {
         var fixture = PresentationJson.Load<JsonObject>("res://tests/native/" + filename);
         var levelId = fixture["levelId"]!.GetValue<string>();
-        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
-            .Single(value => value["id"]!.GetValue<string>() == levelId);
+        var isolated = fixture["coverageScope"]?.GetValue<string>() == "isolated-recorded-recovery-projection";
+        Require(isolated == (filename == "c01-01-regeneration.json")
+            && isolated == (fixture["isolatedLevelPath"]?.GetValue<string>() == "res://tests/native/c01-painted-historical-level.json"),
+            "Only the explicitly isolated C01 recovery witness may supply its own frozen level.");
+        var level = isolated
+            ? HistoricalPaintedC01Fixture.Level
+            : PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+                .Single(value => value["id"]!.GetValue<string>() == levelId);
+        Require(level["id"]!.GetValue<string>() == levelId, "Recovery fixture and level identities must agree.");
+        // Isolate the event-projection contract from replaced C01 art and map admission.
+        // Current miniature effects require their own renderer-visible verification.
+        var scene = isolated
+            ? new AuthoredScene { LevelId = levelId, MapSize = [level["width"]!.GetValue<int>(), level["height"]!.GetValue<int>()] }
+            : AuthoredScene.Load($"res://data/scenes/{levelId}.json");
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var battle = engine.CreateBattle(level);
-        Require(battle.StateHash == fixture["initialStateHash"]!.GetValue<string>(), "Recovery witness starts from unchanged formal content.");
+        Require(battle.StateHash == fixture["initialStateHash"]!.GetValue<string>(), "Recovery witness starts from its exact declared live or isolated content.");
         foreach (var action in fixture["prefix"]!.AsArray().OfType<JsonObject>())
             battle.Dispatch(action);
         Require(battle.StateHash == fixture["beforeStateHash"]!.GetValue<string>(), "The unchanged legal prefix reaches the exact recorded recovery state.");
@@ -63,7 +75,7 @@ public partial class RegenerationFeedbackChecks : Node
             screen.Board.AdvanceAnimationsAutomatically = false;
             screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), session,
                 new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)),
-                level, AuthoredScene.Load($"res://data/scenes/{levelId}.json"));
+                level, scene);
             GetViewport().GuiReleaseFocus();
             var completed = new List<int>();
             screen.Board.EventPresented += (_, index) => completed.Add(index);
@@ -99,7 +111,7 @@ public partial class RegenerationFeedbackChecks : Node
                 && completed.SequenceEqual(Enumerable.Range(0, transition.Events.Count)),
                 "Each committed event completes once, in order, and releases its effects.");
             var described = indices.Select(index => transition.EventDescriptions[index]).ToArray();
-            GD.Print($"REGEN_FEEDBACK {levelId}: descriptions=[{string.Join(" | ", described)}]; floating=[{string.Join(",", floating.Select(effect => effect.Number))}]; state={StateDigest.Hash(session.Snapshot())}");
+            GD.Print($"REGEN_FEEDBACK {levelId} scope={(isolated ? "isolated-projection" : "live-level")}: descriptions=[{string.Join(" | ", described)}]; floating=[{string.Join(",", floating.Select(effect => effect.Number))}]; state={StateDigest.Hash(session.Snapshot())}");
             Require(described.SequenceEqual(expected)
                 && floating.Select(effect => effect.Number).SequenceEqual(indices.Select(index => "+" + transition.Events[index].GetProperty("amount").GetDouble().ToString(CultureInfo.InvariantCulture)))
                 && expected.All(line => screen.RecentMessages.Contains(line)),
@@ -117,7 +129,7 @@ public partial class RegenerationFeedbackChecks : Node
             Require(!screen.IsPresenting && completed.Count == eventCount && screen.RecentMessages.SequenceEqual(messages)
                 && StateDigest.Hash(session.Snapshot()) == fixture["afterStateHash"]!.GetValue<string>(),
                 "Refreshing a settled revision cannot repeat recovery or change health.");
-            if (levelId == "c01-01")
+            if (isolated)
                 await CheckVisibilityAndLifetime(screen.Board, session, presentation, engine, level, transition, indices.Single());
             if (fixture["hiddenBoundary"] is JsonObject hiddenBoundary)
             {
@@ -135,7 +147,7 @@ public partial class RegenerationFeedbackChecks : Node
                     "The real session visibility query must actually conceal the regenerating enemy before the human action.");
                 screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), hiddenSession,
                     new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric)),
-                    level, AuthoredScene.Load($"res://data/scenes/{levelId}.json"));
+                    level, scene);
                 GetViewport().GuiReleaseFocus();
                 foreach (var pressed in new[] { true, false })
                 {

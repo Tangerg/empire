@@ -35,7 +35,11 @@ public partial class LightingChecks : Node
             Contacts();
             Compositions(oracle);
             JunctionComposition();
-            await Integrated(BattleTextChecks.OpeningLevel(), AuthoredScene.Load("res://data/scenes/c01-01.json"), false);
+            // Preserve the complete painted lighting integration on an unchanged shipped level.
+            // C01 now owns a miniature scene and must not keep the old renderer for this proof.
+            var paintedLevel = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json")
+                .OfType<JsonObject>().Single(value => value["id"]!.GetValue<string>() == "c01-02");
+            await Integrated(paintedLevel, AuthoredScene.Load("res://data/scenes/c01-02.json"), false);
             var materialScene = MaterialSceneFixtureChecks.Scene;
             materialScene.Placements.AddRange(new[]
             {
@@ -98,7 +102,7 @@ public partial class LightingChecks : Node
                 var assembled = board.GetNodeOrNull<AssembledGroundView>("AuthoredScene/AssembledGround");
                 Require(assembled is not null && board.GetNodeOrNull<PaintedGroundView>("AuthoredScene/PaintedGround") is null
                     && board.GetNodeOrNull<TerrainView>("AuthoredScene/Terrain") is null,
-                    "C01 must use independent registered objects, not baked occluders or a procedural lighting overlay.");
+                    "The unchanged painted level must use independent registered objects, not baked occluders or a procedural lighting overlay.");
                 var document = PresentationJson.Load<AssembledGroundDocument>(scene.AssembledGroundPath!);
                 var catalog = PresentationJson.Load<SceneObjectCatalog>(document.ObjectCatalogPath);
                 var expected = document.Objects.Where(instance => catalog.Objects[instance.AssetId].ContactShadowRadiiPixels is not null).ToArray();

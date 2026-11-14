@@ -1,4 +1,7 @@
 {
+  "coverageScope": "isolated-recorded-recovery-projection",
+  "coverageNote": "Frozen legal recovery witness for BoardView event visibility/lifetime contracts, not current C01 gameplay or miniature renderer validation. C04/C08 remain live-level regressions.",
+  "isolatedLevelPath": "res://tests/native/c01-painted-historical-level.json",
   "levelId": "c01-01",
   "isComputerAction": false,
   "initialStateHash": "e423bba2",

@@ -1,0 +1,1184 @@
+{
+  "schema": 1,
+  "scope": "C01 first integrated action test only",
+  "frameSize": [
+    64,
+    64
+  ],
+  "footAnchor": [
+    32,
+    56
+  ],
+  "eventOwner": "existing BoardView receipt; this file supplies visual samples only",
+  "unavailable": [
+    "walk",
+    "celebrate",
+    "cavalry-actions",
+    "captain-specific-actions"
+  ],
+  "roles": {
+    "flag-bearer": {
+      "texture": "res://assets/c01-miniature-roles/flag-bearer-actions.png",
+      "sourceActions": {
+        "attack": "attack"
+      },
+      "clips": {
+        "attack": {
+          "frontFrames": [
+            [
+              0,
+              0,
+              64,
+              64
+            ],
+            [
+              64,
+              0,
+              64,
+              64
+            ],
+            [
+              128,
+              0,
+              64,
+              64
+            ],
+            [
+              192,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              0,
+              64,
+              64,
+              64
+            ],
+            [
+              64,
+              64,
+              64,
+              64
+            ],
+            [
+              128,
+              64,
+              64,
+              64
+            ],
+            [
+              192,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            35,
+            40,
+            35,
+            40
+          ],
+          "loop": false,
+          "holdFinal": false,
+          "releaseFrame": 2,
+          "referenceReleaseMs": 75,
+          "existingClipContract": "static.attack"
+        },
+        "hit": {
+          "frontFrames": [
+            [
+              256,
+              0,
+              64,
+              64
+            ],
+            [
+              320,
+              0,
+              64,
+              64
+            ],
+            [
+              384,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              256,
+              64,
+              64,
+              64
+            ],
+            [
+              320,
+              64,
+              64,
+              64
+            ],
+            [
+              384,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            70,
+            90,
+            100
+          ],
+          "loop": false,
+          "holdFinal": false
+        },
+        "death": {
+          "frontFrames": [
+            [
+              448,
+              0,
+              64,
+              64
+            ],
+            [
+              512,
+              0,
+              64,
+              64
+            ],
+            [
+              576,
+              0,
+              64,
+              64
+            ],
+            [
+              640,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              448,
+              64,
+              64,
+              64
+            ],
+            [
+              512,
+              64,
+              64,
+              64
+            ],
+            [
+              576,
+              64,
+              64,
+              64
+            ],
+            [
+              640,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            120,
+            160,
+            200,
+            200
+          ],
+          "loop": false,
+          "holdFinal": true
+        }
+      },
+      "sha256": "3acdbf8f3c5554d6bb72ca2a3729f5175a21ec1c16997da749b387a6fe5bf6d2"
+    },
+    "swordsman": {
+      "texture": "res://assets/c01-miniature-roles/swordsman-actions.png",
+      "sourceActions": {
+        "attack": "attack"
+      },
+      "clips": {
+        "attack": {
+          "frontFrames": [
+            [
+              0,
+              0,
+              64,
+              64
+            ],
+            [
+              64,
+              0,
+              64,
+              64
+            ],
+            [
+              128,
+              0,
+              64,
+              64
+            ],
+            [
+              192,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              0,
+              64,
+              64,
+              64
+            ],
+            [
+              64,
+              64,
+              64,
+              64
+            ],
+            [
+              128,
+              64,
+              64,
+              64
+            ],
+            [
+              192,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            80,
+            80,
+            65,
+            135
+          ],
+          "loop": false,
+          "holdFinal": false,
+          "releaseFrame": 2,
+          "referenceReleaseMs": 160,
+          "existingClipContract": "torren.thrust"
+        },
+        "hit": {
+          "frontFrames": [
+            [
+              256,
+              0,
+              64,
+              64
+            ],
+            [
+              320,
+              0,
+              64,
+              64
+            ],
+            [
+              384,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              256,
+              64,
+              64,
+              64
+            ],
+            [
+              320,
+              64,
+              64,
+              64
+            ],
+            [
+              384,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            70,
+            90,
+            100
+          ],
+          "loop": false,
+          "holdFinal": false
+        },
+        "death": {
+          "frontFrames": [
+            [
+              448,
+              0,
+              64,
+              64
+            ],
+            [
+              512,
+              0,
+              64,
+              64
+            ],
+            [
+              576,
+              0,
+              64,
+              64
+            ],
+            [
+              640,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              448,
+              64,
+              64,
+              64
+            ],
+            [
+              512,
+              64,
+              64,
+              64
+            ],
+            [
+              576,
+              64,
+              64,
+              64
+            ],
+            [
+              640,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            120,
+            160,
+            200,
+            200
+          ],
+          "loop": false,
+          "holdFinal": true
+        }
+      },
+      "sha256": "5cf595e8dc2091563f39e95b0d0f4961da6e6b696505c2a908aa4bef08959e93"
+    },
+    "shield": {
+      "texture": "res://assets/c01-miniature-roles/shield-actions.png",
+      "sourceActions": {
+        "attack": "attack"
+      },
+      "clips": {
+        "attack": {
+          "frontFrames": [
+            [
+              0,
+              0,
+              64,
+              64
+            ],
+            [
+              64,
+              0,
+              64,
+              64
+            ],
+            [
+              128,
+              0,
+              64,
+              64
+            ],
+            [
+              192,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              0,
+              64,
+              64,
+              64
+            ],
+            [
+              64,
+              64,
+              64,
+              64
+            ],
+            [
+              128,
+              64,
+              64,
+              64
+            ],
+            [
+              192,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            35,
+            40,
+            35,
+            40
+          ],
+          "loop": false,
+          "holdFinal": false,
+          "releaseFrame": 2,
+          "referenceReleaseMs": 75,
+          "existingClipContract": "static.attack"
+        },
+        "hit": {
+          "frontFrames": [
+            [
+              256,
+              0,
+              64,
+              64
+            ],
+            [
+              320,
+              0,
+              64,
+              64
+            ],
+            [
+              384,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              256,
+              64,
+              64,
+              64
+            ],
+            [
+              320,
+              64,
+              64,
+              64
+            ],
+            [
+              384,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            70,
+            90,
+            100
+          ],
+          "loop": false,
+          "holdFinal": false
+        },
+        "death": {
+          "frontFrames": [
+            [
+              448,
+              0,
+              64,
+              64
+            ],
+            [
+              512,
+              0,
+              64,
+              64
+            ],
+            [
+              576,
+              0,
+              64,
+              64
+            ],
+            [
+              640,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              448,
+              64,
+              64,
+              64
+            ],
+            [
+              512,
+              64,
+              64,
+              64
+            ],
+            [
+              576,
+              64,
+              64,
+              64
+            ],
+            [
+              640,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            120,
+            160,
+            200,
+            200
+          ],
+          "loop": false,
+          "holdFinal": true
+        }
+      },
+      "sha256": "a70f5d1324e3cf54b591ca159a77357c051f1cafc43ee0c695823ec704d1aebb"
+    },
+    "spear": {
+      "texture": "res://assets/c01-miniature-roles/spear-actions.png",
+      "sourceActions": {
+        "attack": "attack"
+      },
+      "clips": {
+        "attack": {
+          "frontFrames": [
+            [
+              0,
+              0,
+              64,
+              64
+            ],
+            [
+              64,
+              0,
+              64,
+              64
+            ],
+            [
+              128,
+              0,
+              64,
+              64
+            ],
+            [
+              192,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              0,
+              64,
+              64,
+              64
+            ],
+            [
+              64,
+              64,
+              64,
+              64
+            ],
+            [
+              128,
+              64,
+              64,
+              64
+            ],
+            [
+              192,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            35,
+            40,
+            35,
+            40
+          ],
+          "loop": false,
+          "holdFinal": false,
+          "releaseFrame": 2,
+          "referenceReleaseMs": 75,
+          "existingClipContract": "static.attack"
+        },
+        "hit": {
+          "frontFrames": [
+            [
+              256,
+              0,
+              64,
+              64
+            ],
+            [
+              320,
+              0,
+              64,
+              64
+            ],
+            [
+              384,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              256,
+              64,
+              64,
+              64
+            ],
+            [
+              320,
+              64,
+              64,
+              64
+            ],
+            [
+              384,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            70,
+            90,
+            100
+          ],
+          "loop": false,
+          "holdFinal": false
+        },
+        "death": {
+          "frontFrames": [
+            [
+              448,
+              0,
+              64,
+              64
+            ],
+            [
+              512,
+              0,
+              64,
+              64
+            ],
+            [
+              576,
+              0,
+              64,
+              64
+            ],
+            [
+              640,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              448,
+              64,
+              64,
+              64
+            ],
+            [
+              512,
+              64,
+              64,
+              64
+            ],
+            [
+              576,
+              64,
+              64,
+              64
+            ],
+            [
+              640,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            120,
+            160,
+            200,
+            200
+          ],
+          "loop": false,
+          "holdFinal": true
+        }
+      },
+      "sha256": "e48263a7f1d06961f1ba50463965a92861a6c07388cdc20a441fea1b2f6c0f08"
+    },
+    "archer": {
+      "texture": "res://assets/c01-miniature-roles/archer-actions.png",
+      "sourceActions": {
+        "attack": "attack"
+      },
+      "clips": {
+        "attack": {
+          "frontFrames": [
+            [
+              0,
+              0,
+              64,
+              64
+            ],
+            [
+              64,
+              0,
+              64,
+              64
+            ],
+            [
+              128,
+              0,
+              64,
+              64
+            ],
+            [
+              192,
+              0,
+              64,
+              64
+            ],
+            [
+              256,
+              0,
+              64,
+              64
+            ],
+            [
+              320,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              0,
+              64,
+              64,
+              64
+            ],
+            [
+              64,
+              64,
+              64,
+              64
+            ],
+            [
+              128,
+              64,
+              64,
+              64
+            ],
+            [
+              192,
+              64,
+              64,
+              64
+            ],
+            [
+              256,
+              64,
+              64,
+              64
+            ],
+            [
+              320,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            100,
+            100,
+            120,
+            80,
+            100,
+            100
+          ],
+          "loop": false,
+          "holdFinal": false,
+          "releaseFrame": 3,
+          "referenceReleaseMs": 320,
+          "existingClipContract": "archer.loose"
+        },
+        "hit": {
+          "frontFrames": [
+            [
+              384,
+              0,
+              64,
+              64
+            ],
+            [
+              448,
+              0,
+              64,
+              64
+            ],
+            [
+              512,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              384,
+              64,
+              64,
+              64
+            ],
+            [
+              448,
+              64,
+              64,
+              64
+            ],
+            [
+              512,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            70,
+            90,
+            100
+          ],
+          "loop": false,
+          "holdFinal": false
+        },
+        "death": {
+          "frontFrames": [
+            [
+              576,
+              0,
+              64,
+              64
+            ],
+            [
+              640,
+              0,
+              64,
+              64
+            ],
+            [
+              704,
+              0,
+              64,
+              64
+            ],
+            [
+              768,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              576,
+              64,
+              64,
+              64
+            ],
+            [
+              640,
+              64,
+              64,
+              64
+            ],
+            [
+              704,
+              64,
+              64,
+              64
+            ],
+            [
+              768,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            120,
+            160,
+            200,
+            200
+          ],
+          "loop": false,
+          "holdFinal": true
+        }
+      },
+      "sha256": "e457c1487f0ad002988c969de3d2a0de2eb431a0889d4910a9cbe94eff8e2a64"
+    },
+    "cleric": {
+      "texture": "res://assets/c01-miniature-roles/cleric-actions.png",
+      "sourceActions": {
+        "attack": "cast",
+        "cast": "cast"
+      },
+      "clips": {
+        "cast": {
+          "frontFrames": [
+            [
+              0,
+              0,
+              64,
+              64
+            ],
+            [
+              64,
+              0,
+              64,
+              64
+            ],
+            [
+              128,
+              0,
+              64,
+              64
+            ],
+            [
+              192,
+              0,
+              64,
+              64
+            ],
+            [
+              256,
+              0,
+              64,
+              64
+            ],
+            [
+              320,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              0,
+              64,
+              64,
+              64
+            ],
+            [
+              64,
+              64,
+              64,
+              64
+            ],
+            [
+              128,
+              64,
+              64,
+              64
+            ],
+            [
+              192,
+              64,
+              64,
+              64
+            ],
+            [
+              256,
+              64,
+              64,
+              64
+            ],
+            [
+              320,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            90,
+            100,
+            110,
+            100,
+            100,
+            100
+          ],
+          "loop": false,
+          "holdFinal": false,
+          "releaseFrame": 3,
+          "referenceReleaseMs": 300,
+          "existingClipContract": "gravekeeper.channel"
+        },
+        "hit": {
+          "frontFrames": [
+            [
+              384,
+              0,
+              64,
+              64
+            ],
+            [
+              448,
+              0,
+              64,
+              64
+            ],
+            [
+              512,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              384,
+              64,
+              64,
+              64
+            ],
+            [
+              448,
+              64,
+              64,
+              64
+            ],
+            [
+              512,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            70,
+            90,
+            100
+          ],
+          "loop": false,
+          "holdFinal": false
+        },
+        "death": {
+          "frontFrames": [
+            [
+              576,
+              0,
+              64,
+              64
+            ],
+            [
+              640,
+              0,
+              64,
+              64
+            ],
+            [
+              704,
+              0,
+              64,
+              64
+            ],
+            [
+              768,
+              0,
+              64,
+              64
+            ]
+          ],
+          "backFrames": [
+            [
+              576,
+              64,
+              64,
+              64
+            ],
+            [
+              640,
+              64,
+              64,
+              64
+            ],
+            [
+              704,
+              64,
+              64,
+              64
+            ],
+            [
+              768,
+              64,
+              64,
+              64
+            ]
+          ],
+          "durationsMs": [
+            120,
+            160,
+            200,
+            200
+          ],
+          "loop": false,
+          "holdFinal": true
+        }
+      },
+      "sha256": "6fd02d09c02867ec53b960738699bc375c4e3089b2a67c8e3601c75c48231264"
+    }
+  }
+}

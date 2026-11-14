@@ -33,6 +33,8 @@ public partial class BoardView
     internal object? PresentationIdentity => _playback;
     public event Action? PresentationRepaintRequested;
     public event Action<BattlePresentationTransition, int>? EventPresented;
+    public event Action<int, Vector2>? ActorContactPresented;
+    public event Action<ActorPoseSample>? ActorPosePresented;
     internal bool AdvanceAnimationsAutomatically { get; set; } = true;
 
     public override void _EnterTree() => _exiting = false;
@@ -370,6 +372,7 @@ public partial class BoardView
     private void PlaceAnimatedActor(Node2D actor, Vector2 logical)
     {
         actor.SetMeta("logical_contact", logical);
+        ActorContactPresented?.Invoke(actor.GetMeta("unit_id").AsInt32(), logical);
         actor.Position = Projection.Project(logical);
         SortAnimatedStanding();
     }
@@ -390,7 +393,7 @@ public partial class BoardView
 
     private sealed record ActorActionVisual(ActorClip Clip, Action<double> Sample);
 
-    private ActorActionVisual PrepareActorPose(Node2D actor, string action, bool? faceLeft = null)
+    private ActorActionVisual PrepareActorPose(Node2D actor, string action, bool? faceLeft = null, Vector2? aim = null)
     {
         var clip = _assets!.ResolveUnitClip(actor.GetMeta("unit_type").AsString(), action, ActorClipUnit.Milliseconds,
             actor.HasMeta("actor_key") ? actor.GetMeta("actor_key").AsString() : null);
@@ -402,8 +405,12 @@ public partial class BoardView
         var frame = clip.FrameAt(0);
         SetFrame(sprite, clip.Asset, frame);
         SortAnimatedStanding();
+        var id = actor.GetMeta("unit_id").AsInt32();
+        var direction = aim is { } target ? target - actor.GetMeta("logical_contact").AsVector2() : (Vector2?)null;
+        ActorPosePresented?.Invoke(new(id, action, 0, clip.Length, clip.ReleaseMs, direction));
         return new(clip, elapsed =>
         {
+            ActorPosePresented?.Invoke(new(id, action, elapsed, clip.Length, clip.ReleaseMs, direction));
             var nextFrame = clip.FrameAt(elapsed);
             if (nextFrame == frame)
                 return;
@@ -421,7 +428,7 @@ public partial class BoardView
         var sprite = actor.GetNode<Sprite2D>("AuthoredSprite");
         var restingLeft = sprite.Scale.X < 0;
         var pose = PrepareActorPose(actor, policy.Action,
-            targetContact is { } aim ? FacesLeft(Projection.FacingVector(contact, aim)) : null);
+            targetContact is { } aim ? FacesLeft(Projection.FacingVector(contact, aim)) : null, targetContact);
         var clip = pose.Clip;
         var release = clip.RequireRelease();
         actor.Position = anchor;

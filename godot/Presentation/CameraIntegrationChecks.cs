@@ -14,7 +14,7 @@ using Godot;
 
 namespace Empire.Presentation;
 
-/// <summary>Real-session screen input and lifecycle regression checks, with no desktop acceptance claim.</summary>
+/// <summary>2D screen input and lifecycle regressions using a detached calibrated fixture and live later levels, not mounted C01 acceptance.</summary>
 public partial class CameraIntegrationChecks : Node
 {
     private int assertions;
@@ -32,7 +32,9 @@ public partial class CameraIntegrationChecks : Node
     {
         try
         {
-            level = BattleTextChecks.OpeningLevel();
+            // The gesture and opaque-body probes below are calibrated to the historical
+            // 2D board. Current C01 uses MiniatureBattleScreen and is covered separately.
+            level = HistoricalPaintedC01Fixture.Level;
             packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
             engine = new BattleEngine(packs);
             text = GodotTextCatalog.LoadSimplifiedChinese();
@@ -234,7 +236,9 @@ public partial class CameraIntegrationChecks : Node
     private void Bind(ITacticalBattleSession session, JsonObject? scenario = null)
     {
         var boundLevel = scenario ?? level;
-        var scene = AuthoredScene.Load($"res://data/scenes/{boundLevel["id"]!.GetValue<string>()}.json");
+        var scene = scenario is null
+            ? HistoricalPaintedC01Fixture.Scene
+            : AuthoredScene.Load($"res://data/scenes/{boundLevel["id"]!.GetValue<string>()}.json");
         var rendering = BoardSceneRendering.Load(scene, boundLevel, engine.CreateState(boundLevel)["map"]!.AsObject());
         screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), session, new(AssetCatalog.Load(), EnvironmentCatalog.Load(),
             engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), boundLevel, scene);

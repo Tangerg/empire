@@ -1,25 +1,22 @@
-# C01 steady campaign victory witness
+# C01 hillside market campaign witnesses
 
-`c01-steady-victory.json` records one real new campaign: authored opening,
-`steady-advance`, then `BeginBattle`. Its 430 starting funds are campaign context,
-not the independent level's 300 funds. The 95 orders are the previously played
-C01 steady route, readmitted through the current Application runtime. All 34
-opponent orders match the live AI and are still executed by the normal AI owner.
+These records start the authored first command choice in a fresh campaign, then
+enter the battle through the application. They replace the paths over the
+superseded flat C01 map; they do not change AI, combat, or victory rules.
 
-The final human Torren attack kills the last required vanguard and naturally
-completes the already-captured village objective: `25320161` to `f03ecd7d`.
-The initial state is `79c9ead8`. No terminal snapshot, units, stats, map or
-production AI are edited to produce the victory.
+| Choice | Campaign opening | Orders | Live AI orders | Conclusion |
+|---|---|---:|---:|---|
+| `steady-advance` | `bc840f7f` | 92 | 32 | Primary victory on turn 6, `edd93bc8` |
+| `rush-north-hill` | `beade493` | 93 | 31 | Primary victory on turn 6, `2867015a` |
 
-CampaignNavigation and CampaignPlayedFlow share this single route record.
-Their input, animation ordering, once-only completion, F9, storage and carried
-roster assertions remain independent. The old AI-as-player driver could fail
-to capture the village within its limit after the C01 mission changed; the
-original order bounds remain, rather than enlarging them to hide the failure.
-C02 keeps its existing live test-player policy and all carried-state assertions.
+The steady route sends the main group up the western slope and opens space
+for the ridge scouts. The rush route stabilizes the injured advance guard in
+the north, uses the slope and the east side to converge, and does not require
+eliminating every enemy. Both use real capture and a live computer planner.
+Neither sets a result directly nor substitutes a stored opponent action for
+the AI. The application harness checks checkpoint reload and the actual
+carried C02 entry separately from visual input and presentation.
 
-Focused native checks passed on 2026-11-14: Navigation 9,330 assertions;
-PlayedFlow 17,733 assertions, including C01 and carried C02 victories, then
-22 legal C03 opening orders. This is headless behavior evidence, not visual,
-exported-package or full-campaign acceptance. The original aggregate gate must
-still pass separately.
+CampaignNavigation and CampaignPlayedFlow consume the steady record in their
+existing native integration paths. Native headless playback, desktop visual
+quality, mission difficulty and a complete campaign are distinct gates.

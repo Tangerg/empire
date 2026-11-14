@@ -1,0 +1,356 @@
+{
+  "schema": 2,
+  "scope": "C01 miniature local prototype only",
+  "frameSize": [
+    64,
+    64
+  ],
+  "footAnchor": [
+    32,
+    56
+  ],
+  "textureFilter": "nearest",
+  "alpha": "binary",
+  "state": "native-pixel original two-facing idle prototypes; no combat-animation approval",
+  "facings": [
+    "front-right",
+    "back-left"
+  ],
+  "unitRoles": {
+    "c01.laiya": "flag-bearer",
+    "c01.swordsman": "swordsman",
+    "c01.archer": "archer",
+    "c01.banner-guard": "spear",
+    "c01.gravekeeper": "cleric",
+    "c01.knight": "cavalry",
+    "c01.roderick": "cavalry-captain",
+    "c01.legion-shield": "shield",
+    "c01.cain": "shield-captain"
+  },
+  "roles": {
+    "flag-bearer": {
+      "viewsTexture": "res://assets/c01-miniature-roles/flag-bearer-views.png",
+      "idleRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "frontRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "backRegion": [
+        64,
+        0,
+        64,
+        64
+      ],
+      "opaqueBounds": [
+        [
+          2,
+          1,
+          52,
+          57
+        ],
+        [
+          11,
+          1,
+          60,
+          57
+        ]
+      ],
+      "sha256": "3c80d861d876d86acb2486bb1ae4c1f62fde07a6b6433d40586ada0c507b39cf"
+    },
+    "swordsman": {
+      "viewsTexture": "res://assets/c01-miniature-roles/swordsman-views.png",
+      "idleRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "frontRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "backRegion": [
+        64,
+        0,
+        64,
+        64
+      ],
+      "opaqueBounds": [
+        [
+          19,
+          10,
+          50,
+          57
+        ],
+        [
+          11,
+          10,
+          50,
+          57
+        ]
+      ],
+      "sha256": "2985b616d562d39dd999bb88180bd16e81096a428a6d0e4b258ff2f76f0d6f2d"
+    },
+    "archer": {
+      "viewsTexture": "res://assets/c01-miniature-roles/archer-views.png",
+      "idleRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "frontRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "backRegion": [
+        64,
+        0,
+        64,
+        64
+      ],
+      "opaqueBounds": [
+        [
+          15,
+          10,
+          55,
+          57
+        ],
+        [
+          10,
+          10,
+          45,
+          57
+        ]
+      ],
+      "sha256": "3980ed5fad43803c075b45f9a1ed0690b45c2a32422bb3b37820731cdbc86f97"
+    },
+    "spear": {
+      "viewsTexture": "res://assets/c01-miniature-roles/spear-views.png",
+      "idleRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "frontRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "backRegion": [
+        64,
+        0,
+        64,
+        64
+      ],
+      "opaqueBounds": [
+        [
+          19,
+          5,
+          52,
+          57
+        ],
+        [
+          10,
+          5,
+          45,
+          57
+        ]
+      ],
+      "sha256": "ca528666680e44243860c7d3d5770413ecc6dbd0fc8a26b3271f452588b8aba0"
+    },
+    "cleric": {
+      "viewsTexture": "res://assets/c01-miniature-roles/cleric-views.png",
+      "idleRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "frontRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "backRegion": [
+        64,
+        0,
+        64,
+        64
+      ],
+      "opaqueBounds": [
+        [
+          19,
+          10,
+          51,
+          57
+        ],
+        [
+          11,
+          10,
+          45,
+          57
+        ]
+      ],
+      "sha256": "5dbae20791703eb7e41d8f8f9f310c06cbfd00c1f8fe424ecb5c3ea04c732d62"
+    },
+    "cavalry": {
+      "viewsTexture": "res://assets/c01-miniature-roles/cavalry-views.png",
+      "idleRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "frontRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "backRegion": [
+        64,
+        0,
+        64,
+        64
+      ],
+      "opaqueBounds": [
+        [
+          9,
+          7,
+          62,
+          57
+        ],
+        [
+          3,
+          7,
+          53,
+          57
+        ]
+      ],
+      "sha256": "38f23c45075abd9f0c1936fbb28aa0a75e0f5dd43e656dce567bcdc9905692c5"
+    },
+    "cavalry-captain": {
+      "viewsTexture": "res://assets/c01-miniature-roles/cavalry-captain-views.png",
+      "idleRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "frontRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "backRegion": [
+        64,
+        0,
+        64,
+        64
+      ],
+      "opaqueBounds": [
+        [
+          9,
+          2,
+          62,
+          57
+        ],
+        [
+          3,
+          2,
+          53,
+          57
+        ]
+      ],
+      "sha256": "16b9318dd19c79dae40c49a3f0fb7da1d3bcce4eb71fdcc30e62ba871c43e4e1"
+    },
+    "shield": {
+      "viewsTexture": "res://assets/c01-miniature-roles/shield-views.png",
+      "idleRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "frontRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "backRegion": [
+        64,
+        0,
+        64,
+        64
+      ],
+      "opaqueBounds": [
+        [
+          13,
+          10,
+          50,
+          57
+        ],
+        [
+          17,
+          10,
+          56,
+          57
+        ]
+      ],
+      "sha256": "4922f4965dfad5287b9b79dcc3ade056ebd483c2cd7499d37aafd72f23671518"
+    },
+    "shield-captain": {
+      "viewsTexture": "res://assets/c01-miniature-roles/shield-captain-views.png",
+      "idleRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "frontRegion": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "backRegion": [
+        64,
+        0,
+        64,
+        64
+      ],
+      "opaqueBounds": [
+        [
+          13,
+          5,
+          50,
+          57
+        ],
+        [
+          17,
+          5,
+          56,
+          57
+        ]
+      ],
+      "sha256": "0cbecf0bfde783ec817c6a7ecc975d9ffdab08f71507eb9d6973b41415d569de"
+    }
+  }
+}

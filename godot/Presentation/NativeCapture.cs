@@ -23,6 +23,10 @@ public partial class NativeCapture : Node
     private int _motionSequence;
     private int? _idleCaptureFrames;
     private int _idleCaptureStride = 1;
+    private MiniatureRenderPreset? _miniaturePreset;
+    private MiniatureBoardView? _presetBoard;
+    private bool _samplingFrames;
+    private int _frameSampleSequence;
 
     public override async void _Ready()
     {
@@ -39,6 +43,15 @@ public partial class NativeCapture : Node
             if (idleStride is not null && _idleCaptureFrames is null)
                 throw new InvalidOperationException("--capture-idle-stride requires --capture-idle-frames.");
             _idleCaptureStride = idleStride ?? 1;
+            var preset = OS.GetCmdlineUserArgs().SingleOrDefault(value => value.StartsWith("--miniature-perf=", StringComparison.Ordinal));
+            if (preset is not null)
+                _miniaturePreset = preset["--miniature-perf=".Length..] switch
+                {
+                    "reference" => MiniatureRenderPreset.Reference,
+                    "no-msaa" => MiniatureRenderPreset.NoMsaa,
+                    "no-shadows" => MiniatureRenderPreset.NoShadowsDiagnostic,
+                    _ => throw new InvalidOperationException("Expected --miniature-perf=reference, no-msaa or no-shadows.")
+                };
             Directory.CreateDirectory(_directory);
             var sceneArgument = OS.GetCmdlineUserArgs().SingleOrDefault(value => value.StartsWith("--capture-scene=", StringComparison.Ordinal));
             var scenePath = sceneArgument is null ? "res://Scenes/GrayFlagGame.tscn" : sceneArgument["--capture-scene=".Length..];
@@ -121,7 +134,27 @@ public partial class NativeCapture : Node
             return;
         }
 
-        if (input is InputEventKey { Pressed: true, Echo: false, Keycode: Key.F12 })
+        if (input is InputEventKey { Pressed: true, Echo: false, Keycode: Key.F10 or Key.F11 } performanceKey
+            && !_samplingFrames && !_capturing && !_motionCapturing
+            && _miniaturePreset is { } preset && FindMiniature(this) is { } miniature)
+        {
+            if (performanceKey.Keycode == Key.F10)
+                SampleMiniature(miniature, preset);
+            else
+            {
+                var next = preset switch
+                {
+                    MiniatureRenderPreset.Reference => MiniatureRenderPreset.NoMsaa,
+                    MiniatureRenderPreset.NoMsaa => MiniatureRenderPreset.NoShadowsDiagnostic,
+                    _ => MiniatureRenderPreset.Reference
+                };
+                miniature.ApplyRenderPreset(next);
+                _miniaturePreset = next;
+                GD.Print($"Miniature performance preset: {next}.");
+            }
+            GetViewport().SetInputAsHandled();
+        }
+        if (input is InputEventKey { Pressed: true, Echo: false, Keycode: Key.F12 } && !_samplingFrames)
             Capture();
         if (input is InputEventKey { Pressed: true, Echo: false, Keycode: Key.F8 } && !_motionCapturing)
         {
@@ -140,8 +173,72 @@ public partial class NativeCapture : Node
 
     public override void _Process(double delta)
     {
+        if (_miniaturePreset is { } preset && FindMiniature(this) is { } miniature && !ReferenceEquals(miniature, _presetBoard))
+        {
+            miniature.ApplyRenderPreset(preset);
+            _presetBoard = miniature;
+        }
         if (_motionArmed && !_motionCapturing && FindBoard(this) is { IsPresenting: true } board)
             CaptureMotion(board);
+    }
+
+    private static MiniatureBoardView? FindMiniature(Node root) =>
+        FindBattleScreen(root)?.FindChild("MiniaturePresentation", true, false) as MiniatureBoardView;
+
+    private async void SampleMiniature(MiniatureBoardView miniature, MiniatureRenderPreset preset)
+    {
+        const ulong SampleLengthMicroseconds = 5_000_000;
+        _samplingFrames = true;
+        try
+        {
+            var frames = new List<(double FrameMs, double DrawCalls, double Primitives)>();
+            await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+            var started = Time.GetTicksUsec();
+            var previous = started;
+            var initialTransform = miniature.Camera.GlobalTransform;
+            var initialZoom = miniature.Camera.Size;
+            var initialSize = GetViewport().GetVisibleRect().Size;
+            var motion = false;
+            while (previous - started < SampleLengthMicroseconds)
+            {
+                await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+                if (!GodotObject.IsInstanceValid(miniature) || !miniature.IsInsideTree()
+                    || !ReferenceEquals(miniature, FindMiniature(this)) || GetViewport().GetVisibleRect().Size != initialSize)
+                    throw new IOException("Performance sample interrupted by a board or viewport change.");
+                motion |= miniature.Camera.GlobalTransform != initialTransform || miniature.Camera.Size != initialZoom;
+                var now = Time.GetTicksUsec();
+                frames.Add(((now - previous) / 1000.0,
+                    Performance.GetMonitor(Performance.Monitor.RenderTotalDrawCallsInFrame),
+                    Performance.GetMonitor(Performance.Monitor.RenderTotalPrimitivesInFrame)));
+                previous = now;
+            }
+
+            var sorted = frames.Select(frame => frame.FrameMs).Order().ToArray();
+            double Percentile(double fraction) => sorted[Math.Clamp((int)Math.Ceiling(fraction * sorted.Length) - 1, 0, sorted.Length - 1)];
+            var result = new
+            {
+                preset = preset.ToString(),
+                viewport = new
+                {
+                    width = initialSize.X,
+                    height = initialSize.Y
+                },
+                seconds = (previous - started) / 1_000_000.0,
+                frameCount = frames.Count,
+                cameraChanged = motion,
+                frameTimeMs = new
+                {
+                    median = Percentile(.50),
+                    p95 = Percentile(.95)
+                },
+                samples = frames.Select(frame => new { frameMs = frame.FrameMs, drawCalls = frame.DrawCalls, primitives = frame.Primitives }).ToArray()
+            };
+            var path = Path.Combine(_directory, $"miniature-perf-{++_frameSampleSequence:000}.json");
+            File.WriteAllText(path, System.Text.Json.JsonSerializer.Serialize(result, new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
+            GD.Print($"Miniature performance: {path}; {result.frameCount} frames; p95 {result.frameTimeMs.p95:F1} ms; cameraChanged={motion}.");
+        }
+        catch (Exception error) { GD.PushError(error.ToString()); }
+        finally { _samplingFrames = false; }
     }
 
     private static BattleScreen? FindBattleScreen(Node node)

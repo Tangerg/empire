@@ -60,9 +60,10 @@ public partial class CampaignNavigationChecks
             }
             foreach (var cell in queries.MoveStops(selected))
             {
-                var point = screen.Board.ToGlobal(screen.Board.Projection.CellCenter(new(cell.X, cell.Y)));
-                if (!map.GetGlobalRect().HasPoint(point) || screen.Board.Pick(screen.Board.ToLocal(point)) is not { Kind: TacticalHitKind.Ground })
+                var pixel = CampaignNavigationMiniaturePointer.Find(screen, TacticalHit.Ground(cell));
+                if (pixel is null)
                     continue;
+                var point = pixel.Value;
                 Motion(point);
                 if (viewport.GuiGetHoveredControl() == map)
                     points.Add((cell, point));
@@ -272,26 +273,17 @@ public partial class CampaignNavigationChecks
             foreach (var id in queries.Actors())
             {
                 var candidate = queries.Unit(id)!;
-                var origin = screen.Board.Projection.CellContact(new(candidate.At.X, candidate.At.Y));
-                for (var radius = 0; radius <= 120 && actorPixel is null; radius += 3)
-                    for (var x = -radius; x <= radius && actorPixel is null; x += 3)
-                        foreach (var y in radius == 0 ? new[] { 0 } : new[] { -radius, radius })
-                        {
-                            var local = origin + new Vector2(x, y);
-                            if (screen.Board.Pick(local) != TacticalHit.Unit(candidate.At, candidate.Id))
-                                continue;
-                            var global = screen.Board.GetGlobalTransformWithCanvas() * local;
-                            if (!map.GetGlobalRect().HasPoint(global))
-                                continue;
-                            Motion(global);
-                            await Layout();
-                            if (viewport.GuiGetHoveredControl() == map)
-                            {
-                                actorPixel = global;
-                                actor = candidate;
-                                break;
-                            }
-                        }
+                var pixel = CampaignNavigationMiniaturePointer.Find(screen, TacticalHit.Unit(candidate.At, candidate.Id));
+                if (pixel is { } global)
+                {
+                    Motion(global);
+                    await Layout();
+                    if (viewport.GuiGetHoveredControl() == map)
+                    {
+                        actorPixel = global;
+                        actor = candidate;
+                    }
+                }
                 if (actorPixel is not null)
                     break;
             }

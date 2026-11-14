@@ -30,22 +30,14 @@ public partial class CampaignNavigationChecks
             var hud = (TacticalHud)screen.FindChild("TacticalHud", true, false);
             var viewport = GetViewport();
             var actor = session.GetTacticalQueries(0).Unit(1)!;
-            var sprite = screen.Board.GetNode<Sprite2D>("CanonicalProjection/Unit_1/AuthoredSprite");
-            var rect = sprite.GetRect();
-            Vector2? pixel = null;
-            for (var y = rect.Position.Y + .5f; y < rect.End.Y && pixel is null; y++)
-                for (var x = rect.Position.X + .5f; x < rect.End.X && pixel is null; x++)
-                {
-                    var local = new Vector2(x, y);
-                    var point = sprite.GetGlobalTransformWithCanvas() * local;
-                    if (sprite.IsPixelOpaque(local) && map.GetGlobalRect().HasPoint(point)
-                        && screen.Board.Pick(screen.Board.ToLocal(point)) == TacticalHit.Unit(actor.At, actor.Id))
-                        pixel = point;
-                }
+            var pixel = CampaignNavigationMiniaturePointer.Find(screen, TacticalHit.Unit(actor.At, actor.Id));
             var at = pixel ?? throw new InvalidOperationException("Formal C01 modal fixture needs an opaque, selectable actor pixel.");
             var state = EcmaJson.Stringify(session.Snapshot());
             var events = session.Events.Select(value => EcmaJson.Stringify(value)).ToArray();
             var transform = world.Transform;
+            var miniature = (MiniatureBoardView)screen.FindChild("MiniaturePresentation", true, false);
+            var cameraTransform = miniature.Camera.GlobalTransform;
+            var cameraSize = miniature.Camera.Size;
 
             async Task SettleInput()
             {
@@ -85,7 +77,8 @@ public partial class CampaignNavigationChecks
                 Require(session.Revision == 0 && EcmaJson.Stringify(session.Snapshot()) == state
                     && session.Events.Select(value => EcmaJson.Stringify(value)).SequenceEqual(events),
                     context + " preserves the complete canonical state, revision and events.");
-                Require(world.Transform == transform, context + " preserves the camera transform.");
+                Require(world.Transform == transform && miniature.Camera.GlobalTransform == cameraTransform
+                    && miniature.Camera.Size == cameraSize, context + " preserves the mounted camera transform and zoom.");
             }
             async Task SelectActor()
             {

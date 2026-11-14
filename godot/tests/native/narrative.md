@@ -154,3 +154,12 @@ pursuing the remaining enemies is unnecessary. Update exactly its five existing
 expectations: the C01 source document, its three sampled briefing beats and its
 one edge projection. All other strings, cases, states, transitions and assertion
 code remain unchanged; the historical TypeScript oracle is not regenerated.
+
+## C01 hillside market briefing
+
+The active C01 remake changes only first-battle narration and its first command
+choice. The briefing now names the low workshop, western main approach, eastern
+warehouse bypass, contested central market, and vulnerable northern scouts. The
+two choices describe their real opening positions and injury tradeoff. Rendered
+text and document expectations change together; story and choice transitions,
+consequences, and later levels do not change.

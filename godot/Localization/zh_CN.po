@@ -139,34 +139,34 @@ msgid "story.c01.brief-01.kicker"
 msgstr "第一章 · 战斗 01"
 
 msgid "story.c01.brief-01.title"
-msgstr "双子丘陵"
+msgstr "双子丘陵 · 坡街夺村"
 
 msgid "story.c01.brief-01.date"
 msgstr "战役第 0 年 · 初夏"
 
 msgid "story.c01.brief-01.location"
-msgstr "灰境北丘"
+msgstr "灰境北丘 · 三层坡街"
 
 msgid "story.c01.brief-01.summary"
-msgstr "莱娅的第一次独立指挥。高地能赢下一场遭遇战，也能让一支脱离援护的小队死得更快。"
+msgstr "帝国前锋封住中央市场，北街的斥候回不来。莱娅第一次独立指挥：拿下市场，给仍在高处的人留出退路。"
 
 msgid "story.c01.brief-01.beat.exposed-high-ground.text"
-msgstr "北丘看得见整条大道。也就是说，整条大道都看得见你。"
+msgstr "低处的工坊能收拢队伍。西坡直通市场，东巷也能上去，但得绕过仓房。"
 
 msgid "story.c01.brief-01.beat.seize-the-village.text"
-msgstr "帝国前锋还没站稳。现在上去，我们能先拿村庄。"
+msgstr "帝国前锋还没站稳。守住市场的街口，我们就能接应北街的斥候，不用一路追击。"
 
 msgid "story.c01.brief-01.beat.contradictory-reports.text"
 msgstr "两份互称对方先越境的军报，在同一个清晨把年轻人推向彼此。"
 
 msgid "story.c01.brief-01.mission.objective"
-msgstr "莱娅存活，占领中央村并击退村口前锋；不必追击其余敌军。"
+msgstr "让莱娅存活，占领中央市场并击退三名前锋；不必追击其余敌军。"
 
 msgid "story.c01.brief-01.mission.danger"
-msgstr "抢占北丘会让托伦提前进入包围；罗德里克留在后阵，别让托伦脱离队伍的援护。"
+msgstr "若让托伦先上北街，他将带伤开战。西坡能就近接应，东巷可绕到敌侧；不要隔着挡墙互相等。"
 
 msgid "story.c01.brief-01.mission.lesson"
-msgstr "高低差、朝向、援护与确定性伤害预测。"
+msgstr "辨认能走的坡口与挡墙，用朝向、援护和伤害预测守住街口。"
 
 msgid "story.c01.aftermath-01.kicker"
 msgstr "战后"
@@ -178,7 +178,7 @@ msgid "story.c01.aftermath-01.date"
 msgstr "战役第 0 年 · 初夏"
 
 msgid "story.c01.aftermath-01.location"
-msgstr "双子丘陵中央村"
+msgstr "双子丘陵 · 中央市场"
 
 msgid "story.c01.aftermath-01.summary"
 msgstr "胜利没有解释战争。帝国尸体上的调令与洛恩军令在同一天签发。"
@@ -1054,22 +1054,22 @@ msgid "choice.c01.choice-first-command.prompt"
 msgstr "莱娅如何开始第一次指挥？"
 
 msgid "choice.c01.choice-first-command.context"
-msgstr "北丘提供高地优势，但先遣小队会脱离罗德里克的援护。"
+msgstr "市场是低处工坊和北街之间的中转点。先遣队能抢到高处，却会离开罗德里克的援护。"
 
 msgid "choice.c01.choice-first-command.option.rush-north-hill.label"
-msgstr "抢占北丘"
+msgstr "先遣北街"
 
 msgid "choice.c01.choice-first-command.option.rush-north-hill.detail"
-msgstr "让托伦提前进入高地，取得位置优势但以受伤状态开局。"
+msgstr "让托伦带伤从北街开战，就近接应斥候，再沿坡下到市场。"
 
 msgid "choice.c01.choice-first-command.option.rush-north-hill.consequence"
 msgstr "提高“果断”，并真实承担救援成本。"
 
 msgid "choice.c01.choice-first-command.option.steady-advance.label"
-msgstr "稳步推进"
+msgstr "沿西坡整队"
 
 msgid "choice.c01.choice-first-command.option.steady-advance.detail"
-msgstr "保持队形与援护，让帝国前锋先靠近中央村。"
+msgstr "保持队形和援护，从低处上西坡，在市场前接住帝国前锋。"
 
 msgid "choice.c01.choice-first-command.option.steady-advance.consequence"
 msgstr "提高“克制”，保留完整阵线。"
@@ -1723,7 +1723,7 @@ msgid "battle.player.neutral"
 msgstr "中立方"
 
 msgid "objective.c01_01.p1.primary"
-msgstr "夺村 · 击退前锋"
+msgstr "夺取中央市场 · 击退三名前锋"
 
 msgid "objective.c01_01.p2.route"
 msgstr "击退敌军"
@@ -3340,7 +3340,7 @@ msgid "level.c01_01.title"
 msgstr "01 · 双子丘陵"
 
 msgid "level.c01_01.description"
-msgstr "第一次指挥：夺取高地，也承担冒进的后果。"
+msgstr "第一次指挥：从坡街夺回市场，为北街斥候打开退路。"
 
 msgid "battle.signal.found_matching_orders"
 msgstr "发现相同军令"
@@ -3854,10 +3854,10 @@ msgid "battle.hint.c01_08.ledger.instruction"
 msgstr "让任一我方单位停在标记区域并完成一次行动（待机即可）；仅经过不会取得。"
 
 msgid "objective.c01_01.p1.secure_village"
-msgstr "夺取中央村并击退村口前锋"
+msgstr "占领中央市场并击退三名前锋"
 
 msgid "objective.c01_01.p1.village_control"
-msgstr "完成中央村占领"
+msgstr "占领中央市场"
 
 msgid "objective.c01_01.p1.break_vanguard"
-msgstr "击退村口前锋"
+msgstr "击退三名前锋"

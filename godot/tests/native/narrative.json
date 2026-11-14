@@ -1645,19 +1645,19 @@
         "id": "c01/brief-01",
         "chapter": 1,
         "kicker": "第一章 · 战斗 01",
-        "title": "双子丘陵",
+        "title": "双子丘陵 · 坡街夺村",
         "date": "战役第 0 年 · 初夏",
-        "location": "灰境北丘",
+        "location": "灰境北丘 · 三层坡街",
         "scene": "C01-CH01-S01",
-        "summary": "莱娅的第一次独立指挥。高地能赢下一场遭遇战，也能让一支脱离援护的小队死得更快。",
+        "summary": "帝国前锋封住中央市场，北街的斥候回不来。莱娅第一次独立指挥：拿下市场，给仍在高处的人留出退路。",
         "beats": [
           {
             "speaker": "roderick",
-            "text": "北丘看得见整条大道。也就是说，整条大道都看得见你。"
+            "text": "低处的工坊能收拢队伍。西坡直通市场，东巷也能上去，但得绕过仓房。"
           },
           {
             "speaker": "laiya",
-            "text": "帝国前锋还没站稳。现在上去，我们能先拿村庄。"
+            "text": "帝国前锋还没站稳。守住市场的街口，我们就能接应北街的斥候，不用一路追击。"
           },
           {
             "speaker": "narrator",
@@ -1665,9 +1665,9 @@
           }
         ],
         "mission": {
-          "objective": "莱娅存活，占领中央村并击退村口前锋；不必追击其余敌军。",
-          "danger": "抢占北丘会让托伦提前进入包围；罗德里克留在后阵，别让托伦脱离队伍的援护。",
-          "lesson": "高低差、朝向、援护与确定性伤害预测。"
+          "objective": "让莱娅存活，占领中央市场并击退三名前锋；不必追击其余敌军。",
+          "danger": "若让托伦先上北街，他将带伤开战。西坡能就近接应，东巷可绕到敌侧；不要隔着挡墙互相等。",
+          "lesson": "辨认能走的坡口与挡墙，用朝向、援护和伤害预测守住街口。"
         }
       },
       {
@@ -1676,7 +1676,7 @@
         "kicker": "战后",
         "title": "相同日期的命令",
         "date": "战役第 0 年 · 初夏",
-        "location": "双子丘陵中央村",
+        "location": "双子丘陵 · 中央市场",
         "scene": "C01-CH01-S01",
         "summary": "胜利没有解释战争。帝国尸体上的调令与洛恩军令在同一天签发。",
         "beats": [
@@ -2483,18 +2483,18 @@
         "id": "c01/choice-first-command",
         "chapter": 1,
         "prompt": "莱娅如何开始第一次指挥？",
-        "context": "北丘提供高地优势，但先遣小队会脱离罗德里克的援护。",
+        "context": "市场是低处工坊和北街之间的中转点。先遣队能抢到高处，却会离开罗德里克的援护。",
         "options": [
           {
             "id": "rush-north-hill",
-            "label": "抢占北丘",
-            "detail": "让托伦提前进入高地，取得位置优势但以受伤状态开局。",
+            "label": "先遣北街",
+            "detail": "让托伦带伤从北街开战，就近接应斥候，再沿坡下到市场。",
             "consequence": "提高“果断”，并真实承担救援成本。"
           },
           {
             "id": "steady-advance",
-            "label": "稳步推进",
-            "detail": "保持队形与援护，让帝国前锋先靠近中央村。",
+            "label": "沿西坡整队",
+            "detail": "保持队形和援护，从低处上西坡，在市场前接住帝国前锋。",
             "consequence": "提高“克制”，保留完整阵线。"
           }
         ]
@@ -3504,25 +3504,25 @@
         "backdropSource": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch01-s01.png",
         "kicker": "第一章 · 战斗 01",
         "date": "战役第 0 年 · 初夏",
-        "location": "灰境北丘",
-        "title": "双子丘陵",
-        "summary": "莱娅的第一次独立指挥。高地能赢下一场遭遇战，也能让一支脱离援护的小队死得更快。",
+        "location": "灰境北丘 · 三层坡街",
+        "title": "双子丘陵 · 坡街夺村",
+        "summary": "帝国前锋封住中央市场，北街的斥候回不来。莱娅第一次独立指挥：拿下市场，给仍在高处的人留出退路。",
         "mission": [
           {
             "label": "胜利目标",
-            "text": "莱娅存活，占领中央村并击退村口前锋；不必追击其余敌军。"
+            "text": "让莱娅存活，占领中央市场并击退三名前锋；不必追击其余敌军。"
           },
           {
             "label": "战场风险",
-            "text": "抢占北丘会让托伦提前进入包围；罗德里克留在后阵，别让托伦脱离队伍的援护。"
+            "text": "若让托伦先上北街，他将带伤开战。西坡能就近接应，东巷可绕到敌侧；不要隔着挡墙互相等。"
           },
           {
             "label": "机制主题",
-            "text": "高低差、朝向、援护与确定性伤害预测。"
+            "text": "辨认能走的坡口与挡墙，用朝向、援护和伤害预测守住街口。"
           }
         ],
         "speaker": "罗德里克",
-        "text": "北丘看得见整条大道。也就是说，整条大道都看得见你。",
+        "text": "低处的工坊能收拢队伍。西坡直通市场，东巷也能上去，但得绕过仓房。",
         "portraitSource": "/godot/assets/runtime/narrative-static/char-roderick-01.png",
         "narration": false,
         "beatDots": [
@@ -3678,25 +3678,25 @@
         "backdropSource": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch01-s01.png",
         "kicker": "第一章 · 战斗 01",
         "date": "战役第 0 年 · 初夏",
-        "location": "灰境北丘",
-        "title": "双子丘陵",
-        "summary": "莱娅的第一次独立指挥。高地能赢下一场遭遇战，也能让一支脱离援护的小队死得更快。",
+        "location": "灰境北丘 · 三层坡街",
+        "title": "双子丘陵 · 坡街夺村",
+        "summary": "帝国前锋封住中央市场，北街的斥候回不来。莱娅第一次独立指挥：拿下市场，给仍在高处的人留出退路。",
         "mission": [
           {
             "label": "胜利目标",
-            "text": "莱娅存活，占领中央村并击退村口前锋；不必追击其余敌军。"
+            "text": "让莱娅存活，占领中央市场并击退三名前锋；不必追击其余敌军。"
           },
           {
             "label": "战场风险",
-            "text": "抢占北丘会让托伦提前进入包围；罗德里克留在后阵，别让托伦脱离队伍的援护。"
+            "text": "若让托伦先上北街，他将带伤开战。西坡能就近接应，东巷可绕到敌侧；不要隔着挡墙互相等。"
           },
           {
             "label": "机制主题",
-            "text": "高低差、朝向、援护与确定性伤害预测。"
+            "text": "辨认能走的坡口与挡墙，用朝向、援护和伤害预测守住街口。"
           }
         ],
         "speaker": "莱娅",
-        "text": "帝国前锋还没站稳。现在上去，我们能先拿村庄。",
+        "text": "帝国前锋还没站稳。守住市场的街口，我们就能接应北街的斥候，不用一路追击。",
         "portraitSource": "/godot/assets/runtime/narrative-static/char-leia-01.png",
         "narration": false,
         "beatDots": [
@@ -3852,21 +3852,21 @@
         "backdropSource": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch01-s01.png",
         "kicker": "第一章 · 战斗 01",
         "date": "战役第 0 年 · 初夏",
-        "location": "灰境北丘",
-        "title": "双子丘陵",
-        "summary": "莱娅的第一次独立指挥。高地能赢下一场遭遇战，也能让一支脱离援护的小队死得更快。",
+        "location": "灰境北丘 · 三层坡街",
+        "title": "双子丘陵 · 坡街夺村",
+        "summary": "帝国前锋封住中央市场，北街的斥候回不来。莱娅第一次独立指挥：拿下市场，给仍在高处的人留出退路。",
         "mission": [
           {
             "label": "胜利目标",
-            "text": "莱娅存活，占领中央村并击退村口前锋；不必追击其余敌军。"
+            "text": "让莱娅存活，占领中央市场并击退三名前锋；不必追击其余敌军。"
           },
           {
             "label": "战场风险",
-            "text": "抢占北丘会让托伦提前进入包围；罗德里克留在后阵，别让托伦脱离队伍的援护。"
+            "text": "若让托伦先上北街，他将带伤开战。西坡能就近接应，东巷可绕到敌侧；不要隔着挡墙互相等。"
           },
           {
             "label": "机制主题",
-            "text": "高低差、朝向、援护与确定性伤害预测。"
+            "text": "辨认能走的坡口与挡墙，用朝向、援护和伤害预测守住街口。"
           }
         ],
         "speaker": "断冠纪事",
@@ -4026,7 +4026,7 @@
         "backdropSource": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch01-s01.png",
         "kicker": "战后",
         "date": "战役第 0 年 · 初夏",
-        "location": "双子丘陵中央村",
+        "location": "双子丘陵 · 中央市场",
         "title": "相同日期的命令",
         "summary": "胜利没有解释战争。帝国尸体上的调令与洛恩军令在同一天签发。",
         "mission": null,
@@ -4186,7 +4186,7 @@
         "backdropSource": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch01-s01.png",
         "kicker": "战后",
         "date": "战役第 0 年 · 初夏",
-        "location": "双子丘陵中央村",
+        "location": "双子丘陵 · 中央市场",
         "title": "相同日期的命令",
         "summary": "胜利没有解释战争。帝国尸体上的调令与洛恩军令在同一天签发。",
         "mission": null,
@@ -20529,20 +20529,20 @@
         "backdropSource": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/arch-three-bridges.png",
         "eyebrow": "需要作出决定",
         "prompt": "莱娅如何开始第一次指挥？",
-        "context": "北丘提供高地优势，但先遣小队会脱离罗德里克的援护。",
+        "context": "市场是低处工坊和北街之间的中转点。先遣队能抢到高处，却会离开罗德里克的援护。",
         "options": [
           {
             "id": "rush-north-hill",
             "number": "01",
-            "label": "抢占北丘",
-            "detail": "让托伦提前进入高地，取得位置优势但以受伤状态开局。",
+            "label": "先遣北街",
+            "detail": "让托伦带伤从北街开战，就近接应斥候，再沿坡下到市场。",
             "consequence": "提高“果断”，并真实承担救援成本。"
           },
           {
             "id": "steady-advance",
             "number": "02",
-            "label": "稳步推进",
-            "detail": "保持队形与援护，让帝国前锋先靠近中央村。",
+            "label": "沿西坡整队",
+            "detail": "保持队形和援护，从低处上西坡，在市场前接住帝国前锋。",
             "consequence": "提高“克制”，保留完整阵线。"
           }
         ],
@@ -59570,25 +59570,25 @@
         "backdropSource": "/packages/story-candidate-01/assets/final-fantasy-v1/runtime-hd/narrative-static/ch01-s01.png",
         "kicker": "第一章 · 战斗 01",
         "date": "战役第 0 年 · 初夏",
-        "location": "灰境北丘",
-        "title": "双子丘陵",
-        "summary": "莱娅的第一次独立指挥。高地能赢下一场遭遇战，也能让一支脱离援护的小队死得更快。",
+        "location": "灰境北丘 · 三层坡街",
+        "title": "双子丘陵 · 坡街夺村",
+        "summary": "帝国前锋封住中央市场，北街的斥候回不来。莱娅第一次独立指挥：拿下市场，给仍在高处的人留出退路。",
         "mission": [
           {
             "label": "胜利目标",
-            "text": "莱娅存活，占领中央村并击退村口前锋；不必追击其余敌军。"
+            "text": "让莱娅存活，占领中央市场并击退三名前锋；不必追击其余敌军。"
           },
           {
             "label": "战场风险",
-            "text": "抢占北丘会让托伦提前进入包围；罗德里克留在后阵，别让托伦脱离队伍的援护。"
+            "text": "若让托伦先上北街，他将带伤开战。西坡能就近接应，东巷可绕到敌侧；不要隔着挡墙互相等。"
           },
           {
             "label": "机制主题",
-            "text": "高低差、朝向、援护与确定性伤害预测。"
+            "text": "辨认能走的坡口与挡墙，用朝向、援护和伤害预测守住街口。"
           }
         ],
         "speaker": "罗德里克",
-        "text": "北丘看得见整条大道。也就是说，整条大道都看得见你。",
+        "text": "低处的工坊能收拢队伍。西坡直通市场，东巷也能上去，但得绕过仓房。",
         "portraitSource": "/godot/assets/runtime/narrative-static/char-roderick-01.png",
         "narration": false,
         "beatDots": [

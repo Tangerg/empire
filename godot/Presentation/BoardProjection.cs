@@ -340,6 +340,13 @@ public sealed class BoardProjection
         return (int)depth;
     }
 
+    public Vector2 LogicalGroundPoint(Vector2 projected)
+    {
+        var point = projected - _plane.Origin;
+        var determinant = _plane.BasisX.Cross(_plane.BasisY);
+        return new(point.Cross(_plane.BasisY) / determinant, _plane.BasisX.Cross(point) / determinant);
+    }
+
     public float SurfaceHeight(Vector2 logical, Vector2 projected) => Depth(logical) + _plane.Origin.Y - projected.Y;
 
     public BoardSurfaceHit? Pick(Vector2 projectedPixel)

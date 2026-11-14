@@ -358,6 +358,11 @@ public sealed record StructureArtBinding
 
 public sealed class AuthoredScene
 {
+    public string? MiniatureScenePath
+    {
+        get; init;
+    }
+
     public string? HudPresentationPath
     {
         get; init;

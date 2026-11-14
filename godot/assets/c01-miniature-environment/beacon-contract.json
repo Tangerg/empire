@@ -1,0 +1,29 @@
+{
+  "path": "res://assets/c01-miniature-environment/c01_market_beacon.glb",
+  "root": "C01MarketBeacon",
+  "owner_tint_mesh": "Banner",
+  "neutral_stand_mesh": "Stand",
+  "ground_anchor": [
+    0,
+    0,
+    0
+  ],
+  "recommended_offset_from_cell_center": [
+    0.32,
+    0,
+    0.32
+  ],
+  "horizontal_max_extent_local": {
+    "x": [
+      -0.34,
+      0.14
+    ],
+    "z": [
+      -0.14,
+      0.14
+    ]
+  },
+  "height_m": 1.2825,
+  "visual_only": true,
+  "authority": "bridge owns exactly one capturable-site marker and metadata; battlefield does not instantiate this asset"
+}
