@@ -149,7 +149,9 @@ public partial class BattleScreen
             var points = Board.Projection.Triangles
                 .Where(triangle => cells.Any(cell => cell.X == triangle.Cell.X && cell.Y == triangle.Cell.Y))
                 .SelectMany(triangle => new[] { triangle.ProjectedA, triangle.ProjectedB, triangle.ProjectedC }).ToArray();
-            if (points.Length > 0)
+            if (_miniature is not null)
+                RevealMiniatureCells(cells, true);
+            else if (points.Length > 0)
                 _camera?.FrameBounds(new(points.Min(point => point.X), points.Min(point => point.Y)),
                     new(points.Max(point => point.X), points.Max(point => point.Y)), 12);
             ApplyCamera();
@@ -190,7 +192,9 @@ public partial class BattleScreen
         if (result.Reveal is { } cell)
         {
             var point = CellCenter(new(cell.X, cell.Y));
-            if (result.Center)
+            if (_miniature is not null)
+                RevealMiniatureCells(new[] { cell }, result.Center);
+            else if (result.Center)
                 _camera?.CenterOn(point);
             else if (_camera is not null)
                 _camera.Reveal(point, 32 * _camera.Zoom / 2);
@@ -202,7 +206,10 @@ public partial class BattleScreen
             // Explicit target selection owns this preview; a reframe must not repick the old screen pixel.
             _pointerMapPosition = null;
             _pointerBoundaryGeneration++;
-            RevealPlayerAction(CellCenter(new(source.X, source.Y)), CellCenter(new(target.Cell.X, target.Cell.Y)));
+            if (_miniature is not null)
+                RevealMiniatureCells(new[] { source, target.Cell });
+            else
+                RevealPlayerAction(CellCenter(new(source.X, source.Y)), CellCenter(new(target.Cell.X, target.Cell.Y)));
         }
         if (result.Status == TacticalInputStatus.Ready && _snapshot?.State.GetProperty("phase").GetString() != "over")
             ShowFeedback("");

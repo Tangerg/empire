@@ -23,7 +23,7 @@ public partial class PaintedSurfaceChecks : Node
         AddChild(viewportFeedback);
         try
         {
-            CheckOpeningScene();
+            CheckHistoricalOpeningScene();
             await Check();
             GD.Print("Painted elevated surface registration, depth and picking passed.");
             GetTree().Quit();
@@ -35,13 +35,15 @@ public partial class PaintedSurfaceChecks : Node
         }
     }
 
-    private void CheckOpeningScene()
+    private void CheckHistoricalOpeningScene()
     {
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
-        var level = BattleTextChecks.OpeningLevel();
+        // The assembled doorway and two-hill probes share one frozen, test-only layout.
+        // Current C01 terrain and mounted miniature input have their own live checks.
+        var level = HistoricalPaintedC01Fixture.Level;
         var state = engine.CreateState(level);
         TerrainChecks.CheckOpeningHills(engine, state);
-        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
+        var scene = HistoricalPaintedC01Fixture.Scene;
         var rendering = BoardSceneRendering.Load(scene, level, state["map"]!.AsObject());
         var board = new BoardView();
         AddChild(board);
@@ -120,7 +122,7 @@ public partial class PaintedSurfaceChecks : Node
                 "Rush must relocate Torren onto the real north plateau without healing existing wounds.");
             TerrainChecks.CheckOpeningHills(engine, engine.CreateState(rushed));
         }
-        GD.Print("Native opening registration, entrances, two-hill traversal, actor feet and rush HP policy passed.");
+        GD.Print("Historical painted opening registration, entrances, two-hill traversal, actor feet and rush HP policy passed.");
     }
 
     private async Task Check()

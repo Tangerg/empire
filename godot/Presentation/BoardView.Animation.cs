@@ -50,7 +50,8 @@ public partial class BoardView
         var milliseconds = seconds * 1000;
         if (!double.IsFinite(milliseconds) || seconds < 0)
             throw new ArgumentOutOfRangeException(nameof(seconds));
-        AdvanceIdle(milliseconds);
+        if (IsVisibleInTree())
+            AdvanceIdle(milliseconds);
         _playback?.Clock.Advance(seconds);
     }
 

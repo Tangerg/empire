@@ -174,8 +174,6 @@ public partial class BattleScreen : Control
         if (!_built)
             return;
         RefreshApplicationActions();
-        if (_miniature is not null && _board.IsPresenting)
-            _board.AdvancePresentation(delta);
         if (_bound && _feedbackSeconds > 0 && !IsInputBlocked && !HasVisibleWindow && _feedbackPanel.IsVisibleInTree())
         {
             _feedbackSeconds = Math.Max(0, _feedbackSeconds - delta);
@@ -299,7 +297,6 @@ public partial class BattleScreen : Control
             _mapArea.MoveChild(_miniature, 0);
             _miniature.LoadAuthoredScene(miniaturePath);
         }
-        _board.AdvanceAnimationsAutomatically = _miniature is null;
         _world.Visible = _miniature is null;
         _viewportFeedback.Visible = _miniature is null;
         _hud.ConfigureArt(TacticalHudArt.Load(rules.Board.Assets, rules.Portraits));
@@ -560,11 +557,14 @@ public partial class BattleScreen : Control
     {
         var generation = ++_presentationGeneration;
         var session = _session;
-        _gestures?.Cancel();
+        if (_miniature is null || _gestures?.IsDragging != true)
+            _gestures?.Cancel();
         _board.CancelPresentation();
         _presenting = true;
         RefreshFeedbackVisibility();
-        if (BattlefieldFocus.CommandDestination(transition, CellCenter) is { } destination)
+        if (_miniature is not null)
+            RevealMiniatureTransition(transition);
+        else if (BattlefieldFocus.CommandDestination(transition, CellCenter) is { } destination)
         {
             _camera?.CenterOn(destination);
             ApplyCamera();
@@ -578,6 +578,8 @@ public partial class BattleScreen : Control
         }
         else if (BattlefieldFocus.PlayerAttack(transition, CellCenter) is { } playerAttack)
             RevealPlayerAction(playerAttack.Source, playerAttack.Target);
+        var receiptCameraPosition = _camera?.Position;
+        var receiptCameraZoom = _camera?.Zoom;
         _snapshot = next;
         SynchronizeTactical(next);
         UpdateTactical();
@@ -588,9 +590,15 @@ public partial class BattleScreen : Control
                 return;
             var current = session!.GetSnapshot();
             if (settled && current.Revision == next.Revision)
+            {
                 // BoardView owns settlement of an accepted playback. Adopt that exact
                 // revision for screen/UI state without replacing its finished projection.
                 SynchronizeSnapshot(next, ReadSnapshotState(next));
+                if (_miniature is not null && HumanHandback(transition.Before, next.State)
+                    && _camera?.Position == receiptCameraPosition && _camera?.Zoom == receiptCameraZoom
+                    && _gestures?.ActivePointerId is null)
+                    RevealMiniatureHandback(next.State);
+            }
             else
                 ApplySnapshot(current);
         }

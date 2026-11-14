@@ -14,7 +14,7 @@ IMPORT_ERROR = ('ERROR: EditorSettings not instantiated yet when getting setting
                 '"export/android/android_sdk_path".')
 SCRIPT_ERROR = "SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'."
 SUCCESS = "Current native contracts, replay/save determinism, and application flow passed."
-SCENE_COUNT = 47
+SCENE_COUNT = 48
 
 
 class NativeGateTests(unittest.TestCase):
@@ -141,7 +141,7 @@ else:
         for scene in ("GrainRoadChecks", "LedgerHintChecks", "C09CandidateChecks", "C10CandidateChecks", "C11CandidateChecks", "C12CandidateChecks", "ArchiveDistrictChecks", "ForgeDistrictChecks", "C15CandidateChecks", "MemorialDistrictChecks"):
             self.assertEqual(by_scene[f"res://Scenes/{scene}.tscn"]["args"][-1], f"res://Scenes/{scene}.tscn")
         for scene in ("ReadyUnitNavigationChecks", "C01MissionChecks", "MiniatureBoardChecks",
-                      "MiniatureInputChecks", "MiniaturePoseChecks", "C01HudProfileChecks"):
+                      "MiniatureInputChecks", "MiniaturePoseChecks", "MiniatureCameraChecks", "C01HudProfileChecks"):
             resource = f"res://Scenes/{scene}.tscn"
             self.assertEqual(by_scene[resource]["args"][-1], resource)
         self.assertEqual(by_scene["res://Scenes/LightingChecks.tscn"]["args"][-2:],

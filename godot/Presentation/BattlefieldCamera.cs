@@ -50,6 +50,8 @@ public sealed class BattlefieldCamera
         SceneOrigin.X + sceneInsets.Left * Zoom - Scroll.X,
         SceneOrigin.Y + sceneInsets.Top * Zoom - Scroll.Y);
     public CameraPoint Position => ToField(UsefulCenter);
+    public CameraPoint SafeMinimum => new(padding.Left, padding.Top);
+    public CameraPoint SafeMaximum => new(viewport.X - padding.Right, viewport.Y - padding.Bottom);
 
     private CameraPoint SceneSize => new(
         (fieldSize.X + sceneInsets.Left + sceneInsets.Right) * Zoom,
