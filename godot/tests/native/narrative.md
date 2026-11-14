@@ -143,3 +143,14 @@ expectation in both projection and widget groups while the identity group still
 runs; reject a changed speaker expectation while the prose projections still
 run; and reject an incorrect production next-beat label. These mutations are
 confined to the temporary test project/fixtures.
+
+## C01 mission-driven village objective (2026-11-14)
+
+The accepted C01 whitebox at `ccaad1bd7f065d2fd0340241a794df737abd2f21`
+requires capturing the central village and defeating the named
+local vanguard, while retaining Laiya's survival condition. The native PO key
+`story.c01.brief-01.mission.objective` already describes this scope and says that
+pursuing the remaining enemies is unnecessary. Update exactly its five existing
+expectations: the C01 source document, its three sampled briefing beats and its
+one edge projection. All other strings, cases, states, transitions and assertion
+code remain unchanged; the historical TypeScript oracle is not regenerated.
