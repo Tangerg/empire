@@ -60,9 +60,23 @@ public partial class C01MissionChecks : Node
         Require(Status(s, "primary") == "failed", "Laiya failure dominates objective completion");
         s = engine.CreateState(level);
         Kill(s, u => Key(u) == "west-spear");
+        // Detached scenario fixture supplies the death count normally owned by ActionExecutionContext.
+        s["scenario"]!["eventCounts"]!["death"] = 1;
         var events = new List<JsonObject>();
         engine.Scenarios.Run(s, "afterAction", events.Add);
         Require(events.All(e => e["signal"]?.GetValue<string>() != "found_matching_orders"), "friendly death cannot reveal matching orders");
+        var regression = level.DeepClone().AsObject();
+        regression["scenario"]!["triggers"] = JsonNode.Parse("""
+            [{"id":"matching-orders","timing":"afterAction",
+              "condition":{"type":"eventCount","event":"death","op":"gte","value":1},
+              "effects":[{"type":"emitSignal","signal":"found_matching_orders"}]}]
+            """);
+        var oldTrigger = engine.CreateState(regression);
+        oldTrigger["scenario"]!["eventCounts"]!["death"] = 1;
+        var oldEvents = new List<JsonObject>();
+        engine.Scenarios.Run(oldTrigger, "afterAction", oldEvents.Add);
+        Require(oldEvents.Any(e => e["signal"]?.GetValue<string>() == "found_matching_orders"),
+            "death-count fixture detects the removed matching-orders trigger");
         var fixture = level.DeepClone().AsObject();
         var actor = fixture["units"]!.AsArray().Select(x => x!.AsObject()).Single(u => Key(u) == "campaign-torren");
         actor["x"] = 18;
