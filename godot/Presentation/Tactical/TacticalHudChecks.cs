@@ -717,18 +717,31 @@ public partial class TacticalHudChecks : Node
         var viewer = openingSnapshot["players"]!.AsArray().OfType<JsonObject>()
             .Single(player => player["controller"]!.GetValue<string>() == "human")["id"]!.GetValue<int>();
         var openingObjectives = engine.Victory.Objectives(openingSnapshot, viewer);
-        var singleTask = openingObjectives.Single().Children.Single();
+        var aggregate = openingObjectives.Single().Children.Single();
         var openingRows = openingSession.ProjectHud(new(0, 0), new(), null, null, false)
             .Sections.Single(section => section.Key == "objectives").Rows;
-        var openingTask = openingRows.Single(row => row.Key == singleTask.Id);
-        Require(openingRows.Count == 2 && openingTask.Hint.Length == 0
-            && openingTask.Label.Contains(presentation.Battle.ObjectiveProgress(singleTask), StringComparison.Ordinal),
-            "A single-task C01 objective shows its canonical progress once, on the named task.");
+        Require(aggregate.Kind == "all" && aggregate.Children.Count == 2
+            && aggregate.Children.Any(child => child.Id == "village-control" && child.Kind == "control")
+            && aggregate.Children.Any(child => child.Id == "break-vanguard" && child.Kind == "eliminate"),
+            "C01's authored mission requires village control and its explicit local vanguard.");
+        Require(openingRows.Select(row => row.Key).ToHashSet().SetEquals(
+            new[] { "primary", "failure:primary", "village-control", "break-vanguard" }),
+            "C01 projects its aggregate summary, failure warning and exactly two named tasks.");
+        var summary = openingRows.Single(row => row.Key == "primary");
+        Require(summary.Label == presentation.Battle.ObjectiveProgress(openingObjectives.Single())
+            && summary.Hint == presentation.Battle.ObjectiveDescription("c01-01", viewer, openingObjectives.Single()),
+            "C01 summary keeps the authoritative aggregate progress and authored description.");
+        foreach (var child in aggregate.Children)
+        {
+            var task = openingRows.Single(row => row.Key == child.Id);
+            Require(task.Label.Contains(presentation.Battle.ObjectiveProgress(child), StringComparison.Ordinal),
+                "Each C01 task keeps its own canonical progress exactly once.");
+        }
         Require(openingBefore == EcmaJson.Stringify(openingSession.Snapshot()), "Objective compaction cannot change battle facts.");
         var warning = openingRows.Single(row => row.Key == "failure:primary");
         Require(warning.Label == text.Format("ui.hud.objective_failure", text.Format("objective.failure.laiya"))
             && warning.Intent is null && warning.TargetCells is null && warning.Hint.Length == 0,
-            "Single-task compaction retains the critical loss condition as a visible read-only row.");
+            "C01 mission checklist retains the critical loss condition as a visible read-only row.");
         foreach (var (levelId, criticalId, condition) in new[]
         {
             ("c01-05", "primary", "laiya"), ("c01-08", "protect-tasha", "tasha"),

@@ -17,8 +17,8 @@ public partial class TacticalHudChecks
 {
     private async Task CheckTacticKeyboardContext()
     {
-        var fixture = PresentationJson.Load<JsonArray>("res://tests/native/recorded-status-feedback.json").OfType<JsonObject>()
-            .Single(value => value["levelId"]!.GetValue<string>() == "c01-01");
+        // C01 mission/terrain changed independently of the historical multi-field witness.
+        var fixture = PresentationJson.Load<JsonObject>("res://tests/native/c01-tactic-keyboard.json");
         var checkpoint = fixture["checkpoints"]!.AsArray()[0]!.AsObject();
         var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
             .Single(value => value["id"]!.GetValue<string>() == "c01-01");

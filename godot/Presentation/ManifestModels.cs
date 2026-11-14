@@ -358,6 +358,10 @@ public sealed record StructureArtBinding
 
 public sealed class AuthoredScene
 {
+    public string? HudPresentationPath
+    {
+        get; init;
+    }
     public string SchemaVersion { get; init; } = "";
     public string LevelId { get; init; } = "";
     public string Title { get; init; } = "";

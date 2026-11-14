@@ -15,6 +15,20 @@ public partial class TacticalHud : Control
     private bool submitted;
     private Button? pendingOrder;
     private TacticalHudArt? art;
+    private TacticalHudPresentation presentation = TacticalHudPresentation.Default;
+    public void ConfigurePresentation(TacticalHudPresentation value)
+    {
+        ArgumentNullException.ThrowIfNull(value);
+        if (presentation == value)
+            return;
+        presentation = value;
+        pendingOrder = null;
+        current = null;
+        if (value.CompactHeaders)
+            expanded.Remove("objectives");
+        else
+            expanded.Add("objectives");
+    }
     private ReadingScroll? detailScroll;
     private VBoxContainer? details;
     private PopupPanel? detailPopup;
@@ -285,9 +299,9 @@ public partial class TacticalHud : Control
             var group = new VBoxContainer { Name = section.Key, SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
             group.AddThemeConstantOverride("separation", section.Key is "crown" or "unit" ? 2 : 5);
             if (section.Key == "crown")
-                MountPlate(group, false, 0, 0, 0, 0, 14, 8, 350, 108);
+                MountPlate(group, false, 0, 0, 0, 0, 14, 8, presentation.CompactHeaders ? 286 : 350, presentation.CompactHeaders ? 80 : 108);
             else if (section.Key == "objectives")
-                MountPlate(group, true, 1, 0, 1, 0, -326, 58, -14, 160);
+                MountPlate(group, true, 1, 0, 1, 0, -326, 58, -14, presentation.CompactHeaders ? 130 : 160);
             else if (section.Key == "unit")
             {
                 AddChild(group);
@@ -303,8 +317,8 @@ public partial class TacticalHud : Control
             else
                 details.AddChild(group);
             var header = new HBoxContainer { Name = "Heading", SizeFlagsHorizontal = SizeFlags.ExpandFill };
-            var heading = Label(section.Title, section.Key is "crown" or "unit" ? 19 : 13,
-                section.Key == "objectives" ? new Color("#453921") : section.Key is "crown" or "unit" or "forecast" or "commands" ? TacticalHudStyle.Gold : TacticalHudStyle.Muted);
+            var heading = Label(section.Title, section.Key == "crown" && presentation.CompactHeaders ? 17 : section.Key is "crown" or "unit" ? 19 : 13,
+                section.Key == "objectives" ? presentation.CompactHeaders ? TacticalHudStyle.Gold : new Color("#453921") : section.Key is "crown" or "unit" or "forecast" or "commands" ? TacticalHudStyle.Gold : TacticalHudStyle.Muted);
             header.AddChild(heading);
             group.AddChild(header);
             var collapsible = section.Key is "objectives" or "forecast-details" or "unit-details" or "roster" or "tile" or "stances" or "formations" or "careers";
@@ -319,11 +333,12 @@ public partial class TacticalHud : Control
                     Text = (expanded.Contains(section.Key) ? "−  " : "+  ") + title,
                     TooltipText = summary?.Hint ?? "",
                     Alignment = HorizontalAlignment.Left,
+                    AutowrapMode = presentation.CompactHeaders && section.Key == "objectives" ? TextServer.AutowrapMode.WordSmart : TextServer.AutowrapMode.Off,
                     ToggleMode = true,
                     ButtonPressed = expanded.Contains(section.Key)
                 };
                 CompactButton(toggle);
-                if (section.Key == "objectives")
+                if (section.Key == "objectives" && !presentation.CompactHeaders)
                 {
                     TacticalHudStyle.PaperButton(toggle);
                 }
@@ -448,10 +463,12 @@ public partial class TacticalHud : Control
                     continue;
                 if (section.Key == "objectives" && row.Hint.Length > 0 && row.Intent is null)
                     continue;
+                var rowParent = section.Key == "objectives" && presentation.CompactHeaders
+                    && row.Key.StartsWith("failure:", StringComparison.Ordinal) ? group : rows;
                 if (row.Intent is not null)
                 {
                     var button = Order(row, section.Key, compact: row.Key == "cancel");
-                    if (section.Key == "objectives")
+                    if (section.Key == "objectives" && !presentation.CompactHeaders)
                     {
                         TacticalHudStyle.PaperButton(button);
                     }
@@ -477,12 +494,12 @@ public partial class TacticalHud : Control
                         commandGrid.AddChild(button);
                     }
                     else
-                        rows.AddChild(button);
+                        rowParent.AddChild(button);
                 }
                 else
                 {
-                    AddReadOnly(rows, row, section.Key == "crown" ? 13 : section.Key == "objectives" ? 13 : row.Key == "hp" ? 16 : 14);
-                    if (section.Key == "objectives")
+                    AddReadOnly(rowParent, row, section.Key == "crown" && presentation.CompactHeaders ? 12 : section.Key == "crown" ? 13 : section.Key == "objectives" ? 13 : row.Key == "hp" ? 16 : 14);
+                    if (section.Key == "objectives" && !presentation.CompactHeaders)
                         foreach (var label in rows.GetChildren().OfType<HBoxContainer>().SelectMany(line => line.GetChildren().OfType<Label>()))
                             label.AddThemeColorOverride("font_color", new Color("#453921"));
                 }
@@ -813,8 +830,14 @@ public partial class TacticalHud : Control
         }
     }
 
-    private static string DisclosureTitle(TacticalHudSection section) => section.Key == "objectives"
-        ? section.Rows.FirstOrDefault(row => row.Hint.Length > 0 && row.Intent is null)?.Label ?? section.Title : section.Title;
+    private string DisclosureTitle(TacticalHudSection section)
+    {
+        if (section.Key != "objectives")
+            return section.Title;
+        var summary = section.Rows.FirstOrDefault(row => row.Hint.Length > 0 && row.Intent is null);
+        return presentation.CompactHeaders && summary is not null
+            ? summary.Hint + "  " + summary.Label : summary?.Label ?? section.Title;
+    }
 
     private static bool SameTextStructure(TacticalHudSection first, TacticalHudSection second) =>
         first.Rows.Count == second.Rows.Count && first.Rows.Zip(second.Rows).All(pair =>
@@ -845,12 +868,20 @@ public partial class TacticalHud : Control
         control.OffsetBottom = y2;
     }
 
+    private static Panel CompactHeaderPlate()
+    {
+        var panel = new Panel();
+        panel.AddThemeStyleboxOverride("panel", TacticalHudStyle.Panel("#242b2df2", 0, "#897d63"));
+        return panel;
+    }
+
     private void MountPlate(VBoxContainer content, bool paper, float left, float top, float right, float bottom, float x1, float y1, float x2, float y2)
     {
         var panel = new Control { Name = content.Name + "Plate", MouseFilter = MouseFilterEnum.Stop, GrowVertical = bottom == 1 ? GrowDirection.Begin : GrowDirection.End };
         AddChild(panel);
         Place(panel, left, top, right, bottom, x1, y1, x2, y2);
-        Control plate = content.Name == "crown"
+        var compact = presentation.CompactHeaders && (content.Name == "crown" || content.Name == "objectives");
+        Control plate = compact ? CompactHeaderPlate() : content.Name == "crown"
             ? TacticalHudStyle.PaintedImage("battle-banner-v1.png", new Rect2(20, 180, 1960, 415))
             : paper ? TacticalHudStyle.PaintedImage("objectives-paper-v1.png", new Rect2(20, 46, 2120, 605))
             : TacticalHudStyle.CommandTray();
@@ -858,10 +889,10 @@ public partial class TacticalHud : Control
         panel.AddChild(plate);
         plate.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         var inset = new MarginContainer { MouseFilter = MouseFilterEnum.Ignore };
-        inset.AddThemeConstantOverride("margin_left", content.Name == "crown" ? 32 : 20);
-        inset.AddThemeConstantOverride("margin_right", content.Name == "crown" ? 42 : 18);
-        inset.AddThemeConstantOverride("margin_top", content.Name == "crown" ? 15 : content.Name == "forecast" ? 6 : 10);
-        inset.AddThemeConstantOverride("margin_bottom", 12);
+        inset.AddThemeConstantOverride("margin_left", compact ? 10 : content.Name == "crown" ? 32 : 20);
+        inset.AddThemeConstantOverride("margin_right", compact ? 10 : content.Name == "crown" ? 42 : 18);
+        inset.AddThemeConstantOverride("margin_top", compact ? 6 : content.Name == "crown" ? 15 : content.Name == "forecast" ? 6 : 10);
+        inset.AddThemeConstantOverride("margin_bottom", compact ? 6 : 12);
         panel.AddChild(inset);
         inset.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         inset.AddChild(content);

@@ -51,6 +51,7 @@ public partial class InitialHudCoverageChecks : Node
                         GetWindow().Size = size;
                         var hud = new TacticalHud { Theme = TacticalHudStyle.Create() };
                         hud.ConfigureArt(art);
+                        hud.ConfigurePresentation(TacticalHudPresentation.Resolve(TerrainChecks.Scene(level)));
                         AddChild(hud);
                         hud.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
                         hud.Apply(projection);

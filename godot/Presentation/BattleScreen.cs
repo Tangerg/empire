@@ -281,6 +281,7 @@ public partial class BattleScreen : Control
         _presentedRevision = session.Revision;
         _board.Configure(rules.Board, level, authoredScene);
         _hud.ConfigureArt(TacticalHudArt.Load(rules.Board.Assets, rules.Portraits));
+        _hud.ConfigurePresentation(TacticalHudPresentation.Resolve(authoredScene));
         _session = session;
         _tactical = new TacticalSelectionController(_session.GetTacticalQueries(_tacticalBinding));
         _applicationBusy = false;
