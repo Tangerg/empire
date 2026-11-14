@@ -143,3 +143,7 @@ above are distinct from the completed current native replay/save gate.
 
 Native headless resource, control and lifetime checks are not GPU visual or
 export acceptance. No new tool or package was installed for this batch.
+
+## C01 mission fixture refresh (2026-11-14)
+
+C01 now uses the current steady route: 33 legal prefix commands, then the human end-turn. Unit 12 actually recovers 13 HP (capped by missing health), not a hard-coded terrain rate. The exact receipt, keyboard input, visibility, cancellation and lifetime assertions remain unchanged. C04 and C08 records are untouched. Historical measurements above describe their original revisions.

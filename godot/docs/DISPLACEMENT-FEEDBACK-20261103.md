@@ -150,3 +150,7 @@ No new dependency or tool was installed. Headless node/resource checks are not
 GPU visual or exported-game acceptance. The previously unavailable historical
 TypeScript oracle and stopped optional fixed-replay comparison were not rerun
 or claimed as new evidence for this batch.
+
+## C01 mission fixture refresh (2026-11-14)
+
+C01 now replays 43 legal commands from the current mission opening, then charges unit 12 at the village against the canonical wall at (18,12). The nonlethal receipt remains attack, zero-distance collided push, then collision damage (21 + 8, HP 78). The old C01 prefix no longer admits after the mission deployment change. C06, C10 and C14 records and all playback assertions are unchanged.
