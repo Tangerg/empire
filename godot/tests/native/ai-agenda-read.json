@@ -4,36 +4,71 @@
     {
       "name": "c01-01-step-0",
       "levelId": "c01-01",
+      "sourceCommit": "e53caad76e16b0a0bd82f5c43a728bea31913b61",
       "prefix": [
         {
           "kind": "endTurn"
         }
       ],
-      "stateHash": "7527b68c",
+      "stateHash": "f3c75c93",
       "action": {
         "kind": "command",
-        "unit": 16,
+        "unit": 12,
         "path": [
           {
-            "x": 17,
-            "y": 4
+            "x": 21,
+            "y": 13
           },
           {
-            "x": 17,
-            "y": 5
+            "x": 20,
+            "y": 13
+          },
+          {
+            "x": 19,
+            "y": 13
+          },
+          {
+            "x": 18,
+            "y": 13
           }
         ],
         "command": {
-          "ability": "wait"
+          "ability": "capture"
         }
       }
     },
     {
       "name": "c01-01-step-5",
       "levelId": "c01-01",
+      "sourceCommit": "e53caad76e16b0a0bd82f5c43a728bea31913b61",
       "prefix": [
         {
           "kind": "endTurn"
+        },
+        {
+          "kind": "command",
+          "unit": 12,
+          "path": [
+            {
+              "x": 21,
+              "y": 13
+            },
+            {
+              "x": 20,
+              "y": 13
+            },
+            {
+              "x": 19,
+              "y": 13
+            },
+            {
+              "x": 18,
+              "y": 13
+            }
+          ],
+          "command": {
+            "ability": "capture"
+          }
         },
         {
           "kind": "command",
@@ -54,15 +89,23 @@
         },
         {
           "kind": "command",
-          "unit": 12,
+          "unit": 14,
           "path": [
             {
-              "x": 25,
-              "y": 14
+              "x": 23,
+              "y": 12
             },
             {
-              "x": 24,
-              "y": 14
+              "x": 23,
+              "y": 13
+            },
+            {
+              "x": 22,
+              "y": 13
+            },
+            {
+              "x": 21,
+              "y": 13
             }
           ],
           "command": {
@@ -74,20 +117,12 @@
           "unit": 13,
           "path": [
             {
-              "x": 29,
-              "y": 15
+              "x": 25,
+              "y": 14
             },
             {
-              "x": 28,
-              "y": 15
-            },
-            {
-              "x": 27,
-              "y": 15
-            },
-            {
-              "x": 26,
-              "y": 15
+              "x": 24,
+              "y": 14
             }
           ],
           "command": {
@@ -110,34 +145,9 @@
           "command": {
             "ability": "wait"
           }
-        },
-        {
-          "kind": "command",
-          "unit": 14,
-          "path": [
-            {
-              "x": 30,
-              "y": 11
-            },
-            {
-              "x": 29,
-              "y": 11
-            },
-            {
-              "x": 28,
-              "y": 11
-            },
-            {
-              "x": 27,
-              "y": 11
-            }
-          ],
-          "command": {
-            "ability": "wait"
-          }
         }
       ],
-      "stateHash": "1aab9edc",
+      "stateHash": "6ebab9b4",
       "action": {
         "kind": "command",
         "unit": 15,
