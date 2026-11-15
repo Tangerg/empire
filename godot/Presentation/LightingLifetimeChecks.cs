@@ -244,7 +244,8 @@ public partial class LightingLifetimeChecks : Node
 
     private async Task ScreenLifetime(int cycle)
     {
-        var level = BattleTextChecks.OpeningLevel();
+        // Procedural 2D lighting is not mounted by the playable C01 miniature renderer.
+        var level = HistoricalPaintedC01Fixture.Level;
         var packs = PresentationJson.Load<JsonArray>("res://data/content-packs.json");
         var engine = new BattleEngine(packs);
         var text = GodotTextCatalog.LoadSimplifiedChinese();
@@ -252,7 +253,7 @@ public partial class LightingLifetimeChecks : Node
         var battleText = presentation.Battle;
         var assets = AssetCatalog.Load();
         var environment = EnvironmentCatalog.Load();
-        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
+        var scene = HistoricalPaintedC01Fixture.Scene;
         var screen = new BattleScreen();
         AddChild(screen);
         screen.Board.AdvanceAnimationsAutomatically = false;
