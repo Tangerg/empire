@@ -71,11 +71,15 @@ public partial class AnimationChecks
         foreach (var fixture in PresentationJson.Load<JsonArray>("res://tests/native/recorded-displacement.json").OfType<JsonObject>())
         {
             var levelId = fixture["levelId"]!.GetValue<string>();
-            var recordedLevel = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
-                .Single(value => value["id"]!.GetValue<string>() == levelId);
+            // C01 was rebuilt; its recorded combat witness retains the frozen level and scene.
+            var (recordedLevel, recordedScene) = levelId == "c01-01"
+                ? (HistoricalPaintedC01Fixture.Level, HistoricalPaintedC01Fixture.Scene)
+                : (PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+                    .Single(value => value["id"]!.GetValue<string>() == levelId),
+                    AuthoredScene.Load($"res://data/scenes/{levelId}.json"));
             var engine = new BattleEngine(packs);
             var battle = engine.CreateBattle(recordedLevel);
-            Require(battle.StateHash == fixture["initialStateHash"]!.GetValue<string>(), "Each combat timeline starts from the unchanged formal level.");
+            Require(battle.StateHash == fixture["initialStateHash"]!.GetValue<string>(), "Each combat timeline starts from its exact recorded level.");
             var checkpoints = fixture["checkpoints"]!.AsArray().OfType<JsonObject>().ToDictionary(value => Int(value, "index"));
             var actions = fixture["actions"]!.AsArray().OfType<JsonObject>().ToArray();
             for (var index = 0; index < actions.Length; index++)
@@ -92,7 +96,7 @@ public partial class AnimationChecks
                 try
                 {
                     board.Configure(new(assets, EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, BoardPlane.Dimetric),
-                        recordedLevel, AuthoredScene.Load($"res://data/scenes/{levelId}.json"));
+                        recordedLevel, recordedScene);
                     board.ConfigureDynamicState();
                     var after = battle.Snapshot();
                     var original = after.ToJsonString();
