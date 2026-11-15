@@ -314,6 +314,33 @@ public partial class CampaignPlayedFlowChecks
         var player = state["currentPlayer"]!.GetValue<int>();
         var context = new AiTurnContext(engine.Ai.Planning, state, player, 0.58);
         var actors = engine.Turns.Actors(state).Where(unit => engine.Turns.CanAct(state, unit)).ToArray();
+        var safeCells = state["scenario"]!["zones"]!["east-safety"]!.AsArray().OfType<JsonObject>().Select(TacticalQueries.Position).ToArray();
+        var ballistaDefeated = !state["units"]!.AsArray().OfType<JsonObject>()
+            .Any(unit => unit["key"]?.GetValue<string>() == "unmarked-ballista");
+        var reservedCells = ballistaDefeated ? safeCells : null;
+        // Losing Laiya fails the escort objective even when the other troops survive.
+        if (actors.FirstOrDefault(unit => unit["key"]?.GetValue<string>() == "campaign-laiya") is { } hero)
+        {
+            var field = engine.Space.ComputeMoveField(state, hero);
+            var here = TacticalQueries.Position(hero);
+            var candidates = field.Stops.OrderBy(index => context.Threat.GetValueOrDefault(index))
+                .ThenBy(index => context.Board.NearestDistance(context.Board.CoordOf(index), new[] { here }));
+            foreach (var stop in candidates)
+            {
+                var at = context.Board.CoordOf(stop);
+                var path = field.TracePath(stop);
+                if (path is null || !engine.CommandsAt(state, hero, at).Any(option => option.Ability == "wait"))
+                    continue;
+                return WaitOrder(hero, path);
+            }
+        }
+        if (ballistaDefeated)
+        {
+            // Military occupancy must not block the surviving civilians' escort destination.
+            var blocking = actors.FirstOrDefault(unit => !IsRefugee(unit) && safeCells.Contains(TacticalQueries.Position(unit)));
+            if (blocking is not null)
+                return QueriedWait(engine, context, blocking, new[] { TacticalQueries.Position(blocking) }, forbidden: reservedCells);
+        }
         var healing = new List<(JsonObject Action, double Risk, int Priority, double Amount)>();
         foreach (var healer in actors.Where(unit => engine.Progression.Careers.UnitAbilityIds(unit).Contains("heal")))
         {
@@ -332,7 +359,7 @@ public partial class CampaignPlayedFlowChecks
                         if (amount < 15)
                             continue;
                         var key = ally["key"]?.GetValue<string>() ?? "";
-                        var priority = key == "campaign-laiya" || key.StartsWith("refugee-", StringComparison.Ordinal) ? 2 : 1;
+                        var priority = key == "campaign-laiya" || IsRefugee(ally) ? 2 : 1;
                         healing.Add((new JsonObject
                         {
                             ["kind"] = "command",
@@ -346,10 +373,9 @@ public partial class CampaignPlayedFlowChecks
         if (healing.Count > 0)
             return healing.OrderBy(candidate => candidate.Risk).ThenByDescending(candidate => candidate.Priority)
                 .ThenByDescending(candidate => candidate.Amount).First().Action;
-        var safeCells = state["scenario"]!["zones"]!["east-safety"]!.AsArray().OfType<JsonObject>().Select(TacticalQueries.Position).ToArray();
         var bridge = state["scenario"]!["zones"]!["middle-bridge"]!.AsArray().OfType<JsonObject>().Select(TacticalQueries.Position).ToArray();
         var entry = bridge.OrderBy(cell => cell.Y).ThenBy(cell => cell.X).First();
-        foreach (var civilian in actors.Where(unit => unit["key"]?.GetValue<string>().StartsWith("refugee-", StringComparison.Ordinal) == true))
+        foreach (var civilian in actors.Where(IsRefugee))
         {
             var at = TacticalQueries.Position(civilian);
             var arrived = safeCells.Contains(at);
@@ -363,13 +389,13 @@ public partial class CampaignPlayedFlowChecks
         var actor = TacticalQueries.RequireUnit(state, proposed["unit"]!.GetValue<int>());
         var actorAt = TacticalQueries.Position(actor);
         if (actorAt.Y < entry.Y)
-            return QueriedWait(engine, context, actor, new[] { entry });
+            return QueriedWait(engine, context, actor, new[] { entry }, forbidden: IsRefugee(actor) ? null : reservedCells);
         if (actorAt.X < safeCells.Min(cell => cell.X))
-            return QueriedWait(engine, context, actor, safeCells);
+            return QueriedWait(engine, context, actor, safeCells, forbidden: IsRefugee(actor) ? null : reservedCells);
         return proposed;
     }
 
-    private static JsonObject QueriedWait(BattleEngine engine, AiTurnContext context, JsonObject unit, IReadOnlyList<Coord> goals, IReadOnlyCollection<Coord>? admitted = null)
+    private static JsonObject QueriedWait(BattleEngine engine, AiTurnContext context, JsonObject unit, IReadOnlyList<Coord> goals, IReadOnlyCollection<Coord>? admitted = null, IReadOnlyCollection<Coord>? forbidden = null)
     {
         var field = engine.Space.ComputeMoveField(context.State, unit);
         foreach (var stop in field.Stops.OrderBy(index =>
@@ -378,19 +404,24 @@ public partial class CampaignPlayedFlowChecks
         {
             var at = context.Board.CoordOf(stop);
             var path = field.TracePath(stop);
-            if (path is null || admitted is not null && !admitted.Contains(at)
+            if (path is null || admitted is not null && !admitted.Contains(at) || forbidden?.Contains(at) == true
                 || !engine.CommandsAt(context.State, unit, at).Any(option => option.Ability == "wait"))
                 continue;
-            return new JsonObject
-            {
-                ["kind"] = "command",
-                ["unit"] = unit["id"]!.DeepClone(),
-                ["path"] = TacticalQueries.PathJson(path),
-                ["command"] = new JsonObject { ["ability"] = "wait" }
-            };
+            return WaitOrder(unit, path);
         }
         throw new InvalidOperationException("The live test-player actor has no legal queried wait destination.");
     }
+
+    private static bool IsRefugee(JsonObject unit) =>
+        unit["key"]?.GetValue<string>().StartsWith("refugee-", StringComparison.Ordinal) == true;
+
+    private static JsonObject WaitOrder(JsonObject unit, IReadOnlyList<Coord> path) => new()
+    {
+        ["kind"] = "command",
+        ["unit"] = unit["id"]!.DeepClone(),
+        ["path"] = TacticalQueries.PathJson(path),
+        ["command"] = new JsonObject { ["ability"] = "wait" }
+    };
 
     private static double Number(JsonNode value) => EcmaJson.ToElement(value).GetDouble();
 
