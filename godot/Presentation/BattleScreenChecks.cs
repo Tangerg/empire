@@ -1288,7 +1288,8 @@ public partial class BattleScreenChecks : Node
 
     private async Task CheckLocalizedInteraction()
     {
-        var sourceLevel = BattleTextChecks.OpeningLevel();
+        // This synthetic missing-sprite probe exercises the detached painted renderer.
+        var (sourceLevel, scene) = (HistoricalPaintedC01Fixture.Level, HistoricalPaintedC01Fixture.Scene);
         var level = sourceLevel.DeepClone().AsObject();
         // Bring one authored enemy into preview range without dispatching a setup action.
         var defender = level["units"]!.AsArray().OfType<JsonObject>().First(unit => unit["owner"]!.GetValue<int>() == 2);
@@ -1337,7 +1338,6 @@ public partial class BattleScreenChecks : Node
             var screen = new BattleScreen();
             AddChild(screen);
             screen.Board.AnimationsEnabled = false;
-            var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
             var rendering = BoardSceneRendering.Load(scene, sourceLevel, registeredMap);
             screen.BindSession(new(text, battleText, PortraitCatalogResources.Load(), session, new(assets, EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);
             screen.ConfigureGround(rendering.Ground);

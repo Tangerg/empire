@@ -29,11 +29,15 @@ public partial class BattleScreenChecks
             foreach (var fixture in fixtures)
             {
                 var levelId = fixture["levelId"]!.GetValue<string>();
-                var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
-                    .Single(value => value["id"]!.GetValue<string>() == levelId);
+                // The C01 rally recording predates the playable opening's rebuild.
+                var (level, scene) = levelId == "c01-01"
+                    ? (HistoricalPaintedC01Fixture.Level, HistoricalPaintedC01Fixture.Scene)
+                    : (PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
+                        .Single(value => value["id"]!.GetValue<string>() == levelId),
+                        AuthoredScene.Load($"res://data/scenes/{levelId}.json"));
                 var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
                 var battle = engine.CreateBattle(level);
-                Require(battle.StateHash == fixture["initialStateHash"]!.GetValue<string>(), "Status witness starts from unchanged formal campaign content.");
+                Require(battle.StateHash == fixture["initialStateHash"]!.GetValue<string>(), "Status witness starts from its exact recorded campaign content.");
                 var checkpoints = fixture["checkpoints"]!.AsArray().OfType<JsonObject>().ToDictionary(value => value["index"]!.GetValue<int>());
                 var actions = fixture["actions"]!.AsArray().OfType<JsonObject>().ToArray();
                 for (var index = 0; index < actions.Length; index++)
@@ -49,7 +53,6 @@ public partial class BattleScreenChecks
                         try
                         {
                             screen.Board.AnimationsEnabled = false;
-                            var scene = AuthoredScene.Load($"res://data/scenes/{levelId}.json");
                             var rendering = BoardSceneRendering.Load(scene, level, session.Snapshot()["map"]!.AsObject());
                             screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), session,
                                 new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);

@@ -20,11 +20,10 @@ public partial class TacticalHudChecks
         // C01 mission/terrain changed independently of the historical multi-field witness.
         var fixture = PresentationJson.Load<JsonObject>("res://tests/native/c01-tactic-keyboard.json");
         var checkpoint = fixture["checkpoints"]!.AsArray()[0]!.AsObject();
-        var level = PresentationJson.Load<JsonArray>("res://data/grayflag-campaign-levels.json").OfType<JsonObject>()
-            .Single(value => value["id"]!.GetValue<string>() == "c01-01");
+        var (level, scene) = (HistoricalPaintedC01Fixture.Level, HistoricalPaintedC01Fixture.Scene);
         var engine = new BattleEngine(PresentationJson.Load<JsonArray>("res://data/content-packs.json"));
         var battle = engine.CreateBattle(level);
-        Require(battle.StateHash == fixture["initialStateHash"]!.GetValue<string>(), "Keyboard tactic witness starts from the shipped campaign opening.");
+        Require(battle.StateHash == fixture["initialStateHash"]!.GetValue<string>(), "Keyboard tactic witness starts from its exact recorded opening.");
         foreach (var action in fixture["actions"]!.AsArray().Take(checkpoint["index"]!.GetValue<int>()).OfType<JsonObject>())
             battle.Dispatch(action);
         Require(battle.StateHash == checkpoint["beforeStateHash"]!.GetValue<string>(), "Original legal orders reach the recorded rally checkpoint.");
@@ -40,7 +39,6 @@ public partial class TacticalHudChecks
         {
             GetWindow().Size = new Vector2I(1180, 812);
             screen.Board.AnimationsEnabled = false;
-            var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
             var rendering = BoardSceneRendering.Load(scene, level, session.Snapshot()["map"]!.AsObject());
             screen.BindSession(new(text, presentation.Battle, PortraitCatalogResources.Load(), session,
                 new(AssetCatalog.Load(), EnvironmentCatalog.Load(), engine.Grids.Get("square4"), engine.Catalog, rendering.Plane)), level, scene);
