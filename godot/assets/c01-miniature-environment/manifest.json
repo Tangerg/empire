@@ -45,33 +45,33 @@
         6,
         2
       ],
-      "ridge_axis": "X",
       "ground_anchor": [
         0,
         0,
         0
       ],
-      "height_m": 1.9960000477731228,
+      "height_m": 2.4509999752044678,
       "roof_node": "Roof",
       "wall_node": "Walls",
       "mesh_objects": 2,
-      "bytes": 3178208,
-      "triangles": 43638,
+      "bytes": 801416,
+      "triangles": 10566,
       "aabb_min": [
-        -2.8511999637365335,
-        -3.725290298461914e-09,
-        -0.9695039532444483
+        -2.932500123977661,
+        0.0,
+        -0.9325000047683716
       ],
       "aabb_max": [
-        2.8511999637365335,
-        1.9960000477731228,
-        0.9695039532444483
+        2.932500123977661,
+        2.4509999752044678,
+        0.9800000190734863
       ],
-      "sha256": "72d2fae548fc72bc616212815d7f1ca31ee1156ea265d99215acad28b5d4db81",
+      "sha256": "87b709daa057eb9957febab3215faa2060611b7027ebcb8dfb2870d09dbd9d41",
       "surfaces": 2,
       "materials": 1,
-      "generation": "approved original mesh generation + PBR palette atlas/dark sandstone stage",
-      "door_height_m": 0.77
+      "generation": "original connected working yard",
+      "source": "authoring/working-yard/north-terrace/build.py",
+      "alpha_mode": "OPAQUE"
     },
     {
       "path": "res://assets/c01-miniature-environment/c01_house_3x3.glb",
@@ -113,33 +113,33 @@
         4,
         4
       ],
-      "ridge_axis": "X",
       "ground_anchor": [
         0,
         0,
         0
       ],
-      "height_m": 1.9960000477731228,
+      "height_m": 1.9850000143051147,
       "roof_node": "Roof",
       "wall_node": "Walls",
       "mesh_objects": 2,
-      "bytes": 3030916,
-      "triangles": 42342,
+      "bytes": 185412,
+      "triangles": 2350,
       "aabb_min": [
-        -1.8911999851942056,
-        -3.725290298461914e-09,
-        -1.967903779866461
+        -1.909999966621399,
+        0.0,
+        -1.9359999895095825
       ],
       "aabb_max": [
-        1.8911999851942056,
-        1.9960000477731228,
-        1.967903779866461
+        1.909999966621399,
+        1.9850000143051147,
+        1.909999966621399
       ],
-      "sha256": "07f8524b61c2f9fa50cf71967ce14473f2c45702b975146e0639ff2a825e64a7",
+      "sha256": "ffaf8fc4ca5f9c9132e46347650603d0664b1162fe9e7031237acaee901490c3",
       "surfaces": 2,
       "materials": 1,
-      "generation": "approved original mesh generation + PBR palette atlas/dark sandstone stage",
-      "door_height_m": 0.77
+      "generation": "original connected working yard",
+      "source": "authoring/working-yard/rain-yard/build_rainyard.py",
+      "alpha_mode": "OPAQUE"
     },
     {
       "path": "res://assets/c01-miniature-environment/c01_market_6x3.glb",
@@ -147,33 +147,33 @@
         6,
         3
       ],
-      "ridge_axis": "X",
       "ground_anchor": [
         0,
         0,
         0
       ],
-      "height_m": 1.9960000477731228,
+      "height_m": 2.8499999046325684,
       "roof_node": "Roof",
       "wall_node": "Walls",
       "mesh_objects": 2,
-      "bytes": 4166008,
-      "triangles": 53574,
+      "bytes": 313996,
+      "triangles": 4144,
       "aabb_min": [
-        -2.8511999637365335,
-        -3.725290298461914e-09,
-        -1.4687040382168277
+        -2.859999895095825,
+        0.0,
+        -1.3900002837181091
       ],
       "aabb_max": [
-        2.8511999637365335,
-        1.9960000477731228,
-        1.4687040382168277
+        2.932500123977661,
+        2.8499999046325684,
+        1.4399999380111694
       ],
-      "sha256": "04b3aec0899dba8a6914b125af6e8e54f65de40b9c6a69df4c4db97c6f0bb8e1",
+      "sha256": "309a8858f055929ed980323a74f8617ce8a68a9e92071613564e80bfb87367ef",
       "surfaces": 2,
       "materials": 1,
-      "generation": "approved original mesh generation + PBR palette atlas/dark sandstone stage",
-      "door_height_m": 0.77
+      "generation": "original connected working yard",
+      "source": "authoring/working-yard/forge/build.py",
+      "alpha_mode": "OPAQUE"
     },
     {
       "path": "res://assets/c01-miniature-environment/c01_row_4x2.glb",
@@ -278,7 +278,7 @@
       "mesh_objects": 2
     }
   ],
-  "stage": "joined-market-street-review",
-  "placed_instances_triangle_total": 177365,
+  "stage": "connected-working-yard-review",
+  "placed_instances_triangle_total": 54871,
   "unused_retained_modules": []
 }
