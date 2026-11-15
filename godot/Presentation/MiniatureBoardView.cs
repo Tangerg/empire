@@ -162,7 +162,8 @@ public partial class MiniatureBoardView : SubViewportContainer
                     _terrain.AddChild(MiniatureOrchard.Create(Geometry, group.Select(t => t.Cell).Distinct().ToArray()));
             }
             if (Geometry.Cliffs.Count > 0)
-                AddMesh(_terrain, Geometry.Cliffs, new Color("#84765f"), "CanonicalCliffs");
+                AddMesh(_terrain, Geometry.Cliffs, new Color("#84765f"), "CanonicalCliffs",
+                    market.HasValue ? MiniatureGroundMaterials.RetainingWall() : null);
             var skirt = Geometry.OutsideSkirt();
             if (skirt.Count > 0)
                 AddMesh(_terrain, skirt, new Color("#656155"), "CanonicalOutsideSkirt");

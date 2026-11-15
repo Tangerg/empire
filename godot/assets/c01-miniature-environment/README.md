@@ -1,5 +1,15 @@
 # C01 miniature environment: approved PBR palette stage
 
+## Current review: joined market street
+
+The staged N3 market pair, N1 joined cottages, W1 rain shelter and E1 weighhouse come from
+[`authoring/joined-market`](authoring/joined-market/README.md). These five named
+resources are not outputs to overwrite from the historical module generator.
+`manifest.json` describes their current bounds, authoring source and output
+identity. Terrain and scene placements remain the canonical C01 definitions.
+The build details and acceptance observations below describe previous versions.
+
+
 Load `res://assets/c01-miniature-environment/battlefield.tscn`. Nine original GLB resources supply eight placed building instances on93 canonical wall cells (one generic lower-row module is retained unused). They are visual manifestations only: no collisions, navigation, ground, roads, gameplay scripts, or house tactical metadata. C01/BoardProjection remain sole traversal/height owners.
 
 ## Scale and placement

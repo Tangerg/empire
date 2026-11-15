@@ -11,33 +11,33 @@
         3,
         6
       ],
-      "ridge_axis": "Y",
       "ground_anchor": [
         0,
         0,
         0
       ],
-      "height_m": 1.9960000477731228,
+      "height_m": 2.5360000133514404,
       "roof_node": "Roof",
       "wall_node": "Walls",
       "mesh_objects": 2,
-      "bytes": 4166108,
-      "triangles": 53574,
+      "bytes": 661156,
+      "triangles": 8734,
       "aabb_min": [
-        -1.4687043707712053,
-        -3.725290298461914e-09,
-        -2.8512000566134548
+        -1.337499976158142,
+        0.002499997615814209,
+        -2.9075000286102295
       ],
       "aabb_max": [
-        1.4687043707712053,
-        1.9960000477731228,
-        2.8512000566134548
+        1.4200000055134296,
+        2.5360000133514404,
+        2.972500056028366
       ],
-      "sha256": "0273e492d52f0198ebd0931a7a1772aa3caa148d3606f38116e9d7bb601c41ab",
+      "sha256": "f6911838ee6104e98aa88eece0b0f117de009391a2a9ad3b48cb778d981fe412",
       "surfaces": 2,
       "materials": 1,
-      "generation": "approved original mesh generation + PBR palette atlas/dark sandstone stage",
-      "door_height_m": 0.77
+      "generation": "original joined market street",
+      "source": "authoring/joined-market/cottages/build.py",
+      "alpha_mode": "OPAQUE"
     },
     {
       "path": "res://assets/c01-miniature-environment/c01_row_6x2.glb",
@@ -79,33 +79,33 @@
         3,
         3
       ],
-      "ridge_axis": "Y",
       "ground_anchor": [
         0,
         0,
         0
       ],
-      "height_m": 1.9960000477731228,
+      "height_m": 2.7399998903274536,
       "roof_node": "Roof",
-      "wall_node": "Walls",
+      "wall_node": "Architecture",
       "mesh_objects": 2,
-      "bytes": 2054264,
-      "triangles": 27870,
+      "bytes": 876068,
+      "triangles": 9294,
       "aabb_min": [
-        -1.4687041772944565,
-        -3.725290298461914e-09,
-        -1.4112001380890722
+        -1.4275000095367432,
+        0.0,
+        -1.4700000286102295
       ],
       "aabb_max": [
-        1.4687041772944565,
-        1.9960000477731228,
-        1.4112001380890722
+        1.4299999475479126,
+        2.7399998903274536,
+        1.4200000762939453
       ],
-      "sha256": "0cad9f475561849c9373d017765eb5c5d54d6199391043de5a063ffa98c9ccb8",
+      "sha256": "f0f288f006a6c032f1a504a2bf54bb52697b374ce50b6d7a949e9df002dfd51c",
       "surfaces": 2,
       "materials": 1,
-      "generation": "approved original mesh generation + PBR palette atlas/dark sandstone stage",
-      "door_height_m": 0.77
+      "generation": "original joined market street",
+      "source": "authoring/joined-market/rain-keeper/build.py",
+      "alpha_mode": "OPAQUE"
     },
     {
       "path": "res://assets/c01-miniature-environment/c01_store_4x4.glb",
@@ -181,33 +181,33 @@
         4,
         2
       ],
-      "ridge_axis": "X",
       "ground_anchor": [
         0,
         0,
         0
       ],
-      "height_m": 1.9960000477731228,
-      "door_height_m": 1.02,
+      "height_m": 2.1600000858306885,
       "roof_node": "Roof",
       "wall_node": "Walls",
       "mesh_objects": 2,
-      "triangles": 28950,
-      "bytes": 2099996,
-      "sha256": "00f250b239b9313f65e486190c863ea11f449eba12a82e1dffec8d413873c6cc",
+      "triangles": 1596,
+      "bytes": 126520,
+      "sha256": "e9637672333a9d43d44596cc6dac36973c31569380299f8c86b1db5eff66123b",
       "aabb_min": [
-        -1.8911999851942056,
-        -3.725290298461914e-09,
-        -0.9695039532444483
+        -1.9299999475479126,
+        0.0,
+        -0.8309999704360962
       ],
       "aabb_max": [
-        1.8911999851942056,
-        1.9960000477731228,
-        0.9695039532444483
+        1.940000057220459,
+        2.1600000858306885,
+        0.890999972820282
       ],
       "surfaces": 2,
       "materials": 1,
-      "generation": "approved original mesh generation + PBR palette atlas/dark sandstone stage"
+      "generation": "original joined market street",
+      "source": "authoring/joined-market/weighhouse/build_weighhouse.py",
+      "alpha_mode": "OPAQUE"
     },
     {
       "path": "res://assets/c01-miniature-environment/c01_n3_upper_market.glb",
@@ -220,28 +220,28 @@
         0,
         0
       ],
-      "height_m": 2.25249981880188,
+      "height_m": 3.065000057220459,
       "roof_node": "Roof",
-      "wall_node": "Walls",
-      "triangles": 10658,
-      "bytes": 868948,
+      "wall_node": "Architecture",
+      "triangles": 12347,
+      "bytes": 1163112,
       "surfaces": 2,
       "materials": 1,
       "aabb_min": [
-        -1.9500000476837158,
+        -1.8875000476837158,
         0.0,
-        -0.9825000762939453
+        -0.9399999752640724
       ],
       "aabb_max": [
-        1.9500000476837158,
-        2.25249981880188,
-        0.9825000762939453
+        1.9850001335144043,
+        3.065000057220459,
+        0.9499999508261681
       ],
-      "door_height_m": 1.12,
-      "eave_height_m": 1.65,
-      "sha256": "7510cfc460c45b468ff637b59af3ee3ef67f9b91bea90c153f43997d7fb34a7f",
-      "generation": "N3 third architecture: tiled PBR surface with real ridge/eaves; no per-interior-tile solids",
-      "alpha_mode": "OPAQUE"
+      "sha256": "b68d6d21928382886db2c34f2518dd56cb9f63015af62353088c169b9b01e80d",
+      "generation": "original joined market street",
+      "alpha_mode": "OPAQUE",
+      "source": "authoring/joined-market/market/build.py",
+      "mesh_objects": 2
     },
     {
       "path": "res://assets/c01-miniature-environment/c01_n3_lower_gallery.glb",
@@ -254,31 +254,31 @@
         0,
         0
       ],
-      "height_m": 1.6325000524520874,
+      "height_m": 1.7250001430511475,
       "roof_node": "Roof",
-      "wall_node": "Walls",
-      "triangles": 10158,
-      "bytes": 833956,
+      "wall_node": "Architecture",
+      "triangles": 5840,
+      "bytes": 551304,
       "surfaces": 2,
       "materials": 1,
       "aabb_min": [
-        -1.9500000476837158,
+        -1.9574999809265137,
         0.0,
-        -0.4825001060962677
+        -0.47999998927116394
       ],
       "aabb_max": [
-        1.9500000476837158,
-        1.6325000524520874,
-        0.4899999797344208
+        1.9574999809265137,
+        1.7250001430511475,
+        0.47999998927116394
       ],
-      "door_height_m": 1.04,
-      "eave_height_m": 1.3,
-      "sha256": "5dd9a73b32f6890336e1b700b91b810e1e373922e0876349ecd3e924d805c402",
-      "generation": "N3 third architecture: tiled PBR surface with real ridge/eaves; no per-interior-tile solids",
-      "alpha_mode": "OPAQUE"
+      "sha256": "1bee707dd17cdd547c1ebce0eb0e8dd7ae386cf9608b8df45041a44dea5e6ec1",
+      "generation": "original joined market street",
+      "alpha_mode": "OPAQUE",
+      "source": "authoring/joined-market/market/build.py",
+      "mesh_objects": 2
     }
   ],
-  "stage": "approved-plinth-pbr-atlas-v1",
-  "placed_instances_triangle_total": 270764,
+  "stage": "joined-market-street-review",
+  "placed_instances_triangle_total": 177365,
   "unused_retained_modules": []
 }

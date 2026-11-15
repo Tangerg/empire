@@ -21,6 +21,6 @@ for asset in json.loads((R/'manifest.json').read_text())['assets']:
     triangles+=j['accessors'][prim['indices']]['count']//3
   for child in n.get('children',[]):walk(child,t)
  for i in j['scenes'][j.get('scene',0)]['nodes']:walk(i,np.eye(4))
- points=np.array(points);lo=points.min(0);hi=points.max(0);w,d=asset['footprint_cells'];assert max(abs(lo[0]),abs(hi[0]))<=w/2+.001,(p,lo,hi);assert max(abs(lo[2]),abs(hi[2]))<=d/2+.001,(p,lo,hi);assert 'Roof'in names and 'Walls'in names;assert lo[1]>=-.001
+ points=np.array(points);lo=points.min(0);hi=points.max(0);w,d=asset['footprint_cells'];assert max(abs(lo[0]),abs(hi[0]))<=w/2+.001,(p,lo,hi);assert max(abs(lo[2]),abs(hi[2]))<=d/2+.001,(p,lo,hi);assert asset['roof_node'] in names and asset['wall_node'] in names;assert lo[1]>=-.001
  results.append({'file':p.name,'bytes':len(raw),'triangles':triangles,'aabb_min':lo.tolist(),'aabb_max':hi.tolist(),'names':names,'fits_wall_footprint':True,'surfaces':surface_count,'materials':len(j.get('materials',[]))})
 print(json.dumps(results,indent=2));(R/'geometry-verification.json').write_text(json.dumps(results,indent=2))
