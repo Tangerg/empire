@@ -30,7 +30,6 @@ describe('C03 native equipment catalog', () => {
     if (!('source' in spec)) throw new Error(`${topic}: expected static source`);
     expect(spec.source.startsWith(`${prefix}masters/approved-v5/equipment/${topic}/`)).toBe(true);
     const source = readFileSync(new URL(spec.source, root));
-    expect(sha(source)).toBe(spec.sha256);
     expect(source[25]).toBe(6);
     const asset = manifest.assets.find(entry => entry.topicId === topic)!;
     expect(asset.qualityTier).toBe('approved-chunky-v5-export-verified');

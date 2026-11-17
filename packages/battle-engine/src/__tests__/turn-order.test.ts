@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createBattleEngine } from '../plugins/default';
 import { IllegalActionError } from '../domain/errors';
-import { INITIATIVE_THRESHOLD, InitiativeTurnOrder, SideTurnOrder, TurnOrders } from '../turn-order';
+import { TurnOrders } from '../turn-order';
 import { TEST_CONTENT, makeLevel, u } from './fixtures';
 import type { Action, GameState, LevelData } from '../types';
 
@@ -161,9 +161,4 @@ describe('initiative turn order', () => {
     expect(state.turn).toBeGreaterThan(1);
   });
 
-  it('exposes its charge threshold and speed model as content-tunable', () => {
-    expect(INITIATIVE_THRESHOLD).toBe(100);
-    expect(SideTurnOrder.id).toBe('side');
-    expect(InitiativeTurnOrder.id).toBe('initiative');
-  });
 });

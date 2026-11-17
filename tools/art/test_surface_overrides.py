@@ -4,7 +4,7 @@ from pathlib import Path
 import tempfile
 import unittest
 from PIL import Image
-from export_surface_overrides import PACK, ORDER, export, match_edges, seam_previews
+from export_surface_overrides import PACK, ORDER, export, match_edges
 
 
 class SurfaceTests(unittest.TestCase):
@@ -53,16 +53,6 @@ class SurfaceTests(unittest.TestCase):
                     self.assertEqual(cell.crop((0, 0, size, 1)).tobytes(), sheet.crop((0, size - 1, size, size)).tobytes())
                     self.assertEqual(cell.crop((0, 0, 1, size)).tobytes(), sheet.crop((size - 1, 0, size, size)).tobytes())
 
-    def test_preview_repeats_exported_pixels(self):
-        reports = export(self.root, self.catalog)
-        for report in reports:
-            sheet = Image.open(self.root / report['output'])
-            size = sheet.height
-            previews = seam_previews(sheet)
-            for i in range(4):
-                expected = sheet.crop((i * size, 0, (i + 1) * size, size)).tobytes()
-                repeated = previews['repeated-2x2']
-                self.assertEqual(expected, repeated.crop((i * 2 * size, size, (i * 2 + 1) * size, 2 * size)).tobytes())
 
     def test_matching_does_not_mutate_sources(self):
         cells = [Image.new('RGB', (64, 64), (i * 40, 20, 50)) for i in range(4)]

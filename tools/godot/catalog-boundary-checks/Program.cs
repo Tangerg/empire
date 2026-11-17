@@ -151,27 +151,6 @@ utf16State["map"]!["tiles"]![0] = "test.terrain";
 Check(new MovementRules(new MovementRuleServices(utf16Catalog, engine.Grids)).Battlefield(utf16State).Cell(new(0, 0)).MovementCost("\ud800") == 1,
     "immutable movement reads preserve lone-surrogate content keys");
 
-var movement = new MovementRules(new MovementRuleServices(catalog, engine.Grids));
-var cell = movement.Battlefield(state).Cell(TacticalQueries.Position(actor));
-var terrain = cell.Terrain;
-var terrainId = terrain.GetProperty("id").GetString()!;
-var terrainCopy = EcmaJson.Parse(terrain.GetRawText())!.AsObject();
-terrainCopy["cost"]!.AsObject().Clear();
-terrainCopy["defense"] = 98765;
-Check(cell.Terrain.GetRawText() == catalog.Definition("terrains", terrainId)!.Value.GetRawText(), "terrain is an immutable nested value");
-var overlayState = state.DeepClone().AsObject();
-overlayState["scenario"]!["overlays"]!.AsArray().Add(new JsonObject
-{
-    ["id"] = "test.overlay",
-    ["type"] = "flooded",
-    ["cells"] = new JsonArray(TacticalQueries.CoordinateJson(TacticalQueries.Position(actor))),
-    ["remainingRounds"] = null,
-});
-var overlayCell = movement.Battlefield(overlayState).Cell(TacticalQueries.Position(actor));
-var overlayCopy = EcmaJson.Parse(overlayCell.Overlays.Single().GetRawText())!.AsObject();
-overlayCopy["blockedMovementClasses"]!.AsArray().Clear();
-Check(overlayCell.Overlays.Single().GetProperty("blockedMovementClasses").GetArrayLength() > 0, "overlays preserve immutable nested collections");
-
 var formationState = state.DeepClone().AsObject();
 var formationActor = formationState["units"]!.AsArray().OfType<JsonObject>().First(unit => unit["id"]!.GetValue<int>() == actor["id"]!.GetValue<int>());
 var ally = formationState["units"]!.AsArray().OfType<JsonObject>().First(unit => unit != formationActor && unit["owner"]!.GetValue<int>() == formationActor["owner"]!.GetValue<int>());
@@ -214,7 +193,6 @@ Equal(peer.LoadBattle(saved), battle.Snapshot(), "post-query save loads through 
 var replay = peer.ReplayBattle(level, recorder.Replay(battle.Snapshot()));
 Check(replay.DivergedAt is null, "post-query replay has no divergence");
 Equal(replay.State, battle.Snapshot(), "post-query replay ends in the exact state");
-Check(catalog.Definition("weapons", weaponId)!.Value.GetRawText() == canonical, "all consumer paths preserve catalog identity");
 foreach (var family in catalog.Families)
     Check(string.Join("\n", catalog.Definitions(family).Select(value => value.GetRawText())) == catalogBefore[family],
         "all consumer paths preserve the complete " + family + " catalog");

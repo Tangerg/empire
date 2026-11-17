@@ -1,9 +1,5 @@
 name: CI
 
-# Everything that decides whether the repository is in a good state, run
-# somewhere that is not one laptop. The architecture guards in particular only
-# constrain what actually runs them: 52 fitness tests that never leave a working
-# copy protect that working copy and nothing else.
 on:
   push:
     branches: [main]

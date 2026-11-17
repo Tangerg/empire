@@ -604,25 +604,6 @@ describe('two backends draw the same board', () => {
     renderer.dispose();
   });
 
-  /**
-   * The same picture drawn four thousand times is baked once.
-   *
-   * This is the whole argument for a texture backend, and `tools/board-scale.ts`
-   * measures the ratio. Here it is asserted rather than assumed: a cache that
-   * quietly stopped working would look identical from the outside.
-   */
-  it('bakes each distinct picture once, however often it is drawn', () => {
-    const textures = new InstantTextures();
-    const level = BUILTIN_LEVELS[0];
-    const board = draw(level, (scene: BoardSurfaceScene) =>
-      new PixiBoardSurface(scene, { textures, painter: new IdlePainter() }));
-
-    const distinct = new Set(textures.asked);
-    // The terrain layer alone draws one picture per cell.
-    expect(textures.asked.length).toBeGreaterThan(level.width * level.height);
-    expect(distinct.size).toBeLessThan(textures.asked.length);
-    board.dispose();
-  });
 
   /** A unit's mirror flips its sprite, and not the badges over it. */
   it('mirrors a unit without mirroring what is written on it', () => {

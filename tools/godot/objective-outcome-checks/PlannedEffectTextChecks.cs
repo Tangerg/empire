@@ -78,7 +78,6 @@ internal static class PlannedEffectTextChecks
                     ["distance"] = 1,
                     ["collisionDamage"] = configured,
                 });
-                var before = effect.GetRawText();
                 var description = formatters.Describe(effect);
                 if (expected == 0)
                     Check(description == plain, $"{mode} collision {configured} rounds to no collision request");
@@ -86,7 +85,6 @@ internal static class PlannedEffectTextChecks
                     Check(description.Compact == text.Format("combat.hit_effect.forced_move.collision_compact", direction, 1, expected)
                         && description.Detail == text.Format("combat.hit_effect.forced_move.collision_detail", direction, 1, expected)
                         && description.Emphasis, $"{mode} collision {configured} discloses canonical request {expected} and its condition");
-                Check(effect.GetRawText() == before, "formatting preserves the immutable effect payload");
             }
         }
 

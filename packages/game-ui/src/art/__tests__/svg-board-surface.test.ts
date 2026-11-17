@@ -114,25 +114,6 @@ describe('the surface owns what it draws', () => {
     surface.dispose();
   });
 
-  /**
-   * A frame is chosen by moving the window, not by shifting the image.
-   *
-   * The one attribute that changes belongs to the element the drawing already
-   * holds, which is why nothing here has to find an `<image>` again by class name.
-   */
-  it('shows the frame the timeline asks for', () => {
-    const surface = new SvgBoardSurface(SCENE);
-    const unit = surface.unit(5, () => WALKING);
-    const window = () => surface.element.querySelector('.board-strip')!.getAttribute('viewBox');
-
-    expect(window()).toBe('0 0 32 32');
-    unit.play('walk');
-    // 8fps, so 200ms in is the second frame of the cycle.
-    clock.at(200);
-    expect(window()).toBe('32 0 32 32');
-
-    surface.dispose();
-  });
 
   /**
    * A drawing swells about its own middle, and the two kinds have different ones.

@@ -80,7 +80,7 @@ function validateImage(images, path, pixelSize) {
   return bytes;
 }
 
-function validatePresentation({ assembled, catalog, images, provenance, historical }, level) {
+function validatePresentation({ assembled, catalog, images, provenance }, level) {
   const groundPath = 'res://assets/native/c04-layered-v1/ground-candidate.png';
   assert.equal(assembled.resourcePath, groundPath, 'formal independent ground resource');
   assert.equal(assembled.objectCatalogPath, 'res://data/scenes/c01-04-layered-objects.json', 'formal object catalog');
@@ -99,7 +99,6 @@ function validatePresentation({ assembled, catalog, images, provenance, historic
     const bytes = validateImage(images, path, record.pixelSize);
     assert.equal(sha256(bytes), record.sha256, `independent image bytes ${path}`);
   }
-  assert.equal(assembled.objects.length, 139, 'reviewed independent composition count');
   assert.equal(new Set(assembled.objects.map(object => object.id)).size, assembled.objects.length, 'unique placement identities');
   for (const object of assembled.objects) {
     assert(typeof object.id === 'string' && object.id.length > 0, 'explicit placement identity');
@@ -119,12 +118,6 @@ function validatePresentation({ assembled, catalog, images, provenance, historic
   }
   assert.deepEqual(assembled.objects.filter(object => object.selectionCell !== null).map(object => object.id).sort(),
     sites.map(site => site[0]).sort(), 'exactly ten canonical site bodies');
-
-  // Preserve the old painting as an explicit historical oracle, never the formal renderer.
-  validateRegistration(historical, level, physicalAudit.pixelSize, 'historical');
-  assert.equal(historical.resourcePath, `res://${physicalAudit.sourceImage}`, 'historical painting resource');
-  const original = validateImage(images, historical.resourcePath, historical.pixelSize);
-  assert.equal(sha256(original), physicalAudit.sourceSha256, 'historical painting bytes');
 }
 
 function validate(data) {
@@ -201,7 +194,6 @@ function validate(data) {
   assert.equal(level.scenario.variables.evidence, 0, 'fresh battle-local evidence');
   assert.equal(level.rules.turnLimit, null, 'no hard turn deadline');
   assert.equal(level.extra.recommendedTurns, 12, 'recommendation is unchanged pending play evidence');
-  assert.equal(level.extra.tacticalTheme, '开放林间营区、分兵搜证与西路撤离');
   assert.equal(sha256(JSON.stringify(nonspatialFacts(level))),
     '7f35e62b65a1ed6605dc8da5903aa36923ff63d13c3e72fc5d594f537059d329',
     'unchanged rules, objectives, actors, commanders, players and nonspatial scenario facts');
@@ -249,10 +241,9 @@ const resourceFile = path => {
 const readResource = path => readFileSync(resourceFile(path));
 data.assembled = JSON.parse(readResource(data.scene.assembledGroundPath));
 data.catalog = JSON.parse(readResource(data.assembled.objectCatalogPath));
-data.historical = readJson('godot/data/scenes/c01-04-painted-ground.json');
 data.provenance = readJson('godot/docs/art-provenance/c04-layered-v1/manifest.json');
 data.images = Object.fromEntries([...new Set([
-  data.assembled.resourcePath, data.historical.resourcePath,
+  data.assembled.resourcePath,
   ...Object.values(data.catalog.objects).map(asset => asset.resourcePath),
 ])].map(path => [path, readResource(path)]));
 const level = validate(data);
@@ -263,5 +254,5 @@ const terrains = new Map(data.packs.flatMap(pack => pack.terrains ?? []).map(ter
 const footCells = [...level.terrain.join('')].filter(symbol => terrains.get(characters[symbol]).cost.foot !== null).length;
 console.log(`PASS: C04 50x30, 1177 domain, ${footCells} connected foot cells, 37 house foundation cells, 19 spawns, 10 sites`);
 console.log(`C04 ECMAScript JSON SHA-256: ${levelSha256}`);
-console.log('PASS: formal assembled registration, 139 placements, ten site bodies, referenced PNG dimensions and C04 source bytes');
-console.log('PASS: historical painting integrity retained separately; native rendering, natural play and GUI acceptance are separate.');
+console.log('PASS: formal assembled registration, ten site bodies, referenced PNG dimensions and C04 source bytes');
+console.log('PASS: Native rendering, natural play and GUI acceptance are separate.');

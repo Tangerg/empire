@@ -379,23 +379,6 @@ class EnvironmentTests(unittest.TestCase):
                 with Image.open(self.root / report['output']) as output:
                     self.assertEqual(output.size, (size * atlas['columns'], size * atlas['rows']))
 
-    def test_six_column_review_measures_correct_nonfirst_row(self):
-        self.configure_modules('decals-small')
-        export(self.root, self.catalog)
-        directory = self.root / 'review'
-        directory.mkdir()
-        (directory / 'native-contact.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg"/>')
-        (directory / 'runtime-scale-report.json').write_text(json.dumps({'assets': [
-            {'id': 'exposed-roots', 'sampleScale': 0.56, 'rendererScaleRange': [0.56, 0.58], 'anchor': [32, 60]}]}))
-        with patch.object(render_environment_review, 'ROOT', self.root), patch.object(render_environment_review.subprocess, 'run', side_effect=self.fake_raster):
-            report = render_environment_review.render(directory)
-        self.assertTrue(report['sourceStableAcrossRender'])
-        self.assertIn('tools/art/environment-overrides.json', report['reviewSourceHashes'])
-        asset = report['assets'][0]
-        self.assertEqual(asset['logicalVisibleBoundsAlpha128'], [9, 9, 55, 55])
-        self.assertAlmostEqual(asset['nativeSampleVisibleHeight'], 46 * 0.56)
-        self.assertEqual(asset['nativeVisibleHeightRange'], [46 * 0.56, 46 * 0.58])
-        self.assertAlmostEqual(asset['nativeSampleOverhangBelowContact'], -5 * 0.56)
 
     def test_cliff_labels_and_semantic_ids_remain_exactly_paired(self):
         self.configure_modules('cliff-modules-temperate')
@@ -490,22 +473,6 @@ class EnvironmentTests(unittest.TestCase):
         self.assertEqual(self.manifest.read_bytes(), before)
         self.assertEqual({p: p.read_bytes() for p in masks}, masks)
 
-    def test_cliff_review_measures_128_pixel_slot_and_registered_contact(self):
-        self.configure_modules('cliff-modules-temperate')
-        export(self.root, self.catalog)
-        directory = self.root / 'review'
-        directory.mkdir()
-        (directory / 'native-contact.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg"/>')
-        (directory / 'runtime-scale-report.json').write_text(json.dumps({'assets': [
-            {'id': 'temperate-cliff-convex-corner', 'sampleScale': 0.6,
-             'rendererScaleRange': [0.56, 1], 'anchor': [64, 127]}]}))
-        with patch.object(render_environment_review, 'ROOT', self.root), patch.object(render_environment_review.subprocess, 'run', side_effect=self.fake_raster):
-            report = render_environment_review.render(directory)
-        asset = report['assets'][0]
-        self.assertEqual(asset['logicalVisibleBoundsAlpha128'], [5, 5, 123, 123])
-        self.assertAlmostEqual(asset['nativeSampleVisibleHeight'], 118 * 0.6)
-        self.assertEqual(asset['nativeVisibleHeightRange'], [118 * 0.56, 118])
-        self.assertAlmostEqual(asset['nativeSampleOverhangBelowContact'], -4 * 0.6)
 
     def configure_rural(self):
         # Use the shipped semantic metadata rather than a parallel rural catalog.

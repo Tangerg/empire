@@ -34,5 +34,7 @@
     "noEmit": true,
     "types": ["vite/client"]
   },
-  "include": ["apps", "packages", "tools", "*.ts"]
+  "include": ["apps", "packages", "tools", "*.ts"],
+  // Historical comparison-oracle generators are run explicitly, not built or shipped.
+  "exclude": ["tools/godot/*-checks/oracle.ts"]
 }

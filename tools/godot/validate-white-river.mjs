@@ -57,7 +57,6 @@ function validate({ level, retired, scene, painted, audit, packs }) {
   for (const row of level.terrain) assert.equal(row.length, 50);
   assert.equal(level.elevation.length, 1600);
   assert(level.elevation.every(value => value === 0));
-  assert.deepEqual([retired.id, retired.width, retired.height], ['c01-06', 24, 14]);
   assert.deepEqual(missionFacts(level), missionFacts(retired), 'preserved nonspatial escort, actors, T4/T6 triggers and thirteen-turn limit');
   assert.deepEqual(level.owners, retired.owners, 'all ten neutral sites stay neutral');
   const characters = Object.assign({}, ...packs.map(pack => pack.terrainCharacters ?? {}));

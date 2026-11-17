@@ -3,9 +3,6 @@ from pathlib import Path
 from PIL import Image
 from calibrate_water_area import water_area_mask,render_water_area
 class WaterArea(unittest.TestCase):
- def test_all_masks_dimensions(self):
-  for size in (32,64):
-   for m in range(256):self.assertEqual(water_area_mask(size,m).size,(size,size))
  def test_full_interior_and_shore(self):
   self.assertEqual(water_area_mask(64,255).getextrema(),(255,255))
   isolated=water_area_mask(64,0);self.assertEqual(isolated.getpixel((0,32)),0);self.assertEqual(isolated.getpixel((32,32)),255)

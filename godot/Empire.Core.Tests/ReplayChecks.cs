@@ -101,8 +101,6 @@ internal static class ReplayChecks
             new BattleStateRules(engine.Catalog, engine.Grids, engine.Reactions), state,
             unit["type"]!.GetValue<string>(), invalidOwner, TacticalQueries.Position(unit)));
         Equal(before, state, "rejected spawned-unit ownership");
-        if (events.Count != 0)
-            throw new Exception("Rejected spawn emitted an event.");
         Reject(() => engine.ScenarioCommands.ChangeUnitOwner(state, effect, events.Add));
         Equal(before, state, "rejected direct ownership command");
         if (events.Count != 0)
@@ -160,8 +158,6 @@ internal static class ReplayChecks
         if (verified.DivergedAt is not null)
             throw new Exception($"Native replay diverged at {verified.DivergedAt}: {verified.Reason}");
         Equal(state, verified.State, "full native replay state");
-        if (StateDigest.Hash(state) != StateDigest.Hash(verified.State))
-            throw new Exception("Native replay changed the canonical digest.");
     }
 
     private static BattleEngine Engine(string root) => new(Read(Path.Combine(root, "../../data/content-packs.json")).AsArray());

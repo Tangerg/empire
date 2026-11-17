@@ -93,7 +93,7 @@ malformed-input hardening differences. Original source and art are preserved.
 ## Reproducible verification
 
 From the repository root in the configured local toolchain environment, run
-`bash tools/godot/verify-native.sh` for formatting, compilation, current native
+`bash tools/godot/verify-native.sh` for compilation, current native
 contracts, all 16 independent level save/replays, and actual headless
 painted-surface, material, camera, battle/result/navigation scenes. These checks use isolated
 save locations. Manual GUI and current exported-package acceptance are separate.

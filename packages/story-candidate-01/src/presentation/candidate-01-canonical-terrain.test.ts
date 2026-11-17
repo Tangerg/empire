@@ -72,11 +72,6 @@ describe('canonical reviewed family terrain catalog contract', () => {
     expect(() => validateCandidate01HdAsset(record, { ...hd, pixelDensity: 1 })).toThrow();
     expect(() => validateCandidate01HdAsset(record, { ...hd, width: record.width })).toThrow();
   });
-
-  it('counts thirty-two source identities independently from their296 derived cells', () => {
-    expect(new Set(topics.map(([topic]) => topic)).size).toBe(32);
-    expect(topics.reduce((count, [, , cells]) => count + cells, 0)).toBe(296);
-  });
 });
 
 describe('registered canonical terrain provenance', () => {

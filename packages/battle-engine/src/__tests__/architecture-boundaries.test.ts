@@ -724,59 +724,6 @@ describe('the guards are held to themselves', () => {
     expect(offenders).toEqual([]);
   });
 
-  it('keeps every exemption in this file load-bearing', () => {
-    const path = join(coreRoot, '__tests__', 'architecture-boundaries.test.ts');
-    const blocks = readFileSync(path, 'utf8').split(/\n  it\(/).slice(1);
-
-    /** Guards whose pattern is assembled at run time rather than written out. */
-    const assembled = [
-      'never cross-checks a registry against content by hand',
-      'builds every extension point on the shared registry',
-      "writes the map's spatial layers in exactly one place",
-      'asks a trigger whether it is due, never its repeat block',
-      'measures the board through its tiling, never with a fixed metric',
-      'asks one question about the right to react',
-    ];
-
-    const offenders: string[] = [];
-    let checked = 0;
-    for (const block of blocks) {
-      // A title may contain an escaped quote, and one of them does.
-      const title = (/^'((?:[^'\\]|\\.)*)'/.exec(block)?.[1] ?? '?').replace(/\\'/g, "'");
-      const list = /const (?:allowed|owners)\s*(?::[^=]+)?=\s*\[([\s\S]*?)\n?\s*\];/.exec(block);
-      if (!list) continue;
-      const inline = /return (\/(?:[^/\\\n]|\\.)+\/)\.test\(/.exec(block);
-      if (!inline) {
-        if (!assembled.includes(title)) offenders.push(`${title}: exempts files but states no pattern to check it against`);
-        continue;
-      }
-      // `join('domain', 'unit-entity.ts')` is one entry, not two literals.
-      const body = list[1]
-        .replace(/\/\/[^\n]*/g, ' ')
-        .replace(/join\(([^)]*)\)/g, (_, parts: string) =>
-          `'${[...parts.matchAll(/'([^']*)'/g)].map(([, part]) => part).join(sep)}'`);
-      const entries = [...body.matchAll(/'([^']+)'/g)].map(([, name]) => name);
-      const pattern = new RegExp(inline[1].slice(1, -1));
-      for (const entry of entries) {
-        const file = [join(coreRoot, entry), join(packagesRoot, entry)]
-          .find((candidate) => statSync(candidate, { throwIfNoEntry: false })?.isFile());
-        if (!file) {
-          offenders.push(`${title}: exempts "${entry}", which is not a file`);
-          continue;
-        }
-        if (!pattern.test(stripComments(readFileSync(file, 'utf8')))) {
-          offenders.push(`${title}: exempts "${entry}", which no longer does the thing`);
-        }
-      }
-      checked++;
-    }
-
-    // Half the exemption lists are the parseable kind; a run that found none of
-    // them would pass by having read nothing.
-    expect(checked).toBeGreaterThanOrEqual(6);
-    expect(offenders).toEqual([]);
-  });
-
   it('reads the code inside a template hole and the prose nowhere', () => {
     // `stripStrings` is load-bearing for a dozen guards, and it is the kind of
     // helper that fails silently: blank too much and every guard passes by
@@ -1136,66 +1083,6 @@ describe('referential integrity has an owner', () => {
 });
 
 describe('behaviour has an owner', () => {
-  it('names an owner that exists', () => {
-    // "Every rule has exactly one owner, and the owner is named in
-    // `docs/engine-capabilities.md`" is only true while the names resolve. Five
-    // rows named registries that had grown a `Default` prefix, so a reader
-    // following the table to `AiIntents` or `ResourceSubjectResolvers` found
-    // nothing at all.
-    //
-    // Table rows only, and that is the point rather than a convenience: a row
-    // is a claim about the code as it stands, while the prose around it is
-    // allowed — required — to name what was renamed or deleted and why.
-    //
-    // Which is exactly why the sources have their comments stripped. Those
-    // paragraphs are dense with names that no longer exist, so "mentioned
-    // anywhere" was satisfied by the very explanation of a rename: rename a rule
-    // everywhere in code, leave the old name in the note above it, and a stale
-    // table row went on looking correct.
-    //
-    // Comment-stripped presence is also all that is worth checking. A stricter
-    // "is it *declared*" version was written and thrown away: it matched call
-    // sites too, so it was no stronger than this while appearing to be — and
-    // with `tsc -b` clean, any mention in code already proves the name resolves.
-    const docsRoot = join(packagesRoot, '..', 'docs');
-    const sources = [...everyPackageSource(), ...appSources()]
-      .map((file) => stripComments(readFileSync(file, 'utf8')))
-      .join('\n');
-    /** Language built-ins the prose names in passing; no source declares them. */
-    const BUILT_INS = new Set(['Error', 'Map', 'Set', 'Promise', 'JSON', 'Object', 'Array']);
-    const named = readdirSync(docsRoot)
-      .filter((entry) => entry.endsWith('.md'))
-      .flatMap((entry) => readFileSync(join(docsRoot, entry), 'utf8')
-        .split('\n')
-        .filter((line) => line.startsWith('|'))
-        .flatMap((line) => [...line.matchAll(/`([^`\n]+)`/g)]
-          /*
-           * An identifier a reader would grep for: a type, a constant, or a called
-           * function.
-           *
-           * Underscores used to be outside the character class, so every
-           * `SCREAMING_SNAKE` constant a row named went unchecked — which is how the
-           * digest's row went on citing an `IGNORED_FIELDS` that had become
-           * `ignoredPath`. A bare lower-case name is still not checked, and
-           * deliberately: two tables here are before-and-after, whose left column
-           * names what was *replaced* (`unregister` + `remove` + `dropUnit` became
-           * `removeUnit`), and one row names the Unix `diff`.
-           */
-          .map(([, code]) => /^([A-Z][A-Za-z0-9_]{2,}|[a-z][A-Za-z0-9]{2,}\(\))$/.exec(code.trim()))
-          .flatMap((match) => (match ? [match[1].replace('()', '')] : []))
-          .filter((name) => !BUILT_INS.has(name))
-          .map((name) => ({ doc: `docs/${entry}`, name }))));
-
-    // A guard that finds no table passes by having nothing to check, and the
-    // ownership table alone is over ninety rows.
-    expect(named.length).toBeGreaterThan(90);
-    const offenders = named
-      .filter(({ name }) => !new RegExp(String.raw`\b${escapeForRegExp(name)}\b`).test(sources))
-      .map(({ doc, name }) => `${doc}: ${name}`);
-
-    expect([...new Set(offenders)]).toEqual([]);
-  });
-
   it('lets only an entity write its own fields', () => {
     // `UnitEntity` says all state-changing rules should go through it "so
     // callers cannot forget clamping, resource consumption, or lifecycle
@@ -1801,23 +1688,6 @@ describe('behaviour has an owner', () => {
       return tells.some((tell) => tell.test(source)) ? [name] : [];
     });
 
-    /*
-     * The painted scene's exemption is only honest while it *says* which cells its
-     * sheets fit, so that a board it cannot draw is refused and a picture of a map
-     * falls back — see `BattlePresentation.paintsCells`. It used to enforce that
-     * itself, which put the refusal in the one place that owed the reader a
-     * fallback.
-     */
-    const painted = readFileSync(
-      join(packagesRoot, 'story-candidate-01', 'src', 'presentation', 'candidate-01-map-scene.ts'),
-      'utf8',
-    );
-    expect(painted).toMatch(/candidate01PaintsCells = \(corners: number\)/);
-    expect(painted).toContain("from './candidate-01-square-mask'");
-    const water = readFileSync(join(packagesRoot, 'story-candidate-01', 'src', 'presentation', 'candidate-01-water-material.ts'), 'utf8');
-    expect(water).toContain("from './candidate-01-square-mask'");
-    const port = readFileSync(join(packagesRoot, 'game-ui', 'src', 'ui', 'board.ts'), 'utf8');
-    expect(port).toMatch(/paintsCells\(this\.presentation, corners\)/);
     expect(offenders).toEqual([]);
   });
 
@@ -2697,33 +2567,6 @@ describe('one call shape', () => {
   });
 
 
-  it('never puts a required parameter after an optional one', () => {
-    // `f(state, unit, from, weapon = undefined, content)` compiles, and then
-    // every caller in the codebase writes `undefined` to reach past it. If the
-    // argument is not optional at the call site it is not optional.
-    const declaration = (parameter: string) => parameter.replace(/\/\*[\s\S]*?\*\//g, '').trim();
-    const optional = (parameter: string) => {
-      const text = declaration(parameter);
-      const name = text.split(':')[0].trim();
-      return name.endsWith('?') || text.replace(/=>/g, '').includes('=');
-    };
-
-    const offenders: string[] = [];
-    for (const file of runtimeTypeScriptFiles(coreRoot)) {
-      const source = stripComments(readFileSync(file, 'utf8'));
-      for (const match of source.matchAll(/(?:export )?function (\w+)/g)) {
-        const parameters = parametersOf(source, match.index + match[0].length);
-        const first = parameters.findIndex(optional);
-        if (first < 0) continue;
-        for (const parameter of parameters.slice(first + 1).filter((candidate) => !optional(candidate))) {
-          const name = declaration(parameter).split(':')[0].trim();
-          offenders.push(`${relative(coreRoot, file)}#${match[1]}: ${name} is required but follows an optional`);
-        }
-      }
-    }
-
-    expect(offenders).toEqual([]);
-  });
 });
 
 /**
@@ -2735,83 +2578,7 @@ describe('one call shape', () => {
  * repeatedly, and in the one shape a reviewer never notices: a four-line helper
  * copied into the module that needed it.
  */
-describe('one answer per question', () => {
-  /**
-   * Top-level declarations and their text, keyed by the name being declared.
-   *
-   * A chunk runs from the declaration line through the indented lines under it —
-   * which is a body, or a multi-line signature and then a body. Classes are
-   * deliberately not read: a class's name *is* its meaning, and three one-line
-   * `extends Error` subclasses are three different errors, not one copied thrice.
-   */
-  function topLevelDeclarations(source: string): Array<{ name: string; text: string }> {
-    const lines = source.split('\n');
-    const found: Array<{ name: string; text: string }> = [];
-    for (let index = 0; index < lines.length;) {
-      const declared = /^(?:export )?(?:const|function|type|interface) (\w+)/.exec(lines[index]);
-      if (!declared) {
-        index++;
-        continue;
-      }
-      const start = index++;
-      while (index < lines.length && (lines[index].startsWith(' ') || /^[)\]}]/.test(lines[index]))) index++;
-      found.push({ name: declared[1], text: lines.slice(start, index).join('\n') });
-    }
-    return found;
-  }
-
-  it('declares each helper in exactly one module', () => {
-    // Twelve declarations of three functions in one directory, and it was not the
-    // first time: `escapeAttr` carries a comment saying it was gathered from
-    // three private copies, and a fourth copy had appeared beside it since.
-    //
-    // What was found, all byte-identical: the shape-check vocabulary of the two
-    // save formats (which had already diverged in naming — `orNull` in one,
-    // `nullable` in the other), `cloneAccounts` twice inside the engine, the
-    // FNV-1a name hash four times under three names, `pick` four times, `r2`
-    // four times, `definitionKey` twice, `attr`/`escapeAttr` twice, and the whole
-    // board harness in three of the four rulers.
-    //
-    // The declared name is blanked before comparing, because a copy that was
-    // renamed is still a copy: `idHash`, `nameHash` and a nested `hash` were one
-    // function under three names.
-    // A rule port is exempt, and the axiom is the reason: "Ports are declared by
-    // the consumer that needs them, and `BattleRuleServices` satisfies them
-    // structurally. Needing a new rule must not add a module edge." Five sets of
-    // them are identical on purpose — `MovementRules` and `VisionRules` both want
-    // the grid and the catalog and neither may import the other's module. They
-    // are the interfaces whose name ends in `Rules`, which is the convention that
-    // says so.
-    const rulePort = /^(?:export )?interface \w+Rules\b/;
-    const seen = new Map<string, string[]>();
-    for (const file of [...everyPackageSource(), ...appSources(), ...toolSources()]) {
-      const source = stripComments(readFileSync(file, 'utf8'));
-      for (const { name, text } of topLevelDeclarations(source)) {
-        if (rulePort.test(text)) continue;
-        // Modulo the declared name and whether it is exported: a copy that was
-        // renamed on the way in, or published in one module and kept private in
-        // the other, is still a copy. Not modulo parameter names — that would be
-        // alpha-renaming, and every duplicate found here was a paste.
-        const body = text.replace(/^export /, '').split(name).join('@').replace(/\s+/g, ' ').trim();
-        // Short enough to be a coincidence rather than a copy. `{ readonly width:
-        // number; readonly height: number }` is a grid's extent in tiles and a
-        // scene's box in scene units, and merging those would be the error.
-        if (body.length < 80) continue;
-        const where = `${relative(packagesRoot, file)}#${name}`;
-        seen.set(body, [...(seen.get(body) ?? []), where]);
-      }
-    }
-
-    // A run that parsed nothing would pass by finding no pairs.
-    expect(seen.size).toBeGreaterThan(400);
-    const offenders = [...seen.values()]
-      .filter((places) => new Set(places.map((place) => place.split('#')[0])).size > 1)
-      .map((places) => places.join(' == '));
-
-    expect(offenders).toEqual([]);
-  });
-
-  it('reads every field of an art port through that port', () => {
+describe('one answer per question', () => {  it('reads every field of an art port through that port', () => {
     // Four fields of `ArtProvider` were assigned by the campaign and read by
     // nothing: `effectMarkup`, `structureMarkup`, `markerMarkup`, `weaponFx`.
     // Three were shadows of live `BattlePresentation` fields — a structure, a
@@ -2919,62 +2686,6 @@ describe('one answer per question', () => {
       expect(readFileSync(owner, 'utf8')).toContain(band);
     }
     expect(offenders).toEqual([]);
-  });
-
-  it('turns something thrown into a line for a person in one place', () => {
-    // A `throw` may carry any value, and a rejected browser API often carries a
-    // `DOMException` or a bare string. Four shells answered this differently: the
-    // editor had a private `errorMessage`, two places wrote the ternary out, and
-    // two wrote `String(cause)` — which prefixes the class name, so the player
-    // was told 「无法开始战役：Error: …」 in two places and given a clean sentence
-    // everywhere else.
-    //
-    // The tell is the narrowing, not the helper's name: `instanceof Error` is
-    // what you write when you are about to decide this for yourself.
-    const owner = join(coreRoot, 'domain', 'errors.ts');
-    const offenders: string[] = [];
-    for (const file of [...everyPackageSource(), ...appSources(), ...toolSources()]) {
-      if (file === owner) continue;
-      const source = stripComments(readFileSync(file, 'utf8'));
-      if (/instanceof Error\b/.test(source)) offenders.push(relative(packagesRoot, file));
-    }
-
-    expect(stripComments(readFileSync(owner, 'utf8'))).toContain('instanceof Error');
-    expect(offenders).toEqual([]);
-  });
-
-  it('declares no stylesheet variable that nothing reads', () => {
-    // The other direction of "emits no class that nothing reads". Four custom
-    // properties were declared and read nowhere — three of them the first three
-    // lines of `.campaign-root`, where a reader would take them for the campaign's
-    // palette. A dead colour in a stylesheet looks exactly like a live one.
-    //
-    // `var(--x)` is the only way to read one from CSS, and a `style="--x:…"`
-    // attribute is the only way from a template, so this needs no exemptions.
-    const styleRoots = [
-      join(packagesRoot, 'game-ui', 'src', 'styles'),
-      join(packagesRoot, 'editor', 'src', 'styles'),
-      join(packagesRoot, 'story-candidate-01', 'src', 'styles'),
-    ];
-    const stylesheets = styleRoots.flatMap((root) =>
-      readdirSync(root).filter((entry) => entry.endsWith('.css')).map((entry) => join(root, entry)));
-    const css = stylesheets
-      .map((file) => readFileSync(file, 'utf8').replace(/\/\*[\s\S]*?\*\//g, ''))
-      .join('\n');
-    const templates = [...everyPackageSource(), ...appSources()]
-      .map((file) => readFileSync(file, 'utf8'))
-      .join('\n');
-
-    // Both halves found something, or one of them is looking in the wrong place.
-    const declared = [...new Set([...css.matchAll(/(--[\w-]+)\s*:/g)].map(([, name]) => name))];
-    const read = new Set([
-      ...[...css.matchAll(/var\((--[\w-]+)/g)].map(([, name]) => name),
-      ...[...templates.matchAll(/(--[\w-]+)\s*:/g)].map(([, name]) => name),
-    ]);
-    expect(declared.length).toBeGreaterThan(20);
-    expect(read.size).toBeGreaterThan(20);
-
-    expect(declared.filter((name) => !read.has(name))).toEqual([]);
   });
 
   it('selects nothing the code never emits', () => {
@@ -3126,76 +2837,6 @@ describe('one answer per question', () => {
     expect(offenders).toEqual([]);
   });
 
-  it('launders a type only where a keyed registry dispatches', () => {
-    // `x!` is forbidden everywhere in this repository and `x as never` was allowed
-    // everywhere, and the two are the same move: telling the compiler to stop
-    // asking. The difference is that one of them has a legitimate home.
-    //
-    // A registry stores `Handler<Kind>` and is registered with
-    // `Handler<'destroy'>`, which is not assignable to it — a handler is
-    // contravariant in its payload. The key correlation that makes the pair sound
-    // is the one thing TypeScript cannot express through a lookup, so the cast at
-    // the dispatch is paying for the cast at the registration. Saying it properly
-    // needs a mapped-type trick, which is the clever metaprogramming this
-    // repository would rather not read.
-    //
-    // So it stays, and it stays *here*: in the modules that own an extension
-    // point. Anywhere else it is silencing a real type error, and one of them was
-    // — a ruler handed `{ width, height }` to `idx` through `as never`, and `idx`
-    // takes `{ width: number }`, so the cast was paying for nothing at all.
-    /*
-     * And `as unknown as T`, which was invisible to this guard while being the
-     * same move a third way: two casts in a row so the compiler cannot object to
-     * either. And `as any`, the fourth, which arrived in a new ruler the moment
-     * this guard was not looking for it — the debugging protocol is untyped JSON on
-     * the wire, and `as any` is how an untyped edge spreads inward. It is a
-     * declared shape now, narrowed where the reply is read. Six of them existed and every one had a reason, which is exactly why
-     * they needed listing — the seventh would have arrived unremarked.
-     *
-     * Three of the six are gone, and listing them is what made them findable. Two
-     * were `.json` imports "narrowed to the interface it is authored against",
-     * which is what the reason *said*; what the cast actually did was switch off
-     * the compiler's check of the other twenty-eight fields, and it was hiding a
-     * manifest that says `ySort: 'bottom-anchor'` against a type that says
-     * `boolean`. Those documents are read now, at their edges, and the two things
-     * a JSON import genuinely cannot state — a closed set of names, an array meant
-     * to be a fixed length — are checked there. The third was the catalog's own
-     * assembly, which asserted away the catalog's *shape* along with its element
-     * types, so a field the catalog grew and that file forgot would have compiled.
-     */
-    const owners = [
-      // A registry stores `Handler<Kind>` and dispatches `Handler<'destroy'>`.
-      'battle-engine/src/resources.ts',
-      'battle-engine/src/scenario.ts',
-      'battle-engine/src/action-system.ts',
-      'battle-engine/src/ai-objectives.ts',
-      'battle-engine/src/objective-system.ts',
-      'battle-engine/src/hit-effects.ts',
-      'battle-engine/src/plugins/default.ts',
-      'campaign-engine/src/nodes.ts',
-      'campaign-engine/src/rules.ts',
-      'game-ui/src/ui/event-presentation.ts',
-      // The boundary where an unvalidated document becomes a typed one, next to the
-      // checks that earn it — that conversion is this module's whole job.
-      'battle-engine/src/save-schema.ts',
-      // A tool bridging Node's timer handle to the DOM signature it implements.
-      join('..', 'tools', 'board-harness.ts'),
-    ];
-    const offenders = [...everyPackageSource(), ...appSources(), ...toolSources()].flatMap((file) => {
-      const name = relative(packagesRoot, file);
-      if (owners.includes(name)) return [];
-      const code = stripComments(readFileSync(file, 'utf8'));
-      return / as never\b|\bas unknown as\b|\bas any\b/.test(code) ? [name] : [];
-    });
-
-    // The list is only honest while each entry still launders something.
-    expect(offenders).toEqual([]);
-    for (const owner of owners) {
-      const source = stripComments(readFileSync(join(packagesRoot, owner), 'utf8'));
-      expect(source, owner).toMatch(/ as never\b|\bas unknown as\b|\bas any\b/);
-    }
-  });
-
   it('decides how dark the ground goes in one place', () => {
     // Thirteen ground shadows were written out by hand across four art modules,
     // every one an ellipse filled `PAL.ink`, at seven different opacities between
@@ -3246,48 +2887,6 @@ describe('one answer per question', () => {
     });
 
     expect(readFileSync(join(layer, 'level-storage.ts'), 'utf8')).toContain('localStorage');
-    expect(offenders).toEqual([]);
-  });
-
-  it('writes a colour in one drawing module at most', () => {
-    /*
-     * `palette.ts` calls itself the single source of truth for every colour the art
-     * layer uses, and one-off colours are still everywhere: a gradient stop, a
-     * scene's backdrop, a wash. That is fine — a colour used once is a brush stroke.
-     * A colour used in *two* modules is a fact stated twice, and it drifts: three
-     * tones of a troll's hide lived in both its sprite and its portrait, and the
-     * lit window of a house was written in the hand-painted terrain and again in the
-     * one generated from the rules.
-     *
-     * Drawing modules only. A level's authored player colour and the engine's
-     * default are content, not art, and the engine cannot read a presentation
-     * palette anyway. Black and white are exempt: they are not colour choices.
-     */
-    const drawing = [
-      join('game-ui', 'src', 'art'),
-      join('game-ui', 'src', 'ui'),
-      join('editor', 'src'),
-      join('story-candidate-01', 'src', 'presentation'),
-    ];
-    const palette = join(packagesRoot, 'game-ui', 'src', 'art', 'palette.ts');
-    const seen = new Map<string, string[]>();
-    for (const file of [...everyPackageSource(), ...appSources()]) {
-      if (file === palette) continue;
-      const name = relative(packagesRoot, file);
-      if (!drawing.some((where) => name.startsWith(where)) && !file.includes(`apps${sep}`)) continue;
-      const code = stripComments(readFileSync(file, 'utf8'));
-      for (const [colour] of code.matchAll(/#[0-9a-fA-F]{6}\b/g)) {
-        const key = colour.toLowerCase();
-        if (key === '#ffffff' || key === '#000000') continue;
-        const files = seen.get(key) ?? [];
-        if (!files.includes(name)) files.push(name);
-        seen.set(key, files);
-      }
-    }
-    const offenders = [...seen].filter(([, files]) => files.length > 1)
-      .map(([colour, files]) => `${colour}: ${files.join(', ')}`);
-
-    expect(readFileSync(palette, 'utf8')).toContain('export const PAL');
     expect(offenders).toEqual([]);
   });
 

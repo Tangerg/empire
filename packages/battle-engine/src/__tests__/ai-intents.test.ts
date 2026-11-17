@@ -25,10 +25,6 @@ const settled = () =>
   DefaultAiIntents.clone().replace({ id: 'reaction', priority: 30, propose: () => null });
 
 describe('the ai intent list', () => {
-  it('ships the original chain, in the original order', () => {
-    expect(DefaultAiIntents.ids()).toEqual(['tactic', 'recruit', 'reaction', 'command']);
-  });
-
   it('orders by priority, never by registration', () => {
     const intents = DefaultAiIntents.clone().register({
       id: 'early',

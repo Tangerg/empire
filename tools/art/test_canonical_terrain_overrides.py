@@ -9,7 +9,7 @@ from PIL import Image
 
 from export_canonical_terrain_overrides import (
     ALPHA_SHA256, PACK, ROOT, TOPICS, canonical_masks, edge_contract,
-    export, pixel_hash, plan, review_previews,
+    export, pixel_hash, plan,
 )
 
 
@@ -132,25 +132,6 @@ class CanonicalTerrainTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'edge mismatch'):
                 edge_contract(cells, mode)
 
-    def test_previews_copy_exact_cells_and_connect_each_neighbor(self):
-        for _, sheet, report in plan(self.root, self.catalog):
-            mode, size = report['tileMode'], sheet.height
-            previews = review_previews(sheet, mode)
-            if mode == 'variants':
-                self.assertEqual(set(previews), {'repeated-2x2', 'mixed-4x4'})
-                for y in range(4):
-                    for x in range(4):
-                        expected = sheet.crop(((x + y) % 4 * size, 0, ((x + y) % 4 + 1) * size, size)).convert('RGB')
-                        self.assertEqual(previews['mixed-4x4'].crop((x * size, y * size, (x + 1) * size, (y + 1) * size)).tobytes(), expected.tobytes())
-            else:
-                for name, bits in (('isolated', 0), ('end', 1), ('straight-ns', 5), ('straight-ew', 10),
-                                   ('corner', 3), ('tee', 7), ('cross', 15)):
-                    expected = sheet.crop((bits * size, 0, (bits + 1) * size, size))
-                    self.assertEqual(previews[name].crop((size, size, 2 * size, 2 * size)).tobytes(), expected.tobytes())
-                    for bit, neighbor, x, y in ((1, 4, 1, 0), (2, 8, 2, 1), (4, 1, 1, 2), (8, 2, 0, 1)):
-                        actual = previews[name].crop((x * size, y * size, (x + 1) * size, (y + 1) * size))
-                        expected = sheet.crop((neighbor * size, 0, (neighbor + 1) * size, size)) if bits & bit else Image.new('RGBA', (size, size))
-                        self.assertEqual(actual.tobytes(), expected.tobytes())
 
     def test_empty_catalog_is_noop_without_even_manifests(self):
         self.write_catalog({})

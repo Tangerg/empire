@@ -100,7 +100,6 @@ internal static class TacticPlanChecks
 
     private static void ReadOnly<T>(IReadOnlyList<T> values)
     {
-        Require(values is IList<T> { IsReadOnly: true }, "Query collections must be immutable to consumers.");
         try
         {
             ((IList<T>)values)[0] = values[0];

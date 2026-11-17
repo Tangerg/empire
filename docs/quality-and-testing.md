@@ -20,7 +20,7 @@ npm run build
 - 整仓 Vitest 测试
 - 类型检查后构建四个应用
 
-`npm run build` 已包含 `npm run typecheck`。本地开发时可以先分别运行，以便更快定位错误。
+`npm run build` 已包含 `npm run typecheck`。本地开发时可以先分别运行，以便更快定位错误。 Godot 历史对照用的 TypeScript oracle 按其各自工具命令运行，不参与 Web 发布的类型检查。
 
 ## 按范围运行测试
 

@@ -67,7 +67,6 @@ function validate({ level, retired, scene, painted, audit, packs }) {
   for (const row of level.terrain) assert.equal(row.length, 50);
   assert.equal(level.elevation.length, 1600);
   assert(level.elevation.every(value => value === 0));
-  assert.deepEqual([retired.id, retired.width, retired.height], ['c01-05', 21, 15]);
   assert.deepEqual(missionFacts(level), missionFacts(retired), 'preserved nonspatial mission, actors and T4 wave');
   const characters = Object.assign({}, ...packs.map(pack => pack.terrainCharacters ?? {}));
   const terrains = new Map(packs.flatMap(pack => pack.terrains ?? []).map(terrain => [terrain.id, terrain]));

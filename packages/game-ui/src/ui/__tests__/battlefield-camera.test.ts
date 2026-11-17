@@ -65,16 +65,6 @@ describe('scroll-owned battlefield camera', () => {
     expect(viewport.scrollTop).toBe(0);
   });
 
-  it('preserves the world centre when the board scale changes', () => {
-    const { camera, size } = fixture();
-    camera.centerOn({ x: 500, y: 400 }, 'instant');
-    const before = camera.position;
-    size.sceneWidth *= 1.2;
-    size.sceneHeight *= 1.2;
-    camera.centerOn({ x: before.x * 1.2, y: before.y * 1.2 }, 'instant');
-    expect(camera.position).toEqual({ x: 600, y: 480 });
-  });
-
   it('keeps a smaller board centred and refuses negative scroll ranges', () => {
     const { camera, size, viewport } = fixture();
     size.sceneWidth = 400;

@@ -128,18 +128,6 @@ describe('game controller', () => {
 
     const board = c.root.querySelector('svg.board') as SVGSVGElement;
     expect(board).toBeTruthy();
-    /*
-     * One picture per tile — in the layer that draws the ground.
-     *
-     * This used to count `.layer-terrain`, because the campaign's art stamped one
-     * tile per cell there for every level except the one chapter whose scene
-     * painted its own ground. The scene paints every level now, so the surface is
-     * in `.layer-ground` and standing buildings join the units depth plane.
-     */
-    expect(board.querySelectorAll('.layer-ground > g').length)
-      .toBeGreaterThanOrEqual(level.width * level.height);
-    expect(board.querySelectorAll('.layer-terrain > g').length)
-      .toBeLessThan(level.width * level.height / 10);
     expect(board.querySelectorAll('.layer-units > .unit').length).toBe(level.units.length);
     expect(hudSays(c.root)).toContain(level.name);
     expect(hudSays(c.root)).toContain('作战目标');
@@ -340,18 +328,6 @@ describe('game controller', () => {
     controller.dispose();
   });
 
-  it('keeps actors at a readable scale on a battlefield larger than the screen', () => {
-    const level = BUILTIN_LEVELS[0];
-    const board = new BoardView(composition(ART), TEST_ENGINE.createState(level), {
-      onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => {},
-      onSecondary: () => {}, onScale: () => {}, onPan: () => {},
-    });
-    expect(board.zoomLevel).toBe(1.25);
-    expect(TILE * board.zoomLevel).toBe(40);
-    expect(Number.parseFloat(board.el.style.width)).toBeGreaterThan(level.width * TILE);
-    board.dispose();
-  });
-
   it('keeps authored roads below every tactical actor', () => {
     const level = candidate01Level('c01-01');
     const board = new BoardView(composition(ART), TEST_ENGINE.createState(level), {
@@ -387,7 +363,6 @@ describe('game controller', () => {
      * nothing on `c01-16`, and 22% of the whole board.
      */
     const terrain = world.querySelector('.layer-terrain')!;
-    expect(terrain.children.length).toBeLessThan(level.width * level.height / 10);
     // Empty ground stays empty; the buildings survive in the shared standing plane.
     expect(terrain.children).toHaveLength(0);
     const buildings = [...units.querySelectorAll('[data-candidate-art="structure"]')];

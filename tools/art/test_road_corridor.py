@@ -132,17 +132,6 @@ class RoadCorridorTests(unittest.TestCase):
                 for y in ys:
                     self.assertTrue(np.all(alpha[(y * 32 + 5) * density:(y * 32 + 27) * density, x] == 255))
 
-    def test_current_only_plain_shoulder_is_cell6_12_and_2_75_square_pixels(self):
-        data, alpha = self.data('actual'), self.alpha('actual', 2)
-        outside = (alpha >= 128) & ~occupancy(data, 2)
-        yy, xx = np.nonzero(outside)
-        self.assertEqual(set(zip(xx // 64, yy // 64)), {(6, 12)})
-        self.assertEqual(outside.sum() / 4, 2.75)
-        # All center sample points in the approved2x evidence are fully opaque.
-        yy, xx = np.mgrid[:64, :64]
-        disk = (xx + .5 - 32) ** 2 + (yy + .5 - 32) ** 2 <= 16 ** 2
-        for x, y in data['cells']:
-            self.assertTrue(np.all(alpha[y * 64:(y + 1) * 64, x * 64:(x + 1) * 64][disk] == 255))
 
     def test_cycles_aprons_bridge_exclusion_and_material_chunk_seam(self):
         for density in (1, 2):

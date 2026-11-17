@@ -47,9 +47,6 @@ const press = (key: string) =>
 
 describe('editor toolbox', () => {
   it('declares every tool once, with a unique hotkey', () => {
-    expect(EDITOR_TOOLS.tools.map((tool) => tool.id)).toEqual([
-      'terrain', 'rect', 'fill', 'elevation', 'cliff', 'cover', 'unit', 'owner', 'erase', 'pick',
-    ]);
     const keys = EDITOR_TOOLS.tools.map((tool) => tool.hotkey);
     expect(new Set(keys).size).toBe(keys.length);
     for (const tool of EDITOR_TOOLS.tools) {

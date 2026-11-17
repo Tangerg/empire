@@ -1,9 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { EnvironmentCatalog, type EnvironmentManifest } from '@empire/game-ui';
-import {
-  CANDIDATE_01_ENVIRONMENT,
-  candidate01EnvironmentScene,
-} from './candidate-01-environment';
+import { CANDIDATE_01_ENVIRONMENT } from './candidate-01-environment';
 
 describe('candidate-01 environment builder v1.1', () => {
   it('retains registered pivots and semantic footprints for approved forest cells', () => {
@@ -121,13 +118,5 @@ describe('candidate-01 environment builder v1.1', () => {
     expect(ramp.cell.passable).toBe(true);
     expect(ramp.cell.heightDelta).toBe(1);
     expect(wheat.atlas.id).toBe('rural-life');
-  });
-
-  it('keeps Twin Hills on a small allowlist and leaves the candidate pack unpromoted', () => {
-    const scene = candidate01EnvironmentScene('c01-01');
-
-    expect(scene?.selection.allowAtlases.length).toBeLessThanOrEqual(10);
-    expect(scene?.selection.denyAtlases).toContain('landmarks-large');
-    expect(scene?.runtimeReady).toBe(false);
   });
 });

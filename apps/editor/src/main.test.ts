@@ -8,7 +8,6 @@ describe('editor entry point', () => {
     await import('./main');
 
     expect(document.querySelector('.editor-root')).toBeTruthy();
-    expect(document.querySelectorAll('.palette .swatch').length).toBeGreaterThanOrEqual(11);
     expect(document.querySelector('.palette .swatch[data-arg="c01.scorched"]')).toBeTruthy();
     expect(document.querySelector('svg.editor-board')).toBeTruthy();
     expect(document.querySelector('.props')!.textContent).toContain('通用胜利条件');

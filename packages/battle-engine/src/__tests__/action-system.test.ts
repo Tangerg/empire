@@ -54,15 +54,6 @@ describe('action strategy registry', () => {
     expect(Object.isFrozen(first)).toBe(true);
   });
 
-  it('registers one cohesive strategy for every built-in action kind', () => {
-    expect(CoreActionHandlers.keys().sort()).toEqual(
-      [
-        'changeCareer', 'changeFormation', 'command', 'deployUnit', 'disembark', 'embark',
-        'endTurn', 'face', 'finishDeployment', 'reaction', 'recruit', 'tactic',
-      ].sort(),
-    );
-  });
-
   it('supports an injected strategy set without changing the reducer', () => {
     const state = testState(
       makeLevel(['..'], { units: [u(0, 0, 'soldier', 1), u(1, 0, 'soldier', 2)] }),

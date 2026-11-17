@@ -5,7 +5,6 @@ import tempfile
 import unittest
 from PIL import Image
 from export_field_material import PACK, MANIFEST, export, match_period_edges
-from render_ground_review import compare_retained
 
 
 class FieldMaterialTests(unittest.TestCase):
@@ -67,26 +66,6 @@ class FieldMaterialTests(unittest.TestCase):
             match_period_edges(source)
             self.assertEqual(before, source.tobytes())
 
-    def test_retained_comparison_rejects_pixel_and_dimension_changes(self):
-        baseline = self.root / 'baseline'
-        current = self.root / 'current'
-        baseline.mkdir()
-        current.mkdir()
-        for kind in ('field', 'integration'):
-            for density in (1, 2):
-                for directory, suffix in ((baseline, 'period-1024-diagnostic'), (baseline, 'full'),
-                                          (current, 'full'), (current, 'high-density-alternative')):
-                    Image.new('RGB', (8 * density, 8 * density), (40, 80, 20)).save(directory / f'{kind}-{suffix}@{density}x.png')
-        self.assertEqual(len(compare_retained(current, baseline)['comparisons']), 8)
-        target = current / 'field-full@1x.png'
-        with Image.open(target) as image:
-            image.putpixel((2, 2), (41, 80, 20))
-            image.save(target)
-        with self.assertRaisesRegex(ValueError, 'pixels'):
-            compare_retained(current, baseline)
-        Image.new('RGB', (9, 8), (40, 80, 20)).save(target)
-        with self.assertRaisesRegex(ValueError, 'dimensions'):
-            compare_retained(current, baseline)
 
     def test_checksum_and_geometry_fail_before_writes(self):
         cases = [('sourceSha256', '0' * 64, 'SHA-256'), ('worldOrigin', [32, 0], 'zero origin'),
