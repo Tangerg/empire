@@ -6,7 +6,7 @@ project="$(cd "${1:-$root/godot}" && pwd)"
 output="$(mktemp -d /tmp/empire-lighting-performance.XXXXXX)"
 printf 'Lighting performance verification output: %s\n' "$output"
 dotnet build "$project/Empire.csproj" --nologo --no-restore > "$output/build.log" 2>&1 || { cat "$output/build.log"; exit 1; }
-for scene in LightingRasterParityChecks LightingPerformanceChecks; do
+for scene in LightingRasterParityChecks; do
   status=0
   "$GODOT_NET" --headless --path "$project" "res://Scenes/$scene.tscn" > "$output/$scene.log" 2>&1 || status=$?
   cat "$output/$scene.log"

@@ -9,7 +9,7 @@ oracle bytes with the decompressed checked-in fixture and fails if they differ.
 Run `bash tools/godot/registry-checks/run.sh --frozen` for the Node-free base-verifier
 path. It reads `godot/tests/oracle/registry-contracts.json.gz` using .NET gzip support;
 all characterization outputs stay in the printed temporary directory, not the fixture
-directory. The same 227 defined-outcome checks run in both modes. The frozen fixture
+directory. The same 72 defined-outcome checks run in both modes. The frozen fixture
 also retains the source runtime versions and mixed-NaN observations, but native
 mixed-NaN ordering remains characterization rather than an exact V8-order assertion.
 
@@ -22,12 +22,11 @@ bash tools/godot/registry-checks/run.sh --frozen
 ```
 
 Coverage:
-- 187 exact source-base outcomes exercised across 11 native registries: duplicate
+- 34 exact source-base outcomes exercised once on the generic registry and on the actual action registry: duplicate
   rejection, upsert, stable insertion order, detached keys/all, query versus demand,
   fluent/idempotent sealing, write rejection, and independent mutable shallow clones.
-- 13 priority/cache/dispatch comparisons, including fractional AI dispatch order,
-  ordinal UTF-16 ties, read-only cached ordered collections, invalidation after both
-  successful and rejected writes, stable comparator ties, and shared mutable entry identity through cloning.
+- 11 priority/dispatch comparisons, including fractional AI dispatch order,
+  ordinal UTF-16 ties, read-only ordered collections and changed ordering after successful writes, stable comparator ties, and shared mutable entry identity through cloning.
 - 25 exact numeric-boundary/corpus cases: fractions, signed zero, infinities, two-entry
   NaN comparisons and larger finite corpora through 96 entries.
 - Actual source action-key/dispatch behavior: empty/whitespace keys, prototype-looking
@@ -65,3 +64,5 @@ adding registration metadata alone does not claim open custom-action execution.
 
 The existing `campaign-checks/run.sh` separately executes all 27 source campaign
 registry cases and custom condition/effect/node frozen-clone isolation.
+
+Redundant repetition of inherited keyed-registry behavior across nine thin wrappers was removed. Their domain behavior remains covered by campaign, AI, spatial, and directive suites. Cache object identity is not a product contract; priority results and immutable snapshots remain guarded. The existing cache-invalidation mutant still changes ordering and remains applicable. This suite is an explicit historical diagnostic, not part of the current native aggregate.

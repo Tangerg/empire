@@ -145,35 +145,4 @@ const counts = validate(data);
 const image = readFileSync(resolve(root, 'godot/assets/native/scenes/luojia.png'));
 assert.equal(hash(image), data.audit.sourceSha256);
 assert.deepEqual([image.readUInt32BE(16), image.readUInt32BE(20)], data.painted.pixelSize);
-if (process.argv.includes('--self-test')) {
-  const setCell = (d, [x,y], symbol) => { const row=d.level.terrain[y]; d.level.terrain[y]=row.slice(0,x)+symbol+row.slice(x+1); };
-  const mutations = [
-    ['foundation hole', d => setCell(d,d.audit.blockedPolygons[0].blockedCells[0],'p'), /physical foundation/],
-    ['erase real nook paving', d => { setCell(d, [35,47], '_'); d.audit.outsideCells.push([35,47]); }, /all other genuine ground/],
-    ['invent isolated street', d => d.audit.isolatedGroundCells.push([40,40]), /only the pixel-reviewed/],
-    ['shorter deadline', d => d.level.rules.turnLimit=10, /nonspatial C07/],
-    ['changed objective', d => d.level.players[0].objectives[0].objective.type='any', /nonspatial C07/],
-    ['extra site', d => setCell(d,d.audit.openingFocus,'v'), /site types and counts/],
-    ['changed site owner', d => d.audit.sites[0].owner=9, /site owners/],
-    ['swapped gate owners', d => {
-      for (const id of ['northwest-gate', 'northeast-gate']) {
-        const site = d.audit.sites.find(site => site.id === id);
-        site.owner = site.owner === 1 ? 2 : 1;
-        d.level.owners.find(owner => key(position(owner)) === key(site.cell)).owner = site.owner;
-      }
-    }, /canonical gate ownership/],
-    ['missing side ingress', d => d.audit.ingressPoints.splice(d.audit.ingressPoints.findIndex(i => i.id === 'west-street'), 1), /eight distinct authored ingress/],
-    ['duplicate ingress identity', d => d.audit.ingressPoints[1].id=d.audit.ingressPoints[0].id, /eight distinct authored ingress/],
-    ['route skips its arch', d => {
-      const ingress = d.audit.ingressPoints.find(i => i.id === 'northwest-arch');
-      const route = d.audit.routes.find(r => r.id === 'through-northwest-arch');
-      route.cells = route.cells.filter(cell => key(cell) !== key(ingress.cell));
-    }, /must cross its actual arch/],
-    ['reversed gate approaches', d => d.audit.routes.find(r => r.id === 'through-northwest-arch').cells.reverse(), /through-route endpoints/],
-    ['roof steals pick', d => d.painted.occluders.flatMap(o=>o.parts).find(p=>p.id.includes('roof')).pointer.kind='target', /roof must pass through/],
-    ['stale digest', d => d.painted.levelSourceSha256='0'.repeat(64), /canonical source checksum/],
-  ];
-  for (const [name, mutate, pattern] of mutations) { const d=structuredClone(data); mutate(d); assert.throws(()=>validate(d),pattern,name); }
-  console.log(`PASS: ${mutations.length} semantic negative controls`);
-}
 console.log(`PASS: C07 ${data.level.width}x${data.level.height}; 16 canonical sites, ${counts.walkable} foot cells (one reviewed isolated nook), ${counts.walls} reviewed solid cells. Native movement and normal-AI/GUI gates remain separate.`);

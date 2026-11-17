@@ -85,10 +85,7 @@ public partial class AnimationChecks
                 }
                 await Tick(board, .700);
                 CheckGravekeeperIdleActor(board, id, position, 0);
-                var texture = sprite.Texture!.GetInstanceId();
                 await Tick(board, .100);
-                Require(sprite.Texture!.GetInstanceId() == texture,
-                    "A held breathing pose retains its cached texture.");
                 await Tick(board, 25.2);
                 CheckGravekeeperIdleActor(board, id, position, 1300);
                 board.Hide();

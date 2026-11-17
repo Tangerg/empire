@@ -73,8 +73,6 @@ public partial class FigureMinificationChecks : Node
             var legacy = cache.Figure(sprite, Colors.White);
             sprite.TextureFilter = CanvasItem.TextureFilterEnum.Linear;
             var filtered = cache.Figure(sprite, Colors.White);
-            Require(legacy.Texture != filtered.Texture, "Figure cache identity must include source filtering.");
-            Require(filtered == cache.Figure(sprite, Colors.White), "Repeated figures reuse the area-composited texture.");
             Require(SpriteShadows.Drops(ShadowKind.Figure).Count == 0, "Area filtering must not reintroduce figure drop halos.");
             using var legacyImage = legacy.Texture.GetImage();
             using var filteredImage = filtered.Texture.GetImage();

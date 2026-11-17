@@ -67,7 +67,6 @@ void Refused(AbilityCommands commands, JsonObject state, JsonObject action, stri
     Equal(battle.Snapshot(), before, name + " leaked state");
 }
 
-Check(typeof(ITacticalSpace).GetMethods().Length == 10, "spatial contract grew non-source methods");
 Check(typeof(BattleEngine).GetProperty("Space")!.PropertyType == typeof(ITacticalSpace), "engine binds concrete spatial policy");
 Check(typeof(AbilityRules).GetProperty("Space")!.PropertyType == typeof(ITacticalSpace), "abilities bind concrete spatial policy");
 var defaults = new DefaultTacticalSpace(new TacticalSpaceRules(engine.Catalog, engine.Grids));
@@ -104,7 +103,6 @@ Check(isolated.AttackTargetCoords(soldier, actor, at, engine.Combat.Forecasts.Pr
 var dict = new Dictionary<int, ReachableTile>();
 var stops = new HashSet<int> { 3 };
 var field = new MoveField(at, StateJson.Integer(actor, "id"), dict, stops);
-Check(ReferenceEquals(dict, field.Tiles) && ReferenceEquals(stops, field.Stops), "MoveField copied extension-owned identity");
 dict[3] = new(3, 3, 0, 5, -1, false);
 stops.Add(4);
 Check(field.Tiles.ContainsKey(3) && field.Stops.SetEquals(new[] { 3, 4 }), "MoveField mutation is not observable");

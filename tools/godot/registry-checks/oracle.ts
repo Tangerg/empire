@@ -23,8 +23,7 @@ function recorder() {
     catch (error) { const caught = error as Error; checks.push({ name, value: null, error: { name: caught.name, message: caught.message } }); }
   } };
 }
-const subjects = ['tactical grid', 'weapon area shape', 'unit directive', 'action handler', 'AI intent', 'AI ability evaluator', 'AI objective advisor',
-  'campaign condition handler', 'campaign effect handler', 'campaign node handler', 'test rule'];
+const subjects = ['action handler', 'test rule'];
 function keyed(subject: string) {
   const registry = new Rules(subject), { checks, check } = recorder();
   const z = entry('z'), a = entry('a'), replacement = entry('z');
@@ -55,20 +54,16 @@ function keyed(subject: string) {
 }
 function priorityChecks() {
   const registry = new Priorities(), { checks, check } = recorder();
-  check('empty ordered cached and read only', () => ({ keys: registry.ordered().map(e => e.id), cached: registry.ordered() === registry.ordered(), frozen: Object.isFrozen(registry.ordered()) }));
+  check('empty ordered read only', () => ({ keys: registry.ordered().map(e => e.id), frozen: Object.isFrozen(registry.ordered()) }));
   for (const id of ['a.', '\ue000', '\ud800\udc00', 'Z', 'a-', '$', '\ud83d\ude00', 'a']) registry.register(entry(id, 0.25));
   registry.register(entry('negative', -1.5)); registry.register(entry('fraction', 0.125)); registry.register(entry('last', 10.5));
   check('fractional priority and UTF-16 ties', () => registry.ordered().map(e => e.id));
   const prior = registry.ordered();
-  check('replace invalidates cache and changes order', () => { registry.replace(entry('last', -2.75)); return { keys: registry.ordered().map(e => e.id), changed: prior !== registry.ordered(), old: prior.map(e => e.id) }; });
-  const beforeRegister = registry.ordered();
-  check('register invalidates cache', () => { registry.register(entry('new', -3.5)); return { changed: beforeRegister !== registry.ordered(), first: registry.ordered()[0].id }; });
-  const beforeDuplicate = registry.ordered();
+  check('replace changes order', () => { registry.replace(entry('last', -2.75)); return { keys: registry.ordered().map(e => e.id), old: prior.map(e => e.id) }; });
+  check('register changes order', () => { registry.register(entry('new', -3.5)); return { first: registry.ordered()[0].id }; });
   check('duplicate still rejects', () => registry.register(entry('new')));
-  check('failed register invalidates cache without changing table', () => ({ changed: beforeDuplicate !== registry.ordered(), keys: registry.keys() }));
-  registry.seal(); const sealedOrder = registry.ordered();
+  registry.seal();
   check('sealed priority replacement rejects', () => registry.replace(entry('new')));
-  check('failed sealed write invalidates cache', () => ({ changed: sealedOrder !== registry.ordered(), keys: registry.ordered().map(e => e.id) }));
   check('ordered list cannot be modified', () => { let rejected = false; try { (registry.ordered() as Entry[])[0] = entry('forged'); } catch { rejected = true; } return rejected; });
   const first = entry('first'), second = entry('second');
   const stable = new Priorities().register(first).register(second); second.id = 'first';

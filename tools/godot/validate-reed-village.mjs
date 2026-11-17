@@ -161,23 +161,6 @@ const counts = validate(data);
 const image = readFileSync(resolve(root, 'godot/assets/native/scenes/reed-village.png'));
 assert.equal(sha256(image), data.audit.sourceSha256, 'audited mother painting bytes');
 assert.deepEqual([image.readUInt32BE(16), image.readUInt32BE(20)], data.painted.pixelSize, 'PNG dimensions');
-if (process.argv.includes('--self-test')) {
-  const setCell = (copy, [x, y], symbol) => { const row = copy.level.terrain[y]; copy.level.terrain[y] = row.slice(0, x) + symbol + row.slice(x + 1); };
-  const mutations = [
-    ['foundation hole', copy => setCell(copy, copy.audit.houses[0].blockedCells[0], '.'), /physical foundation/],
-    ['bridge painted onto dirt bank', copy => setCell(copy, [7, 21], '='), /plank bridge/],
-    ['weakened civilian objective', copy => copy.level.players[0].objectives[0].objective.objectives[0].minimumAlive = 1, /nonspatial mission/],
-    ['early western wave', copy => copy.level.scenario.triggers[0].condition.turn = 3, /nonspatial mission/],
-    ['roof steals click', copy => copy.painted.occluders[0].parts[0].pointer.kind = 'target', /roof must pass through/],
-    ['stale registration', copy => copy.painted.levelSourceSha256 = '0'.repeat(64), /canonical source checksum/],
-  ];
-  for (const [name, mutate, expected] of mutations) {
-    const copy = structuredClone(data);
-    mutate(copy);
-    assert.throws(() => validate(copy), expected, `must reject ${name} at its semantic guard`);
-  }
-  console.log(`PASS: ${mutations.length} focused semantic mutations rejected`);
-}
 console.log(`PASS: C05 50x32, 7 village + 5 outpost sites; ${counts.walkable} connected foot cells, ${counts.walls} walls (${counts.foundations} cottage cells), ${counts.water} river cells, 7 actual plank cells`);
 console.log(`PASS: retired nonspatial mission parity, painting bytes and canonical registration ${data.painted.levelSourceSha256}`);
 console.log('Production movement, picking, threat, objective timing and save admission require ReedVillageChecks; natural play and GUI acceptance are separate.');

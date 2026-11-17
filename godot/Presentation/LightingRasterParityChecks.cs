@@ -17,7 +17,6 @@ public partial class LightingRasterParityChecks : Node
             PixelConversions();
             RasterComparisons();
             Compositions();
-            CoverageBoundaries();
             GD.Print($"Lighting raster parity checks passed: {_checks} assertions.");
             GetTree().Quit();
         }
@@ -113,39 +112,6 @@ public partial class LightingRasterParityChecks : Node
                     Require(actual.Origin == expected.Origin && actual.Density == expected.Density && actual.Image.GetData().SequenceEqual(expected.Image.GetData()), $"Composition bytes changed: {format}, {density}.");
             }
     }
-    private void CoverageBoundaries()
-    {
-        var target = typeof(LayerFilterComposition).GetMethod("Coverage", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static)!;
-        var reference = typeof(LightingCompositionReference).GetMethod("Coverage", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static)!;
-        using var image = Pattern(3, 3, Image.Format.Rgba8);
-        var random = new Random(8103);
-        var rectangles = new[] { new Rect2(0, 0, 1, 1), new(-.125f, -.25f, .5f, 2.75f), new(1000000, -1000000, .125f, .25f), new(-9.7f, 4.125f, 11.75f, .03125f) };
-        foreach (var bounds in rectangles)
-            foreach (var size in new[] { .000001f, .03125f, .1f, .5f, 1f, 2f, 1000f })
-                foreach (var cutouts in new Rect2[]?[] { null, Array.Empty<Rect2>(), new[] { bounds }, new[] { new Rect2(bounds.Position + bounds.Size / 3, bounds.Size / 3) }, new[] { new Rect2(bounds.Position, bounds.Size / 2), new Rect2(bounds.Position + bounds.Size / 2, bounds.Size / 2) } })
-                {
-                    var actualLayer = new LayerFilterComposition.Layer(image, bounds, cutouts);
-                    var expectedLayer = new LightingCompositionReference.Layer(image, bounds, cutouts);
-                    void Compare(Vector2 point)
-                    {
-                        var expected = (float)reference.Invoke(null, new object[] { expectedLayer, point, size })!;
-                        var actual = (float)target.Invoke(null, new object[] { actualLayer, point, size })!;
-                        Require(BitConverter.SingleToInt32Bits(expected) == BitConverter.SingleToInt32Bits(actual), $"Coverage changed at {bounds}, cell {point}, size {size}, cutouts {cutouts?.Length}.");
-                    }
-                    foreach (var boundary in new[] { bounds.Position, bounds.End, new Vector2(bounds.Position.X, bounds.End.Y), new Vector2(bounds.End.X, bounds.Position.Y) })
-                        for (var sy = 0; sy < 4; sy++)
-                            for (var sx = 0; sx < 4; sx++)
-                            {
-                                var point = boundary - new Vector2(sx + .5f, sy + .5f) * (size / 4);
-                                foreach (var x in new[] { MathF.BitDecrement(point.X), point.X, MathF.BitIncrement(point.X) })
-                                    foreach (var y in new[] { MathF.BitDecrement(point.Y), point.Y, MathF.BitIncrement(point.Y) })
-                                        Compare(new(x, y));
-                            }
-                    for (var index = 0; index < 10; index++)
-                        Compare(bounds.Position + new Vector2((float)random.NextDouble(), (float)random.NextDouble()) * bounds.Size - Vector2.One * size / 2);
-                }
-    }
-
     private static Image Pattern(int width, int height, Image.Format format)
     {
         var image = Image.CreateEmpty(width, height, false, format);

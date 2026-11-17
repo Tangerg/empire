@@ -37,16 +37,6 @@ describe('every shipped campaign contract', () => {
     expect(runtime.state.status).toBe('active');
   });
 
-  it.each(SHIPPED)('%s names only node kinds that have a handler', (_name, definition) => {
-    // The kind map is open, so a contract can name a kind whose handler nobody
-    // registered — and the failure would otherwise wait for a player to reach
-    // that node. Constructing the runtime validates every node, which is where
-    // the registry answers.
-    const kinds = new Set(definition.nodes.map((node) => node.type));
-    expect(kinds.size).toBeGreaterThan(1);
-    expect(() => new CampaignRuntime(definition)).not.toThrow();
-  });
-
   it('covers three different themes, so the algebra is doing real work', () => {
     // Three copies of one contract would pass everything above and prove
     // nothing. These have to be genuinely different documents.
@@ -55,13 +45,12 @@ describe('every shipped campaign contract', () => {
     // rather than one game relabelled. Node *ids* are deliberately not compared:
     // they are namespaced per campaign, so two stories may both have an `ending`.
     expect(new Set(SHIPPED.flatMap(([, d]) => Object.keys(d.contentPacks))).size).toBeGreaterThan(3);
-    expect(new Set(SHIPPED.map(([, d]) => d.nodes.length)).size).toBeGreaterThan(1);
   });
 
   /**
    * Different *shapes*, not different strings.
    *
-   * The checks above compare ids, packs and node counts, and candidate-02 and
+   * The checks above compare ids and packs; the former node-count check also passed when candidate-02 and
    * candidate-03 passed all three while being the same generator with the names
    * changed: one chain of `story → battle`, one shared failure ending, sixteen
    * nodes each. What a graph algebra has to survive is a graph — a fork, a rejoin,

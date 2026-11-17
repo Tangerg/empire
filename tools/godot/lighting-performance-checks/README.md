@@ -1,43 +1,13 @@
-# Cold lighting composition performance
+# Native lighting raster output
 
 Run `bash tools/godot/lighting-performance-checks/run.sh [absolute-godot-project-directory]`.
-The optional project path permits an isolated tree. The runner builds the existing project,
-checks the actual process exit and rejects errors/leaks after its success marker.
-No GUI, installation, user save, or source-art change is involved.
+This runs `LightingRasterParityChecks` on native pixel conversion, shadow raster
+output and composed RGBA images. It is not a desktop frame-rate benchmark.
+Use `tools/godot/lighting-checks/check-lifetimes.sh` for cache and shutdown
+coverage.
 
-The harness establishes:
-
-- Bit-identical float results against the pre-optimization Gaussian convolution for 90
-  rectangular, tiny, edge-dominated and large-radius cases, retaining exact tap order.
-- Byte-identical RGBA output for 99 frozen raster cases: 10 existing presets at three
-  densities and three source sizes, fractional and negative offset chains, cropped
-  source images, and contact ellipses. The fixture hash was captured from the unchanged
-  implementation with Godot 4.6.3/.NET 8, not generated from the optimized result.
-- Actual GrayFlag board composition, eight warm projections without cache growth,
-  imported Torren idle/walk-a/walk-b/attack frame compositions and warm reuse, explicit
-  cache disposal and queued board deletion followed by managed finalization.
-- Managed allocation and wall-clock diagnostics. They are not hard timing thresholds,
-  desktop frame-rate acceptance, GPU profiling, or a browser-vs-native pixel-parity claim.
-
-The change keeps one board cache owner. Scratch buffers exist only for one raster bake,
-not in an additional persistent pool. Filter-chain order, Gaussian radius and kernel,
-float accumulation order, source RGB, sampling fallback and output dimensions remain
-unchanged. Whole-pixel offsets read their exact sample directly; fractional offsets keep
-bilinear sampling. Gaussian buffers are fully overwritten before reuse.
-
-The original measured bottleneck was Gaussian convolution, followed by shadow sampling.
-The optimization clips each pixel's tap interval before accumulating into a local float,
-removes redundant bilinear operations at integral offsets, reuses per-bake convolution
-buffers across the drop chain, and reads immutable source dimensions once.
-
-Run the existing source oracle and repeated resource-exit gates too:
-`bash tools/godot/lighting-checks/run.sh`
-`bash tools/godot/lighting-checks/check-lifetimes.sh [absolute-godot-project-directory]`
-
-Timing comparisons must use frozen identical trees except ShadowRaster.cs, the
-same official toolchain/build mode, and sequential uncontented processes. New board
-features change the workload and must not be credited as raster speedups. A deliberately
-perturbed convolution was rejected by the bitwise guard before benchmark execution.
+The measurements below describe past snapshots. The old exact convolution and
+frozen synthetic corpus scene is no longer a verification gate.
 
 ## Recorded paired evidence (2026-10-20)
 
@@ -82,25 +52,6 @@ frozen pair. Visual desktop acceptance remains pending.
 
 
 ## Exact bulk/SIMD and coverage batch
-
-The runner also executes `LightingRasterParityChecks`: 87,453 assertions compare
-native RGBA8 conversion, eight input formats, full filtered/shadow and compound RGBA
-bytes, and coverage boundaries against frozen test-only pre-optimization references.
-The existing performance scene now has 275 assertions, including 90 bitwise Gaussian
-cases with odd widths, vector tails, kernels wider than images and fractional sigmas.
-Run both normal and scalar-fallback configurations:
-
-```sh
-bash tools/godot/lighting-performance-checks/run.sh
-DOTNET_EnableHWIntrinsic=0 bash tools/godot/lighting-performance-checks/run.sh
-bash tools/godot/lighting-checks/run.sh
-bash tools/godot/lighting-checks/check-lifetimes.sh
-```
-
-The optional absolute project path on both performance and lifetime runners remains
-available for frozen isolated trees. The fallback run must report
-`SIMD hardware=False`; setting an environment variable without checking that output
-is not evidence of exercising the scalar path.
 
 ### Exactness and ownership
 

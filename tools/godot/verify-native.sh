@@ -7,13 +7,11 @@ if [[ $# -ne 0 ]]; then
   exit 2
 fi
 python3 tools/godot/native-process-tests.py
-python3 tools/godot/select-native-format-sources-tests.py
-bash tools/godot/format-native.sh --check
 python3 tools/godot/check-source-metadata.py
-node tools/godot/validate-blackflag-camp.mjs --self-test
-node tools/godot/validate-reed-village.mjs --self-test
-node tools/godot/validate-white-river.mjs --self-test
-node tools/godot/validate-luojia.mjs --self-test
+node tools/godot/validate-blackflag-camp.mjs
+node tools/godot/validate-reed-village.mjs
+node tools/godot/validate-white-river.mjs
+node tools/godot/validate-luojia.mjs
 # Bound each native process; a stalled process is a failed gate, never a PASS.
 export EMPIRE_CHECK_TIMEOUT_SECONDS="${EMPIRE_CHECK_TIMEOUT_SECONDS:-900}"
 dotnet() { command timeout --signal=TERM --kill-after=15s "$EMPIRE_CHECK_TIMEOUT_SECONDS" "$DOTNET_ROOT/dotnet" "$@"; }

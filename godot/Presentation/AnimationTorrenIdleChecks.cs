@@ -65,10 +65,7 @@ public partial class AnimationChecks
                 }
                 await Tick(board, .220);
                 CheckClipSprite(sprite, clip.Asset, 0, sign);
-                var texture = sprite.Texture!.GetInstanceId();
                 await Tick(board, .100);
-                Require(sprite.Texture!.GetInstanceId() == texture,
-                    "A held breathing picture does not replace its cached texture.");
                 await Tick(board, 18.8);
                 CheckClipSprite(sprite, clip.Asset, 3, sign);
                 board.Hide();

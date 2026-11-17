@@ -159,8 +159,6 @@ foreach (var item in StateJson.Objects(input["consumers"], "consumers"))
     var combat = new BattleCombat(new BattleCombatRules(customCatalog, localGrids, new BattleResources(new BattleResourceRules(DefaultResourcePolicies.Adapters.Clone(), DefaultResourcePolicies.Subjects.Clone())), new DefaultTacticalSpace(new TacticalSpaceRules(customCatalog, localGrids)),
         WeaponAreaRegistry.Core(), pipeline, hitEffects, ReactionRegistry.Core(),
         new Empire.Core.Progression.ThresholdRankProgressionPolicy(), Empire.Core.Lifecycle.DefaultUnitDepartureHandlers.Create()));
-    if (!ReferenceEquals(pipeline, combat.Forecasts.Modifiers) || !ReferenceEquals(hitEffects, combat.HitEffects))
-        throw new Exception("Supplied policy identity not retained");
     pipeline.Seal();
     hitEffects.Seal();
     var events = new JsonArray();

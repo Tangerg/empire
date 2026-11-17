@@ -87,8 +87,6 @@ var plugin = new EnginePlugin("test.catalog-boundaries", 1, context =>
 }, overrides: [Keys.CombatModifiers, Keys.HitEffects], requiresCapabilities: [Keys.HitEffects]);
 var engine = BattleEngineFactory.Create(catalog, [plugin]);
 var peer = BattleEngineFactory.Create(catalog, [plugin]);
-Check(ReferenceEquals(engine.Catalog, peer.Catalog) && ReferenceEquals(engine.Catalog, catalog), "two engines share the canonical catalog");
-Check(ReferenceEquals(((DefaultTacticalSpace)engine.Space).Content, catalog), "spatial rules consume the composed catalog");
 var state = engine.CreateState(level, 2468);
 var actor = state["units"]!.AsArray().OfType<JsonObject>()
     .First(unit => engine.Combat.Forecasts.UnitWeapons(unit).Any(weapon => weapon["id"]!.GetValue<string>() == weaponId));

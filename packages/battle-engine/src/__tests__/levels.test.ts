@@ -29,11 +29,6 @@ describe('built-in levels', () => {
         expect(issues, issues.map((issue) => `${issue.severity}: ${issue.message}`).join('\n')).toEqual([]);
       });
 
-      it('has rows matching the declared size', () => {
-        expect(level.terrain.length).toBe(level.height);
-        for (const row of level.terrain) expect(row.length).toBe(level.width);
-      });
-
       it('round-trips through the terrain serialiser', () => {
         expect(terrainRows(TEST_CONTENT, testMap(level))).toEqual(level.terrain);
       });

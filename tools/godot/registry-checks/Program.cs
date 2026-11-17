@@ -110,16 +110,7 @@ void Keyed<TEntry, TRegistry>(string subject, TRegistry registry, Func<string, T
         };
     });
 }
-Keyed<ITacticalGrid, GridRegistry>("tactical grid", new(), id => new RegistryGrid(id), registry => registry.Clone());
-Keyed<WeaponAreaShape, WeaponAreaRegistry>("weapon area shape", new(), id => new(id, false, (_, _, _) => Array.Empty<Coord>()), registry => registry.Clone());
-Keyed<UnitDirectiveBehavior, UnitDirectiveRegistry>("unit directive", new(), id => new(id, _ => 0, 0, 0), registry => registry.Clone());
 Keyed<BattleActionRegistration, BattleActionRegistry>("action handler", new(), id => new(id, (_, _, _) => { }), registry => registry.Clone());
-Keyed<AiIntent, AiIntentRegistry>("AI intent", new(), id => new(id, 0, _ => null), registry => registry.Clone());
-Keyed<AbilityAiEvaluator, AbilityAiEvaluatorRegistry>("AI ability evaluator", new(), id => new(id, _ => null), registry => registry.Clone());
-Keyed<AiObjectiveAdvisor, AiObjectiveAdvisorRegistry>("AI objective advisor", new(), id => new(id, (_, _) => { }), registry => registry.Clone());
-Keyed<CampaignConditionHandler, CampaignConditionRegistry>("campaign condition handler", new(), id => new(id, (_, _, _) => true), registry => registry.Clone());
-Keyed<CampaignEffectHandler, CampaignEffectRegistry>("campaign effect handler", new(), id => new(id, (_, _) => { }), registry => registry.Clone());
-Keyed<CampaignNodeHandler, CampaignNodeRegistry>("campaign node handler", new(), id => new(id, (_, _) => { }), registry => registry.Clone());
 Keyed<RuleEntry, TestRegistry>("test rule", new(), id => new(id), registry => registry.Clone());
 
 void Priority()
@@ -127,7 +118,7 @@ void Priority()
     var registry = new TestPriorities();
     void Test(string name, Func<object?> call) => Check("priority", name, call);
     string[] Ids(IReadOnlyList<RuleEntry> entries) => entries.Select(entry => entry.Id).ToArray();
-    Test("empty ordered cached and read only", () => new { keys = Ids(registry.Ordered()), cached = ReferenceEquals(registry.Ordered(), registry.Ordered()), frozen = ((IList<RuleEntry>)registry.Ordered()).IsReadOnly });
+    Test("empty ordered read only", () => new { keys = Ids(registry.Ordered()), frozen = ((IList<RuleEntry>)registry.Ordered()).IsReadOnly });
     foreach (var id in new[] { "a.", "\ue000", "\ud800\udc00", "Z", "a-", "$", "\ud83d\ude00", "a" })
         registry.Register(new(id, 0.25));
     registry.Register(new("negative", -1.5));
@@ -135,16 +126,11 @@ void Priority()
     registry.Register(new("last", 10.5));
     Test("fractional priority and UTF-16 ties", () => Ids(registry.Ordered()));
     var prior = registry.Ordered();
-    Test("replace invalidates cache and changes order", () => { registry.Replace(new("last", -2.75)); return new { keys = Ids(registry.Ordered()), changed = !ReferenceEquals(prior, registry.Ordered()), old = Ids(prior) }; });
-    var beforeRegister = registry.Ordered();
-    Test("register invalidates cache", () => { registry.Register(new("new", -3.5)); return new { changed = !ReferenceEquals(beforeRegister, registry.Ordered()), first = registry.Ordered()[0].Id }; });
-    var beforeDuplicate = registry.Ordered();
+    Test("replace changes order", () => { registry.Replace(new("last", -2.75)); return new { keys = Ids(registry.Ordered()), old = Ids(prior) }; });
+    Test("register changes order", () => { registry.Register(new("new", -3.5)); return new { first = registry.Ordered()[0].Id }; });
     Test("duplicate still rejects", () => registry.Register(new("new")));
-    Test("failed register invalidates cache without changing table", () => new { changed = !ReferenceEquals(beforeDuplicate, registry.Ordered()), keys = registry.Keys() });
     registry.Seal();
-    var sealedOrder = registry.Ordered();
     Test("sealed priority replacement rejects", () => registry.Replace(new("new")));
-    Test("failed sealed write invalidates cache", () => new { changed = !ReferenceEquals(sealedOrder, registry.Ordered()), keys = Ids(registry.Ordered()) });
     Test("ordered list cannot be modified", () => { try { ((IList<RuleEntry>)registry.Ordered())[0] = new("forged"); return false; } catch (NotSupportedException) { return true; } });
     var firstEntry = new RuleEntry("first");
     var secondEntry = new RuleEntry("second");
@@ -236,8 +222,6 @@ try { actionKeys.Replace("invalid", (RuleActionHandler)null!); throw new Excepti
 
 var metadata = new BattleActionRegistry().Register("custom", (_, _, _) => { }, handsOffTurn: true, duringDeployment: true);
 var metadataClone = metadata.Clone().Seal();
-var frozenMetadata = metadata.Freeze();
-var registeredMetadata = metadata.Get("custom");
 metadata.Replace("custom", (_, _, _) => { });
 metadata.Replace("deployment", (_, _, _) => { }, duringDeployment: true);
 object Flags(BattleActionRegistry registry, string kind) => new
@@ -253,9 +237,6 @@ Require(JsonNode.DeepEquals(JsonSerializer.SerializeToNode(new
     unknown = Flags(metadata, "unknown"),
     cloneSealed = metadataClone.IsSealed
 }), oracle["actionMetadata"]), "Action metadata source parity");
-Require(ReferenceEquals(frozenMetadata["custom"], registeredMetadata) && frozenMetadata["custom"].HandsOffTurn && frozenMetadata["custom"].DuringDeployment &&
-    !frozenMetadata.ContainsKey("deployment"), "Frozen action metadata/table changed after caller mutation");
-Require(ReferenceEquals(metadataClone.Get("custom"), registeredMetadata), "Action clone did not retain entry identity");
 checkedCount++;
 
 // The table and handoff metadata captured by Battle must not follow later caller writes.
@@ -285,7 +266,7 @@ var characterization = new JsonObject
 };
 File.WriteAllText(characterizationPath, characterization.ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
 Console.WriteLine($"CHARACTERIZED {nonPortable.Count} non-transitive mixed-NaN orders; {differences} differ between source and native sorting. Evidence: {characterizationPath}");
-Console.WriteLine($"PASS {checkedCount} exact source registry outcomes across 11 native registries; Battle table/handoff isolation and action upsert; source NaN comparator cycle characterized.");
+Console.WriteLine($"PASS {checkedCount} exact source registry outcomes across generic and action registries; Battle table/handoff isolation and action upsert; source NaN comparator cycle characterized.");
 
 static string ReadOracle(string path)
 {
@@ -316,10 +297,4 @@ sealed class TestPriorities : PriorityRegistry<RuleEntry, TestPriorities>
 {
     public TestPriorities() : base("priority rule") { }
     public TestPriorities Clone() => CopyInto(new TestPriorities());
-}
-sealed class RegistryGrid(string id) : SquareTiling
-{
-    public override string Id => id;
-    public override IReadOnlyList<DirectionDef> Directions => Array.Empty<DirectionDef>();
-    public override int Distance(Coord a, Coord b) => Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y);
 }

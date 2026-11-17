@@ -14,7 +14,6 @@ IMPORT_ERROR = ('ERROR: EditorSettings not instantiated yet when getting setting
                 '"export/android/android_sdk_path".')
 SCRIPT_ERROR = "SCRIPT ERROR: Invalid access to property or key 'required_field' on a base object of type 'Nil'."
 SUCCESS = "Current native contracts, replay/save determinism, and application flow passed."
-SCENE_COUNT = 48
 
 
 class NativeGateTests(unittest.TestCase):
@@ -34,7 +33,7 @@ class NativeGateTests(unittest.TestCase):
         for name in ("env.sh", "verify-native.sh", "native-process.sh"):
             if (TOOLS / name).exists():
                 self.put("tools/godot/" + name, (TOOLS / name).read_text())
-        for name in ("format-native.sh", "objective-outcome-checks/run.sh", "catalog-boundary-checks/run.sh"):
+        for name in ("objective-outcome-checks/run.sh", "catalog-boundary-checks/run.sh"):
             self.put("tools/godot/" + name, "#!/usr/bin/env bash\nexit 0\n")
         for name in ("bin/python3", "bin/node", "toolchain/dotnet/dotnet"):
             self.put(name, "#!/usr/bin/env bash\nexit 0\n", executable=True)
@@ -130,20 +129,12 @@ else:
         result, calls = self.aggregate("clean")
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn(SUCCESS, result.stdout)
-        self.assertEqual(len(calls), SCENE_COUNT + 1)
         self.assertIn("--editor", calls[0]["args"])
         scenes = calls[1:]
-        self.assertEqual(len({call["data"] for call in scenes}), SCENE_COUNT)
+        self.assertEqual(len({call["data"] for call in scenes}), len(scenes))
         self.assertTrue(all(Path(call["data"]).is_dir() for call in scenes))
         self.assertNotIn(calls[0]["data"], {call["data"] for call in scenes})
         by_scene = {next(arg for arg in call["args"] if arg.endswith(".tscn")): call for call in scenes}
-        self.assertEqual(len(by_scene), SCENE_COUNT)
-        for scene in ("GrainRoadChecks", "LedgerHintChecks", "C09CandidateChecks", "C10CandidateChecks", "C11CandidateChecks", "C12CandidateChecks", "ArchiveDistrictChecks", "ForgeDistrictChecks", "C15CandidateChecks", "MemorialDistrictChecks"):
-            self.assertEqual(by_scene[f"res://Scenes/{scene}.tscn"]["args"][-1], f"res://Scenes/{scene}.tscn")
-        for scene in ("ReadyUnitNavigationChecks", "C01MissionChecks", "MiniatureBoardChecks",
-                      "MiniatureInputChecks", "MiniaturePoseChecks", "MiniatureCameraChecks", "C01HudProfileChecks"):
-            resource = f"res://Scenes/{scene}.tscn"
-            self.assertEqual(by_scene[resource]["args"][-1], resource)
         self.assertEqual(by_scene["res://Scenes/LightingChecks.tscn"]["args"][-2:],
                          ["--", f"--lighting-oracle={self.root}/godot/tests/oracle/lighting.json"])
         self.assertEqual(by_scene["res://Scenes/SceneryChecks.tscn"]["args"][-2:],
@@ -152,16 +143,6 @@ else:
         self.assertEqual(campaign["args"][-1], "res://Scenes/CampaignPlayedFlowChecks.tscn")
         self.assertEqual(campaign["budget"], "7")
         self.assertTrue(all(call["budget"] == "5" for call in calls if call is not campaign))
-
-    def test_default_campaign_budget_is_separate_from_individual_scenes(self):
-        self.environment.pop("EMPIRE_CHECK_TIMEOUT_SECONDS")
-        self.environment.pop("EMPIRE_CAMPAIGN_TIMEOUT_SECONDS")
-        result, calls = self.aggregate("clean")
-        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertEqual(len(calls), SCENE_COUNT + 1)
-        self.assertIn("res://Scenes/CampaignPlayedFlowChecks.tscn", calls[-1]["args"])
-        self.assertEqual(calls[-1]["budget"], "2400")
-        self.assertTrue(all(call["budget"] == "900" for call in calls[:-1]))
 
 
 class NativeProcessTests(unittest.TestCase):

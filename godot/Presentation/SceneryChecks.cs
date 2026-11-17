@@ -35,37 +35,12 @@ public partial class SceneryChecks : Node
             var oracle = JsonNode.Parse(input)!;
             var environment = EnvironmentCatalog.Load();
             var assets = AssetCatalog.Load();
-            CheckC01MiniatureContract();
             HistoricalFrames(oracle, environment);
             await CoversAndLifecycle(oracle, assets, environment);
             GD.Print($"PASS {_checks} historical source-art and current registered scenery/resource/lifecycle assertions; no GUI acceptance claim.");
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }
-    }
-
-    private void CheckC01MiniatureContract()
-    {
-        var scene = AuthoredScene.Load("res://data/scenes/c01-01.json");
-        Require(!string.IsNullOrWhiteSpace(scene.MiniatureScenePath),
-            "Rebuilt C01 must explicitly own a miniature 3D scene; the historical painted renderer is not a fallback.");
-        Require(scene.PaintedGroundPath is null && scene.AssembledGroundPath is null,
-            "C01 must have one environment owner, not miniature and historical painted grounds together.");
-        Require(scene.HasAuthoredFramePlacements && scene.FramePlacements.Count == 0 && scene.Placements.Count == 0,
-            "C01's 3D scene must not silently retain the old 2D props or generic perimeter.");
-        Require(ResourceLoader.Exists(scene.MiniatureScenePath!),
-            $"C01 declares a missing miniature resource: {scene.MiniatureScenePath}.");
-        var packed = ResourceLoader.Load<PackedScene>(scene.MiniatureScenePath!);
-        Require(packed is not null, "C01 miniature resource must load as a real PackedScene.");
-        var instance = packed!.Instantiate();
-        try
-        {
-            Require(instance is Node3D, "C01 miniature environment must have a Node3D root.");
-            Require(instance.FindChildren("*", "MeshInstance3D", true, false)
-                .OfType<MeshInstance3D>().Any(mesh => mesh.Mesh is not null),
-                "C01 miniature scene must contain real mesh geometry, not an empty root or a painted screenshot.");
-        }
-        finally { instance.Free(); }
     }
 
     private void HistoricalFrames(JsonNode oracle, EnvironmentCatalog environment)

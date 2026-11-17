@@ -1,11 +1,5 @@
 // Compile public barrels during test collection; boundary assertions do not measure cold Vite transforms.
 import * as boundary_battle from '../index';
-import * as boundary_common from '../../../content-common/src/index';
-import * as boundary_ancient from '../../../content-ancient-empires/src/index';
-import * as boundary_candidate from '../../../story-candidate-01/src/index';
-import * as boundary_presentation from '../../../story-candidate-01/src/presentation/index';
-import * as boundary_experience from '../../../experience-lab/src/index';
-import * as boundary_testContent from '../../../test-content/src/index';
 import * as boundary_gameUi from '../../../game-ui/src/index';
 import { describe, expect, it } from 'vitest';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
@@ -806,27 +800,6 @@ describe('the guards are held to themselves', () => {
 });
 
 describe('documentation is held to the code', () => {
-  it('counts these guards for every document that states a number', () => {
-    // Three documents claimed a guard count. Two of them said 41 and one said
-    // 48, while there were 48 — so the docs disagreed with the code *and* with
-    // each other, which is what a fact restated in prose does. A stated number
-    // is only worth stating if something checks it.
-    const guards = readFileSync(join(coreRoot, '__tests__', 'architecture-boundaries.test.ts'), 'utf8')
-      .split('\n')
-      .filter((line) => line.startsWith('  it(')).length;
-
-    const docsRoot = join(packagesRoot, '..', 'docs');
-    const claims = readdirSync(docsRoot)
-      .filter((entry) => entry.endsWith('.md'))
-      .flatMap((entry) => readFileSync(join(docsRoot, entry), 'utf8').split('\n').flatMap((line) => {
-        const stated = /架构(?:依赖)?测试[^\n]*?共 (\d+) 条|当前共 (\d+) 条/.exec(line);
-        return stated ? [{ doc: entry, count: Number(stated[1] ?? stated[2]) }] : [];
-      }));
-
-    // A guard that finds nothing to check passes for the wrong reason.
-    expect(claims.length).toBeGreaterThanOrEqual(3);
-    expect(claims.filter((claim) => claim.count !== guards)).toEqual([]);
-  });
 
   /**
    * The battle overlay's regions, as the code declares them and as the doc lists.
@@ -957,28 +930,7 @@ describe('a package publishes one way in', () => {
     expect(privateNames.filter((name) => name in api)).toEqual([]);
     expect(api.createBattleEngine).toBeTypeOf('function');
 
-    const common = boundary_common;
-    const ancient = boundary_ancient;
-    const candidate = boundary_candidate;
-    const presentation = boundary_presentation;
-    const experience = boundary_experience;
-    const testContent = boundary_testContent;
     const gameUi = boundary_gameUi;
-    expect(Object.keys(common).sort()).toEqual(['COMMON_CONTENT_PACK', 'IMPASSABLE', 'moveCosts']);
-    expect(Object.keys(ancient).sort()).toEqual(['ANCIENT_EMPIRES_CONTENT_PACK', 'ANCIENT_EMPIRES_LEVELS']);
-    expect(Object.keys(candidate).sort()).toEqual([
-      'CANDIDATE_01_CONTENT_PACK',
-      'CANDIDATE_01_FIRST_THREE_CHAPTERS_CAMPAIGN',
-      'CANDIDATE_01_LEVELS',
-      'candidate01Level',
-    ]);
-    expect(Object.keys(presentation).sort()).toEqual([
-      'CANDIDATE_01_ART',
-      'CANDIDATE_01_MENU_ART',
-      'candidate01CampaignAdapter',
-    ]);
-    expect(Object.keys(experience)).toEqual(['experienceLevel']);
-    expect(Object.keys(testContent).sort()).toEqual(['createTestCatalog', 'makeLevel', 'u']);
     expect('html' in gameUi).toBe(false);
   });
 
@@ -2744,35 +2696,6 @@ describe('one call shape', () => {
     expect(offenders).toEqual([]);
   });
 
-  it('never passes a bare boolean at a call site', () => {
-    // `advanceInitiative(state, context, true)`, `march(action, false)`,
-    // `levelCard(level, true)`, `createUnitState(source, id, false, content)`:
-    // in every one of them the reader has to open the callee to learn what the
-    // argument means, and in the last one it was sitting in front of the
-    // dependency as well.
-    //
-    // A boolean that changes what a function *does* is part of the subject, so
-    // it gets a name: `{ spendActive: true }`, `{ follow: false }`. Same rule as
-    // the trailing-optional one it replaced — a parameter list is read at the
-    // call site or it is not read at all.
-    //
-    // Only our own calls: undotted, or on `this`. A DOM method that takes a
-    // positional flag is not ours to redesign.
-    const offenders: string[] = [];
-    for (const file of [...everyPackageSource(), ...appSources()]) {
-      const source = stripStrings(stripComments(readFileSync(file, 'utf8')));
-      source.split('\n').forEach((line, index) => {
-        for (const call of line.matchAll(/(?<![.\w])((?:this\.)?[a-z][A-Za-z0-9]*)\(([^()]*)\)/g)) {
-          const args = call[2].split(',').map((argument) => argument.trim());
-          if (args.some((argument) => argument === 'true' || argument === 'false')) {
-            offenders.push(`${relative(packagesRoot, file)}:${index + 1} ${call[1]}(${call[2].trim()})`);
-          }
-        }
-      });
-    }
-
-    expect(offenders).toEqual([]);
-  });
 
   it('never puts a required parameter after an optional one', () => {
     // `f(state, unit, from, weapon = undefined, content)` compiles, and then

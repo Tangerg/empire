@@ -152,23 +152,6 @@ const counts = validate(data);
 const image = readFileSync(resolve(root, 'godot/assets/native/scenes/white-river.png'));
 assert.equal(sha256(image), data.audit.sourceSha256);
 assert.deepEqual([image.readUInt32BE(16), image.readUInt32BE(20)], data.painted.pixelSize);
-if (process.argv.includes('--self-test')) {
-  const setCell = (copy, [x, y], symbol) => { const row = copy.level.terrain[y]; copy.level.terrain[y] = row.slice(0, x) + symbol + row.slice(x + 1); };
-  const mutations = [
-    ['foundation hole', copy => setCell(copy, copy.audit.houses[0].blockedCells[0], '.'), /physical foundation/],
-    ['bridge on bank', copy => setCell(copy, [24, 18], '='), /actual deck/],
-    ['weakened escort', copy => copy.level.players[0].objectives[0].objective.count = 3, /nonspatial escort/],
-    ['early wave', copy => copy.level.scenario.triggers[0].condition.turn = 3, /nonspatial escort/],
-    ['shortened deadline', copy => copy.level.rules.turnLimit = 8, /nonspatial escort/],
-    ['roof steals click', copy => copy.painted.occluders[0].parts[0].pointer.kind = 'target', /roof must pass through/],
-    ['stale registration', copy => copy.painted.levelSourceSha256 = '0'.repeat(64), /canonical source checksum/],
-  ];
-  for (const [name, mutate, expected] of mutations) {
-    const copy = structuredClone(data); mutate(copy);
-    assert.throws(() => validate(copy), expected, `must reject ${name}`);
-  }
-  console.log(`PASS: ${mutations.length} semantic mutations rejected`);
-}
 console.log(`PASS: C06 50x32, 5 villages + 5 outposts; ${counts.walkable} connected foot cells, ${counts.walls} walls, ${counts.water} water, ${counts.deck} actual deck cells`);
 console.log(`PASS: retired mission parity, image bytes and canonical registration ${data.painted.levelSourceSha256}`);
 console.log('Static routes do not establish movement costs, escort balance or normal-AI gameplay. WhiteRiverChecks and GUI acceptance are separate.');

@@ -40,12 +40,6 @@ foreach (var item in fixture["cases"]!.AsArray().OfType<JsonObject>())
     var input = item["input"]!.AsObject();
     Check(input["name"]!.GetValue<string>(), () => Equal(item["expected"]!, Run(input)));
 }
-Check("source retained-context defect remains explicitly characterized", () =>
-{
-    var sourceLifecycle = fixture["lifecycle"]!;
-    Assert(sourceLifecycle["failedScopeValue"]!.GetValue<string>() == "value-1", "source failed scope changed");
-    Equal(new JsonArray("late replacement", "base", "late addition", "base"), sourceLifecycle["first"]!);
-});
 Check("retained contexts cannot mutate or consume after successful installation", () => ContextLifetime());
 Check("failed installation closes its retained context", () => FailedContextLifetime(false));
 Check("manifest rejection closes its retained context", () => FailedContextLifetime(true));

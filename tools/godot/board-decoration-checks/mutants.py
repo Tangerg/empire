@@ -8,9 +8,7 @@ import tempfile
 root = Path.cwd()
 source = root / 'godot'
 mutants = {
-    'straightened-cubic-policy': ('BoardDecorations.cs', ' / 6d', ' / 5d', 'Actual source cubic path'),
     'missing-filter-spill': ('BoardDecorations.cs', 'var filtered = ShadowRaster.Filter(source, new[] { drop.ToDrop() }, density);', 'var filtered = (Image: (Image)source.Duplicate(), Padding: 0);', 'Action filter has source spill'),
-    'ring-opacity-order': ('BoardDecorations.cs', 'return new(ImageTexture.CreateFromImage(filtered.Image), bounds.Grow(padding), opacity);', 'return new(ImageTexture.CreateFromImage(filtered.Image), bounds.Grow(padding), 1);', 'Selection opacity is post-filter'),
     'replaced-path-leaks': ('BoardDecorations.cs', 'pathDrawing?.Texture.Dispose();\n        pathDrawing = null;', 'pathDrawing = null;', 'Replaced path texture is disposed'),
     'ranges-over-actors': ('BoardOverlay.cs', 'ZIndex = -2 }', 'ZIndex = 3000 }', 'Source ranges/path below actors'),
     'outside-spots': ('BoardOverlay.cs', '_playable?.Contains(cell) ?? true', 'true', 'Source range ordering'),

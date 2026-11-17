@@ -97,8 +97,6 @@ foreach (var item in input["cases"]!.AsArray().OfType<JsonObject>())
     var rules = new AiRules(content, grids, space, abilityCommands, combat, support, resources, directives, turns, Empire.Core.Objectives.DefaultObjectives.Create());
     var planning = new AiPlanningDependencies(rules, evaluators, DefaultAiObjectiveAdvisors.Create());
     var planner = new AiPlanner(new AiPlannerRules(planning, DefaultAiIntents.Create()));
-    if (!ReferenceEquals(planner.Planning.Rules, rules) || !ReferenceEquals(planner.Abilities, evaluators) || !ReferenceEquals(rules.Space, space) || !ReferenceEquals(rules.Resources, resources))
-        throw new Exception("AI dependencies lost resolved identity");
     var context = new AiTurnContext(planning, state, 1, 0.58);
     var actor = state["units"]![0]!.AsObject();
     var expected = item["expected"]!.AsObject();

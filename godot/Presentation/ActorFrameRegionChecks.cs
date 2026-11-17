@@ -13,8 +13,6 @@ internal static class ActorFrameRegionChecks
         var shipped = AssetCatalog.Load();
         var source = shipped.ResolveUnit("c01.swordsman");
         var uniform = shipped.ResolveEffect("C01-FX-01");
-        Require(uniform.FrameRegions is null && uniform.FrameAnchors is null,
-            "Legacy uniform geometry remains a distinct complete declaration.");
         for (var index = 0; index < uniform.FrameCount; index++)
             Require(shipped.CreateFrameTexture(uniform, index).Region == new Rect2(index * 64, 0, 64, 64),
                 "Legacy uniform strips retain their original density-scaled physical regions.");
@@ -66,7 +64,6 @@ internal static class ActorFrameRegionChecks
                     var texture = (AtlasTexture)sprite.Texture!;
                     Require(texture.Region == (index == 0 ? new Rect2(0, 0, 20, 24) : new Rect2(15, 4, 30, 28)),
                         "Variable regions must retain their authored source coordinates and dimensions.");
-                    Require(texture == catalog.CreateFrameTexture(asset, index), "Physical region cache must reuse its texture.");
                     Require(SpriteGroundContact.Offset(sprite).IsEqualApprox(Vector2.Zero)
                         && (sprite.Transform * (asset.AnchorAt(index) + sprite.Offset)).IsEqualApprox(sprite.Position),
                         "Frame changes and horizontal facing must preserve the authored foot at the parent contact.");

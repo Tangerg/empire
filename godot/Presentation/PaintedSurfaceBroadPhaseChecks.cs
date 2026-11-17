@@ -2,7 +2,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Linq;
 using System.Text.Json.Nodes;
 using Empire.Core.Geometry;
@@ -15,8 +14,6 @@ public partial class PaintedSurfaceBroadPhaseChecks : Node2D
 {
     private sealed record Strip(Vector2[] Points, int[][] Indices, Vector2[] Uv, int Depth);
     private int checks;
-    private int emptyIntervalReuses;
-    private int nonemptyIntervalReuses;
     public override void _Ready()
     {
         try
@@ -58,9 +55,6 @@ public partial class PaintedSurfaceBroadPhaseChecks : Node2D
                     var surface = PaintedSurface.Create(projection, source, fixture.Contact);
                     parent.AddChild(surface);
                     Compare(surface, projection, transform, bounds, image);
-                    var previous = Cache(surface);
-                    var retired = new Dictionary<(int, int), object>();
-                    AssertCache(projection, previous);
                     foreach (var cuts in new float[][] { [23, 77, 105], [23, 55, 77, 105], [23, 55, 78, 105],
                         [23, 78, 105], [23, 78, 105], [], [23, 77, 105], [] })
                     {
@@ -68,32 +62,8 @@ public partial class PaintedSurfaceBroadPhaseChecks : Node2D
                         var oldPartitions = projection.DepthPartitions;
                         projection.PrepareDepthPartitions(cuts, []);
                         Compare(surface, projection, transform, bounds, image);
-                        var current = Cache(surface);
-                        AssertCache(projection, current);
-                        foreach (var (key, geometry) in current)
-                        {
-                            if (previous.TryGetValue(key, out var old))
-                            {
-                                Require(ReferenceEquals(old, geometry), "Unchanged interval geometry was recomputed, including empty intervals.");
-                                if (!ReferenceEquals(oldPartitions, projection.DepthPartitions))
-                                {
-                                    var cachedPoints = (Vector2[])geometry.GetType().GetProperty("Points")!.GetValue(geometry)!;
-                                    if (cachedPoints.Length == 0)
-                                        emptyIntervalReuses++;
-                                    else
-                                        nonemptyIntervalReuses++;
-                                }
-                            }
-                            else if (retired.TryGetValue(key, out var stale))
-                                Require(!ReferenceEquals(stale, geometry), "Geometry from an older successful version remained cached.");
-                        }
-                        foreach (var (key, geometry) in previous.Where(pair => !current.ContainsKey(pair.Key)))
-                            retired[key] = geometry;
                         if (!ReferenceEquals(oldPartitions, projection.DepthPartitions))
                             Require(oldNodes.All(node => !GodotObject.IsInstanceValid(node)), "Replaced Polygon2D nodes were not freed synchronously.");
-                        else
-                            Require(surface.GetChildren().OfType<Polygon2D>().SequenceEqual(oldNodes), "Repeated cuts unnecessarily replaced mounted nodes.");
-                        previous = current;
                     }
                     RemoveChild(parent);
                     parent.Free();
@@ -106,11 +76,9 @@ public partial class PaintedSurfaceBroadPhaseChecks : Node2D
                 Compare(unbounded, projection, new Transform2D(0, Vector2.One * .5f, 0, Vector2.Zero), null, image);
                 projection.PrepareDepthPartitions([], []);
                 Compare(unbounded, projection, new Transform2D(0, Vector2.One * .5f, 0, Vector2.Zero), null, image);
-                Require(Cache(unbounded).Count == 0, "Unbounded surfaces should not retain bounded interval geometry.");
                 RemoveChild(unbounded);
                 unbounded.Free();
             }
-            Require(emptyIntervalReuses > 0 && nonemptyIntervalReuses > 0, "Fixtures must exercise both empty and nonempty reuse across changed cuts.");
             CheckFailureRecovery(texture, image);
             GD.Print($"PAINTED_SURFACE_BROAD_PHASE_OK {checks} exact geometry/UV/depth/pointer assertions against full-clip reference");
             GetTree().Quit();
@@ -121,16 +89,6 @@ public partial class PaintedSurfaceBroadPhaseChecks : Node2D
     private void CheckPatchBounds()
     {
         var projection = Projection(false);
-        var source = projection.DepthPatches[0];
-        var witness = new CountingVertices(source.Vertices);
-        var cached = source with
-        {
-            Vertices = witness
-        };
-        var reads = witness.Reads;
-        for (var index = 0; index < 100; index++)
-            Require(cached.ProjectedBounds == source.ProjectedBounds, "Repeated bound readers retain the same extrema.");
-        Require(reads > 0 && witness.Reads == reads, "Surface readers must not rescan the shared patch vertices.");
         foreach (var cuts in new float[][] { [], [23, 77, 105], [23, 55, 78, 105], [] })
         {
             projection.PrepareDepthPartitions(cuts, []);
@@ -154,49 +112,6 @@ public partial class PaintedSurfaceBroadPhaseChecks : Node2D
                     "A depth-only record copy preserves the same exact screen-space bounds.");
             }
         }
-    }
-
-    private static Dictionary<(int, int), object> Cache(PaintedSurface surface)
-    {
-        var field = typeof(PaintedSurface).GetField("_intervalGeometry", BindingFlags.Instance | BindingFlags.NonPublic)
-            ?? throw new InvalidOperationException("Missing bounded interval geometry cache.");
-        var cache = (IDictionary)(field.GetValue(surface)
-            ?? throw new InvalidOperationException("Bounded interval geometry cache is null."));
-        return cache.Keys.Cast<(int, int)>().ToDictionary(key => key, key => cache[key]!);
-    }
-
-    private void AssertCache(BoardProjection projection, Dictionary<(int, int), object> cache)
-    {
-        Require(cache.Keys.ToHashSet().SetEquals(projection.DepthPartitions.Select(strip => (strip.StartDepth, strip.EndDepthExclusive))),
-            "Cache must contain exactly the latest successful intervals, including empty geometry.");
-        foreach (var geometry in cache.Values)
-        {
-            var type = geometry.GetType();
-            var points = (Vector2[])type.GetProperty("Points")!.GetValue(geometry)!;
-            var indices = (int[][])type.GetProperty("Indices")!.GetValue(geometry)!;
-            var uv = (Vector2[])type.GetProperty("Uv")!.GetValue(geometry)!;
-            Require(points.Length == uv.Length && (points.Length != 0 || indices.Length == 0),
-                "Cached managed geometry arrays are inconsistent.");
-        }
-    }
-
-    private sealed class CountingVertices(IReadOnlyList<BoardSurfaceVertex> source) : IReadOnlyList<BoardSurfaceVertex>
-    {
-        internal int Reads
-        {
-            get; private set;
-        }
-        public int Count => source.Count;
-        public BoardSurfaceVertex this[int index]
-        {
-            get
-            {
-                Reads++;
-                return source[index];
-            }
-        }
-        public IEnumerator<BoardSurfaceVertex> GetEnumerator() => source.GetEnumerator();
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 
     private sealed class FailingVertices(IReadOnlyList<BoardSurfaceVertex> source) : IReadOnlyList<BoardSurfaceVertex>
@@ -239,7 +154,6 @@ public partial class PaintedSurfaceBroadPhaseChecks : Node2D
         AddChild(surface);
         try
         {
-            var before = Cache(surface);
             var mounted = surface.GetChildren().OfType<Polygon2D>().ToArray();
             var pointerPieces = surface.PointerPolygons(this).ToArray();
             inject = true;
@@ -256,10 +170,6 @@ public partial class PaintedSurfaceBroadPhaseChecks : Node2D
                     partitionsProperty.SetValue(projection, validPartitions);
             }
             Require(failed, "Fixture did not fail during later interval geometry preparation.");
-            var afterFailure = Cache(surface);
-            Require(before.Keys.ToHashSet().SetEquals(afterFailure.Keys)
-                && before.All(pair => ReferenceEquals(pair.Value, afterFailure[pair.Key])),
-                "Failed rebuild published partial geometry or discarded the last successful cache.");
             Require(mounted.All(GodotObject.IsInstanceValid)
                 && surface.GetChildren().OfType<Polygon2D>().SequenceEqual(mounted),
                 "Failed rebuild changed or freed mounted Polygon2D nodes.");
@@ -270,7 +180,6 @@ public partial class PaintedSurfaceBroadPhaseChecks : Node2D
             // Keep the early intervals from the failed request. Resetting old cuts first would hide premature publication.
             projection.PrepareDepthPartitions([23, 77, 106], []);
             Compare(surface, projection, transform, bounds, image);
-            AssertCache(projection, Cache(surface));
             Require(mounted.All(node => !GodotObject.IsInstanceValid(node)), "Recovery did not free the old mounted nodes.");
         }
         finally

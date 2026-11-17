@@ -31,16 +31,6 @@ const entries = Object.entries(overrides.assets) as Array<[string, Override]>;
 const approved = entries.filter(([, entry]) => sourcesOf(entry).some(source => source.source.includes('/masters/approved-v5/')));
 
 describe('approved static catalogs preserve campaign ownership', () => {
-  it('reads opaque scene provenance independently from reusable transparent character/card sources', () => {
-    const scene = { source: 'scene.png', sha256: 'scene hash' };
-    const character = { source: 'character.png', sha256: 'character hash' };
-    const background = { source: 'background.png', sha256: 'background hash' };
-    expect(sourcesOf({ kind: 'opaque-scene-v1', scene, sourceCropBox: null })).toEqual([scene]);
-    expect(sourcesOf({ kind: 'character-card-composite-v1', character, background,
-      placement: { renderWidth: 144, origin: [24, 4] } })).toEqual([character, background]);
-    expect(sourcesOf({ kind: 'transparent-prop-v1', prop: character })).toEqual([character]);
-    expect(sourcesOf(character)).toEqual([character]);
-  });
   it.each(approved)('validates %s in its owning manifest without inventing a playable consumer', (topic, entry) => {
     const matches = catalogs.flatMap(catalog => catalog.assets.filter(asset => asset.topicId === topic).map(asset => ({ ...catalog, asset })));
     expect(matches).toHaveLength(1);

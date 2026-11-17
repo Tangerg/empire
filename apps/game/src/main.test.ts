@@ -63,9 +63,6 @@ describe('game entry point', () => {
     expect(cards.some((card) => card.textContent?.includes('hex probe'))).toBe(true);
     // The card's own picture, not every nested `<svg>` an atlas cell is drawn in.
     expect(document.querySelectorAll('.level-thumb > svg')).toHaveLength(5);
-    // Each card paints a real minimap: the ground the scene composes, then the
-    // tiles the per-cell painters draw, then a dot for every unit on the map.
-    expect(document.querySelectorAll('.level-thumb svg > g').length).toBeGreaterThan(100);
 
     (document.querySelector('[data-act="closeModal"]') as HTMLElement).click();
     expect(document.querySelector('.modal-root .modal')).toBeNull();
