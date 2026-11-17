@@ -25,7 +25,7 @@ Covered behaviors:
 - Every one of the 38 installed weapon definitions against three unit archetypes, including all authored hit effects.
 - All three status stacking modes and provenance, removal idempotence, every installed career mastery threshold, grouped resource readiness and ordered fractional consumption.
 - Structure rounding/clipping, dead structures, invalid amounts and lookup/error precedence.
-- Custom area registration/replacement, clipping, ordered deduplication and changed occupant requirements in both forecast and delayed resolution. Independent registry checks cover duplicate rejection, sealing, unsealed clones, key order and ask/demand APIs.
+- Custom area registration/replacement, clipping, ordered deduplication and changed occupant requirements in both forecast and delayed resolution. The default area key order remains checked here. Generic duplicate rejection, sealing, unsealed cloning and ask/demand contracts live in `../registry-checks`.
 
 Two source edge differences were corrected while adding the checks: destroyed structures return before raw-damage validation, and invalid cast durations report their declared/resolve values.
 

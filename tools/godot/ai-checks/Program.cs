@@ -92,12 +92,4 @@ if (args.Length > 1)
 var intents = planner.Intents.Clone();
 intents.Register(new AiIntent("early", -100, _ => new JsonObject { ["kind"] = "test" }));
 if (intents.Ids()[0] != "early" || planner.Intents.Keys().Contains("early")) throw new Exception("Registry clone is not independent");
-intents.Replace(new AiIntent("early", -100, _ => null));
-intents.Seal();
-try
-{
-    intents.Register(new AiIntent("late", 0, _ => null));
-    throw new Exception("Sealed registry accepted registration");
-}
-catch (Empire.Core.DomainInvariantException) { }
-Console.WriteLine("PASS AI registry extension, replacement, clone isolation and sealing");
+Console.WriteLine("PASS AI intent priority projection and clone isolation");

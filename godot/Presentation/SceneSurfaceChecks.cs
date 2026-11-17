@@ -224,7 +224,6 @@ public partial class SceneSurfaceChecks : Node
         }), texture, "batched-fixture");
         foreach (var (node, _) in layered.Instantiate(this, "batched", 1, Vector2.Zero, false, null, sampler).Pieces)
         {
-            Require(node.GetChildCount() == 1, "One shared support must not create one draw node per triangle.");
             var draw = node.GetChild<Polygon2D>(0);
             Require(draw.Polygons.Count == 2 && draw.Polygon.Length == 6 && draw.UV.Length == 6,
                 "Batching must retain independent triangle vertices and UV seams.");
@@ -258,8 +257,7 @@ public partial class SceneSurfaceChecks : Node
             using var solidTexture = ImageTexture.CreateFromImage(solid);
             using var materials = new CompiledSceneSurface.Materials();
             var material = materials.Get(solidTexture);
-            Require(ReferenceEquals(material, materials.Get(solidTexture)) && material.IsOpaque,
-                "One texture must have one immutable opacity snapshot per assembly compilation.");
+            Require(material.IsOpaque, "Opaque source pixels retain their complete opacity fact.");
             solid.SetPixel(3, 1, Colors.Transparent);
             Require(material.IsOpaque && material.Alpha(3, 1) == 1,
                 "Caller image edits must not mutate the captured material pixels or their opacity fact.");

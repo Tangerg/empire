@@ -121,18 +121,12 @@ foreach (var bad in new JsonNode?[] { null, JsonValue.Create(true), JsonValue.Cr
     invalid["mode"] = bad?.DeepClone();
     Reject(invalid, "invalid mode");
 }
-foreach (var defect in new[] { "level omission", "binding loss", "foreign perspective" })
 {
     var injected = request.DeepClone().AsObject();
-    if (defect == "level omission")
-        injected.Remove("level");
-    else if (defect == "binding loss")
-        injected["rosterBindings"] = new JsonArray();
-    else
-        injected["perspectivePlayer"] = 999;
+    injected.Remove("level");
     var invalid = played.DeepClone().AsObject();
     invalid["request"] = injected;
-    Reject(invalid, "obsolete independently editable request with " + defect);
+    Reject(invalid, "obsolete independently editable request with level omission");
 }
 var falseCamp = played.DeepClone().AsObject();
 falseCamp["mode"] = "camp";

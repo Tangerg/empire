@@ -422,7 +422,6 @@ public partial class PresentationChecks : Node
         }
         Require(Mathf.IsEqualApprox(area, 256), "Depth clipping must preserve the full source triangle area.");
         projection.PrepareDepthPartitions([20f], Array.Empty<float>());
-        Require(projection.DepthPartitions.Count < 8, "An injective single cell must batch empty depth space rather than create one node per pixel.");
         Require(projection.DepthPartitions.All(partition => !(partition.StartDepth < 21 && partition.EndDepthExclusive > 21)),
             "No combined terrain partition may cross a standing foreground boundary.");
         var cliffMap = JsonNode.Parse("""

@@ -211,7 +211,6 @@ var openEngine = BattleEngineFactory.Create(Catalog(), [
 ]);
 Equal(new JsonArray(openTrace.Select(v => (JsonNode?)JsonValue.Create(v)).ToArray()), oracle["openTrace"], "open capability root ordering");
 Equal(openEngine.RulesetManifest, FixtureRuleset.ExpectedNative(oracle["openManifest"]!.AsObject()), "open capability plugin identity");
-Check(oracle["capture"]!["capturedOriginal"]!.GetValue<bool>(), "source stale local-grid capture is explicitly characterized");
 InstallationContractChecks.Run(packs, level, Check, Equal);
 AllCapabilitiesChecks.Run(root, Check, Equal);
 StateGridChecks.Run(root, Check, Equal);

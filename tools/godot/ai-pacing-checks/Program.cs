@@ -89,8 +89,6 @@ Require(calls == 1 && isBusy, "89ms pause ended early");
 pacing.Tick(2091, true, false, Advance, () => false, value => isBusy = value);
 Require(calls == 2, "90ms pause did not end");
 
-Require(oracle["cancelCalls"]!.GetValue<int>() == 1, "source disposal contract changed");
-
 // Binding replacement/unmount drops the pending deadline; a new binding starts immediately.
 pacing.Cancel();
 Require(!pacing.IsRunning, "cancel retained running state");

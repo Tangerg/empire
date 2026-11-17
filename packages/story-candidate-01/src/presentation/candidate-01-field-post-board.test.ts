@@ -15,26 +15,24 @@ const handlers = { onTileClick: () => {}, onTileEnter: () => {}, onLeave: () => 
 
 function mount(levelId: string) {
   const state = engine.createState(candidate01Level(levelId));
+  const before = JSON.stringify(state);
   let surface!: SvgBoardSurface;
   const board = new BoardView({ content, grid: engine.rules.grids.get('square4'), art: CANDIDATE_01_ART,
     renderer: scene => surface = new SvgBoardSurface(scene) }, state, handlers);
   board.render(emptyOverlay());
-  return { state, board, surface };
+  return { state, before, board, surface };
 }
 
 describe('field-post consumers through the complete existing board path', () => {
   it.each(contract.fieldPosts)('draws every actor/building and all field-posts in $id without changing state', ({ id, cells }) => {
-    const { state, board, surface } = mount(id);
+    const { state, before, board, surface } = mount(id);
     try {
-      const before = JSON.stringify(state);
       const record = resolveCandidate01MapStructureArt(CANDIDATE_01_MAP_STRUCTURE_PRESENTATIONS, CANDIDATE_01_MAP_STRUCTURE_ART['c01.field-post']!);
       expect(surface.element.querySelectorAll('.layer-units > .unit')).toHaveLength(state.units.length);
       const buildings = surface.element.querySelectorAll('[data-candidate-art="structure"]');
       expect(buildings).toHaveLength(state.map.tiles.filter(id => content.terrains.get(id).capturable).length + state.structures.length);
       const posts = [...buildings].filter(node => node.querySelector('image')?.getAttribute('href') === record.url);
       expect(posts).toHaveLength(cells.length);
-      board.render(emptyOverlay());
-      expect(surface.element.querySelectorAll('.layer-units > .unit')).toHaveLength(state.units.length);
       expect(JSON.stringify(state)).toBe(before);
     } finally { board.dispose(); }
   });

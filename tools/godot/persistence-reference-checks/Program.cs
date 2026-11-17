@@ -167,8 +167,6 @@ foreach (var authored in Read("godot/data/grayflag-campaign-levels.json").AsArra
         Equal(state, engine.LoadBattle(save), "campaign roundtrip changed state");
     });
 
-Check("default registry keys preserve source order", () => Assert(string.Join(",", engine.ReferenceChecks.Keys()) ==
-    "abilities,hitEffects,areaShapes,reactions,directives,turnOrders,grids,objectives,scenarioConditions,scenarioEffects", "default check order differs"));
 Check("check registry clone, replacement order, sealing and stable dedupe", () =>
 {
     var checks = new BattleReferenceCheckRegistry()

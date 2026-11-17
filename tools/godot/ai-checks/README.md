@@ -6,7 +6,7 @@ The harness checks:
 - All 119 recorded live before-state choices against the original TypeScript policy.
 - All three complete battles at aggression 0.35, 0.58 and 0.8. C# chooses its own actions, executes them through the native battle, and compares every action, event sequence and state digest to TypeScript.
 - 28 source-generated agenda, threat, exact floating-point tile appraisal and selected policy cases, including each objective advisor, objective composition, all grids, standing orders, recruitment, tactics, healing ground and sustained casts.
-- Registry extension, replacement, clone isolation and sealing.
+- AI intent priority projection and clone isolation. Generic registry mutation/sealing contracts live in `../registry-checks`.
 
 The action-case reader accepts the committed gzip fixture when its expanded JSON is absent. Generated focused data and failure diagnostics stay in the temporary directory printed by the runner. Production AI does not read any fixture, replay, or expected action.
 

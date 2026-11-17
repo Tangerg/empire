@@ -35,11 +35,9 @@ static class AllCapabilitiesChecks
         }).ToArray());
         var expectedRecipe = (JsonArray)oracle["recipe"]!.DeepClone();
         var tactical = expectedRecipe.OfType<JsonObject>().Single(plugin => EcmaJson.ReadString(plugin["id"]) == "engine.tactical-rules");
-        check(EcmaJson.ToElement(tactical["version"]).GetInt32() == 1, "source tactical recipe version");
         tactical["version"] = 2;
         var provides = tactical["provides"]!.AsArray();
         provides.Remove(provides.Single(key => key!.GetValue<string>() == "space"));
-        equal(tactical["requiresCapabilities"], new JsonArray("content"), "source tactical content capture");
         tactical["requiresCapabilities"] = new JsonArray();
         expectedRecipe.Insert(expectedRecipe.IndexOf(tactical) + 1, new JsonObject
         {

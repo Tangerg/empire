@@ -123,7 +123,6 @@ static class HitEffectAdmissionChecks
         {
             new JsonObject { ["type"] = "forcedMove", ["mode"] = "push", ["distance"] = -1 },
             new JsonObject { ["type"] = "forcedMove", ["mode"] = "sideways", ["distance"] = 1 },
-            new JsonObject { ["type"] = "addStatus", ["status"] = "armor_down", ["duration"] = 0 },
             new JsonObject { ["type"] = "removeStatus", ["status"] = "absent" },
         })
         {

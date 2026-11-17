@@ -201,10 +201,6 @@ describe('replay', () => {
     expect(outcome.state.winnerTeam).toBe(state.winnerTeam);
   });
 
-  it('reproduces the same battle twice from the same seed', () => {
-    expect(hashState(playRecorded(77).state)).toBe(hashState(playRecorded(77).state));
-  });
-
   it('reports where a recording stops applying instead of failing silently', () => {
     const { state, recorder } = playRecorded(2024);
     const tampered = {

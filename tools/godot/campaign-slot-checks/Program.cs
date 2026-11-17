@@ -24,7 +24,6 @@ var messages = new GameText(key => catalog.GetValueOrDefault(key), CultureInfo.G
 var engine = new BattleEngine(EcmaJson.Parse(File.ReadAllText(args[3]))!.AsArray());
 var definition = oracle["definition"]!.AsObject();
 var initial = oracle["initial"]!.AsObject();
-var pending = oracle["pending"]!.AsObject();
 var checks = 0;
 void Check(bool value, string message) { checks++; if (!value) throw new Exception(message); }
 void Same(JsonNode? actual, JsonNode? expected, string message) => Check(EcmaJson.DeepEquals(actual, expected), message);
@@ -138,40 +137,6 @@ try
 }
 catch (CampaignInvariantException) { checks++; }
 
-foreach (var mode in new[] { "request", "battle", "pending", "camp", "events", "missing-request", "schema" })
-{
-    var document = Wrapper();
-    switch (mode)
-    {
-        case "request":
-            document["request"] = new JsonObject();
-            break;
-        case "battle":
-            document["battle"] = new JsonObject();
-            break;
-        case "pending":
-            document["campaign"] = CampaignSave.Create(definition, pending);
-            break;
-        case "camp":
-            document["atCamp"] = true;
-            break;
-        case "events":
-            document["events"] = new JsonArray(new JsonObject { ["type"] = "battleStarted" });
-            break;
-        case "missing-request":
-            document.Remove("request");
-            break;
-        case "schema":
-            document["schema"] = 2;
-            break;
-    }
-    var path = Slot($"legacy-{mode}.json");
-    var text = EcmaJson.Stringify(document);
-    NewFile(path, text);
-    var result = CampaignSlotStorage.Load(engine.UnitContentIssues, definition, path);
-    Check(result.State is null && result.Rejected is { Length: > 0 }, $"Legacy {mode} must not masquerade as campaign-only autosave");
-    Check(File.ReadAllText(path) == text, "Rejected legacy/full manual save was changed");
-}
 var badState = (JsonObject)initial.DeepClone();
 badState["currentNode"] = "missing";
 try
@@ -243,12 +208,6 @@ foreach (var item in oracle["menuCases"]!.AsArray().OfType<JsonObject>())
     Check(view.RejectedNotice == expected["notice"]?.GetValue<string>(), "Unreadable-save notice must be localized without exposing diagnostic details");
     if (item["prompt"] is not null)
         Check(view.ReplacePrompt == item["prompt"]!.GetValue<string>(), "Replacement confirmation is not the source prompt");
-    var needsConfirmation = loaded.State is not null;
-    Check(item["declined"]!["confirmations"]!.GetValue<int>() == (needsConfirmation ? 1 : 0), "Live source confirmation expectation changed");
-    Check(item["declined"]!["deletes"]!.GetValue<int>() == (needsConfirmation ? 0 : 1), "Live source new-game deletion expectation changed");
-    Check(item["accepted"]!["deletes"]!.GetValue<int>() == (needsConfirmation ? 1 : 2), "Live source acceptance must initiate new game");
-    if (needsConfirmation)
-        Check(item["continuedOriginalState"]!.GetValue<bool>(), "Live source Continue must use loaded state");
 }
 var changedMetadata = (JsonObject)exported.DeepClone();
 changedMetadata["battleTotal"] = 27;

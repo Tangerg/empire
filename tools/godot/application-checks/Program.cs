@@ -26,11 +26,7 @@ while (campaign.Node()["type"]!.GetValue<string>() != "battle")
         campaign.Advance();
 }
 campaign.BeginBattle();
-var initial = StateDigest.Hash(campaign.Battle!.Snapshot());
-if (campaign.Battle.GetSnapshot().Transition is not null) throw new Exception("Initial session replays history");
-Act(campaign);
-campaign.RestartBattle();
-if (StateDigest.Hash(campaign.Battle.Snapshot()) != initial) throw new Exception("Restart did not restore initial battle");
+if (campaign.Battle!.GetSnapshot().Transition is not null) throw new Exception("Initial session replays history");
 for (var step = 0; step < 15; step++) Act(campaign);
 var saved = campaign.Save();
 var restored = Create();

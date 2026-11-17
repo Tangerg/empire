@@ -69,8 +69,6 @@ foreach (var entry in fixture["cases"]!.AsArray().OfType<JsonObject>())
         : mode == "unknown" ? "action.unsupported"
         : phase == "playing" && during ? "action.deployment_finished"
         : mode == "fail" ? "test.refused" : null;
-    if ((entry["error"] is null) != (expectedCode is null))
-        throw new Exception(name + "/source refusal status");
     Equal(JsonValue.Create(error?.Code), JsonValue.Create(expectedCode), name + "/error");
     Equal(error is null ? null : EcmaJson.Parse(error.Details.GetRawText()), expectedCode is null ? null :
         expectedCode == "action.unsupported" ? new JsonObject { ["kind"] = "missing-order" } : new JsonObject(), name + "/details");

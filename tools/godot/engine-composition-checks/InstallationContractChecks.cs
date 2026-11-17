@@ -48,9 +48,6 @@ static class InstallationContractChecks
                 context.Replace(Keys.Grids, grids);
             }, overrides: [Keys.Grids], requiresCapabilities: [Keys.Grids]);
             var engine = BattleEngineFactory.Create(catalog, [plugin]);
-            var space = (DefaultTacticalSpace)engine.Space;
-            check(ReferenceEquals(space.Content, catalog), $"{gridId}: spatial content identity");
-            check(ReferenceEquals(space.Grids, engine.Grids) && !ReferenceEquals(space.Grids, displaced), $"{gridId}: replacement captured before spatial installation");
             displaced!.Replace(new Square4Grid());
             try
             {

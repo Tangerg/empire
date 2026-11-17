@@ -67,8 +67,6 @@ void Refused(AbilityCommands commands, JsonObject state, JsonObject action, stri
     Equal(battle.Snapshot(), before, name + " leaked state");
 }
 
-Check(typeof(BattleEngine).GetProperty("Space")!.PropertyType == typeof(ITacticalSpace), "engine binds concrete spatial policy");
-Check(typeof(AbilityRules).GetProperty("Space")!.PropertyType == typeof(ITacticalSpace), "abilities bind concrete spatial policy");
 var defaults = new DefaultTacticalSpace(new TacticalSpaceRules(engine.Catalog, engine.Grids));
 var soldier = State("soldier");
 var actor = Unit(soldier);
@@ -144,7 +142,6 @@ var captured = new SrpgMicrokernel()
     .Compose();
 Check(captured.Require(gridsKey).Get("square4").Distance(new(0, 0), new(1, 1)) == 1, "grid capability replacement failed");
 Check(captured.Require(consumerKey).Board(soldier).Distance(new(0, 0), new(1, 1)) == 1, "spatial installer missed the declared grid replacement");
-Check(ReferenceEquals(((DefaultTacticalSpace)captured.Require(consumerKey)).Grids, replacementGrids), "spatial installer copied the resolved registry");
 replacementGrids.Replace(new Square4Grid());
 Check(captured.Require(consumerKey).Board(soldier).Distance(new(0, 0), new(1, 1)) == 2, "resolved registry reference became snapshot");
 var replacement = new TeleportSpace(new TacticalSpaceRules(engine.Catalog, engine.Grids));

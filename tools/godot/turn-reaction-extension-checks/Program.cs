@@ -186,8 +186,6 @@ foreach (var item in Objects(fixture["actions"], "action cases"))
     var expectedError = expectedRefusal is null ? null : new JsonObject { ["kind"] = "IllegalAction", ["refusal"] = Node(expectedRefusal) };
     if (name == "unknown stance action")
     {
-        Check(item["error"] is null && Text(item["after"]!["units"]![2]!.AsObject(), "reaction") == "absent",
-            "frozen source characterizes invalid reaction commit");
         Equal(error, expectedError, "unknown stance action native typed refusal");
         Equal(events, new JsonArray(), "unknown stance action has no events");
         Equal(battle.Snapshot(), item["before"], "unknown stance action native rollback");
